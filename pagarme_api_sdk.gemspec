@@ -1,11 +1,11 @@
 Gem::Specification.new do |s|
   s.name = 'pagarme_api_sdk'
-  s.version = '6.0.0.alpha'
+  s.version = '6.1.0.alpha'
   s.summary = 'pagarme_api_sdk'
   s.description = 'Pagarme API'
-  s.authors = ['APIMatic SDK Generator']
-  s.email = 'support@apimatic.io'
-  s.homepage = 'https://apimatic.io'
+  s.authors = ['Pagar.me Pagamentos S/A']
+  s.email = 'suporte@pagar.me'
+  s.homepage = 'https://github.com/pagarme/'
   s.license = 'MIT'
   s.add_dependency('logging', '~> 2.3')
   s.add_dependency('faraday', '~> 1.0', '>= 1.0.1')

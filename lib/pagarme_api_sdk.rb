@@ -246,6 +246,7 @@ require_relative 'pagarme_api_sdk/models/get_pix_transaction_response'
 require_relative 'pagarme_api_sdk/models/update_subscription_due_days_request'
 require_relative 'pagarme_api_sdk/models/create_checkout_pix_payment_request'
 require_relative 'pagarme_api_sdk/models/get_checkout_pix_payment_response'
+require_relative 'pagarme_api_sdk/models/cancel_split_request'
 
 # Exceptions
 require_relative 'pagarme_api_sdk/exceptions/api_exception'
