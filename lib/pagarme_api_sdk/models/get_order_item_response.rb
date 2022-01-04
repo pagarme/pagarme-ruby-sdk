@@ -25,10 +25,6 @@ module PagarmeApiSdk
     # @return [Integer]
     attr_accessor :quantity
 
-    # Seller data
-    # @return [GetSellerResponse]
-    attr_accessor :get_seller_response
-
     # Category
     # @return [String]
     attr_accessor :category
@@ -44,7 +40,6 @@ module PagarmeApiSdk
       @_hash['amount'] = 'amount'
       @_hash['description'] = 'description'
       @_hash['quantity'] = 'quantity'
-      @_hash['get_seller_response'] = 'GetSellerResponse'
       @_hash['category'] = 'category'
       @_hash['code'] = 'code'
       @_hash
@@ -52,9 +47,7 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def optionals
-      %w[
-        get_seller_response
-      ]
+      []
     end
 
     # An array for nullable fields
@@ -67,13 +60,11 @@ module PagarmeApiSdk
                    description = nil,
                    quantity = nil,
                    category = nil,
-                   code = nil,
-                   get_seller_response = nil)
+                   code = nil)
       @id = id unless id == SKIP
       @amount = amount unless amount == SKIP
       @description = description unless description == SKIP
       @quantity = quantity unless quantity == SKIP
-      @get_seller_response = get_seller_response unless get_seller_response == SKIP
       @category = category unless category == SKIP
       @code = code unless code == SKIP
     end
@@ -89,8 +80,6 @@ module PagarmeApiSdk
       quantity = hash.key?('quantity') ? hash['quantity'] : SKIP
       category = hash.key?('category') ? hash['category'] : SKIP
       code = hash.key?('code') ? hash['code'] : SKIP
-      get_seller_response = GetSellerResponse.from_hash(hash['GetSellerResponse']) if
-        hash['GetSellerResponse']
 
       # Create object from extracted values.
       GetOrderItemResponse.new(id,
@@ -98,8 +87,7 @@ module PagarmeApiSdk
                                description,
                                quantity,
                                category,
-                               code,
-                               get_seller_response)
+                               code)
     end
   end
 end

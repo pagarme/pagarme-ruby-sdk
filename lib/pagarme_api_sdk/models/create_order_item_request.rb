@@ -21,14 +21,6 @@ module PagarmeApiSdk
     # @return [Integer]
     attr_accessor :quantity
 
-    # Item seller
-    # @return [CreateSellerRequest]
-    attr_accessor :seller
-
-    # seller identificator
-    # @return [String]
-    attr_accessor :seller_id
-
     # Category
     # @return [String]
     attr_accessor :category
@@ -43,8 +35,6 @@ module PagarmeApiSdk
       @_hash['amount'] = 'amount'
       @_hash['description'] = 'description'
       @_hash['quantity'] = 'quantity'
-      @_hash['seller'] = 'seller'
-      @_hash['seller_id'] = 'seller_id'
       @_hash['category'] = 'category'
       @_hash['code'] = 'code'
       @_hash
@@ -53,8 +43,6 @@ module PagarmeApiSdk
     # An array for optional fields
     def optionals
       %w[
-        seller
-        seller_id
         code
       ]
     end
@@ -68,14 +56,10 @@ module PagarmeApiSdk
                    description = nil,
                    quantity = nil,
                    category = nil,
-                   seller = nil,
-                   seller_id = nil,
                    code = nil)
       @amount = amount unless amount == SKIP
       @description = description unless description == SKIP
       @quantity = quantity unless quantity == SKIP
-      @seller = seller unless seller == SKIP
-      @seller_id = seller_id unless seller_id == SKIP
       @category = category unless category == SKIP
       @code = code unless code == SKIP
     end
@@ -89,8 +73,6 @@ module PagarmeApiSdk
       description = hash.key?('description') ? hash['description'] : SKIP
       quantity = hash.key?('quantity') ? hash['quantity'] : SKIP
       category = hash.key?('category') ? hash['category'] : SKIP
-      seller = CreateSellerRequest.from_hash(hash['seller']) if hash['seller']
-      seller_id = hash.key?('seller_id') ? hash['seller_id'] : SKIP
       code = hash.key?('code') ? hash['code'] : SKIP
 
       # Create object from extracted values.
@@ -98,8 +80,6 @@ module PagarmeApiSdk
                                  description,
                                  quantity,
                                  category,
-                                 seller,
-                                 seller_id,
                                  code)
     end
   end
