@@ -15,7 +15,6 @@ Response object for getting an order item
 | `amount` | `Integer` | Required | - |
 | `description` | `String` | Required | - |
 | `quantity` | `Integer` | Required | - |
-| `get_seller_response` | [`GetSellerResponse`](/doc/models/get-seller-response.md) | Optional | Seller data |
 | `category` | `String` | Required | Category |
 | `code` | `String` | Required | Code |
 
@@ -27,7 +26,6 @@ Response object for getting an order item
   "amount": 46,
   "description": "description0",
   "quantity": 68,
-  "GetSellerResponse": null,
   "category": "category2",
   "code": "code8"
 }

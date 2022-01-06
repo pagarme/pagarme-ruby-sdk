@@ -14,8 +14,6 @@ Request for creating an order item
 | `amount` | `Integer` | Required | Amount |
 | `description` | `String` | Required | Description |
 | `quantity` | `Integer` | Required | Quantity |
-| `seller` | [`CreateSellerRequest`](/doc/models/create-seller-request.md) | Optional | Item seller |
-| `seller_id` | `String` | Optional | seller identificator |
 | `category` | `String` | Required | Category |
 | `code` | `String` | Optional | The item code passed by the client |
 
@@ -26,8 +24,6 @@ Request for creating an order item
   "amount": 46,
   "description": "description0",
   "quantity": 68,
-  "seller": null,
-  "seller_id": null,
   "category": "category2",
   "code": null
 }
