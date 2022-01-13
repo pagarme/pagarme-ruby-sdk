@@ -118,6 +118,10 @@ module PagarmeApiSdk
     # @return [Integer]
     attr_accessor :boleto_due_days
 
+    # Subscription's split response
+    # @return [GetSubscriptionSplitResponse]
+    attr_accessor :split
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -148,6 +152,7 @@ module PagarmeApiSdk
       @_hash['discounts'] = 'discounts'
       @_hash['increments'] = 'increments'
       @_hash['boleto_due_days'] = 'boleto_due_days'
+      @_hash['split'] = 'split'
       @_hash
     end
 
@@ -189,6 +194,7 @@ module PagarmeApiSdk
                    setup = nil,
                    gateway_affiliation_id = nil,
                    increments = nil,
+                   split = nil,
                    current_cycle = nil,
                    customer = nil,
                    next_billing_at = nil,
@@ -224,6 +230,7 @@ module PagarmeApiSdk
       @discounts = discounts unless discounts == SKIP
       @increments = increments unless increments == SKIP
       @boleto_due_days = boleto_due_days unless boleto_due_days == SKIP
+      @split = split unless split == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -284,6 +291,7 @@ module PagarmeApiSdk
       end
 
       increments = SKIP unless hash.key?('increments')
+      split = GetSubscriptionSplitResponse.from_hash(hash['split']) if hash['split']
       current_cycle = GetPeriodResponse.from_hash(hash['current_cycle']) if hash['current_cycle']
       customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
       next_billing_at = if hash.key?('next_billing_at')
@@ -331,6 +339,7 @@ module PagarmeApiSdk
                                   setup,
                                   gateway_affiliation_id,
                                   increments,
+                                  split,
                                   current_cycle,
                                   customer,
                                   next_billing_at,

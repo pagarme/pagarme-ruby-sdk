@@ -134,6 +134,10 @@ module PagarmeApiSdk
     # @return [CreateSubMerchantRequest]
     attr_accessor :submerchant
 
+    # Subscription's split
+    # @return [CreateSubscriptionSplitRequest]
+    attr_accessor :split
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -168,6 +172,7 @@ module PagarmeApiSdk
       @_hash['increments'] = 'increments'
       @_hash['period'] = 'period'
       @_hash['submerchant'] = 'submerchant'
+      @_hash['split'] = 'split'
       @_hash
     end
 
@@ -188,6 +193,7 @@ module PagarmeApiSdk
         boleto_due_days
         period
         submerchant
+        split
       ]
     end
 
@@ -226,7 +232,8 @@ module PagarmeApiSdk
                    quantity = nil,
                    boleto_due_days = nil,
                    period = nil,
-                   submerchant = nil)
+                   submerchant = nil,
+                   split = nil)
       @customer = customer unless customer == SKIP
       @card = card unless card == SKIP
       @code = code unless code == SKIP
@@ -258,6 +265,7 @@ module PagarmeApiSdk
       @increments = increments unless increments == SKIP
       @period = period unless period == SKIP
       @submerchant = submerchant unless submerchant == SKIP
+      @split = split unless split == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -333,6 +341,7 @@ module PagarmeApiSdk
         hash.key?('boleto_due_days') ? hash['boleto_due_days'] : SKIP
       period = CreatePeriodRequest.from_hash(hash['period']) if hash['period']
       submerchant = CreateSubMerchantRequest.from_hash(hash['submerchant']) if hash['submerchant']
+      split = CreateSubscriptionSplitRequest.from_hash(hash['split']) if hash['split']
 
       # Create object from extracted values.
       CreateSubscriptionRequest.new(customer,
@@ -365,7 +374,8 @@ module PagarmeApiSdk
                                     quantity,
                                     boleto_due_days,
                                     period,
-                                    submerchant)
+                                    submerchant,
+                                    split)
     end
 
     def to_start_at
