@@ -25,6 +25,10 @@ module PagarmeApiSdk
     # @return [CreateSplitOptionsRequest]
     attr_accessor :options
 
+    # Rule code used in cancellation.
+    # @return [String]
+    attr_accessor :split_rule_id
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -32,6 +36,7 @@ module PagarmeApiSdk
       @_hash['amount'] = 'amount'
       @_hash['recipient_id'] = 'recipient_id'
       @_hash['options'] = 'options'
+      @_hash['split_rule_id'] = 'split_rule_id'
       @_hash
     end
 
@@ -39,6 +44,7 @@ module PagarmeApiSdk
     def optionals
       %w[
         options
+        split_rule_id
       ]
     end
 
@@ -50,11 +56,13 @@ module PagarmeApiSdk
     def initialize(type = nil,
                    amount = nil,
                    recipient_id = nil,
-                   options = nil)
+                   options = nil,
+                   split_rule_id = nil)
       @type = type unless type == SKIP
       @amount = amount unless amount == SKIP
       @recipient_id = recipient_id unless recipient_id == SKIP
       @options = options unless options == SKIP
+      @split_rule_id = split_rule_id unless split_rule_id == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -66,12 +74,14 @@ module PagarmeApiSdk
       amount = hash.key?('amount') ? hash['amount'] : SKIP
       recipient_id = hash.key?('recipient_id') ? hash['recipient_id'] : SKIP
       options = CreateSplitOptionsRequest.from_hash(hash['options']) if hash['options']
+      split_rule_id = hash.key?('split_rule_id') ? hash['split_rule_id'] : SKIP
 
       # Create object from extracted values.
       CreateSplitRequest.new(type,
                              amount,
                              recipient_id,
-                             options)
+                             options,
+                             split_rule_id)
     end
   end
 end
