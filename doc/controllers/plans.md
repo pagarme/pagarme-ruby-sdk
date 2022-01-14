@@ -11,15 +11,15 @@ plans_controller = client.plans
 ## Methods
 
 * [Get Plan](/doc/controllers/plans.md#get-plan)
-* [Update Plan](/doc/controllers/plans.md#update-plan)
-* [Update Plan Metadata](/doc/controllers/plans.md#update-plan-metadata)
-* [Delete Plan Item](/doc/controllers/plans.md#delete-plan-item)
-* [Get Plans](/doc/controllers/plans.md#get-plans)
-* [Get Plan Item](/doc/controllers/plans.md#get-plan-item)
 * [Delete Plan](/doc/controllers/plans.md#delete-plan)
+* [Update Plan Metadata](/doc/controllers/plans.md#update-plan-metadata)
 * [Update Plan Item](/doc/controllers/plans.md#update-plan-item)
 * [Create Plan Item](/doc/controllers/plans.md#create-plan-item)
+* [Get Plan Item](/doc/controllers/plans.md#get-plan-item)
 * [Create Plan](/doc/controllers/plans.md#create-plan)
+* [Delete Plan Item](/doc/controllers/plans.md#delete-plan-item)
+* [Get Plans](/doc/controllers/plans.md#get-plans)
+* [Update Plan](/doc/controllers/plans.md#update-plan)
 
 
 # Get Plan
@@ -49,13 +49,12 @@ result = plans_controller.get_plan(plan_id)
 ```
 
 
-# Update Plan
+# Delete Plan
 
-Updates a plan
+Deletes a plan
 
 ```ruby
-def update_plan(plan_id,
-                request,
+def delete_plan(plan_id,
                 idempotency_key: nil)
 ```
 
@@ -64,7 +63,6 @@ def update_plan(plan_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `plan_id` | `String` | Template, Required | Plan id |
-| `request` | [`UpdatePlanRequest`](/doc/models/update-plan-request.md) | Body, Required | Request for updating a plan |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
@@ -75,22 +73,8 @@ def update_plan(plan_id,
 
 ```ruby
 plan_id = 'plan_id8'
-request = UpdatePlanRequest.new
-request.name = 'name6'
-request.description = 'description6'
-request.installments = [151, 152]
-request.statement_descriptor = 'statement_descriptor6'
-request.currency = 'currency6'
-request.interval = 'interval4'
-request.interval_count = 114
-request.payment_methods = ['payment_methods1', 'payment_methods0', 'payment_methods9']
-request.billing_type = 'billing_type0'
-request.status = 'status8'
-request.shippable = false
-request.billing_days = [115]
-request.metadata = {'key0' => 'metadata3' } 
 
-result = plans_controller.update_plan(plan_id, request, )
+result = plans_controller.delete_plan(plan_id, )
 ```
 
 
@@ -124,134 +108,6 @@ request = UpdateMetadataRequest.new
 request.metadata = {'key0' => 'metadata3' } 
 
 result = plans_controller.update_plan_metadata(plan_id, request, )
-```
-
-
-# Delete Plan Item
-
-Removes an item from a plan
-
-```ruby
-def delete_plan_item(plan_id,
-                     plan_item_id,
-                     idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `plan_id` | `String` | Template, Required | Plan id |
-| `plan_item_id` | `String` | Template, Required | Plan item id |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetPlanItemResponse`](/doc/models/get-plan-item-response.md)
-
-## Example Usage
-
-```ruby
-plan_id = 'plan_id8'
-plan_item_id = 'plan_item_id0'
-
-result = plans_controller.delete_plan_item(plan_id, plan_item_id, )
-```
-
-
-# Get Plans
-
-Gets all plans
-
-```ruby
-def get_plans(page: nil,
-              size: nil,
-              name: nil,
-              status: nil,
-              billing_type: nil,
-              created_since: nil,
-              created_until: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `Integer` | Query, Optional | Page number |
-| `size` | `Integer` | Query, Optional | Page size |
-| `name` | `String` | Query, Optional | Filter for Plan's name |
-| `status` | `String` | Query, Optional | Filter for Plan's status |
-| `billing_type` | `String` | Query, Optional | Filter for plan's billing type |
-| `created_since` | `DateTime` | Query, Optional | Filter for plan's creation date start range |
-| `created_until` | `DateTime` | Query, Optional | Filter for plan's creation date end range |
-
-## Response Type
-
-[`ListPlansResponse`](/doc/models/list-plans-response.md)
-
-## Example Usage
-
-```ruby
-result = plans_controller.get_plans()
-```
-
-
-# Get Plan Item
-
-Gets a plan item
-
-```ruby
-def get_plan_item(plan_id,
-                  plan_item_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `plan_id` | `String` | Template, Required | Plan id |
-| `plan_item_id` | `String` | Template, Required | Plan item id |
-
-## Response Type
-
-[`GetPlanItemResponse`](/doc/models/get-plan-item-response.md)
-
-## Example Usage
-
-```ruby
-plan_id = 'plan_id8'
-plan_item_id = 'plan_item_id0'
-
-result = plans_controller.get_plan_item(plan_id, plan_item_id)
-```
-
-
-# Delete Plan
-
-Deletes a plan
-
-```ruby
-def delete_plan(plan_id,
-                idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `plan_id` | `String` | Template, Required | Plan id |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetPlanResponse`](/doc/models/get-plan-response.md)
-
-## Example Usage
-
-```ruby
-plan_id = 'plan_id8'
-
-result = plans_controller.delete_plan(plan_id, )
 ```
 
 
@@ -347,6 +203,36 @@ request.id = 'id6'
 request.description = 'description6'
 
 result = plans_controller.create_plan_item(plan_id, request, )
+```
+
+
+# Get Plan Item
+
+Gets a plan item
+
+```ruby
+def get_plan_item(plan_id,
+                  plan_item_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `plan_id` | `String` | Template, Required | Plan id |
+| `plan_item_id` | `String` | Template, Required | Plan item id |
+
+## Response Type
+
+[`GetPlanItemResponse`](/doc/models/get-plan-item-response.md)
+
+## Example Usage
+
+```ruby
+plan_id = 'plan_id8'
+plan_item_id = 'plan_item_id0'
+
+result = plans_controller.get_plan_item(plan_id, plan_item_id)
 ```
 
 
@@ -458,5 +344,119 @@ body.pricing_scheme.price_brackets[1].price = 226
 body.metadata = {'key0' => 'metadata7', 'key1' => 'metadata8' } 
 
 result = plans_controller.create_plan(body, )
+```
+
+
+# Delete Plan Item
+
+Removes an item from a plan
+
+```ruby
+def delete_plan_item(plan_id,
+                     plan_item_id,
+                     idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `plan_id` | `String` | Template, Required | Plan id |
+| `plan_item_id` | `String` | Template, Required | Plan item id |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanItemResponse`](/doc/models/get-plan-item-response.md)
+
+## Example Usage
+
+```ruby
+plan_id = 'plan_id8'
+plan_item_id = 'plan_item_id0'
+
+result = plans_controller.delete_plan_item(plan_id, plan_item_id, )
+```
+
+
+# Get Plans
+
+Gets all plans
+
+```ruby
+def get_plans(page: nil,
+              size: nil,
+              name: nil,
+              status: nil,
+              billing_type: nil,
+              created_since: nil,
+              created_until: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `Integer` | Query, Optional | Page number |
+| `size` | `Integer` | Query, Optional | Page size |
+| `name` | `String` | Query, Optional | Filter for Plan's name |
+| `status` | `String` | Query, Optional | Filter for Plan's status |
+| `billing_type` | `String` | Query, Optional | Filter for plan's billing type |
+| `created_since` | `DateTime` | Query, Optional | Filter for plan's creation date start range |
+| `created_until` | `DateTime` | Query, Optional | Filter for plan's creation date end range |
+
+## Response Type
+
+[`ListPlansResponse`](/doc/models/list-plans-response.md)
+
+## Example Usage
+
+```ruby
+result = plans_controller.get_plans()
+```
+
+
+# Update Plan
+
+Updates a plan
+
+```ruby
+def update_plan(plan_id,
+                request,
+                idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `plan_id` | `String` | Template, Required | Plan id |
+| `request` | [`UpdatePlanRequest`](/doc/models/update-plan-request.md) | Body, Required | Request for updating a plan |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanResponse`](/doc/models/get-plan-response.md)
+
+## Example Usage
+
+```ruby
+plan_id = 'plan_id8'
+request = UpdatePlanRequest.new
+request.name = 'name6'
+request.description = 'description6'
+request.installments = [151, 152]
+request.statement_descriptor = 'statement_descriptor6'
+request.currency = 'currency6'
+request.interval = 'interval4'
+request.interval_count = 114
+request.payment_methods = ['payment_methods1', 'payment_methods0', 'payment_methods9']
+request.billing_type = 'billing_type0'
+request.status = 'status8'
+request.shippable = false
+request.billing_days = [115]
+request.metadata = {'key0' => 'metadata3' } 
+
+result = plans_controller.update_plan(plan_id, request, )
 ```
 

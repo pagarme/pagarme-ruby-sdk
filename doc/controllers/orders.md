@@ -11,15 +11,15 @@ orders_controller = client.orders
 ## Methods
 
 * [Get Orders](/doc/controllers/orders.md#get-orders)
-* [Get Order Item](/doc/controllers/orders.md#get-order-item)
-* [Get Order](/doc/controllers/orders.md#get-order)
-* [Close Order](/doc/controllers/orders.md#close-order)
-* [Create Order](/doc/controllers/orders.md#create-order)
 * [Update Order Item](/doc/controllers/orders.md#update-order-item)
 * [Delete All Order Items](/doc/controllers/orders.md#delete-all-order-items)
-* [Update Order Metadata](/doc/controllers/orders.md#update-order-metadata)
 * [Delete Order Item](/doc/controllers/orders.md#delete-order-item)
+* [Close Order](/doc/controllers/orders.md#close-order)
+* [Create Order](/doc/controllers/orders.md#create-order)
 * [Create Order Item](/doc/controllers/orders.md#create-order-item)
+* [Get Order Item](/doc/controllers/orders.md#get-order-item)
+* [Update Order Metadata](/doc/controllers/orders.md#update-order-metadata)
+* [Get Order](/doc/controllers/orders.md#get-order)
 
 
 # Get Orders
@@ -59,11 +59,13 @@ result = orders_controller.get_orders()
 ```
 
 
-# Get Order Item
+# Update Order Item
 
 ```ruby
-def get_order_item(order_id,
-                   item_id)
+def update_order_item(order_id,
+                      item_id,
+                      request,
+                      idempotency_key: nil)
 ```
 
 ## Parameters
@@ -72,6 +74,70 @@ def get_order_item(order_id,
 |  --- | --- | --- | --- |
 | `order_id` | `String` | Template, Required | Order Id |
 | `item_id` | `String` | Template, Required | Item Id |
+| `request` | [`UpdateOrderItemRequest`](/doc/models/update-order-item-request.md) | Body, Required | Item Model |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderItemResponse`](/doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```ruby
+order_id = 'orderId2'
+item_id = 'itemId8'
+request = UpdateOrderItemRequest.new
+request.amount = 242
+request.description = 'description6'
+request.quantity = 100
+request.category = 'category4'
+
+result = orders_controller.update_order_item(order_id, item_id, request, )
+```
+
+
+# Delete All Order Items
+
+```ruby
+def delete_all_order_items(order_id,
+                           idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `order_id` | `String` | Template, Required | Order Id |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderResponse`](/doc/models/get-order-response.md)
+
+## Example Usage
+
+```ruby
+order_id = 'orderId2'
+
+result = orders_controller.delete_all_order_items(order_id, )
+```
+
+
+# Delete Order Item
+
+```ruby
+def delete_order_item(order_id,
+                      item_id,
+                      idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `order_id` | `String` | Template, Required | Order Id |
+| `item_id` | `String` | Template, Required | Item Id |
+| `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
@@ -83,34 +149,7 @@ def get_order_item(order_id,
 order_id = 'orderId2'
 item_id = 'itemId8'
 
-result = orders_controller.get_order_item(order_id, item_id)
-```
-
-
-# Get Order
-
-Gets an order
-
-```ruby
-def get_order(order_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `order_id` | `String` | Template, Required | Order id |
-
-## Response Type
-
-[`GetOrderResponse`](/doc/models/get-order-response.md)
-
-## Example Usage
-
-```ruby
-order_id = 'order_id6'
-
-result = orders_controller.get_order(order_id)
+result = orders_controller.delete_order_item(order_id, item_id, )
 ```
 
 
@@ -232,11 +271,10 @@ result = orders_controller.create_order(body, )
 ```
 
 
-# Update Order Item
+# Create Order Item
 
 ```ruby
-def update_order_item(order_id,
-                      item_id,
+def create_order_item(order_id,
                       request,
                       idempotency_key: nil)
 ```
@@ -246,8 +284,7 @@ def update_order_item(order_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `order_id` | `String` | Template, Required | Order Id |
-| `item_id` | `String` | Template, Required | Item Id |
-| `request` | [`UpdateOrderItemRequest`](/doc/models/update-order-item-request.md) | Body, Required | Item Model |
+| `request` | [`CreateOrderItemRequest`](/doc/models/create-order-item-request.md) | Body, Required | Order Item Model |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
@@ -258,22 +295,21 @@ def update_order_item(order_id,
 
 ```ruby
 order_id = 'orderId2'
-item_id = 'itemId8'
-request = UpdateOrderItemRequest.new
+request = CreateOrderItemRequest.new
 request.amount = 242
 request.description = 'description6'
 request.quantity = 100
 request.category = 'category4'
 
-result = orders_controller.update_order_item(order_id, item_id, request, )
+result = orders_controller.create_order_item(order_id, request, )
 ```
 
 
-# Delete All Order Items
+# Get Order Item
 
 ```ruby
-def delete_all_order_items(order_id,
-                           idempotency_key: nil)
+def get_order_item(order_id,
+                   item_id)
 ```
 
 ## Parameters
@@ -281,18 +317,19 @@ def delete_all_order_items(order_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `order_id` | `String` | Template, Required | Order Id |
-| `idempotency_key` | `String` | Header, Optional | - |
+| `item_id` | `String` | Template, Required | Item Id |
 
 ## Response Type
 
-[`GetOrderResponse`](/doc/models/get-order-response.md)
+[`GetOrderItemResponse`](/doc/models/get-order-item-response.md)
 
 ## Example Usage
 
 ```ruby
 order_id = 'orderId2'
+item_id = 'itemId8'
 
-result = orders_controller.delete_all_order_items(order_id, )
+result = orders_controller.get_order_item(order_id, item_id)
 ```
 
 
@@ -329,66 +366,29 @@ result = orders_controller.update_order_metadata(order_id, request, )
 ```
 
 
-# Delete Order Item
+# Get Order
+
+Gets an order
 
 ```ruby
-def delete_order_item(order_id,
-                      item_id,
-                      idempotency_key: nil)
+def get_order(order_id)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `order_id` | `String` | Template, Required | Order Id |
-| `item_id` | `String` | Template, Required | Item Id |
-| `idempotency_key` | `String` | Header, Optional | - |
+| `order_id` | `String` | Template, Required | Order id |
 
 ## Response Type
 
-[`GetOrderItemResponse`](/doc/models/get-order-item-response.md)
+[`GetOrderResponse`](/doc/models/get-order-response.md)
 
 ## Example Usage
 
 ```ruby
-order_id = 'orderId2'
-item_id = 'itemId8'
+order_id = 'order_id6'
 
-result = orders_controller.delete_order_item(order_id, item_id, )
-```
-
-
-# Create Order Item
-
-```ruby
-def create_order_item(order_id,
-                      request,
-                      idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `order_id` | `String` | Template, Required | Order Id |
-| `request` | [`CreateOrderItemRequest`](/doc/models/create-order-item-request.md) | Body, Required | Order Item Model |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetOrderItemResponse`](/doc/models/get-order-item-response.md)
-
-## Example Usage
-
-```ruby
-order_id = 'orderId2'
-request = CreateOrderItemRequest.new
-request.amount = 242
-request.description = 'description6'
-request.quantity = 100
-request.category = 'category4'
-
-result = orders_controller.create_order_item(order_id, request, )
+result = orders_controller.get_order(order_id)
 ```
 

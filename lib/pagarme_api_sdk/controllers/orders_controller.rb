@@ -66,9 +66,13 @@ module PagarmeApiSdk
     # TODO: type endpoint description here
     # @param [String] order_id Required parameter: Order Id
     # @param [String] item_id Required parameter: Item Id
+    # @param [UpdateOrderItemRequest] request Required parameter: Item Model
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return [GetOrderItemResponse] response from the API call
-    def get_order_item(order_id,
-                       item_id)
+    def update_order_item(order_id,
+                          item_id,
+                          request,
+                          idempotency_key: nil)
       # Prepare query url.
       _query_builder = config.get_base_uri
       _query_builder << '/orders/{orderId}/items/{itemId}'
@@ -81,13 +85,16 @@ module PagarmeApiSdk
 
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
 
       # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
+      _request = config.http_client.put(
         _query_url,
-        headers: _headers
+        headers: _headers,
+        parameters: request.to_json
       )
       BasicAuth.apply(config, _request)
       _response = execute_request(_request)
@@ -98,26 +105,29 @@ module PagarmeApiSdk
       GetOrderItemResponse.from_hash(decoded)
     end
 
-    # Gets an order
-    # @param [String] order_id Required parameter: Order id
+    # TODO: type endpoint description here
+    # @param [String] order_id Required parameter: Order Id
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return [GetOrderResponse] response from the API call
-    def get_order(order_id)
+    def delete_all_order_items(order_id,
+                               idempotency_key: nil)
       # Prepare query url.
       _query_builder = config.get_base_uri
-      _query_builder << '/orders/{order_id}'
+      _query_builder << '/orders/{orderId}/items'
       _query_builder = APIHelper.append_url_with_template_parameters(
         _query_builder,
-        'order_id' => { 'value' => order_id, 'encode' => true }
+        'orderId' => { 'value' => order_id, 'encode' => true }
       )
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'idempotency-key' => idempotency_key
       }
 
       # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
+      _request = config.http_client.delete(
         _query_url,
         headers: _headers
       )
@@ -128,6 +138,44 @@ module PagarmeApiSdk
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_response.raw_body)
       GetOrderResponse.from_hash(decoded)
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] order_id Required parameter: Order Id
+    # @param [String] item_id Required parameter: Item Id
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetOrderItemResponse] response from the API call
+    def delete_order_item(order_id,
+                          item_id,
+                          idempotency_key: nil)
+      # Prepare query url.
+      _query_builder = config.get_base_uri
+      _query_builder << '/orders/{orderId}/items/{itemId}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'orderId' => { 'value' => order_id, 'encode' => true },
+        'itemId' => { 'value' => item_id, 'encode' => true }
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'idempotency-key' => idempotency_key
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = config.http_client.delete(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(config, _request)
+      _response = execute_request(_request)
+      validate_response(_response)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_response.raw_body)
+      GetOrderItemResponse.from_hash(decoded)
     end
 
     # TODO: type endpoint description here
@@ -206,21 +254,19 @@ module PagarmeApiSdk
 
     # TODO: type endpoint description here
     # @param [String] order_id Required parameter: Order Id
-    # @param [String] item_id Required parameter: Item Id
-    # @param [UpdateOrderItemRequest] request Required parameter: Item Model
+    # @param [CreateOrderItemRequest] request Required parameter: Order Item
+    # Model
     # @param [String] idempotency_key Optional parameter: Example:
     # @return [GetOrderItemResponse] response from the API call
-    def update_order_item(order_id,
-                          item_id,
+    def create_order_item(order_id,
                           request,
                           idempotency_key: nil)
       # Prepare query url.
       _query_builder = config.get_base_uri
-      _query_builder << '/orders/{orderId}/items/{itemId}'
+      _query_builder << '/orders/{orderId}/items'
       _query_builder = APIHelper.append_url_with_template_parameters(
         _query_builder,
-        'orderId' => { 'value' => order_id, 'encode' => true },
-        'itemId' => { 'value' => item_id, 'encode' => true }
+        'orderId' => { 'value' => order_id, 'encode' => true }
       )
       _query_url = APIHelper.clean_url _query_builder
 
@@ -232,7 +278,7 @@ module PagarmeApiSdk
       }
 
       # Prepare and execute HttpRequest.
-      _request = config.http_client.put(
+      _request = config.http_client.post(
         _query_url,
         headers: _headers,
         parameters: request.to_json
@@ -248,27 +294,27 @@ module PagarmeApiSdk
 
     # TODO: type endpoint description here
     # @param [String] order_id Required parameter: Order Id
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetOrderResponse] response from the API call
-    def delete_all_order_items(order_id,
-                               idempotency_key: nil)
+    # @param [String] item_id Required parameter: Item Id
+    # @return [GetOrderItemResponse] response from the API call
+    def get_order_item(order_id,
+                       item_id)
       # Prepare query url.
       _query_builder = config.get_base_uri
-      _query_builder << '/orders/{orderId}/items'
+      _query_builder << '/orders/{orderId}/items/{itemId}'
       _query_builder = APIHelper.append_url_with_template_parameters(
         _query_builder,
-        'orderId' => { 'value' => order_id, 'encode' => true }
+        'orderId' => { 'value' => order_id, 'encode' => true },
+        'itemId' => { 'value' => item_id, 'encode' => true }
       )
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json',
-        'idempotency-key' => idempotency_key
+        'accept' => 'application/json'
       }
 
       # Prepare and execute HttpRequest.
-      _request = config.http_client.delete(
+      _request = config.http_client.get(
         _query_url,
         headers: _headers
       )
@@ -278,7 +324,7 @@ module PagarmeApiSdk
 
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetOrderResponse.from_hash(decoded)
+      GetOrderItemResponse.from_hash(decoded)
     end
 
     # Updates the metadata from an order
@@ -321,32 +367,26 @@ module PagarmeApiSdk
       GetOrderResponse.from_hash(decoded)
     end
 
-    # TODO: type endpoint description here
-    # @param [String] order_id Required parameter: Order Id
-    # @param [String] item_id Required parameter: Item Id
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetOrderItemResponse] response from the API call
-    def delete_order_item(order_id,
-                          item_id,
-                          idempotency_key: nil)
+    # Gets an order
+    # @param [String] order_id Required parameter: Order id
+    # @return [GetOrderResponse] response from the API call
+    def get_order(order_id)
       # Prepare query url.
       _query_builder = config.get_base_uri
-      _query_builder << '/orders/{orderId}/items/{itemId}'
+      _query_builder << '/orders/{order_id}'
       _query_builder = APIHelper.append_url_with_template_parameters(
         _query_builder,
-        'orderId' => { 'value' => order_id, 'encode' => true },
-        'itemId' => { 'value' => item_id, 'encode' => true }
+        'order_id' => { 'value' => order_id, 'encode' => true }
       )
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json',
-        'idempotency-key' => idempotency_key
+        'accept' => 'application/json'
       }
 
       # Prepare and execute HttpRequest.
-      _request = config.http_client.delete(
+      _request = config.http_client.get(
         _query_url,
         headers: _headers
       )
@@ -356,47 +396,7 @@ module PagarmeApiSdk
 
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetOrderItemResponse.from_hash(decoded)
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] order_id Required parameter: Order Id
-    # @param [CreateOrderItemRequest] request Required parameter: Order Item
-    # Model
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetOrderItemResponse] response from the API call
-    def create_order_item(order_id,
-                          request,
-                          idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/orders/{orderId}/items'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'orderId' => { 'value' => order_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.post(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetOrderItemResponse.from_hash(decoded)
+      GetOrderResponse.from_hash(decoded)
     end
   end
 end
