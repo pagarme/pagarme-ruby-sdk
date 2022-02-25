@@ -19,6 +19,8 @@ Response object when getting a pix transaction
 | `qr_code_url` | `String` | Required | - |
 | `expires_at` | `DateTime` | Required | - |
 | `additional_information` | [`Array<PixAdditionalInformation>`](/doc/models/pix-additional-information.md) | Required | - |
+| `end_to_end_id` | `String` | Optional | - |
+| `payer` | [`GetPixPayerResponse`](/doc/models/get-pix-payer-response.md) | Required | - |
 
 ## Example (as JSON)
 
@@ -37,6 +39,13 @@ Response object when getting a pix transaction
       "Value": "Value6"
     }
   ],
+  "end_to_end_id": null,
+  "payer": {
+    "name": null,
+    "document": null,
+    "document_type": null,
+    "bank_account": null
+  },
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",

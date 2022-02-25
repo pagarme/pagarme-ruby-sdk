@@ -25,6 +25,14 @@ module PagarmeApiSdk
     # @return [List of PixAdditionalInformation]
     attr_accessor :additional_information
 
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :end_to_end_id
+
+    # TODO: Write general description for this method
+    # @return [GetPixPayerResponse]
+    attr_accessor :payer
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -32,19 +40,25 @@ module PagarmeApiSdk
       @_hash['qr_code_url'] = 'qr_code_url'
       @_hash['expires_at'] = 'expires_at'
       @_hash['additional_information'] = 'additional_information'
+      @_hash['end_to_end_id'] = 'end_to_end_id'
+      @_hash['payer'] = 'payer'
       @_hash = super().merge(@_hash)
       @_hash
     end
 
     # An array for optional fields
     def optionals
-      _arr = []
+      _arr = %w[
+        end_to_end_id
+      ]
       (_arr << super()).flatten!
     end
 
     # An array for nullable fields
     def nullables
-      _arr = []
+      _arr = %w[
+        end_to_end_id
+      ]
       (_arr << super()).flatten!
     end
 
@@ -52,6 +66,7 @@ module PagarmeApiSdk
                    qr_code_url = nil,
                    expires_at = nil,
                    additional_information = nil,
+                   payer = nil,
                    gateway_id = nil,
                    amount = nil,
                    status = nil,
@@ -65,6 +80,7 @@ module PagarmeApiSdk
                    gateway_response = nil,
                    antifraud_response = nil,
                    split = nil,
+                   end_to_end_id = nil,
                    next_attempt = nil,
                    transaction_type = 'pix',
                    metadata = nil)
@@ -72,6 +88,8 @@ module PagarmeApiSdk
       @qr_code_url = qr_code_url unless qr_code_url == SKIP
       @expires_at = expires_at unless expires_at == SKIP
       @additional_information = additional_information unless additional_information == SKIP
+      @end_to_end_id = end_to_end_id unless end_to_end_id == SKIP
+      @payer = payer unless payer == SKIP
 
       # Call the constructor of the base class
       super(gateway_id,
@@ -114,6 +132,7 @@ module PagarmeApiSdk
       end
 
       additional_information = SKIP unless hash.key?('additional_information')
+      payer = GetPixPayerResponse.from_hash(hash['payer']) if hash['payer']
       gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
       amount = hash.key?('amount') ? hash['amount'] : SKIP
       status = hash.key?('status') ? hash['status'] : SKIP
@@ -155,6 +174,7 @@ module PagarmeApiSdk
       end
 
       split = SKIP unless hash.key?('split')
+      end_to_end_id = hash.key?('end_to_end_id') ? hash['end_to_end_id'] : SKIP
       next_attempt = if hash.key?('next_attempt')
                        (DateTimeHelper.from_rfc3339(hash['next_attempt']) if hash['next_attempt'])
                      else
@@ -168,6 +188,7 @@ module PagarmeApiSdk
                                     qr_code_url,
                                     expires_at,
                                     additional_information,
+                                    payer,
                                     gateway_id,
                                     amount,
                                     status,
@@ -181,6 +202,7 @@ module PagarmeApiSdk
                                     gateway_response,
                                     antifraud_response,
                                     split,
+                                    end_to_end_id,
                                     next_attempt,
                                     transaction_type,
                                     metadata)
