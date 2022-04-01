@@ -14,7 +14,7 @@ The settings for creating a voucher payment
 | `statement_descriptor` | `String` | Optional | The text that will be shown on the voucher's statement |
 | `card_id` | `String` | Optional | Card id |
 | `card_token` | `String` | Optional | Card token |
-| `card` | [`CreateCardRequest`](/doc/models/create-card-request.md) | Optional | Card info |
+| `card` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Card info |
 
 ## Example (as JSON)
 

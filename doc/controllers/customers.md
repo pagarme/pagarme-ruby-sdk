@@ -10,27 +10,27 @@ customers_controller = client.customers
 
 ## Methods
 
-* [Update Card](/doc/controllers/customers.md#update-card)
-* [Update Address](/doc/controllers/customers.md#update-address)
-* [Delete Access Token](/doc/controllers/customers.md#delete-access-token)
-* [Create Customer](/doc/controllers/customers.md#create-customer)
-* [Create Address](/doc/controllers/customers.md#create-address)
-* [Delete Access Tokens](/doc/controllers/customers.md#delete-access-tokens)
-* [Get Address](/doc/controllers/customers.md#get-address)
-* [Delete Address](/doc/controllers/customers.md#delete-address)
-* [Create Card](/doc/controllers/customers.md#create-card)
-* [Get Customers](/doc/controllers/customers.md#get-customers)
-* [Update Customer](/doc/controllers/customers.md#update-customer)
-* [Create Access Token](/doc/controllers/customers.md#create-access-token)
-* [Get Access Tokens](/doc/controllers/customers.md#get-access-tokens)
-* [Get Cards](/doc/controllers/customers.md#get-cards)
-* [Renew Card](/doc/controllers/customers.md#renew-card)
-* [Get Access Token](/doc/controllers/customers.md#get-access-token)
-* [Update Customer Metadata](/doc/controllers/customers.md#update-customer-metadata)
-* [Delete Card](/doc/controllers/customers.md#delete-card)
-* [Get Addresses](/doc/controllers/customers.md#get-addresses)
-* [Get Customer](/doc/controllers/customers.md#get-customer)
-* [Get Card](/doc/controllers/customers.md#get-card)
+* [Update Card](../../doc/controllers/customers.md#update-card)
+* [Update Address](../../doc/controllers/customers.md#update-address)
+* [Delete Access Token](../../doc/controllers/customers.md#delete-access-token)
+* [Create Address](../../doc/controllers/customers.md#create-address)
+* [Create Customer](../../doc/controllers/customers.md#create-customer)
+* [Create Card](../../doc/controllers/customers.md#create-card)
+* [Get Cards](../../doc/controllers/customers.md#get-cards)
+* [Renew Card](../../doc/controllers/customers.md#renew-card)
+* [Get Address](../../doc/controllers/customers.md#get-address)
+* [Delete Address](../../doc/controllers/customers.md#delete-address)
+* [Get Access Token](../../doc/controllers/customers.md#get-access-token)
+* [Update Customer Metadata](../../doc/controllers/customers.md#update-customer-metadata)
+* [Get Card](../../doc/controllers/customers.md#get-card)
+* [Delete Access Tokens](../../doc/controllers/customers.md#delete-access-tokens)
+* [Create Access Token](../../doc/controllers/customers.md#create-access-token)
+* [Get Access Tokens](../../doc/controllers/customers.md#get-access-tokens)
+* [Get Customers](../../doc/controllers/customers.md#get-customers)
+* [Update Customer](../../doc/controllers/customers.md#update-customer)
+* [Delete Card](../../doc/controllers/customers.md#delete-card)
+* [Get Addresses](../../doc/controllers/customers.md#get-addresses)
+* [Get Customer](../../doc/controllers/customers.md#get-customer)
 
 
 # Update Card
@@ -50,12 +50,12 @@ def update_card(customer_id,
 |  --- | --- | --- | --- |
 | `customer_id` | `String` | Template, Required | Customer Id |
 | `card_id` | `String` | Template, Required | Card id |
-| `request` | [`UpdateCardRequest`](/doc/models/update-card-request.md) | Body, Required | Request for updating a card |
+| `request` | [`UpdateCardRequest`](../../doc/models/update-card-request.md) | Body, Required | Request for updating a card |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetCardResponse`](/doc/models/get-card-response.md)
+[`GetCardResponse`](../../doc/models/get-card-response.md)
 
 ## Example Usage
 
@@ -103,12 +103,12 @@ def update_address(customer_id,
 |  --- | --- | --- | --- |
 | `customer_id` | `String` | Template, Required | Customer Id |
 | `address_id` | `String` | Template, Required | Address Id |
-| `request` | [`UpdateAddressRequest`](/doc/models/update-address-request.md) | Body, Required | Request for updating an address |
+| `request` | [`UpdateAddressRequest`](../../doc/models/update-address-request.md) | Body, Required | Request for updating an address |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetAddressResponse`](/doc/models/get-address-response.md)
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
 
 ## Example Usage
 
@@ -145,7 +145,7 @@ def delete_access_token(customer_id,
 
 ## Response Type
 
-[`GetAccessTokenResponse`](/doc/models/get-access-token-response.md)
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
 
 ## Example Usage
 
@@ -154,6 +154,49 @@ customer_id = 'customer_id8'
 token_id = 'token_id6'
 
 result = customers_controller.delete_access_token(customer_id, token_id, )
+```
+
+
+# Create Address
+
+Creates a new address for a customer
+
+```ruby
+def create_address(customer_id,
+                   request,
+                   idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customer_id` | `String` | Template, Required | Customer Id |
+| `request` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Body, Required | Request for creating an address |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```ruby
+customer_id = 'customer_id8'
+request = CreateAddressRequest.new
+request.street = 'street6'
+request.number = 'number4'
+request.zip_code = 'zip_code0'
+request.neighborhood = 'neighborhood2'
+request.city = 'city6'
+request.state = 'state2'
+request.country = 'country0'
+request.complement = 'complement2'
+request.metadata = {'key0' => 'metadata3' } 
+request.line_1 = 'line_10'
+request.line_2 = 'line_24'
+
+result = customers_controller.create_address(customer_id, request, )
 ```
 
 
@@ -170,12 +213,12 @@ def create_customer(request,
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `request` | [`CreateCustomerRequest`](/doc/models/create-customer-request.md) | Body, Required | Request for creating a customer |
+| `request` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Body, Required | Request for creating a customer |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetCustomerResponse`](/doc/models/get-customer-response.md)
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
 
 ## Example Usage
 
@@ -207,138 +250,6 @@ result = customers_controller.create_customer(request, )
 ```
 
 
-# Create Address
-
-Creates a new address for a customer
-
-```ruby
-def create_address(customer_id,
-                   request,
-                   idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customer_id` | `String` | Template, Required | Customer Id |
-| `request` | [`CreateAddressRequest`](/doc/models/create-address-request.md) | Body, Required | Request for creating an address |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetAddressResponse`](/doc/models/get-address-response.md)
-
-## Example Usage
-
-```ruby
-customer_id = 'customer_id8'
-request = CreateAddressRequest.new
-request.street = 'street6'
-request.number = 'number4'
-request.zip_code = 'zip_code0'
-request.neighborhood = 'neighborhood2'
-request.city = 'city6'
-request.state = 'state2'
-request.country = 'country0'
-request.complement = 'complement2'
-request.metadata = {'key0' => 'metadata3' } 
-request.line_1 = 'line_10'
-request.line_2 = 'line_24'
-
-result = customers_controller.create_address(customer_id, request, )
-```
-
-
-# Delete Access Tokens
-
-Delete a Customer's access tokens
-
-```ruby
-def delete_access_tokens(customer_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customer_id` | `String` | Template, Required | Customer Id |
-
-## Response Type
-
-[`ListAccessTokensResponse`](/doc/models/list-access-tokens-response.md)
-
-## Example Usage
-
-```ruby
-customer_id = 'customer_id8'
-
-result = customers_controller.delete_access_tokens(customer_id)
-```
-
-
-# Get Address
-
-Get a customer's address
-
-```ruby
-def get_address(customer_id,
-                address_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customer_id` | `String` | Template, Required | Customer id |
-| `address_id` | `String` | Template, Required | Address Id |
-
-## Response Type
-
-[`GetAddressResponse`](/doc/models/get-address-response.md)
-
-## Example Usage
-
-```ruby
-customer_id = 'customer_id8'
-address_id = 'address_id0'
-
-result = customers_controller.get_address(customer_id, address_id)
-```
-
-
-# Delete Address
-
-Delete a Customer's address
-
-```ruby
-def delete_address(customer_id,
-                   address_id,
-                   idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customer_id` | `String` | Template, Required | Customer Id |
-| `address_id` | `String` | Template, Required | Address Id |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetAddressResponse`](/doc/models/get-address-response.md)
-
-## Example Usage
-
-```ruby
-customer_id = 'customer_id8'
-address_id = 'address_id0'
-
-result = customers_controller.delete_address(customer_id, address_id, )
-```
-
-
 # Create Card
 
 Creates a new card for a customer
@@ -354,12 +265,12 @@ def create_card(customer_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customer_id` | `String` | Template, Required | Customer id |
-| `request` | [`CreateCardRequest`](/doc/models/create-card-request.md) | Body, Required | Request for creating a card |
+| `request` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Body, Required | Request for creating a card |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetCardResponse`](/doc/models/get-card-response.md)
+[`GetCardResponse`](../../doc/models/get-card-response.md)
 
 ## Example Usage
 
@@ -396,52 +307,45 @@ result = customers_controller.create_card(customer_id, request, )
 ```
 
 
-# Get Customers
+# Get Cards
 
-Get all Customers
+Get all cards from a customer
 
 ```ruby
-def get_customers(name: nil,
-                  document: nil,
-                  page: 1,
-                  size: 10,
-                  email: nil,
-                  code: nil)
+def get_cards(customer_id,
+              page: nil,
+              size: nil)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `String` | Query, Optional | Name of the Customer |
-| `document` | `String` | Query, Optional | Document of the Customer |
-| `page` | `Integer` | Query, Optional | Current page the the search<br>**Default**: `1` |
-| `size` | `Integer` | Query, Optional | Quantity pages of the search<br>**Default**: `10` |
-| `email` | `String` | Query, Optional | Customer's email |
-| `code` | `String` | Query, Optional | Customer's code |
+| `customer_id` | `String` | Template, Required | Customer Id |
+| `page` | `Integer` | Query, Optional | Page number |
+| `size` | `Integer` | Query, Optional | Page size |
 
 ## Response Type
 
-[`ListCustomersResponse`](/doc/models/list-customers-response.md)
+[`ListCardsResponse`](../../doc/models/list-cards-response.md)
 
 ## Example Usage
 
 ```ruby
-page = 1
-size = 10
+customer_id = 'customer_id8'
 
-result = customers_controller.get_customers(page: page, size: size, )
+result = customers_controller.get_cards(customer_id, )
 ```
 
 
-# Update Customer
+# Renew Card
 
-Updates a customer
+Renew a card
 
 ```ruby
-def update_customer(customer_id,
-                    request,
-                    idempotency_key: nil)
+def renew_card(customer_id,
+               card_id,
+               idempotency_key: nil)
 ```
 
 ## Parameters
@@ -449,20 +353,202 @@ def update_customer(customer_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customer_id` | `String` | Template, Required | Customer id |
-| `request` | [`UpdateCustomerRequest`](/doc/models/update-customer-request.md) | Body, Required | Request for updating a customer |
+| `card_id` | `String` | Template, Required | Card Id |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetCustomerResponse`](/doc/models/get-customer-response.md)
+[`GetCardResponse`](../../doc/models/get-card-response.md)
 
 ## Example Usage
 
 ```ruby
 customer_id = 'customer_id8'
-request = UpdateCustomerRequest.new
+card_id = 'card_id4'
 
-result = customers_controller.update_customer(customer_id, request, )
+result = customers_controller.renew_card(customer_id, card_id, )
+```
+
+
+# Get Address
+
+Get a customer's address
+
+```ruby
+def get_address(customer_id,
+                address_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customer_id` | `String` | Template, Required | Customer id |
+| `address_id` | `String` | Template, Required | Address Id |
+
+## Response Type
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```ruby
+customer_id = 'customer_id8'
+address_id = 'address_id0'
+
+result = customers_controller.get_address(customer_id, address_id)
+```
+
+
+# Delete Address
+
+Delete a Customer's address
+
+```ruby
+def delete_address(customer_id,
+                   address_id,
+                   idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customer_id` | `String` | Template, Required | Customer Id |
+| `address_id` | `String` | Template, Required | Address Id |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```ruby
+customer_id = 'customer_id8'
+address_id = 'address_id0'
+
+result = customers_controller.delete_address(customer_id, address_id, )
+```
+
+
+# Get Access Token
+
+Get a Customer's access token
+
+```ruby
+def get_access_token(customer_id,
+                     token_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customer_id` | `String` | Template, Required | Customer Id |
+| `token_id` | `String` | Template, Required | Token Id |
+
+## Response Type
+
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
+
+## Example Usage
+
+```ruby
+customer_id = 'customer_id8'
+token_id = 'token_id6'
+
+result = customers_controller.get_access_token(customer_id, token_id)
+```
+
+
+# Update Customer Metadata
+
+Updates the metadata a customer
+
+```ruby
+def update_customer_metadata(customer_id,
+                             request,
+                             idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customer_id` | `String` | Template, Required | The customer id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the customer metadata |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
+
+## Example Usage
+
+```ruby
+customer_id = 'customer_id8'
+request = UpdateMetadataRequest.new
+request.metadata = {'key0' => 'metadata3' } 
+
+result = customers_controller.update_customer_metadata(customer_id, request, )
+```
+
+
+# Get Card
+
+Get a customer's card
+
+```ruby
+def get_card(customer_id,
+             card_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customer_id` | `String` | Template, Required | Customer id |
+| `card_id` | `String` | Template, Required | Card id |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```ruby
+customer_id = 'customer_id8'
+card_id = 'card_id4'
+
+result = customers_controller.get_card(customer_id, card_id)
+```
+
+
+# Delete Access Tokens
+
+Delete a Customer's access tokens
+
+```ruby
+def delete_access_tokens(customer_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customer_id` | `String` | Template, Required | Customer Id |
+
+## Response Type
+
+[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
+
+## Example Usage
+
+```ruby
+customer_id = 'customer_id8'
+
+result = customers_controller.delete_access_tokens(customer_id)
 ```
 
 
@@ -481,12 +567,12 @@ def create_access_token(customer_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customer_id` | `String` | Template, Required | Customer Id |
-| `request` | [`CreateAccessTokenRequest`](/doc/models/create-access-token-request.md) | Body, Required | Request for creating a access token |
+| `request` | [`CreateAccessTokenRequest`](../../doc/models/create-access-token-request.md) | Body, Required | Request for creating a access token |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetAccessTokenResponse`](/doc/models/get-access-token-response.md)
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
 
 ## Example Usage
 
@@ -518,7 +604,7 @@ def get_access_tokens(customer_id,
 
 ## Response Type
 
-[`ListAccessTokensResponse`](/doc/models/list-access-tokens-response.md)
+[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
 
 ## Example Usage
 
@@ -529,45 +615,52 @@ result = customers_controller.get_access_tokens(customer_id, )
 ```
 
 
-# Get Cards
+# Get Customers
 
-Get all cards from a customer
+Get all Customers
 
 ```ruby
-def get_cards(customer_id,
-              page: nil,
-              size: nil)
+def get_customers(name: nil,
+                  document: nil,
+                  page: 1,
+                  size: 10,
+                  email: nil,
+                  code: nil)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customer_id` | `String` | Template, Required | Customer Id |
-| `page` | `Integer` | Query, Optional | Page number |
-| `size` | `Integer` | Query, Optional | Page size |
+| `name` | `String` | Query, Optional | Name of the Customer |
+| `document` | `String` | Query, Optional | Document of the Customer |
+| `page` | `Integer` | Query, Optional | Current page the the search<br>**Default**: `1` |
+| `size` | `Integer` | Query, Optional | Quantity pages of the search<br>**Default**: `10` |
+| `email` | `String` | Query, Optional | Customer's email |
+| `code` | `String` | Query, Optional | Customer's code |
 
 ## Response Type
 
-[`ListCardsResponse`](/doc/models/list-cards-response.md)
+[`ListCustomersResponse`](../../doc/models/list-customers-response.md)
 
 ## Example Usage
 
 ```ruby
-customer_id = 'customer_id8'
+page = 1
+size = 10
 
-result = customers_controller.get_cards(customer_id, )
+result = customers_controller.get_customers(page: page, size: size, )
 ```
 
 
-# Renew Card
+# Update Customer
 
-Renew a card
+Updates a customer
 
 ```ruby
-def renew_card(customer_id,
-               card_id,
-               idempotency_key: nil)
+def update_customer(customer_id,
+                    request,
+                    idempotency_key: nil)
 ```
 
 ## Parameters
@@ -575,83 +668,20 @@ def renew_card(customer_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customer_id` | `String` | Template, Required | Customer id |
-| `card_id` | `String` | Template, Required | Card Id |
+| `request` | [`UpdateCustomerRequest`](../../doc/models/update-customer-request.md) | Body, Required | Request for updating a customer |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetCardResponse`](/doc/models/get-card-response.md)
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
 
 ## Example Usage
 
 ```ruby
 customer_id = 'customer_id8'
-card_id = 'card_id4'
+request = UpdateCustomerRequest.new
 
-result = customers_controller.renew_card(customer_id, card_id, )
-```
-
-
-# Get Access Token
-
-Get a Customer's access token
-
-```ruby
-def get_access_token(customer_id,
-                     token_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customer_id` | `String` | Template, Required | Customer Id |
-| `token_id` | `String` | Template, Required | Token Id |
-
-## Response Type
-
-[`GetAccessTokenResponse`](/doc/models/get-access-token-response.md)
-
-## Example Usage
-
-```ruby
-customer_id = 'customer_id8'
-token_id = 'token_id6'
-
-result = customers_controller.get_access_token(customer_id, token_id)
-```
-
-
-# Update Customer Metadata
-
-Updates the metadata a customer
-
-```ruby
-def update_customer_metadata(customer_id,
-                             request,
-                             idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customer_id` | `String` | Template, Required | The customer id |
-| `request` | [`UpdateMetadataRequest`](/doc/models/update-metadata-request.md) | Body, Required | Request for updating the customer metadata |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetCustomerResponse`](/doc/models/get-customer-response.md)
-
-## Example Usage
-
-```ruby
-customer_id = 'customer_id8'
-request = UpdateMetadataRequest.new
-request.metadata = {'key0' => 'metadata3' } 
-
-result = customers_controller.update_customer_metadata(customer_id, request, )
+result = customers_controller.update_customer(customer_id, request, )
 ```
 
 
@@ -675,7 +705,7 @@ def delete_card(customer_id,
 
 ## Response Type
 
-[`GetCardResponse`](/doc/models/get-card-response.md)
+[`GetCardResponse`](../../doc/models/get-card-response.md)
 
 ## Example Usage
 
@@ -707,7 +737,7 @@ def get_addresses(customer_id,
 
 ## Response Type
 
-[`ListAddressesResponse`](/doc/models/list-addresses-response.md)
+[`ListAddressesResponse`](../../doc/models/list-addresses-response.md)
 
 ## Example Usage
 
@@ -734,7 +764,7 @@ def get_customer(customer_id)
 
 ## Response Type
 
-[`GetCustomerResponse`](/doc/models/get-customer-response.md)
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
 
 ## Example Usage
 
@@ -742,35 +772,5 @@ def get_customer(customer_id)
 customer_id = 'customer_id8'
 
 result = customers_controller.get_customer(customer_id)
-```
-
-
-# Get Card
-
-Get a customer's card
-
-```ruby
-def get_card(customer_id,
-             card_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customer_id` | `String` | Template, Required | Customer id |
-| `card_id` | `String` | Template, Required | Card id |
-
-## Response Type
-
-[`GetCardResponse`](/doc/models/get-card-response.md)
-
-## Example Usage
-
-```ruby
-customer_id = 'customer_id8'
-card_id = 'card_id4'
-
-result = customers_controller.get_card(customer_id, card_id)
 ```
 

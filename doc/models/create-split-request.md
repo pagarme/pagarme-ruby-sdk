@@ -14,7 +14,7 @@ Split
 | `type` | `String` | Required | Split type |
 | `amount` | `Integer` | Required | Amount |
 | `recipient_id` | `String` | Required | Recipient id |
-| `options` | [`CreateSplitOptionsRequest`](/doc/models/create-split-options-request.md) | Optional | The split options request |
+| `options` | [`CreateSplitOptionsRequest`](../../doc/models/create-split-options-request.md) | Optional | The split options request |
 | `split_rule_id` | `String` | Optional | Rule code used in cancellation. |
 
 ## Example (as JSON)

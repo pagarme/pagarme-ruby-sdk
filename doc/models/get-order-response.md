@@ -14,20 +14,20 @@ Response object for getting an Order
 | `id` | `String` | Required | - |
 | `code` | `String` | Required | - |
 | `currency` | `String` | Required | - |
-| `items` | [`Array<GetOrderItemResponse>`](/doc/models/get-order-item-response.md) | Required | - |
-| `customer` | [`GetCustomerResponse`](/doc/models/get-customer-response.md) | Optional | - |
+| `items` | [`Array<GetOrderItemResponse>`](../../doc/models/get-order-item-response.md) | Required | - |
+| `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
 | `status` | `String` | Required | - |
 | `created_at` | `DateTime` | Required | - |
 | `updated_at` | `DateTime` | Required | - |
-| `charges` | [`Array<GetChargeResponse>`](/doc/models/get-charge-response.md) | Required | - |
+| `charges` | [`Array<GetChargeResponse>`](../../doc/models/get-charge-response.md) | Required | - |
 | `invoice_url` | `String` | Required | - |
-| `shipping` | [`GetShippingResponse`](/doc/models/get-shipping-response.md) | Required | - |
+| `shipping` | [`GetShippingResponse`](../../doc/models/get-shipping-response.md) | Required | - |
 | `metadata` | `Hash` | Required | - |
-| `checkouts` | [`Array<GetCheckoutPaymentResponse>`](/doc/models/get-checkout-payment-response.md) | Optional | Checkout Payment Settings Response |
+| `checkouts` | [`Array<GetCheckoutPaymentResponse>`](../../doc/models/get-checkout-payment-response.md) | Optional | Checkout Payment Settings Response |
 | `ip` | `String` | Optional | Ip address |
 | `session_id` | `String` | Optional | Session id |
-| `location` | [`GetLocationResponse`](/doc/models/get-location-response.md) | Optional | Location |
-| `device` | [`GetDeviceResponse`](/doc/models/get-device-response.md) | Optional | Device's informations |
+| `location` | [`GetLocationResponse`](../../doc/models/get-location-response.md) | Optional | Location |
+| `device` | [`GetDeviceResponse`](../../doc/models/get-device-response.md) | Optional | Device's informations |
 | `closed` | `Boolean` | Required | Indicates whether the order is closed |
 
 ## Example (as JSON)

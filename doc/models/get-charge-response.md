@@ -21,10 +21,10 @@ Response object for getting a charge
 | `due_at` | `DateTime` | Required | - |
 | `created_at` | `DateTime` | Required | - |
 | `updated_at` | `DateTime` | Required | - |
-| `last_transaction` | [`GetTransactionResponse`](/doc/models/get-transaction-response.md) | Optional | - |
-| `invoice` | [`GetInvoiceResponse`](/doc/models/get-invoice-response.md) | Optional | - |
-| `order` | [`GetOrderResponse`](/doc/models/get-order-response.md) | Optional | - |
-| `customer` | [`GetCustomerResponse`](/doc/models/get-customer-response.md) | Optional | - |
+| `last_transaction` | [`GetTransactionResponse`](../../doc/models/get-transaction-response.md) | Optional | - |
+| `invoice` | [`GetInvoiceResponse`](../../doc/models/get-invoice-response.md) | Optional | - |
+| `order` | [`GetOrderResponse`](../../doc/models/get-order-response.md) | Optional | - |
+| `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
 | `metadata` | `Hash` | Required | - |
 | `paid_at` | `DateTime` | Optional | - |
 | `canceled_at` | `DateTime` | Optional | - |

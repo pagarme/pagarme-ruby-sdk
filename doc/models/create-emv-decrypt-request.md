@@ -11,8 +11,8 @@
 |  --- | --- | --- | --- |
 | `icc_data` | `String` | Required | - |
 | `card_sequence_number` | `String` | Required | - |
-| `data` | [`CreateEmvDataDecryptRequest`](/doc/models/create-emv-data-decrypt-request.md) | Required | - |
-| `poi` | [`CreateCardPaymentContactlessPOIRequest`](/doc/models/create-card-payment-contactless-poi-request.md) | Optional | - |
+| `data` | [`CreateEmvDataDecryptRequest`](../../doc/models/create-emv-data-decrypt-request.md) | Required | - |
+| `poi` | [`CreateCardPaymentContactlessPOIRequest`](../../doc/models/create-card-payment-contactless-poi-request.md) | Optional | - |
 
 ## Example (as JSON)
 

@@ -14,10 +14,10 @@
 | `status` | `String` | Required | - |
 | `created_at` | `DateTime` | Required | - |
 | `updated_at` | `DateTime` | Required | - |
-| `pricing_scheme` | [`GetPricingSchemeResponse`](/doc/models/get-pricing-scheme-response.md) | Required | - |
-| `discounts` | [`Array<GetDiscountResponse>`](/doc/models/get-discount-response.md) | Required | - |
-| `increments` | [`Array<GetIncrementResponse>`](/doc/models/get-increment-response.md) | Required | - |
-| `subscription` | [`GetSubscriptionResponse`](/doc/models/get-subscription-response.md) | Required | - |
+| `pricing_scheme` | [`GetPricingSchemeResponse`](../../doc/models/get-pricing-scheme-response.md) | Required | - |
+| `discounts` | [`Array<GetDiscountResponse>`](../../doc/models/get-discount-response.md) | Required | - |
+| `increments` | [`Array<GetIncrementResponse>`](../../doc/models/get-increment-response.md) | Required | - |
+| `subscription` | [`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md) | Required | - |
 | `name` | `String` | Required | Item name |
 | `quantity` | `Integer` | Optional | - |
 | `cycles` | `Integer` | Optional | - |

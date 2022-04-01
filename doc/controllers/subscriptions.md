@@ -10,42 +10,42 @@ subscriptions_controller = client.subscriptions
 
 ## Methods
 
-* [Renew Subscription](/doc/controllers/subscriptions.md#renew-subscription)
-* [Update Subscription Card](/doc/controllers/subscriptions.md#update-subscription-card)
-* [Delete Usage](/doc/controllers/subscriptions.md#delete-usage)
-* [Create Discount](/doc/controllers/subscriptions.md#create-discount)
-* [Create an Usage](/doc/controllers/subscriptions.md#create-an-usage)
-* [Update Current Cycle Status](/doc/controllers/subscriptions.md#update-current-cycle-status)
-* [Delete Discount](/doc/controllers/subscriptions.md#delete-discount)
-* [Get Subscription Items](/doc/controllers/subscriptions.md#get-subscription-items)
-* [Update Subscription Payment Method](/doc/controllers/subscriptions.md#update-subscription-payment-method)
-* [Get Subscription Item](/doc/controllers/subscriptions.md#get-subscription-item)
-* [Get Subscriptions](/doc/controllers/subscriptions.md#get-subscriptions)
-* [Cancel Subscription](/doc/controllers/subscriptions.md#cancel-subscription)
-* [Create Increment](/doc/controllers/subscriptions.md#create-increment)
-* [Create Usage](/doc/controllers/subscriptions.md#create-usage)
-* [Get Discount by Id](/doc/controllers/subscriptions.md#get-discount-by-id)
-* [Create Subscription](/doc/controllers/subscriptions.md#create-subscription)
-* [Get Increment by Id](/doc/controllers/subscriptions.md#get-increment-by-id)
-* [Update Subscription Affiliation Id](/doc/controllers/subscriptions.md#update-subscription-affiliation-id)
-* [Update Subscription Metadata](/doc/controllers/subscriptions.md#update-subscription-metadata)
-* [Delete Increment](/doc/controllers/subscriptions.md#delete-increment)
-* [Get Subscription Cycles](/doc/controllers/subscriptions.md#get-subscription-cycles)
-* [Get Discounts](/doc/controllers/subscriptions.md#get-discounts)
-* [Update Subscription Billing Date](/doc/controllers/subscriptions.md#update-subscription-billing-date)
-* [Delete Subscription Item](/doc/controllers/subscriptions.md#delete-subscription-item)
-* [Get Increments](/doc/controllers/subscriptions.md#get-increments)
-* [Update Subscription Due Days](/doc/controllers/subscriptions.md#update-subscription-due-days)
-* [Update Subscription Start At](/doc/controllers/subscriptions.md#update-subscription-start-at)
-* [Update Subscription Item](/doc/controllers/subscriptions.md#update-subscription-item)
-* [Create Subscription Item](/doc/controllers/subscriptions.md#create-subscription-item)
-* [Get Subscription](/doc/controllers/subscriptions.md#get-subscription)
-* [Get Usages](/doc/controllers/subscriptions.md#get-usages)
-* [Update Latest Period End At](/doc/controllers/subscriptions.md#update-latest-period-end-at)
-* [Update Subscription Minium Price](/doc/controllers/subscriptions.md#update-subscription-minium-price)
-* [Get Subscription Cycle by Id](/doc/controllers/subscriptions.md#get-subscription-cycle-by-id)
-* [Get Usage Report](/doc/controllers/subscriptions.md#get-usage-report)
-* [Update Split Subscription](/doc/controllers/subscriptions.md#update-split-subscription)
+* [Renew Subscription](../../doc/controllers/subscriptions.md#renew-subscription)
+* [Delete Discount](../../doc/controllers/subscriptions.md#delete-discount)
+* [Get Subscriptions](../../doc/controllers/subscriptions.md#get-subscriptions)
+* [Get Discount by Id](../../doc/controllers/subscriptions.md#get-discount-by-id)
+* [Create Subscription](../../doc/controllers/subscriptions.md#create-subscription)
+* [Get Increment by Id](../../doc/controllers/subscriptions.md#get-increment-by-id)
+* [Update Subscription Metadata](../../doc/controllers/subscriptions.md#update-subscription-metadata)
+* [Delete Increment](../../doc/controllers/subscriptions.md#delete-increment)
+* [Get Subscription](../../doc/controllers/subscriptions.md#get-subscription)
+* [Update Latest Period End At](../../doc/controllers/subscriptions.md#update-latest-period-end-at)
+* [Update Current Cycle Status](../../doc/controllers/subscriptions.md#update-current-cycle-status)
+* [Get Subscription Items](../../doc/controllers/subscriptions.md#get-subscription-items)
+* [Get Subscription Item](../../doc/controllers/subscriptions.md#get-subscription-item)
+* [Update Subscription Affiliation Id](../../doc/controllers/subscriptions.md#update-subscription-affiliation-id)
+* [Get Discounts](../../doc/controllers/subscriptions.md#get-discounts)
+* [Update Subscription Item](../../doc/controllers/subscriptions.md#update-subscription-item)
+* [Create Subscription Item](../../doc/controllers/subscriptions.md#create-subscription-item)
+* [Get Usages](../../doc/controllers/subscriptions.md#get-usages)
+* [Update Subscription Minium Price](../../doc/controllers/subscriptions.md#update-subscription-minium-price)
+* [Get Subscription Cycle by Id](../../doc/controllers/subscriptions.md#get-subscription-cycle-by-id)
+* [Create an Usage](../../doc/controllers/subscriptions.md#create-an-usage)
+* [Cancel Subscription](../../doc/controllers/subscriptions.md#cancel-subscription)
+* [Delete Subscription Item](../../doc/controllers/subscriptions.md#delete-subscription-item)
+* [Get Increments](../../doc/controllers/subscriptions.md#get-increments)
+* [Update Subscription Due Days](../../doc/controllers/subscriptions.md#update-subscription-due-days)
+* [Update Subscription Card](../../doc/controllers/subscriptions.md#update-subscription-card)
+* [Delete Usage](../../doc/controllers/subscriptions.md#delete-usage)
+* [Create Discount](../../doc/controllers/subscriptions.md#create-discount)
+* [Update Subscription Payment Method](../../doc/controllers/subscriptions.md#update-subscription-payment-method)
+* [Create Increment](../../doc/controllers/subscriptions.md#create-increment)
+* [Create Usage](../../doc/controllers/subscriptions.md#create-usage)
+* [Get Subscription Cycles](../../doc/controllers/subscriptions.md#get-subscription-cycles)
+* [Update Subscription Billing Date](../../doc/controllers/subscriptions.md#update-subscription-billing-date)
+* [Update Subscription Start At](../../doc/controllers/subscriptions.md#update-subscription-start-at)
+* [Get Usage Report](../../doc/controllers/subscriptions.md#get-usage-report)
+* [Update Split Subscription](../../doc/controllers/subscriptions.md#update-split-subscription)
 
 
 # Renew Subscription
@@ -64,7 +64,7 @@ def renew_subscription(subscription_id,
 
 ## Response Type
 
-[`GetPeriodResponse`](/doc/models/get-period-response.md)
+[`GetPeriodResponse`](../../doc/models/get-period-response.md)
 
 ## Example Usage
 
@@ -72,198 +72,6 @@ def renew_subscription(subscription_id,
 subscription_id = 'subscription_id0'
 
 result = subscriptions_controller.renew_subscription(subscription_id, )
-```
-
-
-# Update Subscription Card
-
-Updates the credit card from a subscription
-
-```ruby
-def update_subscription_card(subscription_id,
-                             request,
-                             idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription id |
-| `request` | [`UpdateSubscriptionCardRequest`](/doc/models/update-subscription-card-request.md) | Body, Required | Request for updating a card |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-request = UpdateSubscriptionCardRequest.new
-request.card = CreateCardRequest.new
-request.card.number = 'number2'
-request.card.holder_name = 'holder_name6'
-request.card.exp_month = 80
-request.card.exp_year = 216
-request.card.cvv = 'cvv8'
-request.card.billing_address = CreateAddressRequest.new
-request.card.billing_address.street = 'street2'
-request.card.billing_address.number = 'number0'
-request.card.billing_address.zip_code = 'zip_code6'
-request.card.billing_address.neighborhood = 'neighborhood8'
-request.card.billing_address.city = 'city8'
-request.card.billing_address.state = 'state2'
-request.card.billing_address.country = 'country6'
-request.card.billing_address.complement = 'complement2'
-request.card.billing_address.metadata = {'key0' => 'metadata1' } 
-request.card.billing_address.line_1 = 'line_14'
-request.card.billing_address.line_2 = 'line_20'
-request.card.brand = 'brand4'
-request.card.billing_address_id = 'billing_address_id6'
-request.card.metadata = {'key0' => 'metadata3', 'key1' => 'metadata4', 'key2' => 'metadata5' } 
-request.card.type = 'credit'
-request.card.options = CreateCardOptionsRequest.new
-request.card.options.verify_card = false
-request.card.private_label = false
-request.card.label = 'label0'
-request.card_id = 'card_id2'
-
-result = subscriptions_controller.update_subscription_card(subscription_id, request, )
-```
-
-
-# Delete Usage
-
-Deletes a usage
-
-```ruby
-def delete_usage(subscription_id,
-                 item_id,
-                 usage_id,
-                 idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | The subscription id |
-| `item_id` | `String` | Template, Required | The subscription item id |
-| `usage_id` | `String` | Template, Required | The usage id |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetUsageResponse`](/doc/models/get-usage-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-item_id = 'item_id0'
-usage_id = 'usage_id0'
-
-result = subscriptions_controller.delete_usage(subscription_id, item_id, usage_id, )
-```
-
-
-# Create Discount
-
-Creates a discount
-
-```ruby
-def create_discount(subscription_id,
-                    request,
-                    idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription id |
-| `request` | [`CreateDiscountRequest`](/doc/models/create-discount-request.md) | Body, Required | Request for creating a discount |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetDiscountResponse`](/doc/models/get-discount-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-request = CreateDiscountRequest.new
-request.value = 185.28
-request.discount_type = 'discount_type4'
-request.item_id = 'item_id6'
-
-result = subscriptions_controller.create_discount(subscription_id, request, )
-```
-
-
-# Create an Usage
-
-Create Usage
-
-```ruby
-def create_an_usage(subscription_id,
-                    item_id,
-                    idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription id |
-| `item_id` | `String` | Template, Required | Item id |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetUsageResponse`](/doc/models/get-usage-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-item_id = 'item_id0'
-
-result = subscriptions_controller.create_an_usage(subscription_id, item_id, )
-```
-
-
-# Update Current Cycle Status
-
-```ruby
-def update_current_cycle_status(subscription_id,
-                                request,
-                                idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription Id |
-| `request` | [`UpdateCurrentCycleStatusRequest`](/doc/models/update-current-cycle-status-request.md) | Body, Required | Request for updating the end date of the subscription current status |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-`void`
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-request = UpdateCurrentCycleStatusRequest.new
-request.status = 'status8'
-
-result = subscriptions_controller.update_current_cycle_status(subscription_id, request, )
 ```
 
 
@@ -287,7 +95,7 @@ def delete_discount(subscription_id,
 
 ## Response Type
 
-[`GetDiscountResponse`](/doc/models/get-discount-response.md)
+[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
 
 ## Example Usage
 
@@ -296,139 +104,6 @@ subscription_id = 'subscription_id0'
 discount_id = 'discount_id8'
 
 result = subscriptions_controller.delete_discount(subscription_id, discount_id, )
-```
-
-
-# Get Subscription Items
-
-Get Subscription Items
-
-```ruby
-def get_subscription_items(subscription_id,
-                           page: nil,
-                           size: nil,
-                           name: nil,
-                           code: nil,
-                           status: nil,
-                           description: nil,
-                           created_since: nil,
-                           created_until: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | The subscription id |
-| `page` | `Integer` | Query, Optional | Page number |
-| `size` | `Integer` | Query, Optional | Page size |
-| `name` | `String` | Query, Optional | The item name |
-| `code` | `String` | Query, Optional | Identification code in the client system |
-| `status` | `String` | Query, Optional | The item statis |
-| `description` | `String` | Query, Optional | The item description |
-| `created_since` | `String` | Query, Optional | Filter for item's creation date start range |
-| `created_until` | `String` | Query, Optional | Filter for item's creation date end range |
-
-## Response Type
-
-[`ListSubscriptionItemsResponse`](/doc/models/list-subscription-items-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-
-result = subscriptions_controller.get_subscription_items(subscription_id, )
-```
-
-
-# Update Subscription Payment Method
-
-Updates the payment method from a subscription
-
-```ruby
-def update_subscription_payment_method(subscription_id,
-                                       request,
-                                       idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription id |
-| `request` | [`UpdateSubscriptionPaymentMethodRequest`](/doc/models/update-subscription-payment-method-request.md) | Body, Required | Request for updating the paymentmethod from a subscription |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-request = UpdateSubscriptionPaymentMethodRequest.new
-request.payment_method = 'payment_method4'
-request.card_id = 'card_id2'
-request.card = CreateCardRequest.new
-request.card.number = 'number2'
-request.card.holder_name = 'holder_name6'
-request.card.exp_month = 80
-request.card.exp_year = 216
-request.card.cvv = 'cvv8'
-request.card.billing_address = CreateAddressRequest.new
-request.card.billing_address.street = 'street2'
-request.card.billing_address.number = 'number0'
-request.card.billing_address.zip_code = 'zip_code6'
-request.card.billing_address.neighborhood = 'neighborhood8'
-request.card.billing_address.city = 'city8'
-request.card.billing_address.state = 'state2'
-request.card.billing_address.country = 'country6'
-request.card.billing_address.complement = 'complement2'
-request.card.billing_address.metadata = {'key0' => 'metadata1' } 
-request.card.billing_address.line_1 = 'line_14'
-request.card.billing_address.line_2 = 'line_20'
-request.card.brand = 'brand4'
-request.card.billing_address_id = 'billing_address_id6'
-request.card.metadata = {'key0' => 'metadata3', 'key1' => 'metadata4', 'key2' => 'metadata5' } 
-request.card.type = 'credit'
-request.card.options = CreateCardOptionsRequest.new
-request.card.options.verify_card = false
-request.card.private_label = false
-request.card.label = 'label0'
-
-result = subscriptions_controller.update_subscription_payment_method(subscription_id, request, )
-```
-
-
-# Get Subscription Item
-
-Get Subscription Item
-
-```ruby
-def get_subscription_item(subscription_id,
-                          item_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription Id |
-| `item_id` | `String` | Template, Required | Item id |
-
-## Response Type
-
-[`GetSubscriptionItemResponse`](/doc/models/get-subscription-item-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-item_id = 'item_id0'
-
-result = subscriptions_controller.get_subscription_item(subscription_id, item_id)
 ```
 
 
@@ -470,118 +145,12 @@ def get_subscriptions(page: nil,
 
 ## Response Type
 
-[`ListSubscriptionsResponse`](/doc/models/list-subscriptions-response.md)
+[`ListSubscriptionsResponse`](../../doc/models/list-subscriptions-response.md)
 
 ## Example Usage
 
 ```ruby
 result = subscriptions_controller.get_subscriptions()
-```
-
-
-# Cancel Subscription
-
-Cancels a subscription
-
-```ruby
-def cancel_subscription(subscription_id,
-                        request: nil,
-                        idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription id |
-| `request` | [`CreateCancelSubscriptionRequest`](/doc/models/create-cancel-subscription-request.md) | Body, Optional | Request for cancelling a subscription |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-request = CreateCancelSubscriptionRequest.new
-request.cancel_pending_invoices = true
-
-result = subscriptions_controller.cancel_subscription(subscription_id, request: request, )
-```
-
-
-# Create Increment
-
-Creates a increment
-
-```ruby
-def create_increment(subscription_id,
-                     request,
-                     idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription id |
-| `request` | [`CreateIncrementRequest`](/doc/models/create-increment-request.md) | Body, Required | Request for creating a increment |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetIncrementResponse`](/doc/models/get-increment-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-request = CreateIncrementRequest.new
-request.value = 185.28
-request.increment_type = 'increment_type8'
-request.item_id = 'item_id6'
-
-result = subscriptions_controller.create_increment(subscription_id, request, )
-```
-
-
-# Create Usage
-
-Creates a usage
-
-```ruby
-def create_usage(subscription_id,
-                 item_id,
-                 body,
-                 idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription Id |
-| `item_id` | `String` | Template, Required | Item id |
-| `body` | [`CreateUsageRequest`](/doc/models/create-usage-request.md) | Body, Required | Request for creating a usage |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetUsageResponse`](/doc/models/get-usage-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-item_id = 'item_id0'
-body = CreateUsageRequest.new
-body.quantity = 156
-body.description = 'description4'
-body.used_at = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
-
-result = subscriptions_controller.create_usage(subscription_id, item_id, body, )
 ```
 
 
@@ -601,7 +170,7 @@ def get_discount_by_id(subscription_id,
 
 ## Response Type
 
-[`GetDiscountResponse`](/doc/models/get-discount-response.md)
+[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
 
 ## Example Usage
 
@@ -626,12 +195,12 @@ def create_subscription(body,
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreateSubscriptionRequest`](/doc/models/create-subscription-request.md) | Body, Required | Request for creating a subscription |
+| `body` | [`CreateSubscriptionRequest`](../../doc/models/create-subscription-request.md) | Body, Required | Request for creating a subscription |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
 
 ## Example Usage
 
@@ -878,7 +447,7 @@ def get_increment_by_id(subscription_id,
 
 ## Response Type
 
-[`GetIncrementResponse`](/doc/models/get-increment-response.md)
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
 
 ## Example Usage
 
@@ -887,37 +456,6 @@ subscription_id = 'subscription_id0'
 increment_id = 'increment_id8'
 
 result = subscriptions_controller.get_increment_by_id(subscription_id, increment_id)
-```
-
-
-# Update Subscription Affiliation Id
-
-```ruby
-def update_subscription_affiliation_id(subscription_id,
-                                       request,
-                                       idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | - |
-| `request` | [`UpdateSubscriptionAffiliationIdRequest`](/doc/models/update-subscription-affiliation-id-request.md) | Body, Required | Request for updating a subscription affiliation id |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-request = UpdateSubscriptionAffiliationIdRequest.new
-request.gateway_affiliation_id = 'gateway_affiliation_id2'
-
-result = subscriptions_controller.update_subscription_affiliation_id(subscription_id, request, )
 ```
 
 
@@ -936,12 +474,12 @@ def update_subscription_metadata(subscription_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscription_id` | `String` | Template, Required | The subscription id |
-| `request` | [`UpdateMetadataRequest`](/doc/models/update-metadata-request.md) | Body, Required | Request for updating the subscrption metadata |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the subscrption metadata |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
 
 ## Example Usage
 
@@ -974,7 +512,7 @@ def delete_increment(subscription_id,
 
 ## Response Type
 
-[`GetIncrementResponse`](/doc/models/get-increment-response.md)
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
 
 ## Example Usage
 
@@ -986,12 +524,69 @@ result = subscriptions_controller.delete_increment(subscription_id, increment_id
 ```
 
 
-# Get Subscription Cycles
+# Get Subscription
+
+Gets a subscription
 
 ```ruby
-def get_subscription_cycles(subscription_id,
-                            page,
-                            size)
+def get_subscription(subscription_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription id |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+
+result = subscriptions_controller.get_subscription(subscription_id)
+```
+
+
+# Update Latest Period End At
+
+```ruby
+def update_latest_period_end_at(subscription_id,
+                                request,
+                                idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | - |
+| `request` | [`UpdateCurrentCycleEndDateRequest`](../../doc/models/update-current-cycle-end-date-request.md) | Body, Required | Request for updating the end date of the current signature cycle |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+request = UpdateCurrentCycleEndDateRequest.new
+
+result = subscriptions_controller.update_latest_period_end_at(subscription_id, request, )
+```
+
+
+# Update Current Cycle Status
+
+```ruby
+def update_current_cycle_status(subscription_id,
+                                request,
+                                idempotency_key: nil)
 ```
 
 ## Parameters
@@ -999,21 +594,125 @@ def get_subscription_cycles(subscription_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscription_id` | `String` | Template, Required | Subscription Id |
-| `page` | `String` | Query, Required | Page number |
-| `size` | `String` | Query, Required | Page size |
+| `request` | [`UpdateCurrentCycleStatusRequest`](../../doc/models/update-current-cycle-status-request.md) | Body, Required | Request for updating the end date of the subscription current status |
+| `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`ListCyclesResponse`](/doc/models/list-cycles-response.md)
+`void`
 
 ## Example Usage
 
 ```ruby
 subscription_id = 'subscription_id0'
-page = 'page8'
-size = 'size0'
+request = UpdateCurrentCycleStatusRequest.new
+request.status = 'status8'
 
-result = subscriptions_controller.get_subscription_cycles(subscription_id, page, size)
+result = subscriptions_controller.update_current_cycle_status(subscription_id, request, )
+```
+
+
+# Get Subscription Items
+
+Get Subscription Items
+
+```ruby
+def get_subscription_items(subscription_id,
+                           page: nil,
+                           size: nil,
+                           name: nil,
+                           code: nil,
+                           status: nil,
+                           description: nil,
+                           created_since: nil,
+                           created_until: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | The subscription id |
+| `page` | `Integer` | Query, Optional | Page number |
+| `size` | `Integer` | Query, Optional | Page size |
+| `name` | `String` | Query, Optional | The item name |
+| `code` | `String` | Query, Optional | Identification code in the client system |
+| `status` | `String` | Query, Optional | The item statis |
+| `description` | `String` | Query, Optional | The item description |
+| `created_since` | `String` | Query, Optional | Filter for item's creation date start range |
+| `created_until` | `String` | Query, Optional | Filter for item's creation date end range |
+
+## Response Type
+
+[`ListSubscriptionItemsResponse`](../../doc/models/list-subscription-items-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+
+result = subscriptions_controller.get_subscription_items(subscription_id, )
+```
+
+
+# Get Subscription Item
+
+Get Subscription Item
+
+```ruby
+def get_subscription_item(subscription_id,
+                          item_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription Id |
+| `item_id` | `String` | Template, Required | Item id |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+item_id = 'item_id0'
+
+result = subscriptions_controller.get_subscription_item(subscription_id, item_id)
+```
+
+
+# Update Subscription Affiliation Id
+
+```ruby
+def update_subscription_affiliation_id(subscription_id,
+                                       request,
+                                       idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | - |
+| `request` | [`UpdateSubscriptionAffiliationIdRequest`](../../doc/models/update-subscription-affiliation-id-request.md) | Body, Required | Request for updating a subscription affiliation id |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+request = UpdateSubscriptionAffiliationIdRequest.new
+request.gateway_affiliation_id = 'gateway_affiliation_id2'
+
+result = subscriptions_controller.update_subscription_affiliation_id(subscription_id, request, )
 ```
 
 
@@ -1035,7 +734,7 @@ def get_discounts(subscription_id,
 
 ## Response Type
 
-[`ListDiscountsResponse`](/doc/models/list-discounts-response.md)
+[`ListDiscountsResponse`](../../doc/models/list-discounts-response.md)
 
 ## Example Usage
 
@@ -1045,166 +744,6 @@ page = 30
 size = 18
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
-```
-
-
-# Update Subscription Billing Date
-
-Updates the billing date from a subscription
-
-```ruby
-def update_subscription_billing_date(subscription_id,
-                                     request,
-                                     idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | The subscription id |
-| `request` | [`UpdateSubscriptionBillingDateRequest`](/doc/models/update-subscription-billing-date-request.md) | Body, Required | Request for updating the subscription billing date |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-request = UpdateSubscriptionBillingDateRequest.new
-request.next_billing_at = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
-
-result = subscriptions_controller.update_subscription_billing_date(subscription_id, request, )
-```
-
-
-# Delete Subscription Item
-
-Deletes a subscription item
-
-```ruby
-def delete_subscription_item(subscription_id,
-                             subscription_item_id,
-                             idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription id |
-| `subscription_item_id` | `String` | Template, Required | Subscription item id |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionItemResponse`](/doc/models/get-subscription-item-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-subscription_item_id = 'subscription_item_id4'
-
-result = subscriptions_controller.delete_subscription_item(subscription_id, subscription_item_id, )
-```
-
-
-# Get Increments
-
-```ruby
-def get_increments(subscription_id,
-                   page: nil,
-                   size: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | The subscription id |
-| `page` | `Integer` | Query, Optional | Page number |
-| `size` | `Integer` | Query, Optional | Page size |
-
-## Response Type
-
-[`ListIncrementsResponse`](/doc/models/list-increments-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-
-result = subscriptions_controller.get_increments(subscription_id, )
-```
-
-
-# Update Subscription Due Days
-
-Updates the boleto due days from a subscription
-
-```ruby
-def update_subscription_due_days(subscription_id,
-                                 request,
-                                 idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription Id |
-| `request` | [`UpdateSubscriptionDueDaysRequest`](/doc/models/update-subscription-due-days-request.md) | Body, Required | - |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-request = UpdateSubscriptionDueDaysRequest.new
-request.boleto_due_days = 226
-
-result = subscriptions_controller.update_subscription_due_days(subscription_id, request, )
-```
-
-
-# Update Subscription Start At
-
-Updates the start at date from a subscription
-
-```ruby
-def update_subscription_start_at(subscription_id,
-                                 request,
-                                 idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | The subscription id |
-| `request` | [`UpdateSubscriptionStartAtRequest`](/doc/models/update-subscription-start-at-request.md) | Body, Required | Request for updating the subscription start date |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-request = UpdateSubscriptionStartAtRequest.new
-request.start_at = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
-
-result = subscriptions_controller.update_subscription_start_at(subscription_id, request, )
 ```
 
 
@@ -1225,12 +764,12 @@ def update_subscription_item(subscription_id,
 |  --- | --- | --- | --- |
 | `subscription_id` | `String` | Template, Required | Subscription Id |
 | `item_id` | `String` | Template, Required | Item id |
-| `body` | [`UpdateSubscriptionItemRequest`](/doc/models/update-subscription-item-request.md) | Body, Required | Request for updating a subscription item |
+| `body` | [`UpdateSubscriptionItemRequest`](../../doc/models/update-subscription-item-request.md) | Body, Required | Request for updating a subscription item |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetSubscriptionItemResponse`](/doc/models/get-subscription-item-response.md)
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
 
 ## Example Usage
 
@@ -1274,12 +813,12 @@ def create_subscription_item(subscription_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscription_id` | `String` | Template, Required | Subscription id |
-| `request` | [`CreateSubscriptionItemRequest`](/doc/models/create-subscription-item-request.md) | Body, Required | Request for creating a subscription item |
+| `request` | [`CreateSubscriptionItemRequest`](../../doc/models/create-subscription-item-request.md) | Body, Required | Request for creating a subscription item |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetSubscriptionItemResponse`](/doc/models/get-subscription-item-response.md)
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
 
 ## Example Usage
 
@@ -1317,33 +856,6 @@ result = subscriptions_controller.create_subscription_item(subscription_id, requ
 ```
 
 
-# Get Subscription
-
-Gets a subscription
-
-```ruby
-def get_subscription(subscription_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription id |
-
-## Response Type
-
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-
-result = subscriptions_controller.get_subscription(subscription_id)
-```
-
-
 # Get Usages
 
 Lists all usages from a subscription item
@@ -1374,7 +886,7 @@ def get_usages(subscription_id,
 
 ## Response Type
 
-[`ListUsagesResponse`](/doc/models/list-usages-response.md)
+[`ListUsagesResponse`](../../doc/models/list-usages-response.md)
 
 ## Example Usage
 
@@ -1383,36 +895,6 @@ subscription_id = 'subscription_id0'
 item_id = 'item_id0'
 
 result = subscriptions_controller.get_usages(subscription_id, item_id, )
-```
-
-
-# Update Latest Period End At
-
-```ruby
-def update_latest_period_end_at(subscription_id,
-                                request,
-                                idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | - |
-| `request` | [`UpdateCurrentCycleEndDateRequest`](/doc/models/update-current-cycle-end-date-request.md) | Body, Required | Request for updating the end date of the current signature cycle |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-request = UpdateCurrentCycleEndDateRequest.new
-
-result = subscriptions_controller.update_latest_period_end_at(subscription_id, request, )
 ```
 
 
@@ -1431,12 +913,12 @@ def update_subscription_minium_price(subscription_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscription_id` | `String` | Template, Required | Subscription Id |
-| `request` | [`UpdateSubscriptionMinimumPriceRequest`](/doc/models/update-subscription-minimum-price-request.md) | Body, Required | Request da requisição com o valor mínimo que será configurado |
+| `request` | [`UpdateSubscriptionMinimumPriceRequest`](../../doc/models/update-subscription-minimum-price-request.md) | Body, Required | Request da requisição com o valor mínimo que será configurado |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
 
 ## Example Usage
 
@@ -1464,7 +946,7 @@ def get_subscription_cycle_by_id(subscription_id,
 
 ## Response Type
 
-[`GetPeriodResponse`](/doc/models/get-period-response.md)
+[`GetPeriodResponse`](../../doc/models/get-period-response.md)
 
 ## Example Usage
 
@@ -1473,6 +955,524 @@ subscription_id = 'subscription_id0'
 cycle_id = 'cycleId0'
 
 result = subscriptions_controller.get_subscription_cycle_by_id(subscription_id, cycle_id)
+```
+
+
+# Create an Usage
+
+Create Usage
+
+```ruby
+def create_an_usage(subscription_id,
+                    item_id,
+                    idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription id |
+| `item_id` | `String` | Template, Required | Item id |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetUsageResponse`](../../doc/models/get-usage-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+item_id = 'item_id0'
+
+result = subscriptions_controller.create_an_usage(subscription_id, item_id, )
+```
+
+
+# Cancel Subscription
+
+Cancels a subscription
+
+```ruby
+def cancel_subscription(subscription_id,
+                        request: nil,
+                        idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription id |
+| `request` | [`CreateCancelSubscriptionRequest`](../../doc/models/create-cancel-subscription-request.md) | Body, Optional | Request for cancelling a subscription |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+request = CreateCancelSubscriptionRequest.new
+request.cancel_pending_invoices = true
+
+result = subscriptions_controller.cancel_subscription(subscription_id, request: request, )
+```
+
+
+# Delete Subscription Item
+
+Deletes a subscription item
+
+```ruby
+def delete_subscription_item(subscription_id,
+                             subscription_item_id,
+                             idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription id |
+| `subscription_item_id` | `String` | Template, Required | Subscription item id |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+subscription_item_id = 'subscription_item_id4'
+
+result = subscriptions_controller.delete_subscription_item(subscription_id, subscription_item_id, )
+```
+
+
+# Get Increments
+
+```ruby
+def get_increments(subscription_id,
+                   page: nil,
+                   size: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | The subscription id |
+| `page` | `Integer` | Query, Optional | Page number |
+| `size` | `Integer` | Query, Optional | Page size |
+
+## Response Type
+
+[`ListIncrementsResponse`](../../doc/models/list-increments-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+
+result = subscriptions_controller.get_increments(subscription_id, )
+```
+
+
+# Update Subscription Due Days
+
+Updates the boleto due days from a subscription
+
+```ruby
+def update_subscription_due_days(subscription_id,
+                                 request,
+                                 idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription Id |
+| `request` | [`UpdateSubscriptionDueDaysRequest`](../../doc/models/update-subscription-due-days-request.md) | Body, Required | - |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+request = UpdateSubscriptionDueDaysRequest.new
+request.boleto_due_days = 226
+
+result = subscriptions_controller.update_subscription_due_days(subscription_id, request, )
+```
+
+
+# Update Subscription Card
+
+Updates the credit card from a subscription
+
+```ruby
+def update_subscription_card(subscription_id,
+                             request,
+                             idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription id |
+| `request` | [`UpdateSubscriptionCardRequest`](../../doc/models/update-subscription-card-request.md) | Body, Required | Request for updating a card |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+request = UpdateSubscriptionCardRequest.new
+request.card = CreateCardRequest.new
+request.card.number = 'number2'
+request.card.holder_name = 'holder_name6'
+request.card.exp_month = 80
+request.card.exp_year = 216
+request.card.cvv = 'cvv8'
+request.card.billing_address = CreateAddressRequest.new
+request.card.billing_address.street = 'street2'
+request.card.billing_address.number = 'number0'
+request.card.billing_address.zip_code = 'zip_code6'
+request.card.billing_address.neighborhood = 'neighborhood8'
+request.card.billing_address.city = 'city8'
+request.card.billing_address.state = 'state2'
+request.card.billing_address.country = 'country6'
+request.card.billing_address.complement = 'complement2'
+request.card.billing_address.metadata = {'key0' => 'metadata1' } 
+request.card.billing_address.line_1 = 'line_14'
+request.card.billing_address.line_2 = 'line_20'
+request.card.brand = 'brand4'
+request.card.billing_address_id = 'billing_address_id6'
+request.card.metadata = {'key0' => 'metadata3', 'key1' => 'metadata4', 'key2' => 'metadata5' } 
+request.card.type = 'credit'
+request.card.options = CreateCardOptionsRequest.new
+request.card.options.verify_card = false
+request.card.private_label = false
+request.card.label = 'label0'
+request.card_id = 'card_id2'
+
+result = subscriptions_controller.update_subscription_card(subscription_id, request, )
+```
+
+
+# Delete Usage
+
+Deletes a usage
+
+```ruby
+def delete_usage(subscription_id,
+                 item_id,
+                 usage_id,
+                 idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | The subscription id |
+| `item_id` | `String` | Template, Required | The subscription item id |
+| `usage_id` | `String` | Template, Required | The usage id |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetUsageResponse`](../../doc/models/get-usage-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+item_id = 'item_id0'
+usage_id = 'usage_id0'
+
+result = subscriptions_controller.delete_usage(subscription_id, item_id, usage_id, )
+```
+
+
+# Create Discount
+
+Creates a discount
+
+```ruby
+def create_discount(subscription_id,
+                    request,
+                    idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription id |
+| `request` | [`CreateDiscountRequest`](../../doc/models/create-discount-request.md) | Body, Required | Request for creating a discount |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+request = CreateDiscountRequest.new
+request.value = 185.28
+request.discount_type = 'discount_type4'
+request.item_id = 'item_id6'
+
+result = subscriptions_controller.create_discount(subscription_id, request, )
+```
+
+
+# Update Subscription Payment Method
+
+Updates the payment method from a subscription
+
+```ruby
+def update_subscription_payment_method(subscription_id,
+                                       request,
+                                       idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription id |
+| `request` | [`UpdateSubscriptionPaymentMethodRequest`](../../doc/models/update-subscription-payment-method-request.md) | Body, Required | Request for updating the paymentmethod from a subscription |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+request = UpdateSubscriptionPaymentMethodRequest.new
+request.payment_method = 'payment_method4'
+request.card_id = 'card_id2'
+request.card = CreateCardRequest.new
+request.card.number = 'number2'
+request.card.holder_name = 'holder_name6'
+request.card.exp_month = 80
+request.card.exp_year = 216
+request.card.cvv = 'cvv8'
+request.card.billing_address = CreateAddressRequest.new
+request.card.billing_address.street = 'street2'
+request.card.billing_address.number = 'number0'
+request.card.billing_address.zip_code = 'zip_code6'
+request.card.billing_address.neighborhood = 'neighborhood8'
+request.card.billing_address.city = 'city8'
+request.card.billing_address.state = 'state2'
+request.card.billing_address.country = 'country6'
+request.card.billing_address.complement = 'complement2'
+request.card.billing_address.metadata = {'key0' => 'metadata1' } 
+request.card.billing_address.line_1 = 'line_14'
+request.card.billing_address.line_2 = 'line_20'
+request.card.brand = 'brand4'
+request.card.billing_address_id = 'billing_address_id6'
+request.card.metadata = {'key0' => 'metadata3', 'key1' => 'metadata4', 'key2' => 'metadata5' } 
+request.card.type = 'credit'
+request.card.options = CreateCardOptionsRequest.new
+request.card.options.verify_card = false
+request.card.private_label = false
+request.card.label = 'label0'
+
+result = subscriptions_controller.update_subscription_payment_method(subscription_id, request, )
+```
+
+
+# Create Increment
+
+Creates a increment
+
+```ruby
+def create_increment(subscription_id,
+                     request,
+                     idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription id |
+| `request` | [`CreateIncrementRequest`](../../doc/models/create-increment-request.md) | Body, Required | Request for creating a increment |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+request = CreateIncrementRequest.new
+request.value = 185.28
+request.increment_type = 'increment_type8'
+request.item_id = 'item_id6'
+
+result = subscriptions_controller.create_increment(subscription_id, request, )
+```
+
+
+# Create Usage
+
+Creates a usage
+
+```ruby
+def create_usage(subscription_id,
+                 item_id,
+                 body,
+                 idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription Id |
+| `item_id` | `String` | Template, Required | Item id |
+| `body` | [`CreateUsageRequest`](../../doc/models/create-usage-request.md) | Body, Required | Request for creating a usage |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetUsageResponse`](../../doc/models/get-usage-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+item_id = 'item_id0'
+body = CreateUsageRequest.new
+body.quantity = 156
+body.description = 'description4'
+body.used_at = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+
+result = subscriptions_controller.create_usage(subscription_id, item_id, body, )
+```
+
+
+# Get Subscription Cycles
+
+```ruby
+def get_subscription_cycles(subscription_id,
+                            page,
+                            size)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription Id |
+| `page` | `String` | Query, Required | Page number |
+| `size` | `String` | Query, Required | Page size |
+
+## Response Type
+
+[`ListCyclesResponse`](../../doc/models/list-cycles-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+page = 'page8'
+size = 'size0'
+
+result = subscriptions_controller.get_subscription_cycles(subscription_id, page, size)
+```
+
+
+# Update Subscription Billing Date
+
+Updates the billing date from a subscription
+
+```ruby
+def update_subscription_billing_date(subscription_id,
+                                     request,
+                                     idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | The subscription id |
+| `request` | [`UpdateSubscriptionBillingDateRequest`](../../doc/models/update-subscription-billing-date-request.md) | Body, Required | Request for updating the subscription billing date |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+request = UpdateSubscriptionBillingDateRequest.new
+request.next_billing_at = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+
+result = subscriptions_controller.update_subscription_billing_date(subscription_id, request, )
+```
+
+
+# Update Subscription Start At
+
+Updates the start at date from a subscription
+
+```ruby
+def update_subscription_start_at(subscription_id,
+                                 request,
+                                 idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | The subscription id |
+| `request` | [`UpdateSubscriptionStartAtRequest`](../../doc/models/update-subscription-start-at-request.md) | Body, Required | Request for updating the subscription start date |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+request = UpdateSubscriptionStartAtRequest.new
+request.start_at = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+
+result = subscriptions_controller.update_subscription_start_at(subscription_id, request, )
 ```
 
 
@@ -1492,7 +1492,7 @@ def get_usage_report(subscription_id,
 
 ## Response Type
 
-[`GetUsageReportResponse`](/doc/models/get-usage-report-response.md)
+[`GetUsageReportResponse`](../../doc/models/get-usage-report-response.md)
 
 ## Example Usage
 
@@ -1516,11 +1516,11 @@ def update_split_subscription(id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `String` | Template, Required | Subscription's id |
-| `request` | [`UpdateSubscriptionSplitRequest`](/doc/models/update-subscription-split-request.md) | Body, Required | - |
+| `request` | [`UpdateSubscriptionSplitRequest`](../../doc/models/update-subscription-split-request.md) | Body, Required | - |
 
 ## Response Type
 
-[`GetSubscriptionResponse`](/doc/models/get-subscription-response.md)
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
 
 ## Example Usage
 

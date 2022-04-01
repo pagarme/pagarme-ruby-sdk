@@ -10,8 +10,8 @@ tokens_controller = client.tokens
 
 ## Methods
 
-* [Create Token](/doc/controllers/tokens.md#create-token)
-* [Get Token](/doc/controllers/tokens.md#get-token)
+* [Create Token](../../doc/controllers/tokens.md#create-token)
+* [Get Token](../../doc/controllers/tokens.md#get-token)
 
 
 # Create Token
@@ -29,12 +29,12 @@ def create_token(public_key,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `public_key` | `String` | Template, Required | Public key |
-| `request` | [`CreateTokenRequest`](/doc/models/create-token-request.md) | Body, Required | Request for creating a token |
+| `request` | [`CreateTokenRequest`](../../doc/models/create-token-request.md) | Body, Required | Request for creating a token |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetTokenResponse`](/doc/models/get-token-response.md)
+[`GetTokenResponse`](../../doc/models/get-token-response.md)
 
 ## Example Usage
 
@@ -75,7 +75,7 @@ def get_token(id,
 
 ## Response Type
 
-[`GetTokenResponse`](/doc/models/get-token-response.md)
+[`GetTokenResponse`](../../doc/models/get-token-response.md)
 
 ## Example Usage
 

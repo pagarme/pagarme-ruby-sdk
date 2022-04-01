@@ -15,7 +15,7 @@ Contains the settings for creating a boleto payment
 | `bank` | `String` | Required | The bank code, containing three characters. The available codes are on the API specification |
 | `instructions` | `String` | Required | The instructions field that will be printed on the boleto. |
 | `due_at` | `DateTime` | Optional | Boleto due date |
-| `billing_address` | [`CreateAddressRequest`](/doc/models/create-address-request.md) | Required | Card's billing address |
+| `billing_address` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Card's billing address |
 | `billing_address_id` | `String` | Required | The address id for the billing address |
 | `nosso_numero` | `String` | Optional | Customer identification number with the bank |
 | `document_number` | `String` | Required | Boleto identification |
