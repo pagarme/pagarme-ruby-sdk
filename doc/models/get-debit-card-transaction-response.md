@@ -9,7 +9,7 @@ Response object for getting a debit card transaction
 
 ## Inherits From
 
-[`GetTransactionResponse`](/doc/models/get-transaction-response.md)
+[`GetTransactionResponse`](../../doc/models/get-transaction-response.md)
 
 ## Fields
 
@@ -22,7 +22,7 @@ Response object for getting a debit card transaction
 | `acquirer_nsu` | `String` | Required | Acquirer NSU |
 | `acquirer_auth_code` | `String` | Required | Acquirer authorization code |
 | `operation_type` | `String` | Required | Operation type |
-| `card` | [`GetCardResponse`](/doc/models/get-card-response.md) | Required | Card data |
+| `card` | [`GetCardResponse`](../../doc/models/get-card-response.md) | Required | Card data |
 | `acquirer_message` | `String` | Required | Acquirer message |
 | `acquirer_return_code` | `String` | Required | Acquirer Return Code |
 | `mpi` | `String` | Required | Merchant Plugin |

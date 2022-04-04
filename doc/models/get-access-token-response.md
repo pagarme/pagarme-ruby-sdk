@@ -15,7 +15,7 @@ Response object for getting a access token
 | `code` | `String` | Required | - |
 | `status` | `String` | Required | - |
 | `created_at` | `DateTime` | Required | - |
-| `customer` | [`GetCustomerResponse`](/doc/models/get-customer-response.md) | Optional | - |
+| `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
 
 ## Example (as JSON)
 

@@ -17,8 +17,8 @@ SubMerchant
 | `merchant_category_code` | `String` | Required | Merchant Category Code |
 | `document` | `String` | Required | Document number. Only numbers, no special characters. |
 | `type` | `String` | Required | Document type. Can be either 'individual' or 'company' |
-| `phone` | [`CreatePhoneRequest`](/doc/models/create-phone-request.md) | Required | Phone |
-| `address` | [`CreateAddressRequest`](/doc/models/create-address-request.md) | Required | Address |
+| `phone` | [`CreatePhoneRequest`](../../doc/models/create-phone-request.md) | Required | Phone |
+| `address` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Address |
 
 ## Example (as JSON)
 

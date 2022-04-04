@@ -11,8 +11,8 @@ Response object for listing transactions
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`Array<GetTransactionResponse>`](/doc/models/get-transaction-response.md) | Required | The transaction objects |
-| `paging` | [`PagingResponse`](/doc/models/paging-response.md) | Required | Paging object |
+| `data` | [`Array<GetTransactionResponse>`](../../doc/models/get-transaction-response.md) | Required | The transaction objects |
+| `paging` | [`PagingResponse`](../../doc/models/paging-response.md) | Required | Paging object |
 
 ## Example (as JSON)
 

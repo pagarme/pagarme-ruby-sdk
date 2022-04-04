@@ -16,9 +16,9 @@ Response object for getting a plan item
 | `status` | `String` | Required | - |
 | `created_at` | `DateTime` | Required | - |
 | `updated_at` | `DateTime` | Required | - |
-| `pricing_scheme` | [`GetPricingSchemeResponse`](/doc/models/get-pricing-scheme-response.md) | Required | - |
+| `pricing_scheme` | [`GetPricingSchemeResponse`](../../doc/models/get-pricing-scheme-response.md) | Required | - |
 | `description` | `String` | Required | - |
-| `plan` | [`GetPlanResponse`](/doc/models/get-plan-response.md) | Required | - |
+| `plan` | [`GetPlanResponse`](../../doc/models/get-plan-response.md) | Required | - |
 | `quantity` | `Integer` | Optional | - |
 | `cycles` | `Integer` | Optional | - |
 | `deleted_at` | `DateTime` | Optional | - |

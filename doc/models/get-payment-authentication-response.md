@@ -12,7 +12,7 @@ Payment Authentication response
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `type` | `String` | Required | - |
-| `threed_secure` | [`GetThreeDSecureResponse`](/doc/models/get-three-d-secure-response.md) | Required | 3D-S payment authentication response |
+| `threed_secure` | [`GetThreeDSecureResponse`](../../doc/models/get-three-d-secure-response.md) | Required | 3D-S payment authentication response |
 
 ## Example (as JSON)
 

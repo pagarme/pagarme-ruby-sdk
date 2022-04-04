@@ -18,7 +18,7 @@ Response object for getting a usage
 | `created_at` | `DateTime` | Required | Creation date |
 | `status` | `String` | Required | Status |
 | `deleted_at` | `DateTime` | Optional | - |
-| `subscription_item` | [`GetSubscriptionItemResponse`](/doc/models/get-subscription-item-response.md) | Required | Subscription item |
+| `subscription_item` | [`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md) | Required | Subscription item |
 | `code` | `String` | Optional | Identification code in the client system |
 | `group` | `String` | Optional | Identification group in the client system |
 | `amount` | `Integer` | Optional | Field used in item scheme type 'Percent' |

@@ -13,7 +13,7 @@ Request for updating a subscription item
 |  --- | --- | --- | --- |
 | `description` | `String` | Required | Description |
 | `status` | `String` | Required | Status |
-| `pricing_scheme` | [`UpdatePricingSchemeRequest`](/doc/models/update-pricing-scheme-request.md) | Required | Pricing scheme |
+| `pricing_scheme` | [`UpdatePricingSchemeRequest`](../../doc/models/update-pricing-scheme-request.md) | Required | Pricing scheme |
 | `name` | `String` | Required | Item name |
 | `cycles` | `Integer` | Optional | Number of cycles that the item will be charged |
 | `quantity` | `Integer` | Optional | Quantity |

@@ -10,27 +10,27 @@ recipients_controller = client.recipients
 
 ## Methods
 
-* [Update Recipient](/doc/controllers/recipients.md#update-recipient)
-* [Create Anticipation](/doc/controllers/recipients.md#create-anticipation)
-* [Get Anticipation Limits](/doc/controllers/recipients.md#get-anticipation-limits)
-* [Get Recipients](/doc/controllers/recipients.md#get-recipients)
-* [Get Withdraw by Id](/doc/controllers/recipients.md#get-withdraw-by-id)
-* [Update Recipient Default Bank Account](/doc/controllers/recipients.md#update-recipient-default-bank-account)
-* [Update Recipient Metadata](/doc/controllers/recipients.md#update-recipient-metadata)
-* [Get Transfers](/doc/controllers/recipients.md#get-transfers)
-* [Get Transfer](/doc/controllers/recipients.md#get-transfer)
-* [Create Withdraw](/doc/controllers/recipients.md#create-withdraw)
-* [Update Automatic Anticipation Settings](/doc/controllers/recipients.md#update-automatic-anticipation-settings)
-* [Get Anticipation](/doc/controllers/recipients.md#get-anticipation)
-* [Update Recipient Transfer Settings](/doc/controllers/recipients.md#update-recipient-transfer-settings)
-* [Get Anticipations](/doc/controllers/recipients.md#get-anticipations)
-* [Get Recipient](/doc/controllers/recipients.md#get-recipient)
-* [Get Balance](/doc/controllers/recipients.md#get-balance)
-* [Get Withdrawals](/doc/controllers/recipients.md#get-withdrawals)
-* [Create Transfer](/doc/controllers/recipients.md#create-transfer)
-* [Create Recipient](/doc/controllers/recipients.md#create-recipient)
-* [Get Recipient by Code](/doc/controllers/recipients.md#get-recipient-by-code)
-* [Get Default Recipient](/doc/controllers/recipients.md#get-default-recipient)
+* [Update Recipient](../../doc/controllers/recipients.md#update-recipient)
+* [Create Anticipation](../../doc/controllers/recipients.md#create-anticipation)
+* [Get Anticipation Limits](../../doc/controllers/recipients.md#get-anticipation-limits)
+* [Get Recipients](../../doc/controllers/recipients.md#get-recipients)
+* [Update Recipient Metadata](../../doc/controllers/recipients.md#update-recipient-metadata)
+* [Get Transfer](../../doc/controllers/recipients.md#get-transfer)
+* [Get Anticipation](../../doc/controllers/recipients.md#get-anticipation)
+* [Update Recipient Transfer Settings](../../doc/controllers/recipients.md#update-recipient-transfer-settings)
+* [Get Anticipations](../../doc/controllers/recipients.md#get-anticipations)
+* [Update Recipient Default Bank Account](../../doc/controllers/recipients.md#update-recipient-default-bank-account)
+* [Create Withdraw](../../doc/controllers/recipients.md#create-withdraw)
+* [Get Balance](../../doc/controllers/recipients.md#get-balance)
+* [Create Transfer](../../doc/controllers/recipients.md#create-transfer)
+* [Create Recipient](../../doc/controllers/recipients.md#create-recipient)
+* [Update Automatic Anticipation Settings](../../doc/controllers/recipients.md#update-automatic-anticipation-settings)
+* [Get Recipient](../../doc/controllers/recipients.md#get-recipient)
+* [Get Withdrawals](../../doc/controllers/recipients.md#get-withdrawals)
+* [Get Withdraw by Id](../../doc/controllers/recipients.md#get-withdraw-by-id)
+* [Get Transfers](../../doc/controllers/recipients.md#get-transfers)
+* [Get Recipient by Code](../../doc/controllers/recipients.md#get-recipient-by-code)
+* [Get Default Recipient](../../doc/controllers/recipients.md#get-default-recipient)
 
 
 # Update Recipient
@@ -48,12 +48,12 @@ def update_recipient(recipient_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipient_id` | `String` | Template, Required | Recipient id |
-| `request` | [`UpdateRecipientRequest`](/doc/models/update-recipient-request.md) | Body, Required | Recipient data |
+| `request` | [`UpdateRecipientRequest`](../../doc/models/update-recipient-request.md) | Body, Required | Recipient data |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
@@ -86,12 +86,12 @@ def create_anticipation(recipient_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipient_id` | `String` | Template, Required | Recipient id |
-| `request` | [`CreateAnticipationRequest`](/doc/models/create-anticipation-request.md) | Body, Required | Anticipation data |
+| `request` | [`CreateAnticipationRequest`](../../doc/models/create-anticipation-request.md) | Body, Required | Anticipation data |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetAnticipationResponse`](/doc/models/get-anticipation-response.md)
+[`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md)
 
 ## Example Usage
 
@@ -126,7 +126,7 @@ def get_anticipation_limits(recipient_id,
 
 ## Response Type
 
-[`GetAnticipationLimitResponse`](/doc/models/get-anticipation-limit-response.md)
+[`GetAnticipationLimitResponse`](../../doc/models/get-anticipation-limit-response.md)
 
 ## Example Usage
 
@@ -157,85 +157,12 @@ def get_recipients(page: nil,
 
 ## Response Type
 
-[`ListRecipientResponse`](/doc/models/list-recipient-response.md)
+[`ListRecipientResponse`](../../doc/models/list-recipient-response.md)
 
 ## Example Usage
 
 ```ruby
 result = recipients_controller.get_recipients()
-```
-
-
-# Get Withdraw by Id
-
-```ruby
-def get_withdraw_by_id(recipient_id,
-                       withdrawal_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipient_id` | `String` | Template, Required | - |
-| `withdrawal_id` | `String` | Template, Required | - |
-
-## Response Type
-
-[`GetWithdrawResponse`](/doc/models/get-withdraw-response.md)
-
-## Example Usage
-
-```ruby
-recipient_id = 'recipient_id0'
-withdrawal_id = 'withdrawal_id2'
-
-result = recipients_controller.get_withdraw_by_id(recipient_id, withdrawal_id)
-```
-
-
-# Update Recipient Default Bank Account
-
-Updates the default bank account from a recipient
-
-```ruby
-def update_recipient_default_bank_account(recipient_id,
-                                          request,
-                                          idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipient_id` | `String` | Template, Required | Recipient id |
-| `request` | [`UpdateRecipientBankAccountRequest`](/doc/models/update-recipient-bank-account-request.md) | Body, Required | Bank account data |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```ruby
-recipient_id = 'recipient_id0'
-request = UpdateRecipientBankAccountRequest.new
-request.bank_account = CreateBankAccountRequest.new
-request.bank_account.holder_name = 'holder_name6'
-request.bank_account.holder_type = 'holder_type2'
-request.bank_account.holder_document = 'holder_document4'
-request.bank_account.bank = 'bank8'
-request.bank_account.branch_number = 'branch_number6'
-request.bank_account.branch_check_digit = 'branch_check_digit6'
-request.bank_account.account_number = 'account_number0'
-request.bank_account.account_check_digit = 'account_check_digit6'
-request.bank_account.type = 'type0'
-request.bank_account.metadata = {'key0' => 'metadata9', 'key1' => 'metadata8' } 
-request.bank_account.pix_key = 'pix_key4'
-request.payment_mode = 'bank_transfer'
-
-result = recipients_controller.update_recipient_default_bank_account(recipient_id, request, )
 ```
 
 
@@ -254,12 +181,12 @@ def update_recipient_metadata(recipient_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipient_id` | `String` | Template, Required | Recipient id |
-| `request` | [`UpdateMetadataRequest`](/doc/models/update-metadata-request.md) | Body, Required | Metadata |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Metadata |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
@@ -269,43 +196,6 @@ request = UpdateMetadataRequest.new
 request.metadata = {'key0' => 'metadata3' } 
 
 result = recipients_controller.update_recipient_metadata(recipient_id, request, )
-```
-
-
-# Get Transfers
-
-Gets a paginated list of transfers for the recipient
-
-```ruby
-def get_transfers(recipient_id,
-                  page: nil,
-                  size: nil,
-                  status: nil,
-                  created_since: nil,
-                  created_until: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipient_id` | `String` | Template, Required | Recipient id |
-| `page` | `Integer` | Query, Optional | Page number |
-| `size` | `Integer` | Query, Optional | Page size |
-| `status` | `String` | Query, Optional | Filter for transfer status |
-| `created_since` | `DateTime` | Query, Optional | Filter for start range of transfer creation date |
-| `created_until` | `DateTime` | Query, Optional | Filter for end range of transfer creation date |
-
-## Response Type
-
-[`ListTransferResponse`](/doc/models/list-transfer-response.md)
-
-## Example Usage
-
-```ruby
-recipient_id = 'recipient_id0'
-
-result = recipients_controller.get_transfers(recipient_id, )
 ```
 
 
@@ -327,7 +217,7 @@ def get_transfer(recipient_id,
 
 ## Response Type
 
-[`GetTransferResponse`](/doc/models/get-transfer-response.md)
+[`GetTransferResponse`](../../doc/models/get-transfer-response.md)
 
 ## Example Usage
 
@@ -336,67 +226,6 @@ recipient_id = 'recipient_id0'
 transfer_id = 'transfer_id6'
 
 result = recipients_controller.get_transfer(recipient_id, transfer_id)
-```
-
-
-# Create Withdraw
-
-```ruby
-def create_withdraw(recipient_id,
-                    request)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipient_id` | `String` | Template, Required | - |
-| `request` | [`CreateWithdrawRequest`](/doc/models/create-withdraw-request.md) | Body, Required | - |
-
-## Response Type
-
-[`GetWithdrawResponse`](/doc/models/get-withdraw-response.md)
-
-## Example Usage
-
-```ruby
-recipient_id = 'recipient_id0'
-request = CreateWithdrawRequest.new
-request.amount = 242
-
-result = recipients_controller.create_withdraw(recipient_id, request)
-```
-
-
-# Update Automatic Anticipation Settings
-
-Updates recipient metadata
-
-```ruby
-def update_automatic_anticipation_settings(recipient_id,
-                                           request,
-                                           idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipient_id` | `String` | Template, Required | Recipient id |
-| `request` | [`UpdateAutomaticAnticipationSettingsRequest`](/doc/models/update-automatic-anticipation-settings-request.md) | Body, Required | Metadata |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```ruby
-recipient_id = 'recipient_id0'
-request = UpdateAutomaticAnticipationSettingsRequest.new
-
-result = recipients_controller.update_automatic_anticipation_settings(recipient_id, request, )
 ```
 
 
@@ -418,7 +247,7 @@ def get_anticipation(recipient_id,
 
 ## Response Type
 
-[`GetAnticipationResponse`](/doc/models/get-anticipation-response.md)
+[`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md)
 
 ## Example Usage
 
@@ -443,12 +272,12 @@ def update_recipient_transfer_settings(recipient_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipient_id` | `String` | Template, Required | Recipient Identificator |
-| `request` | [`UpdateTransferSettingsRequest`](/doc/models/update-transfer-settings-request.md) | Body, Required | - |
+| `request` | [`UpdateTransferSettingsRequest`](../../doc/models/update-transfer-settings-request.md) | Body, Required | - |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
@@ -495,7 +324,7 @@ def get_anticipations(recipient_id,
 
 ## Response Type
 
-[`ListAnticipationResponse`](/doc/models/list-anticipation-response.md)
+[`ListAnticipationResponse`](../../doc/models/list-anticipation-response.md)
 
 ## Example Usage
 
@@ -506,30 +335,77 @@ result = recipients_controller.get_anticipations(recipient_id, )
 ```
 
 
-# Get Recipient
+# Update Recipient Default Bank Account
 
-Retrieves recipient information
+Updates the default bank account from a recipient
 
 ```ruby
-def get_recipient(recipient_id)
+def update_recipient_default_bank_account(recipient_id,
+                                          request,
+                                          idempotency_key: nil)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `recipient_id` | `String` | Template, Required | Recipiend id |
+| `recipient_id` | `String` | Template, Required | Recipient id |
+| `request` | [`UpdateRecipientBankAccountRequest`](../../doc/models/update-recipient-bank-account-request.md) | Body, Required | Bank account data |
+| `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
 ```ruby
 recipient_id = 'recipient_id0'
+request = UpdateRecipientBankAccountRequest.new
+request.bank_account = CreateBankAccountRequest.new
+request.bank_account.holder_name = 'holder_name6'
+request.bank_account.holder_type = 'holder_type2'
+request.bank_account.holder_document = 'holder_document4'
+request.bank_account.bank = 'bank8'
+request.bank_account.branch_number = 'branch_number6'
+request.bank_account.branch_check_digit = 'branch_check_digit6'
+request.bank_account.account_number = 'account_number0'
+request.bank_account.account_check_digit = 'account_check_digit6'
+request.bank_account.type = 'type0'
+request.bank_account.metadata = {'key0' => 'metadata9', 'key1' => 'metadata8' } 
+request.bank_account.pix_key = 'pix_key4'
+request.payment_mode = 'bank_transfer'
 
-result = recipients_controller.get_recipient(recipient_id)
+result = recipients_controller.update_recipient_default_bank_account(recipient_id, request, )
+```
+
+
+# Create Withdraw
+
+```ruby
+def create_withdraw(recipient_id,
+                    request)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipient_id` | `String` | Template, Required | - |
+| `request` | [`CreateWithdrawRequest`](../../doc/models/create-withdraw-request.md) | Body, Required | - |
+
+## Response Type
+
+[`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md)
+
+## Example Usage
+
+```ruby
+recipient_id = 'recipient_id0'
+request = CreateWithdrawRequest.new
+request.amount = 242
+
+result = recipients_controller.create_withdraw(recipient_id, request)
 ```
 
 
@@ -549,7 +425,7 @@ def get_balance(recipient_id)
 
 ## Response Type
 
-[`GetBalanceResponse`](/doc/models/get-balance-response.md)
+[`GetBalanceResponse`](../../doc/models/get-balance-response.md)
 
 ## Example Usage
 
@@ -557,43 +433,6 @@ def get_balance(recipient_id)
 recipient_id = 'recipient_id0'
 
 result = recipients_controller.get_balance(recipient_id)
-```
-
-
-# Get Withdrawals
-
-Gets a paginated list of transfers for the recipient
-
-```ruby
-def get_withdrawals(recipient_id,
-                    page: nil,
-                    size: nil,
-                    status: nil,
-                    created_since: nil,
-                    created_until: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipient_id` | `String` | Template, Required | - |
-| `page` | `Integer` | Query, Optional | - |
-| `size` | `Integer` | Query, Optional | - |
-| `status` | `String` | Query, Optional | - |
-| `created_since` | `DateTime` | Query, Optional | - |
-| `created_until` | `DateTime` | Query, Optional | - |
-
-## Response Type
-
-[`ListWithdrawals`](/doc/models/list-withdrawals.md)
-
-## Example Usage
-
-```ruby
-recipient_id = 'recipient_id0'
-
-result = recipients_controller.get_withdrawals(recipient_id, )
 ```
 
 
@@ -612,12 +451,12 @@ def create_transfer(recipient_id,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipient_id` | `String` | Template, Required | Recipient Id |
-| `request` | [`CreateTransferRequest`](/doc/models/create-transfer-request.md) | Body, Required | Transfer data |
+| `request` | [`CreateTransferRequest`](../../doc/models/create-transfer-request.md) | Body, Required | Transfer data |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetTransferResponse`](/doc/models/get-transfer-response.md)
+[`GetTransferResponse`](../../doc/models/get-transfer-response.md)
 
 ## Example Usage
 
@@ -644,12 +483,12 @@ def create_recipient(request,
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `request` | [`CreateRecipientRequest`](/doc/models/create-recipient-request.md) | Body, Required | Recipient data |
+| `request` | [`CreateRecipientRequest`](../../doc/models/create-recipient-request.md) | Body, Required | Recipient data |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
@@ -680,6 +519,167 @@ result = recipients_controller.create_recipient(request, )
 ```
 
 
+# Update Automatic Anticipation Settings
+
+Updates recipient metadata
+
+```ruby
+def update_automatic_anticipation_settings(recipient_id,
+                                           request,
+                                           idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipient_id` | `String` | Template, Required | Recipient id |
+| `request` | [`UpdateAutomaticAnticipationSettingsRequest`](../../doc/models/update-automatic-anticipation-settings-request.md) | Body, Required | Metadata |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```ruby
+recipient_id = 'recipient_id0'
+request = UpdateAutomaticAnticipationSettingsRequest.new
+
+result = recipients_controller.update_automatic_anticipation_settings(recipient_id, request, )
+```
+
+
+# Get Recipient
+
+Retrieves recipient information
+
+```ruby
+def get_recipient(recipient_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipient_id` | `String` | Template, Required | Recipiend id |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```ruby
+recipient_id = 'recipient_id0'
+
+result = recipients_controller.get_recipient(recipient_id)
+```
+
+
+# Get Withdrawals
+
+Gets a paginated list of transfers for the recipient
+
+```ruby
+def get_withdrawals(recipient_id,
+                    page: nil,
+                    size: nil,
+                    status: nil,
+                    created_since: nil,
+                    created_until: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipient_id` | `String` | Template, Required | - |
+| `page` | `Integer` | Query, Optional | - |
+| `size` | `Integer` | Query, Optional | - |
+| `status` | `String` | Query, Optional | - |
+| `created_since` | `DateTime` | Query, Optional | - |
+| `created_until` | `DateTime` | Query, Optional | - |
+
+## Response Type
+
+[`ListWithdrawals`](../../doc/models/list-withdrawals.md)
+
+## Example Usage
+
+```ruby
+recipient_id = 'recipient_id0'
+
+result = recipients_controller.get_withdrawals(recipient_id, )
+```
+
+
+# Get Withdraw by Id
+
+```ruby
+def get_withdraw_by_id(recipient_id,
+                       withdrawal_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipient_id` | `String` | Template, Required | - |
+| `withdrawal_id` | `String` | Template, Required | - |
+
+## Response Type
+
+[`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md)
+
+## Example Usage
+
+```ruby
+recipient_id = 'recipient_id0'
+withdrawal_id = 'withdrawal_id2'
+
+result = recipients_controller.get_withdraw_by_id(recipient_id, withdrawal_id)
+```
+
+
+# Get Transfers
+
+Gets a paginated list of transfers for the recipient
+
+```ruby
+def get_transfers(recipient_id,
+                  page: nil,
+                  size: nil,
+                  status: nil,
+                  created_since: nil,
+                  created_until: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipient_id` | `String` | Template, Required | Recipient id |
+| `page` | `Integer` | Query, Optional | Page number |
+| `size` | `Integer` | Query, Optional | Page size |
+| `status` | `String` | Query, Optional | Filter for transfer status |
+| `created_since` | `DateTime` | Query, Optional | Filter for start range of transfer creation date |
+| `created_until` | `DateTime` | Query, Optional | Filter for end range of transfer creation date |
+
+## Response Type
+
+[`ListTransferResponse`](../../doc/models/list-transfer-response.md)
+
+## Example Usage
+
+```ruby
+recipient_id = 'recipient_id0'
+
+result = recipients_controller.get_transfers(recipient_id, )
+```
+
+
 # Get Recipient by Code
 
 Retrieves recipient information
@@ -696,7 +696,7 @@ def get_recipient_by_code(code)
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
@@ -715,7 +715,7 @@ def get_default_recipient
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 

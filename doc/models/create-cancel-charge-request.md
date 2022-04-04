@@ -12,8 +12,8 @@ Request for canceling a charge.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `amount` | `Integer` | Optional | The amount that will be canceled. |
-| `split_rules` | [`Array<CreateCancelChargeSplitRulesRequest>`](/doc/models/create-cancel-charge-split-rules-request.md) | Optional | The split rules request |
-| `split` | [`Array<CreateSplitRequest>`](/doc/models/create-split-request.md) | Optional | Splits |
+| `split_rules` | [`Array<CreateCancelChargeSplitRulesRequest>`](../../doc/models/create-cancel-charge-split-rules-request.md) | Optional | The split rules request |
+| `split` | [`Array<CreateSplitRequest>`](../../doc/models/create-split-request.md) | Optional | Splits |
 | `operation_reference` | `String` | Required | - |
 
 ## Example (as JSON)

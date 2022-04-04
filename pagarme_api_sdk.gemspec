@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'pagarme_api_sdk'
-  s.version = '6.4.0'
+  s.version = '6.5.0'
   s.summary = 'pagarme_api_sdk'
   s.description = 'Pagarme API'
   s.authors = ['Pagar.me Pagamentos S/A']

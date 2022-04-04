@@ -23,7 +23,7 @@ def get_transaction(transaction_id)
 
 ## Response Type
 
-[`GetTransactionResponse`](/doc/models/get-transaction-response.md)
+[`GetTransactionResponse`](../../doc/models/get-transaction-response.md)
 
 ## Example Usage
 

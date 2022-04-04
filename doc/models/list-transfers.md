@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`Array<GetTransfer>`](/doc/models/get-transfer.md) | Required | The Increments response |
-| `paging` | [`PagingResponse`](/doc/models/paging-response.md) | Required | Paging object |
+| `data` | [`Array<GetTransfer>`](../../doc/models/get-transfer.md) | Required | The Increments response |
+| `paging` | [`PagingResponse`](../../doc/models/paging-response.md) | Required | Paging object |
 
 ## Example (as JSON)
 

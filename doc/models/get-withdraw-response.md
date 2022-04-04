@@ -20,8 +20,8 @@
 | `funding_date` | `DateTime` | Optional | - |
 | `funding_estimated_date` | `DateTime` | Optional | - |
 | `type` | `String` | Required | - |
-| `source` | [`GetWithdrawSourceResponse`](/doc/models/get-withdraw-source-response.md) | Required | - |
-| `target` | [`GetWithdrawTargetResponse`](/doc/models/get-withdraw-target-response.md) | Required | - |
+| `source` | [`GetWithdrawSourceResponse`](../../doc/models/get-withdraw-source-response.md) | Required | - |
+| `target` | [`GetWithdrawTargetResponse`](../../doc/models/get-withdraw-target-response.md) | Required | - |
 
 ## Example (as JSON)
 
