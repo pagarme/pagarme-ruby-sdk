@@ -22,18 +22,18 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         due_at
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(due_at = nil)
+    def initialize(due_at = SKIP)
       @due_at = due_at unless due_at == SKIP
     end
 

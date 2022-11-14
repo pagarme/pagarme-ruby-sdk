@@ -11,7 +11,7 @@ module PagarmeApiSdk
 
     # Indicates if the card should be verified before creation. If true,
     # executes an authorization before saving the card.
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :verify_card
 
     # A mapping from model property names to API property names.
@@ -22,17 +22,17 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(verify_card = nil)
-      @verify_card = verify_card unless verify_card == SKIP
+      @verify_card = verify_card
     end
 
     # Creates an instance of the object from a hash.
@@ -40,7 +40,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      verify_card = hash.key?('verify_card') ? hash['verify_card'] : SKIP
+      verify_card = hash.key?('verify_card') ? hash['verify_card'] : nil
 
       # Create object from extracted values.
       CreateCardOptionsRequest.new(verify_card)

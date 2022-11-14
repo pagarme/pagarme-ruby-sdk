@@ -22,7 +22,7 @@ module PagarmeApiSdk
     attr_accessor :authentication
 
     # Authorize and capture?
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :capture
 
     # A mapping from model property names to API property names.
@@ -36,7 +36,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         statement_descriptor
         installments
@@ -46,14 +46,14 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(statement_descriptor = nil,
-                   installments = nil,
-                   authentication = nil,
-                   capture = nil)
+    def initialize(statement_descriptor = SKIP,
+                   installments = SKIP,
+                   authentication = SKIP,
+                   capture = SKIP)
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @installments = installments unless installments == SKIP
       @authentication = authentication unless authentication == SKIP

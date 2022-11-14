@@ -67,7 +67,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         cycles
         deleted_at
@@ -78,7 +78,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -87,16 +87,16 @@ module PagarmeApiSdk
                    discount_type = nil,
                    status = nil,
                    created_at = nil,
-                   cycles = nil,
-                   deleted_at = nil,
-                   description = nil,
-                   subscription = nil,
-                   subscription_item = nil)
-      @id = id unless id == SKIP
-      @value = value unless value == SKIP
-      @discount_type = discount_type unless discount_type == SKIP
-      @status = status unless status == SKIP
-      @created_at = created_at unless created_at == SKIP
+                   cycles = SKIP,
+                   deleted_at = SKIP,
+                   description = SKIP,
+                   subscription = SKIP,
+                   subscription_item = SKIP)
+      @id = id
+      @value = value
+      @discount_type = discount_type
+      @status = status
+      @created_at = created_at
       @cycles = cycles unless cycles == SKIP
       @deleted_at = deleted_at unless deleted_at == SKIP
       @description = description unless description == SKIP
@@ -109,14 +109,12 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
-      value = hash.key?('value') ? hash['value'] : SKIP
-      discount_type = hash.key?('discount_type') ? hash['discount_type'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      value = hash.key?('value') ? hash['value'] : nil
+      discount_type = hash.key?('discount_type') ? hash['discount_type'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       cycles = hash.key?('cycles') ? hash['cycles'] : SKIP
       deleted_at = if hash.key?('deleted_at')

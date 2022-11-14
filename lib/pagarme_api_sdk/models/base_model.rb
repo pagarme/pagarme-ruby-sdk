@@ -11,11 +11,11 @@ module PagarmeApiSdk
       hash = {}
       instance_variables.each do |name|
         value = instance_variable_get(name)
-        name = name[1..-1]
+        name = name[1..]
         key = self.class.names.key?(name) ? self.class.names[name] : name
 
-        optional_fields = optionals if respond_to? 'optionals'
-        nullable_fields = nullables if respond_to? 'nullables'
+        optional_fields = self.class.optionals
+        nullable_fields = self.class.nullables
         if value.nil?
           next unless nullable_fields.include?(name)
 

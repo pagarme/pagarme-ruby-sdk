@@ -46,7 +46,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         recipient
         options
@@ -54,7 +54,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -62,14 +62,14 @@ module PagarmeApiSdk
                    amount = nil,
                    gateway_id = nil,
                    id = nil,
-                   recipient = nil,
-                   options = nil)
-      @type = type unless type == SKIP
-      @amount = amount unless amount == SKIP
+                   recipient = SKIP,
+                   options = SKIP)
+      @type = type
+      @amount = amount
       @recipient = recipient unless recipient == SKIP
-      @gateway_id = gateway_id unless gateway_id == SKIP
+      @gateway_id = gateway_id
       @options = options unless options == SKIP
-      @id = id unless id == SKIP
+      @id = id
     end
 
     # Creates an instance of the object from a hash.
@@ -77,10 +77,10 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      type = hash.key?('type') ? hash['type'] : SKIP
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
-      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
-      id = hash.key?('id') ? hash['id'] : SKIP
+      type = hash.key?('type') ? hash['type'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : nil
+      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : nil
+      id = hash.key?('id') ? hash['id'] : nil
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if hash['recipient']
       options = GetSplitOptionsResponse.from_hash(hash['options']) if hash['options']
 

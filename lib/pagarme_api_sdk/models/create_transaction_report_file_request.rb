@@ -32,7 +32,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         start_at
         end_at
@@ -40,14 +40,14 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(name = nil,
-                   start_at = nil,
-                   end_at = nil)
-      @name = name unless name == SKIP
+                   start_at = SKIP,
+                   end_at = SKIP)
+      @name = name
       @start_at = start_at unless start_at == SKIP
       @end_at = end_at unless end_at == SKIP
     end
@@ -57,7 +57,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      name = hash.key?('name') ? hash['name'] : SKIP
+      name = hash.key?('name') ? hash['name'] : nil
       start_at = if hash.key?('start_at')
                    (DateTimeHelper.from_rfc3339(hash['start_at']) if hash['start_at'])
                  else

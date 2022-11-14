@@ -36,24 +36,24 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         card_token
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(payment_method = nil,
                    card_id = nil,
                    card = nil,
-                   card_token = nil)
-      @payment_method = payment_method unless payment_method == SKIP
-      @card_id = card_id unless card_id == SKIP
-      @card = card unless card == SKIP
+                   card_token = SKIP)
+      @payment_method = payment_method
+      @card_id = card_id
+      @card = card
       @card_token = card_token unless card_token == SKIP
     end
 
@@ -63,8 +63,8 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       payment_method =
-        hash.key?('payment_method') ? hash['payment_method'] : SKIP
-      card_id = hash.key?('card_id') ? hash['card_id'] : SKIP
+        hash.key?('payment_method') ? hash['payment_method'] : nil
+      card_id = hash.key?('card_id') ? hash['card_id'] : nil
       card = CreateCardRequest.from_hash(hash['card']) if hash['card']
       card_token = hash.key?('card_token') ? hash['card_token'] : SKIP
 

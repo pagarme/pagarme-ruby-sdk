@@ -16,10 +16,11 @@ The settings for creating a private label payment
 | `card` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Card data |
 | `card_id` | `String` | Optional | The Card id |
 | `card_token` | `String` | Optional | - |
-| `recurrence` | `Boolean` | Optional | Indicates a recurrence |
-| `capture` | `Boolean` | Optional | Indicates if the operation should be only authorization or auth and capture.<br>**Default**: `true` |
-| `extended_limit_enabled` | `Boolean` | Optional | Indicates whether the extended label (private label) is enabled |
+| `recurrence` | `TrueClass\|FalseClass` | Optional | Indicates a recurrence |
+| `capture` | `TrueClass\|FalseClass` | Optional | Indicates if the operation should be only authorization or auth and capture.<br>**Default**: `true` |
+| `extended_limit_enabled` | `TrueClass\|FalseClass` | Optional | Indicates whether the extended label (private label) is enabled |
 | `extended_limit_code` | `String` | Optional | Extended Limit Code |
+| `recurrency_cycle` | `String` | Optional | Defines whether the card has been used one or more times. |
 
 ## Example (as JSON)
 
@@ -33,7 +34,8 @@ The settings for creating a private label payment
   "recurrence": null,
   "capture": null,
   "extended_limit_enabled": null,
-  "extended_limit_code": null
+  "extended_limit_code": null,
+  "recurrency_cycle": null
 }
 ```
 

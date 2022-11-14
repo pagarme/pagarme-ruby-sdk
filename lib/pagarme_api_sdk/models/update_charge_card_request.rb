@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Indicates if the subscriptions using this card must also be updated
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :update_subscription
 
     # Card id
@@ -22,7 +22,7 @@ module PagarmeApiSdk
     attr_accessor :card
 
     # Indicates a recurrence
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :recurrence
 
     # A mapping from model property names to API property names.
@@ -36,12 +36,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -49,10 +49,10 @@ module PagarmeApiSdk
                    card_id = nil,
                    card = nil,
                    recurrence = nil)
-      @update_subscription = update_subscription unless update_subscription == SKIP
-      @card_id = card_id unless card_id == SKIP
-      @card = card unless card == SKIP
-      @recurrence = recurrence unless recurrence == SKIP
+      @update_subscription = update_subscription
+      @card_id = card_id
+      @card = card
+      @recurrence = recurrence
     end
 
     # Creates an instance of the object from a hash.
@@ -61,10 +61,10 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       update_subscription =
-        hash.key?('update_subscription') ? hash['update_subscription'] : SKIP
-      card_id = hash.key?('card_id') ? hash['card_id'] : SKIP
+        hash.key?('update_subscription') ? hash['update_subscription'] : nil
+      card_id = hash.key?('card_id') ? hash['card_id'] : nil
       card = CreateCardRequest.from_hash(hash['card']) if hash['card']
-      recurrence = hash.key?('recurrence') ? hash['recurrence'] : SKIP
+      recurrence = hash.key?('recurrence') ? hash['recurrence'] : nil
 
       # Create object from extracted values.
       UpdateChargeCardRequest.new(update_subscription,

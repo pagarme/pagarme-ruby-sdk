@@ -16,7 +16,7 @@ Request for creating a new charge
 | `customer_id` | `String` | Required | The customer's id |
 | `customer` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Required | Customer data |
 | `payment` | [`CreatePaymentRequest`](../../doc/models/create-payment-request.md) | Required | Payment data |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 | `due_at` | `DateTime` | Optional | The charge due date |
 | `antifraud` | [`CreateAntifraudRequest`](../../doc/models/create-antifraud-request.md) | Required | - |
 | `order_id` | `String` | Required | Order Id |

@@ -46,7 +46,7 @@ module PagarmeApiSdk
     attr_accessor :type
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Pix key
@@ -71,12 +71,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -91,17 +91,17 @@ module PagarmeApiSdk
                    type = nil,
                    metadata = nil,
                    pix_key = nil)
-      @holder_name = holder_name unless holder_name == SKIP
-      @holder_type = holder_type unless holder_type == SKIP
-      @holder_document = holder_document unless holder_document == SKIP
-      @bank = bank unless bank == SKIP
-      @branch_number = branch_number unless branch_number == SKIP
-      @branch_check_digit = branch_check_digit unless branch_check_digit == SKIP
-      @account_number = account_number unless account_number == SKIP
-      @account_check_digit = account_check_digit unless account_check_digit == SKIP
-      @type = type unless type == SKIP
-      @metadata = metadata unless metadata == SKIP
-      @pix_key = pix_key unless pix_key == SKIP
+      @holder_name = holder_name
+      @holder_type = holder_type
+      @holder_document = holder_document
+      @bank = bank
+      @branch_number = branch_number
+      @branch_check_digit = branch_check_digit
+      @account_number = account_number
+      @account_check_digit = account_check_digit
+      @type = type
+      @metadata = metadata
+      @pix_key = pix_key
     end
 
     # Creates an instance of the object from a hash.
@@ -109,21 +109,21 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      holder_name = hash.key?('holder_name') ? hash['holder_name'] : SKIP
-      holder_type = hash.key?('holder_type') ? hash['holder_type'] : SKIP
+      holder_name = hash.key?('holder_name') ? hash['holder_name'] : nil
+      holder_type = hash.key?('holder_type') ? hash['holder_type'] : nil
       holder_document =
-        hash.key?('holder_document') ? hash['holder_document'] : SKIP
-      bank = hash.key?('bank') ? hash['bank'] : SKIP
-      branch_number = hash.key?('branch_number') ? hash['branch_number'] : SKIP
+        hash.key?('holder_document') ? hash['holder_document'] : nil
+      bank = hash.key?('bank') ? hash['bank'] : nil
+      branch_number = hash.key?('branch_number') ? hash['branch_number'] : nil
       branch_check_digit =
-        hash.key?('branch_check_digit') ? hash['branch_check_digit'] : SKIP
+        hash.key?('branch_check_digit') ? hash['branch_check_digit'] : nil
       account_number =
-        hash.key?('account_number') ? hash['account_number'] : SKIP
+        hash.key?('account_number') ? hash['account_number'] : nil
       account_check_digit =
-        hash.key?('account_check_digit') ? hash['account_check_digit'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
-      pix_key = hash.key?('pix_key') ? hash['pix_key'] : SKIP
+        hash.key?('account_check_digit') ? hash['account_check_digit'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
+      pix_key = hash.key?('pix_key') ? hash['pix_key'] : nil
 
       # Create object from extracted values.
       CreateBankAccountRequest.new(holder_name,

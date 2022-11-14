@@ -67,7 +67,7 @@ module PagarmeApiSdk
     attr_accessor :discounts
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Setup data
@@ -177,7 +177,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         plan_id
         customer_id
@@ -198,7 +198,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -219,37 +219,37 @@ module PagarmeApiSdk
                    metadata = nil,
                    setup = nil,
                    increments = nil,
-                   plan_id = nil,
-                   customer_id = nil,
-                   card_id = nil,
-                   billing_day = nil,
-                   installments = nil,
-                   start_at = nil,
-                   minimum_price = nil,
-                   cycles = nil,
-                   card_token = nil,
-                   gateway_affiliation_id = nil,
-                   quantity = nil,
-                   boleto_due_days = nil,
-                   period = nil,
-                   submerchant = nil,
-                   split = nil)
-      @customer = customer unless customer == SKIP
-      @card = card unless card == SKIP
-      @code = code unless code == SKIP
-      @payment_method = payment_method unless payment_method == SKIP
-      @billing_type = billing_type unless billing_type == SKIP
-      @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
-      @description = description unless description == SKIP
-      @currency = currency unless currency == SKIP
-      @interval = interval unless interval == SKIP
-      @interval_count = interval_count unless interval_count == SKIP
-      @pricing_scheme = pricing_scheme unless pricing_scheme == SKIP
-      @items = items unless items == SKIP
-      @shipping = shipping unless shipping == SKIP
-      @discounts = discounts unless discounts == SKIP
-      @metadata = metadata unless metadata == SKIP
-      @setup = setup unless setup == SKIP
+                   plan_id = SKIP,
+                   customer_id = SKIP,
+                   card_id = SKIP,
+                   billing_day = SKIP,
+                   installments = SKIP,
+                   start_at = SKIP,
+                   minimum_price = SKIP,
+                   cycles = SKIP,
+                   card_token = SKIP,
+                   gateway_affiliation_id = SKIP,
+                   quantity = SKIP,
+                   boleto_due_days = SKIP,
+                   period = SKIP,
+                   submerchant = SKIP,
+                   split = SKIP)
+      @customer = customer
+      @card = card
+      @code = code
+      @payment_method = payment_method
+      @billing_type = billing_type
+      @statement_descriptor = statement_descriptor
+      @description = description
+      @currency = currency
+      @interval = interval
+      @interval_count = interval_count
+      @pricing_scheme = pricing_scheme
+      @items = items
+      @shipping = shipping
+      @discounts = discounts
+      @metadata = metadata
+      @setup = setup
       @plan_id = plan_id unless plan_id == SKIP
       @customer_id = customer_id unless customer_id == SKIP
       @card_id = card_id unless card_id == SKIP
@@ -262,7 +262,7 @@ module PagarmeApiSdk
       @gateway_affiliation_id = gateway_affiliation_id unless gateway_affiliation_id == SKIP
       @quantity = quantity unless quantity == SKIP
       @boleto_due_days = boleto_due_days unless boleto_due_days == SKIP
-      @increments = increments unless increments == SKIP
+      @increments = increments
       @period = period unless period == SKIP
       @submerchant = submerchant unless submerchant == SKIP
       @split = split unless split == SKIP
@@ -275,17 +275,17 @@ module PagarmeApiSdk
       # Extract variables from the hash.
       customer = CreateCustomerRequest.from_hash(hash['customer']) if hash['customer']
       card = CreateCardRequest.from_hash(hash['card']) if hash['card']
-      code = hash.key?('code') ? hash['code'] : SKIP
+      code = hash.key?('code') ? hash['code'] : nil
       payment_method =
-        hash.key?('payment_method') ? hash['payment_method'] : SKIP
-      billing_type = hash.key?('billing_type') ? hash['billing_type'] : SKIP
+        hash.key?('payment_method') ? hash['payment_method'] : nil
+      billing_type = hash.key?('billing_type') ? hash['billing_type'] : nil
       statement_descriptor =
-        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : SKIP
-      description = hash.key?('description') ? hash['description'] : SKIP
-      currency = hash.key?('currency') ? hash['currency'] : SKIP
-      interval = hash.key?('interval') ? hash['interval'] : SKIP
+        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : nil
+      description = hash.key?('description') ? hash['description'] : nil
+      currency = hash.key?('currency') ? hash['currency'] : nil
+      interval = hash.key?('interval') ? hash['interval'] : nil
       interval_count =
-        hash.key?('interval_count') ? hash['interval_count'] : SKIP
+        hash.key?('interval_count') ? hash['interval_count'] : nil
       pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme']) if
         hash['pricing_scheme']
       # Parameter is an array, so we need to iterate through it
@@ -297,7 +297,7 @@ module PagarmeApiSdk
         end
       end
 
-      items = SKIP unless hash.key?('items')
+      items = nil unless hash.key?('items')
       shipping = CreateShippingRequest.from_hash(hash['shipping']) if hash['shipping']
       # Parameter is an array, so we need to iterate through it
       discounts = nil
@@ -308,8 +308,8 @@ module PagarmeApiSdk
         end
       end
 
-      discounts = SKIP unless hash.key?('discounts')
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      discounts = nil unless hash.key?('discounts')
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
       setup = CreateSetupRequest.from_hash(hash['setup']) if hash['setup']
       # Parameter is an array, so we need to iterate through it
       increments = nil
@@ -320,7 +320,7 @@ module PagarmeApiSdk
         end
       end
 
-      increments = SKIP unless hash.key?('increments')
+      increments = nil unless hash.key?('increments')
       plan_id = hash.key?('plan_id') ? hash['plan_id'] : SKIP
       customer_id = hash.key?('customer_id') ? hash['customer_id'] : SKIP
       card_id = hash.key?('card_id') ? hash['card_id'] : SKIP

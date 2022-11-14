@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `description` | `String` | Required | Description |
-| `confirm` | `Boolean` | Required | Indicates whether cash collection will be confirmed in the act of creation |
+| `confirm` | `TrueClass\|FalseClass` | Required | Indicates whether cash collection will be confirmed in the act of creation |
 
 ## Example (as JSON)
 

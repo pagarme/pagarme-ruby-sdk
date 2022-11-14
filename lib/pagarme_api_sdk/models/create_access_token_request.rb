@@ -21,18 +21,18 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         expires_in
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(expires_in = nil)
+    def initialize(expires_in = SKIP)
       @expires_in = expires_in unless expires_in == SKIP
     end
 

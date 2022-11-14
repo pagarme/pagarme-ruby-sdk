@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `transfer_enabled` | `Boolean` | Required | - |
+| `transfer_enabled` | `TrueClass\|FalseClass` | Required | - |
 | `transfer_interval` | `String` | Required | - |
 | `transfer_day` | `Integer` | Required | - |
 

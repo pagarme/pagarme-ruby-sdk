@@ -61,7 +61,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         cycles
         quantity
@@ -70,7 +70,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -80,15 +80,15 @@ module PagarmeApiSdk
                    plan_item_id = nil,
                    discounts = nil,
                    name = nil,
-                   cycles = nil,
-                   quantity = nil,
-                   minimum_price = nil)
-      @description = description unless description == SKIP
-      @pricing_scheme = pricing_scheme unless pricing_scheme == SKIP
-      @id = id unless id == SKIP
-      @plan_item_id = plan_item_id unless plan_item_id == SKIP
-      @discounts = discounts unless discounts == SKIP
-      @name = name unless name == SKIP
+                   cycles = SKIP,
+                   quantity = SKIP,
+                   minimum_price = SKIP)
+      @description = description
+      @pricing_scheme = pricing_scheme
+      @id = id
+      @plan_item_id = plan_item_id
+      @discounts = discounts
+      @name = name
       @cycles = cycles unless cycles == SKIP
       @quantity = quantity unless quantity == SKIP
       @minimum_price = minimum_price unless minimum_price == SKIP
@@ -99,11 +99,11 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      description = hash.key?('description') ? hash['description'] : SKIP
+      description = hash.key?('description') ? hash['description'] : nil
       pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme']) if
         hash['pricing_scheme']
-      id = hash.key?('id') ? hash['id'] : SKIP
-      plan_item_id = hash.key?('plan_item_id') ? hash['plan_item_id'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      plan_item_id = hash.key?('plan_item_id') ? hash['plan_item_id'] : nil
       # Parameter is an array, so we need to iterate through it
       discounts = nil
       unless hash['discounts'].nil?
@@ -113,8 +113,8 @@ module PagarmeApiSdk
         end
       end
 
-      discounts = SKIP unless hash.key?('discounts')
-      name = hash.key?('name') ? hash['name'] : SKIP
+      discounts = nil unless hash.key?('discounts')
+      name = hash.key?('name') ? hash['name'] : nil
       cycles = hash.key?('cycles') ? hash['cycles'] : SKIP
       quantity = hash.key?('quantity') ? hash['quantity'] : SKIP
       minimum_price = hash.key?('minimum_price') ? hash['minimum_price'] : SKIP

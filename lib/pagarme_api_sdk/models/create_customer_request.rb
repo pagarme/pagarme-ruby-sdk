@@ -30,7 +30,7 @@ module PagarmeApiSdk
     attr_accessor :address
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Metadata
@@ -66,7 +66,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         gender
         document_type
@@ -74,7 +74,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -86,16 +86,16 @@ module PagarmeApiSdk
                    metadata = nil,
                    phones = nil,
                    code = nil,
-                   gender = nil,
-                   document_type = nil)
-      @name = name unless name == SKIP
-      @email = email unless email == SKIP
-      @document = document unless document == SKIP
-      @type = type unless type == SKIP
-      @address = address unless address == SKIP
-      @metadata = metadata unless metadata == SKIP
-      @phones = phones unless phones == SKIP
-      @code = code unless code == SKIP
+                   gender = SKIP,
+                   document_type = SKIP)
+      @name = name
+      @email = email
+      @document = document
+      @type = type
+      @address = address
+      @metadata = metadata
+      @phones = phones
+      @code = code
       @gender = gender unless gender == SKIP
       @document_type = document_type unless document_type == SKIP
     end
@@ -105,14 +105,14 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      name = hash.key?('name') ? hash['name'] : SKIP
-      email = hash.key?('email') ? hash['email'] : SKIP
-      document = hash.key?('document') ? hash['document'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
+      name = hash.key?('name') ? hash['name'] : nil
+      email = hash.key?('email') ? hash['email'] : nil
+      document = hash.key?('document') ? hash['document'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
       address = CreateAddressRequest.from_hash(hash['address']) if hash['address']
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
       phones = CreatePhonesRequest.from_hash(hash['phones']) if hash['phones']
-      code = hash.key?('code') ? hash['code'] : SKIP
+      code = hash.key?('code') ? hash['code'] : nil
       gender = hash.key?('gender') ? hash['gender'] : SKIP
       document_type = hash.key?('document_type') ? hash['document_type'] : SKIP
 

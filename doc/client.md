@@ -8,6 +8,7 @@ The following parameters are configurable for the API Client:
 | `basic_auth_user_name` | `String` | The username to use with basic authentication |
 | `basic_auth_password` | `String` | The password to use with basic authentication |
 | `connection` | `Faraday::Connection` | The Faraday connection object passed by the SDK user for making requests |
+| `adapter` | `Faraday::Adapter` | The Faraday adapter object passed by the SDK user for performing http requests |
 | `timeout` | `Float` | The value to use for connection timeout. <br> **Default: 60** |
 | `max_retries` | `Integer` | The number of times to retry an endpoint call if it fails. <br> **Default: 0** |
 | `retry_interval` | `Float` | Pause in seconds between retries. <br> **Default: 1** |
@@ -32,14 +33,14 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 
 | Name | Description |
 |  --- | --- |
-| orders | Gets OrdersController |
 | plans | Gets PlansController |
 | subscriptions | Gets SubscriptionsController |
 | invoices | Gets InvoicesController |
+| orders | Gets OrdersController |
 | customers | Gets CustomersController |
 | recipients | Gets RecipientsController |
 | charges | Gets ChargesController |
-| tokens | Gets TokensController |
 | transfers | Gets TransfersController |
+| tokens | Gets TokensController |
 | transactions | Gets TransactionsController |
 

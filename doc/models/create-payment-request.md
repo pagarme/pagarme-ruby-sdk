@@ -24,7 +24,7 @@ Payment data
 | `checkout` | [`CreateCheckoutPaymentRequest`](../../doc/models/create-checkout-payment-request.md) | Optional | Settings for checkout payment |
 | `customer_id` | `String` | Optional | Customer Id |
 | `customer` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Optional | Customer |
-| `metadata` | `Hash` | Optional | Metadata |
+| `metadata` | `Hash of String` | Optional | Metadata |
 | `cash` | [`CreateCashPaymentRequest`](../../doc/models/create-cash-payment-request.md) | Optional | Settings for cash payment |
 | `private_label` | [`CreatePrivateLabelPaymentRequest`](../../doc/models/create-private-label-payment-request.md) | Required | Settings for private label payment |
 | `pix` | [`CreatePixPaymentRequest`](../../doc/models/create-pix-payment-request.md) | Optional | Settings for pix payment |
@@ -57,7 +57,8 @@ Payment data
     "recurrence": null,
     "capture": null,
     "extended_limit_enabled": null,
-    "extended_limit_code": null
+    "extended_limit_code": null,
+    "recurrency_cycle": null
   },
   "pix": null
 }

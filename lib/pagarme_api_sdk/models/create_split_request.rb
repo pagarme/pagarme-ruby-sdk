@@ -41,7 +41,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         options
         split_rule_id
@@ -49,18 +49,18 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(type = nil,
                    amount = nil,
                    recipient_id = nil,
-                   options = nil,
-                   split_rule_id = nil)
-      @type = type unless type == SKIP
-      @amount = amount unless amount == SKIP
-      @recipient_id = recipient_id unless recipient_id == SKIP
+                   options = SKIP,
+                   split_rule_id = SKIP)
+      @type = type
+      @amount = amount
+      @recipient_id = recipient_id
       @options = options unless options == SKIP
       @split_rule_id = split_rule_id unless split_rule_id == SKIP
     end
@@ -70,9 +70,9 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      type = hash.key?('type') ? hash['type'] : SKIP
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
-      recipient_id = hash.key?('recipient_id') ? hash['recipient_id'] : SKIP
+      type = hash.key?('type') ? hash['type'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : nil
+      recipient_id = hash.key?('recipient_id') ? hash['recipient_id'] : nil
       options = CreateSplitOptionsRequest.from_hash(hash['options']) if hash['options']
       split_rule_id = hash.key?('split_rule_id') ? hash['split_rule_id'] : SKIP
 

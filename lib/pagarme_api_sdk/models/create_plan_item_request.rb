@@ -46,7 +46,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         cycles
         quantity
@@ -54,7 +54,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -62,12 +62,12 @@ module PagarmeApiSdk
                    pricing_scheme = nil,
                    id = nil,
                    description = nil,
-                   cycles = nil,
-                   quantity = nil)
-      @name = name unless name == SKIP
-      @pricing_scheme = pricing_scheme unless pricing_scheme == SKIP
-      @id = id unless id == SKIP
-      @description = description unless description == SKIP
+                   cycles = SKIP,
+                   quantity = SKIP)
+      @name = name
+      @pricing_scheme = pricing_scheme
+      @id = id
+      @description = description
       @cycles = cycles unless cycles == SKIP
       @quantity = quantity unless quantity == SKIP
     end
@@ -77,11 +77,11 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      name = hash.key?('name') ? hash['name'] : SKIP
+      name = hash.key?('name') ? hash['name'] : nil
       pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme']) if
         hash['pricing_scheme']
-      id = hash.key?('id') ? hash['id'] : SKIP
-      description = hash.key?('description') ? hash['description'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      description = hash.key?('description') ? hash['description'] : nil
       cycles = hash.key?('cycles') ? hash['cycles'] : SKIP
       quantity = hash.key?('quantity') ? hash['quantity'] : SKIP
 

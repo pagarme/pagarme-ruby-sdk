@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Indicates if the payment method from the subscription must also be updated
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :update_subscription
 
     # The new payment method
@@ -61,12 +61,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -79,15 +79,15 @@ module PagarmeApiSdk
                    cash = nil,
                    bank_transfer = nil,
                    private_label = nil)
-      @update_subscription = update_subscription unless update_subscription == SKIP
-      @payment_method = payment_method unless payment_method == SKIP
-      @credit_card = credit_card unless credit_card == SKIP
-      @debit_card = debit_card unless debit_card == SKIP
-      @boleto = boleto unless boleto == SKIP
-      @voucher = voucher unless voucher == SKIP
-      @cash = cash unless cash == SKIP
-      @bank_transfer = bank_transfer unless bank_transfer == SKIP
-      @private_label = private_label unless private_label == SKIP
+      @update_subscription = update_subscription
+      @payment_method = payment_method
+      @credit_card = credit_card
+      @debit_card = debit_card
+      @boleto = boleto
+      @voucher = voucher
+      @cash = cash
+      @bank_transfer = bank_transfer
+      @private_label = private_label
     end
 
     # Creates an instance of the object from a hash.
@@ -96,9 +96,9 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       update_subscription =
-        hash.key?('update_subscription') ? hash['update_subscription'] : SKIP
+        hash.key?('update_subscription') ? hash['update_subscription'] : nil
       payment_method =
-        hash.key?('payment_method') ? hash['payment_method'] : SKIP
+        hash.key?('payment_method') ? hash['payment_method'] : nil
       credit_card = CreateCreditCardPaymentRequest.from_hash(hash['credit_card']) if
         hash['credit_card']
       debit_card = CreateDebitCardPaymentRequest.from_hash(hash['debit_card']) if

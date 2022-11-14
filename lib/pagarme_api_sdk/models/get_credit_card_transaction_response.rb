@@ -77,7 +77,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       _arr = %w[
         installments
       ]
@@ -85,7 +85,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       _arr = []
       (_arr << super()).flatten!
     end
@@ -114,28 +114,25 @@ module PagarmeApiSdk
                    gateway_response = nil,
                    antifraud_response = nil,
                    split = nil,
-                   installments = nil,
-                   next_attempt = nil,
+                   installments = SKIP,
+                   next_attempt = SKIP,
                    transaction_type = 'credit_card',
-                   metadata = nil)
-      @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
-      @acquirer_name = acquirer_name unless acquirer_name == SKIP
-      unless acquirer_affiliation_code == SKIP
-        @acquirer_affiliation_code =
-          acquirer_affiliation_code
-      end
-      @acquirer_tid = acquirer_tid unless acquirer_tid == SKIP
-      @acquirer_nsu = acquirer_nsu unless acquirer_nsu == SKIP
-      @acquirer_auth_code = acquirer_auth_code unless acquirer_auth_code == SKIP
-      @operation_type = operation_type unless operation_type == SKIP
-      @card = card unless card == SKIP
-      @acquirer_message = acquirer_message unless acquirer_message == SKIP
-      @acquirer_return_code = acquirer_return_code unless acquirer_return_code == SKIP
+                   metadata = SKIP,
+                   interest = SKIP,
+                   fine = SKIP,
+                   max_days_to_pay_past_due = SKIP)
+      @statement_descriptor = statement_descriptor
+      @acquirer_name = acquirer_name
+      @acquirer_affiliation_code = acquirer_affiliation_code
+      @acquirer_tid = acquirer_tid
+      @acquirer_nsu = acquirer_nsu
+      @acquirer_auth_code = acquirer_auth_code
+      @operation_type = operation_type
+      @card = card
+      @acquirer_message = acquirer_message
+      @acquirer_return_code = acquirer_return_code
       @installments = installments unless installments == SKIP
-      unless threed_authentication_url == SKIP
-        @threed_authentication_url =
-          threed_authentication_url
-      end
+      @threed_authentication_url = threed_authentication_url
 
       # Call the constructor of the base class
       super(gateway_id,
@@ -153,7 +150,10 @@ module PagarmeApiSdk
             split,
             next_attempt,
             transaction_type,
-            metadata)
+            metadata,
+            interest,
+            fine,
+            max_days_to_pay_past_due)
     end
 
     # Creates an instance of the object from a hash.
@@ -162,39 +162,35 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       statement_descriptor =
-        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : SKIP
-      acquirer_name = hash.key?('acquirer_name') ? hash['acquirer_name'] : SKIP
+        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : nil
+      acquirer_name = hash.key?('acquirer_name') ? hash['acquirer_name'] : nil
       acquirer_affiliation_code =
-        hash.key?('acquirer_affiliation_code') ? hash['acquirer_affiliation_code'] : SKIP
-      acquirer_tid = hash.key?('acquirer_tid') ? hash['acquirer_tid'] : SKIP
-      acquirer_nsu = hash.key?('acquirer_nsu') ? hash['acquirer_nsu'] : SKIP
+        hash.key?('acquirer_affiliation_code') ? hash['acquirer_affiliation_code'] : nil
+      acquirer_tid = hash.key?('acquirer_tid') ? hash['acquirer_tid'] : nil
+      acquirer_nsu = hash.key?('acquirer_nsu') ? hash['acquirer_nsu'] : nil
       acquirer_auth_code =
-        hash.key?('acquirer_auth_code') ? hash['acquirer_auth_code'] : SKIP
+        hash.key?('acquirer_auth_code') ? hash['acquirer_auth_code'] : nil
       operation_type =
-        hash.key?('operation_type') ? hash['operation_type'] : SKIP
+        hash.key?('operation_type') ? hash['operation_type'] : nil
       card = GetCardResponse.from_hash(hash['card']) if hash['card']
       acquirer_message =
-        hash.key?('acquirer_message') ? hash['acquirer_message'] : SKIP
+        hash.key?('acquirer_message') ? hash['acquirer_message'] : nil
       acquirer_return_code =
-        hash.key?('acquirer_return_code') ? hash['acquirer_return_code'] : SKIP
+        hash.key?('acquirer_return_code') ? hash['acquirer_return_code'] : nil
       threed_authentication_url =
-        hash.key?('threed_authentication_url') ? hash['threed_authentication_url'] : SKIP
-      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
-      success = hash.key?('success') ? hash['success'] : SKIP
+        hash.key?('threed_authentication_url') ? hash['threed_authentication_url'] : nil
+      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
+      success = hash.key?('success') ? hash['success'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
-                   else
-                     SKIP
                    end
-      attempt_count = hash.key?('attempt_count') ? hash['attempt_count'] : SKIP
-      max_attempts = hash.key?('max_attempts') ? hash['max_attempts'] : SKIP
+      attempt_count = hash.key?('attempt_count') ? hash['attempt_count'] : nil
+      max_attempts = hash.key?('max_attempts') ? hash['max_attempts'] : nil
       # Parameter is an array, so we need to iterate through it
       splits = nil
       unless hash['splits'].nil?
@@ -204,8 +200,8 @@ module PagarmeApiSdk
         end
       end
 
-      splits = SKIP unless hash.key?('splits')
-      id = hash.key?('id') ? hash['id'] : SKIP
+      splits = nil unless hash.key?('splits')
+      id = hash.key?('id') ? hash['id'] : nil
       gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response']) if
         hash['gateway_response']
       antifraud_response = GetAntifraudResponse.from_hash(hash['antifraud_response']) if
@@ -219,7 +215,7 @@ module PagarmeApiSdk
         end
       end
 
-      split = SKIP unless hash.key?('split')
+      split = nil unless hash.key?('split')
       installments = hash.key?('installments') ? hash['installments'] : SKIP
       next_attempt = if hash.key?('next_attempt')
                        (DateTimeHelper.from_rfc3339(hash['next_attempt']) if hash['next_attempt'])
@@ -228,6 +224,10 @@ module PagarmeApiSdk
                      end
       transaction_type = hash['transaction_type'] ||= 'credit_card'
       metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      interest = GetInterestResponse.from_hash(hash['interest']) if hash['interest']
+      fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']
+      max_days_to_pay_past_due =
+        hash.key?('max_days_to_pay_past_due') ? hash['max_days_to_pay_past_due'] : SKIP
 
       # Create object from extracted values.
       GetCreditCardTransactionResponse.new(statement_descriptor,
@@ -257,7 +257,10 @@ module PagarmeApiSdk
                                            installments,
                                            next_attempt,
                                            transaction_type,
-                                           metadata)
+                                           metadata,
+                                           interest,
+                                           fine,
+                                           max_days_to_pay_past_due)
     end
   end
 end

@@ -67,7 +67,7 @@ module PagarmeApiSdk
     attr_accessor :customer
 
     # TODO: Write general description for this method
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # TODO: Write general description for this method
@@ -85,6 +85,14 @@ module PagarmeApiSdk
     # Paid amount
     # @return [Integer]
     attr_accessor :paid_amount
+
+    # interest and fine paid
+    # @return [Integer]
+    attr_accessor :interest_and_fine_paid
+
+    # Defines whether the card has been used one or more times.
+    # @return [String]
+    attr_accessor :recurrency_cycle
 
     # A mapping from model property names to API property names.
     def self.names
@@ -108,11 +116,13 @@ module PagarmeApiSdk
       @_hash['canceled_at'] = 'canceled_at'
       @_hash['canceled_amount'] = 'canceled_amount'
       @_hash['paid_amount'] = 'paid_amount'
+      @_hash['interest_and_fine_paid'] = 'interest_and_fine_paid'
+      @_hash['recurrency_cycle'] = 'recurrency_cycle'
       @_hash
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         last_transaction
         invoice
@@ -120,11 +130,13 @@ module PagarmeApiSdk
         customer
         paid_at
         canceled_at
+        interest_and_fine_paid
+        recurrency_cycle
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -141,31 +153,35 @@ module PagarmeApiSdk
                    metadata = nil,
                    canceled_amount = nil,
                    paid_amount = nil,
-                   last_transaction = nil,
-                   invoice = nil,
-                   order = nil,
-                   customer = nil,
-                   paid_at = nil,
-                   canceled_at = nil)
-      @id = id unless id == SKIP
-      @code = code unless code == SKIP
-      @gateway_id = gateway_id unless gateway_id == SKIP
-      @amount = amount unless amount == SKIP
-      @status = status unless status == SKIP
-      @currency = currency unless currency == SKIP
-      @payment_method = payment_method unless payment_method == SKIP
-      @due_at = due_at unless due_at == SKIP
-      @created_at = created_at unless created_at == SKIP
-      @updated_at = updated_at unless updated_at == SKIP
+                   last_transaction = SKIP,
+                   invoice = SKIP,
+                   order = SKIP,
+                   customer = SKIP,
+                   paid_at = SKIP,
+                   canceled_at = SKIP,
+                   interest_and_fine_paid = SKIP,
+                   recurrency_cycle = SKIP)
+      @id = id
+      @code = code
+      @gateway_id = gateway_id
+      @amount = amount
+      @status = status
+      @currency = currency
+      @payment_method = payment_method
+      @due_at = due_at
+      @created_at = created_at
+      @updated_at = updated_at
       @last_transaction = last_transaction unless last_transaction == SKIP
       @invoice = invoice unless invoice == SKIP
       @order = order unless order == SKIP
       @customer = customer unless customer == SKIP
-      @metadata = metadata unless metadata == SKIP
+      @metadata = metadata
       @paid_at = paid_at unless paid_at == SKIP
       @canceled_at = canceled_at unless canceled_at == SKIP
-      @canceled_amount = canceled_amount unless canceled_amount == SKIP
-      @paid_amount = paid_amount unless paid_amount == SKIP
+      @canceled_amount = canceled_amount
+      @paid_amount = paid_amount
+      @interest_and_fine_paid = interest_and_fine_paid unless interest_and_fine_paid == SKIP
+      @recurrency_cycle = recurrency_cycle unless recurrency_cycle == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -173,33 +189,27 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
-      code = hash.key?('code') ? hash['code'] : SKIP
-      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
-      currency = hash.key?('currency') ? hash['currency'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      code = hash.key?('code') ? hash['code'] : nil
+      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
+      currency = hash.key?('currency') ? hash['currency'] : nil
       payment_method =
-        hash.key?('payment_method') ? hash['payment_method'] : SKIP
+        hash.key?('payment_method') ? hash['payment_method'] : nil
       due_at = if hash.key?('due_at')
                  (DateTimeHelper.from_rfc3339(hash['due_at']) if hash['due_at'])
-               else
-                 SKIP
                end
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
-                   else
-                     SKIP
                    end
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
       canceled_amount =
-        hash.key?('canceled_amount') ? hash['canceled_amount'] : SKIP
-      paid_amount = hash.key?('paid_amount') ? hash['paid_amount'] : SKIP
+        hash.key?('canceled_amount') ? hash['canceled_amount'] : nil
+      paid_amount = hash.key?('paid_amount') ? hash['paid_amount'] : nil
       last_transaction = GetTransactionResponse.from_hash(hash['last_transaction']) if
         hash['last_transaction']
       invoice = GetInvoiceResponse.from_hash(hash['invoice']) if hash['invoice']
@@ -215,6 +225,10 @@ module PagarmeApiSdk
                     else
                       SKIP
                     end
+      interest_and_fine_paid =
+        hash.key?('interest_and_fine_paid') ? hash['interest_and_fine_paid'] : SKIP
+      recurrency_cycle =
+        hash.key?('recurrency_cycle') ? hash['recurrency_cycle'] : SKIP
 
       # Create object from extracted values.
       GetChargeResponse.new(id,
@@ -235,7 +249,9 @@ module PagarmeApiSdk
                             order,
                             customer,
                             paid_at,
-                            canceled_at)
+                            canceled_at,
+                            interest_and_fine_paid,
+                            recurrency_cycle)
     end
 
     def to_due_at

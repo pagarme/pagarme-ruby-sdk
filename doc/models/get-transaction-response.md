@@ -14,7 +14,7 @@ Generic response object for getting a transaction.
 | `gateway_id` | `String` | Required | Gateway transaction id |
 | `amount` | `Integer` | Required | Amount in cents |
 | `status` | `String` | Required | Transaction status |
-| `success` | `Boolean` | Required | Indicates if the transaction ocurred successfuly |
+| `success` | `TrueClass\|FalseClass` | Required | Indicates if the transaction ocurred successfuly |
 | `created_at` | `DateTime` | Required | Creation date |
 | `updated_at` | `DateTime` | Required | Last update date |
 | `attempt_count` | `Integer` | Required | Number of attempts tried |
@@ -25,8 +25,11 @@ Generic response object for getting a transaction.
 | `id` | `String` | Required | Código da transação |
 | `gateway_response` | [`GetGatewayResponseResponse`](../../doc/models/get-gateway-response-response.md) | Required | The Gateway Response |
 | `antifraud_response` | [`GetAntifraudResponse`](../../doc/models/get-antifraud-response.md) | Required | - |
-| `metadata` | `Hash` | Optional | - |
+| `metadata` | `Hash of String` | Optional | - |
 | `split` | [`Array<GetSplitResponse>`](../../doc/models/get-split-response.md) | Required | - |
+| `interest` | [`GetInterestResponse`](../../doc/models/get-interest-response.md) | Optional | - |
+| `fine` | [`GetFineResponse`](../../doc/models/get-fine-response.md) | Optional | - |
+| `max_days_to_pay_past_due` | `Integer` | Optional | - |
 
 ## Example (as JSON)
 
@@ -59,7 +62,6 @@ Generic response object for getting a transaction.
     }
   ],
   "next_attempt": null,
-  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",
@@ -108,7 +110,11 @@ Generic response object for getting a transaction.
       "options": null,
       "id": "id6"
     }
-  ]
+  ],
+  "interest": null,
+  "fine": null,
+  "max_days_to_pay_past_due": null,
+  "transaction_type": "transaction"
 }
 ```
 

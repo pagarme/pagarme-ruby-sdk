@@ -56,7 +56,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         customer
         amount
@@ -66,7 +66,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -74,14 +74,14 @@ module PagarmeApiSdk
                    payment_url = nil,
                    accepted_payment_methods = nil,
                    status = nil,
-                   customer = nil,
-                   amount = nil,
-                   default_payment_method = nil,
-                   gateway_affiliation_id = nil)
-      @success_url = success_url unless success_url == SKIP
-      @payment_url = payment_url unless payment_url == SKIP
-      @accepted_payment_methods = accepted_payment_methods unless accepted_payment_methods == SKIP
-      @status = status unless status == SKIP
+                   customer = SKIP,
+                   amount = SKIP,
+                   default_payment_method = SKIP,
+                   gateway_affiliation_id = SKIP)
+      @success_url = success_url
+      @payment_url = payment_url
+      @accepted_payment_methods = accepted_payment_methods
+      @status = status
       @customer = customer unless customer == SKIP
       @amount = amount unless amount == SKIP
       @default_payment_method = default_payment_method unless default_payment_method == SKIP
@@ -93,11 +93,11 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      success_url = hash.key?('success_url') ? hash['success_url'] : SKIP
-      payment_url = hash.key?('payment_url') ? hash['payment_url'] : SKIP
+      success_url = hash.key?('success_url') ? hash['success_url'] : nil
+      payment_url = hash.key?('payment_url') ? hash['payment_url'] : nil
       accepted_payment_methods =
-        hash.key?('accepted_payment_methods') ? hash['accepted_payment_methods'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
+        hash.key?('accepted_payment_methods') ? hash['accepted_payment_methods'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
       customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
       amount = hash.key?('amount') ? hash['amount'] : SKIP
       default_payment_method =

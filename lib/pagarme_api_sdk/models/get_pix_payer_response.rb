@@ -36,17 +36,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
-      %w[
-        name
-        document
-        document_type
-        bank_account
-      ]
+    def self.optionals
+      []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       %w[
         name
         document
@@ -59,10 +54,10 @@ module PagarmeApiSdk
                    document = nil,
                    document_type = nil,
                    bank_account = nil)
-      @name = name unless name == SKIP
-      @document = document unless document == SKIP
-      @document_type = document_type unless document_type == SKIP
-      @bank_account = bank_account unless bank_account == SKIP
+      @name = name
+      @document = document
+      @document_type = document_type
+      @bank_account = bank_account
     end
 
     # Creates an instance of the object from a hash.
@@ -70,9 +65,9 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      name = hash.key?('name') ? hash['name'] : SKIP
-      document = hash.key?('document') ? hash['document'] : SKIP
-      document_type = hash.key?('document_type') ? hash['document_type'] : SKIP
+      name = hash.key?('name') ? hash['name'] : nil
+      document = hash.key?('document') ? hash['document'] : nil
+      document_type = hash.key?('document_type') ? hash['document_type'] : nil
       bank_account = GetPixBankAccountResponse.from_hash(hash['bank_account']) if
         hash['bank_account']
 

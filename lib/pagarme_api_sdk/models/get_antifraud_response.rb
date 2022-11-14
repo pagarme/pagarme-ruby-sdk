@@ -41,12 +41,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -55,11 +55,11 @@ module PagarmeApiSdk
                    return_message = nil,
                    provider_name = nil,
                    score = nil)
-      @status = status unless status == SKIP
-      @return_code = return_code unless return_code == SKIP
-      @return_message = return_message unless return_message == SKIP
-      @provider_name = provider_name unless provider_name == SKIP
-      @score = score unless score == SKIP
+      @status = status
+      @return_code = return_code
+      @return_message = return_message
+      @provider_name = provider_name
+      @score = score
     end
 
     # Creates an instance of the object from a hash.
@@ -67,12 +67,12 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      status = hash.key?('status') ? hash['status'] : SKIP
-      return_code = hash.key?('return_code') ? hash['return_code'] : SKIP
+      status = hash.key?('status') ? hash['status'] : nil
+      return_code = hash.key?('return_code') ? hash['return_code'] : nil
       return_message =
-        hash.key?('return_message') ? hash['return_message'] : SKIP
-      provider_name = hash.key?('provider_name') ? hash['provider_name'] : SKIP
-      score = hash.key?('score') ? hash['score'] : SKIP
+        hash.key?('return_message') ? hash['return_message'] : nil
+      provider_name = hash.key?('provider_name') ? hash['provider_name'] : nil
+      score = hash.key?('score') ? hash['score'] : nil
 
       # Create object from extracted values.
       GetAntifraudResponse.new(status,

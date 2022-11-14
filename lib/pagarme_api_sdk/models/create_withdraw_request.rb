@@ -14,7 +14,7 @@ module PagarmeApiSdk
     attr_accessor :amount
 
     # TODO: Write general description for this method
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # A mapping from model property names to API property names.
@@ -26,20 +26,20 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         metadata
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(amount = nil,
-                   metadata = nil)
-      @amount = amount unless amount == SKIP
+                   metadata = SKIP)
+      @amount = amount
       @metadata = metadata unless metadata == SKIP
     end
 
@@ -48,7 +48,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : nil
       metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
 
       # Create object from extracted values.

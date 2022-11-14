@@ -26,19 +26,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(number = nil,
                    total = nil)
-      @number = number unless number == SKIP
-      @total = total unless total == SKIP
+      @number = number
+      @total = total
     end
 
     # Creates an instance of the object from a hash.
@@ -46,8 +46,8 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      number = hash.key?('number') ? hash['number'] : SKIP
-      total = hash.key?('total') ? hash['total'] : SKIP
+      number = hash.key?('number') ? hash['number'] : nil
+      total = hash.key?('total') ? hash['total'] : nil
 
       # Create object from extracted values.
       CreateCheckoutCardInstallmentOptionRequest.new(number,

@@ -67,7 +67,7 @@ module PagarmeApiSdk
     attr_accessor :recipient
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Pix Key
@@ -97,14 +97,14 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         recipient
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -123,23 +123,23 @@ module PagarmeApiSdk
                    deleted_at = nil,
                    metadata = nil,
                    pix_key = nil,
-                   recipient = nil)
-      @id = id unless id == SKIP
-      @holder_name = holder_name unless holder_name == SKIP
-      @holder_type = holder_type unless holder_type == SKIP
-      @bank = bank unless bank == SKIP
-      @branch_number = branch_number unless branch_number == SKIP
-      @branch_check_digit = branch_check_digit unless branch_check_digit == SKIP
-      @account_number = account_number unless account_number == SKIP
-      @account_check_digit = account_check_digit unless account_check_digit == SKIP
-      @type = type unless type == SKIP
-      @status = status unless status == SKIP
-      @created_at = created_at unless created_at == SKIP
-      @updated_at = updated_at unless updated_at == SKIP
-      @deleted_at = deleted_at unless deleted_at == SKIP
+                   recipient = SKIP)
+      @id = id
+      @holder_name = holder_name
+      @holder_type = holder_type
+      @bank = bank
+      @branch_number = branch_number
+      @branch_check_digit = branch_check_digit
+      @account_number = account_number
+      @account_check_digit = account_check_digit
+      @type = type
+      @status = status
+      @created_at = created_at
+      @updated_at = updated_at
+      @deleted_at = deleted_at
       @recipient = recipient unless recipient == SKIP
-      @metadata = metadata unless metadata == SKIP
-      @pix_key = pix_key unless pix_key == SKIP
+      @metadata = metadata
+      @pix_key = pix_key
     end
 
     # Creates an instance of the object from a hash.
@@ -147,36 +147,30 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
-      holder_name = hash.key?('holder_name') ? hash['holder_name'] : SKIP
-      holder_type = hash.key?('holder_type') ? hash['holder_type'] : SKIP
-      bank = hash.key?('bank') ? hash['bank'] : SKIP
-      branch_number = hash.key?('branch_number') ? hash['branch_number'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      holder_name = hash.key?('holder_name') ? hash['holder_name'] : nil
+      holder_type = hash.key?('holder_type') ? hash['holder_type'] : nil
+      bank = hash.key?('bank') ? hash['bank'] : nil
+      branch_number = hash.key?('branch_number') ? hash['branch_number'] : nil
       branch_check_digit =
-        hash.key?('branch_check_digit') ? hash['branch_check_digit'] : SKIP
+        hash.key?('branch_check_digit') ? hash['branch_check_digit'] : nil
       account_number =
-        hash.key?('account_number') ? hash['account_number'] : SKIP
+        hash.key?('account_number') ? hash['account_number'] : nil
       account_check_digit =
-        hash.key?('account_check_digit') ? hash['account_check_digit'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
+        hash.key?('account_check_digit') ? hash['account_check_digit'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
-                   else
-                     SKIP
                    end
       deleted_at = if hash.key?('deleted_at')
                      (DateTimeHelper.from_rfc3339(hash['deleted_at']) if hash['deleted_at'])
-                   else
-                     SKIP
                    end
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
-      pix_key = hash.key?('pix_key') ? hash['pix_key'] : SKIP
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
+      pix_key = hash.key?('pix_key') ? hash['pix_key'] : nil
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if hash['recipient']
 
       # Create object from extracted values.

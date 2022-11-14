@@ -42,7 +42,7 @@ module PagarmeApiSdk
     attr_accessor :billing_address_id
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Card type
@@ -58,7 +58,7 @@ module PagarmeApiSdk
     attr_accessor :holder_document
 
     # Indicates whether it is a private label card
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :private_label
 
     # Indicates whether it is a private label card
@@ -96,7 +96,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         holder_document
         id
@@ -105,7 +105,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -122,23 +122,23 @@ module PagarmeApiSdk
                    options = nil,
                    private_label = nil,
                    label = nil,
-                   holder_document = nil,
-                   id = nil,
-                   token = nil)
-      @number = number unless number == SKIP
-      @holder_name = holder_name unless holder_name == SKIP
-      @exp_month = exp_month unless exp_month == SKIP
-      @exp_year = exp_year unless exp_year == SKIP
-      @cvv = cvv unless cvv == SKIP
-      @billing_address = billing_address unless billing_address == SKIP
-      @brand = brand unless brand == SKIP
-      @billing_address_id = billing_address_id unless billing_address_id == SKIP
-      @metadata = metadata unless metadata == SKIP
-      @type = type unless type == SKIP
-      @options = options unless options == SKIP
+                   holder_document = SKIP,
+                   id = SKIP,
+                   token = SKIP)
+      @number = number
+      @holder_name = holder_name
+      @exp_month = exp_month
+      @exp_year = exp_year
+      @cvv = cvv
+      @billing_address = billing_address
+      @brand = brand
+      @billing_address_id = billing_address_id
+      @metadata = metadata
+      @type = type
+      @options = options
       @holder_document = holder_document unless holder_document == SKIP
-      @private_label = private_label unless private_label == SKIP
-      @label = label unless label == SKIP
+      @private_label = private_label
+      @label = label
       @id = id unless id == SKIP
       @token = token unless token == SKIP
     end
@@ -148,21 +148,21 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      number = hash.key?('number') ? hash['number'] : SKIP
-      holder_name = hash.key?('holder_name') ? hash['holder_name'] : SKIP
-      exp_month = hash.key?('exp_month') ? hash['exp_month'] : SKIP
-      exp_year = hash.key?('exp_year') ? hash['exp_year'] : SKIP
-      cvv = hash.key?('cvv') ? hash['cvv'] : SKIP
+      number = hash.key?('number') ? hash['number'] : nil
+      holder_name = hash.key?('holder_name') ? hash['holder_name'] : nil
+      exp_month = hash.key?('exp_month') ? hash['exp_month'] : nil
+      exp_year = hash.key?('exp_year') ? hash['exp_year'] : nil
+      cvv = hash.key?('cvv') ? hash['cvv'] : nil
       billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
         hash['billing_address']
-      brand = hash.key?('brand') ? hash['brand'] : SKIP
+      brand = hash.key?('brand') ? hash['brand'] : nil
       billing_address_id =
-        hash.key?('billing_address_id') ? hash['billing_address_id'] : SKIP
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+        hash.key?('billing_address_id') ? hash['billing_address_id'] : nil
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
       type = hash['type'] ||= 'credit'
       options = CreateCardOptionsRequest.from_hash(hash['options']) if hash['options']
-      private_label = hash.key?('private_label') ? hash['private_label'] : SKIP
-      label = hash.key?('label') ? hash['label'] : SKIP
+      private_label = hash.key?('private_label') ? hash['private_label'] : nil
+      label = hash.key?('label') ? hash['label'] : nil
       holder_document =
         hash.key?('holder_document') ? hash['holder_document'] : SKIP
       id = hash.key?('id') ? hash['id'] : SKIP

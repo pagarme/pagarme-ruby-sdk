@@ -26,19 +26,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(bank_account = nil,
                    payment_mode = 'bank_transfer')
-      @bank_account = bank_account unless bank_account == SKIP
-      @payment_mode = payment_mode unless payment_mode == SKIP
+      @bank_account = bank_account
+      @payment_mode = payment_mode
     end
 
     # Creates an instance of the object from a hash.

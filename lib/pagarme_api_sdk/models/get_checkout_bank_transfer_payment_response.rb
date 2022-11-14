@@ -21,17 +21,17 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(bank = nil)
-      @bank = bank unless bank == SKIP
+      @bank = bank
     end
 
     # Creates an instance of the object from a hash.
@@ -39,7 +39,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      bank = hash.key?('bank') ? hash['bank'] : SKIP
+      bank = hash.key?('bank') ? hash['bank'] : nil
 
       # Create object from extracted values.
       GetCheckoutBankTransferPaymentResponse.new(bank)

@@ -21,17 +21,17 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(boleto_due_days = nil)
-      @boleto_due_days = boleto_due_days unless boleto_due_days == SKIP
+      @boleto_due_days = boleto_due_days
     end
 
     # Creates an instance of the object from a hash.
@@ -40,7 +40,7 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       boleto_due_days =
-        hash.key?('boleto_due_days') ? hash['boleto_due_days'] : SKIP
+        hash.key?('boleto_due_days') ? hash['boleto_due_days'] : nil
 
       # Create object from extracted values.
       UpdateSubscriptionDueDaysRequest.new(boleto_due_days)

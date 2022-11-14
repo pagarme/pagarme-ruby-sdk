@@ -15,7 +15,7 @@
 | `status` | `String` | Required | - |
 | `created_at` | `DateTime` | Required | - |
 | `updated_at` | `DateTime` | Required | - |
-| `metadata` | `Hash` | Optional | - |
+| `metadata` | `Hash of String` | Optional | - |
 | `fee` | `Integer` | Optional | - |
 | `funding_date` | `DateTime` | Optional | - |
 | `funding_estimated_date` | `DateTime` | Optional | - |

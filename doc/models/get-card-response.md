@@ -22,7 +22,7 @@ Response object for getting a credit card
 | `updated_at` | `DateTime` | Required | - |
 | `billing_address` | [`GetBillingAddressResponse`](../../doc/models/get-billing-address-response.md) | Required | - |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
-| `metadata` | `Hash` | Required | - |
+| `metadata` | `Hash of String` | Required | - |
 | `type` | `String` | Required | Card type |
 | `holder_document` | `String` | Required | Document number for the card's holder |
 | `deleted_at` | `DateTime` | Optional | - |

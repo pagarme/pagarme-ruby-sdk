@@ -36,7 +36,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         apple_pay
         google_pay
@@ -45,15 +45,15 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(type = nil,
-                   apple_pay = nil,
-                   google_pay = nil,
-                   emv = nil)
-      @type = type unless type == SKIP
+                   apple_pay = SKIP,
+                   google_pay = SKIP,
+                   emv = SKIP)
+      @type = type
       @apple_pay = apple_pay unless apple_pay == SKIP
       @google_pay = google_pay unless google_pay == SKIP
       @emv = emv unless emv == SKIP
@@ -64,7 +64,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      type = hash.key?('type') ? hash['type'] : SKIP
+      type = hash.key?('type') ? hash['type'] : nil
       apple_pay = CreateApplePayRequest.from_hash(hash['apple_pay']) if hash['apple_pay']
       google_pay = CreateGooglePayRequest.from_hash(hash['google_pay']) if hash['google_pay']
       emv = CreateEmvDecryptRequest.from_hash(hash['emv']) if hash['emv']

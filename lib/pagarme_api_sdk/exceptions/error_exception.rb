@@ -34,9 +34,9 @@ module PagarmeApiSdk
     # @param [Hash] The deserialized response sent by the server in the
     # response body.
     def unbox(hash)
-      @message = hash.key?('message') ? hash['message'] : SKIP
-      @errors = hash.key?('errors') ? hash['errors'] : SKIP
-      @request = hash.key?('request') ? hash['request'] : SKIP
+      @message = hash.key?('message') ? hash['message'] : nil
+      @errors = hash.key?('errors') ? hash['errors'] : nil
+      @request = hash.key?('request') ? hash['request'] : nil
     end
   end
 end

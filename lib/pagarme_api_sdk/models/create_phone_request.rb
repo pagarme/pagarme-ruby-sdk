@@ -31,7 +31,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         country_code
         number
@@ -40,13 +40,13 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(country_code = nil,
-                   number = nil,
-                   area_code = nil)
+    def initialize(country_code = SKIP,
+                   number = SKIP,
+                   area_code = SKIP)
       @country_code = country_code unless country_code == SKIP
       @number = number unless number == SKIP
       @area_code = area_code unless area_code == SKIP

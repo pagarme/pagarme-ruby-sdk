@@ -31,23 +31,23 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         amount
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(description = nil,
                    code = nil,
-                   amount = nil)
-      @description = description unless description == SKIP
+                   amount = SKIP)
+      @description = description
       @amount = amount unless amount == SKIP
-      @code = code unless code == SKIP
+      @code = code
     end
 
     # Creates an instance of the object from a hash.
@@ -55,8 +55,8 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      description = hash.key?('description') ? hash['description'] : SKIP
-      code = hash.key?('Code') ? hash['Code'] : SKIP
+      description = hash.key?('description') ? hash['description'] : nil
+      code = hash.key?('Code') ? hash['Code'] : nil
       amount = hash.key?('Amount') ? hash['Amount'] : SKIP
 
       # Create object from extracted values.

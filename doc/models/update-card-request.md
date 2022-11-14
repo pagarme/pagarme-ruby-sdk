@@ -16,7 +16,7 @@ Request for updating a card
 | `exp_year` | `Integer` | Required | Expiration year |
 | `billing_address_id` | `String` | Required | Id of the address to be used as billing address |
 | `billing_address` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Billing address |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 | `label` | `String` | Required | - |
 
 ## Example (as JSON)

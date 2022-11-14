@@ -22,17 +22,17 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(next_billing_at = nil)
-      @next_billing_at = next_billing_at unless next_billing_at == SKIP
+      @next_billing_at = next_billing_at
     end
 
     # Creates an instance of the object from a hash.
@@ -42,8 +42,6 @@ module PagarmeApiSdk
       # Extract variables from the hash.
       next_billing_at = if hash.key?('next_billing_at')
                           (DateTimeHelper.from_rfc3339(hash['next_billing_at']) if hash['next_billing_at'])
-                        else
-                          SKIP
                         end
 
       # Create object from extracted values.

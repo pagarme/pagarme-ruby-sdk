@@ -36,12 +36,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -49,10 +49,10 @@ module PagarmeApiSdk
                    description = nil,
                    amount = nil,
                    status = nil)
-      @id = id unless id == SKIP
-      @description = description unless description == SKIP
-      @amount = amount unless amount == SKIP
-      @status = status unless status == SKIP
+      @id = id
+      @description = description
+      @amount = amount
+      @status = status
     end
 
     # Creates an instance of the object from a hash.
@@ -60,10 +60,10 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
-      description = hash.key?('description') ? hash['description'] : SKIP
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      description = hash.key?('description') ? hash['description'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
 
       # Create object from extracted values.
       GetSetupResponse.new(id,

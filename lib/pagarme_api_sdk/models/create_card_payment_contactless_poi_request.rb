@@ -41,12 +41,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -55,11 +55,11 @@ module PagarmeApiSdk
                    provider = nil,
                    serial_number = nil,
                    version_number = nil)
-      @system_name = system_name unless system_name == SKIP
-      @model = model unless model == SKIP
-      @provider = provider unless provider == SKIP
-      @serial_number = serial_number unless serial_number == SKIP
-      @version_number = version_number unless version_number == SKIP
+      @system_name = system_name
+      @model = model
+      @provider = provider
+      @serial_number = serial_number
+      @version_number = version_number
     end
 
     # Creates an instance of the object from a hash.
@@ -67,12 +67,12 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      system_name = hash.key?('system_name') ? hash['system_name'] : SKIP
-      model = hash.key?('model') ? hash['model'] : SKIP
-      provider = hash.key?('provider') ? hash['provider'] : SKIP
-      serial_number = hash.key?('serial_number') ? hash['serial_number'] : SKIP
+      system_name = hash.key?('system_name') ? hash['system_name'] : nil
+      model = hash.key?('model') ? hash['model'] : nil
+      provider = hash.key?('provider') ? hash['provider'] : nil
+      serial_number = hash.key?('serial_number') ? hash['serial_number'] : nil
       version_number =
-        hash.key?('version_number') ? hash['version_number'] : SKIP
+        hash.key?('version_number') ? hash['version_number'] : nil
 
       # Create object from extracted values.
       CreateCardPaymentContactlessPOIRequest.new(system_name,

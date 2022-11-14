@@ -14,16 +14,16 @@ Response object for getting a customer
 | `id` | `String` | Required | - |
 | `name` | `String` | Required | - |
 | `email` | `String` | Required | - |
-| `delinquent` | `Boolean` | Required | - |
+| `delinquent` | `TrueClass\|FalseClass` | Required | - |
 | `created_at` | `DateTime` | Required | - |
 | `updated_at` | `DateTime` | Required | - |
 | `document` | `String` | Required | - |
 | `type` | `String` | Required | - |
 | `fb_access_token` | `String` | Required | - |
 | `address` | [`GetAddressResponse`](../../doc/models/get-address-response.md) | Required | - |
-| `metadata` | `Hash` | Required | - |
+| `metadata` | `Hash of String` | Required | - |
 | `phones` | [`GetPhonesResponse`](../../doc/models/get-phones-response.md) | Required | - |
-| `fb_id` | `Long` | Optional | - |
+| `fb_id` | `Integer` | Optional | - |
 | `code` | `String` | Required | Código de referência do cliente no sistema da loja. Max: 52 caracteres |
 | `document_type` | `String` | Required | - |
 

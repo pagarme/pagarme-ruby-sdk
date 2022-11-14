@@ -51,7 +51,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         quantity
         name
@@ -59,7 +59,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -68,15 +68,15 @@ module PagarmeApiSdk
                    pricing_scheme = nil,
                    price_bracket = nil,
                    subscription_item_id = nil,
-                   quantity = nil,
-                   name = nil)
-      @amount = amount unless amount == SKIP
-      @description = description unless description == SKIP
-      @pricing_scheme = pricing_scheme unless pricing_scheme == SKIP
-      @price_bracket = price_bracket unless price_bracket == SKIP
+                   quantity = SKIP,
+                   name = SKIP)
+      @amount = amount
+      @description = description
+      @pricing_scheme = pricing_scheme
+      @price_bracket = price_bracket
       @quantity = quantity unless quantity == SKIP
       @name = name unless name == SKIP
-      @subscription_item_id = subscription_item_id unless subscription_item_id == SKIP
+      @subscription_item_id = subscription_item_id
     end
 
     # Creates an instance of the object from a hash.
@@ -84,14 +84,14 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
-      description = hash.key?('description') ? hash['description'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : nil
+      description = hash.key?('description') ? hash['description'] : nil
       pricing_scheme = GetPricingSchemeResponse.from_hash(hash['pricing_scheme']) if
         hash['pricing_scheme']
       price_bracket = GetPriceBracketResponse.from_hash(hash['price_bracket']) if
         hash['price_bracket']
       subscription_item_id =
-        hash.key?('subscription_item_id') ? hash['subscription_item_id'] : SKIP
+        hash.key?('subscription_item_id') ? hash['subscription_item_id'] : nil
       quantity = hash.key?('quantity') ? hash['quantity'] : SKIP
       name = hash.key?('name') ? hash['name'] : SKIP
 

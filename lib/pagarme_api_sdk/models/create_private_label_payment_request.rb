@@ -30,21 +30,25 @@ module PagarmeApiSdk
     attr_accessor :card_token
 
     # Indicates a recurrence
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :recurrence
 
     # Indicates if the operation should be only authorization or auth and
     # capture.
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :capture
 
     # Indicates whether the extended label (private label) is enabled
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :extended_limit_enabled
 
     # Extended Limit Code
     # @return [String]
     attr_accessor :extended_limit_code
+
+    # Defines whether the card has been used one or more times.
+    # @return [String]
+    attr_accessor :recurrency_cycle
 
     # A mapping from model property names to API property names.
     def self.names
@@ -58,11 +62,12 @@ module PagarmeApiSdk
       @_hash['capture'] = 'capture'
       @_hash['extended_limit_enabled'] = 'extended_limit_enabled'
       @_hash['extended_limit_code'] = 'extended_limit_code'
+      @_hash['recurrency_cycle'] = 'recurrency_cycle'
       @_hash
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         installments
         statement_descriptor
@@ -73,23 +78,25 @@ module PagarmeApiSdk
         capture
         extended_limit_enabled
         extended_limit_code
+        recurrency_cycle
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(installments = 1,
-                   statement_descriptor = nil,
-                   card = nil,
-                   card_id = nil,
-                   card_token = nil,
-                   recurrence = nil,
+                   statement_descriptor = SKIP,
+                   card = SKIP,
+                   card_id = SKIP,
+                   card_token = SKIP,
+                   recurrence = SKIP,
                    capture = true,
-                   extended_limit_enabled = nil,
-                   extended_limit_code = nil)
+                   extended_limit_enabled = SKIP,
+                   extended_limit_code = SKIP,
+                   recurrency_cycle = SKIP)
       @installments = installments unless installments == SKIP
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @card = card unless card == SKIP
@@ -99,6 +106,7 @@ module PagarmeApiSdk
       @capture = capture unless capture == SKIP
       @extended_limit_enabled = extended_limit_enabled unless extended_limit_enabled == SKIP
       @extended_limit_code = extended_limit_code unless extended_limit_code == SKIP
+      @recurrency_cycle = recurrency_cycle unless recurrency_cycle == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -118,6 +126,8 @@ module PagarmeApiSdk
         hash.key?('extended_limit_enabled') ? hash['extended_limit_enabled'] : SKIP
       extended_limit_code =
         hash.key?('extended_limit_code') ? hash['extended_limit_code'] : SKIP
+      recurrency_cycle =
+        hash.key?('recurrency_cycle') ? hash['recurrency_cycle'] : SKIP
 
       # Create object from extracted values.
       CreatePrivateLabelPaymentRequest.new(installments,
@@ -128,7 +138,8 @@ module PagarmeApiSdk
                                            recurrence,
                                            capture,
                                            extended_limit_enabled,
-                                           extended_limit_code)
+                                           extended_limit_code,
+                                           recurrency_cycle)
     end
   end
 end

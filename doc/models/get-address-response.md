@@ -24,7 +24,7 @@ Response object for getting an Address
 | `created_at` | `DateTime` | Required | - |
 | `updated_at` | `DateTime` | Required | - |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
-| `metadata` | `Hash` | Required | - |
+| `metadata` | `Hash of String` | Required | - |
 | `line_1` | `String` | Required | Line 1 for address |
 | `line_2` | `String` | Required | Line 2 for address |
 | `deleted_at` | `DateTime` | Optional | - |

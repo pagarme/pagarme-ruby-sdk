@@ -26,19 +26,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(type = nil,
                    clearsale = nil)
-      @type = type unless type == SKIP
-      @clearsale = clearsale unless clearsale == SKIP
+      @type = type
+      @clearsale = clearsale
     end
 
     # Creates an instance of the object from a hash.
@@ -46,7 +46,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      type = hash.key?('type') ? hash['type'] : SKIP
+      type = hash.key?('type') ? hash['type'] : nil
       clearsale = CreateClearSaleRequest.from_hash(hash['clearsale']) if hash['clearsale']
 
       # Create object from extracted values.

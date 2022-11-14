@@ -19,18 +19,18 @@ Resposta das configurações de pagamento do checkout
 | `gateway_affiliation_id` | `String` | Required | Código da afiliação onde o pagamento será processado no gateway |
 | `accepted_payment_methods` | `Array<String>` | Required | Meios de pagamento aceitos no checkout |
 | `status` | `String` | Required | Status do checkout |
-| `skip_checkout_success_page` | `Boolean` | Required | Pular tela de sucesso pós-pagamento? |
+| `skip_checkout_success_page` | `TrueClass\|FalseClass` | Required | Pular tela de sucesso pós-pagamento? |
 | `created_at` | `DateTime` | Required | Data de criação |
 | `updated_at` | `DateTime` | Required | Data de atualização |
 | `canceled_at` | `DateTime` | Optional | Data de cancelamento |
-| `customer_editable` | `Boolean` | Required | Torna o objeto customer editável |
+| `customer_editable` | `TrueClass\|FalseClass` | Required | Torna o objeto customer editável |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | Dados do comprador |
 | `billingaddress` | [`GetAddressResponse`](../../doc/models/get-address-response.md) | Required | Dados do endereço de cobrança |
 | `credit_card` | [`GetCheckoutCreditCardPaymentResponse`](../../doc/models/get-checkout-credit-card-payment-response.md) | Required | Configurações de cartão de crédito |
 | `boleto` | [`GetCheckoutBoletoPaymentResponse`](../../doc/models/get-checkout-boleto-payment-response.md) | Required | Configurações de boleto |
-| `billing_address_editable` | `Boolean` | Required | Indica se o billing address poderá ser editado |
+| `billing_address_editable` | `TrueClass\|FalseClass` | Required | Indica se o billing address poderá ser editado |
 | `shipping` | [`GetShippingResponse`](../../doc/models/get-shipping-response.md) | Required | Configurações  de entrega |
-| `shippable` | `Boolean` | Required | Indica se possui entrega |
+| `shippable` | `TrueClass\|FalseClass` | Required | Indica se possui entrega |
 | `closed_at` | `DateTime` | Optional | Data de fechamento |
 | `expires_at` | `DateTime` | Optional | Data de expiração |
 | `currency` | `String` | Required | Moeda |

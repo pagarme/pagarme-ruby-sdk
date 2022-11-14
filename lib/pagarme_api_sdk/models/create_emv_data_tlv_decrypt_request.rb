@@ -31,21 +31,21 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(tag = nil,
                    lenght = nil,
                    value = nil)
-      @tag = tag unless tag == SKIP
-      @lenght = lenght unless lenght == SKIP
-      @value = value unless value == SKIP
+      @tag = tag
+      @lenght = lenght
+      @value = value
     end
 
     # Creates an instance of the object from a hash.
@@ -53,9 +53,9 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      tag = hash.key?('tag') ? hash['tag'] : SKIP
-      lenght = hash.key?('lenght') ? hash['lenght'] : SKIP
-      value = hash.key?('value') ? hash['value'] : SKIP
+      tag = hash.key?('tag') ? hash['tag'] : nil
+      lenght = hash.key?('lenght') ? hash['lenght'] : nil
+      value = hash.key?('value') ? hash['value'] : nil
 
       # Create object from extracted values.
       CreateEmvDataTlvDecryptRequest.new(tag,

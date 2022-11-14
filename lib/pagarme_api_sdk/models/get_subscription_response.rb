@@ -79,7 +79,7 @@ module PagarmeApiSdk
     attr_accessor :statement_descriptor
 
     # TODO: Write general description for this method
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # TODO: Write general description for this method
@@ -157,7 +157,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         current_cycle
         customer
@@ -171,7 +171,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -195,42 +195,42 @@ module PagarmeApiSdk
                    gateway_affiliation_id = nil,
                    increments = nil,
                    split = nil,
-                   current_cycle = nil,
-                   customer = nil,
-                   next_billing_at = nil,
-                   billing_day = nil,
-                   minimum_price = nil,
-                   canceled_at = nil,
-                   discounts = nil,
-                   boleto_due_days = nil)
-      @id = id unless id == SKIP
-      @code = code unless code == SKIP
-      @start_at = start_at unless start_at == SKIP
-      @interval = interval unless interval == SKIP
-      @interval_count = interval_count unless interval_count == SKIP
-      @billing_type = billing_type unless billing_type == SKIP
+                   current_cycle = SKIP,
+                   customer = SKIP,
+                   next_billing_at = SKIP,
+                   billing_day = SKIP,
+                   minimum_price = SKIP,
+                   canceled_at = SKIP,
+                   discounts = SKIP,
+                   boleto_due_days = SKIP)
+      @id = id
+      @code = code
+      @start_at = start_at
+      @interval = interval
+      @interval_count = interval_count
+      @billing_type = billing_type
       @current_cycle = current_cycle unless current_cycle == SKIP
-      @payment_method = payment_method unless payment_method == SKIP
-      @currency = currency unless currency == SKIP
-      @installments = installments unless installments == SKIP
-      @status = status unless status == SKIP
-      @created_at = created_at unless created_at == SKIP
-      @updated_at = updated_at unless updated_at == SKIP
+      @payment_method = payment_method
+      @currency = currency
+      @installments = installments
+      @status = status
+      @created_at = created_at
+      @updated_at = updated_at
       @customer = customer unless customer == SKIP
-      @card = card unless card == SKIP
-      @items = items unless items == SKIP
-      @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
-      @metadata = metadata unless metadata == SKIP
-      @setup = setup unless setup == SKIP
-      @gateway_affiliation_id = gateway_affiliation_id unless gateway_affiliation_id == SKIP
+      @card = card
+      @items = items
+      @statement_descriptor = statement_descriptor
+      @metadata = metadata
+      @setup = setup
+      @gateway_affiliation_id = gateway_affiliation_id
       @next_billing_at = next_billing_at unless next_billing_at == SKIP
       @billing_day = billing_day unless billing_day == SKIP
       @minimum_price = minimum_price unless minimum_price == SKIP
       @canceled_at = canceled_at unless canceled_at == SKIP
       @discounts = discounts unless discounts == SKIP
-      @increments = increments unless increments == SKIP
+      @increments = increments
       @boleto_due_days = boleto_due_days unless boleto_due_days == SKIP
-      @split = split unless split == SKIP
+      @split = split
     end
 
     # Creates an instance of the object from a hash.
@@ -238,31 +238,25 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
-      code = hash.key?('code') ? hash['code'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      code = hash.key?('code') ? hash['code'] : nil
       start_at = if hash.key?('start_at')
                    (DateTimeHelper.from_rfc3339(hash['start_at']) if hash['start_at'])
-                 else
-                   SKIP
                  end
-      interval = hash.key?('interval') ? hash['interval'] : SKIP
+      interval = hash.key?('interval') ? hash['interval'] : nil
       interval_count =
-        hash.key?('interval_count') ? hash['interval_count'] : SKIP
-      billing_type = hash.key?('billing_type') ? hash['billing_type'] : SKIP
+        hash.key?('interval_count') ? hash['interval_count'] : nil
+      billing_type = hash.key?('billing_type') ? hash['billing_type'] : nil
       payment_method =
-        hash.key?('payment_method') ? hash['payment_method'] : SKIP
-      currency = hash.key?('currency') ? hash['currency'] : SKIP
-      installments = hash.key?('installments') ? hash['installments'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
+        hash.key?('payment_method') ? hash['payment_method'] : nil
+      currency = hash.key?('currency') ? hash['currency'] : nil
+      installments = hash.key?('installments') ? hash['installments'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
-                   else
-                     SKIP
                    end
       card = GetCardResponse.from_hash(hash['card']) if hash['card']
       # Parameter is an array, so we need to iterate through it
@@ -274,13 +268,13 @@ module PagarmeApiSdk
         end
       end
 
-      items = SKIP unless hash.key?('items')
+      items = nil unless hash.key?('items')
       statement_descriptor =
-        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : SKIP
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : nil
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
       setup = GetSetupResponse.from_hash(hash['setup']) if hash['setup']
       gateway_affiliation_id =
-        hash.key?('gateway_affiliation_id') ? hash['gateway_affiliation_id'] : SKIP
+        hash.key?('gateway_affiliation_id') ? hash['gateway_affiliation_id'] : nil
       # Parameter is an array, so we need to iterate through it
       increments = nil
       unless hash['increments'].nil?
@@ -290,7 +284,7 @@ module PagarmeApiSdk
         end
       end
 
-      increments = SKIP unless hash.key?('increments')
+      increments = nil unless hash.key?('increments')
       split = GetSubscriptionSplitResponse.from_hash(hash['split']) if hash['split']
       current_cycle = GetPeriodResponse.from_hash(hash['current_cycle']) if hash['current_cycle']
       customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']

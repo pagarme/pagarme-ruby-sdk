@@ -41,12 +41,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -55,11 +55,11 @@ module PagarmeApiSdk
                    header = nil,
                    signature = nil,
                    merchant_identifier = nil)
-      @version = version unless version == SKIP
-      @data = data unless data == SKIP
-      @header = header unless header == SKIP
-      @signature = signature unless signature == SKIP
-      @merchant_identifier = merchant_identifier unless merchant_identifier == SKIP
+      @version = version
+      @data = data
+      @header = header
+      @signature = signature
+      @merchant_identifier = merchant_identifier
     end
 
     # Creates an instance of the object from a hash.
@@ -67,12 +67,12 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      version = hash.key?('version') ? hash['version'] : SKIP
-      data = hash.key?('data') ? hash['data'] : SKIP
+      version = hash.key?('version') ? hash['version'] : nil
+      data = hash.key?('data') ? hash['data'] : nil
       header = CreateApplePayHeaderRequest.from_hash(hash['header']) if hash['header']
-      signature = hash.key?('signature') ? hash['signature'] : SKIP
+      signature = hash.key?('signature') ? hash['signature'] : nil
       merchant_identifier =
-        hash.key?('merchant_identifier') ? hash['merchant_identifier'] : SKIP
+        hash.key?('merchant_identifier') ? hash['merchant_identifier'] : nil
 
       # Create object from extracted values.
       CreateApplePayRequest.new(version,

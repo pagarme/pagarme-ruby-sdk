@@ -26,21 +26,21 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         statement_descriptor
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(authentication = nil,
-                   statement_descriptor = nil)
+                   statement_descriptor = SKIP)
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
-      @authentication = authentication unless authentication == SKIP
+      @authentication = authentication
     end
 
     # Creates an instance of the object from a hash.

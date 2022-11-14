@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `enabled` | `Boolean` | Required | Defines if the split is enabled |
+| `enabled` | `TrueClass\|FalseClass` | Required | Defines if the split is enabled |
 | `rules` | [`Array<CreateSplitRequest>`](../../doc/models/create-split-request.md) | Required | Split |
 
 ## Example (as JSON)

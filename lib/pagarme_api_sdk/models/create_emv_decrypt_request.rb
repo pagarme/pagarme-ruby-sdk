@@ -36,24 +36,24 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         poi
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(icc_data = nil,
                    card_sequence_number = nil,
                    data = nil,
-                   poi = nil)
-      @icc_data = icc_data unless icc_data == SKIP
-      @card_sequence_number = card_sequence_number unless card_sequence_number == SKIP
-      @data = data unless data == SKIP
+                   poi = SKIP)
+      @icc_data = icc_data
+      @card_sequence_number = card_sequence_number
+      @data = data
       @poi = poi unless poi == SKIP
     end
 
@@ -62,9 +62,9 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      icc_data = hash.key?('icc_data') ? hash['icc_data'] : SKIP
+      icc_data = hash.key?('icc_data') ? hash['icc_data'] : nil
       card_sequence_number =
-        hash.key?('card_sequence_number') ? hash['card_sequence_number'] : SKIP
+        hash.key?('card_sequence_number') ? hash['card_sequence_number'] : nil
       data = CreateEmvDataDecryptRequest.from_hash(hash['data']) if hash['data']
       poi = CreateCardPaymentContactlessPOIRequest.from_hash(hash['poi']) if hash['poi']
 

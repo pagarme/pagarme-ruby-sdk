@@ -25,6 +25,10 @@ module PagarmeApiSdk
     # @return [CreateCardRequest]
     attr_accessor :card
 
+    # Defines whether the card has been used one or more times.
+    # @return [String]
+    attr_accessor :recurrency_cycle
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -32,32 +36,36 @@ module PagarmeApiSdk
       @_hash['card_id'] = 'card_id'
       @_hash['card_token'] = 'card_token'
       @_hash['card'] = 'Card'
+      @_hash['recurrency_cycle'] = 'recurrency_cycle'
       @_hash
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         statement_descriptor
         card_id
         card_token
         card
+        recurrency_cycle
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(statement_descriptor = nil,
-                   card_id = nil,
-                   card_token = nil,
-                   card = nil)
+    def initialize(statement_descriptor = SKIP,
+                   card_id = SKIP,
+                   card_token = SKIP,
+                   card = SKIP,
+                   recurrency_cycle = SKIP)
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @card_id = card_id unless card_id == SKIP
       @card_token = card_token unless card_token == SKIP
       @card = card unless card == SKIP
+      @recurrency_cycle = recurrency_cycle unless recurrency_cycle == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -70,12 +78,15 @@ module PagarmeApiSdk
       card_id = hash.key?('card_id') ? hash['card_id'] : SKIP
       card_token = hash.key?('card_token') ? hash['card_token'] : SKIP
       card = CreateCardRequest.from_hash(hash['Card']) if hash['Card']
+      recurrency_cycle =
+        hash.key?('recurrency_cycle') ? hash['recurrency_cycle'] : SKIP
 
       # Create object from extracted values.
       CreateVoucherPaymentRequest.new(statement_descriptor,
                                       card_id,
                                       card_token,
-                                      card)
+                                      card,
+                                      recurrency_cycle)
     end
   end
 end

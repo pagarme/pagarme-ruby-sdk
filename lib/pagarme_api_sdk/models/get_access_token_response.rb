@@ -42,14 +42,14 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         customer
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -57,11 +57,11 @@ module PagarmeApiSdk
                    code = nil,
                    status = nil,
                    created_at = nil,
-                   customer = nil)
-      @id = id unless id == SKIP
-      @code = code unless code == SKIP
-      @status = status unless status == SKIP
-      @created_at = created_at unless created_at == SKIP
+                   customer = SKIP)
+      @id = id
+      @code = code
+      @status = status
+      @created_at = created_at
       @customer = customer unless customer == SKIP
     end
 
@@ -70,13 +70,11 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
-      code = hash.key?('code') ? hash['code'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      code = hash.key?('code') ? hash['code'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
 

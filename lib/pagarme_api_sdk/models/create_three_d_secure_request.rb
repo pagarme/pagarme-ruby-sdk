@@ -51,7 +51,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         cavv
         eci
@@ -63,18 +63,18 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(mpi = nil,
-                   cavv = nil,
-                   eci = nil,
-                   transaction_id = nil,
-                   success_url = nil,
-                   ds_transaction_id = nil,
-                   version = nil)
-      @mpi = mpi unless mpi == SKIP
+                   cavv = SKIP,
+                   eci = SKIP,
+                   transaction_id = SKIP,
+                   success_url = SKIP,
+                   ds_transaction_id = SKIP,
+                   version = SKIP)
+      @mpi = mpi
       @cavv = cavv unless cavv == SKIP
       @eci = eci unless eci == SKIP
       @transaction_id = transaction_id unless transaction_id == SKIP
@@ -88,7 +88,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      mpi = hash.key?('mpi') ? hash['mpi'] : SKIP
+      mpi = hash.key?('mpi') ? hash['mpi'] : nil
       cavv = hash.key?('cavv') ? hash['cavv'] : SKIP
       eci = hash.key?('eci') ? hash['eci'] : SKIP
       transaction_id =

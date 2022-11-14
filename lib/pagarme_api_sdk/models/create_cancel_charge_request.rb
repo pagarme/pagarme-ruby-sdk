@@ -36,7 +36,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         amount
         split_rules
@@ -45,18 +45,18 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(operation_reference = nil,
-                   amount = nil,
-                   split_rules = nil,
-                   split = nil)
+                   amount = SKIP,
+                   split_rules = SKIP,
+                   split = SKIP)
       @amount = amount unless amount == SKIP
       @split_rules = split_rules unless split_rules == SKIP
       @split = split unless split == SKIP
-      @operation_reference = operation_reference unless operation_reference == SKIP
+      @operation_reference = operation_reference
     end
 
     # Creates an instance of the object from a hash.
@@ -65,7 +65,7 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       operation_reference =
-        hash.key?('operation_reference') ? hash['operation_reference'] : SKIP
+        hash.key?('operation_reference') ? hash['operation_reference'] : nil
       amount = hash.key?('amount') ? hash['amount'] : SKIP
       # Parameter is an array, so we need to iterate through it
       split_rules = nil

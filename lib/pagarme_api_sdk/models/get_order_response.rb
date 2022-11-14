@@ -55,7 +55,7 @@ module PagarmeApiSdk
     attr_accessor :shipping
 
     # TODO: Write general description for this method
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Checkout Payment Settings Response
@@ -79,7 +79,7 @@ module PagarmeApiSdk
     attr_accessor :device
 
     # Indicates whether the order is closed
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :closed
 
     # A mapping from model property names to API property names.
@@ -107,7 +107,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         customer
         checkouts
@@ -119,7 +119,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -135,30 +135,30 @@ module PagarmeApiSdk
                    shipping = nil,
                    metadata = nil,
                    closed = nil,
-                   customer = nil,
-                   checkouts = nil,
-                   ip = nil,
-                   session_id = nil,
-                   location = nil,
-                   device = nil)
-      @id = id unless id == SKIP
-      @code = code unless code == SKIP
-      @currency = currency unless currency == SKIP
-      @items = items unless items == SKIP
+                   customer = SKIP,
+                   checkouts = SKIP,
+                   ip = SKIP,
+                   session_id = SKIP,
+                   location = SKIP,
+                   device = SKIP)
+      @id = id
+      @code = code
+      @currency = currency
+      @items = items
       @customer = customer unless customer == SKIP
-      @status = status unless status == SKIP
-      @created_at = created_at unless created_at == SKIP
-      @updated_at = updated_at unless updated_at == SKIP
-      @charges = charges unless charges == SKIP
-      @invoice_url = invoice_url unless invoice_url == SKIP
-      @shipping = shipping unless shipping == SKIP
-      @metadata = metadata unless metadata == SKIP
+      @status = status
+      @created_at = created_at
+      @updated_at = updated_at
+      @charges = charges
+      @invoice_url = invoice_url
+      @shipping = shipping
+      @metadata = metadata
       @checkouts = checkouts unless checkouts == SKIP
       @ip = ip unless ip == SKIP
       @session_id = session_id unless session_id == SKIP
       @location = location unless location == SKIP
       @device = device unless device == SKIP
-      @closed = closed unless closed == SKIP
+      @closed = closed
     end
 
     # Creates an instance of the object from a hash.
@@ -166,9 +166,9 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
-      code = hash.key?('code') ? hash['code'] : SKIP
-      currency = hash.key?('currency') ? hash['currency'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      code = hash.key?('code') ? hash['code'] : nil
+      currency = hash.key?('currency') ? hash['currency'] : nil
       # Parameter is an array, so we need to iterate through it
       items = nil
       unless hash['items'].nil?
@@ -178,17 +178,13 @@ module PagarmeApiSdk
         end
       end
 
-      items = SKIP unless hash.key?('items')
-      status = hash.key?('status') ? hash['status'] : SKIP
+      items = nil unless hash.key?('items')
+      status = hash.key?('status') ? hash['status'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
-                   else
-                     SKIP
                    end
       # Parameter is an array, so we need to iterate through it
       charges = nil
@@ -199,11 +195,11 @@ module PagarmeApiSdk
         end
       end
 
-      charges = SKIP unless hash.key?('charges')
-      invoice_url = hash.key?('invoice_url') ? hash['invoice_url'] : SKIP
+      charges = nil unless hash.key?('charges')
+      invoice_url = hash.key?('invoice_url') ? hash['invoice_url'] : nil
       shipping = GetShippingResponse.from_hash(hash['shipping']) if hash['shipping']
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
-      closed = hash.key?('closed') ? hash['closed'] : SKIP
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
+      closed = hash.key?('closed') ? hash['closed'] : nil
       customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
       # Parameter is an array, so we need to iterate through it
       checkouts = nil

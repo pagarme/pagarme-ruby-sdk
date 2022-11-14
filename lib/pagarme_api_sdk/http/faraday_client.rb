@@ -4,7 +4,11 @@
 # ( https://apimatic.io ).
 
 require 'faraday/http_cache'
-require 'faraday_middleware'
+require 'faraday/retry'
+require 'faraday/multipart'
+require 'faraday/follow_redirects'
+require 'faraday/gzip'
+require 'faraday/net_http_persistent'
 
 module PagarmeApiSdk
   # An implementation of HttpClient.
@@ -15,12 +19,12 @@ module PagarmeApiSdk
     # The constructor.
     def initialize(timeout:, max_retries:, retry_interval:,
                    backoff_factor:, retry_statuses:, retry_methods:,
-                   connection: nil, cache: false, verify: true)
+                   connection:, adapter:, cache: false, verify: true)
       @connection = if connection.nil?
                       create_connection(timeout: timeout, max_retries: max_retries,
                                         retry_interval: retry_interval, backoff_factor: backoff_factor,
                                         retry_statuses: retry_statuses, retry_methods: retry_methods,
-                                        cache: cache, verify: verify)
+                                        adapter: adapter, cache: cache, verify: verify)
                     else
                       connection
                     end
@@ -29,11 +33,11 @@ module PagarmeApiSdk
     # Method to initialize connection.
     def create_connection(timeout:, max_retries:, retry_interval:,
                           backoff_factor:, retry_statuses:, retry_methods:,
-                          cache: false, verify: true)
+                          adapter:, cache: false, verify: true)
       Faraday.new do |faraday|
         faraday.use Faraday::HttpCache, serializer: Marshal if cache
-        faraday.use FaradayMiddleware::FollowRedirects
-        faraday.use :gzip
+        faraday.use Faraday::FollowRedirects::Middleware
+        faraday.request :gzip
         faraday.request :multipart
         faraday.request :url_encoded
         faraday.ssl[:ca_file] = Certifi.where
@@ -45,7 +49,7 @@ module PagarmeApiSdk
                                 retry_if: proc { |env, _exc|
                                             env.request.context['forced_retry'] ||= false
                                           }
-        faraday.adapter Faraday.default_adapter
+        faraday.adapter adapter
         faraday.options[:params_encoder] = Faraday::FlatParamsEncoder
         faraday.options[:timeout] = timeout if timeout.positive?
       end

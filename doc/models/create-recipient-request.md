@@ -17,7 +17,7 @@ Request for creating a recipient
 | `document` | `String` | Required | Recipient document number |
 | `type` | `String` | Required | Recipient type |
 | `default_bank_account` | [`CreateBankAccountRequest`](../../doc/models/create-bank-account-request.md) | Required | Bank account |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 | `transfer_settings` | [`CreateTransferSettingsRequest`](../../doc/models/create-transfer-settings-request.md) | Optional | Receiver Transfer Information |
 | `code` | `String` | Required | Recipient code |
 | `payment_mode` | `String` | Required | Payment mode<br>**Default**: `'bank_transfer'` |

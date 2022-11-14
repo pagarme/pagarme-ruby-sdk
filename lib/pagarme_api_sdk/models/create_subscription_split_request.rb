@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Defines if the split is enabled
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :enabled
 
     # Split
@@ -26,19 +26,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(enabled = nil,
                    rules = nil)
-      @enabled = enabled unless enabled == SKIP
-      @rules = rules unless rules == SKIP
+      @enabled = enabled
+      @rules = rules
     end
 
     # Creates an instance of the object from a hash.
@@ -46,7 +46,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      enabled = hash.key?('enabled') ? hash['enabled'] : SKIP
+      enabled = hash.key?('enabled') ? hash['enabled'] : nil
       # Parameter is an array, so we need to iterate through it
       rules = nil
       unless hash['rules'].nil?
@@ -56,7 +56,7 @@ module PagarmeApiSdk
         end
       end
 
-      rules = SKIP unless hash.key?('rules')
+      rules = nil unless hash.key?('rules')
 
       # Create object from extracted values.
       CreateSubscriptionSplitRequest.new(enabled,

@@ -47,6 +47,18 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :statement_descriptor
 
+    # Soft Descriptor
+    # @return [CreateInterestRequest]
+    attr_accessor :interest
+
+    # Soft Descriptor
+    # @return [CreateFineRequest]
+    attr_accessor :fine
+
+    # Soft Descriptor
+    # @return [Integer]
+    attr_accessor :max_days_to_pay_past_due
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -59,19 +71,25 @@ module PagarmeApiSdk
       @_hash['nosso_numero'] = 'nosso_numero'
       @_hash['document_number'] = 'document_number'
       @_hash['statement_descriptor'] = 'statement_descriptor'
+      @_hash['interest'] = 'interest'
+      @_hash['fine'] = 'fine'
+      @_hash['max_days_to_pay_past_due'] = 'max_days_to_pay_past_due'
       @_hash
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         due_at
         nosso_numero
+        interest
+        fine
+        max_days_to_pay_past_due
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -82,17 +100,23 @@ module PagarmeApiSdk
                    billing_address_id = nil,
                    document_number = nil,
                    statement_descriptor = nil,
-                   due_at = nil,
-                   nosso_numero = nil)
-      @retries = retries unless retries == SKIP
-      @bank = bank unless bank == SKIP
-      @instructions = instructions unless instructions == SKIP
+                   due_at = SKIP,
+                   nosso_numero = SKIP,
+                   interest = SKIP,
+                   fine = SKIP,
+                   max_days_to_pay_past_due = SKIP)
+      @retries = retries
+      @bank = bank
+      @instructions = instructions
       @due_at = due_at unless due_at == SKIP
-      @billing_address = billing_address unless billing_address == SKIP
-      @billing_address_id = billing_address_id unless billing_address_id == SKIP
+      @billing_address = billing_address
+      @billing_address_id = billing_address_id
       @nosso_numero = nosso_numero unless nosso_numero == SKIP
-      @document_number = document_number unless document_number == SKIP
-      @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
+      @document_number = document_number
+      @statement_descriptor = statement_descriptor
+      @interest = interest unless interest == SKIP
+      @fine = fine unless fine == SKIP
+      @max_days_to_pay_past_due = max_days_to_pay_past_due unless max_days_to_pay_past_due == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -100,23 +124,27 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      retries = hash.key?('retries') ? hash['retries'] : SKIP
-      bank = hash.key?('bank') ? hash['bank'] : SKIP
-      instructions = hash.key?('instructions') ? hash['instructions'] : SKIP
+      retries = hash.key?('retries') ? hash['retries'] : nil
+      bank = hash.key?('bank') ? hash['bank'] : nil
+      instructions = hash.key?('instructions') ? hash['instructions'] : nil
       billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
         hash['billing_address']
       billing_address_id =
-        hash.key?('billing_address_id') ? hash['billing_address_id'] : SKIP
+        hash.key?('billing_address_id') ? hash['billing_address_id'] : nil
       document_number =
-        hash.key?('document_number') ? hash['document_number'] : SKIP
+        hash.key?('document_number') ? hash['document_number'] : nil
       statement_descriptor =
-        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : SKIP
+        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : nil
       due_at = if hash.key?('due_at')
                  (DateTimeHelper.from_rfc3339(hash['due_at']) if hash['due_at'])
                else
                  SKIP
                end
       nosso_numero = hash.key?('nosso_numero') ? hash['nosso_numero'] : SKIP
+      interest = CreateInterestRequest.from_hash(hash['interest']) if hash['interest']
+      fine = CreateFineRequest.from_hash(hash['fine']) if hash['fine']
+      max_days_to_pay_past_due =
+        hash.key?('max_days_to_pay_past_due') ? hash['max_days_to_pay_past_due'] : SKIP
 
       # Create object from extracted values.
       CreateBoletoPaymentRequest.new(retries,
@@ -127,7 +155,10 @@ module PagarmeApiSdk
                                      document_number,
                                      statement_descriptor,
                                      due_at,
-                                     nosso_numero)
+                                     nosso_numero,
+                                     interest,
+                                     fine,
+                                     max_days_to_pay_past_due)
     end
 
     def to_due_at

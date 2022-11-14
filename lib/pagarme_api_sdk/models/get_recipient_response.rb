@@ -59,7 +59,7 @@ module PagarmeApiSdk
     attr_accessor :gateway_recipients
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Metadata
@@ -103,7 +103,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         automatic_anticipation_settings
         transfer_settings
@@ -111,7 +111,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -130,28 +130,28 @@ module PagarmeApiSdk
                    metadata = nil,
                    code = nil,
                    payment_mode = 'bank_transfer',
-                   automatic_anticipation_settings = nil,
-                   transfer_settings = nil)
-      @id = id unless id == SKIP
-      @name = name unless name == SKIP
-      @email = email unless email == SKIP
-      @document = document unless document == SKIP
-      @description = description unless description == SKIP
-      @type = type unless type == SKIP
-      @status = status unless status == SKIP
-      @created_at = created_at unless created_at == SKIP
-      @updated_at = updated_at unless updated_at == SKIP
-      @deleted_at = deleted_at unless deleted_at == SKIP
-      @default_bank_account = default_bank_account unless default_bank_account == SKIP
-      @gateway_recipients = gateway_recipients unless gateway_recipients == SKIP
-      @metadata = metadata unless metadata == SKIP
+                   automatic_anticipation_settings = SKIP,
+                   transfer_settings = SKIP)
+      @id = id
+      @name = name
+      @email = email
+      @document = document
+      @description = description
+      @type = type
+      @status = status
+      @created_at = created_at
+      @updated_at = updated_at
+      @deleted_at = deleted_at
+      @default_bank_account = default_bank_account
+      @gateway_recipients = gateway_recipients
+      @metadata = metadata
       unless automatic_anticipation_settings == SKIP
         @automatic_anticipation_settings =
           automatic_anticipation_settings
       end
       @transfer_settings = transfer_settings unless transfer_settings == SKIP
-      @code = code unless code == SKIP
-      @payment_mode = payment_mode unless payment_mode == SKIP
+      @code = code
+      @payment_mode = payment_mode
     end
 
     # Creates an instance of the object from a hash.
@@ -159,27 +159,21 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
-      name = hash.key?('name') ? hash['name'] : SKIP
-      email = hash.key?('email') ? hash['email'] : SKIP
-      document = hash.key?('document') ? hash['document'] : SKIP
-      description = hash.key?('description') ? hash['description'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      name = hash.key?('name') ? hash['name'] : nil
+      email = hash.key?('email') ? hash['email'] : nil
+      document = hash.key?('document') ? hash['document'] : nil
+      description = hash.key?('description') ? hash['description'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
-                   else
-                     SKIP
                    end
       deleted_at = if hash.key?('deleted_at')
                      (DateTimeHelper.from_rfc3339(hash['deleted_at']) if hash['deleted_at'])
-                   else
-                     SKIP
                    end
       default_bank_account = GetBankAccountResponse.from_hash(hash['default_bank_account']) if
         hash['default_bank_account']
@@ -192,9 +186,9 @@ module PagarmeApiSdk
         end
       end
 
-      gateway_recipients = SKIP unless hash.key?('gateway_recipients')
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
-      code = hash.key?('code') ? hash['code'] : SKIP
+      gateway_recipients = nil unless hash.key?('gateway_recipients')
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
+      code = hash.key?('code') ? hash['code'] : nil
       payment_mode = hash['payment_mode'] ||= 'bank_transfer'
       if hash['automatic_anticipation_settings']
         automatic_anticipation_settings = GetAutomaticAnticipationResponse.from_hash(hash['automatic_anticipation_settings'])

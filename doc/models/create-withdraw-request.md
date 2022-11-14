@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `amount` | `Integer` | Required | - |
-| `metadata` | `Hash` | Optional | - |
+| `metadata` | `Hash of String` | Optional | - |
 
 ## Example (as JSON)
 

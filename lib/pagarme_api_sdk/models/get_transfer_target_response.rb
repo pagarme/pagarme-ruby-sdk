@@ -26,19 +26,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(target_id = nil,
                    type = nil)
-      @target_id = target_id unless target_id == SKIP
-      @type = type unless type == SKIP
+      @target_id = target_id
+      @type = type
     end
 
     # Creates an instance of the object from a hash.
@@ -46,8 +46,8 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      target_id = hash.key?('target_id') ? hash['target_id'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
+      target_id = hash.key?('target_id') ? hash['target_id'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
 
       # Create object from extracted values.
       GetTransferTargetResponse.new(target_id,

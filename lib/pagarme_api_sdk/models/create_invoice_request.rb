@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # A mapping from model property names to API property names.
@@ -21,17 +21,17 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(metadata = nil)
-      @metadata = metadata unless metadata == SKIP
+      @metadata = metadata
     end
 
     # Creates an instance of the object from a hash.
@@ -39,7 +39,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
 
       # Create object from extracted values.
       CreateInvoiceRequest.new(metadata)

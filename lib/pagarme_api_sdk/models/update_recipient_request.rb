@@ -30,7 +30,7 @@ module PagarmeApiSdk
     attr_accessor :status
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # A mapping from model property names to API property names.
@@ -46,12 +46,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -61,12 +61,12 @@ module PagarmeApiSdk
                    type = nil,
                    status = nil,
                    metadata = nil)
-      @name = name unless name == SKIP
-      @email = email unless email == SKIP
-      @description = description unless description == SKIP
-      @type = type unless type == SKIP
-      @status = status unless status == SKIP
-      @metadata = metadata unless metadata == SKIP
+      @name = name
+      @email = email
+      @description = description
+      @type = type
+      @status = status
+      @metadata = metadata
     end
 
     # Creates an instance of the object from a hash.
@@ -74,12 +74,12 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      name = hash.key?('name') ? hash['name'] : SKIP
-      email = hash.key?('email') ? hash['email'] : SKIP
-      description = hash.key?('description') ? hash['description'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      name = hash.key?('name') ? hash['name'] : nil
+      email = hash.key?('email') ? hash['email'] : nil
+      description = hash.key?('description') ? hash['description'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
 
       # Create object from extracted values.
       UpdateRecipientRequest.new(name,

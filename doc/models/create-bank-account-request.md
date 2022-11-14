@@ -20,7 +20,7 @@ Request for creating a bank account
 | `account_number` | `String` | Required | Account number |
 | `account_check_digit` | `String` | Required | Account check digit |
 | `type` | `String` | Required | Bank account type |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 | `pix_key` | `String` | Required | Pix key |
 
 ## Example (as JSON)

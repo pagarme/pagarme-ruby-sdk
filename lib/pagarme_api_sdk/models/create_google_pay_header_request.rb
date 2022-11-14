@@ -21,17 +21,17 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(ephemeral_public_key = nil)
-      @ephemeral_public_key = ephemeral_public_key unless ephemeral_public_key == SKIP
+      @ephemeral_public_key = ephemeral_public_key
     end
 
     # Creates an instance of the object from a hash.
@@ -40,7 +40,7 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       ephemeral_public_key =
-        hash.key?('ephemeral_public_key') ? hash['ephemeral_public_key'] : SKIP
+        hash.key?('ephemeral_public_key') ? hash['ephemeral_public_key'] : nil
 
       # Create object from extracted values.
       CreateGooglePayHeaderRequest.new(ephemeral_public_key)

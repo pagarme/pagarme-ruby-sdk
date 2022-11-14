@@ -13,7 +13,7 @@ Request for updating an address
 |  --- | --- | --- | --- |
 | `number` | `String` | Required | Number |
 | `complement` | `String` | Required | Complement |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 | `line_2` | `String` | Required | Line 2 for address |
 
 ## Example (as JSON)

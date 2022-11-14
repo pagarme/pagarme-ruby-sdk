@@ -26,7 +26,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         home_phone
         mobile_phone
@@ -34,12 +34,12 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(home_phone = nil,
-                   mobile_phone = nil)
+    def initialize(home_phone = SKIP,
+                   mobile_phone = SKIP)
       @home_phone = home_phone unless home_phone == SKIP
       @mobile_phone = mobile_phone unless mobile_phone == SKIP
     end

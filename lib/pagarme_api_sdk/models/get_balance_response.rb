@@ -14,7 +14,7 @@ module PagarmeApiSdk
     attr_accessor :currency
 
     # Amount available for transferring
-    # @return [Long]
+    # @return [Integer]
     attr_accessor :available_amount
 
     # Recipient
@@ -22,11 +22,11 @@ module PagarmeApiSdk
     attr_accessor :recipient
 
     # Recipient
-    # @return [Long]
+    # @return [Integer]
     attr_accessor :transferred_amount
 
     # Recipient
-    # @return [Long]
+    # @return [Integer]
     attr_accessor :waiting_funds_amount
 
     # A mapping from model property names to API property names.
@@ -41,14 +41,14 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         recipient
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -56,12 +56,12 @@ module PagarmeApiSdk
                    available_amount = nil,
                    transferred_amount = nil,
                    waiting_funds_amount = nil,
-                   recipient = nil)
-      @currency = currency unless currency == SKIP
-      @available_amount = available_amount unless available_amount == SKIP
+                   recipient = SKIP)
+      @currency = currency
+      @available_amount = available_amount
       @recipient = recipient unless recipient == SKIP
-      @transferred_amount = transferred_amount unless transferred_amount == SKIP
-      @waiting_funds_amount = waiting_funds_amount unless waiting_funds_amount == SKIP
+      @transferred_amount = transferred_amount
+      @waiting_funds_amount = waiting_funds_amount
     end
 
     # Creates an instance of the object from a hash.
@@ -69,13 +69,13 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      currency = hash.key?('currency') ? hash['currency'] : SKIP
+      currency = hash.key?('currency') ? hash['currency'] : nil
       available_amount =
-        hash.key?('available_amount') ? hash['available_amount'] : SKIP
+        hash.key?('available_amount') ? hash['available_amount'] : nil
       transferred_amount =
-        hash.key?('transferred_amount') ? hash['transferred_amount'] : SKIP
+        hash.key?('transferred_amount') ? hash['transferred_amount'] : nil
       waiting_funds_amount =
-        hash.key?('waiting_funds_amount') ? hash['waiting_funds_amount'] : SKIP
+        hash.key?('waiting_funds_amount') ? hash['waiting_funds_amount'] : nil
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if hash['recipient']
 
       # Create object from extracted values.

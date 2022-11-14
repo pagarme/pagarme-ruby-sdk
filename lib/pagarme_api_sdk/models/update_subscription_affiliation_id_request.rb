@@ -21,17 +21,17 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(gateway_affiliation_id = nil)
-      @gateway_affiliation_id = gateway_affiliation_id unless gateway_affiliation_id == SKIP
+      @gateway_affiliation_id = gateway_affiliation_id
     end
 
     # Creates an instance of the object from a hash.
@@ -40,7 +40,7 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       gateway_affiliation_id =
-        hash.key?('gateway_affiliation_id') ? hash['gateway_affiliation_id'] : SKIP
+        hash.key?('gateway_affiliation_id') ? hash['gateway_affiliation_id'] : nil
 
       # Create object from extracted values.
       UpdateSubscriptionAffiliationIdRequest.new(gateway_affiliation_id)
