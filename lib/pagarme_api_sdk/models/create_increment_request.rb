@@ -41,7 +41,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         cycles
         description
@@ -49,18 +49,18 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(value = nil,
                    increment_type = nil,
                    item_id = nil,
-                   cycles = nil,
-                   description = nil)
-      @value = value unless value == SKIP
-      @increment_type = increment_type unless increment_type == SKIP
-      @item_id = item_id unless item_id == SKIP
+                   cycles = SKIP,
+                   description = SKIP)
+      @value = value
+      @increment_type = increment_type
+      @item_id = item_id
       @cycles = cycles unless cycles == SKIP
       @description = description unless description == SKIP
     end
@@ -70,10 +70,10 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      value = hash.key?('value') ? hash['value'] : SKIP
+      value = hash.key?('value') ? hash['value'] : nil
       increment_type =
-        hash.key?('increment_type') ? hash['increment_type'] : SKIP
-      item_id = hash.key?('item_id') ? hash['item_id'] : SKIP
+        hash.key?('increment_type') ? hash['increment_type'] : nil
+      item_id = hash.key?('item_id') ? hash['item_id'] : nil
       cycles = hash.key?('cycles') ? hash['cycles'] : SKIP
       description = hash.key?('description') ? hash['description'] : SKIP
 

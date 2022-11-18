@@ -32,7 +32,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         expires_at
         expires_in
@@ -41,13 +41,13 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(expires_at = nil,
-                   expires_in = nil,
-                   additional_information = nil)
+    def initialize(expires_at = SKIP,
+                   expires_in = SKIP,
+                   additional_information = SKIP)
       @expires_at = expires_at unless expires_at == SKIP
       @expires_in = expires_in unless expires_in == SKIP
       @additional_information = additional_information unless additional_information == SKIP

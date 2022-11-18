@@ -25,11 +25,13 @@ Response object for getting a charge
 | `invoice` | [`GetInvoiceResponse`](../../doc/models/get-invoice-response.md) | Optional | - |
 | `order` | [`GetOrderResponse`](../../doc/models/get-order-response.md) | Optional | - |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
-| `metadata` | `Hash` | Required | - |
+| `metadata` | `Hash of String` | Required | - |
 | `paid_at` | `DateTime` | Optional | - |
 | `canceled_at` | `DateTime` | Optional | - |
 | `canceled_amount` | `Integer` | Required | Canceled Amount |
 | `paid_amount` | `Integer` | Required | Paid amount |
+| `interest_and_fine_paid` | `Integer` | Optional | interest and fine paid |
+| `recurrency_cycle` | `String` | Optional | Defines whether the card has been used one or more times. |
 
 ## Example (as JSON)
 
@@ -57,7 +59,9 @@ Response object for getting a charge
   "paid_at": null,
   "canceled_at": null,
   "canceled_amount": 64,
-  "paid_amount": 210
+  "paid_amount": 210,
+  "interest_and_fine_paid": null,
+  "recurrency_cycle": null
 }
 ```
 

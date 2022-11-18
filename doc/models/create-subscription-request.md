@@ -25,7 +25,7 @@ Request for creating a subcription
 | `items` | [`Array<CreateSubscriptionItemRequest>`](../../doc/models/create-subscription-item-request.md) | Required | Subscription items |
 | `shipping` | [`CreateShippingRequest`](../../doc/models/create-shipping-request.md) | Required | Shipping |
 | `discounts` | [`Array<CreateDiscountRequest>`](../../doc/models/create-discount-request.md) | Required | Discounts |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 | `setup` | [`CreateSetupRequest`](../../doc/models/create-setup-request.md) | Required | Setup data |
 | `plan_id` | `String` | Optional | Plan id |
 | `customer_id` | `String` | Optional | Customer id |

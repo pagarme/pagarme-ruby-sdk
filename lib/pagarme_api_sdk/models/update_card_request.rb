@@ -30,7 +30,7 @@ module PagarmeApiSdk
     attr_accessor :billing_address
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Metadata
@@ -51,12 +51,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -67,13 +67,13 @@ module PagarmeApiSdk
                    billing_address = nil,
                    metadata = nil,
                    label = nil)
-      @holder_name = holder_name unless holder_name == SKIP
-      @exp_month = exp_month unless exp_month == SKIP
-      @exp_year = exp_year unless exp_year == SKIP
-      @billing_address_id = billing_address_id unless billing_address_id == SKIP
-      @billing_address = billing_address unless billing_address == SKIP
-      @metadata = metadata unless metadata == SKIP
-      @label = label unless label == SKIP
+      @holder_name = holder_name
+      @exp_month = exp_month
+      @exp_year = exp_year
+      @billing_address_id = billing_address_id
+      @billing_address = billing_address
+      @metadata = metadata
+      @label = label
     end
 
     # Creates an instance of the object from a hash.
@@ -81,15 +81,15 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      holder_name = hash.key?('holder_name') ? hash['holder_name'] : SKIP
-      exp_month = hash.key?('exp_month') ? hash['exp_month'] : SKIP
-      exp_year = hash.key?('exp_year') ? hash['exp_year'] : SKIP
+      holder_name = hash.key?('holder_name') ? hash['holder_name'] : nil
+      exp_month = hash.key?('exp_month') ? hash['exp_month'] : nil
+      exp_year = hash.key?('exp_year') ? hash['exp_year'] : nil
       billing_address_id =
-        hash.key?('billing_address_id') ? hash['billing_address_id'] : SKIP
+        hash.key?('billing_address_id') ? hash['billing_address_id'] : nil
       billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
         hash['billing_address']
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
-      label = hash.key?('label') ? hash['label'] : SKIP
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
+      label = hash.key?('label') ? hash['label'] : nil
 
       # Create object from extracted values.
       UpdateCardRequest.new(holder_name,

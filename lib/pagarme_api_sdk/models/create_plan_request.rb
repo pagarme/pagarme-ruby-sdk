@@ -26,7 +26,7 @@ module PagarmeApiSdk
     attr_accessor :items
 
     # Indicates if the plan is shippable
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :shippable
 
     # Allowed payment methods for the plan
@@ -65,7 +65,7 @@ module PagarmeApiSdk
     attr_accessor :pricing_scheme
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Minimum price that will be charged
@@ -109,7 +109,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         minimum_price
         cycles
@@ -119,7 +119,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -137,24 +137,24 @@ module PagarmeApiSdk
                    billing_type = nil,
                    pricing_scheme = nil,
                    metadata = nil,
-                   minimum_price = nil,
-                   cycles = nil,
-                   quantity = nil,
-                   trial_period_days = nil)
-      @name = name unless name == SKIP
-      @description = description unless description == SKIP
-      @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
-      @items = items unless items == SKIP
-      @shippable = shippable unless shippable == SKIP
-      @payment_methods = payment_methods unless payment_methods == SKIP
-      @installments = installments unless installments == SKIP
-      @currency = currency unless currency == SKIP
-      @interval = interval unless interval == SKIP
-      @interval_count = interval_count unless interval_count == SKIP
-      @billing_days = billing_days unless billing_days == SKIP
-      @billing_type = billing_type unless billing_type == SKIP
-      @pricing_scheme = pricing_scheme unless pricing_scheme == SKIP
-      @metadata = metadata unless metadata == SKIP
+                   minimum_price = SKIP,
+                   cycles = SKIP,
+                   quantity = SKIP,
+                   trial_period_days = SKIP)
+      @name = name
+      @description = description
+      @statement_descriptor = statement_descriptor
+      @items = items
+      @shippable = shippable
+      @payment_methods = payment_methods
+      @installments = installments
+      @currency = currency
+      @interval = interval
+      @interval_count = interval_count
+      @billing_days = billing_days
+      @billing_type = billing_type
+      @pricing_scheme = pricing_scheme
+      @metadata = metadata
       @minimum_price = minimum_price unless minimum_price == SKIP
       @cycles = cycles unless cycles == SKIP
       @quantity = quantity unless quantity == SKIP
@@ -166,10 +166,10 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      name = hash.key?('name') ? hash['name'] : SKIP
-      description = hash.key?('description') ? hash['description'] : SKIP
+      name = hash.key?('name') ? hash['name'] : nil
+      description = hash.key?('description') ? hash['description'] : nil
       statement_descriptor =
-        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : SKIP
+        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : nil
       # Parameter is an array, so we need to iterate through it
       items = nil
       unless hash['items'].nil?
@@ -179,20 +179,20 @@ module PagarmeApiSdk
         end
       end
 
-      items = SKIP unless hash.key?('items')
-      shippable = hash.key?('shippable') ? hash['shippable'] : SKIP
+      items = nil unless hash.key?('items')
+      shippable = hash.key?('shippable') ? hash['shippable'] : nil
       payment_methods =
-        hash.key?('payment_methods') ? hash['payment_methods'] : SKIP
-      installments = hash.key?('installments') ? hash['installments'] : SKIP
-      currency = hash.key?('currency') ? hash['currency'] : SKIP
-      interval = hash.key?('interval') ? hash['interval'] : SKIP
+        hash.key?('payment_methods') ? hash['payment_methods'] : nil
+      installments = hash.key?('installments') ? hash['installments'] : nil
+      currency = hash.key?('currency') ? hash['currency'] : nil
+      interval = hash.key?('interval') ? hash['interval'] : nil
       interval_count =
-        hash.key?('interval_count') ? hash['interval_count'] : SKIP
-      billing_days = hash.key?('billing_days') ? hash['billing_days'] : SKIP
-      billing_type = hash.key?('billing_type') ? hash['billing_type'] : SKIP
+        hash.key?('interval_count') ? hash['interval_count'] : nil
+      billing_days = hash.key?('billing_days') ? hash['billing_days'] : nil
+      billing_type = hash.key?('billing_type') ? hash['billing_type'] : nil
       pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme']) if
         hash['pricing_scheme']
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
       minimum_price = hash.key?('minimum_price') ? hash['minimum_price'] : SKIP
       cycles = hash.key?('cycles') ? hash['cycles'] : SKIP
       quantity = hash.key?('quantity') ? hash['quantity'] : SKIP

@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # TODO: Write general description for this method
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :enabled
 
     # TODO: Write general description for this method
@@ -41,7 +41,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         enabled
         type
@@ -52,15 +52,15 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(enabled = nil,
-                   type = nil,
-                   volume_percentage = nil,
-                   delay = nil,
-                   days = nil)
+    def initialize(enabled = SKIP,
+                   type = SKIP,
+                   volume_percentage = SKIP,
+                   delay = SKIP,
+                   days = SKIP)
       @enabled = enabled unless enabled == SKIP
       @type = type unless type == SKIP
       @volume_percentage = volume_percentage unless volume_percentage == SKIP

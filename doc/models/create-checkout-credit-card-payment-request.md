@@ -14,7 +14,7 @@ Checkout card payment request
 | `statement_descriptor` | `String` | Optional | Card invoice text descriptor |
 | `installments` | [`Array<CreateCheckoutCardInstallmentOptionRequest>`](../../doc/models/create-checkout-card-installment-option-request.md) | Optional | Payment installment options |
 | `authentication` | [`CreatePaymentAuthenticationRequest`](../../doc/models/create-payment-authentication-request.md) | Optional | Creates payment authentication |
-| `capture` | `Boolean` | Optional | Authorize and capture? |
+| `capture` | `TrueClass\|FalseClass` | Optional | Authorize and capture? |
 
 ## Example (as JSON)
 

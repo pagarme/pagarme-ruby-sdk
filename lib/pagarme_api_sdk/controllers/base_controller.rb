@@ -23,6 +23,13 @@ module PagarmeApiSdk
       end
     end
 
+    def validate_parameters_types(args)
+      args.each do |_name, type|
+        key, val = type.first
+        APIHelper.validate_types(key, val) unless key.nil?
+      end
+    end
+
     def execute_request(request, binary: false)
       @http_call_back&.on_before_request(request)
 
@@ -77,7 +84,7 @@ module PagarmeApiSdk
     end
 
     def get_user_agent
-      user_agent = 'PagarmeCoreApi - Ruby 6.5.0'
+      user_agent = 'PagarmeCoreApi - Ruby 6.6.0'
       user_agent
     end
   end

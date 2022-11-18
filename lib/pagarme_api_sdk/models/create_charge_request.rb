@@ -31,7 +31,7 @@ module PagarmeApiSdk
     attr_accessor :payment
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # The charge due date
@@ -62,14 +62,14 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         due_at
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -81,16 +81,16 @@ module PagarmeApiSdk
                    metadata = nil,
                    antifraud = nil,
                    order_id = nil,
-                   due_at = nil)
-      @code = code unless code == SKIP
-      @amount = amount unless amount == SKIP
-      @customer_id = customer_id unless customer_id == SKIP
-      @customer = customer unless customer == SKIP
-      @payment = payment unless payment == SKIP
-      @metadata = metadata unless metadata == SKIP
+                   due_at = SKIP)
+      @code = code
+      @amount = amount
+      @customer_id = customer_id
+      @customer = customer
+      @payment = payment
+      @metadata = metadata
       @due_at = due_at unless due_at == SKIP
-      @antifraud = antifraud unless antifraud == SKIP
-      @order_id = order_id unless order_id == SKIP
+      @antifraud = antifraud
+      @order_id = order_id
     end
 
     # Creates an instance of the object from a hash.
@@ -98,14 +98,14 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      code = hash.key?('code') ? hash['code'] : SKIP
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
-      customer_id = hash.key?('customer_id') ? hash['customer_id'] : SKIP
+      code = hash.key?('code') ? hash['code'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : nil
+      customer_id = hash.key?('customer_id') ? hash['customer_id'] : nil
       customer = CreateCustomerRequest.from_hash(hash['customer']) if hash['customer']
       payment = CreatePaymentRequest.from_hash(hash['payment']) if hash['payment']
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
       antifraud = CreateAntifraudRequest.from_hash(hash['antifraud']) if hash['antifraud']
-      order_id = hash.key?('order_id') ? hash['order_id'] : SKIP
+      order_id = hash.key?('order_id') ? hash['order_id'] : nil
       due_at = if hash.key?('due_at')
                  (DateTimeHelper.from_rfc3339(hash['due_at']) if hash['due_at'])
                else

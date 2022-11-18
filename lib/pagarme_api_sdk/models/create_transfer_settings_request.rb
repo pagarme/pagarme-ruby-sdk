@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # TODO: Write general description for this method
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :transfer_enabled
 
     # TODO: Write general description for this method
@@ -31,21 +31,21 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(transfer_enabled = nil,
                    transfer_interval = nil,
                    transfer_day = nil)
-      @transfer_enabled = transfer_enabled unless transfer_enabled == SKIP
-      @transfer_interval = transfer_interval unless transfer_interval == SKIP
-      @transfer_day = transfer_day unless transfer_day == SKIP
+      @transfer_enabled = transfer_enabled
+      @transfer_interval = transfer_interval
+      @transfer_day = transfer_day
     end
 
     # Creates an instance of the object from a hash.
@@ -54,10 +54,10 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       transfer_enabled =
-        hash.key?('transfer_enabled') ? hash['transfer_enabled'] : SKIP
+        hash.key?('transfer_enabled') ? hash['transfer_enabled'] : nil
       transfer_interval =
-        hash.key?('transfer_interval') ? hash['transfer_interval'] : SKIP
-      transfer_day = hash.key?('transfer_day') ? hash['transfer_day'] : SKIP
+        hash.key?('transfer_interval') ? hash['transfer_interval'] : nil
+      transfer_day = hash.key?('transfer_day') ? hash['transfer_day'] : nil
 
       # Create object from extracted values.
       CreateTransferSettingsRequest.new(transfer_enabled,

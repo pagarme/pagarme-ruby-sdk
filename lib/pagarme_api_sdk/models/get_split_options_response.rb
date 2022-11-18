@@ -10,11 +10,11 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # TODO: Write general description for this method
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :liable
 
     # TODO: Write general description for this method
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :charge_processing_fee
 
     # TODO: Write general description for this method
@@ -31,21 +31,21 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(liable = nil,
                    charge_processing_fee = nil,
                    charge_remainder_fee = nil)
-      @liable = liable unless liable == SKIP
-      @charge_processing_fee = charge_processing_fee unless charge_processing_fee == SKIP
-      @charge_remainder_fee = charge_remainder_fee unless charge_remainder_fee == SKIP
+      @liable = liable
+      @charge_processing_fee = charge_processing_fee
+      @charge_remainder_fee = charge_remainder_fee
     end
 
     # Creates an instance of the object from a hash.
@@ -53,11 +53,11 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      liable = hash.key?('liable') ? hash['liable'] : SKIP
+      liable = hash.key?('liable') ? hash['liable'] : nil
       charge_processing_fee =
-        hash.key?('charge_processing_fee') ? hash['charge_processing_fee'] : SKIP
+        hash.key?('charge_processing_fee') ? hash['charge_processing_fee'] : nil
       charge_remainder_fee =
-        hash.key?('charge_remainder_fee') ? hash['charge_remainder_fee'] : SKIP
+        hash.key?('charge_remainder_fee') ? hash['charge_remainder_fee'] : nil
 
       # Create object from extracted values.
       GetSplitOptionsResponse.new(liable,

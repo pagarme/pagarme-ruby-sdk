@@ -27,19 +27,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(expires_at = nil,
                    additional_information = nil)
-      @expires_at = expires_at unless expires_at == SKIP
-      @additional_information = additional_information unless additional_information == SKIP
+      @expires_at = expires_at
+      @additional_information = additional_information
     end
 
     # Creates an instance of the object from a hash.
@@ -49,8 +49,6 @@ module PagarmeApiSdk
       # Extract variables from the hash.
       expires_at = if hash.key?('expires_at')
                      (DateTimeHelper.from_rfc3339(hash['expires_at']) if hash['expires_at'])
-                   else
-                     SKIP
                    end
       # Parameter is an array, so we need to iterate through it
       additional_information = nil
@@ -61,7 +59,7 @@ module PagarmeApiSdk
         end
       end
 
-      additional_information = SKIP unless hash.key?('additional_information')
+      additional_information = nil unless hash.key?('additional_information')
 
       # Create object from extracted values.
       GetCheckoutPixPaymentResponse.new(expires_at,

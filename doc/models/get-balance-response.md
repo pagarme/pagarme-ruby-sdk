@@ -12,10 +12,10 @@ Balance
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `currency` | `String` | Required | Currency |
-| `available_amount` | `Long` | Required | Amount available for transferring |
+| `available_amount` | `Integer` | Required | Amount available for transferring |
 | `recipient` | [`GetRecipientResponse`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `transferred_amount` | `Long` | Required | - |
-| `waiting_funds_amount` | `Long` | Required | - |
+| `transferred_amount` | `Integer` | Required | - |
+| `waiting_funds_amount` | `Integer` | Required | - |
 
 ## Example (as JSON)
 

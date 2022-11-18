@@ -30,16 +30,16 @@ module PagarmeApiSdk
     attr_accessor :card_token
 
     # Indicates a recurrence
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :recurrence
 
     # Indicates if the operation should be only authorization or auth and
     # capture.
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :capture
 
     # Indicates whether the extended label (private label) is enabled
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :extended_limit_enabled
 
     # Extended Limit Code
@@ -47,7 +47,7 @@ module PagarmeApiSdk
     attr_accessor :extended_limit_code
 
     # Customer business segment code
-    # @return [Long]
+    # @return [Integer]
     attr_accessor :merchant_category_code
 
     # The payment authentication request
@@ -59,12 +59,16 @@ module PagarmeApiSdk
     attr_accessor :contactless
 
     # Indicates whether a particular payment will enter the offline retry flow
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :auto_recovery
 
     # AuthOnly, AuthAndCapture, PreAuth
     # @return [String]
     attr_accessor :operation_type
+
+    # Defines whether the card has been used one or more times.
+    # @return [String]
+    attr_accessor :recurrency_cycle
 
     # A mapping from model property names to API property names.
     def self.names
@@ -83,11 +87,12 @@ module PagarmeApiSdk
       @_hash['contactless'] = 'contactless'
       @_hash['auto_recovery'] = 'auto_recovery'
       @_hash['operation_type'] = 'operation_type'
+      @_hash['recurrency_cycle'] = 'recurrency_cycle'
       @_hash
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         installments
         statement_descriptor
@@ -103,28 +108,30 @@ module PagarmeApiSdk
         contactless
         auto_recovery
         operation_type
+        recurrency_cycle
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(installments = 1,
-                   statement_descriptor = nil,
-                   card = nil,
-                   card_id = nil,
-                   card_token = nil,
-                   recurrence = nil,
+                   statement_descriptor = SKIP,
+                   card = SKIP,
+                   card_id = SKIP,
+                   card_token = SKIP,
+                   recurrence = SKIP,
                    capture = true,
-                   extended_limit_enabled = nil,
-                   extended_limit_code = nil,
-                   merchant_category_code = nil,
-                   authentication = nil,
-                   contactless = nil,
-                   auto_recovery = nil,
-                   operation_type = nil)
+                   extended_limit_enabled = SKIP,
+                   extended_limit_code = SKIP,
+                   merchant_category_code = SKIP,
+                   authentication = SKIP,
+                   contactless = SKIP,
+                   auto_recovery = SKIP,
+                   operation_type = SKIP,
+                   recurrency_cycle = SKIP)
       @installments = installments unless installments == SKIP
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @card = card unless card == SKIP
@@ -139,6 +146,7 @@ module PagarmeApiSdk
       @contactless = contactless unless contactless == SKIP
       @auto_recovery = auto_recovery unless auto_recovery == SKIP
       @operation_type = operation_type unless operation_type == SKIP
+      @recurrency_cycle = recurrency_cycle unless recurrency_cycle == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -167,6 +175,8 @@ module PagarmeApiSdk
       auto_recovery = hash.key?('auto_recovery') ? hash['auto_recovery'] : SKIP
       operation_type =
         hash.key?('operation_type') ? hash['operation_type'] : SKIP
+      recurrency_cycle =
+        hash.key?('recurrency_cycle') ? hash['recurrency_cycle'] : SKIP
 
       # Create object from extracted values.
       CreateCreditCardPaymentRequest.new(installments,
@@ -182,7 +192,8 @@ module PagarmeApiSdk
                                          authentication,
                                          contactless,
                                          auto_recovery,
-                                         operation_type)
+                                         operation_type,
+                                         recurrency_cycle)
     end
   end
 end

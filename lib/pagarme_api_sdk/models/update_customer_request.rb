@@ -30,7 +30,7 @@ module PagarmeApiSdk
     attr_accessor :address
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Metadata
@@ -66,7 +66,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         name
         email
@@ -82,20 +82,20 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(name = nil,
-                   email = nil,
-                   document = nil,
-                   type = nil,
-                   address = nil,
-                   metadata = nil,
-                   phones = nil,
-                   code = nil,
-                   gender = nil,
-                   document_type = nil)
+    def initialize(name = SKIP,
+                   email = SKIP,
+                   document = SKIP,
+                   type = SKIP,
+                   address = SKIP,
+                   metadata = SKIP,
+                   phones = SKIP,
+                   code = SKIP,
+                   gender = SKIP,
+                   document_type = SKIP)
       @name = name unless name == SKIP
       @email = email unless email == SKIP
       @document = document unless document == SKIP

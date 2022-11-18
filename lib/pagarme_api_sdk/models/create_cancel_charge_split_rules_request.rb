@@ -31,21 +31,21 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(id = nil,
                    amount = nil,
                    type = nil)
-      @id = id unless id == SKIP
-      @amount = amount unless amount == SKIP
-      @type = type unless type == SKIP
+      @id = id
+      @amount = amount
+      @type = type
     end
 
     # Creates an instance of the object from a hash.
@@ -53,9 +53,9 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
-      amount = hash.key?('Amount') ? hash['Amount'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      amount = hash.key?('Amount') ? hash['Amount'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
 
       # Create object from extracted values.
       CreateCancelChargeSplitRulesRequest.new(id,

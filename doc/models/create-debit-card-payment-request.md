@@ -15,7 +15,7 @@ The settings for creating a debit card payment
 | `card` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Debit card data |
 | `card_id` | `String` | Optional | The debit card id |
 | `card_token` | `String` | Optional | The debit card token |
-| `recurrence` | `Boolean` | Optional | Indicates a recurrence |
+| `recurrence` | `TrueClass\|FalseClass` | Optional | Indicates a recurrence |
 | `authentication` | [`CreatePaymentAuthenticationRequest`](../../doc/models/create-payment-authentication-request.md) | Optional | The payment authentication request |
 | `token` | [`CreateCardPaymentContactlessRequest`](../../doc/models/create-card-payment-contactless-request.md) | Optional | The Debit card payment token request |
 

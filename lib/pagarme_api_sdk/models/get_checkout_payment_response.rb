@@ -43,7 +43,7 @@ module PagarmeApiSdk
     attr_accessor :status
 
     # Pular tela de sucesso pós-pagamento?
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :skip_checkout_success_page
 
     # Data de criação
@@ -59,7 +59,7 @@ module PagarmeApiSdk
     attr_accessor :canceled_at
 
     # Torna o objeto customer editável
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :customer_editable
 
     # Dados do comprador
@@ -79,7 +79,7 @@ module PagarmeApiSdk
     attr_accessor :boleto
 
     # Indica se o billing address poderá ser editado
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :billing_address_editable
 
     # Configurações  de entrega
@@ -87,7 +87,7 @@ module PagarmeApiSdk
     attr_accessor :shipping
 
     # Indica se possui entrega
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :shippable
 
     # Data de fechamento
@@ -152,7 +152,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         amount
         canceled_at
@@ -166,7 +166,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -189,43 +189,40 @@ module PagarmeApiSdk
                    shippable = nil,
                    currency = nil,
                    accepted_brands = nil,
-                   amount = nil,
-                   canceled_at = nil,
-                   customer = nil,
-                   closed_at = nil,
-                   expires_at = nil,
-                   debit_card = nil,
-                   bank_transfer = nil,
-                   pix = nil)
-      @id = id unless id == SKIP
+                   amount = SKIP,
+                   canceled_at = SKIP,
+                   customer = SKIP,
+                   closed_at = SKIP,
+                   expires_at = SKIP,
+                   debit_card = SKIP,
+                   bank_transfer = SKIP,
+                   pix = SKIP)
+      @id = id
       @amount = amount unless amount == SKIP
-      @default_payment_method = default_payment_method unless default_payment_method == SKIP
-      @success_url = success_url unless success_url == SKIP
-      @payment_url = payment_url unless payment_url == SKIP
-      @gateway_affiliation_id = gateway_affiliation_id unless gateway_affiliation_id == SKIP
-      @accepted_payment_methods = accepted_payment_methods unless accepted_payment_methods == SKIP
-      @status = status unless status == SKIP
-      unless skip_checkout_success_page == SKIP
-        @skip_checkout_success_page =
-          skip_checkout_success_page
-      end
-      @created_at = created_at unless created_at == SKIP
-      @updated_at = updated_at unless updated_at == SKIP
+      @default_payment_method = default_payment_method
+      @success_url = success_url
+      @payment_url = payment_url
+      @gateway_affiliation_id = gateway_affiliation_id
+      @accepted_payment_methods = accepted_payment_methods
+      @status = status
+      @skip_checkout_success_page = skip_checkout_success_page
+      @created_at = created_at
+      @updated_at = updated_at
       @canceled_at = canceled_at unless canceled_at == SKIP
-      @customer_editable = customer_editable unless customer_editable == SKIP
+      @customer_editable = customer_editable
       @customer = customer unless customer == SKIP
-      @billingaddress = billingaddress unless billingaddress == SKIP
-      @credit_card = credit_card unless credit_card == SKIP
-      @boleto = boleto unless boleto == SKIP
-      @billing_address_editable = billing_address_editable unless billing_address_editable == SKIP
-      @shipping = shipping unless shipping == SKIP
-      @shippable = shippable unless shippable == SKIP
+      @billingaddress = billingaddress
+      @credit_card = credit_card
+      @boleto = boleto
+      @billing_address_editable = billing_address_editable
+      @shipping = shipping
+      @shippable = shippable
       @closed_at = closed_at unless closed_at == SKIP
       @expires_at = expires_at unless expires_at == SKIP
-      @currency = currency unless currency == SKIP
+      @currency = currency
       @debit_card = debit_card unless debit_card == SKIP
       @bank_transfer = bank_transfer unless bank_transfer == SKIP
-      @accepted_brands = accepted_brands unless accepted_brands == SKIP
+      @accepted_brands = accepted_brands
       @pix = pix unless pix == SKIP
     end
 
@@ -234,42 +231,38 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
       default_payment_method =
-        hash.key?('default_payment_method') ? hash['default_payment_method'] : SKIP
-      success_url = hash.key?('success_url') ? hash['success_url'] : SKIP
-      payment_url = hash.key?('payment_url') ? hash['payment_url'] : SKIP
+        hash.key?('default_payment_method') ? hash['default_payment_method'] : nil
+      success_url = hash.key?('success_url') ? hash['success_url'] : nil
+      payment_url = hash.key?('payment_url') ? hash['payment_url'] : nil
       gateway_affiliation_id =
-        hash.key?('gateway_affiliation_id') ? hash['gateway_affiliation_id'] : SKIP
+        hash.key?('gateway_affiliation_id') ? hash['gateway_affiliation_id'] : nil
       accepted_payment_methods =
-        hash.key?('accepted_payment_methods') ? hash['accepted_payment_methods'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
+        hash.key?('accepted_payment_methods') ? hash['accepted_payment_methods'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
       skip_checkout_success_page =
-        hash.key?('skip_checkout_success_page') ? hash['skip_checkout_success_page'] : SKIP
+        hash.key?('skip_checkout_success_page') ? hash['skip_checkout_success_page'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
-                   else
-                     SKIP
                    end
       customer_editable =
-        hash.key?('customer_editable') ? hash['customer_editable'] : SKIP
+        hash.key?('customer_editable') ? hash['customer_editable'] : nil
       billingaddress = GetAddressResponse.from_hash(hash['billingaddress']) if
         hash['billingaddress']
       credit_card = GetCheckoutCreditCardPaymentResponse.from_hash(hash['credit_card']) if
         hash['credit_card']
       boleto = GetCheckoutBoletoPaymentResponse.from_hash(hash['boleto']) if hash['boleto']
       billing_address_editable =
-        hash.key?('billing_address_editable') ? hash['billing_address_editable'] : SKIP
+        hash.key?('billing_address_editable') ? hash['billing_address_editable'] : nil
       shipping = GetShippingResponse.from_hash(hash['shipping']) if hash['shipping']
-      shippable = hash.key?('shippable') ? hash['shippable'] : SKIP
-      currency = hash.key?('currency') ? hash['currency'] : SKIP
+      shippable = hash.key?('shippable') ? hash['shippable'] : nil
+      currency = hash.key?('currency') ? hash['currency'] : nil
       accepted_brands =
-        hash.key?('accepted_brands') ? hash['accepted_brands'] : SKIP
+        hash.key?('accepted_brands') ? hash['accepted_brands'] : nil
       amount = hash.key?('amount') ? hash['amount'] : SKIP
       canceled_at = if hash.key?('canceled_at')
                       (DateTimeHelper.from_rfc3339(hash['canceled_at']) if hash['canceled_at'])

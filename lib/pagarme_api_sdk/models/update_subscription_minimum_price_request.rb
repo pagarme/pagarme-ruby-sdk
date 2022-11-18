@@ -21,18 +21,18 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         minimum_price
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(minimum_price = nil)
+    def initialize(minimum_price = SKIP)
       @minimum_price = minimum_price unless minimum_price == SKIP
     end
 

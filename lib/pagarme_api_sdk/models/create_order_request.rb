@@ -34,11 +34,11 @@ module PagarmeApiSdk
     attr_accessor :shipping
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Defines whether the order will go through anti-fraud
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :antifraud_enabled
 
     # Ip address
@@ -58,7 +58,7 @@ module PagarmeApiSdk
     attr_accessor :device
 
     # Device's informations
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :closed
 
     # Currency
@@ -96,7 +96,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         shipping
         antifraud_enabled
@@ -111,7 +111,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -122,28 +122,28 @@ module PagarmeApiSdk
                    customer_id = nil,
                    metadata = nil,
                    closed = true,
-                   shipping = nil,
-                   antifraud_enabled = nil,
-                   ip = nil,
-                   session_id = nil,
-                   location = nil,
-                   device = nil,
-                   currency = nil,
-                   antifraud = nil,
-                   submerchant = nil)
-      @items = items unless items == SKIP
-      @customer = customer unless customer == SKIP
-      @payments = payments unless payments == SKIP
-      @code = code unless code == SKIP
-      @customer_id = customer_id unless customer_id == SKIP
+                   shipping = SKIP,
+                   antifraud_enabled = SKIP,
+                   ip = SKIP,
+                   session_id = SKIP,
+                   location = SKIP,
+                   device = SKIP,
+                   currency = SKIP,
+                   antifraud = SKIP,
+                   submerchant = SKIP)
+      @items = items
+      @customer = customer
+      @payments = payments
+      @code = code
+      @customer_id = customer_id
       @shipping = shipping unless shipping == SKIP
-      @metadata = metadata unless metadata == SKIP
+      @metadata = metadata
       @antifraud_enabled = antifraud_enabled unless antifraud_enabled == SKIP
       @ip = ip unless ip == SKIP
       @session_id = session_id unless session_id == SKIP
       @location = location unless location == SKIP
       @device = device unless device == SKIP
-      @closed = closed unless closed == SKIP
+      @closed = closed
       @currency = currency unless currency == SKIP
       @antifraud = antifraud unless antifraud == SKIP
       @submerchant = submerchant unless submerchant == SKIP
@@ -163,7 +163,7 @@ module PagarmeApiSdk
         end
       end
 
-      items = SKIP unless hash.key?('items')
+      items = nil unless hash.key?('items')
       customer = CreateCustomerRequest.from_hash(hash['customer']) if hash['customer']
       # Parameter is an array, so we need to iterate through it
       payments = nil
@@ -174,10 +174,10 @@ module PagarmeApiSdk
         end
       end
 
-      payments = SKIP unless hash.key?('payments')
-      code = hash.key?('code') ? hash['code'] : SKIP
-      customer_id = hash.key?('customer_id') ? hash['customer_id'] : SKIP
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      payments = nil unless hash.key?('payments')
+      code = hash.key?('code') ? hash['code'] : nil
+      customer_id = hash.key?('customer_id') ? hash['customer_id'] : nil
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
       closed = hash['closed'] ||= true
       shipping = CreateShippingRequest.from_hash(hash['shipping']) if hash['shipping']
       antifraud_enabled =

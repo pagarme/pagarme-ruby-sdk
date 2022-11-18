@@ -56,12 +56,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -73,14 +73,14 @@ module PagarmeApiSdk
                    type = nil,
                    phone = nil,
                    address = nil)
-      @payment_facilitator_code = payment_facilitator_code unless payment_facilitator_code == SKIP
-      @code = code unless code == SKIP
-      @name = name unless name == SKIP
-      @merchant_category_code = merchant_category_code unless merchant_category_code == SKIP
-      @document = document unless document == SKIP
-      @type = type unless type == SKIP
-      @phone = phone unless phone == SKIP
-      @address = address unless address == SKIP
+      @payment_facilitator_code = payment_facilitator_code
+      @code = code
+      @name = name
+      @merchant_category_code = merchant_category_code
+      @document = document
+      @type = type
+      @phone = phone
+      @address = address
     end
 
     # Creates an instance of the object from a hash.
@@ -89,13 +89,13 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       payment_facilitator_code =
-        hash.key?('payment_facilitator_code') ? hash['payment_facilitator_code'] : SKIP
-      code = hash.key?('code') ? hash['code'] : SKIP
-      name = hash.key?('name') ? hash['name'] : SKIP
+        hash.key?('payment_facilitator_code') ? hash['payment_facilitator_code'] : nil
+      code = hash.key?('code') ? hash['code'] : nil
+      name = hash.key?('name') ? hash['name'] : nil
       merchant_category_code =
-        hash.key?('merchant_category_code') ? hash['merchant_category_code'] : SKIP
-      document = hash.key?('document') ? hash['document'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
+        hash.key?('merchant_category_code') ? hash['merchant_category_code'] : nil
+      document = hash.key?('document') ? hash['document'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
       phone = CreatePhoneRequest.from_hash(hash['phone']) if hash['phone']
       address = CreateAddressRequest.from_hash(hash['address']) if hash['address']
 

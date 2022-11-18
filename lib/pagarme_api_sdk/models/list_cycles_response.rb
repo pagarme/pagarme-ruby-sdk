@@ -26,7 +26,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         data
         paging
@@ -34,12 +34,12 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(data = nil,
-                   paging = nil)
+    def initialize(data = SKIP,
+                   paging = SKIP)
       @data = data unless data == SKIP
       @paging = paging unless paging == SKIP
     end

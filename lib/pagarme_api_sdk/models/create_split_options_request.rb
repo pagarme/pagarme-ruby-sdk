@@ -10,15 +10,15 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Liable options
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :liable
 
     # Charge processing fee
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :charge_processing_fee
 
     # Charge processing fee
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :charge_remainder_fee
 
     # A mapping from model property names to API property names.
@@ -31,7 +31,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         liable
         charge_processing_fee
@@ -40,13 +40,13 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(liable = nil,
-                   charge_processing_fee = nil,
-                   charge_remainder_fee = nil)
+    def initialize(liable = SKIP,
+                   charge_processing_fee = SKIP,
+                   charge_remainder_fee = SKIP)
       @liable = liable unless liable == SKIP
       @charge_processing_fee = charge_processing_fee unless charge_processing_fee == SKIP
       @charge_remainder_fee = charge_remainder_fee unless charge_remainder_fee == SKIP

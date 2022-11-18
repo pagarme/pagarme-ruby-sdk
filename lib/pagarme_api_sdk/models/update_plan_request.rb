@@ -50,7 +50,7 @@ module PagarmeApiSdk
     attr_accessor :status
 
     # Indicates if the plan is shippable
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :shippable
 
     # Billing days accepted by the plan
@@ -58,7 +58,7 @@ module PagarmeApiSdk
     attr_accessor :billing_days
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Minimum price
@@ -91,7 +91,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         minimum_price
         trial_period_days
@@ -99,7 +99,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -116,21 +116,21 @@ module PagarmeApiSdk
                    shippable = nil,
                    billing_days = nil,
                    metadata = nil,
-                   minimum_price = nil,
-                   trial_period_days = nil)
-      @name = name unless name == SKIP
-      @description = description unless description == SKIP
-      @installments = installments unless installments == SKIP
-      @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
-      @currency = currency unless currency == SKIP
-      @interval = interval unless interval == SKIP
-      @interval_count = interval_count unless interval_count == SKIP
-      @payment_methods = payment_methods unless payment_methods == SKIP
-      @billing_type = billing_type unless billing_type == SKIP
-      @status = status unless status == SKIP
-      @shippable = shippable unless shippable == SKIP
-      @billing_days = billing_days unless billing_days == SKIP
-      @metadata = metadata unless metadata == SKIP
+                   minimum_price = SKIP,
+                   trial_period_days = SKIP)
+      @name = name
+      @description = description
+      @installments = installments
+      @statement_descriptor = statement_descriptor
+      @currency = currency
+      @interval = interval
+      @interval_count = interval_count
+      @payment_methods = payment_methods
+      @billing_type = billing_type
+      @status = status
+      @shippable = shippable
+      @billing_days = billing_days
+      @metadata = metadata
       @minimum_price = minimum_price unless minimum_price == SKIP
       @trial_period_days = trial_period_days unless trial_period_days == SKIP
     end
@@ -140,22 +140,22 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      name = hash.key?('name') ? hash['name'] : SKIP
-      description = hash.key?('description') ? hash['description'] : SKIP
-      installments = hash.key?('installments') ? hash['installments'] : SKIP
+      name = hash.key?('name') ? hash['name'] : nil
+      description = hash.key?('description') ? hash['description'] : nil
+      installments = hash.key?('installments') ? hash['installments'] : nil
       statement_descriptor =
-        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : SKIP
-      currency = hash.key?('currency') ? hash['currency'] : SKIP
-      interval = hash.key?('interval') ? hash['interval'] : SKIP
+        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : nil
+      currency = hash.key?('currency') ? hash['currency'] : nil
+      interval = hash.key?('interval') ? hash['interval'] : nil
       interval_count =
-        hash.key?('interval_count') ? hash['interval_count'] : SKIP
+        hash.key?('interval_count') ? hash['interval_count'] : nil
       payment_methods =
-        hash.key?('payment_methods') ? hash['payment_methods'] : SKIP
-      billing_type = hash.key?('billing_type') ? hash['billing_type'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
-      shippable = hash.key?('shippable') ? hash['shippable'] : SKIP
-      billing_days = hash.key?('billing_days') ? hash['billing_days'] : SKIP
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+        hash.key?('payment_methods') ? hash['payment_methods'] : nil
+      billing_type = hash.key?('billing_type') ? hash['billing_type'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
+      shippable = hash.key?('shippable') ? hash['shippable'] : nil
+      billing_days = hash.key?('billing_days') ? hash['billing_days'] : nil
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
       minimum_price = hash.key?('minimum_price') ? hash['minimum_price'] : SKIP
       trial_period_days =
         hash.key?('trial_period_days') ? hash['trial_period_days'] : SKIP

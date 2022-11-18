@@ -42,7 +42,7 @@ module PagarmeApiSdk
     attr_accessor :boleto
 
     # Customer is editable?
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :customer_editable
 
     # Time in minutes for expiration
@@ -50,11 +50,11 @@ module PagarmeApiSdk
     attr_accessor :expires_in
 
     # Skip postpay success screen?
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :skip_checkout_success_page
 
     # Billing Address is editable?
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :billing_address_editable
 
     # Billing Address
@@ -97,7 +97,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         default_payment_method
         gateway_affiliation_id
@@ -112,7 +112,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -123,21 +123,18 @@ module PagarmeApiSdk
                    billing_address_editable = nil,
                    billing_address = nil,
                    accepted_brands = nil,
-                   default_payment_method = nil,
-                   gateway_affiliation_id = nil,
-                   credit_card = nil,
-                   debit_card = nil,
-                   boleto = nil,
-                   customer_editable = nil,
-                   expires_in = nil,
-                   bank_transfer = nil,
-                   pix = nil)
-      @accepted_payment_methods = accepted_payment_methods unless accepted_payment_methods == SKIP
-      unless accepted_multi_payment_methods == SKIP
-        @accepted_multi_payment_methods =
-          accepted_multi_payment_methods
-      end
-      @success_url = success_url unless success_url == SKIP
+                   default_payment_method = SKIP,
+                   gateway_affiliation_id = SKIP,
+                   credit_card = SKIP,
+                   debit_card = SKIP,
+                   boleto = SKIP,
+                   customer_editable = SKIP,
+                   expires_in = SKIP,
+                   bank_transfer = SKIP,
+                   pix = SKIP)
+      @accepted_payment_methods = accepted_payment_methods
+      @accepted_multi_payment_methods = accepted_multi_payment_methods
+      @success_url = success_url
       @default_payment_method = default_payment_method unless default_payment_method == SKIP
       @gateway_affiliation_id = gateway_affiliation_id unless gateway_affiliation_id == SKIP
       @credit_card = credit_card unless credit_card == SKIP
@@ -145,14 +142,11 @@ module PagarmeApiSdk
       @boleto = boleto unless boleto == SKIP
       @customer_editable = customer_editable unless customer_editable == SKIP
       @expires_in = expires_in unless expires_in == SKIP
-      unless skip_checkout_success_page == SKIP
-        @skip_checkout_success_page =
-          skip_checkout_success_page
-      end
-      @billing_address_editable = billing_address_editable unless billing_address_editable == SKIP
-      @billing_address = billing_address unless billing_address == SKIP
+      @skip_checkout_success_page = skip_checkout_success_page
+      @billing_address_editable = billing_address_editable
+      @billing_address = billing_address
       @bank_transfer = bank_transfer unless bank_transfer == SKIP
-      @accepted_brands = accepted_brands unless accepted_brands == SKIP
+      @accepted_brands = accepted_brands
       @pix = pix unless pix == SKIP
     end
 
@@ -162,18 +156,18 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       accepted_payment_methods =
-        hash.key?('accepted_payment_methods') ? hash['accepted_payment_methods'] : SKIP
+        hash.key?('accepted_payment_methods') ? hash['accepted_payment_methods'] : nil
       accepted_multi_payment_methods =
-        hash.key?('accepted_multi_payment_methods') ? hash['accepted_multi_payment_methods'] : SKIP
-      success_url = hash.key?('success_url') ? hash['success_url'] : SKIP
+        hash.key?('accepted_multi_payment_methods') ? hash['accepted_multi_payment_methods'] : nil
+      success_url = hash.key?('success_url') ? hash['success_url'] : nil
       skip_checkout_success_page =
-        hash.key?('skip_checkout_success_page') ? hash['skip_checkout_success_page'] : SKIP
+        hash.key?('skip_checkout_success_page') ? hash['skip_checkout_success_page'] : nil
       billing_address_editable =
-        hash.key?('billing_address_editable') ? hash['billing_address_editable'] : SKIP
+        hash.key?('billing_address_editable') ? hash['billing_address_editable'] : nil
       billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
         hash['billing_address']
       accepted_brands =
-        hash.key?('accepted_brands') ? hash['accepted_brands'] : SKIP
+        hash.key?('accepted_brands') ? hash['accepted_brands'] : nil
       default_payment_method =
         hash.key?('default_payment_method') ? hash['default_payment_method'] : SKIP
       gateway_affiliation_id =

@@ -72,7 +72,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         deleted_at
         code
@@ -82,7 +82,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -93,18 +93,18 @@ module PagarmeApiSdk
                    created_at = nil,
                    status = nil,
                    subscription_item = nil,
-                   deleted_at = nil,
-                   code = nil,
-                   group = nil,
-                   amount = nil)
-      @id = id unless id == SKIP
-      @quantity = quantity unless quantity == SKIP
-      @description = description unless description == SKIP
-      @used_at = used_at unless used_at == SKIP
-      @created_at = created_at unless created_at == SKIP
-      @status = status unless status == SKIP
+                   deleted_at = SKIP,
+                   code = SKIP,
+                   group = SKIP,
+                   amount = SKIP)
+      @id = id
+      @quantity = quantity
+      @description = description
+      @used_at = used_at
+      @created_at = created_at
+      @status = status
       @deleted_at = deleted_at unless deleted_at == SKIP
-      @subscription_item = subscription_item unless subscription_item == SKIP
+      @subscription_item = subscription_item
       @code = code unless code == SKIP
       @group = group unless group == SKIP
       @amount = amount unless amount == SKIP
@@ -115,20 +115,16 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
-      quantity = hash.key?('quantity') ? hash['quantity'] : SKIP
-      description = hash.key?('description') ? hash['description'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      quantity = hash.key?('quantity') ? hash['quantity'] : nil
+      description = hash.key?('description') ? hash['description'] : nil
       used_at = if hash.key?('used_at')
                   (DateTimeHelper.from_rfc3339(hash['used_at']) if hash['used_at'])
-                else
-                  SKIP
                 end
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
-      status = hash.key?('status') ? hash['status'] : SKIP
+      status = hash.key?('status') ? hash['status'] : nil
       subscription_item = GetSubscriptionItemResponse.from_hash(hash['subscription_item']) if
         hash['subscription_item']
       deleted_at = if hash.key?('deleted_at')

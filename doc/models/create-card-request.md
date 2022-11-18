@@ -19,11 +19,11 @@ Card data
 | `billing_address` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Card's billing address |
 | `brand` | `String` | Required | Card brand |
 | `billing_address_id` | `String` | Required | The address id for the billing address |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 | `type` | `String` | Required | Card type<br>**Default**: `'credit'` |
 | `options` | [`CreateCardOptionsRequest`](../../doc/models/create-card-options-request.md) | Required | Options for creating the card |
 | `holder_document` | `String` | Optional | Document number for the card's holder |
-| `private_label` | `Boolean` | Required | Indicates whether it is a private label card |
+| `private_label` | `TrueClass\|FalseClass` | Required | Indicates whether it is a private label card |
 | `label` | `String` | Required | - |
 | `id` | `String` | Optional | Identifier |
 | `token` | `String` | Optional | token identifier |

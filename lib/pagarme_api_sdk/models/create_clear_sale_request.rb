@@ -21,17 +21,17 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(custom_sla = nil)
-      @custom_sla = custom_sla unless custom_sla == SKIP
+      @custom_sla = custom_sla
     end
 
     # Creates an instance of the object from a hash.
@@ -39,7 +39,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      custom_sla = hash.key?('custom_sla') ? hash['custom_sla'] : SKIP
+      custom_sla = hash.key?('custom_sla') ? hash['custom_sla'] : nil
 
       # Create object from extracted values.
       CreateClearSaleRequest.new(custom_sla)

@@ -62,7 +62,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         max_delivery_date
         estimated_delivery_date
@@ -70,7 +70,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -81,17 +81,17 @@ module PagarmeApiSdk
                    address_id = nil,
                    address = nil,
                    type = nil,
-                   max_delivery_date = nil,
-                   estimated_delivery_date = nil)
-      @amount = amount unless amount == SKIP
-      @description = description unless description == SKIP
-      @recipient_name = recipient_name unless recipient_name == SKIP
-      @recipient_phone = recipient_phone unless recipient_phone == SKIP
-      @address_id = address_id unless address_id == SKIP
-      @address = address unless address == SKIP
+                   max_delivery_date = SKIP,
+                   estimated_delivery_date = SKIP)
+      @amount = amount
+      @description = description
+      @recipient_name = recipient_name
+      @recipient_phone = recipient_phone
+      @address_id = address_id
+      @address = address
       @max_delivery_date = max_delivery_date unless max_delivery_date == SKIP
       @estimated_delivery_date = estimated_delivery_date unless estimated_delivery_date == SKIP
-      @type = type unless type == SKIP
+      @type = type
     end
 
     # Creates an instance of the object from a hash.
@@ -99,15 +99,15 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
-      description = hash.key?('description') ? hash['description'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : nil
+      description = hash.key?('description') ? hash['description'] : nil
       recipient_name =
-        hash.key?('recipient_name') ? hash['recipient_name'] : SKIP
+        hash.key?('recipient_name') ? hash['recipient_name'] : nil
       recipient_phone =
-        hash.key?('recipient_phone') ? hash['recipient_phone'] : SKIP
-      address_id = hash.key?('address_id') ? hash['address_id'] : SKIP
+        hash.key?('recipient_phone') ? hash['recipient_phone'] : nil
+      address_id = hash.key?('address_id') ? hash['address_id'] : nil
       address = CreateAddressRequest.from_hash(hash['address']) if hash['address']
-      type = hash.key?('type') ? hash['type'] : SKIP
+      type = hash.key?('type') ? hash['type'] : nil
       max_delivery_date = if hash.key?('max_delivery_date')
                             (DateTimeHelper.from_rfc3339(hash['max_delivery_date']) if hash['max_delivery_date'])
                           else

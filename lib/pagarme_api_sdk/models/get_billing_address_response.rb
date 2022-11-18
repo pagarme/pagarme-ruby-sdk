@@ -66,12 +66,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -85,16 +85,16 @@ module PagarmeApiSdk
                    complement = nil,
                    line_1 = nil,
                    line_2 = nil)
-      @street = street unless street == SKIP
-      @number = number unless number == SKIP
-      @zip_code = zip_code unless zip_code == SKIP
-      @neighborhood = neighborhood unless neighborhood == SKIP
-      @city = city unless city == SKIP
-      @state = state unless state == SKIP
-      @country = country unless country == SKIP
-      @complement = complement unless complement == SKIP
-      @line_1 = line_1 unless line_1 == SKIP
-      @line_2 = line_2 unless line_2 == SKIP
+      @street = street
+      @number = number
+      @zip_code = zip_code
+      @neighborhood = neighborhood
+      @city = city
+      @state = state
+      @country = country
+      @complement = complement
+      @line_1 = line_1
+      @line_2 = line_2
     end
 
     # Creates an instance of the object from a hash.
@@ -102,16 +102,16 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      street = hash.key?('street') ? hash['street'] : SKIP
-      number = hash.key?('number') ? hash['number'] : SKIP
-      zip_code = hash.key?('zip_code') ? hash['zip_code'] : SKIP
-      neighborhood = hash.key?('neighborhood') ? hash['neighborhood'] : SKIP
-      city = hash.key?('city') ? hash['city'] : SKIP
-      state = hash.key?('state') ? hash['state'] : SKIP
-      country = hash.key?('country') ? hash['country'] : SKIP
-      complement = hash.key?('complement') ? hash['complement'] : SKIP
-      line_1 = hash.key?('line_1') ? hash['line_1'] : SKIP
-      line_2 = hash.key?('line_2') ? hash['line_2'] : SKIP
+      street = hash.key?('street') ? hash['street'] : nil
+      number = hash.key?('number') ? hash['number'] : nil
+      zip_code = hash.key?('zip_code') ? hash['zip_code'] : nil
+      neighborhood = hash.key?('neighborhood') ? hash['neighborhood'] : nil
+      city = hash.key?('city') ? hash['city'] : nil
+      state = hash.key?('state') ? hash['state'] : nil
+      country = hash.key?('country') ? hash['country'] : nil
+      complement = hash.key?('complement') ? hash['complement'] : nil
+      line_1 = hash.key?('line_1') ? hash['line_1'] : nil
+      line_2 = hash.key?('line_2') ? hash['line_2'] : nil
 
       # Create object from extracted values.
       GetBillingAddressResponse.new(street,

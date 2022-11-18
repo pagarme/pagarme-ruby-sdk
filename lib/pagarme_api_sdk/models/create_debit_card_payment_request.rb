@@ -26,7 +26,7 @@ module PagarmeApiSdk
     attr_accessor :card_token
 
     # Indicates a recurrence
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :recurrence
 
     # The payment authentication request
@@ -51,7 +51,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         statement_descriptor
         card
@@ -64,17 +64,17 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(statement_descriptor = nil,
-                   card = nil,
-                   card_id = nil,
-                   card_token = nil,
-                   recurrence = nil,
-                   authentication = nil,
-                   token = nil)
+    def initialize(statement_descriptor = SKIP,
+                   card = SKIP,
+                   card_id = SKIP,
+                   card_token = SKIP,
+                   recurrence = SKIP,
+                   authentication = SKIP,
+                   token = SKIP)
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @card = card unless card == SKIP
       @card_id = card_id unless card_id == SKIP

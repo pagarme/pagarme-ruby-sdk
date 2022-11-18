@@ -55,7 +55,7 @@ module PagarmeApiSdk
     attr_accessor :customer
 
     # TODO: Write general description for this method
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Card type
@@ -102,7 +102,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         customer
         deleted_at
@@ -110,7 +110,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -129,25 +129,25 @@ module PagarmeApiSdk
                    holder_document = nil,
                    first_six_digits = nil,
                    label = nil,
-                   customer = nil,
-                   deleted_at = nil)
-      @id = id unless id == SKIP
-      @last_four_digits = last_four_digits unless last_four_digits == SKIP
-      @brand = brand unless brand == SKIP
-      @holder_name = holder_name unless holder_name == SKIP
-      @exp_month = exp_month unless exp_month == SKIP
-      @exp_year = exp_year unless exp_year == SKIP
-      @status = status unless status == SKIP
-      @created_at = created_at unless created_at == SKIP
-      @updated_at = updated_at unless updated_at == SKIP
-      @billing_address = billing_address unless billing_address == SKIP
+                   customer = SKIP,
+                   deleted_at = SKIP)
+      @id = id
+      @last_four_digits = last_four_digits
+      @brand = brand
+      @holder_name = holder_name
+      @exp_month = exp_month
+      @exp_year = exp_year
+      @status = status
+      @created_at = created_at
+      @updated_at = updated_at
+      @billing_address = billing_address
       @customer = customer unless customer == SKIP
-      @metadata = metadata unless metadata == SKIP
-      @type = type unless type == SKIP
-      @holder_document = holder_document unless holder_document == SKIP
+      @metadata = metadata
+      @type = type
+      @holder_document = holder_document
       @deleted_at = deleted_at unless deleted_at == SKIP
-      @first_six_digits = first_six_digits unless first_six_digits == SKIP
-      @label = label unless label == SKIP
+      @first_six_digits = first_six_digits
+      @label = label
     end
 
     # Creates an instance of the object from a hash.
@@ -155,33 +155,29 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
       last_four_digits =
-        hash.key?('last_four_digits') ? hash['last_four_digits'] : SKIP
-      brand = hash.key?('brand') ? hash['brand'] : SKIP
-      holder_name = hash.key?('holder_name') ? hash['holder_name'] : SKIP
-      exp_month = hash.key?('exp_month') ? hash['exp_month'] : SKIP
-      exp_year = hash.key?('exp_year') ? hash['exp_year'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
+        hash.key?('last_four_digits') ? hash['last_four_digits'] : nil
+      brand = hash.key?('brand') ? hash['brand'] : nil
+      holder_name = hash.key?('holder_name') ? hash['holder_name'] : nil
+      exp_month = hash.key?('exp_month') ? hash['exp_month'] : nil
+      exp_year = hash.key?('exp_year') ? hash['exp_year'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
-                   else
-                     SKIP
                    end
       billing_address = GetBillingAddressResponse.from_hash(hash['billing_address']) if
         hash['billing_address']
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
       holder_document =
-        hash.key?('holder_document') ? hash['holder_document'] : SKIP
+        hash.key?('holder_document') ? hash['holder_document'] : nil
       first_six_digits =
-        hash.key?('first_six_digits') ? hash['first_six_digits'] : SKIP
-      label = hash.key?('label') ? hash['label'] : SKIP
+        hash.key?('first_six_digits') ? hash['first_six_digits'] : nil
+      label = hash.key?('label') ? hash['label'] : nil
       customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
       deleted_at = if hash.key?('deleted_at')
                      (DateTimeHelper.from_rfc3339(hash['deleted_at']) if hash['deleted_at'])

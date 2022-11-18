@@ -10,33 +10,6 @@ module PagarmeApiSdk
       super(config, http_call_back: http_call_back)
     end
 
-    # Gets all transfers
-    # @return [ListTransfers] response from the API call
-    def get_transfers
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/transfers'
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      ListTransfers.from_hash(decoded)
-    end
-
     # TODO: type endpoint description here
     # @param [String] transfer_id Required parameter: Example:
     # @return [GetTransfer] response from the API call
@@ -81,7 +54,7 @@ module PagarmeApiSdk
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => APIHelper.get_content_type(request)
       }
 
       # Prepare and execute HttpRequest.
@@ -97,6 +70,33 @@ module PagarmeApiSdk
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_response.raw_body)
       GetTransfer.from_hash(decoded)
+    end
+
+    # Gets all transfers
+    # @return [ListTransfers] response from the API call
+    def get_transfers
+      # Prepare query url.
+      _query_builder = config.get_base_uri
+      _query_builder << '/transfers'
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = config.http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(config, _request)
+      _response = execute_request(_request)
+      validate_response(_response)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_response.raw_body)
+      ListTransfers.from_hash(decoded)
     end
   end
 end

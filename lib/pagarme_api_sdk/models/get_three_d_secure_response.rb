@@ -41,12 +41,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -55,11 +55,11 @@ module PagarmeApiSdk
                    cavv = nil,
                    transaction_id = nil,
                    success_url = nil)
-      @mpi = mpi unless mpi == SKIP
-      @eci = eci unless eci == SKIP
-      @cavv = cavv unless cavv == SKIP
-      @transaction_id = transaction_id unless transaction_id == SKIP
-      @success_url = success_url unless success_url == SKIP
+      @mpi = mpi
+      @eci = eci
+      @cavv = cavv
+      @transaction_id = transaction_id
+      @success_url = success_url
     end
 
     # Creates an instance of the object from a hash.
@@ -67,12 +67,12 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      mpi = hash.key?('mpi') ? hash['mpi'] : SKIP
-      eci = hash.key?('eci') ? hash['eci'] : SKIP
-      cavv = hash.key?('cavv') ? hash['cavv'] : SKIP
+      mpi = hash.key?('mpi') ? hash['mpi'] : nil
+      eci = hash.key?('eci') ? hash['eci'] : nil
+      cavv = hash.key?('cavv') ? hash['cavv'] : nil
       transaction_id =
-        hash.key?('transaction_Id') ? hash['transaction_Id'] : SKIP
-      success_url = hash.key?('success_url') ? hash['success_url'] : SKIP
+        hash.key?('transaction_Id') ? hash['transaction_Id'] : nil
+      success_url = hash.key?('success_url') ? hash['success_url'] : nil
 
       # Create object from extracted values.
       GetThreeDSecureResponse.new(mpi,

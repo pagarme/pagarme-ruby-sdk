@@ -27,19 +27,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(name = nil,
                    date = nil)
-      @name = name unless name == SKIP
-      @date = date unless date == SKIP
+      @name = name
+      @date = date
     end
 
     # Creates an instance of the object from a hash.
@@ -47,11 +47,9 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      name = hash.key?('name') ? hash['name'] : SKIP
+      name = hash.key?('name') ? hash['name'] : nil
       date = if hash.key?('date')
                (DateTimeHelper.from_rfc3339(hash['date']) if hash['date'])
-             else
-               SKIP
              end
 
       # Create object from extracted values.

@@ -26,19 +26,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(card = nil,
                    card_id = nil)
-      @card = card unless card == SKIP
-      @card_id = card_id unless card_id == SKIP
+      @card = card
+      @card_id = card_id
     end
 
     # Creates an instance of the object from a hash.
@@ -47,7 +47,7 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       card = CreateCardRequest.from_hash(hash['card']) if hash['card']
-      card_id = hash.key?('card_id') ? hash['card_id'] : SKIP
+      card_id = hash.key?('card_id') ? hash['card_id'] : nil
 
       # Create object from extracted values.
       UpdateSubscriptionCardRequest.new(card,

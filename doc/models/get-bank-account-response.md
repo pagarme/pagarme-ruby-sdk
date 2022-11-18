@@ -23,7 +23,7 @@
 | `updated_at` | `DateTime` | Required | Last update date |
 | `deleted_at` | `DateTime` | Required | Deletion date |
 | `recipient` | [`GetRecipientResponse`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 | `pix_key` | `String` | Required | Pix Key |
 
 ## Example (as JSON)

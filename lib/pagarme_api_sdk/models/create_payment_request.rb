@@ -62,7 +62,7 @@ module PagarmeApiSdk
     attr_accessor :customer
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Settings for cash payment
@@ -101,7 +101,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         credit_card
         debit_card
@@ -122,28 +122,28 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(payment_method = nil,
                    private_label = nil,
-                   credit_card = nil,
-                   debit_card = nil,
-                   boleto = nil,
-                   currency = nil,
-                   voucher = nil,
-                   split = nil,
-                   bank_transfer = nil,
-                   gateway_affiliation_id = nil,
-                   amount = nil,
-                   checkout = nil,
-                   customer_id = nil,
-                   customer = nil,
-                   metadata = nil,
-                   cash = nil,
-                   pix = nil)
-      @payment_method = payment_method unless payment_method == SKIP
+                   credit_card = SKIP,
+                   debit_card = SKIP,
+                   boleto = SKIP,
+                   currency = SKIP,
+                   voucher = SKIP,
+                   split = SKIP,
+                   bank_transfer = SKIP,
+                   gateway_affiliation_id = SKIP,
+                   amount = SKIP,
+                   checkout = SKIP,
+                   customer_id = SKIP,
+                   customer = SKIP,
+                   metadata = SKIP,
+                   cash = SKIP,
+                   pix = SKIP)
+      @payment_method = payment_method
       @credit_card = credit_card unless credit_card == SKIP
       @debit_card = debit_card unless debit_card == SKIP
       @boleto = boleto unless boleto == SKIP
@@ -158,7 +158,7 @@ module PagarmeApiSdk
       @customer = customer unless customer == SKIP
       @metadata = metadata unless metadata == SKIP
       @cash = cash unless cash == SKIP
-      @private_label = private_label unless private_label == SKIP
+      @private_label = private_label
       @pix = pix unless pix == SKIP
     end
 
@@ -168,7 +168,7 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       payment_method =
-        hash.key?('payment_method') ? hash['payment_method'] : SKIP
+        hash.key?('payment_method') ? hash['payment_method'] : nil
       private_label = CreatePrivateLabelPaymentRequest.from_hash(hash['private_label']) if
         hash['private_label']
       credit_card = CreateCreditCardPaymentRequest.from_hash(hash['credit_card']) if

@@ -8,12 +8,6 @@ module PagarmeApiSdk
   class Client
     attr_reader :config
 
-    # Access to orders controller.
-    # @return [OrdersController] Returns the controller instance.
-    def orders
-      @orders ||= OrdersController.new config
-    end
-
     # Access to plans controller.
     # @return [PlansController] Returns the controller instance.
     def plans
@@ -30,6 +24,12 @@ module PagarmeApiSdk
     # @return [InvoicesController] Returns the controller instance.
     def invoices
       @invoices ||= InvoicesController.new config
+    end
+
+    # Access to orders controller.
+    # @return [OrdersController] Returns the controller instance.
+    def orders
+      @orders ||= OrdersController.new config
     end
 
     # Access to customers controller.
@@ -50,16 +50,16 @@ module PagarmeApiSdk
       @charges ||= ChargesController.new config
     end
 
-    # Access to tokens controller.
-    # @return [TokensController] Returns the controller instance.
-    def tokens
-      @tokens ||= TokensController.new config
-    end
-
     # Access to transfers controller.
     # @return [TransfersController] Returns the controller instance.
     def transfers
       @transfers ||= TransfersController.new config
+    end
+
+    # Access to tokens controller.
+    # @return [TokensController] Returns the controller instance.
+    def tokens
+      @tokens ||= TokensController.new config
     end
 
     # Access to transactions controller.
@@ -68,16 +68,16 @@ module PagarmeApiSdk
       @transactions ||= TransactionsController.new config
     end
 
-    def initialize(connection: nil, timeout: 60, max_retries: 0,
-                   retry_interval: 1, backoff_factor: 2,
+    def initialize(connection: nil, adapter: :net_http_persistent, timeout: 60,
+                   max_retries: 0, retry_interval: 1, backoff_factor: 2,
                    retry_statuses: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524],
                    retry_methods: %i[get put],
                    environment: Environment::PRODUCTION,
                    basic_auth_user_name: 'TODO: Replace',
                    basic_auth_password: 'TODO: Replace', config: nil)
       @config = if config.nil?
-                  Configuration.new(connection: connection, timeout: timeout,
-                                    max_retries: max_retries,
+                  Configuration.new(connection: connection, adapter: adapter,
+                                    timeout: timeout, max_retries: max_retries,
                                     retry_interval: retry_interval,
                                     backoff_factor: backoff_factor,
                                     retry_statuses: retry_statuses,

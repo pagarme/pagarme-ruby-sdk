@@ -11,7 +11,7 @@ Request for creating a new Invoice
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 
 ## Example (as JSON)
 

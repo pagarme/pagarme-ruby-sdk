@@ -82,7 +82,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         metadata
         fee
@@ -92,7 +92,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -105,23 +105,23 @@ module PagarmeApiSdk
                    type = nil,
                    source = nil,
                    target = nil,
-                   metadata = nil,
-                   fee = nil,
-                   funding_date = nil,
-                   funding_estimated_date = nil)
-      @id = id unless id == SKIP
-      @gateway_id = gateway_id unless gateway_id == SKIP
-      @amount = amount unless amount == SKIP
-      @status = status unless status == SKIP
-      @created_at = created_at unless created_at == SKIP
-      @updated_at = updated_at unless updated_at == SKIP
+                   metadata = SKIP,
+                   fee = SKIP,
+                   funding_date = SKIP,
+                   funding_estimated_date = SKIP)
+      @id = id
+      @gateway_id = gateway_id
+      @amount = amount
+      @status = status
+      @created_at = created_at
+      @updated_at = updated_at
       @metadata = metadata unless metadata == SKIP
       @fee = fee unless fee == SKIP
       @funding_date = funding_date unless funding_date == SKIP
       @funding_estimated_date = funding_estimated_date unless funding_estimated_date == SKIP
-      @type = type unless type == SKIP
-      @source = source unless source == SKIP
-      @target = target unless target == SKIP
+      @type = type
+      @source = source
+      @target = target
     end
 
     # Creates an instance of the object from a hash.
@@ -129,21 +129,17 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : SKIP
-      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
+      id = hash.key?('id') ? hash['id'] : nil
+      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
-                   else
-                     SKIP
                    end
-      type = hash.key?('type') ? hash['type'] : SKIP
+      type = hash.key?('type') ? hash['type'] : nil
       source = GetWithdrawSourceResponse.from_hash(hash['source']) if hash['source']
       target = GetWithdrawTargetResponse.from_hash(hash['target']) if hash['target']
       metadata = hash.key?('metadata') ? hash['metadata'] : SKIP

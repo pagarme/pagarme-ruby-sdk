@@ -56,12 +56,12 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -73,14 +73,14 @@ module PagarmeApiSdk
                    brand = nil,
                    type = nil,
                    label = nil)
-      @last_four_digits = last_four_digits unless last_four_digits == SKIP
-      @holder_name = holder_name unless holder_name == SKIP
-      @holder_document = holder_document unless holder_document == SKIP
-      @exp_month = exp_month unless exp_month == SKIP
-      @exp_year = exp_year unless exp_year == SKIP
-      @brand = brand unless brand == SKIP
-      @type = type unless type == SKIP
-      @label = label unless label == SKIP
+      @last_four_digits = last_four_digits
+      @holder_name = holder_name
+      @holder_document = holder_document
+      @exp_month = exp_month
+      @exp_year = exp_year
+      @brand = brand
+      @type = type
+      @label = label
     end
 
     # Creates an instance of the object from a hash.
@@ -89,15 +89,15 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       last_four_digits =
-        hash.key?('last_four_digits') ? hash['last_four_digits'] : SKIP
-      holder_name = hash.key?('holder_name') ? hash['holder_name'] : SKIP
+        hash.key?('last_four_digits') ? hash['last_four_digits'] : nil
+      holder_name = hash.key?('holder_name') ? hash['holder_name'] : nil
       holder_document =
-        hash.key?('holder_document') ? hash['holder_document'] : SKIP
-      exp_month = hash.key?('exp_month') ? hash['exp_month'] : SKIP
-      exp_year = hash.key?('exp_year') ? hash['exp_year'] : SKIP
-      brand = hash.key?('brand') ? hash['brand'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
-      label = hash.key?('label') ? hash['label'] : SKIP
+        hash.key?('holder_document') ? hash['holder_document'] : nil
+      exp_month = hash.key?('exp_month') ? hash['exp_month'] : nil
+      exp_year = hash.key?('exp_year') ? hash['exp_year'] : nil
+      brand = hash.key?('brand') ? hash['brand'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
+      label = hash.key?('label') ? hash['label'] : nil
 
       # Create object from extracted values.
       GetCardTokenResponse.new(last_four_digits,

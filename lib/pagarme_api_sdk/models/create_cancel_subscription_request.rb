@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Indicates if the pending invoices must also be canceled.
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :cancel_pending_invoices
 
     # A mapping from model property names to API property names.
@@ -21,17 +21,17 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(cancel_pending_invoices = true)
-      @cancel_pending_invoices = cancel_pending_invoices unless cancel_pending_invoices == SKIP
+      @cancel_pending_invoices = cancel_pending_invoices
     end
 
     # Creates an instance of the object from a hash.

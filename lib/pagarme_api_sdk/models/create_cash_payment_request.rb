@@ -14,7 +14,7 @@ module PagarmeApiSdk
     attr_accessor :description
 
     # Indicates whether cash collection will be confirmed in the act of creation
-    # @return [Boolean]
+    # @return [TrueClass|FalseClass]
     attr_accessor :confirm
 
     # A mapping from model property names to API property names.
@@ -26,19 +26,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(description = nil,
                    confirm = nil)
-      @description = description unless description == SKIP
-      @confirm = confirm unless confirm == SKIP
+      @description = description
+      @confirm = confirm
     end
 
     # Creates an instance of the object from a hash.
@@ -46,8 +46,8 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      description = hash.key?('description') ? hash['description'] : SKIP
-      confirm = hash.key?('confirm') ? hash['confirm'] : SKIP
+      description = hash.key?('description') ? hash['description'] : nil
+      confirm = hash.key?('confirm') ? hash['confirm'] : nil
 
       # Create object from extracted values.
       CreateCashPaymentRequest.new(description,

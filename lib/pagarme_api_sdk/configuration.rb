@@ -22,16 +22,16 @@ module PagarmeApiSdk
   # are configured in this class.
   class Configuration
     # The attribute readers for properties.
-    attr_reader :http_client, :connection, :timeout, :max_retries, :retry_interval, :backoff_factor,
-                :retry_statuses, :retry_methods, :environment, :basic_auth_user_name,
-                :basic_auth_password
+    attr_reader :http_client, :connection, :adapter, :timeout, :max_retries, :retry_interval,
+                :backoff_factor, :retry_statuses, :retry_methods, :environment,
+                :basic_auth_user_name, :basic_auth_password
 
     class << self
       attr_reader :environments
     end
 
-    def initialize(connection: nil, timeout: 60, max_retries: 0,
-                   retry_interval: 1, backoff_factor: 2,
+    def initialize(connection: nil, adapter: :net_http_persistent, timeout: 60,
+                   max_retries: 0, retry_interval: 1, backoff_factor: 2,
                    retry_statuses: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524],
                    retry_methods: %i[get put],
                    environment: Environment::PRODUCTION,
@@ -39,6 +39,9 @@ module PagarmeApiSdk
                    basic_auth_password: 'TODO: Replace')
       # The Faraday connection object passed by the SDK user for making requests
       @connection = connection
+
+      # The Faraday adapter object passed by the SDK user for performing http requests
+      @adapter = adapter
 
       # The value to use for connection timeout
       @timeout = timeout
@@ -72,11 +75,12 @@ module PagarmeApiSdk
       @http_client = create_http_client
     end
 
-    def clone_with(connection: nil, timeout: nil, max_retries: nil,
-                   retry_interval: nil, backoff_factor: nil,
+    def clone_with(connection: nil, adapter: nil, timeout: nil,
+                   max_retries: nil, retry_interval: nil, backoff_factor: nil,
                    retry_statuses: nil, retry_methods: nil, environment: nil,
                    basic_auth_user_name: nil, basic_auth_password: nil)
       connection ||= self.connection
+      adapter ||= self.adapter
       timeout ||= self.timeout
       max_retries ||= self.max_retries
       retry_interval ||= self.retry_interval
@@ -87,8 +91,8 @@ module PagarmeApiSdk
       basic_auth_user_name ||= self.basic_auth_user_name
       basic_auth_password ||= self.basic_auth_password
 
-      Configuration.new(connection: connection, timeout: timeout,
-                        max_retries: max_retries,
+      Configuration.new(connection: connection, adapter: adapter,
+                        timeout: timeout, max_retries: max_retries,
                         retry_interval: retry_interval,
                         backoff_factor: backoff_factor,
                         retry_statuses: retry_statuses,
@@ -102,7 +106,8 @@ module PagarmeApiSdk
                         retry_interval: retry_interval,
                         backoff_factor: backoff_factor,
                         retry_statuses: retry_statuses,
-                        retry_methods: retry_methods, connection: connection)
+                        retry_methods: retry_methods, connection: connection,
+                        adapter: adapter)
     end
 
     # All the environments the SDK can run in.

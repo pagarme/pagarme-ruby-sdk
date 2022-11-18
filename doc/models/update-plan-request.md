@@ -21,9 +21,9 @@ Request for updating a plan
 | `payment_methods` | `Array<String>` | Required | Payment methods accepted by the plan |
 | `billing_type` | `String` | Required | Billing type |
 | `status` | `String` | Required | Plan status |
-| `shippable` | `Boolean` | Required | Indicates if the plan is shippable |
+| `shippable` | `TrueClass\|FalseClass` | Required | Indicates if the plan is shippable |
 | `billing_days` | `Array<Integer>` | Required | Billing days accepted by the plan |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 | `minimum_price` | `Integer` | Optional | Minimum price |
 | `trial_period_days` | `Integer` | Optional | Number of trial period in days, where the customer will not be charged |
 

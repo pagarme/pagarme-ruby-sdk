@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `liable` | `Boolean` | Required | - |
-| `charge_processing_fee` | `Boolean` | Required | - |
+| `liable` | `TrueClass\|FalseClass` | Required | - |
+| `charge_processing_fee` | `TrueClass\|FalseClass` | Required | - |
 | `charge_remainder_fee` | `String` | Required | - |
 
 ## Example (as JSON)

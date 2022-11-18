@@ -21,18 +21,18 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         platform
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
-    def initialize(platform = nil)
+    def initialize(platform = SKIP)
       @platform = platform unless platform == SKIP
     end
 

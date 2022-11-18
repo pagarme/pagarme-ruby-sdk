@@ -16,7 +16,7 @@ Request for updating a Recipient
 | `description` | `String` | Required | Description |
 | `type` | `String` | Required | Type |
 | `status` | `String` | Required | Status |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 
 ## Example (as JSON)
 

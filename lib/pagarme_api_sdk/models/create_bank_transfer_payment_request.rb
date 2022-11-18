@@ -26,19 +26,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(bank = nil,
                    retries = nil)
-      @bank = bank unless bank == SKIP
-      @retries = retries unless retries == SKIP
+      @bank = bank
+      @retries = retries
     end
 
     # Creates an instance of the object from a hash.
@@ -46,8 +46,8 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      bank = hash.key?('bank') ? hash['bank'] : SKIP
-      retries = hash.key?('retries') ? hash['retries'] : SKIP
+      bank = hash.key?('bank') ? hash['bank'] : nil
+      retries = hash.key?('retries') ? hash['retries'] : nil
 
       # Create object from extracted values.
       CreateBankTransferPaymentRequest.new(bank,

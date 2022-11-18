@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `enabled` | `Boolean` | Optional | - |
+| `enabled` | `TrueClass\|FalseClass` | Optional | - |
 | `type` | `String` | Optional | - |
 | `volume_percentage` | `Integer` | Optional | - |
 | `delay` | `Integer` | Optional | - |

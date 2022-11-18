@@ -102,7 +102,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       _arr = %w[
         due_at
         paid_at
@@ -112,7 +112,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       _arr = []
       (_arr << super()).flatten!
     end
@@ -144,29 +144,32 @@ module PagarmeApiSdk
                    gateway_response = nil,
                    antifraud_response = nil,
                    split = nil,
-                   due_at = nil,
-                   paid_at = nil,
-                   credit_at = nil,
-                   next_attempt = nil,
+                   due_at = SKIP,
+                   paid_at = SKIP,
+                   credit_at = SKIP,
+                   next_attempt = SKIP,
                    transaction_type = 'boleto',
-                   metadata = nil)
-      @url = url unless url == SKIP
-      @barcode = barcode unless barcode == SKIP
-      @nosso_numero = nosso_numero unless nosso_numero == SKIP
-      @bank = bank unless bank == SKIP
-      @document_number = document_number unless document_number == SKIP
-      @instructions = instructions unless instructions == SKIP
-      @billing_address = billing_address unless billing_address == SKIP
+                   metadata = SKIP,
+                   interest = SKIP,
+                   fine = SKIP,
+                   max_days_to_pay_past_due = SKIP)
+      @url = url
+      @barcode = barcode
+      @nosso_numero = nosso_numero
+      @bank = bank
+      @document_number = document_number
+      @instructions = instructions
+      @billing_address = billing_address
       @due_at = due_at unless due_at == SKIP
-      @qr_code = qr_code unless qr_code == SKIP
-      @line = line unless line == SKIP
-      @pdf_password = pdf_password unless pdf_password == SKIP
-      @pdf = pdf unless pdf == SKIP
+      @qr_code = qr_code
+      @line = line
+      @pdf_password = pdf_password
+      @pdf = pdf
       @paid_at = paid_at unless paid_at == SKIP
-      @paid_amount = paid_amount unless paid_amount == SKIP
-      @type = type unless type == SKIP
+      @paid_amount = paid_amount
+      @type = type
       @credit_at = credit_at unless credit_at == SKIP
-      @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
+      @statement_descriptor = statement_descriptor
 
       # Call the constructor of the base class
       super(gateway_id,
@@ -184,7 +187,10 @@ module PagarmeApiSdk
             split,
             next_attempt,
             transaction_type,
-            metadata)
+            metadata,
+            interest,
+            fine,
+            max_days_to_pay_past_due)
     end
 
     # Creates an instance of the object from a hash.
@@ -192,39 +198,35 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      url = hash.key?('url') ? hash['url'] : SKIP
-      barcode = hash.key?('barcode') ? hash['barcode'] : SKIP
-      nosso_numero = hash.key?('nosso_numero') ? hash['nosso_numero'] : SKIP
-      bank = hash.key?('bank') ? hash['bank'] : SKIP
+      url = hash.key?('url') ? hash['url'] : nil
+      barcode = hash.key?('barcode') ? hash['barcode'] : nil
+      nosso_numero = hash.key?('nosso_numero') ? hash['nosso_numero'] : nil
+      bank = hash.key?('bank') ? hash['bank'] : nil
       document_number =
-        hash.key?('document_number') ? hash['document_number'] : SKIP
-      instructions = hash.key?('instructions') ? hash['instructions'] : SKIP
+        hash.key?('document_number') ? hash['document_number'] : nil
+      instructions = hash.key?('instructions') ? hash['instructions'] : nil
       billing_address = GetBillingAddressResponse.from_hash(hash['billing_address']) if
         hash['billing_address']
-      qr_code = hash.key?('qr_code') ? hash['qr_code'] : SKIP
-      line = hash.key?('line') ? hash['line'] : SKIP
-      pdf_password = hash.key?('pdf_password') ? hash['pdf_password'] : SKIP
-      pdf = hash.key?('pdf') ? hash['pdf'] : SKIP
-      paid_amount = hash.key?('paid_amount') ? hash['paid_amount'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
+      qr_code = hash.key?('qr_code') ? hash['qr_code'] : nil
+      line = hash.key?('line') ? hash['line'] : nil
+      pdf_password = hash.key?('pdf_password') ? hash['pdf_password'] : nil
+      pdf = hash.key?('pdf') ? hash['pdf'] : nil
+      paid_amount = hash.key?('paid_amount') ? hash['paid_amount'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
       statement_descriptor =
-        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : SKIP
-      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
-      success = hash.key?('success') ? hash['success'] : SKIP
+        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : nil
+      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
+      success = hash.key?('success') ? hash['success'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
-                   else
-                     SKIP
                    end
-      attempt_count = hash.key?('attempt_count') ? hash['attempt_count'] : SKIP
-      max_attempts = hash.key?('max_attempts') ? hash['max_attempts'] : SKIP
+      attempt_count = hash.key?('attempt_count') ? hash['attempt_count'] : nil
+      max_attempts = hash.key?('max_attempts') ? hash['max_attempts'] : nil
       # Parameter is an array, so we need to iterate through it
       splits = nil
       unless hash['splits'].nil?
@@ -234,8 +236,8 @@ module PagarmeApiSdk
         end
       end
 
-      splits = SKIP unless hash.key?('splits')
-      id = hash.key?('id') ? hash['id'] : SKIP
+      splits = nil unless hash.key?('splits')
+      id = hash.key?('id') ? hash['id'] : nil
       gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response']) if
         hash['gateway_response']
       antifraud_response = GetAntifraudResponse.from_hash(hash['antifraud_response']) if
@@ -249,7 +251,7 @@ module PagarmeApiSdk
         end
       end
 
-      split = SKIP unless hash.key?('split')
+      split = nil unless hash.key?('split')
       due_at = if hash.key?('due_at')
                  (DateTimeHelper.from_rfc3339(hash['due_at']) if hash['due_at'])
                else
@@ -272,6 +274,10 @@ module PagarmeApiSdk
                      end
       transaction_type = hash['transaction_type'] ||= 'boleto'
       metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      interest = GetInterestResponse.from_hash(hash['interest']) if hash['interest']
+      fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']
+      max_days_to_pay_past_due =
+        hash.key?('max_days_to_pay_past_due') ? hash['max_days_to_pay_past_due'] : SKIP
 
       # Create object from extracted values.
       GetBoletoTransactionResponse.new(url,
@@ -306,7 +312,10 @@ module PagarmeApiSdk
                                        credit_at,
                                        next_attempt,
                                        transaction_type,
-                                       metadata)
+                                       metadata,
+                                       interest,
+                                       fine,
+                                       max_days_to_pay_past_due)
     end
 
     def to_due_at

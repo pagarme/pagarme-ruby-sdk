@@ -37,7 +37,7 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       _arr = %w[
         paid_at
         paid_amount
@@ -46,7 +46,7 @@ module PagarmeApiSdk
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       _arr = []
       (_arr << super()).flatten!
     end
@@ -66,13 +66,16 @@ module PagarmeApiSdk
                    gateway_response = nil,
                    antifraud_response = nil,
                    split = nil,
-                   paid_at = nil,
-                   paid_amount = nil,
-                   next_attempt = nil,
+                   paid_at = SKIP,
+                   paid_amount = SKIP,
+                   next_attempt = SKIP,
                    transaction_type = 'safetypay',
-                   metadata = nil)
-      @url = url unless url == SKIP
-      @bank_tid = bank_tid unless bank_tid == SKIP
+                   metadata = SKIP,
+                   interest = SKIP,
+                   fine = SKIP,
+                   max_days_to_pay_past_due = SKIP)
+      @url = url
+      @bank_tid = bank_tid
       @paid_at = paid_at unless paid_at == SKIP
       @paid_amount = paid_amount unless paid_amount == SKIP
 
@@ -92,7 +95,10 @@ module PagarmeApiSdk
             split,
             next_attempt,
             transaction_type,
-            metadata)
+            metadata,
+            interest,
+            fine,
+            max_days_to_pay_past_due)
     end
 
     # Creates an instance of the object from a hash.
@@ -100,24 +106,20 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      url = hash.key?('url') ? hash['url'] : SKIP
-      bank_tid = hash.key?('bank_tid') ? hash['bank_tid'] : SKIP
-      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
-      amount = hash.key?('amount') ? hash['amount'] : SKIP
-      status = hash.key?('status') ? hash['status'] : SKIP
-      success = hash.key?('success') ? hash['success'] : SKIP
+      url = hash.key?('url') ? hash['url'] : nil
+      bank_tid = hash.key?('bank_tid') ? hash['bank_tid'] : nil
+      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : nil
+      status = hash.key?('status') ? hash['status'] : nil
+      success = hash.key?('success') ? hash['success'] : nil
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
-                   else
-                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
-                   else
-                     SKIP
                    end
-      attempt_count = hash.key?('attempt_count') ? hash['attempt_count'] : SKIP
-      max_attempts = hash.key?('max_attempts') ? hash['max_attempts'] : SKIP
+      attempt_count = hash.key?('attempt_count') ? hash['attempt_count'] : nil
+      max_attempts = hash.key?('max_attempts') ? hash['max_attempts'] : nil
       # Parameter is an array, so we need to iterate through it
       splits = nil
       unless hash['splits'].nil?
@@ -127,8 +129,8 @@ module PagarmeApiSdk
         end
       end
 
-      splits = SKIP unless hash.key?('splits')
-      id = hash.key?('id') ? hash['id'] : SKIP
+      splits = nil unless hash.key?('splits')
+      id = hash.key?('id') ? hash['id'] : nil
       gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response']) if
         hash['gateway_response']
       antifraud_response = GetAntifraudResponse.from_hash(hash['antifraud_response']) if
@@ -142,7 +144,7 @@ module PagarmeApiSdk
         end
       end
 
-      split = SKIP unless hash.key?('split')
+      split = nil unless hash.key?('split')
       paid_at = if hash.key?('paid_at')
                   (DateTimeHelper.from_rfc3339(hash['paid_at']) if hash['paid_at'])
                 else
@@ -156,6 +158,10 @@ module PagarmeApiSdk
                      end
       transaction_type = hash['transaction_type'] ||= 'safetypay'
       metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      interest = GetInterestResponse.from_hash(hash['interest']) if hash['interest']
+      fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']
+      max_days_to_pay_past_due =
+        hash.key?('max_days_to_pay_past_due') ? hash['max_days_to_pay_past_due'] : SKIP
 
       # Create object from extracted values.
       GetSafetyPayTransactionResponse.new(url,
@@ -177,7 +183,10 @@ module PagarmeApiSdk
                                           paid_amount,
                                           next_attempt,
                                           transaction_type,
-                                          metadata)
+                                          metadata,
+                                          interest,
+                                          fine,
+                                          max_days_to_pay_past_due)
     end
 
     def to_paid_at

@@ -26,19 +26,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(max = nil,
                    min = nil)
-      @max = max unless max == SKIP
-      @min = min unless min == SKIP
+      @max = max
+      @min = min
     end
 
     # Creates an instance of the object from a hash.

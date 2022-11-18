@@ -22,13 +22,13 @@ Response object for getting an Order
 | `charges` | [`Array<GetChargeResponse>`](../../doc/models/get-charge-response.md) | Required | - |
 | `invoice_url` | `String` | Required | - |
 | `shipping` | [`GetShippingResponse`](../../doc/models/get-shipping-response.md) | Required | - |
-| `metadata` | `Hash` | Required | - |
+| `metadata` | `Hash of String` | Required | - |
 | `checkouts` | [`Array<GetCheckoutPaymentResponse>`](../../doc/models/get-checkout-payment-response.md) | Optional | Checkout Payment Settings Response |
 | `ip` | `String` | Optional | Ip address |
 | `session_id` | `String` | Optional | Session id |
 | `location` | [`GetLocationResponse`](../../doc/models/get-location-response.md) | Optional | Location |
 | `device` | [`GetDeviceResponse`](../../doc/models/get-device-response.md) | Optional | Device's informations |
-| `closed` | `Boolean` | Required | Indicates whether the order is closed |
+| `closed` | `TrueClass\|FalseClass` | Required | Indicates whether the order is closed |
 
 ## Example (as JSON)
 
@@ -81,7 +81,9 @@ Response object for getting an Order
       "paid_at": null,
       "canceled_at": null,
       "canceled_amount": 152,
-      "paid_amount": 122
+      "paid_amount": 122,
+      "interest_and_fine_paid": null,
+      "recurrency_cycle": null
     },
     {
       "id": "id9",
@@ -106,7 +108,9 @@ Response object for getting an Order
       "paid_at": null,
       "canceled_at": null,
       "canceled_amount": 153,
-      "paid_amount": 121
+      "paid_amount": 121,
+      "interest_and_fine_paid": null,
+      "recurrency_cycle": null
     }
   ],
   "invoice_url": "invoice_url2",

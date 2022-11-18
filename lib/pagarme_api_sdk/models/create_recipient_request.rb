@@ -34,7 +34,7 @@ module PagarmeApiSdk
     attr_accessor :default_bank_account
 
     # Metadata
-    # @return [Hash]
+    # @return [Hash of String]
     attr_accessor :metadata
 
     # Receiver Transfer Information
@@ -66,14 +66,14 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         transfer_settings
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
@@ -86,17 +86,17 @@ module PagarmeApiSdk
                    metadata = nil,
                    code = nil,
                    payment_mode = 'bank_transfer',
-                   transfer_settings = nil)
-      @name = name unless name == SKIP
-      @email = email unless email == SKIP
-      @description = description unless description == SKIP
-      @document = document unless document == SKIP
-      @type = type unless type == SKIP
-      @default_bank_account = default_bank_account unless default_bank_account == SKIP
-      @metadata = metadata unless metadata == SKIP
+                   transfer_settings = SKIP)
+      @name = name
+      @email = email
+      @description = description
+      @document = document
+      @type = type
+      @default_bank_account = default_bank_account
+      @metadata = metadata
       @transfer_settings = transfer_settings unless transfer_settings == SKIP
-      @code = code unless code == SKIP
-      @payment_mode = payment_mode unless payment_mode == SKIP
+      @code = code
+      @payment_mode = payment_mode
     end
 
     # Creates an instance of the object from a hash.
@@ -104,15 +104,15 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      name = hash.key?('name') ? hash['name'] : SKIP
-      email = hash.key?('email') ? hash['email'] : SKIP
-      description = hash.key?('description') ? hash['description'] : SKIP
-      document = hash.key?('document') ? hash['document'] : SKIP
-      type = hash.key?('type') ? hash['type'] : SKIP
+      name = hash.key?('name') ? hash['name'] : nil
+      email = hash.key?('email') ? hash['email'] : nil
+      description = hash.key?('description') ? hash['description'] : nil
+      document = hash.key?('document') ? hash['document'] : nil
+      type = hash.key?('type') ? hash['type'] : nil
       default_bank_account = CreateBankAccountRequest.from_hash(hash['default_bank_account']) if
         hash['default_bank_account']
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
-      code = hash.key?('code') ? hash['code'] : SKIP
+      metadata = hash.key?('metadata') ? hash['metadata'] : nil
+      code = hash.key?('code') ? hash['code'] : nil
       payment_mode = hash['payment_mode'] ||= 'bank_transfer'
       transfer_settings = CreateTransferSettingsRequest.from_hash(hash['transfer_settings']) if
         hash['transfer_settings']

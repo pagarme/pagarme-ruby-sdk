@@ -12,7 +12,7 @@ Request for creating a transfer
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `amount` | `Integer` | Required | Transfer amount |
-| `metadata` | `Hash` | Required | Metadata |
+| `metadata` | `Hash of String` | Required | Metadata |
 
 ## Example (as JSON)
 

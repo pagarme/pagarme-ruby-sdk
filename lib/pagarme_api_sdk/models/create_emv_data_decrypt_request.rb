@@ -31,23 +31,23 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       %w[
         dukpt
       ]
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(cipher = nil,
                    tags = nil,
-                   dukpt = nil)
-      @cipher = cipher unless cipher == SKIP
+                   dukpt = SKIP)
+      @cipher = cipher
       @dukpt = dukpt unless dukpt == SKIP
-      @tags = tags unless tags == SKIP
+      @tags = tags
     end
 
     # Creates an instance of the object from a hash.
@@ -55,7 +55,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      cipher = hash.key?('cipher') ? hash['cipher'] : SKIP
+      cipher = hash.key?('cipher') ? hash['cipher'] : nil
       # Parameter is an array, so we need to iterate through it
       tags = nil
       unless hash['tags'].nil?
@@ -65,7 +65,7 @@ module PagarmeApiSdk
         end
       end
 
-      tags = SKIP unless hash.key?('tags')
+      tags = nil unless hash.key?('tags')
       dukpt = CreateEmvDataDukptDecryptRequest.from_hash(hash['dukpt']) if hash['dukpt']
 
       # Create object from extracted values.

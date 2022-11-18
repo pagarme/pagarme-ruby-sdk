@@ -16,15 +16,16 @@ The settings for creating a credit card payment
 | `card` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Credit card data |
 | `card_id` | `String` | Optional | The credit card id |
 | `card_token` | `String` | Optional | - |
-| `recurrence` | `Boolean` | Optional | Indicates a recurrence |
-| `capture` | `Boolean` | Optional | Indicates if the operation should be only authorization or auth and capture.<br>**Default**: `true` |
-| `extended_limit_enabled` | `Boolean` | Optional | Indicates whether the extended label (private label) is enabled |
+| `recurrence` | `TrueClass\|FalseClass` | Optional | Indicates a recurrence |
+| `capture` | `TrueClass\|FalseClass` | Optional | Indicates if the operation should be only authorization or auth and capture.<br>**Default**: `true` |
+| `extended_limit_enabled` | `TrueClass\|FalseClass` | Optional | Indicates whether the extended label (private label) is enabled |
 | `extended_limit_code` | `String` | Optional | Extended Limit Code |
-| `merchant_category_code` | `Long` | Optional | Customer business segment code |
+| `merchant_category_code` | `Integer` | Optional | Customer business segment code |
 | `authentication` | [`CreatePaymentAuthenticationRequest`](../../doc/models/create-payment-authentication-request.md) | Optional | The payment authentication request |
 | `contactless` | [`CreateCardPaymentContactlessRequest`](../../doc/models/create-card-payment-contactless-request.md) | Optional | The Credit card payment contactless request |
-| `auto_recovery` | `Boolean` | Optional | Indicates whether a particular payment will enter the offline retry flow |
+| `auto_recovery` | `TrueClass\|FalseClass` | Optional | Indicates whether a particular payment will enter the offline retry flow |
 | `operation_type` | `String` | Optional | AuthOnly, AuthAndCapture, PreAuth |
+| `recurrency_cycle` | `String` | Optional | Defines whether the card has been used one or more times. |
 
 ## Example (as JSON)
 
@@ -43,7 +44,8 @@ The settings for creating a credit card payment
   "authentication": null,
   "contactless": null,
   "auto_recovery": null,
-  "operation_type": null
+  "operation_type": null,
+  "recurrency_cycle": null
 }
 ```
 

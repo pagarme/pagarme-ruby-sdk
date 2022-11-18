@@ -26,19 +26,19 @@ module PagarmeApiSdk
     end
 
     # An array for optional fields
-    def optionals
+    def self.optionals
       []
     end
 
     # An array for nullable fields
-    def nullables
+    def self.nullables
       []
     end
 
     def initialize(latitude = nil,
                    longitude = nil)
-      @latitude = latitude unless latitude == SKIP
-      @longitude = longitude unless longitude == SKIP
+      @latitude = latitude
+      @longitude = longitude
     end
 
     # Creates an instance of the object from a hash.
@@ -46,8 +46,8 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      latitude = hash.key?('latitude') ? hash['latitude'] : SKIP
-      longitude = hash.key?('longitude') ? hash['longitude'] : SKIP
+      latitude = hash.key?('latitude') ? hash['latitude'] : nil
+      longitude = hash.key?('longitude') ? hash['longitude'] : nil
 
       # Create object from extracted values.
       CreateLocationRequest.new(latitude,
