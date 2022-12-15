@@ -15,6 +15,7 @@ Request for updating a subscription's payment method
 | `card_id` | `String` | Required | Card id |
 | `card` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Required | Card data |
 | `card_token` | `String` | Optional | The Card Token |
+| `boleto` | [`CreateSubscriptionBoletoRequest`](../../doc/models/create-subscription-boleto-request.md) | Optional | Information about fines and interest on the "boleto" used from payment |
 
 ## Example (as JSON)
 

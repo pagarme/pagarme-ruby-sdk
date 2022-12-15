@@ -250,6 +250,8 @@ require_relative 'pagarme_api_sdk/models/get_interest_response'
 require_relative 'pagarme_api_sdk/models/get_fine_response'
 require_relative 'pagarme_api_sdk/models/create_interest_request'
 require_relative 'pagarme_api_sdk/models/create_fine_request'
+require_relative 'pagarme_api_sdk/models/create_subscription_boleto_request'
+require_relative 'pagarme_api_sdk/models/get_subscription_boleto_response'
 
 # Exceptions
 require_relative 'pagarme_api_sdk/exceptions/api_exception'

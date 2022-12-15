@@ -122,6 +122,10 @@ module PagarmeApiSdk
     # @return [GetSubscriptionSplitResponse]
     attr_accessor :split
 
+    # Subscription's split response
+    # @return [GetSubscriptionBoletoResponse]
+    attr_accessor :boleto
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -153,6 +157,7 @@ module PagarmeApiSdk
       @_hash['increments'] = 'increments'
       @_hash['boleto_due_days'] = 'boleto_due_days'
       @_hash['split'] = 'split'
+      @_hash['boleto'] = 'boleto'
       @_hash
     end
 
@@ -167,6 +172,7 @@ module PagarmeApiSdk
         canceled_at
         discounts
         boleto_due_days
+        boleto
       ]
     end
 
@@ -202,7 +208,8 @@ module PagarmeApiSdk
                    minimum_price = SKIP,
                    canceled_at = SKIP,
                    discounts = SKIP,
-                   boleto_due_days = SKIP)
+                   boleto_due_days = SKIP,
+                   boleto = SKIP)
       @id = id
       @code = code
       @start_at = start_at
@@ -231,6 +238,7 @@ module PagarmeApiSdk
       @increments = increments
       @boleto_due_days = boleto_due_days unless boleto_due_days == SKIP
       @split = split
+      @boleto = boleto unless boleto == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -312,6 +320,7 @@ module PagarmeApiSdk
       discounts = SKIP unless hash.key?('discounts')
       boleto_due_days =
         hash.key?('boleto_due_days') ? hash['boleto_due_days'] : SKIP
+      boleto = GetSubscriptionBoletoResponse.from_hash(hash['boleto']) if hash['boleto']
 
       # Create object from extracted values.
       GetSubscriptionResponse.new(id,
@@ -341,7 +350,8 @@ module PagarmeApiSdk
                                   minimum_price,
                                   canceled_at,
                                   discounts,
-                                  boleto_due_days)
+                                  boleto_due_days,
+                                  boleto)
     end
 
     def to_start_at
