@@ -138,6 +138,10 @@ module PagarmeApiSdk
     # @return [CreateSubscriptionSplitRequest]
     attr_accessor :split
 
+    # Information about fines and interest on the "boleto" used from payment
+    # @return [CreateSubscriptionBoletoRequest]
+    attr_accessor :boleto
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -173,6 +177,7 @@ module PagarmeApiSdk
       @_hash['period'] = 'period'
       @_hash['submerchant'] = 'submerchant'
       @_hash['split'] = 'split'
+      @_hash['boleto'] = 'boleto'
       @_hash
     end
 
@@ -194,6 +199,7 @@ module PagarmeApiSdk
         period
         submerchant
         split
+        boleto
       ]
     end
 
@@ -233,7 +239,8 @@ module PagarmeApiSdk
                    boleto_due_days = SKIP,
                    period = SKIP,
                    submerchant = SKIP,
-                   split = SKIP)
+                   split = SKIP,
+                   boleto = SKIP)
       @customer = customer
       @card = card
       @code = code
@@ -266,6 +273,7 @@ module PagarmeApiSdk
       @period = period unless period == SKIP
       @submerchant = submerchant unless submerchant == SKIP
       @split = split unless split == SKIP
+      @boleto = boleto unless boleto == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -342,6 +350,7 @@ module PagarmeApiSdk
       period = CreatePeriodRequest.from_hash(hash['period']) if hash['period']
       submerchant = CreateSubMerchantRequest.from_hash(hash['submerchant']) if hash['submerchant']
       split = CreateSubscriptionSplitRequest.from_hash(hash['split']) if hash['split']
+      boleto = CreateSubscriptionBoletoRequest.from_hash(hash['boleto']) if hash['boleto']
 
       # Create object from extracted values.
       CreateSubscriptionRequest.new(customer,
@@ -375,7 +384,8 @@ module PagarmeApiSdk
                                     boleto_due_days,
                                     period,
                                     submerchant,
-                                    split)
+                                    split,
+                                    boleto)
     end
 
     def to_start_at
