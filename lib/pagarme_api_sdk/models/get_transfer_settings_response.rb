@@ -37,7 +37,11 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        transfer_enabled
+        transfer_interval
+        transfer_day
+      ]
     end
 
     def initialize(transfer_enabled = nil,

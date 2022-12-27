@@ -256,11 +256,9 @@ body.payments = []
 
 body.payments[0] = CreatePaymentRequest.new
 body.payments[0].payment_method = 'payment_method0'
-body.payments[0].private_label = CreatePrivateLabelPaymentRequest.new
 
 body.payments[1] = CreatePaymentRequest.new
 body.payments[1].payment_method = 'payment_method9'
-body.payments[1].private_label = CreatePrivateLabelPaymentRequest.new
 
 body.code = 'code4'
 body.customer_id = 'customer_id4'

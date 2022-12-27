@@ -117,6 +117,7 @@ module PagarmeApiSdk
         customer
         metadata
         cash
+        private_label
         pix
       ]
     end
@@ -127,7 +128,6 @@ module PagarmeApiSdk
     end
 
     def initialize(payment_method = nil,
-                   private_label = nil,
                    credit_card = SKIP,
                    debit_card = SKIP,
                    boleto = SKIP,
@@ -142,6 +142,7 @@ module PagarmeApiSdk
                    customer = SKIP,
                    metadata = SKIP,
                    cash = SKIP,
+                   private_label = SKIP,
                    pix = SKIP)
       @payment_method = payment_method
       @credit_card = credit_card unless credit_card == SKIP
@@ -158,7 +159,7 @@ module PagarmeApiSdk
       @customer = customer unless customer == SKIP
       @metadata = metadata unless metadata == SKIP
       @cash = cash unless cash == SKIP
-      @private_label = private_label
+      @private_label = private_label unless private_label == SKIP
       @pix = pix unless pix == SKIP
     end
 
@@ -169,8 +170,6 @@ module PagarmeApiSdk
       # Extract variables from the hash.
       payment_method =
         hash.key?('payment_method') ? hash['payment_method'] : nil
-      private_label = CreatePrivateLabelPaymentRequest.from_hash(hash['private_label']) if
-        hash['private_label']
       credit_card = CreateCreditCardPaymentRequest.from_hash(hash['credit_card']) if
         hash['credit_card']
       debit_card = CreateDebitCardPaymentRequest.from_hash(hash['debit_card']) if
@@ -198,11 +197,12 @@ module PagarmeApiSdk
       customer = CreateCustomerRequest.from_hash(hash['customer']) if hash['customer']
       metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       cash = CreateCashPaymentRequest.from_hash(hash['cash']) if hash['cash']
+      private_label = CreatePrivateLabelPaymentRequest.from_hash(hash['private_label']) if
+        hash['private_label']
       pix = CreatePixPaymentRequest.from_hash(hash['pix']) if hash['pix']
 
       # Create object from extracted values.
       CreatePaymentRequest.new(payment_method,
-                               private_label,
                                credit_card,
                                debit_card,
                                boleto,
@@ -217,6 +217,7 @@ module PagarmeApiSdk
                                customer,
                                metadata,
                                cash,
+                               private_label,
                                pix)
     end
   end

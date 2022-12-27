@@ -49,7 +49,13 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        currency
+        available_amount
+        recipient
+        transferred_amount
+        waiting_funds_amount
+      ]
     end
 
     def initialize(currency = nil,

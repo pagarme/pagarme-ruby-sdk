@@ -42,6 +42,8 @@ module PagarmeApiSdk
     # An array for nullable fields
     def self.nullables
       %w[
+        interest
+        fine
         max_days_to_pay_past_due
       ]
     end

@@ -86,23 +86,6 @@ module PagarmeApiSdk
     # @return [Integer]
     attr_accessor :max_days_to_pay_past_due
 
-    # Discriminators mapping.
-    def self.discriminators
-      if @_discriminators.nil?
-        @_discriminators = {}
-        @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse
-        @_discriminators['safetypay'] = GetSafetyPayTransactionResponse
-        @_discriminators['voucher'] = GetVoucherTransactionResponse
-        @_discriminators['boleto'] = GetBoletoTransactionResponse
-        @_discriminators['debit_card'] = GetDebitCardTransactionResponse
-        @_discriminators['private_label'] = GetPrivateLabelTransactionResponse
-        @_discriminators['cash'] = GetCashTransactionResponse
-        @_discriminators['credit_card'] = GetCreditCardTransactionResponse
-        @_discriminators['pix'] = GetPixTransactionResponse
-      end
-      @_discriminators
-    end
-
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -142,7 +125,27 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        gateway_id
+        amount
+        status
+        success
+        created_at
+        updated_at
+        attempt_count
+        max_attempts
+        splits
+        next_attempt
+        transaction_type
+        id
+        gateway_response
+        antifraud_response
+        metadata
+        split
+        interest
+        fine
+        max_days_to_pay_past_due
+      ]
     end
 
     def initialize(gateway_id = nil,
@@ -159,7 +162,7 @@ module PagarmeApiSdk
                    antifraud_response = nil,
                    split = nil,
                    next_attempt = SKIP,
-                   transaction_type = 'transaction',
+                   transaction_type = SKIP,
                    metadata = SKIP,
                    interest = SKIP,
                    fine = SKIP,
@@ -188,11 +191,6 @@ module PagarmeApiSdk
     # Creates an instance of the object from a hash.
     def self.from_hash(hash)
       return nil unless hash
-
-      # Delegate unboxing to another function if a discriminator
-      # value for a child class is present.
-      unboxer = discriminators[hash['transaction_type']]
-      return unboxer.send(:from_hash, hash) if unboxer
 
       # Extract variables from the hash.
       gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : nil
@@ -237,7 +235,8 @@ module PagarmeApiSdk
                      else
                        SKIP
                      end
-      transaction_type = hash['transaction_type'] ||= 'transaction'
+      transaction_type =
+        hash.key?('transaction_type') ? hash['transaction_type'] : SKIP
       metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       interest = GetInterestResponse.from_hash(hash['interest']) if hash['interest']
       fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']

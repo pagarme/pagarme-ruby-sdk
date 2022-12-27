@@ -35,7 +35,10 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        data
+        paging
+      ]
     end
 
     def initialize(data = SKIP,

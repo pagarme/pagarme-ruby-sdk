@@ -37,7 +37,11 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        url
+        usage_report_url
+        grouped_report_url
+      ]
     end
 
     def initialize(url = nil,

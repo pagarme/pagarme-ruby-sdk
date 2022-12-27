@@ -83,7 +83,19 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        id
+        quantity
+        description
+        used_at
+        created_at
+        status
+        deleted_at
+        subscription_item
+        code
+        group
+        amount
+      ]
     end
 
     def initialize(id = nil,
