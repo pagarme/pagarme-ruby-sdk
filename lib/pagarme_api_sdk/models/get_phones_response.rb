@@ -32,7 +32,10 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        home_phone
+        mobile_phone
+      ]
     end
 
     def initialize(home_phone = nil,

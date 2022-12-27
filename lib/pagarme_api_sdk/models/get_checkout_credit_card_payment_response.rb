@@ -37,7 +37,11 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        statement_descriptor
+        installments
+        authentication
+      ]
     end
 
     def initialize(statement_descriptor = nil,

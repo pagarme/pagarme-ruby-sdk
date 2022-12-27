@@ -482,7 +482,6 @@ request.customer.phones = CreatePhonesRequest.new
 request.customer.code = 'code4'
 request.payment = CreatePaymentRequest.new
 request.payment.payment_method = 'payment_method2'
-request.payment.private_label = CreatePrivateLabelPaymentRequest.new
 request.metadata = {'key0' => 'metadata3' } 
 request.antifraud = CreateAntifraudRequest.new
 request.antifraud.type = 'type0'

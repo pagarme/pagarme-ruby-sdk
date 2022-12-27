@@ -29,7 +29,9 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        platform
+      ]
     end
 
     def initialize(platform = SKIP)

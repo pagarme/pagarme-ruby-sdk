@@ -838,7 +838,6 @@ body.setup.amount = 150
 body.setup.description = 'description0'
 body.setup.payment = CreatePaymentRequest.new
 body.setup.payment.payment_method = 'payment_method4'
-body.setup.payment.private_label = CreatePrivateLabelPaymentRequest.new
 body.increments = []
 
 

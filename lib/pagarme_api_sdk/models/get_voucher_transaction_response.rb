@@ -74,7 +74,18 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      _arr = []
+      _arr = %w[
+        statement_descriptor
+        acquirer_name
+        acquirer_affiliation_code
+        acquirer_tid
+        acquirer_nsu
+        acquirer_auth_code
+        acquirer_message
+        acquirer_return_code
+        operation_type
+        card
+      ]
       (_arr << super()).flatten!
     end
 
@@ -102,7 +113,7 @@ module PagarmeApiSdk
                    antifraud_response = nil,
                    split = nil,
                    next_attempt = SKIP,
-                   transaction_type = 'voucher',
+                   transaction_type = SKIP,
                    metadata = SKIP,
                    interest = SKIP,
                    fine = SKIP,
@@ -203,7 +214,8 @@ module PagarmeApiSdk
                      else
                        SKIP
                      end
-      transaction_type = hash['transaction_type'] ||= 'voucher'
+      transaction_type =
+        hash.key?('transaction_type') ? hash['transaction_type'] : SKIP
       metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       interest = GetInterestResponse.from_hash(hash['interest']) if hash['interest']
       fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']

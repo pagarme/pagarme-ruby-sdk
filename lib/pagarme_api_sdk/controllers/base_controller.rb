@@ -84,7 +84,7 @@ module PagarmeApiSdk
     end
 
     def get_user_agent
-      user_agent = 'PagarmeApiSDK - Ruby 6.7.0'
+      user_agent = 'PagarmeApiSDK - Ruby 6.7.1'
       user_agent
     end
   end
