@@ -141,7 +141,7 @@ module PagarmeApiSdk
                    antifraud_response = nil,
                    split = nil,
                    next_attempt = SKIP,
-                   transaction_type = SKIP,
+                   transaction_type = 'debit_card',
                    metadata = SKIP,
                    interest = SKIP,
                    fine = SKIP,
@@ -252,8 +252,7 @@ module PagarmeApiSdk
                      else
                        SKIP
                      end
-      transaction_type =
-        hash.key?('transaction_type') ? hash['transaction_type'] : SKIP
+      transaction_type = hash['transaction_type'] ||= 'debit_card'
       metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       interest = GetInterestResponse.from_hash(hash['interest']) if hash['interest']
       fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']

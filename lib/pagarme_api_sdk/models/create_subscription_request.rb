@@ -184,6 +184,7 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        setup
         plan_id
         customer_id
         card_id
@@ -223,8 +224,8 @@ module PagarmeApiSdk
                    shipping = nil,
                    discounts = nil,
                    metadata = nil,
-                   setup = nil,
                    increments = nil,
+                   setup = SKIP,
                    plan_id = SKIP,
                    customer_id = SKIP,
                    card_id = SKIP,
@@ -256,7 +257,7 @@ module PagarmeApiSdk
       @shipping = shipping
       @discounts = discounts
       @metadata = metadata
-      @setup = setup
+      @setup = setup unless setup == SKIP
       @plan_id = plan_id unless plan_id == SKIP
       @customer_id = customer_id unless customer_id == SKIP
       @card_id = card_id unless card_id == SKIP
@@ -318,7 +319,6 @@ module PagarmeApiSdk
 
       discounts = nil unless hash.key?('discounts')
       metadata = hash.key?('metadata') ? hash['metadata'] : nil
-      setup = CreateSetupRequest.from_hash(hash['setup']) if hash['setup']
       # Parameter is an array, so we need to iterate through it
       increments = nil
       unless hash['increments'].nil?
@@ -329,6 +329,7 @@ module PagarmeApiSdk
       end
 
       increments = nil unless hash.key?('increments')
+      setup = CreateSetupRequest.from_hash(hash['setup']) if hash['setup']
       plan_id = hash.key?('plan_id') ? hash['plan_id'] : SKIP
       customer_id = hash.key?('customer_id') ? hash['customer_id'] : SKIP
       card_id = hash.key?('card_id') ? hash['card_id'] : SKIP
@@ -368,8 +369,8 @@ module PagarmeApiSdk
                                     shipping,
                                     discounts,
                                     metadata,
-                                    setup,
                                     increments,
+                                    setup,
                                     plan_id,
                                     customer_id,
                                     card_id,

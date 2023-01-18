@@ -73,8 +73,8 @@ require_relative 'pagarme_api_sdk/models/get_plan_response'
 require_relative 'pagarme_api_sdk/models/update_plan_request'
 require_relative 'pagarme_api_sdk/models/create_price_bracket_request'
 require_relative 'pagarme_api_sdk/models/get_card_token_response'
-require_relative 'pagarme_api_sdk/models/get_checkout_card_installment' \
-                 '_options_response'
+require_relative 'pagarme_api_sdk/models/get_checkout_card_installment_options' \
+                 '_response'
 require_relative 'pagarme_api_sdk/models/create_pricing_scheme_request'
 require_relative 'pagarme_api_sdk/models/create_cancel_subscription_request'
 require_relative 'pagarme_api_sdk/models/update_card_request'

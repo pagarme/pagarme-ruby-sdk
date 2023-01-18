@@ -43,6 +43,7 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        price_brackets
         price
         minimum_price
         percentage
@@ -55,12 +56,12 @@ module PagarmeApiSdk
     end
 
     def initialize(scheme_type = nil,
-                   price_brackets = nil,
+                   price_brackets = SKIP,
                    price = SKIP,
                    minimum_price = SKIP,
                    percentage = SKIP)
       @scheme_type = scheme_type
-      @price_brackets = price_brackets
+      @price_brackets = price_brackets unless price_brackets == SKIP
       @price = price unless price == SKIP
       @minimum_price = minimum_price unless minimum_price == SKIP
       @percentage = percentage unless percentage == SKIP
@@ -81,7 +82,7 @@ module PagarmeApiSdk
         end
       end
 
-      price_brackets = nil unless hash.key?('price_brackets')
+      price_brackets = SKIP unless hash.key?('price_brackets')
       price = hash.key?('price') ? hash['price'] : SKIP
       minimum_price = hash.key?('minimum_price') ? hash['minimum_price'] : SKIP
       percentage = hash.key?('percentage') ? hash['percentage'] : SKIP

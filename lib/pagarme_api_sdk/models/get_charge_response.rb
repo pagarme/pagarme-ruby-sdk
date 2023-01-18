@@ -124,7 +124,6 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
-        last_transaction
         invoice
         order
         customer
@@ -148,7 +147,6 @@ module PagarmeApiSdk
         due_at
         created_at
         updated_at
-        last_transaction
         invoice
         order
         customer
@@ -172,10 +170,10 @@ module PagarmeApiSdk
                    due_at = nil,
                    created_at = nil,
                    updated_at = nil,
+                   last_transaction = nil,
                    metadata = nil,
                    canceled_amount = nil,
                    paid_amount = nil,
-                   last_transaction = SKIP,
                    invoice = SKIP,
                    order = SKIP,
                    customer = SKIP,
@@ -193,7 +191,7 @@ module PagarmeApiSdk
       @due_at = due_at
       @created_at = created_at
       @updated_at = updated_at
-      @last_transaction = last_transaction unless last_transaction == SKIP
+      @last_transaction = last_transaction
       @invoice = invoice unless invoice == SKIP
       @order = order unless order == SKIP
       @customer = customer unless customer == SKIP
@@ -228,12 +226,12 @@ module PagarmeApiSdk
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
                    end
+      last_transaction = GetTransactionResponse.from_hash(hash['last_transaction']) if
+        hash['last_transaction']
       metadata = hash.key?('metadata') ? hash['metadata'] : nil
       canceled_amount =
         hash.key?('canceled_amount') ? hash['canceled_amount'] : nil
       paid_amount = hash.key?('paid_amount') ? hash['paid_amount'] : nil
-      last_transaction = GetTransactionResponse.from_hash(hash['last_transaction']) if
-        hash['last_transaction']
       invoice = GetInvoiceResponse.from_hash(hash['invoice']) if hash['invoice']
       order = GetOrderResponse.from_hash(hash['order']) if hash['order']
       customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
@@ -263,10 +261,10 @@ module PagarmeApiSdk
                             due_at,
                             created_at,
                             updated_at,
+                            last_transaction,
                             metadata,
                             canceled_amount,
                             paid_amount,
-                            last_transaction,
                             invoice,
                             order,
                             customer,
