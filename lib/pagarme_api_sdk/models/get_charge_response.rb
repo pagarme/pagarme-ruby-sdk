@@ -124,11 +124,25 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        id
+        code
+        gateway_id
+        amount
+        status
+        currency
+        payment_method
+        due_at
+        created_at
+        updated_at
+        last_transaction
         invoice
         order
         customer
+        metadata
         paid_at
         canceled_at
+        canceled_amount
+        paid_amount
         interest_and_fine_paid
         recurrency_cycle
       ]
@@ -147,6 +161,7 @@ module PagarmeApiSdk
         due_at
         created_at
         updated_at
+        last_transaction
         invoice
         order
         customer
@@ -160,46 +175,46 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = nil,
-                   code = nil,
-                   gateway_id = nil,
-                   amount = nil,
-                   status = nil,
-                   currency = nil,
-                   payment_method = nil,
-                   due_at = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   last_transaction = nil,
-                   metadata = nil,
-                   canceled_amount = nil,
-                   paid_amount = nil,
+    def initialize(id = SKIP,
+                   code = SKIP,
+                   gateway_id = SKIP,
+                   amount = SKIP,
+                   status = SKIP,
+                   currency = SKIP,
+                   payment_method = SKIP,
+                   due_at = SKIP,
+                   created_at = SKIP,
+                   updated_at = SKIP,
+                   last_transaction = SKIP,
                    invoice = SKIP,
                    order = SKIP,
                    customer = SKIP,
+                   metadata = SKIP,
                    paid_at = SKIP,
                    canceled_at = SKIP,
+                   canceled_amount = SKIP,
+                   paid_amount = SKIP,
                    interest_and_fine_paid = SKIP,
                    recurrency_cycle = SKIP)
-      @id = id
-      @code = code
-      @gateway_id = gateway_id
-      @amount = amount
-      @status = status
-      @currency = currency
-      @payment_method = payment_method
-      @due_at = due_at
-      @created_at = created_at
-      @updated_at = updated_at
-      @last_transaction = last_transaction
+      @id = id unless id == SKIP
+      @code = code unless code == SKIP
+      @gateway_id = gateway_id unless gateway_id == SKIP
+      @amount = amount unless amount == SKIP
+      @status = status unless status == SKIP
+      @currency = currency unless currency == SKIP
+      @payment_method = payment_method unless payment_method == SKIP
+      @due_at = due_at unless due_at == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @updated_at = updated_at unless updated_at == SKIP
+      @last_transaction = last_transaction unless last_transaction == SKIP
       @invoice = invoice unless invoice == SKIP
       @order = order unless order == SKIP
       @customer = customer unless customer == SKIP
-      @metadata = metadata
+      @metadata = metadata unless metadata == SKIP
       @paid_at = paid_at unless paid_at == SKIP
       @canceled_at = canceled_at unless canceled_at == SKIP
-      @canceled_amount = canceled_amount
-      @paid_amount = paid_amount
+      @canceled_amount = canceled_amount unless canceled_amount == SKIP
+      @paid_amount = paid_amount unless paid_amount == SKIP
       @interest_and_fine_paid = interest_and_fine_paid unless interest_and_fine_paid == SKIP
       @recurrency_cycle = recurrency_cycle unless recurrency_cycle == SKIP
     end
@@ -209,32 +224,35 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
-      code = hash.key?('code') ? hash['code'] : nil
-      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : nil
-      amount = hash.key?('amount') ? hash['amount'] : nil
-      status = hash.key?('status') ? hash['status'] : nil
-      currency = hash.key?('currency') ? hash['currency'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
+      code = hash.key?('code') ? hash['code'] : SKIP
+      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
+      status = hash.key?('status') ? hash['status'] : SKIP
+      currency = hash.key?('currency') ? hash['currency'] : SKIP
       payment_method =
-        hash.key?('payment_method') ? hash['payment_method'] : nil
+        hash.key?('payment_method') ? hash['payment_method'] : SKIP
       due_at = if hash.key?('due_at')
                  (DateTimeHelper.from_rfc3339(hash['due_at']) if hash['due_at'])
+               else
+                 SKIP
                end
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
+                   else
+                     SKIP
                    end
       last_transaction = GetTransactionResponse.from_hash(hash['last_transaction']) if
         hash['last_transaction']
-      metadata = hash.key?('metadata') ? hash['metadata'] : nil
-      canceled_amount =
-        hash.key?('canceled_amount') ? hash['canceled_amount'] : nil
-      paid_amount = hash.key?('paid_amount') ? hash['paid_amount'] : nil
       invoice = GetInvoiceResponse.from_hash(hash['invoice']) if hash['invoice']
       order = GetOrderResponse.from_hash(hash['order']) if hash['order']
       customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
+      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       paid_at = if hash.key?('paid_at')
                   (DateTimeHelper.from_rfc3339(hash['paid_at']) if hash['paid_at'])
                 else
@@ -245,6 +263,9 @@ module PagarmeApiSdk
                     else
                       SKIP
                     end
+      canceled_amount =
+        hash.key?('canceled_amount') ? hash['canceled_amount'] : SKIP
+      paid_amount = hash.key?('paid_amount') ? hash['paid_amount'] : SKIP
       interest_and_fine_paid =
         hash.key?('interest_and_fine_paid') ? hash['interest_and_fine_paid'] : SKIP
       recurrency_cycle =
@@ -262,14 +283,14 @@ module PagarmeApiSdk
                             created_at,
                             updated_at,
                             last_transaction,
-                            metadata,
-                            canceled_amount,
-                            paid_amount,
                             invoice,
                             order,
                             customer,
+                            metadata,
                             paid_at,
                             canceled_at,
+                            canceled_amount,
+                            paid_amount,
                             interest_and_fine_paid,
                             recurrency_cycle)
     end

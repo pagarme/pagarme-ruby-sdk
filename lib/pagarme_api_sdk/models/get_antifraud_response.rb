@@ -42,7 +42,13 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        status
+        return_code
+        return_message
+        provider_name
+        score
+      ]
     end
 
     # An array for nullable fields
@@ -56,16 +62,16 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(status = nil,
-                   return_code = nil,
-                   return_message = nil,
-                   provider_name = nil,
-                   score = nil)
-      @status = status
-      @return_code = return_code
-      @return_message = return_message
-      @provider_name = provider_name
-      @score = score
+    def initialize(status = SKIP,
+                   return_code = SKIP,
+                   return_message = SKIP,
+                   provider_name = SKIP,
+                   score = SKIP)
+      @status = status unless status == SKIP
+      @return_code = return_code unless return_code == SKIP
+      @return_message = return_message unless return_message == SKIP
+      @provider_name = provider_name unless provider_name == SKIP
+      @score = score unless score == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -73,12 +79,12 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      status = hash.key?('status') ? hash['status'] : nil
-      return_code = hash.key?('return_code') ? hash['return_code'] : nil
+      status = hash.key?('status') ? hash['status'] : SKIP
+      return_code = hash.key?('return_code') ? hash['return_code'] : SKIP
       return_message =
-        hash.key?('return_message') ? hash['return_message'] : nil
-      provider_name = hash.key?('provider_name') ? hash['provider_name'] : nil
-      score = hash.key?('score') ? hash['score'] : nil
+        hash.key?('return_message') ? hash['return_message'] : SKIP
+      provider_name = hash.key?('provider_name') ? hash['provider_name'] : SKIP
+      score = hash.key?('score') ? hash['score'] : SKIP
 
       # Create object from extracted values.
       GetAntifraudResponse.new(status,

@@ -68,7 +68,18 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        start_at
+        end_at
+        id
+        billing_at
+        subscription
+        status
+        duration
+        created_at
+        updated_at
+        cycle
+      ]
     end
 
     # An array for nullable fields
@@ -87,26 +98,26 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(start_at = nil,
-                   end_at = nil,
-                   id = nil,
-                   billing_at = nil,
-                   subscription = nil,
-                   status = nil,
-                   duration = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   cycle = nil)
-      @start_at = start_at
-      @end_at = end_at
-      @id = id
-      @billing_at = billing_at
-      @subscription = subscription
-      @status = status
-      @duration = duration
-      @created_at = created_at
-      @updated_at = updated_at
-      @cycle = cycle
+    def initialize(start_at = SKIP,
+                   end_at = SKIP,
+                   id = SKIP,
+                   billing_at = SKIP,
+                   subscription = SKIP,
+                   status = SKIP,
+                   duration = SKIP,
+                   created_at = SKIP,
+                   updated_at = SKIP,
+                   cycle = SKIP)
+      @start_at = start_at unless start_at == SKIP
+      @end_at = end_at unless end_at == SKIP
+      @id = id unless id == SKIP
+      @billing_at = billing_at unless billing_at == SKIP
+      @subscription = subscription unless subscription == SKIP
+      @status = status unless status == SKIP
+      @duration = duration unless duration == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @updated_at = updated_at unless updated_at == SKIP
+      @cycle = cycle unless cycle == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -116,21 +127,27 @@ module PagarmeApiSdk
       # Extract variables from the hash.
       start_at = if hash.key?('start_at')
                    (DateTimeHelper.from_rfc3339(hash['start_at']) if hash['start_at'])
+                 else
+                   SKIP
                  end
       end_at = if hash.key?('end_at')
                  (DateTimeHelper.from_rfc3339(hash['end_at']) if hash['end_at'])
+               else
+                 SKIP
                end
-      id = hash.key?('id') ? hash['id'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
       billing_at = if hash.key?('billing_at')
                      (DateTimeHelper.from_rfc3339(hash['billing_at']) if hash['billing_at'])
+                   else
+                     SKIP
                    end
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
         hash['subscription']
-      status = hash.key?('status') ? hash['status'] : nil
-      duration = hash.key?('duration') ? hash['duration'] : nil
-      created_at = hash.key?('created_at') ? hash['created_at'] : nil
-      updated_at = hash.key?('updated_at') ? hash['updated_at'] : nil
-      cycle = hash.key?('cycle') ? hash['cycle'] : nil
+      status = hash.key?('status') ? hash['status'] : SKIP
+      duration = hash.key?('duration') ? hash['duration'] : SKIP
+      created_at = hash.key?('created_at') ? hash['created_at'] : SKIP
+      updated_at = hash.key?('updated_at') ? hash['updated_at'] : SKIP
+      cycle = hash.key?('cycle') ? hash['cycle'] : SKIP
 
       # Create object from extracted values.
       GetPeriodResponse.new(start_at,

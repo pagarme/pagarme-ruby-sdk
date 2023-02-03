@@ -6,97 +6,56 @@
 module PagarmeApiSdk
   # TransfersController
   class TransfersController < BaseController
-    def initialize(config, http_call_back: nil)
-      super(config, http_call_back: http_call_back)
+    # Gets all transfers
+    # @return [ListTransfers] response from the API call
+    def get_transfers
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/transfers',
+                                     Server::DEFAULT)
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(ListTransfers.method(:from_hash)))
+        .execute
     end
 
     # TODO: type endpoint description here
     # @param [String] transfer_id Required parameter: Example:
     # @return [GetTransfer] response from the API call
     def get_transfer_by_id(transfer_id)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/transfers/{transfer_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'transfer_id' => { 'value' => transfer_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetTransfer.from_hash(decoded)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/transfers/{transfer_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(transfer_id, key: 'transfer_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetTransfer.method(:from_hash)))
+        .execute
     end
 
     # TODO: type endpoint description here
     # @param [CreateTransfer] request Required parameter: Example:
     # @return [GetTransfer] response from the API call
     def create_transfer(request)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/transfers/recipients'
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => APIHelper.get_content_type(request)
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.post(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetTransfer.from_hash(decoded)
-    end
-
-    # Gets all transfers
-    # @return [ListTransfers] response from the API call
-    def get_transfers
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/transfers'
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      ListTransfers.from_hash(decoded)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/transfers/recipients',
+                                     Server::DEFAULT)
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetTransfer.method(:from_hash)))
+        .execute
     end
   end
 end

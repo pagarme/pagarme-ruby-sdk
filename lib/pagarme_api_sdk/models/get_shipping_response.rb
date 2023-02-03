@@ -59,8 +59,14 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        amount
+        description
+        recipient_name
+        recipient_phone
+        address
         max_delivery_date
         estimated_delivery_date
+        type
       ]
     end
 
@@ -78,22 +84,22 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(amount = nil,
-                   description = nil,
-                   recipient_name = nil,
-                   recipient_phone = nil,
-                   address = nil,
-                   type = nil,
+    def initialize(amount = SKIP,
+                   description = SKIP,
+                   recipient_name = SKIP,
+                   recipient_phone = SKIP,
+                   address = SKIP,
                    max_delivery_date = SKIP,
-                   estimated_delivery_date = SKIP)
-      @amount = amount
-      @description = description
-      @recipient_name = recipient_name
-      @recipient_phone = recipient_phone
-      @address = address
+                   estimated_delivery_date = SKIP,
+                   type = SKIP)
+      @amount = amount unless amount == SKIP
+      @description = description unless description == SKIP
+      @recipient_name = recipient_name unless recipient_name == SKIP
+      @recipient_phone = recipient_phone unless recipient_phone == SKIP
+      @address = address unless address == SKIP
       @max_delivery_date = max_delivery_date unless max_delivery_date == SKIP
       @estimated_delivery_date = estimated_delivery_date unless estimated_delivery_date == SKIP
-      @type = type
+      @type = type unless type == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -101,14 +107,13 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      amount = hash.key?('amount') ? hash['amount'] : nil
-      description = hash.key?('description') ? hash['description'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
+      description = hash.key?('description') ? hash['description'] : SKIP
       recipient_name =
-        hash.key?('recipient_name') ? hash['recipient_name'] : nil
+        hash.key?('recipient_name') ? hash['recipient_name'] : SKIP
       recipient_phone =
-        hash.key?('recipient_phone') ? hash['recipient_phone'] : nil
+        hash.key?('recipient_phone') ? hash['recipient_phone'] : SKIP
       address = GetAddressResponse.from_hash(hash['address']) if hash['address']
-      type = hash.key?('type') ? hash['type'] : nil
       max_delivery_date = if hash.key?('max_delivery_date')
                             (DateTimeHelper.from_rfc3339(hash['max_delivery_date']) if hash['max_delivery_date'])
                           else
@@ -119,6 +124,7 @@ module PagarmeApiSdk
                                 else
                                   SKIP
                                 end
+      type = hash.key?('type') ? hash['type'] : SKIP
 
       # Create object from extracted values.
       GetShippingResponse.new(amount,
@@ -126,9 +132,9 @@ module PagarmeApiSdk
                               recipient_name,
                               recipient_phone,
                               address,
-                              type,
                               max_delivery_date,
-                              estimated_delivery_date)
+                              estimated_delivery_date,
+                              type)
     end
 
     def to_max_delivery_date

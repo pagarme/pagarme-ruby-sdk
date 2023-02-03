@@ -32,7 +32,11 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        total
+        previous
+        mnext
+      ]
     end
 
     # An array for nullable fields
@@ -44,12 +48,12 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(total = nil,
-                   previous = nil,
-                   mnext = nil)
-      @total = total
-      @previous = previous
-      @mnext = mnext
+    def initialize(total = SKIP,
+                   previous = SKIP,
+                   mnext = SKIP)
+      @total = total unless total == SKIP
+      @previous = previous unless previous == SKIP
+      @mnext = mnext unless mnext == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -57,9 +61,9 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      total = hash.key?('total') ? hash['total'] : nil
-      previous = hash.key?('previous') ? hash['previous'] : nil
-      mnext = hash.key?('next') ? hash['next'] : nil
+      total = hash.key?('total') ? hash['total'] : SKIP
+      previous = hash.key?('previous') ? hash['previous'] : SKIP
+      mnext = hash.key?('next') ? hash['next'] : SKIP
 
       # Create object from extracted values.
       PagingResponse.new(total,

@@ -53,8 +53,13 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        amount
+        description
+        pricing_scheme
+        price_bracket
         quantity
         name
+        subscription_item_id
       ]
     end
 
@@ -71,20 +76,20 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(amount = nil,
-                   description = nil,
-                   pricing_scheme = nil,
-                   price_bracket = nil,
-                   subscription_item_id = nil,
+    def initialize(amount = SKIP,
+                   description = SKIP,
+                   pricing_scheme = SKIP,
+                   price_bracket = SKIP,
                    quantity = SKIP,
-                   name = SKIP)
-      @amount = amount
-      @description = description
-      @pricing_scheme = pricing_scheme
-      @price_bracket = price_bracket
+                   name = SKIP,
+                   subscription_item_id = SKIP)
+      @amount = amount unless amount == SKIP
+      @description = description unless description == SKIP
+      @pricing_scheme = pricing_scheme unless pricing_scheme == SKIP
+      @price_bracket = price_bracket unless price_bracket == SKIP
       @quantity = quantity unless quantity == SKIP
       @name = name unless name == SKIP
-      @subscription_item_id = subscription_item_id
+      @subscription_item_id = subscription_item_id unless subscription_item_id == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -92,25 +97,25 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      amount = hash.key?('amount') ? hash['amount'] : nil
-      description = hash.key?('description') ? hash['description'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
+      description = hash.key?('description') ? hash['description'] : SKIP
       pricing_scheme = GetPricingSchemeResponse.from_hash(hash['pricing_scheme']) if
         hash['pricing_scheme']
       price_bracket = GetPriceBracketResponse.from_hash(hash['price_bracket']) if
         hash['price_bracket']
-      subscription_item_id =
-        hash.key?('subscription_item_id') ? hash['subscription_item_id'] : nil
       quantity = hash.key?('quantity') ? hash['quantity'] : SKIP
       name = hash.key?('name') ? hash['name'] : SKIP
+      subscription_item_id =
+        hash.key?('subscription_item_id') ? hash['subscription_item_id'] : SKIP
 
       # Create object from extracted values.
       GetInvoiceItemResponse.new(amount,
                                  description,
                                  pricing_scheme,
                                  price_bracket,
-                                 subscription_item_id,
                                  quantity,
-                                 name)
+                                 name,
+                                 subscription_item_id)
     end
   end
 end

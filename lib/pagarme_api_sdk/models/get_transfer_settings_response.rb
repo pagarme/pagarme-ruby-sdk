@@ -32,7 +32,11 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        transfer_enabled
+        transfer_interval
+        transfer_day
+      ]
     end
 
     # An array for nullable fields
@@ -44,12 +48,12 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(transfer_enabled = nil,
-                   transfer_interval = nil,
-                   transfer_day = nil)
-      @transfer_enabled = transfer_enabled
-      @transfer_interval = transfer_interval
-      @transfer_day = transfer_day
+    def initialize(transfer_enabled = SKIP,
+                   transfer_interval = SKIP,
+                   transfer_day = SKIP)
+      @transfer_enabled = transfer_enabled unless transfer_enabled == SKIP
+      @transfer_interval = transfer_interval unless transfer_interval == SKIP
+      @transfer_day = transfer_day unless transfer_day == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -58,10 +62,10 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       transfer_enabled =
-        hash.key?('transfer_enabled') ? hash['transfer_enabled'] : nil
+        hash.key?('transfer_enabled') ? hash['transfer_enabled'] : SKIP
       transfer_interval =
-        hash.key?('transfer_interval') ? hash['transfer_interval'] : nil
-      transfer_day = hash.key?('transfer_day') ? hash['transfer_day'] : nil
+        hash.key?('transfer_interval') ? hash['transfer_interval'] : SKIP
+      transfer_day = hash.key?('transfer_day') ? hash['transfer_day'] : SKIP
 
       # Create object from extracted values.
       GetTransferSettingsResponse.new(transfer_enabled,

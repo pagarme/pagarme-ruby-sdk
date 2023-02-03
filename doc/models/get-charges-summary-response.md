@@ -9,13 +9,13 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `total` | `Integer` | Required | - |
+| `total` | `Integer` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "total": 10
+  "total": null
 }
 ```
 

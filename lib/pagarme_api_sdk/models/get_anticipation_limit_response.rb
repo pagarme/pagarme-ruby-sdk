@@ -27,7 +27,10 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        amount
+        anticipation_fee
+      ]
     end
 
     # An array for nullable fields
@@ -38,10 +41,10 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(amount = nil,
-                   anticipation_fee = nil)
-      @amount = amount
-      @anticipation_fee = anticipation_fee
+    def initialize(amount = SKIP,
+                   anticipation_fee = SKIP)
+      @amount = amount unless amount == SKIP
+      @anticipation_fee = anticipation_fee unless anticipation_fee == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -49,9 +52,9 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      amount = hash.key?('amount') ? hash['amount'] : nil
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
       anticipation_fee =
-        hash.key?('anticipation_fee') ? hash['anticipation_fee'] : nil
+        hash.key?('anticipation_fee') ? hash['anticipation_fee'] : SKIP
 
       # Create object from extracted values.
       GetAnticipationLimitResponse.new(amount,

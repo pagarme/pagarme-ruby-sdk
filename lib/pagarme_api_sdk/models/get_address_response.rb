@@ -104,7 +104,22 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        id
+        street
+        number
+        complement
+        zip_code
+        neighborhood
+        city
+        state
+        country
+        status
+        created_at
+        updated_at
         customer
+        metadata
+        line_1
+        line_2
         deleted_at
       ]
     end
@@ -132,39 +147,39 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = nil,
-                   street = nil,
-                   number = nil,
-                   complement = nil,
-                   zip_code = nil,
-                   neighborhood = nil,
-                   city = nil,
-                   state = nil,
-                   country = nil,
-                   status = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   metadata = nil,
-                   line_1 = nil,
-                   line_2 = nil,
+    def initialize(id = SKIP,
+                   street = SKIP,
+                   number = SKIP,
+                   complement = SKIP,
+                   zip_code = SKIP,
+                   neighborhood = SKIP,
+                   city = SKIP,
+                   state = SKIP,
+                   country = SKIP,
+                   status = SKIP,
+                   created_at = SKIP,
+                   updated_at = SKIP,
                    customer = SKIP,
+                   metadata = SKIP,
+                   line_1 = SKIP,
+                   line_2 = SKIP,
                    deleted_at = SKIP)
-      @id = id
-      @street = street
-      @number = number
-      @complement = complement
-      @zip_code = zip_code
-      @neighborhood = neighborhood
-      @city = city
-      @state = state
-      @country = country
-      @status = status
-      @created_at = created_at
-      @updated_at = updated_at
+      @id = id unless id == SKIP
+      @street = street unless street == SKIP
+      @number = number unless number == SKIP
+      @complement = complement unless complement == SKIP
+      @zip_code = zip_code unless zip_code == SKIP
+      @neighborhood = neighborhood unless neighborhood == SKIP
+      @city = city unless city == SKIP
+      @state = state unless state == SKIP
+      @country = country unless country == SKIP
+      @status = status unless status == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @updated_at = updated_at unless updated_at == SKIP
       @customer = customer unless customer == SKIP
-      @metadata = metadata
-      @line_1 = line_1
-      @line_2 = line_2
+      @metadata = metadata unless metadata == SKIP
+      @line_1 = line_1 unless line_1 == SKIP
+      @line_2 = line_2 unless line_2 == SKIP
       @deleted_at = deleted_at unless deleted_at == SKIP
     end
 
@@ -173,26 +188,30 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
-      street = hash.key?('street') ? hash['street'] : nil
-      number = hash.key?('number') ? hash['number'] : nil
-      complement = hash.key?('complement') ? hash['complement'] : nil
-      zip_code = hash.key?('zip_code') ? hash['zip_code'] : nil
-      neighborhood = hash.key?('neighborhood') ? hash['neighborhood'] : nil
-      city = hash.key?('city') ? hash['city'] : nil
-      state = hash.key?('state') ? hash['state'] : nil
-      country = hash.key?('country') ? hash['country'] : nil
-      status = hash.key?('status') ? hash['status'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
+      street = hash.key?('street') ? hash['street'] : SKIP
+      number = hash.key?('number') ? hash['number'] : SKIP
+      complement = hash.key?('complement') ? hash['complement'] : SKIP
+      zip_code = hash.key?('zip_code') ? hash['zip_code'] : SKIP
+      neighborhood = hash.key?('neighborhood') ? hash['neighborhood'] : SKIP
+      city = hash.key?('city') ? hash['city'] : SKIP
+      state = hash.key?('state') ? hash['state'] : SKIP
+      country = hash.key?('country') ? hash['country'] : SKIP
+      status = hash.key?('status') ? hash['status'] : SKIP
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
+                   else
+                     SKIP
                    end
-      metadata = hash.key?('metadata') ? hash['metadata'] : nil
-      line_1 = hash.key?('line_1') ? hash['line_1'] : nil
-      line_2 = hash.key?('line_2') ? hash['line_2'] : nil
       customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
+      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      line_1 = hash.key?('line_1') ? hash['line_1'] : SKIP
+      line_2 = hash.key?('line_2') ? hash['line_2'] : SKIP
       deleted_at = if hash.key?('deleted_at')
                      (DateTimeHelper.from_rfc3339(hash['deleted_at']) if hash['deleted_at'])
                    else
@@ -212,10 +231,10 @@ module PagarmeApiSdk
                              status,
                              created_at,
                              updated_at,
+                             customer,
                              metadata,
                              line_1,
                              line_2,
-                             customer,
                              deleted_at)
     end
 

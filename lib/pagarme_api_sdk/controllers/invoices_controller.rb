@@ -6,117 +6,6 @@
 module PagarmeApiSdk
   # InvoicesController
   class InvoicesController < BaseController
-    def initialize(config, http_call_back: nil)
-      super(config, http_call_back: http_call_back)
-    end
-
-    # Updates the metadata from an invoice
-    # @param [String] invoice_id Required parameter: The invoice id
-    # @param [UpdateMetadataRequest] request Required parameter: Request for
-    # updating the invoice metadata
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetInvoiceResponse] response from the API call
-    def update_invoice_metadata(invoice_id,
-                                request,
-                                idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/invoices/{invoice_id}/metadata'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'invoice_id' => { 'value' => invoice_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.patch(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetInvoiceResponse.from_hash(decoded)
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: Subscription Id
-    # @return [GetInvoiceResponse] response from the API call
-    def get_partial_invoice(subscription_id)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/subscriptions/{subscription_id}/partial-invoice'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'subscription_id' => { 'value' => subscription_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetInvoiceResponse.from_hash(decoded)
-    end
-
-    # Cancels an invoice
-    # @param [String] invoice_id Required parameter: Invoice id
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetInvoiceResponse] response from the API call
-    def cancel_invoice(invoice_id,
-                       idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/invoices/{invoice_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'invoice_id' => { 'value' => invoice_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.delete(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetInvoiceResponse.from_hash(decoded)
-    end
-
     # Create an Invoice
     # @param [String] subscription_id Required parameter: Subscription Id
     # @param [String] cycle_id Required parameter: Cycle Id
@@ -127,36 +16,24 @@ module PagarmeApiSdk
                        cycle_id,
                        request: nil,
                        idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/subscriptions/{subscription_id}/cycles/{cycle_id}/pay'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'subscription_id' => { 'value' => subscription_id, 'encode' => true },
-        'cycle_id' => { 'value' => cycle_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.post(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetInvoiceResponse.from_hash(decoded)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/subscriptions/{subscription_id}/cycles/{cycle_id}/pay',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(cycle_id, key: 'cycle_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
+        .execute
     end
 
     # Gets all invoices
@@ -189,74 +66,93 @@ module PagarmeApiSdk
                      due_since: nil,
                      due_until: nil,
                      customer_document: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/invoices'
-      _query_builder = APIHelper.append_url_with_query_parameters(
-        _query_builder,
-        'page' => page,
-        'size' => size,
-        'code' => code,
-        'customer_id' => customer_id,
-        'subscription_id' => subscription_id,
-        'created_since' => created_since,
-        'created_until' => created_until,
-        'status' => status,
-        'due_since' => due_since,
-        'due_until' => due_until,
-        'customer_document' => customer_document
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      ListInvoicesResponse.from_hash(decoded)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/invoices',
+                                     Server::DEFAULT)
+                   .query_param(new_parameter(page, key: 'page'))
+                   .query_param(new_parameter(size, key: 'size'))
+                   .query_param(new_parameter(code, key: 'code'))
+                   .query_param(new_parameter(customer_id, key: 'customer_id'))
+                   .query_param(new_parameter(subscription_id, key: 'subscription_id'))
+                   .query_param(new_parameter(created_since, key: 'created_since'))
+                   .query_param(new_parameter(created_until, key: 'created_until'))
+                   .query_param(new_parameter(status, key: 'status'))
+                   .query_param(new_parameter(due_since, key: 'due_since'))
+                   .query_param(new_parameter(due_until, key: 'due_until'))
+                   .query_param(new_parameter(customer_document, key: 'customer_document'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(ListInvoicesResponse.method(:from_hash)))
+        .execute
     end
 
-    # Gets an invoice
-    # @param [String] invoice_id Required parameter: Invoice Id
+    # Cancels an invoice
+    # @param [String] invoice_id Required parameter: Invoice id
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return [GetInvoiceResponse] response from the API call
-    def get_invoice(invoice_id)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/invoices/{invoice_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'invoice_id' => { 'value' => invoice_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
+    def cancel_invoice(invoice_id,
+                       idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::DELETE,
+                                     '/invoices/{invoice_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(invoice_id, key: 'invoice_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
+        .execute
+    end
 
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
+    # Updates the metadata from an invoice
+    # @param [String] invoice_id Required parameter: The invoice id
+    # @param [UpdateMetadataRequest] request Required parameter: Request for
+    # updating the invoice metadata
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetInvoiceResponse] response from the API call
+    def update_invoice_metadata(invoice_id,
+                                request,
+                                idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/invoices/{invoice_id}/metadata',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(invoice_id, key: 'invoice_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
+        .execute
+    end
 
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetInvoiceResponse.from_hash(decoded)
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: Subscription Id
+    # @return [GetInvoiceResponse] response from the API call
+    def get_partial_invoice(subscription_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/subscriptions/{subscription_id}/partial-invoice',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
+        .execute
     end
 
     # Updates the status from an invoice
@@ -268,35 +164,40 @@ module PagarmeApiSdk
     def update_invoice_status(invoice_id,
                               request,
                               idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/invoices/{invoice_id}/status'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'invoice_id' => { 'value' => invoice_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/invoices/{invoice_id}/status',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(invoice_id, key: 'invoice_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
+        .execute
+    end
 
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.patch(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetInvoiceResponse.from_hash(decoded)
+    # Gets an invoice
+    # @param [String] invoice_id Required parameter: Invoice Id
+    # @return [GetInvoiceResponse] response from the API call
+    def get_invoice(invoice_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/invoices/{invoice_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(invoice_id, key: 'invoice_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
+        .execute
     end
   end
 end
