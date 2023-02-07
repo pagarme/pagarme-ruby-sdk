@@ -94,7 +94,21 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        id
+        name
+        email
+        delinquent
+        created_at
+        updated_at
+        document
+        type
+        fb_access_token
+        address
+        metadata
+        phones
         fb_id
+        code
+        document_type
       ]
     end
 
@@ -119,36 +133,36 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = nil,
-                   name = nil,
-                   email = nil,
-                   delinquent = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   document = nil,
-                   type = nil,
-                   fb_access_token = nil,
-                   address = nil,
-                   metadata = nil,
-                   phones = nil,
-                   code = nil,
-                   document_type = nil,
-                   fb_id = SKIP)
-      @id = id
-      @name = name
-      @email = email
-      @delinquent = delinquent
-      @created_at = created_at
-      @updated_at = updated_at
-      @document = document
-      @type = type
-      @fb_access_token = fb_access_token
-      @address = address
-      @metadata = metadata
-      @phones = phones
+    def initialize(id = SKIP,
+                   name = SKIP,
+                   email = SKIP,
+                   delinquent = SKIP,
+                   created_at = SKIP,
+                   updated_at = SKIP,
+                   document = SKIP,
+                   type = SKIP,
+                   fb_access_token = SKIP,
+                   address = SKIP,
+                   metadata = SKIP,
+                   phones = SKIP,
+                   fb_id = SKIP,
+                   code = SKIP,
+                   document_type = SKIP)
+      @id = id unless id == SKIP
+      @name = name unless name == SKIP
+      @email = email unless email == SKIP
+      @delinquent = delinquent unless delinquent == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @updated_at = updated_at unless updated_at == SKIP
+      @document = document unless document == SKIP
+      @type = type unless type == SKIP
+      @fb_access_token = fb_access_token unless fb_access_token == SKIP
+      @address = address unless address == SKIP
+      @metadata = metadata unless metadata == SKIP
+      @phones = phones unless phones == SKIP
       @fb_id = fb_id unless fb_id == SKIP
-      @code = code
-      @document_type = document_type
+      @code = code unless code == SKIP
+      @document_type = document_type unless document_type == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -156,26 +170,30 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
-      name = hash.key?('name') ? hash['name'] : nil
-      email = hash.key?('email') ? hash['email'] : nil
-      delinquent = hash.key?('delinquent') ? hash['delinquent'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
+      name = hash.key?('name') ? hash['name'] : SKIP
+      email = hash.key?('email') ? hash['email'] : SKIP
+      delinquent = hash.key?('delinquent') ? hash['delinquent'] : SKIP
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
+                   else
+                     SKIP
                    end
-      document = hash.key?('document') ? hash['document'] : nil
-      type = hash.key?('type') ? hash['type'] : nil
+      document = hash.key?('document') ? hash['document'] : SKIP
+      type = hash.key?('type') ? hash['type'] : SKIP
       fb_access_token =
-        hash.key?('fb_access_token') ? hash['fb_access_token'] : nil
+        hash.key?('fb_access_token') ? hash['fb_access_token'] : SKIP
       address = GetAddressResponse.from_hash(hash['address']) if hash['address']
-      metadata = hash.key?('metadata') ? hash['metadata'] : nil
+      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       phones = GetPhonesResponse.from_hash(hash['phones']) if hash['phones']
-      code = hash.key?('code') ? hash['code'] : nil
-      document_type = hash.key?('document_type') ? hash['document_type'] : nil
       fb_id = hash.key?('fb_id') ? hash['fb_id'] : SKIP
+      code = hash.key?('code') ? hash['code'] : SKIP
+      document_type = hash.key?('document_type') ? hash['document_type'] : SKIP
 
       # Create object from extracted values.
       GetCustomerResponse.new(id,
@@ -190,9 +208,9 @@ module PagarmeApiSdk
                               address,
                               metadata,
                               phones,
+                              fb_id,
                               code,
-                              document_type,
-                              fb_id)
+                              document_type)
     end
 
     def to_created_at

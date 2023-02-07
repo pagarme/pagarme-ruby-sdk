@@ -9,47 +9,43 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `String` | Required | Id |
-| `holder_name` | `String` | Required | Holder name |
-| `holder_type` | `String` | Required | Holder type |
-| `bank` | `String` | Required | Bank |
-| `branch_number` | `String` | Required | Branch number |
-| `branch_check_digit` | `String` | Required | Branch check digit |
-| `account_number` | `String` | Required | Account number |
-| `account_check_digit` | `String` | Required | Account check digit |
-| `type` | `String` | Required | Bank account type |
-| `status` | `String` | Required | Bank account status |
-| `created_at` | `DateTime` | Required | Creation date |
-| `updated_at` | `DateTime` | Required | Last update date |
-| `deleted_at` | `DateTime` | Required | Deletion date |
+| `id` | `String` | Optional | Id |
+| `holder_name` | `String` | Optional | Holder name |
+| `holder_type` | `String` | Optional | Holder type |
+| `bank` | `String` | Optional | Bank |
+| `branch_number` | `String` | Optional | Branch number |
+| `branch_check_digit` | `String` | Optional | Branch check digit |
+| `account_number` | `String` | Optional | Account number |
+| `account_check_digit` | `String` | Optional | Account check digit |
+| `type` | `String` | Optional | Bank account type |
+| `status` | `String` | Optional | Bank account status |
+| `created_at` | `DateTime` | Optional | Creation date |
+| `updated_at` | `DateTime` | Optional | Last update date |
+| `deleted_at` | `DateTime` | Optional | Deletion date |
 | `recipient` | [`GetRecipientResponse`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `metadata` | `Hash of String` | Required | Metadata |
-| `pix_key` | `String` | Required | Pix Key |
+| `metadata` | `Hash of String` | Optional | Metadata |
+| `pix_key` | `String` | Optional | Pix Key |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "holder_name": "holder_name4",
-  "holder_type": "holder_type2",
-  "bank": "bank8",
-  "branch_number": "branch_number6",
-  "branch_check_digit": "branch_check_digit4",
-  "account_number": "account_number0",
-  "account_check_digit": "account_check_digit6",
-  "type": "type0",
-  "status": "status8",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z",
-  "deleted_at": "2016-03-13T12:52:32.123Z",
+  "id": null,
+  "holder_name": null,
+  "holder_type": null,
+  "bank": null,
+  "branch_number": null,
+  "branch_check_digit": null,
+  "account_number": null,
+  "account_check_digit": null,
+  "type": null,
+  "status": null,
+  "created_at": null,
+  "updated_at": null,
+  "deleted_at": null,
   "recipient": null,
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
-  },
-  "pix_key": "pix_key6"
+  "metadata": null,
+  "pix_key": null
 }
 ```
 

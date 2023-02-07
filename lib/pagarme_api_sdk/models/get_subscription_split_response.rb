@@ -27,7 +27,10 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        enabled
+        rules
+      ]
     end
 
     # An array for nullable fields
@@ -38,10 +41,10 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(enabled = nil,
-                   rules = nil)
-      @enabled = enabled
-      @rules = rules
+    def initialize(enabled = SKIP,
+                   rules = SKIP)
+      @enabled = enabled unless enabled == SKIP
+      @rules = rules unless rules == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -49,7 +52,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      enabled = hash.key?('enabled') ? hash['enabled'] : nil
+      enabled = hash.key?('enabled') ? hash['enabled'] : SKIP
       # Parameter is an array, so we need to iterate through it
       rules = nil
       unless hash['rules'].nil?
@@ -59,7 +62,7 @@ module PagarmeApiSdk
         end
       end
 
-      rules = nil unless hash.key?('rules')
+      rules = SKIP unless hash.key?('rules')
 
       # Create object from extracted values.
       GetSubscriptionSplitResponse.new(enabled,

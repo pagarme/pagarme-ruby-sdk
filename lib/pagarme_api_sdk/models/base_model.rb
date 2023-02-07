@@ -5,7 +5,7 @@
 
 module PagarmeApiSdk
   # Base model.
-  class BaseModel
+  class BaseModel < CoreLibrary::BaseModel
     # Returns a Hash representation of the current object.
     def to_hash
       hash = {}

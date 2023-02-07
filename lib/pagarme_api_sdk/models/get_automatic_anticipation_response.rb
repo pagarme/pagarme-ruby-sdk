@@ -42,7 +42,13 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        enabled
+        type
+        volume_percentage
+        delay
+        days
+      ]
     end
 
     # An array for nullable fields
@@ -56,16 +62,16 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(enabled = nil,
-                   type = nil,
-                   volume_percentage = nil,
-                   delay = nil,
-                   days = nil)
-      @enabled = enabled
-      @type = type
-      @volume_percentage = volume_percentage
-      @delay = delay
-      @days = days
+    def initialize(enabled = SKIP,
+                   type = SKIP,
+                   volume_percentage = SKIP,
+                   delay = SKIP,
+                   days = SKIP)
+      @enabled = enabled unless enabled == SKIP
+      @type = type unless type == SKIP
+      @volume_percentage = volume_percentage unless volume_percentage == SKIP
+      @delay = delay unless delay == SKIP
+      @days = days unless days == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -73,12 +79,12 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      enabled = hash.key?('enabled') ? hash['enabled'] : nil
-      type = hash.key?('type') ? hash['type'] : nil
+      enabled = hash.key?('enabled') ? hash['enabled'] : SKIP
+      type = hash.key?('type') ? hash['type'] : SKIP
       volume_percentage =
-        hash.key?('volume_percentage') ? hash['volume_percentage'] : nil
-      delay = hash.key?('delay') ? hash['delay'] : nil
-      days = hash.key?('days') ? hash['days'] : nil
+        hash.key?('volume_percentage') ? hash['volume_percentage'] : SKIP
+      delay = hash.key?('delay') ? hash['delay'] : SKIP
+      days = hash.key?('days') ? hash['days'] : SKIP
 
       # Create object from extracted values.
       GetAutomaticAnticipationResponse.new(enabled,

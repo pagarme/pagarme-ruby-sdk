@@ -9,17 +9,17 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `transfer_enabled` | `TrueClass\|FalseClass` | Required | - |
-| `transfer_interval` | `String` | Required | - |
-| `transfer_day` | `Integer` | Required | - |
+| `transfer_enabled` | `TrueClass\|FalseClass` | Optional | - |
+| `transfer_interval` | `String` | Optional | - |
+| `transfer_day` | `Integer` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "transfer_enabled": false,
-  "transfer_interval": "transfer_interval0",
-  "transfer_day": 18
+  "transfer_enabled": null,
+  "transfer_interval": null,
+  "transfer_day": null
 }
 ```
 

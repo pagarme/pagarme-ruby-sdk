@@ -22,7 +22,9 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        total
+      ]
     end
 
     # An array for nullable fields
@@ -32,8 +34,8 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(total = nil)
-      @total = total
+    def initialize(total = SKIP)
+      @total = total unless total == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -41,7 +43,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      total = hash.key?('total') ? hash['total'] : nil
+      total = hash.key?('total') ? hash['total'] : SKIP
 
       # Create object from extracted values.
       GetChargesSummaryResponse.new(total)

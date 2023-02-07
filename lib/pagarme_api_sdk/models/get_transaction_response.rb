@@ -90,15 +90,15 @@ module PagarmeApiSdk
     def self.discriminators
       if @_discriminators.nil?
         @_discriminators = {}
+        @_discriminators['voucher'] = GetVoucherTransactionResponse
         @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse
         @_discriminators['safetypay'] = GetSafetyPayTransactionResponse
-        @_discriminators['voucher'] = GetVoucherTransactionResponse
-        @_discriminators['boleto'] = GetBoletoTransactionResponse
         @_discriminators['debit_card'] = GetDebitCardTransactionResponse
-        @_discriminators['private_label'] = GetPrivateLabelTransactionResponse
+        @_discriminators['boleto'] = GetBoletoTransactionResponse
         @_discriminators['cash'] = GetCashTransactionResponse
-        @_discriminators['credit_card'] = GetCreditCardTransactionResponse
+        @_discriminators['private_label'] = GetPrivateLabelTransactionResponse
         @_discriminators['pix'] = GetPixTransactionResponse
+        @_discriminators['credit_card'] = GetCreditCardTransactionResponse
       end
       @_discriminators
     end
@@ -131,9 +131,22 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        gateway_id
+        amount
+        status
+        success
+        created_at
+        updated_at
+        attempt_count
+        max_attempts
+        splits
         next_attempt
         transaction_type
+        id
+        gateway_response
+        antifraud_response
         metadata
+        split
         interest
         fine
         max_days_to_pay_past_due
@@ -164,41 +177,41 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(gateway_id = nil,
-                   amount = nil,
-                   status = nil,
-                   success = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   attempt_count = nil,
-                   max_attempts = nil,
-                   splits = nil,
-                   id = nil,
-                   gateway_response = nil,
-                   antifraud_response = nil,
-                   split = nil,
+    def initialize(gateway_id = SKIP,
+                   amount = SKIP,
+                   status = SKIP,
+                   success = SKIP,
+                   created_at = SKIP,
+                   updated_at = SKIP,
+                   attempt_count = SKIP,
+                   max_attempts = SKIP,
+                   splits = SKIP,
                    next_attempt = SKIP,
                    transaction_type = 'transaction',
+                   id = SKIP,
+                   gateway_response = SKIP,
+                   antifraud_response = SKIP,
                    metadata = SKIP,
+                   split = SKIP,
                    interest = SKIP,
                    fine = SKIP,
                    max_days_to_pay_past_due = SKIP)
-      @gateway_id = gateway_id
-      @amount = amount
-      @status = status
-      @success = success
-      @created_at = created_at
-      @updated_at = updated_at
-      @attempt_count = attempt_count
-      @max_attempts = max_attempts
-      @splits = splits
+      @gateway_id = gateway_id unless gateway_id == SKIP
+      @amount = amount unless amount == SKIP
+      @status = status unless status == SKIP
+      @success = success unless success == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @updated_at = updated_at unless updated_at == SKIP
+      @attempt_count = attempt_count unless attempt_count == SKIP
+      @max_attempts = max_attempts unless max_attempts == SKIP
+      @splits = splits unless splits == SKIP
       @next_attempt = next_attempt unless next_attempt == SKIP
       @transaction_type = transaction_type unless transaction_type == SKIP
-      @id = id
-      @gateway_response = gateway_response
-      @antifraud_response = antifraud_response
+      @id = id unless id == SKIP
+      @gateway_response = gateway_response unless gateway_response == SKIP
+      @antifraud_response = antifraud_response unless antifraud_response == SKIP
       @metadata = metadata unless metadata == SKIP
-      @split = split
+      @split = split unless split == SKIP
       @interest = interest unless interest == SKIP
       @fine = fine unless fine == SKIP
       @max_days_to_pay_past_due = max_days_to_pay_past_due unless max_days_to_pay_past_due == SKIP
@@ -213,19 +226,28 @@ module PagarmeApiSdk
       unboxer = discriminators[hash['transaction_type']]
       return unboxer.send(:from_hash, hash) if unboxer
 
+      # Delegate unboxing to another function if a discriminator
+      # value for a child class is present.
+      unboxer = discriminators[hash['transaction_type']]
+      return unboxer.send(:from_hash, hash) if unboxer
+
       # Extract variables from the hash.
-      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : nil
-      amount = hash.key?('amount') ? hash['amount'] : nil
-      status = hash.key?('status') ? hash['status'] : nil
-      success = hash.key?('success') ? hash['success'] : nil
+      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
+      status = hash.key?('status') ? hash['status'] : SKIP
+      success = hash.key?('success') ? hash['success'] : SKIP
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
+                   else
+                     SKIP
                    end
-      attempt_count = hash.key?('attempt_count') ? hash['attempt_count'] : nil
-      max_attempts = hash.key?('max_attempts') ? hash['max_attempts'] : nil
+      attempt_count = hash.key?('attempt_count') ? hash['attempt_count'] : SKIP
+      max_attempts = hash.key?('max_attempts') ? hash['max_attempts'] : SKIP
       # Parameter is an array, so we need to iterate through it
       splits = nil
       unless hash['splits'].nil?
@@ -235,12 +257,19 @@ module PagarmeApiSdk
         end
       end
 
-      splits = nil unless hash.key?('splits')
-      id = hash.key?('id') ? hash['id'] : nil
+      splits = SKIP unless hash.key?('splits')
+      next_attempt = if hash.key?('next_attempt')
+                       (DateTimeHelper.from_rfc3339(hash['next_attempt']) if hash['next_attempt'])
+                     else
+                       SKIP
+                     end
+      transaction_type = hash['transaction_type'] ||= 'transaction'
+      id = hash.key?('id') ? hash['id'] : SKIP
       gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response']) if
         hash['gateway_response']
       antifraud_response = GetAntifraudResponse.from_hash(hash['antifraud_response']) if
         hash['antifraud_response']
+      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       # Parameter is an array, so we need to iterate through it
       split = nil
       unless hash['split'].nil?
@@ -250,14 +279,7 @@ module PagarmeApiSdk
         end
       end
 
-      split = nil unless hash.key?('split')
-      next_attempt = if hash.key?('next_attempt')
-                       (DateTimeHelper.from_rfc3339(hash['next_attempt']) if hash['next_attempt'])
-                     else
-                       SKIP
-                     end
-      transaction_type = hash['transaction_type'] ||= 'transaction'
-      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
+      split = SKIP unless hash.key?('split')
       interest = GetInterestResponse.from_hash(hash['interest']) if hash['interest']
       fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']
       max_days_to_pay_past_due =
@@ -273,13 +295,13 @@ module PagarmeApiSdk
                                  attempt_count,
                                  max_attempts,
                                  splits,
+                                 next_attempt,
+                                 transaction_type,
                                  id,
                                  gateway_response,
                                  antifraud_response,
-                                 split,
-                                 next_attempt,
-                                 transaction_type,
                                  metadata,
+                                 split,
                                  interest,
                                  fine,
                                  max_days_to_pay_past_due)

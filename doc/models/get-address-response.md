@@ -11,48 +11,44 @@ Response object for getting an Address
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `String` | Required | - |
-| `street` | `String` | Required | - |
-| `number` | `String` | Required | - |
-| `complement` | `String` | Required | - |
-| `zip_code` | `String` | Required | - |
-| `neighborhood` | `String` | Required | - |
-| `city` | `String` | Required | - |
-| `state` | `String` | Required | - |
-| `country` | `String` | Required | - |
-| `status` | `String` | Required | - |
-| `created_at` | `DateTime` | Required | - |
-| `updated_at` | `DateTime` | Required | - |
+| `id` | `String` | Optional | - |
+| `street` | `String` | Optional | - |
+| `number` | `String` | Optional | - |
+| `complement` | `String` | Optional | - |
+| `zip_code` | `String` | Optional | - |
+| `neighborhood` | `String` | Optional | - |
+| `city` | `String` | Optional | - |
+| `state` | `String` | Optional | - |
+| `country` | `String` | Optional | - |
+| `status` | `String` | Optional | - |
+| `created_at` | `DateTime` | Optional | - |
+| `updated_at` | `DateTime` | Optional | - |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
-| `metadata` | `Hash of String` | Required | - |
-| `line_1` | `String` | Required | Line 1 for address |
-| `line_2` | `String` | Required | Line 2 for address |
+| `metadata` | `Hash of String` | Optional | - |
+| `line_1` | `String` | Optional | Line 1 for address |
+| `line_2` | `String` | Optional | Line 2 for address |
 | `deleted_at` | `DateTime` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "street": "street0",
-  "number": "number2",
-  "complement": "complement4",
-  "zip_code": "zip_code4",
-  "neighborhood": "neighborhood6",
-  "city": "city0",
-  "state": "state4",
-  "country": "country4",
-  "status": "status8",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z",
+  "id": null,
+  "street": null,
+  "number": null,
+  "complement": null,
+  "zip_code": null,
+  "neighborhood": null,
+  "city": null,
+  "state": null,
+  "country": null,
+  "status": null,
+  "created_at": null,
+  "updated_at": null,
   "customer": null,
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
-  },
-  "line_1": "line_16",
-  "line_2": "line_28",
+  "metadata": null,
+  "line_1": null,
+  "line_2": null,
   "deleted_at": null
 }
 ```

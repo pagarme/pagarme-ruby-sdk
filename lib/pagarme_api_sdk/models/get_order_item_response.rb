@@ -47,7 +47,14 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        id
+        amount
+        description
+        quantity
+        category
+        code
+      ]
     end
 
     # An array for nullable fields
@@ -62,18 +69,18 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = nil,
-                   amount = nil,
-                   description = nil,
-                   quantity = nil,
-                   category = nil,
-                   code = nil)
-      @id = id
-      @amount = amount
-      @description = description
-      @quantity = quantity
-      @category = category
-      @code = code
+    def initialize(id = SKIP,
+                   amount = SKIP,
+                   description = SKIP,
+                   quantity = SKIP,
+                   category = SKIP,
+                   code = SKIP)
+      @id = id unless id == SKIP
+      @amount = amount unless amount == SKIP
+      @description = description unless description == SKIP
+      @quantity = quantity unless quantity == SKIP
+      @category = category unless category == SKIP
+      @code = code unless code == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -81,12 +88,12 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
-      amount = hash.key?('amount') ? hash['amount'] : nil
-      description = hash.key?('description') ? hash['description'] : nil
-      quantity = hash.key?('quantity') ? hash['quantity'] : nil
-      category = hash.key?('category') ? hash['category'] : nil
-      code = hash.key?('code') ? hash['code'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
+      description = hash.key?('description') ? hash['description'] : SKIP
+      quantity = hash.key?('quantity') ? hash['quantity'] : SKIP
+      category = hash.key?('category') ? hash['category'] : SKIP
+      code = hash.key?('code') ? hash['code'] : SKIP
 
       # Create object from extracted values.
       GetOrderItemResponse.new(id,

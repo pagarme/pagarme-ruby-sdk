@@ -84,6 +84,16 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        id
+        description
+        status
+        created_at
+        updated_at
+        pricing_scheme
+        discounts
+        increments
+        subscription
+        name
         quantity
         cycles
         deleted_at
@@ -109,29 +119,29 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = nil,
-                   description = nil,
-                   status = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   pricing_scheme = nil,
-                   discounts = nil,
-                   increments = nil,
-                   subscription = nil,
-                   name = nil,
+    def initialize(id = SKIP,
+                   description = SKIP,
+                   status = SKIP,
+                   created_at = SKIP,
+                   updated_at = SKIP,
+                   pricing_scheme = SKIP,
+                   discounts = SKIP,
+                   increments = SKIP,
+                   subscription = SKIP,
+                   name = SKIP,
                    quantity = SKIP,
                    cycles = SKIP,
                    deleted_at = SKIP)
-      @id = id
-      @description = description
-      @status = status
-      @created_at = created_at
-      @updated_at = updated_at
-      @pricing_scheme = pricing_scheme
-      @discounts = discounts
-      @increments = increments
-      @subscription = subscription
-      @name = name
+      @id = id unless id == SKIP
+      @description = description unless description == SKIP
+      @status = status unless status == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @updated_at = updated_at unless updated_at == SKIP
+      @pricing_scheme = pricing_scheme unless pricing_scheme == SKIP
+      @discounts = discounts unless discounts == SKIP
+      @increments = increments unless increments == SKIP
+      @subscription = subscription unless subscription == SKIP
+      @name = name unless name == SKIP
       @quantity = quantity unless quantity == SKIP
       @cycles = cycles unless cycles == SKIP
       @deleted_at = deleted_at unless deleted_at == SKIP
@@ -142,14 +152,18 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
-      description = hash.key?('description') ? hash['description'] : nil
-      status = hash.key?('status') ? hash['status'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
+      description = hash.key?('description') ? hash['description'] : SKIP
+      status = hash.key?('status') ? hash['status'] : SKIP
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
+                   else
+                     SKIP
                    end
       pricing_scheme = GetPricingSchemeResponse.from_hash(hash['pricing_scheme']) if
         hash['pricing_scheme']
@@ -162,7 +176,7 @@ module PagarmeApiSdk
         end
       end
 
-      discounts = nil unless hash.key?('discounts')
+      discounts = SKIP unless hash.key?('discounts')
       # Parameter is an array, so we need to iterate through it
       increments = nil
       unless hash['increments'].nil?
@@ -172,10 +186,10 @@ module PagarmeApiSdk
         end
       end
 
-      increments = nil unless hash.key?('increments')
+      increments = SKIP unless hash.key?('increments')
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
         hash['subscription']
-      name = hash.key?('name') ? hash['name'] : nil
+      name = hash.key?('name') ? hash['name'] : SKIP
       quantity = hash.key?('quantity') ? hash['quantity'] : SKIP
       cycles = hash.key?('cycles') ? hash['cycles'] : SKIP
       deleted_at = if hash.key?('deleted_at')

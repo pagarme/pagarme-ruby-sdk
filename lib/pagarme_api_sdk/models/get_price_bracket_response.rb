@@ -38,6 +38,8 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        start_quantity
+        price
         end_quantity
         overage_price
       ]
@@ -53,12 +55,12 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(start_quantity = nil,
-                   price = nil,
+    def initialize(start_quantity = SKIP,
+                   price = SKIP,
                    end_quantity = SKIP,
                    overage_price = SKIP)
-      @start_quantity = start_quantity
-      @price = price
+      @start_quantity = start_quantity unless start_quantity == SKIP
+      @price = price unless price == SKIP
       @end_quantity = end_quantity unless end_quantity == SKIP
       @overage_price = overage_price unless overage_price == SKIP
     end
@@ -69,8 +71,8 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       start_quantity =
-        hash.key?('start_quantity') ? hash['start_quantity'] : nil
-      price = hash.key?('price') ? hash['price'] : nil
+        hash.key?('start_quantity') ? hash['start_quantity'] : SKIP
+      price = hash.key?('price') ? hash['price'] : SKIP
       end_quantity = hash.key?('end_quantity') ? hash['end_quantity'] : SKIP
       overage_price = hash.key?('overage_price') ? hash['overage_price'] : SKIP
 

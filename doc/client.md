@@ -5,8 +5,6 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `basic_auth_user_name` | `String` | The username to use with basic authentication |
-| `basic_auth_password` | `String` | The password to use with basic authentication |
 | `connection` | `Faraday::Connection` | The Faraday connection object passed by the SDK user for making requests |
 | `adapter` | `Faraday::Adapter` | The Faraday adapter object passed by the SDK user for performing http requests |
 | `timeout` | `Float` | The value to use for connection timeout. <br> **Default: 60** |
@@ -15,6 +13,9 @@ The following parameters are configurable for the API Client:
 | `backoff_factor` | `Float` | The amount to multiply each successive retry's interval amount by in order to provide backoff. <br> **Default: 2** |
 | `retry_statuses` | `Array` | A list of HTTP statuses to retry. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | `retry_methods` | `Array` | A list of HTTP methods to retry. <br> **Default: %i[get put]** |
+| `http_callback` | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
+| `basic_auth_user_name` | `String` | The username to use with basic authentication |
+| `basic_auth_password` | `String` | The password to use with basic authentication |
 
 The API client can be initialized as follows:
 
@@ -33,14 +34,14 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 
 | Name | Description |
 |  --- | --- |
+| orders | Gets OrdersController |
 | plans | Gets PlansController |
 | subscriptions | Gets SubscriptionsController |
 | invoices | Gets InvoicesController |
-| orders | Gets OrdersController |
 | customers | Gets CustomersController |
 | recipients | Gets RecipientsController |
 | charges | Gets ChargesController |
-| transfers | Gets TransfersController |
 | tokens | Gets TokensController |
+| transfers | Gets TransfersController |
 | transactions | Gets TransactionsController |
 

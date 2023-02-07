@@ -74,6 +74,14 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        id
+        name
+        status
+        created_at
+        updated_at
+        pricing_scheme
+        description
+        plan
         quantity
         cycles
         deleted_at
@@ -97,25 +105,25 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = nil,
-                   name = nil,
-                   status = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   pricing_scheme = nil,
-                   description = nil,
-                   plan = nil,
+    def initialize(id = SKIP,
+                   name = SKIP,
+                   status = SKIP,
+                   created_at = SKIP,
+                   updated_at = SKIP,
+                   pricing_scheme = SKIP,
+                   description = SKIP,
+                   plan = SKIP,
                    quantity = SKIP,
                    cycles = SKIP,
                    deleted_at = SKIP)
-      @id = id
-      @name = name
-      @status = status
-      @created_at = created_at
-      @updated_at = updated_at
-      @pricing_scheme = pricing_scheme
-      @description = description
-      @plan = plan
+      @id = id unless id == SKIP
+      @name = name unless name == SKIP
+      @status = status unless status == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @updated_at = updated_at unless updated_at == SKIP
+      @pricing_scheme = pricing_scheme unless pricing_scheme == SKIP
+      @description = description unless description == SKIP
+      @plan = plan unless plan == SKIP
       @quantity = quantity unless quantity == SKIP
       @cycles = cycles unless cycles == SKIP
       @deleted_at = deleted_at unless deleted_at == SKIP
@@ -126,18 +134,22 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
-      name = hash.key?('name') ? hash['name'] : nil
-      status = hash.key?('status') ? hash['status'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
+      name = hash.key?('name') ? hash['name'] : SKIP
+      status = hash.key?('status') ? hash['status'] : SKIP
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
+                   else
+                     SKIP
                    end
       pricing_scheme = GetPricingSchemeResponse.from_hash(hash['pricing_scheme']) if
         hash['pricing_scheme']
-      description = hash.key?('description') ? hash['description'] : nil
+      description = hash.key?('description') ? hash['description'] : SKIP
       plan = GetPlanResponse.from_hash(hash['plan']) if hash['plan']
       quantity = hash.key?('quantity') ? hash['quantity'] : SKIP
       cycles = hash.key?('cycles') ? hash['cycles'] : SKIP

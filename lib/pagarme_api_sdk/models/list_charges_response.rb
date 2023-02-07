@@ -27,7 +27,10 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        data
+        paging
+      ]
     end
 
     # An array for nullable fields
@@ -38,10 +41,10 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(data = nil,
-                   paging = nil)
-      @data = data
-      @paging = paging
+    def initialize(data = SKIP,
+                   paging = SKIP)
+      @data = data unless data == SKIP
+      @paging = paging unless paging == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -58,7 +61,7 @@ module PagarmeApiSdk
         end
       end
 
-      data = nil unless hash.key?('data')
+      data = SKIP unless hash.key?('data')
       paging = PagingResponse.from_hash(hash['paging']) if hash['paging']
 
       # Create object from extracted values.

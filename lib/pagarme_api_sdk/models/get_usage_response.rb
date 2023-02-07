@@ -74,7 +74,14 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        id
+        quantity
+        description
+        used_at
+        created_at
+        status
         deleted_at
+        subscription_item
         code
         group
         amount
@@ -98,25 +105,25 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = nil,
-                   quantity = nil,
-                   description = nil,
-                   used_at = nil,
-                   created_at = nil,
-                   status = nil,
-                   subscription_item = nil,
+    def initialize(id = SKIP,
+                   quantity = SKIP,
+                   description = SKIP,
+                   used_at = SKIP,
+                   created_at = SKIP,
+                   status = SKIP,
                    deleted_at = SKIP,
+                   subscription_item = SKIP,
                    code = SKIP,
                    group = SKIP,
                    amount = SKIP)
-      @id = id
-      @quantity = quantity
-      @description = description
-      @used_at = used_at
-      @created_at = created_at
-      @status = status
+      @id = id unless id == SKIP
+      @quantity = quantity unless quantity == SKIP
+      @description = description unless description == SKIP
+      @used_at = used_at unless used_at == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @status = status unless status == SKIP
       @deleted_at = deleted_at unless deleted_at == SKIP
-      @subscription_item = subscription_item
+      @subscription_item = subscription_item unless subscription_item == SKIP
       @code = code unless code == SKIP
       @group = group unless group == SKIP
       @amount = amount unless amount == SKIP
@@ -127,23 +134,27 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
-      quantity = hash.key?('quantity') ? hash['quantity'] : nil
-      description = hash.key?('description') ? hash['description'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
+      quantity = hash.key?('quantity') ? hash['quantity'] : SKIP
+      description = hash.key?('description') ? hash['description'] : SKIP
       used_at = if hash.key?('used_at')
                   (DateTimeHelper.from_rfc3339(hash['used_at']) if hash['used_at'])
+                else
+                  SKIP
                 end
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
-      status = hash.key?('status') ? hash['status'] : nil
-      subscription_item = GetSubscriptionItemResponse.from_hash(hash['subscription_item']) if
-        hash['subscription_item']
+      status = hash.key?('status') ? hash['status'] : SKIP
       deleted_at = if hash.key?('deleted_at')
                      (DateTimeHelper.from_rfc3339(hash['deleted_at']) if hash['deleted_at'])
                    else
                      SKIP
                    end
+      subscription_item = GetSubscriptionItemResponse.from_hash(hash['subscription_item']) if
+        hash['subscription_item']
       code = hash.key?('code') ? hash['code'] : SKIP
       group = hash.key?('group') ? hash['group'] : SKIP
       amount = hash.key?('amount') ? hash['amount'] : SKIP
@@ -155,8 +166,8 @@ module PagarmeApiSdk
                            used_at,
                            created_at,
                            status,
-                           subscription_item,
                            deleted_at,
+                           subscription_item,
                            code,
                            group,
                            amount)

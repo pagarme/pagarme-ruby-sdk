@@ -37,7 +37,12 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        bank_name
+        ispb
+        branch_code
+        account_number
+      ]
     end
 
     # An array for nullable fields
@@ -50,14 +55,14 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(bank_name = nil,
-                   ispb = nil,
-                   branch_code = nil,
-                   account_number = nil)
-      @bank_name = bank_name
-      @ispb = ispb
-      @branch_code = branch_code
-      @account_number = account_number
+    def initialize(bank_name = SKIP,
+                   ispb = SKIP,
+                   branch_code = SKIP,
+                   account_number = SKIP)
+      @bank_name = bank_name unless bank_name == SKIP
+      @ispb = ispb unless ispb == SKIP
+      @branch_code = branch_code unless branch_code == SKIP
+      @account_number = account_number unless account_number == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -65,11 +70,11 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      bank_name = hash.key?('bank_name') ? hash['bank_name'] : nil
-      ispb = hash.key?('ispb') ? hash['ispb'] : nil
-      branch_code = hash.key?('branch_code') ? hash['branch_code'] : nil
+      bank_name = hash.key?('bank_name') ? hash['bank_name'] : SKIP
+      ispb = hash.key?('ispb') ? hash['ispb'] : SKIP
+      branch_code = hash.key?('branch_code') ? hash['branch_code'] : SKIP
       account_number =
-        hash.key?('account_number') ? hash['account_number'] : nil
+        hash.key?('account_number') ? hash['account_number'] : SKIP
 
       # Create object from extracted values.
       GetPixBankAccountResponse.new(bank_name,

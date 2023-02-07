@@ -109,12 +109,23 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        code
+        currency
+        items
         customer
+        status
+        created_at
+        updated_at
+        charges
+        invoice_url
+        shipping
+        metadata
         checkouts
         ip
         session_id
         location
         device
+        closed
       ]
     end
 
@@ -143,41 +154,41 @@ module PagarmeApiSdk
     end
 
     def initialize(id = nil,
-                   code = nil,
-                   currency = nil,
-                   items = nil,
-                   status = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   charges = nil,
-                   invoice_url = nil,
-                   shipping = nil,
-                   metadata = nil,
-                   closed = nil,
+                   code = SKIP,
+                   currency = SKIP,
+                   items = SKIP,
                    customer = SKIP,
+                   status = SKIP,
+                   created_at = SKIP,
+                   updated_at = SKIP,
+                   charges = SKIP,
+                   invoice_url = SKIP,
+                   shipping = SKIP,
+                   metadata = SKIP,
                    checkouts = SKIP,
                    ip = SKIP,
                    session_id = SKIP,
                    location = SKIP,
-                   device = SKIP)
+                   device = SKIP,
+                   closed = SKIP)
       @id = id
-      @code = code
-      @currency = currency
-      @items = items
+      @code = code unless code == SKIP
+      @currency = currency unless currency == SKIP
+      @items = items unless items == SKIP
       @customer = customer unless customer == SKIP
-      @status = status
-      @created_at = created_at
-      @updated_at = updated_at
-      @charges = charges
-      @invoice_url = invoice_url
-      @shipping = shipping
-      @metadata = metadata
+      @status = status unless status == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @updated_at = updated_at unless updated_at == SKIP
+      @charges = charges unless charges == SKIP
+      @invoice_url = invoice_url unless invoice_url == SKIP
+      @shipping = shipping unless shipping == SKIP
+      @metadata = metadata unless metadata == SKIP
       @checkouts = checkouts unless checkouts == SKIP
       @ip = ip unless ip == SKIP
       @session_id = session_id unless session_id == SKIP
       @location = location unless location == SKIP
       @device = device unless device == SKIP
-      @closed = closed
+      @closed = closed unless closed == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -186,8 +197,8 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       id = hash.key?('id') ? hash['id'] : nil
-      code = hash.key?('code') ? hash['code'] : nil
-      currency = hash.key?('currency') ? hash['currency'] : nil
+      code = hash.key?('code') ? hash['code'] : SKIP
+      currency = hash.key?('currency') ? hash['currency'] : SKIP
       # Parameter is an array, so we need to iterate through it
       items = nil
       unless hash['items'].nil?
@@ -197,13 +208,18 @@ module PagarmeApiSdk
         end
       end
 
-      items = nil unless hash.key?('items')
-      status = hash.key?('status') ? hash['status'] : nil
+      items = SKIP unless hash.key?('items')
+      customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
+      status = hash.key?('status') ? hash['status'] : SKIP
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
+                   else
+                     SKIP
                    end
       # Parameter is an array, so we need to iterate through it
       charges = nil
@@ -214,12 +230,10 @@ module PagarmeApiSdk
         end
       end
 
-      charges = nil unless hash.key?('charges')
-      invoice_url = hash.key?('invoice_url') ? hash['invoice_url'] : nil
+      charges = SKIP unless hash.key?('charges')
+      invoice_url = hash.key?('invoice_url') ? hash['invoice_url'] : SKIP
       shipping = GetShippingResponse.from_hash(hash['shipping']) if hash['shipping']
-      metadata = hash.key?('metadata') ? hash['metadata'] : nil
-      closed = hash.key?('closed') ? hash['closed'] : nil
-      customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
+      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       # Parameter is an array, so we need to iterate through it
       checkouts = nil
       unless hash['checkouts'].nil?
@@ -234,12 +248,14 @@ module PagarmeApiSdk
       session_id = hash.key?('session_id') ? hash['session_id'] : SKIP
       location = GetLocationResponse.from_hash(hash['location']) if hash['location']
       device = GetDeviceResponse.from_hash(hash['device']) if hash['device']
+      closed = hash.key?('closed') ? hash['closed'] : SKIP
 
       # Create object from extracted values.
       GetOrderResponse.new(id,
                            code,
                            currency,
                            items,
+                           customer,
                            status,
                            created_at,
                            updated_at,
@@ -247,13 +263,12 @@ module PagarmeApiSdk
                            invoice_url,
                            shipping,
                            metadata,
-                           closed,
-                           customer,
                            checkouts,
                            ip,
                            session_id,
                            location,
-                           device)
+                           device,
+                           closed)
     end
 
     def to_created_at
