@@ -226,11 +226,6 @@ module PagarmeApiSdk
       unboxer = discriminators[hash['transaction_type']]
       return unboxer.send(:from_hash, hash) if unboxer
 
-      # Delegate unboxing to another function if a discriminator
-      # value for a child class is present.
-      unboxer = discriminators[hash['transaction_type']]
-      return unboxer.send(:from_hash, hash) if unboxer
-
       # Extract variables from the hash.
       gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
       amount = hash.key?('amount') ? hash['amount'] : SKIP

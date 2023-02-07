@@ -56,7 +56,6 @@ module PagarmeApiSdk
     # An array for nullable fields
     def self.nullables
       _arr = []
-      _arr = []
       (_arr << super()).flatten!
     end
 

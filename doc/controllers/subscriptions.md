@@ -100,6 +100,7 @@ def delete_discount(subscription_id,
 ## Example Usage
 
 ```ruby
+
 subscription_id = 'subscription_id0'
 discount_id = 'discount_id8'
 
@@ -175,6 +176,7 @@ def get_discount_by_id(subscription_id,
 ## Example Usage
 
 ```ruby
+
 subscription_id = 'subscription_id0'
 discount_id = 'discountId0'
 
@@ -276,10 +278,12 @@ body.items[0].plan_item_id = 'plan_item_id3'
 body.items[0].discounts = []
 
 
+
 body.items[0].discounts[0] = CreateDiscountRequest.new
 body.items[0].discounts[0].value = 65.46
 body.items[0].discounts[0].discount_type = 'discount_type2'
 body.items[0].discounts[0].item_id = 'item_id4'
+
 
 body.items[0].name = 'name3'
 
@@ -292,6 +296,8 @@ body.items[1].plan_item_id = 'plan_item_id4'
 body.items[1].discounts = []
 
 
+
+
 body.items[1].discounts[0] = CreateDiscountRequest.new
 body.items[1].discounts[0].value = 65.47
 body.items[1].discounts[0].discount_type = 'discount_type3'
@@ -301,6 +307,7 @@ body.items[1].discounts[1] = CreateDiscountRequest.new
 body.items[1].discounts[1].value = 65.48
 body.items[1].discounts[1].discount_type = 'discount_type4'
 body.items[1].discounts[1].item_id = 'item_id6'
+
 
 body.items[1].name = 'name4'
 
@@ -351,7 +358,6 @@ body.shipping.address.line_2 = 'line_24'
 body.shipping.type = 'type0'
 body.discounts = []
 
-
 body.discounts[0] = CreateDiscountRequest.new
 body.discounts[0].value = 95.59
 body.discounts[0].discount_type = 'discount_type5'
@@ -395,6 +401,7 @@ def get_increment_by_id(subscription_id,
 | `subscription_id` | `String` | Template, Required | The subscription Id |
 | `increment_id` | `String` | Template, Required | The increment Id |
 
+
 ## Response Type
 
 [`GetIncrementResponse`](../../doc/models/get-increment-response.md)
@@ -402,6 +409,7 @@ def get_increment_by_id(subscription_id,
 ## Example Usage
 
 ```ruby
+
 subscription_id = 'subscription_id0'
 increment_id = 'increment_id8'
 
@@ -434,6 +442,7 @@ def update_subscription_metadata(subscription_id,
 ## Example Usage
 
 ```ruby
+
 subscription_id = 'subscription_id0'
 request = UpdateMetadataRequest.new
 request.metadata = {'key0' => 'metadata3' } 
@@ -467,6 +476,7 @@ def delete_increment(subscription_id,
 ## Example Usage
 
 ```ruby
+
 subscription_id = 'subscription_id0'
 increment_id = 'increment_id8'
 
@@ -519,11 +529,12 @@ def update_latest_period_end_at(subscription_id,
 
 ## Response Type
 
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+[`ListSubscriptionItemsResponse`](../../doc/models/list-subscription-items-response.md)
 
 ## Example Usage
 
 ```ruby
+
 subscription_id = 'subscription_id0'
 request = UpdateCurrentCycleEndDateRequest.new
 
@@ -653,7 +664,7 @@ def update_subscription_affiliation_id(subscription_id,
 
 ## Response Type
 
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
 
 ## Example Usage
 
@@ -766,11 +777,14 @@ def create_subscription_item(subscription_id,
 | `request` | [`CreateSubscriptionItemRequest`](../../doc/models/create-subscription-item-request.md) | Body, Required | Request for creating a subscription item |
 | `idempotency_key` | `String` | Header, Optional | - |
 
-## Response Type
 
 [`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
 
-## Example Usage
+
+request.discounts[1] = CreateDiscountRequest.new
+request.discounts[1].value = 200
+request.discounts[1].discount_type = 'discount_type6'
+request.discounts[1].item_id = 'item_id8'
 
 ```ruby
 subscription_id = 'subscription_id0'
@@ -926,6 +940,7 @@ def create_an_usage(subscription_id,
 ## Example Usage
 
 ```ruby
+
 subscription_id = 'subscription_id0'
 item_id = 'item_id0'
 
@@ -1179,6 +1194,7 @@ def create_discount(subscription_id,
 ## Example Usage
 
 ```ruby
+
 subscription_id = 'subscription_id0'
 request = CreateDiscountRequest.new
 request.value = 185.28
@@ -1274,6 +1290,7 @@ def create_increment(subscription_id,
 ## Example Usage
 
 ```ruby
+
 subscription_id = 'subscription_id0'
 request = CreateIncrementRequest.new
 request.value = 185.28
@@ -1311,6 +1328,7 @@ def create_usage(subscription_id,
 ## Example Usage
 
 ```ruby
+
 subscription_id = 'subscription_id0'
 item_id = 'item_id0'
 body = CreateUsageRequest.new
@@ -1411,6 +1429,7 @@ def update_subscription_start_at(subscription_id,
 ## Example Usage
 
 ```ruby
+
 subscription_id = 'subscription_id0'
 request = UpdateSubscriptionStartAtRequest.new
 request.start_at = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
