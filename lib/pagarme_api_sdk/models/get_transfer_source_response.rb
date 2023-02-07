@@ -27,7 +27,10 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        source_id
+        type
+      ]
     end
 
     # An array for nullable fields
@@ -38,10 +41,10 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(source_id = nil,
-                   type = nil)
-      @source_id = source_id
-      @type = type
+    def initialize(source_id = SKIP,
+                   type = SKIP)
+      @source_id = source_id unless source_id == SKIP
+      @type = type unless type == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -49,8 +52,8 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      source_id = hash.key?('source_id') ? hash['source_id'] : nil
-      type = hash.key?('type') ? hash['type'] : nil
+      source_id = hash.key?('source_id') ? hash['source_id'] : SKIP
+      type = hash.key?('type') ? hash['type'] : SKIP
 
       # Create object from extracted values.
       GetTransferSourceResponse.new(source_id,

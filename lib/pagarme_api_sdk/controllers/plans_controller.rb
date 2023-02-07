@@ -6,75 +6,49 @@
 module PagarmeApiSdk
   # PlansController
   class PlansController < BaseController
-    def initialize(config, http_call_back: nil)
-      super(config, http_call_back: http_call_back)
-    end
-
     # Gets a plan
     # @param [String] plan_id Required parameter: Plan id
     # @return [GetPlanResponse] response from the API call
     def get_plan(plan_id)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/plans/{plan_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'plan_id' => { 'value' => plan_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetPlanResponse.from_hash(decoded)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/plans/{plan_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(plan_id, key: 'plan_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetPlanResponse.method(:from_hash)))
+        .execute
     end
 
-    # Deletes a plan
+    # Updates a plan
     # @param [String] plan_id Required parameter: Plan id
+    # @param [UpdatePlanRequest] request Required parameter: Request for
+    # updating a plan
     # @param [String] idempotency_key Optional parameter: Example:
     # @return [GetPlanResponse] response from the API call
-    def delete_plan(plan_id,
+    def update_plan(plan_id,
+                    request,
                     idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/plans/{plan_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'plan_id' => { 'value' => plan_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.delete(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetPlanResponse.from_hash(decoded)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PUT,
+                                     '/plans/{plan_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(plan_id, key: 'plan_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetPlanResponse.method(:from_hash)))
+        .execute
     end
 
     # Updates the metadata from a plan
@@ -86,187 +60,22 @@ module PagarmeApiSdk
     def update_plan_metadata(plan_id,
                              request,
                              idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/Plans/{plan_id}/metadata'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'plan_id' => { 'value' => plan_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.patch(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetPlanResponse.from_hash(decoded)
-    end
-
-    # Updates a plan item
-    # @param [String] plan_id Required parameter: Plan id
-    # @param [String] plan_item_id Required parameter: Plan item id
-    # @param [UpdatePlanItemRequest] body Required parameter: Request for
-    # updating the plan item
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetPlanItemResponse] response from the API call
-    def update_plan_item(plan_id,
-                         plan_item_id,
-                         body,
-                         idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/plans/{plan_id}/items/{plan_item_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'plan_id' => { 'value' => plan_id, 'encode' => true },
-        'plan_item_id' => { 'value' => plan_item_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.put(
-        _query_url,
-        headers: _headers,
-        parameters: body.to_json
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetPlanItemResponse.from_hash(decoded)
-    end
-
-    # Adds a new item to a plan
-    # @param [String] plan_id Required parameter: Plan id
-    # @param [CreatePlanItemRequest] request Required parameter: Request for
-    # creating a plan item
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetPlanItemResponse] response from the API call
-    def create_plan_item(plan_id,
-                         request,
-                         idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/plans/{plan_id}/items'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'plan_id' => { 'value' => plan_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.post(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetPlanItemResponse.from_hash(decoded)
-    end
-
-    # Gets a plan item
-    # @param [String] plan_id Required parameter: Plan id
-    # @param [String] plan_item_id Required parameter: Plan item id
-    # @return [GetPlanItemResponse] response from the API call
-    def get_plan_item(plan_id,
-                      plan_item_id)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/plans/{plan_id}/items/{plan_item_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'plan_id' => { 'value' => plan_id, 'encode' => true },
-        'plan_item_id' => { 'value' => plan_item_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetPlanItemResponse.from_hash(decoded)
-    end
-
-    # Creates a new plan
-    # @param [CreatePlanRequest] body Required parameter: Request for creating a
-    # plan
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetPlanResponse] response from the API call
-    def create_plan(body,
-                    idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/plans'
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.post(
-        _query_url,
-        headers: _headers,
-        parameters: body.to_json
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetPlanResponse.from_hash(decoded)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/Plans/{plan_id}/metadata',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(plan_id, key: 'plan_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetPlanResponse.method(:from_hash)))
+        .execute
     end
 
     # Removes an item from a plan
@@ -277,34 +86,21 @@ module PagarmeApiSdk
     def delete_plan_item(plan_id,
                          plan_item_id,
                          idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/plans/{plan_id}/items/{plan_item_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'plan_id' => { 'value' => plan_id, 'encode' => true },
-        'plan_item_id' => { 'value' => plan_item_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.delete(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetPlanItemResponse.from_hash(decoded)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::DELETE,
+                                     '/plans/{plan_id}/items/{plan_item_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(plan_id, key: 'plan_id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(plan_item_id, key: 'plan_item_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetPlanItemResponse.method(:from_hash)))
+        .execute
     end
 
     # Gets all plans
@@ -326,78 +122,147 @@ module PagarmeApiSdk
                   billing_type: nil,
                   created_since: nil,
                   created_until: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/plans'
-      _query_builder = APIHelper.append_url_with_query_parameters(
-        _query_builder,
-        'page' => page,
-        'size' => size,
-        'name' => name,
-        'status' => status,
-        'billing_type' => billing_type,
-        'created_since' => created_since,
-        'created_until' => created_until
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      ListPlansResponse.from_hash(decoded)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/plans',
+                                     Server::DEFAULT)
+                   .query_param(new_parameter(page, key: 'page'))
+                   .query_param(new_parameter(size, key: 'size'))
+                   .query_param(new_parameter(name, key: 'name'))
+                   .query_param(new_parameter(status, key: 'status'))
+                   .query_param(new_parameter(billing_type, key: 'billing_type'))
+                   .query_param(new_parameter(created_since, key: 'created_since'))
+                   .query_param(new_parameter(created_until, key: 'created_until'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(ListPlansResponse.method(:from_hash)))
+        .execute
     end
 
-    # Updates a plan
+    # Gets a plan item
     # @param [String] plan_id Required parameter: Plan id
-    # @param [UpdatePlanRequest] request Required parameter: Request for
-    # updating a plan
+    # @param [String] plan_item_id Required parameter: Plan item id
+    # @return [GetPlanItemResponse] response from the API call
+    def get_plan_item(plan_id,
+                      plan_item_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/plans/{plan_id}/items/{plan_item_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(plan_id, key: 'plan_id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(plan_item_id, key: 'plan_item_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetPlanItemResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Deletes a plan
+    # @param [String] plan_id Required parameter: Plan id
     # @param [String] idempotency_key Optional parameter: Example:
     # @return [GetPlanResponse] response from the API call
-    def update_plan(plan_id,
-                    request,
+    def delete_plan(plan_id,
                     idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/plans/{plan_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'plan_id' => { 'value' => plan_id, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::DELETE,
+                                     '/plans/{plan_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(plan_id, key: 'plan_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetPlanResponse.method(:from_hash)))
+        .execute
+    end
 
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
+    # Updates a plan item
+    # @param [String] plan_id Required parameter: Plan id
+    # @param [String] plan_item_id Required parameter: Plan item id
+    # @param [UpdatePlanItemRequest] body Required parameter: Request for
+    # updating the plan item
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetPlanItemResponse] response from the API call
+    def update_plan_item(plan_id,
+                         plan_item_id,
+                         body,
+                         idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PUT,
+                                     '/plans/{plan_id}/items/{plan_item_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(plan_id, key: 'plan_id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(plan_item_id, key: 'plan_item_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(body))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetPlanItemResponse.method(:from_hash)))
+        .execute
+    end
 
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.put(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(config, _request)
-      _response = execute_request(_request)
-      validate_response(_response)
+    # Adds a new item to a plan
+    # @param [String] plan_id Required parameter: Plan id
+    # @param [CreatePlanItemRequest] request Required parameter: Request for
+    # creating a plan item
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetPlanItemResponse] response from the API call
+    def create_plan_item(plan_id,
+                         request,
+                         idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/plans/{plan_id}/items',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(plan_id, key: 'plan_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetPlanItemResponse.method(:from_hash)))
+        .execute
+    end
 
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetPlanResponse.from_hash(decoded)
+    # Creates a new plan
+    # @param [CreatePlanRequest] body Required parameter: Request for creating a
+    # plan
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetPlanResponse] response from the API call
+    def create_plan(body,
+                    idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/plans',
+                                     Server::DEFAULT)
+                   .body_param(new_parameter(body))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetPlanResponse.method(:from_hash)))
+        .execute
     end
   end
 end

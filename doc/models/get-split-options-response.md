@@ -9,17 +9,17 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `liable` | `TrueClass\|FalseClass` | Required | - |
-| `charge_processing_fee` | `TrueClass\|FalseClass` | Required | - |
-| `charge_remainder_fee` | `String` | Required | - |
+| `liable` | `TrueClass\|FalseClass` | Optional | - |
+| `charge_processing_fee` | `TrueClass\|FalseClass` | Optional | - |
+| `charge_remainder_fee` | `String` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "liable": false,
-  "charge_processing_fee": false,
-  "charge_remainder_fee": "charge_remainder_fee8"
+  "liable": null,
+  "charge_processing_fee": null,
+  "charge_remainder_fee": null
 }
 ```
 

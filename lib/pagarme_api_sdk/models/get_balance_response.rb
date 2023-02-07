@@ -43,7 +43,11 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        currency
+        available_amount
         recipient
+        transferred_amount
+        waiting_funds_amount
       ]
     end
 
@@ -58,16 +62,16 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(currency = nil,
-                   available_amount = nil,
-                   transferred_amount = nil,
-                   waiting_funds_amount = nil,
-                   recipient = SKIP)
-      @currency = currency
-      @available_amount = available_amount
+    def initialize(currency = SKIP,
+                   available_amount = SKIP,
+                   recipient = SKIP,
+                   transferred_amount = SKIP,
+                   waiting_funds_amount = SKIP)
+      @currency = currency unless currency == SKIP
+      @available_amount = available_amount unless available_amount == SKIP
       @recipient = recipient unless recipient == SKIP
-      @transferred_amount = transferred_amount
-      @waiting_funds_amount = waiting_funds_amount
+      @transferred_amount = transferred_amount unless transferred_amount == SKIP
+      @waiting_funds_amount = waiting_funds_amount unless waiting_funds_amount == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -75,21 +79,21 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      currency = hash.key?('currency') ? hash['currency'] : nil
+      currency = hash.key?('currency') ? hash['currency'] : SKIP
       available_amount =
-        hash.key?('available_amount') ? hash['available_amount'] : nil
-      transferred_amount =
-        hash.key?('transferred_amount') ? hash['transferred_amount'] : nil
-      waiting_funds_amount =
-        hash.key?('waiting_funds_amount') ? hash['waiting_funds_amount'] : nil
+        hash.key?('available_amount') ? hash['available_amount'] : SKIP
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if hash['recipient']
+      transferred_amount =
+        hash.key?('transferred_amount') ? hash['transferred_amount'] : SKIP
+      waiting_funds_amount =
+        hash.key?('waiting_funds_amount') ? hash['waiting_funds_amount'] : SKIP
 
       # Create object from extracted values.
       GetBalanceResponse.new(currency,
                              available_amount,
+                             recipient,
                              transferred_amount,
-                             waiting_funds_amount,
-                             recipient)
+                             waiting_funds_amount)
     end
   end
 end

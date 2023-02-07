@@ -48,8 +48,12 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        type
+        amount
         recipient
+        gateway_id
         options
+        id
       ]
     end
 
@@ -65,18 +69,18 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(type = nil,
-                   amount = nil,
-                   gateway_id = nil,
-                   id = nil,
+    def initialize(type = SKIP,
+                   amount = SKIP,
                    recipient = SKIP,
-                   options = SKIP)
-      @type = type
-      @amount = amount
+                   gateway_id = SKIP,
+                   options = SKIP,
+                   id = SKIP)
+      @type = type unless type == SKIP
+      @amount = amount unless amount == SKIP
       @recipient = recipient unless recipient == SKIP
-      @gateway_id = gateway_id
+      @gateway_id = gateway_id unless gateway_id == SKIP
       @options = options unless options == SKIP
-      @id = id
+      @id = id unless id == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -84,20 +88,20 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      type = hash.key?('type') ? hash['type'] : nil
-      amount = hash.key?('amount') ? hash['amount'] : nil
-      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : nil
-      id = hash.key?('id') ? hash['id'] : nil
+      type = hash.key?('type') ? hash['type'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if hash['recipient']
+      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
       options = GetSplitOptionsResponse.from_hash(hash['options']) if hash['options']
+      id = hash.key?('id') ? hash['id'] : SKIP
 
       # Create object from extracted values.
       GetSplitResponse.new(type,
                            amount,
-                           gateway_id,
-                           id,
                            recipient,
-                           options)
+                           gateway_id,
+                           options,
+                           id)
     end
   end
 end

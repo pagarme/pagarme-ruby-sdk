@@ -8,84 +8,76 @@ module PagarmeApiSdk
   class BaseController
     attr_accessor :config, :http_call_back
 
-    def initialize(config, http_call_back: nil)
-      @config = config
-      @http_call_back = http_call_back
-
-      @global_headers = {
-        'user-agent' => get_user_agent
-      }
+    def self.user_agent
+      'PagarmeApiSDK - Ruby 6.7.4'
     end
 
-    def validate_parameters(args)
-      args.each do |_name, value|
-        raise ArgumentError, "Required parameter #{_name} cannot be nil." if value.nil?
-      end
+
+    GLOBAL_ERRORS = {
+      'default' => ErrorCase.new
+                            .error_message('HTTP response not OK.')
+                            .exception_type(APIException),
+      '400' => ErrorCase.new
+                        .error_message('Invalid request')
+                        .exception_type(ErrorException),
+      '401' => ErrorCase.new
+                        .error_message('Invalid API key')
+                        .exception_type(ErrorException),
+      '404' => ErrorCase.new
+                        .error_message('An informed resource was not found')
+                        .exception_type(ErrorException),
+      '412' => ErrorCase.new
+                        .error_message('Business validation error')
+                        .exception_type(ErrorException),
+      '422' => ErrorCase.new
+                        .error_message('Contract validation error')
+                        .exception_type(ErrorException),
+      '500' => ErrorCase.new
+                        .error_message('Internal server error')
+                        .exception_type(ErrorException)
+    }.freeze
+
+    # Initialization constructor.
+    # @param [GlobalConfiguration] global_configuration The instance of GlobalConfiguration.
+    def initialize(global_configuration)
+      @global_configuration = global_configuration
+      @config = @global_configuration.client_configuration
+      @http_call_back = @config.http_callback
+      @api_call = ApiCall.new(@global_configuration)
     end
 
-    def validate_parameters_types(args)
-      args.each do |_name, type|
-        key, val = type.first
-        APIHelper.validate_types(key, val) unless key.nil?
-      end
+    # Creates a new builder for the Api Call instance.
+    # @return [ApiCall] The instance of ApiCall.
+    def new_api_call_builder
+      @api_call.new_builder
     end
 
-    def execute_request(request, binary: false)
-      @http_call_back&.on_before_request(request)
-
-      APIHelper.clean_hash(request.headers)
-      request.headers.merge!(@global_headers)
-
-      response = if binary
-                   config.http_client.execute_as_binary(request)
-                 else
-                   config.http_client.execute_as_string(request)
-                 end
-      @http_call_back&.on_after_response(response)
-
-      response
+    # Creates a new instance of the request builder.
+    # @param [HttpMethodEnum] http_method The HTTP method to use in the request.
+    # @param [String] path The endpoint path to use in the request.
+    # @param [String] server The server to extract the base uri for the request.
+    # @return [RequestBuilder] The instance of RequestBuilder.
+    def new_request_builder(http_method, path, server)
+      RequestBuilder.new
+                    .http_method(http_method)
+                    .path(path)
+                    .server(server)
     end
 
-    def validate_response(response)
-      case response.status_code
-      when 400
-        raise ErrorException.new(
-          'Invalid request',
-          response
-        )
-      when 401
-        raise ErrorException.new(
-          'Invalid API key',
-          response
-        )
-      when 404
-        raise ErrorException.new(
-          'An informed resource was not found',
-          response
-        )
-      when 412
-        raise ErrorException.new(
-          'Business validation error',
-          response
-        )
-      when 422
-        raise ErrorException.new(
-          'Contract validation error',
-          response
-        )
-      when 500
-        raise ErrorException.new(
-          'Internal server error',
-          response
-        )
-      end
-      raise APIException.new 'HTTP Response Not OK', response unless
-        response.status_code.between?(200, 208) # [200,208] = HTTP OK
+    # Creates a new instance of the response handler.
+    # @return [ResponseHandler] The instance of ResponseHandler.
+    def new_response_handler
+      ResponseHandler.new
     end
 
-    def get_user_agent
-      user_agent = 'PagarmeApiSDK - Ruby 6.7.2'
-      user_agent
+    # Creates a new instance of the parameter.
+    # @param [String|optional] key The key of the parameter.
+    # @param [Object] value The value of the parameter.
+    # @return [Parameter] The instance of Parameter.
+    def new_parameter(value, key: nil)
+      Parameter.new
+               .key(key)
+               .value(value)
     end
   end
 end

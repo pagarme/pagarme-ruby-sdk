@@ -53,7 +53,15 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        id
+        amount
+        status
+        created_at
+        updated_at
+        bank_account
+        metadata
+      ]
     end
 
     # An array for nullable fields
@@ -69,20 +77,20 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = nil,
-                   amount = nil,
-                   status = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   bank_account = nil,
-                   metadata = nil)
-      @id = id
-      @amount = amount
-      @status = status
-      @created_at = created_at
-      @updated_at = updated_at
-      @bank_account = bank_account
-      @metadata = metadata
+    def initialize(id = SKIP,
+                   amount = SKIP,
+                   status = SKIP,
+                   created_at = SKIP,
+                   updated_at = SKIP,
+                   bank_account = SKIP,
+                   metadata = SKIP)
+      @id = id unless id == SKIP
+      @amount = amount unless amount == SKIP
+      @status = status unless status == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @updated_at = updated_at unless updated_at == SKIP
+      @bank_account = bank_account unless bank_account == SKIP
+      @metadata = metadata unless metadata == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -90,18 +98,22 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
-      amount = hash.key?('amount') ? hash['amount'] : nil
-      status = hash.key?('status') ? hash['status'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
+      status = hash.key?('status') ? hash['status'] : SKIP
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
+                   else
+                     SKIP
                    end
       bank_account = GetBankAccountResponse.from_hash(hash['bank_account']) if
         hash['bank_account']
-      metadata = hash.key?('metadata') ? hash['metadata'] : nil
+      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
 
       # Create object from extracted values.
       GetTransferResponse.new(id,

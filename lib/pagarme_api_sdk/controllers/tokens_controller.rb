@@ -6,10 +6,6 @@
 module PagarmeApiSdk
   # TokensController
   class TokensController < BaseController
-    def initialize(config, http_call_back: nil)
-      super(config, http_call_back: http_call_back)
-    end
-
     # TODO: type endpoint description here
     # @param [String] public_key Required parameter: Public key
     # @param [CreateTokenRequest] request Required parameter: Request for
@@ -19,34 +15,21 @@ module PagarmeApiSdk
     def create_token(public_key,
                      request,
                      idempotency_key: nil)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/tokens?appId={public_key}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'public_key' => { 'value' => public_key, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.post(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetTokenResponse.from_hash(decoded)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/tokens?appId={public_key}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(public_key, key: 'public_key')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetTokenResponse.method(:from_hash)))
+        .execute
     end
 
     # Gets a token from its id
@@ -55,32 +38,19 @@ module PagarmeApiSdk
     # @return [GetTokenResponse] response from the API call
     def get_token(id,
                   public_key)
-      # Prepare query url.
-      _query_builder = config.get_base_uri
-      _query_builder << '/tokens/{id}?appId={public_key}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'id' => { 'value' => id, 'encode' => true },
-        'public_key' => { 'value' => public_key, 'encode' => true }
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = config.http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      _response = execute_request(_request)
-      validate_response(_response)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_response.raw_body)
-      GetTokenResponse.from_hash(decoded)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/tokens/{id}?appId={public_key}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(id, key: 'id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(public_key, key: 'public_key')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetTokenResponse.method(:from_hash)))
+        .execute
     end
   end
 end

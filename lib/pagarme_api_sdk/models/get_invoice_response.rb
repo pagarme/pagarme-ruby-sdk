@@ -134,14 +134,29 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        id
+        code
+        url
+        amount
+        status
+        payment_method
+        created_at
+        items
         customer
+        charge
+        installments
+        billing_address
+        subscription
         cycle
+        shipping
+        metadata
         due_at
         canceled_at
         billing_at
         seen_at
         total_discount
         total_increment
+        subscription_id
       ]
     end
 
@@ -174,52 +189,52 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = nil,
-                   code = nil,
-                   url = nil,
-                   amount = nil,
-                   status = nil,
-                   payment_method = nil,
-                   created_at = nil,
-                   items = nil,
-                   charge = nil,
-                   installments = nil,
-                   billing_address = nil,
-                   subscription = nil,
-                   shipping = nil,
-                   metadata = nil,
-                   subscription_id = nil,
+    def initialize(id = SKIP,
+                   code = SKIP,
+                   url = SKIP,
+                   amount = SKIP,
+                   status = SKIP,
+                   payment_method = SKIP,
+                   created_at = SKIP,
+                   items = SKIP,
                    customer = SKIP,
+                   charge = SKIP,
+                   installments = SKIP,
+                   billing_address = SKIP,
+                   subscription = SKIP,
                    cycle = SKIP,
+                   shipping = SKIP,
+                   metadata = SKIP,
                    due_at = SKIP,
                    canceled_at = SKIP,
                    billing_at = SKIP,
                    seen_at = SKIP,
                    total_discount = SKIP,
-                   total_increment = SKIP)
-      @id = id
-      @code = code
-      @url = url
-      @amount = amount
-      @status = status
-      @payment_method = payment_method
-      @created_at = created_at
-      @items = items
+                   total_increment = SKIP,
+                   subscription_id = SKIP)
+      @id = id unless id == SKIP
+      @code = code unless code == SKIP
+      @url = url unless url == SKIP
+      @amount = amount unless amount == SKIP
+      @status = status unless status == SKIP
+      @payment_method = payment_method unless payment_method == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @items = items unless items == SKIP
       @customer = customer unless customer == SKIP
-      @charge = charge
-      @installments = installments
-      @billing_address = billing_address
-      @subscription = subscription
+      @charge = charge unless charge == SKIP
+      @installments = installments unless installments == SKIP
+      @billing_address = billing_address unless billing_address == SKIP
+      @subscription = subscription unless subscription == SKIP
       @cycle = cycle unless cycle == SKIP
-      @shipping = shipping
-      @metadata = metadata
+      @shipping = shipping unless shipping == SKIP
+      @metadata = metadata unless metadata == SKIP
       @due_at = due_at unless due_at == SKIP
       @canceled_at = canceled_at unless canceled_at == SKIP
       @billing_at = billing_at unless billing_at == SKIP
       @seen_at = seen_at unless seen_at == SKIP
       @total_discount = total_discount unless total_discount == SKIP
       @total_increment = total_increment unless total_increment == SKIP
-      @subscription_id = subscription_id
+      @subscription_id = subscription_id unless subscription_id == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -227,15 +242,17 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
-      code = hash.key?('code') ? hash['code'] : nil
-      url = hash.key?('url') ? hash['url'] : nil
-      amount = hash.key?('amount') ? hash['amount'] : nil
-      status = hash.key?('status') ? hash['status'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
+      code = hash.key?('code') ? hash['code'] : SKIP
+      url = hash.key?('url') ? hash['url'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
+      status = hash.key?('status') ? hash['status'] : SKIP
       payment_method =
-        hash.key?('payment_method') ? hash['payment_method'] : nil
+        hash.key?('payment_method') ? hash['payment_method'] : SKIP
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
       # Parameter is an array, so we need to iterate through it
       items = nil
@@ -246,19 +263,17 @@ module PagarmeApiSdk
         end
       end
 
-      items = nil unless hash.key?('items')
+      items = SKIP unless hash.key?('items')
+      customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
       charge = GetChargeResponse.from_hash(hash['charge']) if hash['charge']
-      installments = hash.key?('installments') ? hash['installments'] : nil
+      installments = hash.key?('installments') ? hash['installments'] : SKIP
       billing_address = GetBillingAddressResponse.from_hash(hash['billing_address']) if
         hash['billing_address']
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
         hash['subscription']
-      shipping = GetShippingResponse.from_hash(hash['shipping']) if hash['shipping']
-      metadata = hash.key?('metadata') ? hash['metadata'] : nil
-      subscription_id =
-        hash.key?('subscription_id') ? hash['subscription_id'] : nil
-      customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
       cycle = GetPeriodResponse.from_hash(hash['cycle']) if hash['cycle']
+      shipping = GetShippingResponse.from_hash(hash['shipping']) if hash['shipping']
+      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       due_at = if hash.key?('due_at')
                  (DateTimeHelper.from_rfc3339(hash['due_at']) if hash['due_at'])
                else
@@ -283,6 +298,8 @@ module PagarmeApiSdk
         hash.key?('total_discount') ? hash['total_discount'] : SKIP
       total_increment =
         hash.key?('total_increment') ? hash['total_increment'] : SKIP
+      subscription_id =
+        hash.key?('subscription_id') ? hash['subscription_id'] : SKIP
 
       # Create object from extracted values.
       GetInvoiceResponse.new(id,
@@ -293,21 +310,21 @@ module PagarmeApiSdk
                              payment_method,
                              created_at,
                              items,
+                             customer,
                              charge,
                              installments,
                              billing_address,
                              subscription,
+                             cycle,
                              shipping,
                              metadata,
-                             subscription_id,
-                             customer,
-                             cycle,
                              due_at,
                              canceled_at,
                              billing_at,
                              seen_at,
                              total_discount,
-                             total_increment)
+                             total_increment,
+                             subscription_id)
     end
 
     def to_created_at

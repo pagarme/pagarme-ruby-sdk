@@ -32,7 +32,11 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        days
+        type
+        amount
+      ]
     end
 
     # An array for nullable fields
@@ -44,12 +48,12 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(days = nil,
-                   type = nil,
-                   amount = nil)
-      @days = days
-      @type = type
-      @amount = amount
+    def initialize(days = SKIP,
+                   type = SKIP,
+                   amount = SKIP)
+      @days = days unless days == SKIP
+      @type = type unless type == SKIP
+      @amount = amount unless amount == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -57,9 +61,9 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      days = hash.key?('days') ? hash['days'] : nil
-      type = hash.key?('type') ? hash['type'] : nil
-      amount = hash.key?('amount') ? hash['amount'] : nil
+      days = hash.key?('days') ? hash['days'] : SKIP
+      type = hash.key?('type') ? hash['type'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
 
       # Create object from extracted values.
       GetFineResponse.new(days,

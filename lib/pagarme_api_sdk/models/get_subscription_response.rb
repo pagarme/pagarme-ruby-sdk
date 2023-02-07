@@ -126,6 +126,10 @@ module PagarmeApiSdk
     # @return [GetSubscriptionBoletoResponse]
     attr_accessor :boleto
 
+    # Subscription's split response
+    # @return [TrueClass|FalseClass]
+    attr_accessor :manual_billing
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -158,21 +162,43 @@ module PagarmeApiSdk
       @_hash['boleto_due_days'] = 'boleto_due_days'
       @_hash['split'] = 'split'
       @_hash['boleto'] = 'boleto'
+      @_hash['manual_billing'] = 'manual_billing'
       @_hash
     end
 
     # An array for optional fields
     def self.optionals
       %w[
+        id
+        code
+        start_at
+        interval
+        interval_count
+        billing_type
         current_cycle
+        payment_method
+        currency
+        installments
+        status
+        created_at
+        updated_at
         customer
+        card
+        items
+        statement_descriptor
+        metadata
+        setup
+        gateway_affiliation_id
         next_billing_at
         billing_day
         minimum_price
         canceled_at
         discounts
+        increments
         boleto_due_days
+        split
         boleto
+        manual_billing
       ]
     end
 
@@ -208,67 +234,70 @@ module PagarmeApiSdk
         boleto_due_days
         split
         boleto
+        manual_billing
       ]
     end
 
-    def initialize(id = nil,
-                   code = nil,
-                   start_at = nil,
-                   interval = nil,
-                   interval_count = nil,
-                   billing_type = nil,
-                   payment_method = nil,
-                   currency = nil,
-                   installments = nil,
-                   status = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   card = nil,
-                   items = nil,
-                   statement_descriptor = nil,
-                   metadata = nil,
-                   setup = nil,
-                   gateway_affiliation_id = nil,
-                   increments = nil,
-                   split = nil,
+    def initialize(id = SKIP,
+                   code = SKIP,
+                   start_at = SKIP,
+                   interval = SKIP,
+                   interval_count = SKIP,
+                   billing_type = SKIP,
                    current_cycle = SKIP,
+                   payment_method = SKIP,
+                   currency = SKIP,
+                   installments = SKIP,
+                   status = SKIP,
+                   created_at = SKIP,
+                   updated_at = SKIP,
                    customer = SKIP,
+                   card = SKIP,
+                   items = SKIP,
+                   statement_descriptor = SKIP,
+                   metadata = SKIP,
+                   setup = SKIP,
+                   gateway_affiliation_id = SKIP,
                    next_billing_at = SKIP,
                    billing_day = SKIP,
                    minimum_price = SKIP,
                    canceled_at = SKIP,
                    discounts = SKIP,
+                   increments = SKIP,
                    boleto_due_days = SKIP,
-                   boleto = SKIP)
-      @id = id
-      @code = code
-      @start_at = start_at
-      @interval = interval
-      @interval_count = interval_count
-      @billing_type = billing_type
+                   split = SKIP,
+                   boleto = SKIP,
+                   manual_billing = SKIP)
+      @id = id unless id == SKIP
+      @code = code unless code == SKIP
+      @start_at = start_at unless start_at == SKIP
+      @interval = interval unless interval == SKIP
+      @interval_count = interval_count unless interval_count == SKIP
+      @billing_type = billing_type unless billing_type == SKIP
       @current_cycle = current_cycle unless current_cycle == SKIP
-      @payment_method = payment_method
-      @currency = currency
-      @installments = installments
-      @status = status
-      @created_at = created_at
-      @updated_at = updated_at
+      @payment_method = payment_method unless payment_method == SKIP
+      @currency = currency unless currency == SKIP
+      @installments = installments unless installments == SKIP
+      @status = status unless status == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @updated_at = updated_at unless updated_at == SKIP
       @customer = customer unless customer == SKIP
-      @card = card
-      @items = items
-      @statement_descriptor = statement_descriptor
-      @metadata = metadata
-      @setup = setup
-      @gateway_affiliation_id = gateway_affiliation_id
+      @card = card unless card == SKIP
+      @items = items unless items == SKIP
+      @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
+      @metadata = metadata unless metadata == SKIP
+      @setup = setup unless setup == SKIP
+      @gateway_affiliation_id = gateway_affiliation_id unless gateway_affiliation_id == SKIP
       @next_billing_at = next_billing_at unless next_billing_at == SKIP
       @billing_day = billing_day unless billing_day == SKIP
       @minimum_price = minimum_price unless minimum_price == SKIP
       @canceled_at = canceled_at unless canceled_at == SKIP
       @discounts = discounts unless discounts == SKIP
-      @increments = increments
+      @increments = increments unless increments == SKIP
       @boleto_due_days = boleto_due_days unless boleto_due_days == SKIP
-      @split = split
+      @split = split unless split == SKIP
       @boleto = boleto unless boleto == SKIP
+      @manual_billing = manual_billing unless manual_billing == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -276,26 +305,34 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
-      code = hash.key?('code') ? hash['code'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
+      code = hash.key?('code') ? hash['code'] : SKIP
       start_at = if hash.key?('start_at')
                    (DateTimeHelper.from_rfc3339(hash['start_at']) if hash['start_at'])
+                 else
+                   SKIP
                  end
-      interval = hash.key?('interval') ? hash['interval'] : nil
+      interval = hash.key?('interval') ? hash['interval'] : SKIP
       interval_count =
-        hash.key?('interval_count') ? hash['interval_count'] : nil
-      billing_type = hash.key?('billing_type') ? hash['billing_type'] : nil
+        hash.key?('interval_count') ? hash['interval_count'] : SKIP
+      billing_type = hash.key?('billing_type') ? hash['billing_type'] : SKIP
+      current_cycle = GetPeriodResponse.from_hash(hash['current_cycle']) if hash['current_cycle']
       payment_method =
-        hash.key?('payment_method') ? hash['payment_method'] : nil
-      currency = hash.key?('currency') ? hash['currency'] : nil
-      installments = hash.key?('installments') ? hash['installments'] : nil
-      status = hash.key?('status') ? hash['status'] : nil
+        hash.key?('payment_method') ? hash['payment_method'] : SKIP
+      currency = hash.key?('currency') ? hash['currency'] : SKIP
+      installments = hash.key?('installments') ? hash['installments'] : SKIP
+      status = hash.key?('status') ? hash['status'] : SKIP
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
+                   else
+                     SKIP
                    end
+      customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
       card = GetCardResponse.from_hash(hash['card']) if hash['card']
       # Parameter is an array, so we need to iterate through it
       items = nil
@@ -306,26 +343,13 @@ module PagarmeApiSdk
         end
       end
 
-      items = nil unless hash.key?('items')
+      items = SKIP unless hash.key?('items')
       statement_descriptor =
-        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : nil
-      metadata = hash.key?('metadata') ? hash['metadata'] : nil
+        hash.key?('statement_descriptor') ? hash['statement_descriptor'] : SKIP
+      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       setup = GetSetupResponse.from_hash(hash['setup']) if hash['setup']
       gateway_affiliation_id =
-        hash.key?('gateway_affiliation_id') ? hash['gateway_affiliation_id'] : nil
-      # Parameter is an array, so we need to iterate through it
-      increments = nil
-      unless hash['increments'].nil?
-        increments = []
-        hash['increments'].each do |structure|
-          increments << (GetIncrementResponse.from_hash(structure) if structure)
-        end
-      end
-
-      increments = nil unless hash.key?('increments')
-      split = GetSubscriptionSplitResponse.from_hash(hash['split']) if hash['split']
-      current_cycle = GetPeriodResponse.from_hash(hash['current_cycle']) if hash['current_cycle']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
+        hash.key?('gateway_affiliation_id') ? hash['gateway_affiliation_id'] : SKIP
       next_billing_at = if hash.key?('next_billing_at')
                           (DateTimeHelper.from_rfc3339(hash['next_billing_at']) if hash['next_billing_at'])
                         else
@@ -348,9 +372,22 @@ module PagarmeApiSdk
       end
 
       discounts = SKIP unless hash.key?('discounts')
+      # Parameter is an array, so we need to iterate through it
+      increments = nil
+      unless hash['increments'].nil?
+        increments = []
+        hash['increments'].each do |structure|
+          increments << (GetIncrementResponse.from_hash(structure) if structure)
+        end
+      end
+
+      increments = SKIP unless hash.key?('increments')
       boleto_due_days =
         hash.key?('boleto_due_days') ? hash['boleto_due_days'] : SKIP
+      split = GetSubscriptionSplitResponse.from_hash(hash['split']) if hash['split']
       boleto = GetSubscriptionBoletoResponse.from_hash(hash['boleto']) if hash['boleto']
+      manual_billing =
+        hash.key?('manual_billing') ? hash['manual_billing'] : SKIP
 
       # Create object from extracted values.
       GetSubscriptionResponse.new(id,
@@ -359,29 +396,30 @@ module PagarmeApiSdk
                                   interval,
                                   interval_count,
                                   billing_type,
+                                  current_cycle,
                                   payment_method,
                                   currency,
                                   installments,
                                   status,
                                   created_at,
                                   updated_at,
+                                  customer,
                                   card,
                                   items,
                                   statement_descriptor,
                                   metadata,
                                   setup,
                                   gateway_affiliation_id,
-                                  increments,
-                                  split,
-                                  current_cycle,
-                                  customer,
                                   next_billing_at,
                                   billing_day,
                                   minimum_price,
                                   canceled_at,
                                   discounts,
+                                  increments,
                                   boleto_due_days,
-                                  boleto)
+                                  split,
+                                  boleto,
+                                  manual_billing)
     end
 
     def to_start_at

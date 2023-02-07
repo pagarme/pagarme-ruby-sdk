@@ -32,7 +32,11 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        statement_descriptor
+        installments
+        authentication
+      ]
     end
 
     # An array for nullable fields
@@ -44,12 +48,12 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(statement_descriptor = nil,
-                   installments = nil,
-                   authentication = nil)
-      @statement_descriptor = statement_descriptor
-      @installments = installments
-      @authentication = authentication
+    def initialize(statement_descriptor = SKIP,
+                   installments = SKIP,
+                   authentication = SKIP)
+      @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
+      @installments = installments unless installments == SKIP
+      @authentication = authentication unless authentication == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -58,7 +62,7 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       statement_descriptor =
-        hash.key?('statementDescriptor') ? hash['statementDescriptor'] : nil
+        hash.key?('statementDescriptor') ? hash['statementDescriptor'] : SKIP
       # Parameter is an array, so we need to iterate through it
       installments = nil
       unless hash['installments'].nil?
@@ -68,7 +72,7 @@ module PagarmeApiSdk
         end
       end
 
-      installments = nil unless hash.key?('installments')
+      installments = SKIP unless hash.key?('installments')
       authentication = GetPaymentAuthenticationResponse.from_hash(hash['authentication']) if
         hash['authentication']
 
