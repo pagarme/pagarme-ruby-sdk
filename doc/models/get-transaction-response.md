@@ -53,7 +53,8 @@ Generic response object for getting a transaction.
   "split": null,
   "interest": null,
   "fine": null,
-  "max_days_to_pay_past_due": null
+  "max_days_to_pay_past_due": null,
+  "transaction_type": "transaction"
 }
 ```
 

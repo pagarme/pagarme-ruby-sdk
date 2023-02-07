@@ -16,6 +16,7 @@ The generated code depends on a few Ruby gems. The references to these gems are 
 
 Alternatively, you can build and install the gem manually:
 
+
 1. From terminal/cmd navigate to the root directory of the SDK.
 2. Run the build command: `gem build pagarme_api_sdk.gemspec`
 3. Run the install command: `gem install pagarme_api_sdk-6.7.3.gem`

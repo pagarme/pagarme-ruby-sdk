@@ -161,7 +161,6 @@ module PagarmeApiSdk
         due_at
         created_at
         updated_at
-        last_transaction
         invoice
         order
         customer

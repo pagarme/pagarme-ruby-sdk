@@ -80,10 +80,7 @@ module PagarmeApiSdk
     def self.optionals
       _arr = %w[
         statement_descriptor
-        acquirer_name
         acquirer_affiliation_code
-        acquirer_tid
-        acquirer_nsu
         acquirer_auth_code
         operation_type
         card
