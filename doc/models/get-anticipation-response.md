@@ -11,31 +11,31 @@ Anticipation
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `String` | Required | Id |
-| `requested_amount` | `Integer` | Required | Requested amount |
-| `approved_amount` | `Integer` | Required | Approved amount |
+| `id` | `String` | Optional | Id |
+| `requested_amount` | `Integer` | Optional | Requested amount |
+| `approved_amount` | `Integer` | Optional | Approved amount |
 | `recipient` | [`GetRecipientResponse`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `pgid` | `String` | Required | Anticipation id on the gateway |
-| `created_at` | `DateTime` | Required | Creation date |
-| `updated_at` | `DateTime` | Required | Last update date |
-| `payment_date` | `DateTime` | Required | Payment date |
-| `status` | `String` | Required | Status |
-| `timeframe` | `String` | Required | Timeframe |
+| `pgid` | `String` | Optional | Anticipation id on the gateway |
+| `created_at` | `DateTime` | Optional | Creation date |
+| `updated_at` | `DateTime` | Optional | Last update date |
+| `payment_date` | `DateTime` | Optional | Payment date |
+| `status` | `String` | Optional | Status |
+| `timeframe` | `String` | Optional | Timeframe |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "requested_amount": 246,
-  "approved_amount": 212,
+  "id": null,
+  "requested_amount": null,
+  "approved_amount": null,
   "recipient": null,
-  "pgid": "pgid4",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z",
-  "payment_date": "2016-03-13T12:52:32.123Z",
-  "status": "status8",
-  "timeframe": "timeframe2"
+  "pgid": null,
+  "created_at": null,
+  "updated_at": null,
+  "payment_date": null,
+  "status": null,
+  "timeframe": null
 }
 ```
 

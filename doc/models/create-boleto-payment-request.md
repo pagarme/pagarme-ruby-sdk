@@ -16,7 +16,7 @@ Contains the settings for creating a boleto payment
 | `instructions` | `String` | Required | The instructions field that will be printed on the boleto. |
 | `due_at` | `DateTime` | Optional | Boleto due date |
 | `billing_address` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Card's billing address |
-| `billing_address_id` | `String` | Required | The address id for the billing address |
+| `billing_address_id` | `String` | Optional | The address id for the billing address |
 | `nosso_numero` | `String` | Optional | Customer identification number with the bank |
 | `document_number` | `String` | Required | Boleto identification |
 | `statement_descriptor` | `String` | Required | Soft Descriptor |
@@ -48,7 +48,7 @@ Contains the settings for creating a boleto payment
     "line_1": "line_18",
     "line_2": "line_26"
   },
-  "billing_address_id": "billing_address_id6",
+  "billing_address_id": null,
   "nosso_numero": null,
   "document_number": "document_number6",
   "statement_descriptor": "statement_descriptor0",

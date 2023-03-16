@@ -43,6 +43,9 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        price
+        scheme_type
+        price_brackets
         minimum_price
         percentage
       ]
@@ -59,14 +62,14 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(price = nil,
-                   scheme_type = nil,
-                   price_brackets = nil,
+    def initialize(price = SKIP,
+                   scheme_type = SKIP,
+                   price_brackets = SKIP,
                    minimum_price = SKIP,
                    percentage = SKIP)
-      @price = price
-      @scheme_type = scheme_type
-      @price_brackets = price_brackets
+      @price = price unless price == SKIP
+      @scheme_type = scheme_type unless scheme_type == SKIP
+      @price_brackets = price_brackets unless price_brackets == SKIP
       @minimum_price = minimum_price unless minimum_price == SKIP
       @percentage = percentage unless percentage == SKIP
     end
@@ -76,8 +79,8 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      price = hash.key?('price') ? hash['price'] : nil
-      scheme_type = hash.key?('scheme_type') ? hash['scheme_type'] : nil
+      price = hash.key?('price') ? hash['price'] : SKIP
+      scheme_type = hash.key?('scheme_type') ? hash['scheme_type'] : SKIP
       # Parameter is an array, so we need to iterate through it
       price_brackets = nil
       unless hash['price_brackets'].nil?
@@ -87,7 +90,7 @@ module PagarmeApiSdk
         end
       end
 
-      price_brackets = nil unless hash.key?('price_brackets')
+      price_brackets = SKIP unless hash.key?('price_brackets')
       minimum_price = hash.key?('minimum_price') ? hash['minimum_price'] : SKIP
       percentage = hash.key?('percentage') ? hash['percentage'] : SKIP
 

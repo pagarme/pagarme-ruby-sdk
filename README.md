@@ -18,9 +18,9 @@ Alternatively, you can build and install the gem manually:
 
 1. From terminal/cmd navigate to the root directory of the SDK.
 2. Run the build command: `gem build pagarme_api_sdk.gemspec`
-3. Run the install command: `gem install pagarme_api_sdk-6.7.2.gem`
+3. Run the install command: `gem install pagarme_api_sdk-6.7.5.gem`
 
-![Installing Gem](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=6.7.2&gemName=pagarme_api_sdk&step=buildSDK)
+![Installing Gem](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=6.7.5&gemName=pagarme_api_sdk&step=buildSDK)
 
 ## Installation
 
@@ -42,15 +42,15 @@ In the next dialog make sure that the correct Ruby SDK is being used (>= 2.6 and
 
 ### 2. Add reference of the gem
 
-In order to use the Tester gem in the new project we must add a gem reference. Locate the `Gemfile` in the Project Explorer window under the `TestApp` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: `gem 'pagarme_api_sdk', '6.7.2'`
+In order to use the Tester gem in the new project we must add a gem reference. Locate the `Gemfile` in the Project Explorer window under the `TestApp` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: `gem 'pagarme_api_sdk', '6.7.5'`
 
-![Add new reference to the Gemfile](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=6.7.2&gemName=pagarme_api_sdk&step=addReference)
+![Add new reference to the Gemfile](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=6.7.5&gemName=pagarme_api_sdk&step=addReference)
 
 ### 3. Adding a new Rails Controller
 
 Once the `TestApp` project is created, a folder named `controllers` will be visible in the *Project Explorer* under the following path: `TestApp > app > controllers`. Right click on this folder and select `New -> Run Rails Generator...`.
 
-![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=6.7.2&gemName=pagarme_api_sdk&step=addCode0)
+![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=6.7.5&gemName=pagarme_api_sdk&step=addCode0)
 
 Selecting the said option will popup a small window where the generator names are displayed. Here, select the `controller` template.
 
@@ -58,7 +58,7 @@ Selecting the said option will popup a small window where the generator names ar
 
 Next, a popup window will ask you for a Controller name and included Actions. For controller name provide `Hello` and include an action named `Index` and click `OK`.
 
-![Add a new Controller](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=6.7.2&gemName=pagarme_api_sdk&step=addCode2)
+![Add a new Controller](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=6.7.5&gemName=pagarme_api_sdk&step=addCode2)
 
 A new controller class named `HelloController` will be created in a file named `hello_controller.rb` containing a method named `Index`. In this method, add code for initialization and a sample for its usage.
 
@@ -72,8 +72,6 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `basic_auth_user_name` | `String` | The username to use with basic authentication |
-| `basic_auth_password` | `String` | The password to use with basic authentication |
 | `connection` | `Faraday::Connection` | The Faraday connection object passed by the SDK user for making requests |
 | `adapter` | `Faraday::Adapter` | The Faraday adapter object passed by the SDK user for performing http requests |
 | `timeout` | `Float` | The value to use for connection timeout. <br> **Default: 60** |
@@ -82,6 +80,9 @@ The following parameters are configurable for the API Client:
 | `backoff_factor` | `Float` | The amount to multiply each successive retry's interval amount by in order to provide backoff. <br> **Default: 2** |
 | `retry_statuses` | `Array` | A list of HTTP statuses to retry. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | `retry_methods` | `Array` | A list of HTTP methods to retry. <br> **Default: %i[get put]** |
+| `http_callback` | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
+| `basic_auth_user_name` | `String` | The username to use with basic authentication |
+| `basic_auth_password` | `String` | The password to use with basic authentication |
 
 The API client can be initialized as follows:
 

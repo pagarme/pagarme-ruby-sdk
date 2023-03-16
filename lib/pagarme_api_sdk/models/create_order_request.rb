@@ -98,6 +98,7 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        customer_id
         shipping
         antifraud_enabled
         ip
@@ -112,16 +113,18 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        customer_id
+      ]
     end
 
     def initialize(items = nil,
                    customer = nil,
                    payments = nil,
                    code = nil,
-                   customer_id = nil,
                    metadata = nil,
                    closed = true,
+                   customer_id = SKIP,
                    shipping = SKIP,
                    antifraud_enabled = SKIP,
                    ip = SKIP,
@@ -135,7 +138,7 @@ module PagarmeApiSdk
       @customer = customer
       @payments = payments
       @code = code
-      @customer_id = customer_id
+      @customer_id = customer_id unless customer_id == SKIP
       @shipping = shipping unless shipping == SKIP
       @metadata = metadata
       @antifraud_enabled = antifraud_enabled unless antifraud_enabled == SKIP
@@ -176,9 +179,9 @@ module PagarmeApiSdk
 
       payments = nil unless hash.key?('payments')
       code = hash.key?('code') ? hash['code'] : nil
-      customer_id = hash.key?('customer_id') ? hash['customer_id'] : nil
       metadata = hash.key?('metadata') ? hash['metadata'] : nil
       closed = hash['closed'] ||= true
+      customer_id = hash.key?('customer_id') ? hash['customer_id'] : SKIP
       shipping = CreateShippingRequest.from_hash(hash['shipping']) if hash['shipping']
       antifraud_enabled =
         hash.key?('antifraud_enabled') ? hash['antifraud_enabled'] : SKIP
@@ -195,9 +198,9 @@ module PagarmeApiSdk
                              customer,
                              payments,
                              code,
-                             customer_id,
                              metadata,
                              closed,
+                             customer_id,
                              shipping,
                              antifraud_enabled,
                              ip,

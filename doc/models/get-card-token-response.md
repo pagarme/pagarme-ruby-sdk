@@ -11,27 +11,27 @@ Card token data
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `last_four_digits` | `String` | Required | - |
-| `holder_name` | `String` | Required | - |
-| `holder_document` | `String` | Required | - |
-| `exp_month` | `String` | Required | - |
-| `exp_year` | `String` | Required | - |
-| `brand` | `String` | Required | - |
-| `type` | `String` | Required | - |
-| `label` | `String` | Required | - |
+| `last_four_digits` | `String` | Optional | - |
+| `holder_name` | `String` | Optional | - |
+| `holder_document` | `String` | Optional | - |
+| `exp_month` | `String` | Optional | - |
+| `exp_year` | `String` | Optional | - |
+| `brand` | `String` | Optional | - |
+| `type` | `String` | Optional | - |
+| `label` | `String` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "last_four_digits": "last_four_digits6",
-  "holder_name": "holder_name4",
-  "holder_document": "holder_document6",
-  "exp_month": "exp_month6",
-  "exp_year": "exp_year6",
-  "brand": "brand4",
-  "type": "type0",
-  "label": "label0"
+  "last_four_digits": null,
+  "holder_name": null,
+  "holder_document": null,
+  "exp_month": null,
+  "exp_year": null,
+  "brand": null,
+  "type": null,
+  "label": null
 }
 ```
 

@@ -84,10 +84,19 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        id
+        gateway_id
+        amount
+        status
+        created_at
+        updated_at
         metadata
         fee
         funding_date
         funding_estimated_date
+        type
+        source
+        target
       ]
     end
 
@@ -110,32 +119,32 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = nil,
-                   gateway_id = nil,
-                   amount = nil,
-                   status = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   type = nil,
-                   source = nil,
-                   target = nil,
+    def initialize(id = SKIP,
+                   gateway_id = SKIP,
+                   amount = SKIP,
+                   status = SKIP,
+                   created_at = SKIP,
+                   updated_at = SKIP,
                    metadata = SKIP,
                    fee = SKIP,
                    funding_date = SKIP,
-                   funding_estimated_date = SKIP)
-      @id = id
-      @gateway_id = gateway_id
-      @amount = amount
-      @status = status
-      @created_at = created_at
-      @updated_at = updated_at
+                   funding_estimated_date = SKIP,
+                   type = SKIP,
+                   source = SKIP,
+                   target = SKIP)
+      @id = id unless id == SKIP
+      @gateway_id = gateway_id unless gateway_id == SKIP
+      @amount = amount unless amount == SKIP
+      @status = status unless status == SKIP
+      @created_at = created_at unless created_at == SKIP
+      @updated_at = updated_at unless updated_at == SKIP
       @metadata = metadata unless metadata == SKIP
       @fee = fee unless fee == SKIP
       @funding_date = funding_date unless funding_date == SKIP
       @funding_estimated_date = funding_estimated_date unless funding_estimated_date == SKIP
-      @type = type
-      @source = source
-      @target = target
+      @type = type unless type == SKIP
+      @source = source unless source == SKIP
+      @target = target unless target == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -143,19 +152,20 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
-      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : nil
-      amount = hash.key?('amount') ? hash['amount'] : nil
-      status = hash.key?('status') ? hash['status'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
+      gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
+      status = hash.key?('status') ? hash['status'] : SKIP
       created_at = if hash.key?('created_at')
                      (DateTimeHelper.from_rfc3339(hash['created_at']) if hash['created_at'])
+                   else
+                     SKIP
                    end
       updated_at = if hash.key?('updated_at')
                      (DateTimeHelper.from_rfc3339(hash['updated_at']) if hash['updated_at'])
+                   else
+                     SKIP
                    end
-      type = hash.key?('type') ? hash['type'] : nil
-      source = GetWithdrawSourceResponse.from_hash(hash['source']) if hash['source']
-      target = GetWithdrawTargetResponse.from_hash(hash['target']) if hash['target']
       metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       fee = hash.key?('fee') ? hash['fee'] : SKIP
       funding_date = if hash.key?('funding_date')
@@ -168,6 +178,9 @@ module PagarmeApiSdk
                                else
                                  SKIP
                                end
+      type = hash.key?('type') ? hash['type'] : SKIP
+      source = GetWithdrawSourceResponse.from_hash(hash['source']) if hash['source']
+      target = GetWithdrawTargetResponse.from_hash(hash['target']) if hash['target']
 
       # Create object from extracted values.
       GetWithdrawResponse.new(id,
@@ -176,13 +189,13 @@ module PagarmeApiSdk
                               status,
                               created_at,
                               updated_at,
-                              type,
-                              source,
-                              target,
                               metadata,
                               fee,
                               funding_date,
-                              funding_estimated_date)
+                              funding_estimated_date,
+                              type,
+                              source,
+                              target)
     end
 
     def to_created_at

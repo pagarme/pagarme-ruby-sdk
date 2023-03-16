@@ -27,7 +27,10 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        code
+        errors
+      ]
     end
 
     # An array for nullable fields
@@ -38,10 +41,10 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(code = nil,
-                   errors = nil)
-      @code = code
-      @errors = errors
+    def initialize(code = SKIP,
+                   errors = SKIP)
+      @code = code unless code == SKIP
+      @errors = errors unless errors == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -49,7 +52,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      code = hash.key?('code') ? hash['code'] : nil
+      code = hash.key?('code') ? hash['code'] : SKIP
       # Parameter is an array, so we need to iterate through it
       errors = nil
       unless hash['errors'].nil?
@@ -59,7 +62,7 @@ module PagarmeApiSdk
         end
       end
 
-      errors = nil unless hash.key?('errors')
+      errors = SKIP unless hash.key?('errors')
 
       # Create object from extracted values.
       GetGatewayResponseResponse.new(code,

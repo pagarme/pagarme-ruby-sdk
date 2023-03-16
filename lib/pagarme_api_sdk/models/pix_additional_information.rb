@@ -27,18 +27,24 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        name
+        value
+      ]
     end
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        name
+        value
+      ]
     end
 
-    def initialize(name = nil,
-                   value = nil)
-      @name = name
-      @value = value
+    def initialize(name = SKIP,
+                   value = SKIP)
+      @name = name unless name == SKIP
+      @value = value unless value == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -46,8 +52,8 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      name = hash.key?('Name') ? hash['Name'] : nil
-      value = hash.key?('Value') ? hash['Value'] : nil
+      name = hash.key?('Name') ? hash['Name'] : SKIP
+      value = hash.key?('Value') ? hash['Value'] : SKIP
 
       # Create object from extracted values.
       PixAdditionalInformation.new(name,

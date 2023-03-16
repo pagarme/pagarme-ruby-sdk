@@ -27,7 +27,10 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        type
+        threed_secure
+      ]
     end
 
     # An array for nullable fields
@@ -38,10 +41,10 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(type = nil,
-                   threed_secure = nil)
-      @type = type
-      @threed_secure = threed_secure
+    def initialize(type = SKIP,
+                   threed_secure = SKIP)
+      @type = type unless type == SKIP
+      @threed_secure = threed_secure unless threed_secure == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -49,7 +52,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      type = hash.key?('type') ? hash['type'] : nil
+      type = hash.key?('type') ? hash['type'] : SKIP
       threed_secure = GetThreeDSecureResponse.from_hash(hash['threed_secure']) if
         hash['threed_secure']
 
