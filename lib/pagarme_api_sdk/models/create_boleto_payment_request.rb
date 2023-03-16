@@ -81,6 +81,7 @@ module PagarmeApiSdk
     def self.optionals
       %w[
         due_at
+        billing_address_id
         nosso_numero
         interest
         fine
@@ -90,17 +91,24 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        due_at
+        billing_address_id
+        nosso_numero
+        interest
+        fine
+        max_days_to_pay_past_due
+      ]
     end
 
     def initialize(retries = nil,
                    bank = nil,
                    instructions = nil,
                    billing_address = nil,
-                   billing_address_id = nil,
                    document_number = nil,
                    statement_descriptor = nil,
                    due_at = SKIP,
+                   billing_address_id = SKIP,
                    nosso_numero = SKIP,
                    interest = SKIP,
                    fine = SKIP,
@@ -110,7 +118,7 @@ module PagarmeApiSdk
       @instructions = instructions
       @due_at = due_at unless due_at == SKIP
       @billing_address = billing_address
-      @billing_address_id = billing_address_id
+      @billing_address_id = billing_address_id unless billing_address_id == SKIP
       @nosso_numero = nosso_numero unless nosso_numero == SKIP
       @document_number = document_number
       @statement_descriptor = statement_descriptor
@@ -129,8 +137,6 @@ module PagarmeApiSdk
       instructions = hash.key?('instructions') ? hash['instructions'] : nil
       billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
         hash['billing_address']
-      billing_address_id =
-        hash.key?('billing_address_id') ? hash['billing_address_id'] : nil
       document_number =
         hash.key?('document_number') ? hash['document_number'] : nil
       statement_descriptor =
@@ -140,6 +146,8 @@ module PagarmeApiSdk
                else
                  SKIP
                end
+      billing_address_id =
+        hash.key?('billing_address_id') ? hash['billing_address_id'] : SKIP
       nosso_numero = hash.key?('nosso_numero') ? hash['nosso_numero'] : SKIP
       interest = CreateInterestRequest.from_hash(hash['interest']) if hash['interest']
       fine = CreateFineRequest.from_hash(hash['fine']) if hash['fine']
@@ -151,10 +159,10 @@ module PagarmeApiSdk
                                      bank,
                                      instructions,
                                      billing_address,
-                                     billing_address_id,
                                      document_number,
                                      statement_descriptor,
                                      due_at,
+                                     billing_address_id,
                                      nosso_numero,
                                      interest,
                                      fine,
