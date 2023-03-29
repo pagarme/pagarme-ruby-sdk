@@ -109,6 +109,7 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        id
         code
         currency
         items
@@ -153,7 +154,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = nil,
+    def initialize(id = SKIP,
                    code = SKIP,
                    currency = SKIP,
                    items = SKIP,
@@ -171,7 +172,7 @@ module PagarmeApiSdk
                    location = SKIP,
                    device = SKIP,
                    closed = SKIP)
-      @id = id
+      @id = id unless id == SKIP
       @code = code unless code == SKIP
       @currency = currency unless currency == SKIP
       @items = items unless items == SKIP
@@ -196,7 +197,7 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash.key?('id') ? hash['id'] : nil
+      id = hash.key?('id') ? hash['id'] : SKIP
       code = hash.key?('code') ? hash['code'] : SKIP
       currency = hash.key?('currency') ? hash['currency'] : SKIP
       # Parameter is an array, so we need to iterate through it
