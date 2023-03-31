@@ -57,6 +57,10 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :threed_authentication_url
 
+    # Identify when a card is prepaid, credit or debit.
+    # @return [String]
+    attr_accessor :funding_source
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -72,6 +76,7 @@ module PagarmeApiSdk
       @_hash['acquirer_return_code'] = 'acquirer_return_code'
       @_hash['installments'] = 'installments'
       @_hash['threed_authentication_url'] = 'threed_authentication_url'
+      @_hash['funding_source'] = 'funding_source'
       @_hash = super().merge(@_hash)
       @_hash
     end
@@ -91,6 +96,7 @@ module PagarmeApiSdk
         acquirer_return_code
         installments
         threed_authentication_url
+        funding_source
       ]
       (_arr << super()).flatten!
     end
@@ -107,6 +113,7 @@ module PagarmeApiSdk
         acquirer_return_code
         installments
         threed_authentication_url
+        funding_source
       ]
       (_arr << super()).flatten!
     end
@@ -123,6 +130,7 @@ module PagarmeApiSdk
                    acquirer_return_code = SKIP,
                    installments = SKIP,
                    threed_authentication_url = SKIP,
+                   funding_source = SKIP,
                    gateway_id = SKIP,
                    amount = SKIP,
                    status = SKIP,
@@ -160,6 +168,7 @@ module PagarmeApiSdk
         @threed_authentication_url =
           threed_authentication_url
       end
+      @funding_source = funding_source unless funding_source == SKIP
 
       # Call the constructor of the base class
       super(gateway_id,
@@ -207,6 +216,8 @@ module PagarmeApiSdk
       installments = hash.key?('installments') ? hash['installments'] : SKIP
       threed_authentication_url =
         hash.key?('threed_authentication_url') ? hash['threed_authentication_url'] : SKIP
+      funding_source =
+        hash.key?('funding_source') ? hash['funding_source'] : SKIP
       gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
       amount = hash.key?('amount') ? hash['amount'] : SKIP
       status = hash.key?('status') ? hash['status'] : SKIP
@@ -273,6 +284,7 @@ module PagarmeApiSdk
                                            acquirer_return_code,
                                            installments,
                                            threed_authentication_url,
+                                           funding_source,
                                            gateway_id,
                                            amount,
                                            status,

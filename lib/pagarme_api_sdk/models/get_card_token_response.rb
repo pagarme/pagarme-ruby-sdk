@@ -22,11 +22,11 @@ module PagarmeApiSdk
     attr_accessor :holder_document
 
     # TODO: Write general description for this method
-    # @return [String]
+    # @return [Integer]
     attr_accessor :exp_month
 
     # TODO: Write general description for this method
-    # @return [String]
+    # @return [Integer]
     attr_accessor :exp_year
 
     # TODO: Write general description for this method

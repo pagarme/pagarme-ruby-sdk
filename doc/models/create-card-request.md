@@ -11,20 +11,20 @@ Card data
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `number` | `String` | Required | Credit card number |
-| `holder_name` | `String` | Required | Holder name, as written on the card |
-| `exp_month` | `Integer` | Required | The expiration month |
-| `exp_year` | `Integer` | Required | The expiration year, that can be informed with 2 or 4 digits |
-| `cvv` | `String` | Required | The card's security code |
-| `billing_address` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Card's billing address |
-| `brand` | `String` | Required | Card brand |
-| `billing_address_id` | `String` | Required | The address id for the billing address |
-| `metadata` | `Hash of String` | Required | Metadata |
-| `type` | `String` | Required | Card type<br>**Default**: `'credit'` |
-| `options` | [`CreateCardOptionsRequest`](../../doc/models/create-card-options-request.md) | Required | Options for creating the card |
+| `number` | `String` | Optional | Credit card number |
+| `holder_name` | `String` | Optional | Holder name, as written on the card |
+| `exp_month` | `Integer` | Optional | The expiration month |
+| `exp_year` | `Integer` | Optional | The expiration year, that can be informed with 2 or 4 digits |
+| `cvv` | `String` | Optional | The card's security code |
+| `billing_address` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Optional | Card's billing address |
+| `brand` | `String` | Optional | Card brand |
+| `billing_address_id` | `String` | Optional | The address id for the billing address |
+| `metadata` | `Hash of String` | Optional | Metadata |
+| `type` | `String` | Optional | Card type<br>**Default**: `'credit'` |
+| `options` | [`CreateCardOptionsRequest`](../../doc/models/create-card-options-request.md) | Optional | Options for creating the card |
 | `holder_document` | `String` | Optional | Document number for the card's holder |
-| `private_label` | `TrueClass\|FalseClass` | Required | Indicates whether it is a private label card |
-| `label` | `String` | Required | - |
+| `private_label` | `TrueClass\|FalseClass` | Optional | Indicates whether it is a private label card |
+| `label` | `String` | Optional | - |
 | `id` | `String` | Optional | Identifier |
 | `token` | `String` | Optional | token identifier |
 
@@ -41,10 +41,13 @@ Card data
   "brand": null,
   "billing_address_id": null,
   "metadata": null,
-  "type": "credit",
+  "type": null,
   "options": null,
+  "holder_document": null,
   "private_label": null,
-  "label": null
+  "label": null,
+  "id": null,
+  "token": null
 }
 ```
 
