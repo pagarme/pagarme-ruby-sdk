@@ -59,10 +59,12 @@ def create_transfer(request)
 ## Example Usage
 
 ```ruby
-request = CreateTransfer.new
-request.amount = 242
-request.source_id = 'source_id0'
-request.target_id = 'target_id6'
+request = CreateTransfer.new(
+  242,
+  'source_id0',
+  'target_id6',
+  nil
+)
 
 result = transfers_controller.create_transfer(request)
 ```
@@ -83,6 +85,6 @@ def get_transfers
 ## Example Usage
 
 ```ruby
-result = transfers_controller.get_transfers()
+result = transfers_controller.get_transfers
 ```
 

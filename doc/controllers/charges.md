@@ -51,10 +51,17 @@ def update_charge_metadata(charge_id,
 
 ```ruby
 charge_id = 'charge_id8'
-request = UpdateMetadataRequest.new
-request.metadata = {'key0' => 'metadata3' } 
 
-result = charges_controller.update_charge_metadata(charge_id, request, )
+request = UpdateMetadataRequest.new(
+  {
+    'key0': 'metadata3'
+  }
+)
+
+result = charges_controller.update_charge_metadata(
+  charge_id,
+  request
+)
 ```
 
 
@@ -84,39 +91,97 @@ def update_charge_payment_method(charge_id,
 
 ```ruby
 charge_id = 'charge_id8'
-request = UpdateChargePaymentMethodRequest.new
-request.update_subscription = false
-request.payment_method = 'payment_method4'
-request.credit_card = CreateCreditCardPaymentRequest.new
-request.debit_card = CreateDebitCardPaymentRequest.new
-request.boleto = CreateBoletoPaymentRequest.new
-request.boleto.retries = 10
-request.boleto.bank = 'bank4'
-request.boleto.instructions = 'instructions4'
-request.boleto.billing_address = CreateAddressRequest.new
-request.boleto.billing_address.street = 'street8'
-request.boleto.billing_address.number = 'number4'
-request.boleto.billing_address.zip_code = 'zip_code2'
-request.boleto.billing_address.neighborhood = 'neighborhood4'
-request.boleto.billing_address.city = 'city2'
-request.boleto.billing_address.state = 'state6'
-request.boleto.billing_address.country = 'country2'
-request.boleto.billing_address.complement = 'complement6'
-request.boleto.billing_address.metadata = {'key0' => 'metadata5' } 
-request.boleto.billing_address.line_1 = 'line_18'
-request.boleto.billing_address.line_2 = 'line_26'
-request.boleto.document_number = 'document_number0'
-request.boleto.statement_descriptor = 'statement_descriptor6'
-request.voucher = CreateVoucherPaymentRequest.new
-request.cash = CreateCashPaymentRequest.new
-request.cash.description = 'description6'
-request.cash.confirm = false
-request.bank_transfer = CreateBankTransferPaymentRequest.new
-request.bank_transfer.bank = 'bank4'
-request.bank_transfer.retries = 204
-request.private_label = CreatePrivateLabelPaymentRequest.new
 
-result = charges_controller.update_charge_payment_method(charge_id, request, )
+request = UpdateChargePaymentMethodRequest.new(
+  false,
+  'payment_method4',
+  CreateCreditCardPaymentRequest.new(
+    1,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    true,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    '"first" or "subsequent"'
+  ),
+  CreateDebitCardPaymentRequest.new(
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil
+  ),
+  CreateBoletoPaymentRequest.new(
+    10,
+    'bank4',
+    'instructions4',
+    CreateAddressRequest.new(
+      'street8',
+      'number4',
+      'zip_code2',
+      'neighborhood4',
+      'city2',
+      'state6',
+      'country2',
+      'complement6',
+      {
+        'key0': 'metadata5'
+      },
+      'line_18',
+      'line_26'
+    ),
+    'document_number0',
+    'statement_descriptor6',
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil
+  ),
+  CreateVoucherPaymentRequest.new(
+    nil,
+    nil,
+    nil,
+    nil,
+    '"first" or "subsequent"'
+  ),
+  CreateCashPaymentRequest.new(
+    'description6',
+    false
+  ),
+  CreateBankTransferPaymentRequest.new(
+    'bank4',
+    204
+  ),
+  CreatePrivateLabelPaymentRequest.new(
+    1,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    true,
+    nil,
+    nil,
+    '"first" or "subsequent"'
+  )
+)
+
+result = charges_controller.update_charge_payment_method(
+  charge_id,
+  request
+)
 ```
 
 
@@ -145,7 +210,7 @@ def get_charge_transactions(charge_id,
 ```ruby
 charge_id = 'charge_id8'
 
-result = charges_controller.get_charge_transactions(charge_id, )
+result = charges_controller.get_charge_transactions(charge_id)
 ```
 
 
@@ -175,9 +240,15 @@ def update_charge_due_date(charge_id,
 
 ```ruby
 charge_id = 'charge_id8'
-request = UpdateChargeDueDateRequest.new
 
-result = charges_controller.update_charge_due_date(charge_id, request, )
+request = UpdateChargeDueDateRequest.new(
+  nil
+)
+
+result = charges_controller.update_charge_due_date(
+  charge_id,
+  request
+)
 ```
 
 
@@ -218,7 +289,7 @@ def get_charges(page: nil,
 ## Example Usage
 
 ```ruby
-result = charges_controller.get_charges()
+result = charges_controller.get_charges
 ```
 
 
@@ -249,7 +320,7 @@ def capture_charge(charge_id,
 ```ruby
 charge_id = 'charge_id8'
 
-result = charges_controller.capture_charge(charge_id, )
+result = charges_controller.capture_charge(charge_id)
 ```
 
 
@@ -279,13 +350,35 @@ def update_charge_card(charge_id,
 
 ```ruby
 charge_id = 'charge_id8'
-request = UpdateChargeCardRequest.new
-request.update_subscription = false
-request.card_id = 'card_id2'
-request.card = CreateCardRequest.new
-request.recurrence = false
 
-result = charges_controller.update_charge_card(charge_id, request, )
+request = UpdateChargeCardRequest.new(
+  false,
+  'card_id2',
+  CreateCardRequest.new(
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    'credit',
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil
+  ),
+  false
+)
+
+result = charges_controller.update_charge_card(
+  charge_id,
+  request
+)
 ```
 
 
@@ -341,7 +434,7 @@ def get_charges_summary(status,
 ```ruby
 status = 'status8'
 
-result = charges_controller.get_charges_summary(status, )
+result = charges_controller.get_charges_summary(status)
 ```
 
 
@@ -370,7 +463,7 @@ def retry_charge(charge_id,
 ```ruby
 charge_id = 'charge_id8'
 
-result = charges_controller.retry_charge(charge_id, )
+result = charges_controller.retry_charge(charge_id)
 ```
 
 
@@ -401,7 +494,7 @@ def cancel_charge(charge_id,
 ```ruby
 charge_id = 'charge_id8'
 
-result = charges_controller.cancel_charge(charge_id, )
+result = charges_controller.cancel_charge(charge_id)
 ```
 
 
@@ -428,42 +521,79 @@ def create_charge(request,
 ## Example Usage
 
 ```ruby
-request = CreateChargeRequest.new
-request.code = 'code4'
-request.amount = 242
-request.customer_id = 'customer_id4'
-request.customer = CreateCustomerRequest.new
-request.customer.name = '{
+request = CreateChargeRequest.new(
+  'code4',
+  242,
+  'customer_id4',
+  CreateCustomerRequest.new(
+    '{
     "name": "Tony Stark"
-}'
-request.customer.email = 'email0'
-request.customer.document = 'document0'
-request.customer.type = 'type4'
-request.customer.address = CreateAddressRequest.new
-request.customer.address.street = 'street2'
-request.customer.address.number = 'number0'
-request.customer.address.zip_code = 'zip_code6'
-request.customer.address.neighborhood = 'neighborhood8'
-request.customer.address.city = 'city2'
-request.customer.address.state = 'state8'
-request.customer.address.country = 'country6'
-request.customer.address.complement = 'complement8'
-request.customer.address.metadata = {'key0' => 'metadata7', 'key1' => 'metadata6' } 
-request.customer.address.line_1 = 'line_16'
-request.customer.address.line_2 = 'line_20'
-request.customer.metadata = {'key0' => 'metadata3', 'key1' => 'metadata2', 'key2' => 'metadata1' } 
-request.customer.phones = CreatePhonesRequest.new
-request.customer.code = 'code4'
-request.payment = CreatePaymentRequest.new
-request.payment.payment_method = 'payment_method2'
-request.metadata = {'key0' => 'metadata3' } 
-request.antifraud = CreateAntifraudRequest.new
-request.antifraud.type = 'type0'
-request.antifraud.clearsale = CreateClearSaleRequest.new
-request.antifraud.clearsale.custom_sla = 52
-request.order_id = 'order_id0'
+}',
+    'email0',
+    'document0',
+    'type4',
+    CreateAddressRequest.new(
+      'street2',
+      'number0',
+      'zip_code6',
+      'neighborhood8',
+      'city2',
+      'state8',
+      'country6',
+      'complement8',
+      {
+        'key0': 'metadata7',
+        'key1': 'metadata6'
+      },
+      'line_16',
+      'line_20'
+    ),
+    {
+      'key0': 'metadata3',
+      'key1': 'metadata2',
+      'key2': 'metadata1'
+    },
+    CreatePhonesRequest.new(
+      nil,
+      nil
+    ),
+    'code4',
+    nil,
+    nil
+  ),
+  CreatePaymentRequest.new(
+    'payment_method2',
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil
+  ),
+  {
+    'key0': 'metadata3'
+  },
+  CreateAntifraudRequest.new(
+    'type0',
+    CreateClearSaleRequest.new(
+      52
+    )
+  ),
+  'order_id0',
+  nil
+)
 
-result = charges_controller.create_charge(request, )
+result = charges_controller.create_charge(request)
 ```
 
 
@@ -492,6 +622,6 @@ def confirm_payment(charge_id,
 ```ruby
 charge_id = 'charge_id8'
 
-result = charges_controller.confirm_payment(charge_id, )
+result = charges_controller.confirm_payment(charge_id)
 ```
 

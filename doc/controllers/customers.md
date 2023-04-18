@@ -61,28 +61,41 @@ def update_card(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
-card_id = 'card_id4'
-request = UpdateCardRequest.new
-request.holder_name = 'holder_name2'
-request.exp_month = 10
-request.exp_year = 30
-request.billing_address_id = 'billing_address_id2'
-request.billing_address = CreateAddressRequest.new
-request.billing_address.street = 'street8'
-request.billing_address.number = 'number4'
-request.billing_address.zip_code = 'zip_code2'
-request.billing_address.neighborhood = 'neighborhood4'
-request.billing_address.city = 'city8'
-request.billing_address.state = 'state4'
-request.billing_address.country = 'country2'
-request.billing_address.complement = 'complement6'
-request.billing_address.metadata = {'key0' => 'metadata5', 'key1' => 'metadata6' } 
-request.billing_address.line_1 = 'line_18'
-request.billing_address.line_2 = 'line_26'
-request.metadata = {'key0' => 'metadata3' } 
-request.label = 'label6'
 
-result = customers_controller.update_card(customer_id, card_id, request, )
+card_id = 'card_id4'
+
+request = UpdateCardRequest.new(
+  'holder_name2',
+  10,
+  30,
+  CreateAddressRequest.new(
+    'street8',
+    'number4',
+    'zip_code2',
+    'neighborhood4',
+    'city8',
+    'state4',
+    'country2',
+    'complement6',
+    {
+      'key0': 'metadata5',
+      'key1': 'metadata6'
+    },
+    'line_18',
+    'line_26'
+  ),
+  {
+    'key0': 'metadata3'
+  },
+  'label6',
+  nil
+)
+
+result = customers_controller.update_card(
+  customer_id,
+  card_id,
+  request
+)
 ```
 
 
@@ -114,14 +127,23 @@ def update_address(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
-address_id = 'address_id0'
-request = UpdateAddressRequest.new
-request.number = 'number4'
-request.complement = 'complement2'
-request.metadata = {'key0' => 'metadata3' } 
-request.line_2 = 'line_24'
 
-result = customers_controller.update_address(customer_id, address_id, request, )
+address_id = 'address_id0'
+
+request = UpdateAddressRequest.new(
+  'number4',
+  'complement2',
+  {
+    'key0': 'metadata3'
+  },
+  'line_24'
+)
+
+result = customers_controller.update_address(
+  customer_id,
+  address_id,
+  request
+)
 ```
 
 
@@ -151,9 +173,13 @@ def delete_access_token(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
+
 token_id = 'token_id6'
 
-result = customers_controller.delete_access_token(customer_id, token_id, )
+result = customers_controller.delete_access_token(
+  customer_id,
+  token_id
+)
 ```
 
 
@@ -180,30 +206,41 @@ def create_customer(request,
 ## Example Usage
 
 ```ruby
-request = CreateCustomerRequest.new
-request.name = '{
+request = CreateCustomerRequest.new(
+  '{
     "name": "Tony Stark"
-}'
-request.email = 'email0'
-request.document = 'document0'
-request.type = 'type4'
-request.address = CreateAddressRequest.new
-request.address.street = 'street2'
-request.address.number = 'number0'
-request.address.zip_code = 'zip_code6'
-request.address.neighborhood = 'neighborhood8'
-request.address.city = 'city2'
-request.address.state = 'state8'
-request.address.country = 'country6'
-request.address.complement = 'complement8'
-request.address.metadata = {'key0' => 'metadata7' } 
-request.address.line_1 = 'line_16'
-request.address.line_2 = 'line_20'
-request.metadata = {'key0' => 'metadata3' } 
-request.phones = CreatePhonesRequest.new
-request.code = 'code4'
+}',
+  'email0',
+  'document0',
+  'type4',
+  CreateAddressRequest.new(
+    'street2',
+    'number0',
+    'zip_code6',
+    'neighborhood8',
+    'city2',
+    'state8',
+    'country6',
+    'complement8',
+    {
+      'key0': 'metadata7'
+    },
+    'line_16',
+    'line_20'
+  ),
+  {
+    'key0': 'metadata3'
+  },
+  CreatePhonesRequest.new(
+    nil,
+    nil
+  ),
+  'code4',
+  nil,
+  nil
+)
 
-result = customers_controller.create_customer(request, )
+result = customers_controller.create_customer(request)
 ```
 
 
@@ -233,20 +270,27 @@ def create_address(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
-request = CreateAddressRequest.new
-request.street = 'street6'
-request.number = 'number4'
-request.zip_code = 'zip_code0'
-request.neighborhood = 'neighborhood2'
-request.city = 'city6'
-request.state = 'state2'
-request.country = 'country0'
-request.complement = 'complement2'
-request.metadata = {'key0' => 'metadata3' } 
-request.line_1 = 'line_10'
-request.line_2 = 'line_24'
 
-result = customers_controller.create_address(customer_id, request, )
+request = CreateAddressRequest.new(
+  'street6',
+  'number4',
+  'zip_code0',
+  'neighborhood2',
+  'city6',
+  'state2',
+  'country0',
+  'complement2',
+  {
+    'key0': 'metadata3'
+  },
+  'line_10',
+  'line_24'
+)
+
+result = customers_controller.create_address(
+  customer_id,
+  request
+)
 ```
 
 
@@ -301,9 +345,13 @@ def get_address(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
+
 address_id = 'address_id0'
 
-result = customers_controller.get_address(customer_id, address_id)
+result = customers_controller.get_address(
+  customer_id,
+  address_id
+)
 ```
 
 
@@ -333,9 +381,13 @@ def delete_address(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
+
 address_id = 'address_id0'
 
-result = customers_controller.delete_address(customer_id, address_id, )
+result = customers_controller.delete_address(
+  customer_id,
+  address_id
+)
 ```
 
 
@@ -365,9 +417,30 @@ def create_card(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
-request = CreateCardRequest.new
 
-result = customers_controller.create_card(customer_id, request, )
+request = CreateCardRequest.new(
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  'credit',
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil
+)
+
+result = customers_controller.create_card(
+  customer_id,
+  request
+)
 ```
 
 
@@ -403,9 +476,13 @@ def get_customers(name: nil,
 
 ```ruby
 page = 1
+
 size = 10
 
-result = customers_controller.get_customers(page: page, size: size, )
+result = customers_controller.get_customers(
+  page: page,
+  size: size
+)
 ```
 
 
@@ -435,9 +512,24 @@ def update_customer(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
-request = UpdateCustomerRequest.new
 
-result = customers_controller.update_customer(customer_id, request, )
+request = UpdateCustomerRequest.new(
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil
+)
+
+result = customers_controller.update_customer(
+  customer_id,
+  request
+)
 ```
 
 
@@ -467,9 +559,15 @@ def create_access_token(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
-request = CreateAccessTokenRequest.new
 
-result = customers_controller.create_access_token(customer_id, request, )
+request = CreateAccessTokenRequest.new(
+  nil
+)
+
+result = customers_controller.create_access_token(
+  customer_id,
+  request
+)
 ```
 
 
@@ -500,7 +598,7 @@ def get_access_tokens(customer_id,
 ```ruby
 customer_id = 'customer_id8'
 
-result = customers_controller.get_access_tokens(customer_id, )
+result = customers_controller.get_access_tokens(customer_id)
 ```
 
 
@@ -531,7 +629,7 @@ def get_cards(customer_id,
 ```ruby
 customer_id = 'customer_id8'
 
-result = customers_controller.get_cards(customer_id, )
+result = customers_controller.get_cards(customer_id)
 ```
 
 
@@ -561,9 +659,13 @@ def renew_card(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
+
 card_id = 'card_id4'
 
-result = customers_controller.renew_card(customer_id, card_id, )
+result = customers_controller.renew_card(
+  customer_id,
+  card_id
+)
 ```
 
 
@@ -591,9 +693,13 @@ def get_access_token(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
+
 token_id = 'token_id6'
 
-result = customers_controller.get_access_token(customer_id, token_id)
+result = customers_controller.get_access_token(
+  customer_id,
+  token_id
+)
 ```
 
 
@@ -623,10 +729,17 @@ def update_customer_metadata(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
-request = UpdateMetadataRequest.new
-request.metadata = {'key0' => 'metadata3' } 
 
-result = customers_controller.update_customer_metadata(customer_id, request, )
+request = UpdateMetadataRequest.new(
+  {
+    'key0': 'metadata3'
+  }
+)
+
+result = customers_controller.update_customer_metadata(
+  customer_id,
+  request
+)
 ```
 
 
@@ -656,9 +769,13 @@ def delete_card(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
+
 card_id = 'card_id4'
 
-result = customers_controller.delete_card(customer_id, card_id, )
+result = customers_controller.delete_card(
+  customer_id,
+  card_id
+)
 ```
 
 
@@ -689,7 +806,7 @@ def get_addresses(customer_id,
 ```ruby
 customer_id = 'customer_id8'
 
-result = customers_controller.get_addresses(customer_id, )
+result = customers_controller.get_addresses(customer_id)
 ```
 
 
@@ -744,8 +861,12 @@ def get_card(customer_id,
 
 ```ruby
 customer_id = 'customer_id8'
+
 card_id = 'card_id4'
 
-result = customers_controller.get_card(customer_id, card_id)
+result = customers_controller.get_card(
+  customer_id,
+  card_id
+)
 ```
 

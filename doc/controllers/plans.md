@@ -74,7 +74,7 @@ def delete_plan(plan_id,
 ```ruby
 plan_id = 'plan_id8'
 
-result = plans_controller.delete_plan(plan_id, )
+result = plans_controller.delete_plan(plan_id)
 ```
 
 
@@ -104,10 +104,17 @@ def update_plan_metadata(plan_id,
 
 ```ruby
 plan_id = 'plan_id8'
-request = UpdateMetadataRequest.new
-request.metadata = {'key0' => 'metadata3' } 
 
-result = plans_controller.update_plan_metadata(plan_id, request, )
+request = UpdateMetadataRequest.new(
+  {
+    'key0': 'metadata3'
+  }
+)
+
+result = plans_controller.update_plan_metadata(
+  plan_id,
+  request
+)
 ```
 
 
@@ -139,26 +146,42 @@ def update_plan_item(plan_id,
 
 ```ruby
 plan_id = 'plan_id8'
+
 plan_item_id = 'plan_item_id0'
-body = UpdatePlanItemRequest.new
-body.name = 'name6'
-body.description = 'description4'
-body.status = 'status2'
-body.pricing_scheme = UpdatePricingSchemeRequest.new
-body.pricing_scheme.scheme_type = 'scheme_type2'
-body.pricing_scheme.price_brackets = []
 
+body = UpdatePlanItemRequest.new(
+  'name6',
+  'description4',
+  'status2',
+  UpdatePricingSchemeRequest.new(
+    'scheme_type2',
+    [
+      UpdatePriceBracketRequest.new(
+        31,
+        225,
+        nil,
+        nil
+      ),
+      UpdatePriceBracketRequest.new(
+        32,
+        226,
+        nil,
+        nil
+      )
+    ],
+    nil,
+    nil,
+    nil
+  ),
+  nil,
+  nil
+)
 
-body.pricing_scheme.price_brackets[0] = UpdatePriceBracketRequest.new
-body.pricing_scheme.price_brackets[0].start_quantity = 31
-body.pricing_scheme.price_brackets[0].price = 225
-
-body.pricing_scheme.price_brackets[1] = UpdatePriceBracketRequest.new
-body.pricing_scheme.price_brackets[1].start_quantity = 32
-body.pricing_scheme.price_brackets[1].price = 226
-
-
-result = plans_controller.update_plan_item(plan_id, plan_item_id, body, )
+result = plans_controller.update_plan_item(
+  plan_id,
+  plan_item_id,
+  body
+)
 ```
 
 
@@ -188,14 +211,26 @@ def create_plan_item(plan_id,
 
 ```ruby
 plan_id = 'plan_id8'
-request = CreatePlanItemRequest.new
-request.name = 'name6'
-request.pricing_scheme = CreatePricingSchemeRequest.new
-request.pricing_scheme.scheme_type = 'scheme_type2'
-request.id = 'id6'
-request.description = 'description6'
 
-result = plans_controller.create_plan_item(plan_id, request, )
+request = CreatePlanItemRequest.new(
+  'name6',
+  CreatePricingSchemeRequest.new(
+    'scheme_type2',
+    nil,
+    nil,
+    nil,
+    nil
+  ),
+  'id6',
+  'description6',
+  nil,
+  nil
+)
+
+result = plans_controller.create_plan_item(
+  plan_id,
+  request
+)
 ```
 
 
@@ -223,9 +258,13 @@ def get_plan_item(plan_id,
 
 ```ruby
 plan_id = 'plan_id8'
+
 plan_item_id = 'plan_item_id0'
 
-result = plans_controller.get_plan_item(plan_id, plan_item_id)
+result = plans_controller.get_plan_item(
+  plan_id,
+  plan_item_id
+)
 ```
 
 
@@ -252,47 +291,87 @@ def create_plan(body,
 ## Example Usage
 
 ```ruby
-body = CreatePlanRequest.new
-body.name = 'name6'
-body.description = 'description4'
-body.statement_descriptor = 'statement_descriptor6'
-body.items = []
+body = CreatePlanRequest.new(
+  'name6',
+  'description4',
+  'statement_descriptor6',
+  [
+    CreatePlanItemRequest.new(
+      'name3',
+      CreatePricingSchemeRequest.new(
+        'scheme_type5',
+        nil,
+        nil,
+        nil,
+        nil
+      ),
+      'id3',
+      'description3',
+      nil,
+      nil
+    ),
+    CreatePlanItemRequest.new(
+      'name4',
+      CreatePricingSchemeRequest.new(
+        'scheme_type4',
+        nil,
+        nil,
+        nil,
+        nil
+      ),
+      'id4',
+      'description4',
+      nil,
+      nil
+    ),
+    CreatePlanItemRequest.new(
+      'name5',
+      CreatePricingSchemeRequest.new(
+        'scheme_type3',
+        nil,
+        nil,
+        nil,
+        nil
+      ),
+      'id5',
+      'description5',
+      nil,
+      nil
+    )
+  ],
+  false,
+  [
+    'payment_methods9'
+  ],
+  [
+    207
+  ],
+  'currency6',
+  'interval6',
+  170,
+  [
+    201,
+    200
+  ],
+  'billing_type0',
+  CreatePricingSchemeRequest.new(
+    'scheme_type2',
+    nil,
+    nil,
+    nil,
+    nil
+  ),
+  {
+    'key0': 'metadata7',
+    'key1': 'metadata8'
+  },
+  nil,
+  nil,
+  nil,
+  nil
+)
 
-
-body.items[0] = CreatePlanItemRequest.new
-body.items[0].name = 'name3'
-body.items[0].pricing_scheme = CreatePricingSchemeRequest.new
-body.items[0].pricing_scheme.scheme_type = 'scheme_type5'
-body.items[0].id = 'id3'
-body.items[0].description = 'description3'
-
-body.items[1] = CreatePlanItemRequest.new
-body.items[1].name = 'name4'
-body.items[1].pricing_scheme = CreatePricingSchemeRequest.new
-body.items[1].pricing_scheme.scheme_type = 'scheme_type4'
-body.items[1].id = 'id4'
-body.items[1].description = 'description4'
-
-body.items[2] = CreatePlanItemRequest.new
-body.items[2].name = 'name5'
-body.items[2].pricing_scheme = CreatePricingSchemeRequest.new
-body.items[2].pricing_scheme.scheme_type = 'scheme_type3'
-body.items[2].id = 'id5'
-body.items[2].description = 'description5'
-
-body.shippable = false
-body.payment_methods = ['payment_methods9']
-body.installments = [207]
-body.currency = 'currency6'
-body.interval = 'interval6'
-body.interval_count = 170
-body.billing_days = [201, 200]
-body.billing_type = 'billing_type0'
-body.pricing_scheme = CreatePricingSchemeRequest.new
-body.pricing_scheme.scheme_type = 'scheme_type2'
-body.metadata = {'key0' => 'metadata7', 'key1' => 'metadata8' } 
-
-result = plans_controller.create_plan(body, )
+result = plans_controller.create_plan(body)
 ```
 
 
@@ -322,9 +401,13 @@ def delete_plan_item(plan_id,
 
 ```ruby
 plan_id = 'plan_id8'
+
 plan_item_id = 'plan_item_id0'
 
-result = plans_controller.delete_plan_item(plan_id, plan_item_id, )
+result = plans_controller.delete_plan_item(
+  plan_id,
+  plan_item_id
+)
 ```
 
 
@@ -361,7 +444,7 @@ def get_plans(page: nil,
 ## Example Usage
 
 ```ruby
-result = plans_controller.get_plans()
+result = plans_controller.get_plans
 ```
 
 
@@ -391,21 +474,39 @@ def update_plan(plan_id,
 
 ```ruby
 plan_id = 'plan_id8'
-request = UpdatePlanRequest.new
-request.name = 'name6'
-request.description = 'description6'
-request.installments = [151, 152]
-request.statement_descriptor = 'statement_descriptor6'
-request.currency = 'currency6'
-request.interval = 'interval4'
-request.interval_count = 114
-request.payment_methods = ['payment_methods1', 'payment_methods0', 'payment_methods9']
-request.billing_type = 'billing_type0'
-request.status = 'status8'
-request.shippable = false
-request.billing_days = [115]
-request.metadata = {'key0' => 'metadata3' } 
 
-result = plans_controller.update_plan(plan_id, request, )
+request = UpdatePlanRequest.new(
+  'name6',
+  'description6',
+  [
+    151,
+    152
+  ],
+  'statement_descriptor6',
+  'currency6',
+  'interval4',
+  114,
+  [
+    'payment_methods1',
+    'payment_methods0',
+    'payment_methods9'
+  ],
+  'billing_type0',
+  'status8',
+  false,
+  [
+    115
+  ],
+  {
+    'key0': 'metadata3'
+  },
+  nil,
+  nil
+)
+
+result = plans_controller.update_plan(
+  plan_id,
+  request
+)
 ```
 

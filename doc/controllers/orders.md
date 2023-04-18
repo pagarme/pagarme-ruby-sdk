@@ -55,7 +55,7 @@ def get_orders(page: nil,
 ## Example Usage
 
 ```ruby
-result = orders_controller.get_orders()
+result = orders_controller.get_orders
 ```
 
 
@@ -85,14 +85,21 @@ def update_order_item(order_id,
 
 ```ruby
 order_id = 'orderId2'
-item_id = 'itemId8'
-request = UpdateOrderItemRequest.new
-request.amount = 242
-request.description = 'description6'
-request.quantity = 100
-request.category = 'category4'
 
-result = orders_controller.update_order_item(order_id, item_id, request, )
+item_id = 'itemId8'
+
+request = UpdateOrderItemRequest.new(
+  242,
+  'description6',
+  100,
+  'category4'
+)
+
+result = orders_controller.update_order_item(
+  order_id,
+  item_id,
+  request
+)
 ```
 
 
@@ -119,7 +126,7 @@ def delete_all_order_items(order_id,
 ```ruby
 order_id = 'orderId2'
 
-result = orders_controller.delete_all_order_items(order_id, )
+result = orders_controller.delete_all_order_items(order_id)
 ```
 
 
@@ -147,9 +154,13 @@ def delete_order_item(order_id,
 
 ```ruby
 order_id = 'orderId2'
+
 item_id = 'itemId8'
 
-result = orders_controller.delete_order_item(order_id, item_id, )
+result = orders_controller.delete_order_item(
+  order_id,
+  item_id
+)
 ```
 
 
@@ -177,10 +188,15 @@ def close_order(id,
 
 ```ruby
 id = 'id0'
-request = UpdateOrderStatusRequest.new
-request.status = 'status8'
 
-result = orders_controller.close_order(id, request, )
+request = UpdateOrderStatusRequest.new(
+  'status8'
+)
+
+result = orders_controller.close_order(
+  id,
+  request
+)
 ```
 
 
@@ -207,64 +223,124 @@ def create_order(body,
 ## Example Usage
 
 ```ruby
-body = CreateOrderRequest.new
-body.items = []
-
-
-body.items[0] = CreateOrderItemRequest.new
-body.items[0].amount = 101
-body.items[0].description = 'description3'
-body.items[0].quantity = 215
-body.items[0].category = 'category1'
-
-body.items[1] = CreateOrderItemRequest.new
-body.items[1].amount = 102
-body.items[1].description = 'description4'
-body.items[1].quantity = 216
-body.items[1].category = 'category2'
-
-body.items[2] = CreateOrderItemRequest.new
-body.items[2].amount = 103
-body.items[2].description = 'description5'
-body.items[2].quantity = 217
-body.items[2].category = 'category3'
-
-body.customer = CreateCustomerRequest.new
-body.customer.name = '{
+body = CreateOrderRequest.new(
+  [
+    CreateOrderItemRequest.new(
+      101,
+      'description3',
+      215,
+      'category1',
+      nil
+    ),
+    CreateOrderItemRequest.new(
+      102,
+      'description4',
+      216,
+      'category2',
+      nil
+    ),
+    CreateOrderItemRequest.new(
+      103,
+      'description5',
+      217,
+      'category3',
+      nil
+    )
+  ],
+  CreateCustomerRequest.new(
+    '{
     "name": "Tony Stark"
-}'
-body.customer.email = 'email2'
-body.customer.document = 'document2'
-body.customer.type = 'type6'
-body.customer.address = CreateAddressRequest.new
-body.customer.address.street = 'street0'
-body.customer.address.number = 'number8'
-body.customer.address.zip_code = 'zip_code4'
-body.customer.address.neighborhood = 'neighborhood6'
-body.customer.address.city = 'city0'
-body.customer.address.state = 'state6'
-body.customer.address.country = 'country4'
-body.customer.address.complement = 'complement6'
-body.customer.address.metadata = {'key0' => 'metadata7', 'key1' => 'metadata6' } 
-body.customer.address.line_1 = 'line_16'
-body.customer.address.line_2 = 'line_28'
-body.customer.metadata = {'key0' => 'metadata9', 'key1' => 'metadata0' } 
-body.customer.phones = CreatePhonesRequest.new
-body.customer.code = 'code2'
-body.payments = []
+}',
+    'email2',
+    'document2',
+    'type6',
+    CreateAddressRequest.new(
+      'street0',
+      'number8',
+      'zip_code4',
+      'neighborhood6',
+      'city0',
+      'state6',
+      'country4',
+      'complement6',
+      {
+        'key0': 'metadata7',
+        'key1': 'metadata6'
+      },
+      'line_16',
+      'line_28'
+    ),
+    {
+      'key0': 'metadata9',
+      'key1': 'metadata0'
+    },
+    CreatePhonesRequest.new(
+      nil,
+      nil
+    ),
+    'code2',
+    nil,
+    nil
+  ),
+  [
+    CreatePaymentRequest.new(
+      'payment_method0',
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil
+    ),
+    CreatePaymentRequest.new(
+      'payment_method9',
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil,
+      nil
+    )
+  ],
+  'code4',
+  {
+    'key0': 'metadata7',
+    'key1': 'metadata8'
+  },
+  true,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil
+)
 
-
-body.payments[0] = CreatePaymentRequest.new
-body.payments[0].payment_method = 'payment_method0'
-
-body.payments[1] = CreatePaymentRequest.new
-body.payments[1].payment_method = 'payment_method9'
-
-body.code = 'code4'
-body.metadata = {'key0' => 'metadata7', 'key1' => 'metadata8' } 
-body.closed = true
-
-result = orders_controller.create_order(body, )
+result = orders_controller.create_order(body)
 ```
 
 
@@ -292,13 +368,19 @@ def create_order_item(order_id,
 
 ```ruby
 order_id = 'orderId2'
-request = CreateOrderItemRequest.new
-request.amount = 242
-request.description = 'description6'
-request.quantity = 100
-request.category = 'category4'
 
-result = orders_controller.create_order_item(order_id, request, )
+request = CreateOrderItemRequest.new(
+  242,
+  'description6',
+  100,
+  'category4',
+  nil
+)
+
+result = orders_controller.create_order_item(
+  order_id,
+  request
+)
 ```
 
 
@@ -324,9 +406,13 @@ def get_order_item(order_id,
 
 ```ruby
 order_id = 'orderId2'
+
 item_id = 'itemId8'
 
-result = orders_controller.get_order_item(order_id, item_id)
+result = orders_controller.get_order_item(
+  order_id,
+  item_id
+)
 ```
 
 
@@ -356,10 +442,17 @@ def update_order_metadata(order_id,
 
 ```ruby
 order_id = 'order_id6'
-request = UpdateMetadataRequest.new
-request.metadata = {'key0' => 'metadata3' } 
 
-result = orders_controller.update_order_metadata(order_id, request, )
+request = UpdateMetadataRequest.new(
+  {
+    'key0': 'metadata3'
+  }
+)
+
+result = orders_controller.update_order_metadata(
+  order_id,
+  request
+)
 ```
 
 
