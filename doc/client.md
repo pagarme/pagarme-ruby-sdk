@@ -22,7 +22,7 @@ The API client can be initialized as follows:
 ```ruby
 client = PagarmeApiSdk::Client.new(
   basic_auth_user_name: 'BasicAuthUserName',
-  basic_auth_password: 'BasicAuthPassword',
+  basic_auth_password: 'BasicAuthPassword'
 )
 ```
 

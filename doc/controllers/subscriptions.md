@@ -71,7 +71,7 @@ def renew_subscription(subscription_id,
 ```ruby
 subscription_id = 'subscription_id0'
 
-result = subscriptions_controller.renew_subscription(subscription_id, )
+result = subscriptions_controller.renew_subscription(subscription_id)
 ```
 
 
@@ -101,11 +101,33 @@ def update_subscription_card(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = UpdateSubscriptionCardRequest.new
-request.card = CreateCardRequest.new
-request.card_id = 'card_id2'
 
-result = subscriptions_controller.update_subscription_card(subscription_id, request, )
+request = UpdateSubscriptionCardRequest.new(
+  CreateCardRequest.new(
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    'credit',
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil
+  ),
+  'card_id2'
+)
+
+result = subscriptions_controller.update_subscription_card(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -137,10 +159,16 @@ def delete_usage(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 item_id = 'item_id0'
+
 usage_id = 'usage_id0'
 
-result = subscriptions_controller.delete_usage(subscription_id, item_id, usage_id, )
+result = subscriptions_controller.delete_usage(
+  subscription_id,
+  item_id,
+  usage_id
+)
 ```
 
 
@@ -170,12 +198,19 @@ def create_discount(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = CreateDiscountRequest.new
-request.value = 185.28
-request.discount_type = 'discount_type4'
-request.item_id = 'item_id6'
 
-result = subscriptions_controller.create_discount(subscription_id, request, )
+request = CreateDiscountRequest.new(
+  185.28,
+  'discount_type4',
+  'item_id6',
+  nil,
+  nil
+)
+
+result = subscriptions_controller.create_discount(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -205,9 +240,13 @@ def create_an_usage(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 item_id = 'item_id0'
 
-result = subscriptions_controller.create_an_usage(subscription_id, item_id, )
+result = subscriptions_controller.create_an_usage(
+  subscription_id,
+  item_id
+)
 ```
 
 
@@ -235,10 +274,15 @@ def update_current_cycle_status(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = UpdateCurrentCycleStatusRequest.new
-request.status = 'status8'
 
-result = subscriptions_controller.update_current_cycle_status(subscription_id, request, )
+request = UpdateCurrentCycleStatusRequest.new(
+  'status8'
+)
+
+subscriptions_controller.update_current_cycle_status(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -268,9 +312,13 @@ def delete_discount(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 discount_id = 'discount_id8'
 
-result = subscriptions_controller.delete_discount(subscription_id, discount_id, )
+result = subscriptions_controller.delete_discount(
+  subscription_id,
+  discount_id
+)
 ```
 
 
@@ -313,7 +361,7 @@ def get_subscription_items(subscription_id,
 ```ruby
 subscription_id = 'subscription_id0'
 
-result = subscriptions_controller.get_subscription_items(subscription_id, )
+result = subscriptions_controller.get_subscription_items(subscription_id)
 ```
 
 
@@ -343,12 +391,36 @@ def update_subscription_payment_method(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = UpdateSubscriptionPaymentMethodRequest.new
-request.payment_method = 'payment_method4'
-request.card_id = 'card_id2'
-request.card = CreateCardRequest.new
 
-result = subscriptions_controller.update_subscription_payment_method(subscription_id, request, )
+request = UpdateSubscriptionPaymentMethodRequest.new(
+  'payment_method4',
+  'card_id2',
+  CreateCardRequest.new(
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    'credit',
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil
+  ),
+  nil,
+  nil
+)
+
+result = subscriptions_controller.update_subscription_payment_method(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -376,9 +448,13 @@ def get_subscription_item(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 item_id = 'item_id0'
 
-result = subscriptions_controller.get_subscription_item(subscription_id, item_id)
+result = subscriptions_controller.get_subscription_item(
+  subscription_id,
+  item_id
+)
 ```
 
 
@@ -425,7 +501,7 @@ def get_subscriptions(page: nil,
 ## Example Usage
 
 ```ruby
-result = subscriptions_controller.get_subscriptions()
+result = subscriptions_controller.get_subscriptions
 ```
 
 
@@ -455,10 +531,15 @@ def cancel_subscription(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = CreateCancelSubscriptionRequest.new
-request.cancel_pending_invoices = true
 
-result = subscriptions_controller.cancel_subscription(subscription_id, request: request, )
+request = CreateCancelSubscriptionRequest.new(
+  true
+)
+
+result = subscriptions_controller.cancel_subscription(
+  subscription_id,
+  request: request
+)
 ```
 
 
@@ -488,12 +569,19 @@ def create_increment(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = CreateIncrementRequest.new
-request.value = 185.28
-request.increment_type = 'increment_type8'
-request.item_id = 'item_id6'
 
-result = subscriptions_controller.create_increment(subscription_id, request, )
+request = CreateIncrementRequest.new(
+  185.28,
+  'increment_type8',
+  'item_id6',
+  nil,
+  nil
+)
+
+result = subscriptions_controller.create_increment(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -525,13 +613,23 @@ def create_usage(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-item_id = 'item_id0'
-body = CreateUsageRequest.new
-body.quantity = 156
-body.description = 'description4'
-body.used_at = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
 
-result = subscriptions_controller.create_usage(subscription_id, item_id, body, )
+item_id = 'item_id0'
+
+body = CreateUsageRequest.new(
+  156,
+  'description4',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  nil,
+  nil,
+  nil
+)
+
+result = subscriptions_controller.create_usage(
+  subscription_id,
+  item_id,
+  body
+)
 ```
 
 
@@ -557,9 +655,13 @@ def get_discount_by_id(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 discount_id = 'discountId0'
 
-result = subscriptions_controller.get_discount_by_id(subscription_id, discount_id)
+result = subscriptions_controller.get_discount_by_id(
+  subscription_id,
+  discount_id
+)
 ```
 
 
@@ -586,154 +688,255 @@ def create_subscription(body,
 ## Example Usage
 
 ```ruby
-body = CreateSubscriptionRequest.new
-body.customer = CreateCustomerRequest.new
-body.customer.name = '{
+body = CreateSubscriptionRequest.new(
+  CreateCustomerRequest.new(
+    '{
     "name": "Tony Stark"
-}'
-body.customer.email = 'email2'
-body.customer.document = 'document2'
-body.customer.type = 'type6'
-body.customer.address = CreateAddressRequest.new
-body.customer.address.street = 'street0'
-body.customer.address.number = 'number8'
-body.customer.address.zip_code = 'zip_code4'
-body.customer.address.neighborhood = 'neighborhood6'
-body.customer.address.city = 'city0'
-body.customer.address.state = 'state6'
-body.customer.address.country = 'country4'
-body.customer.address.complement = 'complement6'
-body.customer.address.metadata = {'key0' => 'metadata7', 'key1' => 'metadata6' } 
-body.customer.address.line_1 = 'line_16'
-body.customer.address.line_2 = 'line_28'
-body.customer.metadata = {'key0' => 'metadata9', 'key1' => 'metadata0' } 
-body.customer.phones = CreatePhonesRequest.new
-body.customer.code = 'code2'
-body.card = CreateCardRequest.new
-body.code = 'code4'
-body.payment_method = 'payment_method4'
-body.billing_type = 'billing_type0'
-body.statement_descriptor = 'statement_descriptor6'
-body.description = 'description4'
-body.currency = 'currency6'
-body.interval = 'interval6'
-body.interval_count = 170
-body.pricing_scheme = CreatePricingSchemeRequest.new
-body.pricing_scheme.scheme_type = 'scheme_type2'
-body.items = []
+}',
+    'email2',
+    'document2',
+    'type6',
+    CreateAddressRequest.new(
+      'street0',
+      'number8',
+      'zip_code4',
+      'neighborhood6',
+      'city0',
+      'state6',
+      'country4',
+      'complement6',
+      {
+        'key0': 'metadata7',
+        'key1': 'metadata6'
+      },
+      'line_16',
+      'line_28'
+    ),
+    {
+      'key0': 'metadata9',
+      'key1': 'metadata0'
+    },
+    CreatePhonesRequest.new(
+      nil,
+      nil
+    ),
+    'code2',
+    nil,
+    nil
+  ),
+  CreateCardRequest.new(
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    'credit',
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil
+  ),
+  'code4',
+  'payment_method4',
+  'billing_type0',
+  'statement_descriptor6',
+  'description4',
+  'currency6',
+  'interval6',
+  170,
+  CreatePricingSchemeRequest.new(
+    'scheme_type2',
+    nil,
+    nil,
+    nil,
+    nil
+  ),
+  [
+    CreateSubscriptionItemRequest.new(
+      'description3',
+      CreatePricingSchemeRequest.new(
+        'scheme_type5',
+        nil,
+        nil,
+        nil,
+        nil
+      ),
+      'id3',
+      'plan_item_id3',
+      [
+        CreateDiscountRequest.new(
+          65.46,
+          'discount_type2',
+          'item_id4',
+          nil,
+          nil
+        )
+      ],
+      'name3',
+      nil,
+      nil,
+      nil
+    ),
+    CreateSubscriptionItemRequest.new(
+      'description4',
+      CreatePricingSchemeRequest.new(
+        'scheme_type4',
+        nil,
+        nil,
+        nil,
+        nil
+      ),
+      'id4',
+      'plan_item_id4',
+      [
+        CreateDiscountRequest.new(
+          65.47,
+          'discount_type3',
+          'item_id5',
+          nil,
+          nil
+        ),
+        CreateDiscountRequest.new(
+          65.48,
+          'discount_type4',
+          'item_id6',
+          nil,
+          nil
+        )
+      ],
+      'name4',
+      nil,
+      nil,
+      nil
+    ),
+    CreateSubscriptionItemRequest.new(
+      'description5',
+      CreatePricingSchemeRequest.new(
+        'scheme_type3',
+        nil,
+        nil,
+        nil,
+        nil
+      ),
+      'id5',
+      'plan_item_id5',
+      [
+        CreateDiscountRequest.new(
+          65.48,
+          'discount_type4',
+          'item_id6',
+          nil,
+          nil
+        ),
+        CreateDiscountRequest.new(
+          65.49,
+          'discount_type5',
+          'item_id7',
+          nil,
+          nil
+        ),
+        CreateDiscountRequest.new(
+          65.5,
+          'discount_type6',
+          'item_id8',
+          nil,
+          nil
+        )
+      ],
+      'name5',
+      nil,
+      nil,
+      nil
+    )
+  ],
+  CreateShippingRequest.new(
+    140,
+    'description0',
+    'recipient_name8',
+    'recipient_phone2',
+    'address_id0',
+    CreateAddressRequest.new(
+      'street6',
+      'number4',
+      'zip_code0',
+      'neighborhood2',
+      'city6',
+      'state2',
+      'country0',
+      'complement2',
+      {
+        'key0': 'metadata3',
+        'key1': 'metadata2'
+      },
+      'line_10',
+      'line_24'
+    ),
+    'type0',
+    nil,
+    nil
+  ),
+  [
+    CreateDiscountRequest.new(
+      95.59,
+      'discount_type5',
+      'item_id7',
+      nil,
+      nil
+    )
+  ],
+  {
+    'key0': 'metadata7',
+    'key1': 'metadata8'
+  },
+  [
+    CreateIncrementRequest.new(
+      38.83,
+      'increment_type3',
+      'item_id9',
+      nil,
+      nil
+    ),
+    CreateIncrementRequest.new(
+      38.84,
+      'increment_type4',
+      'item_id8',
+      nil,
+      nil
+    ),
+    CreateIncrementRequest.new(
+      38.85,
+      'increment_type5',
+      'item_id7',
+      nil,
+      nil
+    )
+  ],
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil
+)
 
-
-body.items[0] = CreateSubscriptionItemRequest.new
-body.items[0].description = 'description3'
-body.items[0].pricing_scheme = CreatePricingSchemeRequest.new
-body.items[0].pricing_scheme.scheme_type = 'scheme_type5'
-body.items[0].id = 'id3'
-body.items[0].plan_item_id = 'plan_item_id3'
-body.items[0].discounts = []
-
-
-body.items[0].discounts[0] = CreateDiscountRequest.new
-body.items[0].discounts[0].value = 65.46
-body.items[0].discounts[0].discount_type = 'discount_type2'
-body.items[0].discounts[0].item_id = 'item_id4'
-
-body.items[0].name = 'name3'
-
-body.items[1] = CreateSubscriptionItemRequest.new
-body.items[1].description = 'description4'
-body.items[1].pricing_scheme = CreatePricingSchemeRequest.new
-body.items[1].pricing_scheme.scheme_type = 'scheme_type4'
-body.items[1].id = 'id4'
-body.items[1].plan_item_id = 'plan_item_id4'
-body.items[1].discounts = []
-
-
-body.items[1].discounts[0] = CreateDiscountRequest.new
-body.items[1].discounts[0].value = 65.47
-body.items[1].discounts[0].discount_type = 'discount_type3'
-body.items[1].discounts[0].item_id = 'item_id5'
-
-body.items[1].discounts[1] = CreateDiscountRequest.new
-body.items[1].discounts[1].value = 65.48
-body.items[1].discounts[1].discount_type = 'discount_type4'
-body.items[1].discounts[1].item_id = 'item_id6'
-
-body.items[1].name = 'name4'
-
-body.items[2] = CreateSubscriptionItemRequest.new
-body.items[2].description = 'description5'
-body.items[2].pricing_scheme = CreatePricingSchemeRequest.new
-body.items[2].pricing_scheme.scheme_type = 'scheme_type3'
-body.items[2].id = 'id5'
-body.items[2].plan_item_id = 'plan_item_id5'
-body.items[2].discounts = []
-
-
-body.items[2].discounts[0] = CreateDiscountRequest.new
-body.items[2].discounts[0].value = 65.48
-body.items[2].discounts[0].discount_type = 'discount_type4'
-body.items[2].discounts[0].item_id = 'item_id6'
-
-body.items[2].discounts[1] = CreateDiscountRequest.new
-body.items[2].discounts[1].value = 65.49
-body.items[2].discounts[1].discount_type = 'discount_type5'
-body.items[2].discounts[1].item_id = 'item_id7'
-
-body.items[2].discounts[2] = CreateDiscountRequest.new
-body.items[2].discounts[2].value = 65.5
-body.items[2].discounts[2].discount_type = 'discount_type6'
-body.items[2].discounts[2].item_id = 'item_id8'
-
-body.items[2].name = 'name5'
-
-body.shipping = CreateShippingRequest.new
-body.shipping.amount = 140
-body.shipping.description = 'description0'
-body.shipping.recipient_name = 'recipient_name8'
-body.shipping.recipient_phone = 'recipient_phone2'
-body.shipping.address_id = 'address_id0'
-body.shipping.address = CreateAddressRequest.new
-body.shipping.address.street = 'street6'
-body.shipping.address.number = 'number4'
-body.shipping.address.zip_code = 'zip_code0'
-body.shipping.address.neighborhood = 'neighborhood2'
-body.shipping.address.city = 'city6'
-body.shipping.address.state = 'state2'
-body.shipping.address.country = 'country0'
-body.shipping.address.complement = 'complement2'
-body.shipping.address.metadata = {'key0' => 'metadata3', 'key1' => 'metadata2' } 
-body.shipping.address.line_1 = 'line_10'
-body.shipping.address.line_2 = 'line_24'
-body.shipping.type = 'type0'
-body.discounts = []
-
-
-body.discounts[0] = CreateDiscountRequest.new
-body.discounts[0].value = 95.59
-body.discounts[0].discount_type = 'discount_type5'
-body.discounts[0].item_id = 'item_id7'
-
-body.metadata = {'key0' => 'metadata7', 'key1' => 'metadata8' } 
-body.increments = []
-
-
-body.increments[0] = CreateIncrementRequest.new
-body.increments[0].value = 38.83
-body.increments[0].increment_type = 'increment_type3'
-body.increments[0].item_id = 'item_id9'
-
-body.increments[1] = CreateIncrementRequest.new
-body.increments[1].value = 38.84
-body.increments[1].increment_type = 'increment_type4'
-body.increments[1].item_id = 'item_id8'
-
-body.increments[2] = CreateIncrementRequest.new
-body.increments[2].value = 38.85
-body.increments[2].increment_type = 'increment_type5'
-body.increments[2].item_id = 'item_id7'
-
-
-result = subscriptions_controller.create_subscription(body, )
+result = subscriptions_controller.create_subscription(body)
 ```
 
 
@@ -759,9 +962,13 @@ def get_increment_by_id(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 increment_id = 'increment_id8'
 
-result = subscriptions_controller.get_increment_by_id(subscription_id, increment_id)
+result = subscriptions_controller.get_increment_by_id(
+  subscription_id,
+  increment_id
+)
 ```
 
 
@@ -789,10 +996,15 @@ def update_subscription_affiliation_id(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = UpdateSubscriptionAffiliationIdRequest.new
-request.gateway_affiliation_id = 'gateway_affiliation_id2'
 
-result = subscriptions_controller.update_subscription_affiliation_id(subscription_id, request, )
+request = UpdateSubscriptionAffiliationIdRequest.new(
+  'gateway_affiliation_id2'
+)
+
+result = subscriptions_controller.update_subscription_affiliation_id(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -822,10 +1034,17 @@ def update_subscription_metadata(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = UpdateMetadataRequest.new
-request.metadata = {'key0' => 'metadata3' } 
 
-result = subscriptions_controller.update_subscription_metadata(subscription_id, request, )
+request = UpdateMetadataRequest.new(
+  {
+    'key0': 'metadata3'
+  }
+)
+
+result = subscriptions_controller.update_subscription_metadata(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -855,9 +1074,13 @@ def delete_increment(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 increment_id = 'increment_id8'
 
-result = subscriptions_controller.delete_increment(subscription_id, increment_id, )
+result = subscriptions_controller.delete_increment(
+  subscription_id,
+  increment_id
+)
 ```
 
 
@@ -885,10 +1108,16 @@ def get_subscription_cycles(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 page = 'page8'
+
 size = 'size0'
 
-result = subscriptions_controller.get_subscription_cycles(subscription_id, page, size)
+result = subscriptions_controller.get_subscription_cycles(
+  subscription_id,
+  page,
+  size
+)
 ```
 
 
@@ -916,10 +1145,16 @@ def get_discounts(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 page = 30
+
 size = 18
 
-result = subscriptions_controller.get_discounts(subscription_id, page, size)
+result = subscriptions_controller.get_discounts(
+  subscription_id,
+  page,
+  size
+)
 ```
 
 
@@ -949,10 +1184,15 @@ def update_subscription_billing_date(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = UpdateSubscriptionBillingDateRequest.new
-request.next_billing_at = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
 
-result = subscriptions_controller.update_subscription_billing_date(subscription_id, request, )
+request = UpdateSubscriptionBillingDateRequest.new(
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
+
+result = subscriptions_controller.update_subscription_billing_date(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -982,9 +1222,13 @@ def delete_subscription_item(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 subscription_item_id = 'subscription_item_id4'
 
-result = subscriptions_controller.delete_subscription_item(subscription_id, subscription_item_id, )
+result = subscriptions_controller.delete_subscription_item(
+  subscription_id,
+  subscription_item_id
+)
 ```
 
 
@@ -1013,7 +1257,7 @@ def get_increments(subscription_id,
 ```ruby
 subscription_id = 'subscription_id0'
 
-result = subscriptions_controller.get_increments(subscription_id, )
+result = subscriptions_controller.get_increments(subscription_id)
 ```
 
 
@@ -1043,10 +1287,15 @@ def update_subscription_due_days(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = UpdateSubscriptionDueDaysRequest.new
-request.boleto_due_days = 226
 
-result = subscriptions_controller.update_subscription_due_days(subscription_id, request, )
+request = UpdateSubscriptionDueDaysRequest.new(
+  226
+)
+
+result = subscriptions_controller.update_subscription_due_days(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -1076,10 +1325,15 @@ def update_subscription_start_at(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = UpdateSubscriptionStartAtRequest.new
-request.start_at = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
 
-result = subscriptions_controller.update_subscription_start_at(subscription_id, request, )
+request = UpdateSubscriptionStartAtRequest.new(
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
+
+result = subscriptions_controller.update_subscription_start_at(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -1111,26 +1365,43 @@ def update_subscription_item(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 item_id = 'item_id0'
-body = UpdateSubscriptionItemRequest.new
-body.description = 'description4'
-body.status = 'status2'
-body.pricing_scheme = UpdatePricingSchemeRequest.new
-body.pricing_scheme.scheme_type = 'scheme_type2'
-body.pricing_scheme.price_brackets = []
 
+body = UpdateSubscriptionItemRequest.new(
+  'description4',
+  'status2',
+  UpdatePricingSchemeRequest.new(
+    'scheme_type2',
+    [
+      UpdatePriceBracketRequest.new(
+        31,
+        225,
+        nil,
+        nil
+      ),
+      UpdatePriceBracketRequest.new(
+        32,
+        226,
+        nil,
+        nil
+      )
+    ],
+    nil,
+    nil,
+    nil
+  ),
+  'name6',
+  nil,
+  nil,
+  nil
+)
 
-body.pricing_scheme.price_brackets[0] = UpdatePriceBracketRequest.new
-body.pricing_scheme.price_brackets[0].start_quantity = 31
-body.pricing_scheme.price_brackets[0].price = 225
-
-body.pricing_scheme.price_brackets[1] = UpdatePriceBracketRequest.new
-body.pricing_scheme.price_brackets[1].start_quantity = 32
-body.pricing_scheme.price_brackets[1].price = 226
-
-body.name = 'name6'
-
-result = subscriptions_controller.update_subscription_item(subscription_id, item_id, body, )
+result = subscriptions_controller.update_subscription_item(
+  subscription_id,
+  item_id,
+  body
+)
 ```
 
 
@@ -1160,28 +1431,44 @@ def create_subscription_item(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = CreateSubscriptionItemRequest.new
-request.description = 'description6'
-request.pricing_scheme = CreatePricingSchemeRequest.new
-request.pricing_scheme.scheme_type = 'scheme_type2'
-request.id = 'id6'
-request.plan_item_id = 'plan_item_id6'
-request.discounts = []
 
+request = CreateSubscriptionItemRequest.new(
+  'description6',
+  CreatePricingSchemeRequest.new(
+    'scheme_type2',
+    nil,
+    nil,
+    nil,
+    nil
+  ),
+  'id6',
+  'plan_item_id6',
+  [
+    CreateDiscountRequest.new(
+      199.99,
+      'discount_type5',
+      'item_id7',
+      nil,
+      nil
+    ),
+    CreateDiscountRequest.new(
+      200,
+      'discount_type6',
+      'item_id8',
+      nil,
+      nil
+    )
+  ],
+  'name6',
+  nil,
+  nil,
+  nil
+)
 
-request.discounts[0] = CreateDiscountRequest.new
-request.discounts[0].value = 199.99
-request.discounts[0].discount_type = 'discount_type5'
-request.discounts[0].item_id = 'item_id7'
-
-request.discounts[1] = CreateDiscountRequest.new
-request.discounts[1].value = 200
-request.discounts[1].discount_type = 'discount_type6'
-request.discounts[1].item_id = 'item_id8'
-
-request.name = 'name6'
-
-result = subscriptions_controller.create_subscription_item(subscription_id, request, )
+result = subscriptions_controller.create_subscription_item(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -1248,9 +1535,13 @@ def get_usages(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 item_id = 'item_id0'
 
-result = subscriptions_controller.get_usages(subscription_id, item_id, )
+result = subscriptions_controller.get_usages(
+  subscription_id,
+  item_id
+)
 ```
 
 
@@ -1278,9 +1569,15 @@ def update_latest_period_end_at(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = UpdateCurrentCycleEndDateRequest.new
 
-result = subscriptions_controller.update_latest_period_end_at(subscription_id, request, )
+request = UpdateCurrentCycleEndDateRequest.new(
+  nil
+)
+
+result = subscriptions_controller.update_latest_period_end_at(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -1310,9 +1607,15 @@ def update_subscription_minium_price(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
-request = UpdateSubscriptionMinimumPriceRequest.new
 
-result = subscriptions_controller.update_subscription_minium_price(subscription_id, request, )
+request = UpdateSubscriptionMinimumPriceRequest.new(
+  nil
+)
+
+result = subscriptions_controller.update_subscription_minium_price(
+  subscription_id,
+  request
+)
 ```
 
 
@@ -1338,9 +1641,13 @@ def get_subscription_cycle_by_id(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 cycle_id = 'cycleId0'
 
-result = subscriptions_controller.get_subscription_cycle_by_id(subscription_id, cycle_id)
+result = subscriptions_controller.get_subscription_cycle_by_id(
+  subscription_id,
+  cycle_id
+)
 ```
 
 
@@ -1366,9 +1673,13 @@ def get_usage_report(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id0'
+
 period_id = 'period_id0'
 
-result = subscriptions_controller.get_usage_report(subscription_id, period_id)
+result = subscriptions_controller.get_usage_report(
+  subscription_id,
+  period_id
+)
 ```
 
 
@@ -1394,27 +1705,37 @@ def update_split_subscription(id,
 
 ```ruby
 id = 'id0'
-request = UpdateSubscriptionSplitRequest.new
-request.enabled = false
-request.rules = []
 
+request = UpdateSubscriptionSplitRequest.new(
+  false,
+  [
+    CreateSplitRequest.new(
+      'type6',
+      222,
+      'recipient_id6',
+      nil,
+      nil
+    ),
+    CreateSplitRequest.new(
+      'type5',
+      223,
+      'recipient_id5',
+      nil,
+      nil
+    ),
+    CreateSplitRequest.new(
+      'type4',
+      224,
+      'recipient_id4',
+      nil,
+      nil
+    )
+  ]
+)
 
-request.rules[0] = CreateSplitRequest.new
-request.rules[0].type = 'type6'
-request.rules[0].amount = 222
-request.rules[0].recipient_id = 'recipient_id6'
-
-request.rules[1] = CreateSplitRequest.new
-request.rules[1].type = 'type5'
-request.rules[1].amount = 223
-request.rules[1].recipient_id = 'recipient_id5'
-
-request.rules[2] = CreateSplitRequest.new
-request.rules[2].type = 'type4'
-request.rules[2].amount = 224
-request.rules[2].recipient_id = 'recipient_id4'
-
-
-result = subscriptions_controller.update_split_subscription(id, request)
+result = subscriptions_controller.update_split_subscription(
+  id,
+  request
+)
 ```
 

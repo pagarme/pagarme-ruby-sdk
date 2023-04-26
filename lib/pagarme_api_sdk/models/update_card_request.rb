@@ -52,25 +52,29 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        billing_address_id
+      ]
     end
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        billing_address_id
+      ]
     end
 
     def initialize(holder_name = nil,
                    exp_month = nil,
                    exp_year = nil,
-                   billing_address_id = nil,
                    billing_address = nil,
                    metadata = nil,
-                   label = nil)
+                   label = nil,
+                   billing_address_id = SKIP)
       @holder_name = holder_name
       @exp_month = exp_month
       @exp_year = exp_year
-      @billing_address_id = billing_address_id
+      @billing_address_id = billing_address_id unless billing_address_id == SKIP
       @billing_address = billing_address
       @metadata = metadata
       @label = label
@@ -84,21 +88,21 @@ module PagarmeApiSdk
       holder_name = hash.key?('holder_name') ? hash['holder_name'] : nil
       exp_month = hash.key?('exp_month') ? hash['exp_month'] : nil
       exp_year = hash.key?('exp_year') ? hash['exp_year'] : nil
-      billing_address_id =
-        hash.key?('billing_address_id') ? hash['billing_address_id'] : nil
       billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
         hash['billing_address']
       metadata = hash.key?('metadata') ? hash['metadata'] : nil
       label = hash.key?('label') ? hash['label'] : nil
+      billing_address_id =
+        hash.key?('billing_address_id') ? hash['billing_address_id'] : SKIP
 
       # Create object from extracted values.
       UpdateCardRequest.new(holder_name,
                             exp_month,
                             exp_year,
-                            billing_address_id,
                             billing_address,
                             metadata,
-                            label)
+                            label,
+                            billing_address_id)
     end
   end
 end

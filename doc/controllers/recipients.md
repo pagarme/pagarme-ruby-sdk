@@ -59,15 +59,22 @@ def update_recipient(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
-request = UpdateRecipientRequest.new
-request.name = 'name6'
-request.email = 'email0'
-request.description = 'description6'
-request.type = 'type4'
-request.status = 'status8'
-request.metadata = {'key0' => 'metadata3' } 
 
-result = recipients_controller.update_recipient(recipient_id, request, )
+request = UpdateRecipientRequest.new(
+  'name6',
+  'email0',
+  'description6',
+  'type4',
+  'status8',
+  {
+    'key0': 'metadata3'
+  }
+)
+
+result = recipients_controller.update_recipient(
+  recipient_id,
+  request
+)
 ```
 
 
@@ -97,12 +104,17 @@ def create_anticipation(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
-request = CreateAnticipationRequest.new
-request.amount = 242
-request.timeframe = 'timeframe8'
-request.payment_date = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
 
-result = recipients_controller.create_anticipation(recipient_id, request, )
+request = CreateAnticipationRequest.new(
+  242,
+  'timeframe8',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
+
+result = recipients_controller.create_anticipation(
+  recipient_id,
+  request
+)
 ```
 
 
@@ -132,10 +144,16 @@ def get_anticipation_limits(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
+
 timeframe = 'timeframe2'
+
 payment_date = DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
 
-result = recipients_controller.get_anticipation_limits(recipient_id, timeframe, payment_date)
+result = recipients_controller.get_anticipation_limits(
+  recipient_id,
+  timeframe,
+  payment_date
+)
 ```
 
 
@@ -162,7 +180,7 @@ def get_recipients(page: nil,
 ## Example Usage
 
 ```ruby
-result = recipients_controller.get_recipients()
+result = recipients_controller.get_recipients
 ```
 
 
@@ -188,9 +206,13 @@ def get_withdraw_by_id(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
+
 withdrawal_id = 'withdrawal_id2'
 
-result = recipients_controller.get_withdraw_by_id(recipient_id, withdrawal_id)
+result = recipients_controller.get_withdraw_by_id(
+  recipient_id,
+  withdrawal_id
+)
 ```
 
 
@@ -220,22 +242,31 @@ def update_recipient_default_bank_account(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
-request = UpdateRecipientBankAccountRequest.new
-request.bank_account = CreateBankAccountRequest.new
-request.bank_account.holder_name = 'holder_name6'
-request.bank_account.holder_type = 'holder_type2'
-request.bank_account.holder_document = 'holder_document4'
-request.bank_account.bank = 'bank8'
-request.bank_account.branch_number = 'branch_number6'
-request.bank_account.branch_check_digit = 'branch_check_digit6'
-request.bank_account.account_number = 'account_number0'
-request.bank_account.account_check_digit = 'account_check_digit6'
-request.bank_account.type = 'type0'
-request.bank_account.metadata = {'key0' => 'metadata9', 'key1' => 'metadata8' } 
-request.bank_account.pix_key = 'pix_key4'
-request.payment_mode = 'bank_transfer'
 
-result = recipients_controller.update_recipient_default_bank_account(recipient_id, request, )
+request = UpdateRecipientBankAccountRequest.new(
+  CreateBankAccountRequest.new(
+    'holder_name6',
+    'holder_type2',
+    'holder_document4',
+    'bank8',
+    'branch_number6',
+    'account_number0',
+    'account_check_digit6',
+    'type0',
+    {
+      'key0': 'metadata9',
+      'key1': 'metadata8'
+    },
+    nil,
+    nil
+  ),
+  'bank_transfer'
+)
+
+result = recipients_controller.update_recipient_default_bank_account(
+  recipient_id,
+  request
+)
 ```
 
 
@@ -265,10 +296,17 @@ def update_recipient_metadata(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
-request = UpdateMetadataRequest.new
-request.metadata = {'key0' => 'metadata3' } 
 
-result = recipients_controller.update_recipient_metadata(recipient_id, request, )
+request = UpdateMetadataRequest.new(
+  {
+    'key0': 'metadata3'
+  }
+)
+
+result = recipients_controller.update_recipient_metadata(
+  recipient_id,
+  request
+)
 ```
 
 
@@ -305,7 +343,7 @@ def get_transfers(recipient_id,
 ```ruby
 recipient_id = 'recipient_id0'
 
-result = recipients_controller.get_transfers(recipient_id, )
+result = recipients_controller.get_transfers(recipient_id)
 ```
 
 
@@ -333,9 +371,13 @@ def get_transfer(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
+
 transfer_id = 'transfer_id6'
 
-result = recipients_controller.get_transfer(recipient_id, transfer_id)
+result = recipients_controller.get_transfer(
+  recipient_id,
+  transfer_id
+)
 ```
 
 
@@ -361,10 +403,16 @@ def create_withdraw(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
-request = CreateWithdrawRequest.new
-request.amount = 242
 
-result = recipients_controller.create_withdraw(recipient_id, request)
+request = CreateWithdrawRequest.new(
+  242,
+  nil
+)
+
+result = recipients_controller.create_withdraw(
+  recipient_id,
+  request
+)
 ```
 
 
@@ -394,9 +442,19 @@ def update_automatic_anticipation_settings(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
-request = UpdateAutomaticAnticipationSettingsRequest.new
 
-result = recipients_controller.update_automatic_anticipation_settings(recipient_id, request, )
+request = UpdateAutomaticAnticipationSettingsRequest.new(
+  nil,
+  nil,
+  nil,
+  nil,
+  nil
+)
+
+result = recipients_controller.update_automatic_anticipation_settings(
+  recipient_id,
+  request
+)
 ```
 
 
@@ -424,9 +482,13 @@ def get_anticipation(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
+
 anticipation_id = 'anticipation_id0'
 
-result = recipients_controller.get_anticipation(recipient_id, anticipation_id)
+result = recipients_controller.get_anticipation(
+  recipient_id,
+  anticipation_id
+)
 ```
 
 
@@ -454,12 +516,17 @@ def update_recipient_transfer_settings(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
-request = UpdateTransferSettingsRequest.new
-request.transfer_enabled = 'transfer_enabled2'
-request.transfer_interval = 'transfer_interval6'
-request.transfer_day = 'transfer_day6'
 
-result = recipients_controller.update_recipient_transfer_settings(recipient_id, request, )
+request = UpdateTransferSettingsRequest.new(
+  'transfer_enabled2',
+  'transfer_interval6',
+  'transfer_day6'
+)
+
+result = recipients_controller.update_recipient_transfer_settings(
+  recipient_id,
+  request
+)
 ```
 
 
@@ -502,7 +569,7 @@ def get_anticipations(recipient_id,
 ```ruby
 recipient_id = 'recipient_id0'
 
-result = recipients_controller.get_anticipations(recipient_id, )
+result = recipients_controller.get_anticipations(recipient_id)
 ```
 
 
@@ -593,7 +660,7 @@ def get_withdrawals(recipient_id,
 ```ruby
 recipient_id = 'recipient_id0'
 
-result = recipients_controller.get_withdrawals(recipient_id, )
+result = recipients_controller.get_withdrawals(recipient_id)
 ```
 
 
@@ -623,11 +690,18 @@ def create_transfer(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id0'
-request = CreateTransferRequest.new
-request.amount = 242
-request.metadata = {'key0' => 'metadata3' } 
 
-result = recipients_controller.create_transfer(recipient_id, request, )
+request = CreateTransferRequest.new(
+  242,
+  {
+    'key0': 'metadata3'
+  }
+)
+
+result = recipients_controller.create_transfer(
+  recipient_id,
+  request
+)
 ```
 
 
@@ -654,29 +728,36 @@ def create_recipient(request,
 ## Example Usage
 
 ```ruby
-request = CreateRecipientRequest.new
-request.name = 'name6'
-request.email = 'email0'
-request.description = 'description6'
-request.document = 'document0'
-request.type = 'type4'
-request.default_bank_account = CreateBankAccountRequest.new
-request.default_bank_account.holder_name = 'holder_name0'
-request.default_bank_account.holder_type = 'holder_type6'
-request.default_bank_account.holder_document = 'holder_document8'
-request.default_bank_account.bank = 'bank2'
-request.default_bank_account.branch_number = 'branch_number0'
-request.default_bank_account.branch_check_digit = 'branch_check_digit0'
-request.default_bank_account.account_number = 'account_number4'
-request.default_bank_account.account_check_digit = 'account_check_digit0'
-request.default_bank_account.type = 'type4'
-request.default_bank_account.metadata = {'key0' => 'metadata5' } 
-request.default_bank_account.pix_key = 'pix_key8'
-request.metadata = {'key0' => 'metadata3' } 
-request.code = 'code4'
-request.payment_mode = 'bank_transfer'
+request = CreateRecipientRequest.new(
+  'name6',
+  'email0',
+  'description6',
+  'document0',
+  'type4',
+  CreateBankAccountRequest.new(
+    'holder_name0',
+    'holder_type6',
+    'holder_document8',
+    'bank2',
+    'branch_number0',
+    'account_number4',
+    'account_check_digit0',
+    'type4',
+    {
+      'key0': 'metadata5'
+    },
+    nil,
+    nil
+  ),
+  {
+    'key0': 'metadata3'
+  },
+  'code4',
+  'bank_transfer',
+  nil
+)
 
-result = recipients_controller.create_recipient(request, )
+result = recipients_controller.create_recipient(request)
 ```
 
 
@@ -720,6 +801,6 @@ def get_default_recipient
 ## Example Usage
 
 ```ruby
-result = recipients_controller.get_default_recipient()
+result = recipients_controller.get_default_recipient
 ```
 
