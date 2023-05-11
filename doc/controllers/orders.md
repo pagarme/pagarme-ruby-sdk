@@ -231,20 +231,6 @@ body = CreateOrderRequest.new(
       215,
       'category1',
       nil
-    ),
-    CreateOrderItemRequest.new(
-      102,
-      'description4',
-      216,
-      'category2',
-      nil
-    ),
-    CreateOrderItemRequest.new(
-      103,
-      'description5',
-      217,
-      'category3',
-      nil
     )
   ],
   CreateCustomerRequest.new(
@@ -285,25 +271,6 @@ body = CreateOrderRequest.new(
   [
     CreatePaymentRequest.new(
       'payment_method0',
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil
-    ),
-    CreatePaymentRequest.new(
-      'payment_method9',
       nil,
       nil,
       nil,
