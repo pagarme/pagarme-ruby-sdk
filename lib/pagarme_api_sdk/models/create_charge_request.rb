@@ -64,32 +64,44 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        code
+        customer_id
+        customer
+        metadata
         due_at
+        antifraud
       ]
     end
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        code
+        customer_id
+        customer
+        metadata
+        due_at
+        antifraud
+      ]
     end
 
-    def initialize(code = nil,
-                   amount = nil,
-                   customer_id = nil,
-                   customer = nil,
+    def initialize(amount = nil,
                    payment = nil,
-                   metadata = nil,
-                   antifraud = nil,
                    order_id = nil,
-                   due_at = SKIP)
-      @code = code
+                   code = SKIP,
+                   customer_id = SKIP,
+                   customer = SKIP,
+                   metadata = SKIP,
+                   due_at = SKIP,
+                   antifraud = SKIP)
+      @code = code unless code == SKIP
       @amount = amount
-      @customer_id = customer_id
-      @customer = customer
+      @customer_id = customer_id unless customer_id == SKIP
+      @customer = customer unless customer == SKIP
       @payment = payment
-      @metadata = metadata
+      @metadata = metadata unless metadata == SKIP
       @due_at = due_at unless due_at == SKIP
-      @antifraud = antifraud
+      @antifraud = antifraud unless antifraud == SKIP
       @order_id = order_id
     end
 
@@ -98,30 +110,30 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      code = hash.key?('code') ? hash['code'] : nil
       amount = hash.key?('amount') ? hash['amount'] : nil
-      customer_id = hash.key?('customer_id') ? hash['customer_id'] : nil
-      customer = CreateCustomerRequest.from_hash(hash['customer']) if hash['customer']
       payment = CreatePaymentRequest.from_hash(hash['payment']) if hash['payment']
-      metadata = hash.key?('metadata') ? hash['metadata'] : nil
-      antifraud = CreateAntifraudRequest.from_hash(hash['antifraud']) if hash['antifraud']
       order_id = hash.key?('order_id') ? hash['order_id'] : nil
+      code = hash.key?('code') ? hash['code'] : SKIP
+      customer_id = hash.key?('customer_id') ? hash['customer_id'] : SKIP
+      customer = CreateCustomerRequest.from_hash(hash['customer']) if hash['customer']
+      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       due_at = if hash.key?('due_at')
                  (DateTimeHelper.from_rfc3339(hash['due_at']) if hash['due_at'])
                else
                  SKIP
                end
+      antifraud = CreateAntifraudRequest.from_hash(hash['antifraud']) if hash['antifraud']
 
       # Create object from extracted values.
-      CreateChargeRequest.new(code,
-                              amount,
+      CreateChargeRequest.new(amount,
+                              payment,
+                              order_id,
+                              code,
                               customer_id,
                               customer,
-                              payment,
                               metadata,
-                              antifraud,
-                              order_id,
-                              due_at)
+                              due_at,
+                              antifraud)
     end
 
     def to_due_at

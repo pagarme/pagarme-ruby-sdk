@@ -782,77 +782,6 @@ body = CreateSubscriptionRequest.new(
       nil,
       nil,
       nil
-    ),
-    CreateSubscriptionItemRequest.new(
-      'description4',
-      CreatePricingSchemeRequest.new(
-        'scheme_type4',
-        nil,
-        nil,
-        nil,
-        nil
-      ),
-      'id4',
-      'plan_item_id4',
-      [
-        CreateDiscountRequest.new(
-          65.47,
-          'discount_type3',
-          'item_id5',
-          nil,
-          nil
-        ),
-        CreateDiscountRequest.new(
-          65.48,
-          'discount_type4',
-          'item_id6',
-          nil,
-          nil
-        )
-      ],
-      'name4',
-      nil,
-      nil,
-      nil
-    ),
-    CreateSubscriptionItemRequest.new(
-      'description5',
-      CreatePricingSchemeRequest.new(
-        'scheme_type3',
-        nil,
-        nil,
-        nil,
-        nil
-      ),
-      'id5',
-      'plan_item_id5',
-      [
-        CreateDiscountRequest.new(
-          65.48,
-          'discount_type4',
-          'item_id6',
-          nil,
-          nil
-        ),
-        CreateDiscountRequest.new(
-          65.49,
-          'discount_type5',
-          'item_id7',
-          nil,
-          nil
-        ),
-        CreateDiscountRequest.new(
-          65.5,
-          'discount_type6',
-          'item_id8',
-          nil,
-          nil
-        )
-      ],
-      'name5',
-      nil,
-      nil,
-      nil
     )
   ],
   CreateShippingRequest.new(
@@ -899,20 +828,6 @@ body = CreateSubscriptionRequest.new(
       38.83,
       'increment_type3',
       'item_id9',
-      nil,
-      nil
-    ),
-    CreateIncrementRequest.new(
-      38.84,
-      'increment_type4',
-      'item_id8',
-      nil,
-      nil
-    ),
-    CreateIncrementRequest.new(
-      38.85,
-      'increment_type5',
-      'item_id7',
       nil,
       nil
     )
@@ -1379,12 +1294,6 @@ body = UpdateSubscriptionItemRequest.new(
         225,
         nil,
         nil
-      ),
-      UpdatePriceBracketRequest.new(
-        32,
-        226,
-        nil,
-        nil
       )
     ],
     nil,
@@ -1448,13 +1357,6 @@ request = CreateSubscriptionItemRequest.new(
       199.99,
       'discount_type5',
       'item_id7',
-      nil,
-      nil
-    ),
-    CreateDiscountRequest.new(
-      200,
-      'discount_type6',
-      'item_id8',
       nil,
       nil
     )
@@ -1713,20 +1615,6 @@ request = UpdateSubscriptionSplitRequest.new(
       'type6',
       222,
       'recipient_id6',
-      nil,
-      nil
-    ),
-    CreateSplitRequest.new(
-      'type5',
-      223,
-      'recipient_id5',
-      nil,
-      nil
-    ),
-    CreateSplitRequest.new(
-      'type4',
-      224,
-      'recipient_id4',
       nil,
       nil
     )

@@ -161,12 +161,6 @@ body = UpdatePlanItemRequest.new(
         225,
         nil,
         nil
-      ),
-      UpdatePriceBracketRequest.new(
-        32,
-        226,
-        nil,
-        nil
       )
     ],
     nil,
@@ -307,34 +301,6 @@ body = CreatePlanRequest.new(
       ),
       'id3',
       'description3',
-      nil,
-      nil
-    ),
-    CreatePlanItemRequest.new(
-      'name4',
-      CreatePricingSchemeRequest.new(
-        'scheme_type4',
-        nil,
-        nil,
-        nil,
-        nil
-      ),
-      'id4',
-      'description4',
-      nil,
-      nil
-    ),
-    CreatePlanItemRequest.new(
-      'name5',
-      CreatePricingSchemeRequest.new(
-        'scheme_type3',
-        nil,
-        nil,
-        nil,
-        nil
-      ),
-      'id5',
-      'description5',
       nil,
       nil
     )

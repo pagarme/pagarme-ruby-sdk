@@ -154,7 +154,8 @@ request = UpdateChargePaymentMethodRequest.new(
     nil,
     nil,
     nil,
-    '"first" or "subsequent"'
+    '"first" or "subsequent"',
+    nil
   ),
   CreateCashPaymentRequest.new(
     'description6',
@@ -522,45 +523,7 @@ def create_charge(request,
 
 ```ruby
 request = CreateChargeRequest.new(
-  'code4',
   242,
-  'customer_id4',
-  CreateCustomerRequest.new(
-    '{
-    "name": "Tony Stark"
-}',
-    'email0',
-    'document0',
-    'type4',
-    CreateAddressRequest.new(
-      'street2',
-      'number0',
-      'zip_code6',
-      'neighborhood8',
-      'city2',
-      'state8',
-      'country6',
-      'complement8',
-      {
-        'key0': 'metadata7',
-        'key1': 'metadata6'
-      },
-      'line_16',
-      'line_20'
-    ),
-    {
-      'key0': 'metadata3',
-      'key1': 'metadata2',
-      'key2': 'metadata1'
-    },
-    CreatePhonesRequest.new(
-      nil,
-      nil
-    ),
-    'code4',
-    nil,
-    nil
-  ),
   CreatePaymentRequest.new(
     'payment_method2',
     nil,
@@ -580,16 +543,12 @@ request = CreateChargeRequest.new(
     nil,
     nil
   ),
-  {
-    'key0': 'metadata3'
-  },
-  CreateAntifraudRequest.new(
-    'type0',
-    CreateClearSaleRequest.new(
-      52
-    )
-  ),
   'order_id0',
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
   nil
 )
 
