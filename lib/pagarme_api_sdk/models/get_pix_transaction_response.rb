@@ -33,6 +33,10 @@ module PagarmeApiSdk
     # @return [GetPixPayerResponse]
     attr_accessor :payer
 
+    # Pix provider TID
+    # @return [String]
+    attr_accessor :pix_provider_tid
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -42,6 +46,7 @@ module PagarmeApiSdk
       @_hash['additional_information'] = 'additional_information'
       @_hash['end_to_end_id'] = 'end_to_end_id'
       @_hash['payer'] = 'payer'
+      @_hash['pix_provider_tid'] = 'pix_provider_tid'
       @_hash = super().merge(@_hash)
       @_hash
     end
@@ -55,6 +60,7 @@ module PagarmeApiSdk
         additional_information
         end_to_end_id
         payer
+        pix_provider_tid
       ]
       (_arr << super()).flatten!
     end
@@ -68,6 +74,7 @@ module PagarmeApiSdk
         additional_information
         end_to_end_id
         payer
+        pix_provider_tid
       ]
       (_arr << super()).flatten!
     end
@@ -78,6 +85,7 @@ module PagarmeApiSdk
                    additional_information = SKIP,
                    end_to_end_id = SKIP,
                    payer = SKIP,
+                   pix_provider_tid = SKIP,
                    gateway_id = SKIP,
                    amount = SKIP,
                    status = SKIP,
@@ -103,6 +111,7 @@ module PagarmeApiSdk
       @additional_information = additional_information unless additional_information == SKIP
       @end_to_end_id = end_to_end_id unless end_to_end_id == SKIP
       @payer = payer unless payer == SKIP
+      @pix_provider_tid = pix_provider_tid unless pix_provider_tid == SKIP
 
       # Call the constructor of the base class
       super(gateway_id,
@@ -150,6 +159,8 @@ module PagarmeApiSdk
       additional_information = SKIP unless hash.key?('additional_information')
       end_to_end_id = hash.key?('end_to_end_id') ? hash['end_to_end_id'] : SKIP
       payer = GetPixPayerResponse.from_hash(hash['payer']) if hash['payer']
+      pix_provider_tid =
+        hash.key?('pix_provider_tid') ? hash['pix_provider_tid'] : SKIP
       gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
       amount = hash.key?('amount') ? hash['amount'] : SKIP
       status = hash.key?('status') ? hash['status'] : SKIP
@@ -210,6 +221,7 @@ module PagarmeApiSdk
                                     additional_information,
                                     end_to_end_id,
                                     payer,
+                                    pix_provider_tid,
                                     gateway_id,
                                     amount,
                                     status,

@@ -10,107 +10,13 @@ invoices_controller = client.invoices
 
 ## Methods
 
-* [Update Invoice Metadata](../../doc/controllers/invoices.md#update-invoice-metadata)
-* [Get Partial Invoice](../../doc/controllers/invoices.md#get-partial-invoice)
-* [Cancel Invoice](../../doc/controllers/invoices.md#cancel-invoice)
 * [Create Invoice](../../doc/controllers/invoices.md#create-invoice)
 * [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
-* [Get Invoice](../../doc/controllers/invoices.md#get-invoice)
+* [Cancel Invoice](../../doc/controllers/invoices.md#cancel-invoice)
+* [Update Invoice Metadata](../../doc/controllers/invoices.md#update-invoice-metadata)
+* [Get Partial Invoice](../../doc/controllers/invoices.md#get-partial-invoice)
 * [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
-
-
-# Update Invoice Metadata
-
-Updates the metadata from an invoice
-
-```ruby
-def update_invoice_metadata(invoice_id,
-                            request,
-                            idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `invoice_id` | `String` | Template, Required | The invoice id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the invoice metadata |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```ruby
-invoice_id = 'invoice_id0'
-
-request = UpdateMetadataRequest.new(
-  {
-    'key0': 'metadata3'
-  }
-)
-
-result = invoices_controller.update_invoice_metadata(
-  invoice_id,
-  request
-)
-```
-
-
-# Get Partial Invoice
-
-```ruby
-def get_partial_invoice(subscription_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription Id |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-
-result = invoices_controller.get_partial_invoice(subscription_id)
-```
-
-
-# Cancel Invoice
-
-Cancels an invoice
-
-```ruby
-def cancel_invoice(invoice_id,
-                   idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `invoice_id` | `String` | Template, Required | Invoice id |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```ruby
-invoice_id = 'invoice_id0'
-
-result = invoices_controller.cancel_invoice(invoice_id)
-```
+* [Get Invoice](../../doc/controllers/invoices.md#get-invoice)
 
 
 # Create Invoice
@@ -196,19 +102,21 @@ result = invoices_controller.get_invoices
 ```
 
 
-# Get Invoice
+# Cancel Invoice
 
-Gets an invoice
+Cancels an invoice
 
 ```ruby
-def get_invoice(invoice_id)
+def cancel_invoice(invoice_id,
+                   idempotency_key: nil)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `invoice_id` | `String` | Template, Required | Invoice Id |
+| `invoice_id` | `String` | Template, Required | Invoice id |
+| `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
@@ -219,7 +127,72 @@ def get_invoice(invoice_id)
 ```ruby
 invoice_id = 'invoice_id0'
 
-result = invoices_controller.get_invoice(invoice_id)
+result = invoices_controller.cancel_invoice(invoice_id)
+```
+
+
+# Update Invoice Metadata
+
+Updates the metadata from an invoice
+
+```ruby
+def update_invoice_metadata(invoice_id,
+                            request,
+                            idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoice_id` | `String` | Template, Required | The invoice id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the invoice metadata |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```ruby
+invoice_id = 'invoice_id0'
+
+request = UpdateMetadataRequest.new(
+  {
+    'key0': 'metadata3'
+  }
+)
+
+result = invoices_controller.update_invoice_metadata(
+  invoice_id,
+  request
+)
+```
+
+
+# Get Partial Invoice
+
+```ruby
+def get_partial_invoice(subscription_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription Id |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+
+result = invoices_controller.get_partial_invoice(subscription_id)
 ```
 
 
@@ -258,5 +231,32 @@ result = invoices_controller.update_invoice_status(
   invoice_id,
   request
 )
+```
+
+
+# Get Invoice
+
+Gets an invoice
+
+```ruby
+def get_invoice(invoice_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoice_id` | `String` | Template, Required | Invoice Id |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```ruby
+invoice_id = 'invoice_id0'
+
+result = invoices_controller.get_invoice(invoice_id)
 ```
 
