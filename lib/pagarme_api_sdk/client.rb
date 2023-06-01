@@ -8,6 +8,12 @@ module PagarmeApiSdk
   class Client
     attr_reader :config, :auth_managers
 
+    # Access to orders controller.
+    # @return [OrdersController] Returns the controller instance.
+    def orders
+      @orders ||= OrdersController.new @global_configuration
+    end
+
     # Access to plans controller.
     # @return [PlansController] Returns the controller instance.
     def plans
@@ -24,12 +30,6 @@ module PagarmeApiSdk
     # @return [InvoicesController] Returns the controller instance.
     def invoices
       @invoices ||= InvoicesController.new @global_configuration
-    end
-
-    # Access to orders controller.
-    # @return [OrdersController] Returns the controller instance.
-    def orders
-      @orders ||= OrdersController.new @global_configuration
     end
 
     # Access to customers controller.
@@ -50,16 +50,16 @@ module PagarmeApiSdk
       @charges ||= ChargesController.new @global_configuration
     end
 
-    # Access to transfers controller.
-    # @return [TransfersController] Returns the controller instance.
-    def transfers
-      @transfers ||= TransfersController.new @global_configuration
-    end
-
     # Access to tokens controller.
     # @return [TokensController] Returns the controller instance.
     def tokens
       @tokens ||= TokensController.new @global_configuration
+    end
+
+    # Access to transfers controller.
+    # @return [TransfersController] Returns the controller instance.
+    def transfers
+      @transfers ||= TransfersController.new @global_configuration
     end
 
     # Access to transactions controller.
