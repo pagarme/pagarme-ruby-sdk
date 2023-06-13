@@ -8,12 +8,6 @@ module PagarmeApiSdk
   class Client
     attr_reader :config, :auth_managers
 
-    # Access to orders controller.
-    # @return [OrdersController] Returns the controller instance.
-    def orders
-      @orders ||= OrdersController.new @global_configuration
-    end
-
     # Access to plans controller.
     # @return [PlansController] Returns the controller instance.
     def plans
@@ -30,6 +24,12 @@ module PagarmeApiSdk
     # @return [InvoicesController] Returns the controller instance.
     def invoices
       @invoices ||= InvoicesController.new @global_configuration
+    end
+
+    # Access to orders controller.
+    # @return [OrdersController] Returns the controller instance.
+    def orders
+      @orders ||= OrdersController.new @global_configuration
     end
 
     # Access to customers controller.
@@ -50,16 +50,16 @@ module PagarmeApiSdk
       @charges ||= ChargesController.new @global_configuration
     end
 
-    # Access to tokens controller.
-    # @return [TokensController] Returns the controller instance.
-    def tokens
-      @tokens ||= TokensController.new @global_configuration
-    end
-
     # Access to transfers controller.
     # @return [TransfersController] Returns the controller instance.
     def transfers
       @transfers ||= TransfersController.new @global_configuration
+    end
+
+    # Access to tokens controller.
+    # @return [TokensController] Returns the controller instance.
+    def tokens
+      @tokens ||= TokensController.new @global_configuration
     end
 
     # Access to transactions controller.
@@ -74,7 +74,8 @@ module PagarmeApiSdk
                    retry_methods: %i[get put], http_callback: nil,
                    environment: Environment::PRODUCTION,
                    basic_auth_user_name: 'TODO: Replace',
-                   basic_auth_password: 'TODO: Replace', config: nil)
+                   basic_auth_password: 'TODO: Replace',
+                   service_referer_name: 'TODO: Replace', config: nil)
       @config = if config.nil?
                   Configuration.new(connection: connection, adapter: adapter,
                                     timeout: timeout, max_retries: max_retries,
@@ -85,7 +86,8 @@ module PagarmeApiSdk
                                     http_callback: http_callback,
                                     environment: environment,
                                     basic_auth_user_name: basic_auth_user_name,
-                                    basic_auth_password: basic_auth_password)
+                                    basic_auth_password: basic_auth_password,
+                                    service_referer_name: service_referer_name)
                 else
                   config
                 end
@@ -94,6 +96,7 @@ module PagarmeApiSdk
                                                  .base_uri_executor(@config.method(:get_base_uri))
                                                  .global_errors(BaseController::GLOBAL_ERRORS)
                                                  .user_agent(BaseController.user_agent)
+                                                 .global_header('ServiceRefererName', @config.service_referer_name)
                                                  .sdk_module(PagarmeApiSdk)
 
       initialize_auth_managers(@global_configuration)

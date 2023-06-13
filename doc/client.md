@@ -5,6 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
+| `service_referer_name` | `String` |  |
 | `connection` | `Faraday::Connection` | The Faraday connection object passed by the SDK user for making requests |
 | `adapter` | `Faraday::Adapter` | The Faraday adapter object passed by the SDK user for performing http requests |
 | `timeout` | `Float` | The value to use for connection timeout. <br> **Default: 60** |
@@ -21,6 +22,7 @@ The API client can be initialized as follows:
 
 ```ruby
 client = PagarmeApiSdk::Client.new(
+  service_referer_name: 'ServiceRefererName',
   basic_auth_user_name: 'BasicAuthUserName',
   basic_auth_password: 'BasicAuthPassword'
 )
@@ -34,14 +36,14 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 
 | Name | Description |
 |  --- | --- |
-| orders | Gets OrdersController |
 | plans | Gets PlansController |
 | subscriptions | Gets SubscriptionsController |
 | invoices | Gets InvoicesController |
+| orders | Gets OrdersController |
 | customers | Gets CustomersController |
 | recipients | Gets RecipientsController |
 | charges | Gets ChargesController |
-| tokens | Gets TokensController |
 | transfers | Gets TransfersController |
+| tokens | Gets TokensController |
 | transactions | Gets TransactionsController |
 

@@ -22,7 +22,7 @@ module PagarmeApiSdk
   # are configured in this class.
   class Configuration < CoreLibrary::HttpClientConfiguration
     # The attribute readers for properties.
-    attr_reader :environment, :basic_auth_user_name, :basic_auth_password
+    attr_reader :environment, :basic_auth_user_name, :basic_auth_password, :service_referer_name
 
     class << self
       attr_reader :environments
@@ -34,7 +34,8 @@ module PagarmeApiSdk
                    retry_methods: %i[get put], http_callback: nil,
                    environment: Environment::PRODUCTION,
                    basic_auth_user_name: 'TODO: Replace',
-                   basic_auth_password: 'TODO: Replace')
+                   basic_auth_password: 'TODO: Replace',
+                   service_referer_name: 'TODO: Replace')
 
       super connection: connection, adapter: adapter, timeout: timeout,
             max_retries: max_retries, retry_interval: retry_interval,
@@ -50,6 +51,9 @@ module PagarmeApiSdk
       # The password to use with basic authentication
       @basic_auth_password = basic_auth_password
 
+      # TODO: Replace
+      @service_referer_name = service_referer_name
+
       # The Http Client to use for making requests.
       set_http_client CoreLibrary::FaradayClient.new(self)
     end
@@ -58,7 +62,7 @@ module PagarmeApiSdk
                    max_retries: nil, retry_interval: nil, backoff_factor: nil,
                    retry_statuses: nil, retry_methods: nil, http_callback: nil,
                    environment: nil, basic_auth_user_name: nil,
-                   basic_auth_password: nil)
+                   basic_auth_password: nil, service_referer_name: nil)
       connection ||= self.connection
       adapter ||= self.adapter
       timeout ||= self.timeout
@@ -71,6 +75,7 @@ module PagarmeApiSdk
       environment ||= self.environment
       basic_auth_user_name ||= self.basic_auth_user_name
       basic_auth_password ||= self.basic_auth_password
+      service_referer_name ||= self.service_referer_name
 
       Configuration.new(connection: connection, adapter: adapter,
                         timeout: timeout, max_retries: max_retries,
@@ -80,7 +85,8 @@ module PagarmeApiSdk
                         retry_methods: retry_methods,
                         http_callback: http_callback, environment: environment,
                         basic_auth_user_name: basic_auth_user_name,
-                        basic_auth_password: basic_auth_password)
+                        basic_auth_password: basic_auth_password,
+                        service_referer_name: service_referer_name)
     end
 
     # All the environments the SDK can run in.
