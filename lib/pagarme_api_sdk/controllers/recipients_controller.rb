@@ -105,6 +105,55 @@ module PagarmeApiSdk
         .execute
     end
 
+    # TODO: type endpoint description here
+    # @param [String] recipient_id Required parameter: Example:
+    # @param [String] withdrawal_id Required parameter: Example:
+    # @return [GetWithdrawResponse] response from the API call
+    def get_withdraw_by_id(recipient_id,
+                           withdrawal_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/recipients/{recipient_id}/withdrawals/{withdrawal_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(withdrawal_id, key: 'withdrawal_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetWithdrawResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Updates the default bank account from a recipient
+    # @param [String] recipient_id Required parameter: Recipient id
+    # @param [UpdateRecipientBankAccountRequest] request Required parameter:
+    # Bank account data
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetRecipientResponse] response from the API call
+    def update_recipient_default_bank_account(recipient_id,
+                                              request,
+                                              idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/recipients/{recipient_id}/default-bank-account',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
+        .execute
+    end
+
     # Updates recipient metadata
     # @param [String] recipient_id Required parameter: Recipient id
     # @param [UpdateMetadataRequest] request Required parameter: Metadata
@@ -131,6 +180,41 @@ module PagarmeApiSdk
         .execute
     end
 
+    # Gets a paginated list of transfers for the recipient
+    # @param [String] recipient_id Required parameter: Recipient id
+    # @param [Integer] page Optional parameter: Page number
+    # @param [Integer] size Optional parameter: Page size
+    # @param [String] status Optional parameter: Filter for transfer status
+    # @param [DateTime] created_since Optional parameter: Filter for start range
+    # of transfer creation date
+    # @param [DateTime] created_until Optional parameter: Filter for end range
+    # of transfer creation date
+    # @return [ListTransferResponse] response from the API call
+    def get_transfers(recipient_id,
+                      page: nil,
+                      size: nil,
+                      status: nil,
+                      created_since: nil,
+                      created_until: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/recipients/{recipient_id}/transfers',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .query_param(new_parameter(page, key: 'page'))
+                   .query_param(new_parameter(size, key: 'size'))
+                   .query_param(new_parameter(status, key: 'status'))
+                   .query_param(new_parameter(created_since, key: 'created_since'))
+                   .query_param(new_parameter(created_until, key: 'created_until'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(ListTransferResponse.method(:from_hash)))
+        .execute
+    end
+
     # Gets a transfer
     # @param [String] recipient_id Required parameter: Recipient id
     # @param [String] transfer_id Required parameter: Transfer id
@@ -150,6 +234,56 @@ module PagarmeApiSdk
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetTransferResponse.method(:from_hash)))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] recipient_id Required parameter: Example:
+    # @param [CreateWithdrawRequest] request Required parameter: Example:
+    # @return [GetWithdrawResponse] response from the API call
+    def create_withdraw(recipient_id,
+                        request)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/recipients/{recipient_id}/withdrawals',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetWithdrawResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Updates recipient metadata
+    # @param [String] recipient_id Required parameter: Recipient id
+    # @param [UpdateAutomaticAnticipationSettingsRequest] request Required
+    # parameter: Metadata
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetRecipientResponse] response from the API call
+    def update_automatic_anticipation_settings(recipient_id,
+                                               request,
+                                               idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/recipients/{recipient_id}/automatic-anticipation-settings',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
 
@@ -250,53 +384,21 @@ module PagarmeApiSdk
         .execute
     end
 
-    # Updates the default bank account from a recipient
-    # @param [String] recipient_id Required parameter: Recipient id
-    # @param [UpdateRecipientBankAccountRequest] request Required parameter:
-    # Bank account data
-    # @param [String] idempotency_key Optional parameter: Example:
+    # Retrieves recipient information
+    # @param [String] recipient_id Required parameter: Recipiend id
     # @return [GetRecipientResponse] response from the API call
-    def update_recipient_default_bank_account(recipient_id,
-                                              request,
-                                              idempotency_key: nil)
+    def get_recipient(recipient_id)
       new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/recipients/{recipient_id}/default-bank-account',
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/recipients/{recipient_id}',
                                      Server::DEFAULT)
                    .template_param(new_parameter(recipient_id, key: 'recipient_id')
                                     .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('global')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] recipient_id Required parameter: Example:
-    # @param [CreateWithdrawRequest] request Required parameter: Example:
-    # @return [GetWithdrawResponse] response from the API call
-    def create_withdraw(recipient_id,
-                        request)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/recipients/{recipient_id}/withdrawals',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
-        .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetWithdrawResponse.method(:from_hash)))
         .execute
     end
 
@@ -315,6 +417,39 @@ module PagarmeApiSdk
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetBalanceResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Gets a paginated list of transfers for the recipient
+    # @param [String] recipient_id Required parameter: Example:
+    # @param [Integer] page Optional parameter: Example:
+    # @param [Integer] size Optional parameter: Example:
+    # @param [String] status Optional parameter: Example:
+    # @param [DateTime] created_since Optional parameter: Example:
+    # @param [DateTime] created_until Optional parameter: Example:
+    # @return [ListWithdrawals] response from the API call
+    def get_withdrawals(recipient_id,
+                        page: nil,
+                        size: nil,
+                        status: nil,
+                        created_since: nil,
+                        created_until: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/recipients/{recipient_id}/withdrawals',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .query_param(new_parameter(page, key: 'page'))
+                   .query_param(new_parameter(size, key: 'size'))
+                   .query_param(new_parameter(status, key: 'status'))
+                   .query_param(new_parameter(created_since, key: 'created_since'))
+                   .query_param(new_parameter(created_until, key: 'created_until'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('global')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(ListWithdrawals.method(:from_hash)))
         .execute
     end
 
@@ -364,141 +499,6 @@ module PagarmeApiSdk
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Updates recipient metadata
-    # @param [String] recipient_id Required parameter: Recipient id
-    # @param [UpdateAutomaticAnticipationSettingsRequest] request Required
-    # parameter: Metadata
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetRecipientResponse] response from the API call
-    def update_automatic_anticipation_settings(recipient_id,
-                                               request,
-                                               idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/recipients/{recipient_id}/automatic-anticipation-settings',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
-        .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Retrieves recipient information
-    # @param [String] recipient_id Required parameter: Recipiend id
-    # @return [GetRecipientResponse] response from the API call
-    def get_recipient(recipient_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/recipients/{recipient_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
-        .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Gets a paginated list of transfers for the recipient
-    # @param [String] recipient_id Required parameter: Example:
-    # @param [Integer] page Optional parameter: Example:
-    # @param [Integer] size Optional parameter: Example:
-    # @param [String] status Optional parameter: Example:
-    # @param [DateTime] created_since Optional parameter: Example:
-    # @param [DateTime] created_until Optional parameter: Example:
-    # @return [ListWithdrawals] response from the API call
-    def get_withdrawals(recipient_id,
-                        page: nil,
-                        size: nil,
-                        status: nil,
-                        created_since: nil,
-                        created_until: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/recipients/{recipient_id}/withdrawals',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .query_param(new_parameter(page, key: 'page'))
-                   .query_param(new_parameter(size, key: 'size'))
-                   .query_param(new_parameter(status, key: 'status'))
-                   .query_param(new_parameter(created_since, key: 'created_since'))
-                   .query_param(new_parameter(created_until, key: 'created_until'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
-        .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListWithdrawals.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] recipient_id Required parameter: Example:
-    # @param [String] withdrawal_id Required parameter: Example:
-    # @return [GetWithdrawResponse] response from the API call
-    def get_withdraw_by_id(recipient_id,
-                           withdrawal_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/recipients/{recipient_id}/withdrawals/{withdrawal_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .template_param(new_parameter(withdrawal_id, key: 'withdrawal_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
-        .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetWithdrawResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Gets a paginated list of transfers for the recipient
-    # @param [String] recipient_id Required parameter: Recipient id
-    # @param [Integer] page Optional parameter: Page number
-    # @param [Integer] size Optional parameter: Page size
-    # @param [String] status Optional parameter: Filter for transfer status
-    # @param [DateTime] created_since Optional parameter: Filter for start range
-    # of transfer creation date
-    # @param [DateTime] created_until Optional parameter: Filter for end range
-    # of transfer creation date
-    # @return [ListTransferResponse] response from the API call
-    def get_transfers(recipient_id,
-                      page: nil,
-                      size: nil,
-                      status: nil,
-                      created_since: nil,
-                      created_until: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/recipients/{recipient_id}/transfers',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .query_param(new_parameter(page, key: 'page'))
-                   .query_param(new_parameter(size, key: 'size'))
-                   .query_param(new_parameter(status, key: 'status'))
-                   .query_param(new_parameter(created_since, key: 'created_since'))
-                   .query_param(new_parameter(created_until, key: 'created_until'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
-        .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListTransferResponse.method(:from_hash)))
         .execute
     end
 
