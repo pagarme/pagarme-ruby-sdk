@@ -80,6 +80,7 @@ module PagarmeApiSdk
     # An array for optional fields
     def self.optionals
       %w[
+        bank
         due_at
         billing_address_id
         nosso_numero
@@ -92,6 +93,7 @@ module PagarmeApiSdk
     # An array for nullable fields
     def self.nullables
       %w[
+        bank
         due_at
         billing_address_id
         nosso_numero
@@ -102,11 +104,11 @@ module PagarmeApiSdk
     end
 
     def initialize(retries = nil,
-                   bank = nil,
                    instructions = nil,
                    billing_address = nil,
                    document_number = nil,
                    statement_descriptor = nil,
+                   bank = SKIP,
                    due_at = SKIP,
                    billing_address_id = SKIP,
                    nosso_numero = SKIP,
@@ -114,7 +116,7 @@ module PagarmeApiSdk
                    fine = SKIP,
                    max_days_to_pay_past_due = SKIP)
       @retries = retries
-      @bank = bank
+      @bank = bank unless bank == SKIP
       @instructions = instructions
       @due_at = due_at unless due_at == SKIP
       @billing_address = billing_address
@@ -133,7 +135,6 @@ module PagarmeApiSdk
 
       # Extract variables from the hash.
       retries = hash.key?('retries') ? hash['retries'] : nil
-      bank = hash.key?('bank') ? hash['bank'] : nil
       instructions = hash.key?('instructions') ? hash['instructions'] : nil
       billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
         hash['billing_address']
@@ -141,6 +142,7 @@ module PagarmeApiSdk
         hash.key?('document_number') ? hash['document_number'] : nil
       statement_descriptor =
         hash.key?('statement_descriptor') ? hash['statement_descriptor'] : nil
+      bank = hash.key?('bank') ? hash['bank'] : SKIP
       due_at = if hash.key?('due_at')
                  (DateTimeHelper.from_rfc3339(hash['due_at']) if hash['due_at'])
                else
@@ -156,11 +158,11 @@ module PagarmeApiSdk
 
       # Create object from extracted values.
       CreateBoletoPaymentRequest.new(retries,
-                                     bank,
                                      instructions,
                                      billing_address,
                                      document_number,
                                      statement_descriptor,
+                                     bank,
                                      due_at,
                                      billing_address_id,
                                      nosso_numero,
