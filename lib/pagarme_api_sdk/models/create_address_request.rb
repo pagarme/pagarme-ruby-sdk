@@ -73,12 +73,16 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        metadata
+      ]
     end
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        metadata
+      ]
     end
 
     def initialize(street = nil,
@@ -89,9 +93,9 @@ module PagarmeApiSdk
                    state = nil,
                    country = nil,
                    complement = nil,
-                   metadata = nil,
                    line_1 = nil,
-                   line_2 = nil)
+                   line_2 = nil,
+                   metadata = SKIP)
       @street = street
       @number = number
       @zip_code = zip_code
@@ -100,7 +104,7 @@ module PagarmeApiSdk
       @state = state
       @country = country
       @complement = complement
-      @metadata = metadata
+      @metadata = metadata unless metadata == SKIP
       @line_1 = line_1
       @line_2 = line_2
     end
@@ -118,9 +122,9 @@ module PagarmeApiSdk
       state = hash.key?('state') ? hash['state'] : nil
       country = hash.key?('country') ? hash['country'] : nil
       complement = hash.key?('complement') ? hash['complement'] : nil
-      metadata = hash.key?('metadata') ? hash['metadata'] : nil
       line_1 = hash.key?('line_1') ? hash['line_1'] : nil
       line_2 = hash.key?('line_2') ? hash['line_2'] : nil
+      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
 
       # Create object from extracted values.
       CreateAddressRequest.new(street,
@@ -131,9 +135,9 @@ module PagarmeApiSdk
                                state,
                                country,
                                complement,
-                               metadata,
                                line_1,
-                               line_2)
+                               line_2,
+                               metadata)
     end
   end
 end

@@ -25,6 +25,10 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :operation_reference
 
+    # Splits
+    # @return [CreateBankAccountRefundingDTO]
+    attr_accessor :bank_account
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -32,6 +36,7 @@ module PagarmeApiSdk
       @_hash['split_rules'] = 'split_rules'
       @_hash['split'] = 'split'
       @_hash['operation_reference'] = 'operation_reference'
+      @_hash['bank_account'] = 'bank_account'
       @_hash
     end
 
@@ -41,6 +46,7 @@ module PagarmeApiSdk
         amount
         split_rules
         split
+        bank_account
       ]
     end
 
@@ -52,11 +58,13 @@ module PagarmeApiSdk
     def initialize(operation_reference = nil,
                    amount = SKIP,
                    split_rules = SKIP,
-                   split = SKIP)
+                   split = SKIP,
+                   bank_account = SKIP)
       @amount = amount unless amount == SKIP
       @split_rules = split_rules unless split_rules == SKIP
       @split = split unless split == SKIP
       @operation_reference = operation_reference
+      @bank_account = bank_account unless bank_account == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -87,12 +95,15 @@ module PagarmeApiSdk
       end
 
       split = SKIP unless hash.key?('split')
+      bank_account = CreateBankAccountRefundingDTO.from_hash(hash['bank_account']) if
+        hash['bank_account']
 
       # Create object from extracted values.
       CreateCancelChargeRequest.new(operation_reference,
                                     amount,
                                     split_rules,
-                                    split)
+                                    split,
+                                    bank_account)
     end
   end
 end

@@ -100,6 +100,7 @@ module PagarmeApiSdk
       %w[
         customer_id
         shipping
+        metadata
         antifraud_enabled
         ip
         session_id
@@ -115,6 +116,7 @@ module PagarmeApiSdk
     def self.nullables
       %w[
         customer_id
+        metadata
       ]
     end
 
@@ -122,10 +124,10 @@ module PagarmeApiSdk
                    customer = nil,
                    payments = nil,
                    code = nil,
-                   metadata = nil,
                    closed = true,
                    customer_id = SKIP,
                    shipping = SKIP,
+                   metadata = SKIP,
                    antifraud_enabled = SKIP,
                    ip = SKIP,
                    session_id = SKIP,
@@ -140,7 +142,7 @@ module PagarmeApiSdk
       @code = code
       @customer_id = customer_id unless customer_id == SKIP
       @shipping = shipping unless shipping == SKIP
-      @metadata = metadata
+      @metadata = metadata unless metadata == SKIP
       @antifraud_enabled = antifraud_enabled unless antifraud_enabled == SKIP
       @ip = ip unless ip == SKIP
       @session_id = session_id unless session_id == SKIP
@@ -179,10 +181,10 @@ module PagarmeApiSdk
 
       payments = nil unless hash.key?('payments')
       code = hash.key?('code') ? hash['code'] : nil
-      metadata = hash.key?('metadata') ? hash['metadata'] : nil
       closed = hash['closed'] ||= true
       customer_id = hash.key?('customer_id') ? hash['customer_id'] : SKIP
       shipping = CreateShippingRequest.from_hash(hash['shipping']) if hash['shipping']
+      metadata = hash.key?('metadata') ? hash['metadata'] : SKIP
       antifraud_enabled =
         hash.key?('antifraud_enabled') ? hash['antifraud_enabled'] : SKIP
       ip = hash.key?('ip') ? hash['ip'] : SKIP
@@ -198,10 +200,10 @@ module PagarmeApiSdk
                              customer,
                              payments,
                              code,
-                             metadata,
                              closed,
                              customer_id,
                              shipping,
+                             metadata,
                              antifraud_enabled,
                              ip,
                              session_id,
