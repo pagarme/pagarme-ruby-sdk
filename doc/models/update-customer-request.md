@@ -16,7 +16,7 @@ Request for updating a customer
 | `document` | `String` | Optional | Document number |
 | `type` | `String` | Optional | Person type |
 | `address` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Optional | Address |
-| `metadata` | `Hash of String` | Optional | Metadata |
+| `metadata` | `Hash[String, String]` | Optional | Metadata |
 | `phones` | [`CreatePhonesRequest`](../../doc/models/create-phones-request.md) | Optional | - |
 | `code` | `String` | Optional | Código de referência do cliente no sistema da loja. Max: 52 caracteres |
 | `gender` | `String` | Optional | Gênero do cliente |
@@ -26,10 +26,10 @@ Request for updating a customer
 
 ```json
 {
-  "name": "name0",
-  "email": "email6",
-  "document": "document6",
-  "type": "type0",
+  "name": "name8",
+  "email": "email8",
+  "document": "document2",
+  "type": "type2",
   "address": {
     "street": "street6",
     "number": "number4",

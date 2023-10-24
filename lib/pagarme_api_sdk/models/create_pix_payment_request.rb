@@ -19,7 +19,7 @@ module PagarmeApiSdk
     attr_accessor :expires_in
 
     # Pix additional information
-    # @return [List of PixAdditionalInformation]
+    # @return [Array[PixAdditionalInformation]]
     attr_accessor :additional_information
 
     # A mapping from model property names to API property names.

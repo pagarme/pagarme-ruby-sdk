@@ -22,7 +22,7 @@ Response object for getting a credit card
 | `updated_at` | `DateTime` | Optional | - |
 | `billing_address` | [`GetBillingAddressResponse`](../../doc/models/get-billing-address-response.md) | Optional | - |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
-| `metadata` | `Hash of String` | Optional | - |
+| `metadata` | `Hash[String, String]` | Optional | - |
 | `type` | `String` | Optional | Card type |
 | `holder_document` | `String` | Optional | Document number for the card's holder |
 | `deleted_at` | `DateTime` | Optional | - |
@@ -33,11 +33,11 @@ Response object for getting a credit card
 
 ```json
 {
-  "id": "id0",
-  "last_four_digits": "last_four_digits6",
-  "brand": "brand4",
-  "holder_name": "holder_name4",
-  "exp_month": 42
+  "id": "id4",
+  "last_four_digits": "last_four_digits0",
+  "brand": "brand8",
+  "holder_name": "holder_name0",
+  "exp_month": 52
 }
 ```
 

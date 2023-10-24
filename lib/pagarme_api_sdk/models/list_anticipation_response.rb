@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Anticipations
-    # @return [List of GetAnticipationResponse]
+    # @return [Array[GetAnticipationResponse]]
     attr_accessor :data
 
     # Paging

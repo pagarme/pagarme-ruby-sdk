@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # bank list response
-    # @return [List of String]
+    # @return [Array[String]]
     attr_accessor :bank
 
     # A mapping from model property names to API property names.

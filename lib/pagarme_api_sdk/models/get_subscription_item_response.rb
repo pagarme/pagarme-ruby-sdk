@@ -35,11 +35,11 @@ module PagarmeApiSdk
     attr_accessor :pricing_scheme
 
     # TODO: Write general description for this method
-    # @return [List of GetDiscountResponse]
+    # @return [Array[GetDiscountResponse]]
     attr_accessor :discounts
 
     # TODO: Write general description for this method
-    # @return [List of GetIncrementResponse]
+    # @return [Array[GetIncrementResponse]]
     attr_accessor :increments
 
     # TODO: Write general description for this method

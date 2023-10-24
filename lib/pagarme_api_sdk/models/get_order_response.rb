@@ -23,7 +23,7 @@ module PagarmeApiSdk
     attr_accessor :currency
 
     # TODO: Write general description for this method
-    # @return [List of GetOrderItemResponse]
+    # @return [Array[GetOrderItemResponse]]
     attr_accessor :items
 
     # TODO: Write general description for this method
@@ -43,7 +43,7 @@ module PagarmeApiSdk
     attr_accessor :updated_at
 
     # TODO: Write general description for this method
-    # @return [List of GetChargeResponse]
+    # @return [Array[GetChargeResponse]]
     attr_accessor :charges
 
     # TODO: Write general description for this method
@@ -55,11 +55,11 @@ module PagarmeApiSdk
     attr_accessor :shipping
 
     # TODO: Write general description for this method
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Checkout Payment Settings Response
-    # @return [List of GetCheckoutPaymentResponse]
+    # @return [Array[GetCheckoutPaymentResponse]]
     attr_accessor :checkouts
 
     # Ip address
@@ -79,7 +79,7 @@ module PagarmeApiSdk
     attr_accessor :device
 
     # Indicates whether the order is closed
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :closed
 
     # A mapping from model property names to API property names.

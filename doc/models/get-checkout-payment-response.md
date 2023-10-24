@@ -19,18 +19,18 @@ Resposta das configurações de pagamento do checkout
 | `gateway_affiliation_id` | `String` | Optional | Código da afiliação onde o pagamento será processado no gateway |
 | `accepted_payment_methods` | `Array<String>` | Optional | Meios de pagamento aceitos no checkout |
 | `status` | `String` | Optional | Status do checkout |
-| `skip_checkout_success_page` | `TrueClass\|FalseClass` | Optional | Pular tela de sucesso pós-pagamento? |
+| `skip_checkout_success_page` | `TrueClass \| FalseClass` | Optional | Pular tela de sucesso pós-pagamento? |
 | `created_at` | `DateTime` | Optional | Data de criação |
 | `updated_at` | `DateTime` | Optional | Data de atualização |
 | `canceled_at` | `DateTime` | Optional | Data de cancelamento |
-| `customer_editable` | `TrueClass\|FalseClass` | Optional | Torna o objeto customer editável |
+| `customer_editable` | `TrueClass \| FalseClass` | Optional | Torna o objeto customer editável |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | Dados do comprador |
 | `billingaddress` | [`GetAddressResponse`](../../doc/models/get-address-response.md) | Optional | Dados do endereço de cobrança |
 | `credit_card` | [`GetCheckoutCreditCardPaymentResponse`](../../doc/models/get-checkout-credit-card-payment-response.md) | Optional | Configurações de cartão de crédito |
 | `boleto` | [`GetCheckoutBoletoPaymentResponse`](../../doc/models/get-checkout-boleto-payment-response.md) | Optional | Configurações de boleto |
-| `billing_address_editable` | `TrueClass\|FalseClass` | Optional | Indica se o billing address poderá ser editado |
+| `billing_address_editable` | `TrueClass \| FalseClass` | Optional | Indica se o billing address poderá ser editado |
 | `shipping` | [`GetShippingResponse`](../../doc/models/get-shipping-response.md) | Optional | Configurações  de entrega |
-| `shippable` | `TrueClass\|FalseClass` | Optional | Indica se possui entrega |
+| `shippable` | `TrueClass \| FalseClass` | Optional | Indica se possui entrega |
 | `closed_at` | `DateTime` | Optional | Data de fechamento |
 | `expires_at` | `DateTime` | Optional | Data de expiração |
 | `currency` | `String` | Optional | Moeda |
@@ -43,11 +43,11 @@ Resposta das configurações de pagamento do checkout
 
 ```json
 {
-  "id": "id0",
-  "amount": 46,
-  "default_payment_method": "default_payment_method0",
-  "success_url": "success_url2",
-  "payment_url": "payment_url6"
+  "id": "id6",
+  "amount": 148,
+  "default_payment_method": "default_payment_method6",
+  "success_url": "success_url8",
+  "payment_url": "payment_url0"
 }
 ```
 

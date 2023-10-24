@@ -22,34 +22,41 @@ Response object for getting an Order
 | `charges` | [`Array<GetChargeResponse>`](../../doc/models/get-charge-response.md) | Optional | - |
 | `invoice_url` | `String` | Optional | - |
 | `shipping` | [`GetShippingResponse`](../../doc/models/get-shipping-response.md) | Optional | - |
-| `metadata` | `Hash of String` | Optional | - |
+| `metadata` | `Hash[String, String]` | Optional | - |
 | `checkouts` | [`Array<GetCheckoutPaymentResponse>`](../../doc/models/get-checkout-payment-response.md) | Optional | Checkout Payment Settings Response |
 | `ip` | `String` | Optional | Ip address |
 | `session_id` | `String` | Optional | Session id |
 | `location` | [`GetLocationResponse`](../../doc/models/get-location-response.md) | Optional | Location |
 | `device` | [`GetDeviceResponse`](../../doc/models/get-device-response.md) | Optional | Device's informations |
-| `closed` | `TrueClass\|FalseClass` | Optional | Indicates whether the order is closed |
+| `closed` | `TrueClass \| FalseClass` | Optional | Indicates whether the order is closed |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "code": "code8",
-  "currency": "currency0",
+  "id": "id6",
+  "code": "code4",
+  "currency": "currency6",
   "items": [
     {
-      "id": "id7",
-      "amount": 13,
-      "description": "description7",
-      "quantity": 127,
-      "category": "category5"
+      "id": "id8",
+      "amount": 164,
+      "description": "description2",
+      "quantity": 22,
+      "category": "category6"
     },
     {
       "id": "id8",
-      "amount": 14,
-      "description": "description8",
-      "quantity": 128,
+      "amount": 164,
+      "description": "description2",
+      "quantity": 22,
+      "category": "category6"
+    },
+    {
+      "id": "id8",
+      "amount": 164,
+      "description": "description2",
+      "quantity": 22,
       "category": "category6"
     }
   ],

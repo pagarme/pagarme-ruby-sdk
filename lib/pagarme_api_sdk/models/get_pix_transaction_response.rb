@@ -22,7 +22,7 @@ module PagarmeApiSdk
     attr_accessor :expires_at
 
     # TODO: Write general description for this method
-    # @return [List of PixAdditionalInformation]
+    # @return [Array[PixAdditionalInformation]]
     attr_accessor :additional_information
 
     # TODO: Write general description for this method

@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # The address objects
-    # @return [List of GetAddressResponse]
+    # @return [Array[GetAddressResponse]]
     attr_accessor :data
 
     # Paging object

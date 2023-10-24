@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # The BalanceOperation object
-    # @return [List of GetBalanceOperationResponse]
+    # @return [Array[GetBalanceOperationResponse]]
     attr_accessor :data
 
     # The BalanceOperation object

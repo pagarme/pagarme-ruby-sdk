@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # The card objects
-    # @return [List of GetCardResponse]
+    # @return [Array[GetCardResponse]]
     attr_accessor :data
 
     # Paging object

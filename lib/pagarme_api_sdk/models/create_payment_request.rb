@@ -34,7 +34,7 @@ module PagarmeApiSdk
     attr_accessor :voucher
 
     # Splits
-    # @return [List of CreateSplitRequest]
+    # @return [Array[CreateSplitRequest]]
     attr_accessor :split
 
     # Settings for bank transfer payment
@@ -62,7 +62,7 @@ module PagarmeApiSdk
     attr_accessor :customer
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Settings for cash payment

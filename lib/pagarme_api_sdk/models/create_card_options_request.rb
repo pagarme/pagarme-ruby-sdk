@@ -11,7 +11,7 @@ module PagarmeApiSdk
 
     # Indicates if the card should be verified before creation. If true,
     # executes an authorization before saving the card.
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :verify_card
 
     # A mapping from model property names to API property names.

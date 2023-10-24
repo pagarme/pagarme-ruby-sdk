@@ -12,17 +12,17 @@ charges_controller = client.charges
 
 * [Update Charge Metadata](../../doc/controllers/charges.md#update-charge-metadata)
 * [Update Charge Payment Method](../../doc/controllers/charges.md#update-charge-payment-method)
-* [Update Charge Card](../../doc/controllers/charges.md#update-charge-card)
-* [Get Charges Summary](../../doc/controllers/charges.md#get-charges-summary)
-* [Create Charge](../../doc/controllers/charges.md#create-charge)
 * [Get Charge Transactions](../../doc/controllers/charges.md#get-charge-transactions)
-* [Capture Charge](../../doc/controllers/charges.md#capture-charge)
-* [Get Charge](../../doc/controllers/charges.md#get-charge)
-* [Cancel Charge](../../doc/controllers/charges.md#cancel-charge)
-* [Get Charges](../../doc/controllers/charges.md#get-charges)
-* [Confirm Payment](../../doc/controllers/charges.md#confirm-payment)
 * [Update Charge Due Date](../../doc/controllers/charges.md#update-charge-due-date)
+* [Get Charges](../../doc/controllers/charges.md#get-charges)
+* [Capture Charge](../../doc/controllers/charges.md#capture-charge)
+* [Update Charge Card](../../doc/controllers/charges.md#update-charge-card)
+* [Get Charge](../../doc/controllers/charges.md#get-charge)
+* [Get Charges Summary](../../doc/controllers/charges.md#get-charges-summary)
 * [Retry Charge](../../doc/controllers/charges.md#retry-charge)
+* [Cancel Charge](../../doc/controllers/charges.md#cancel-charge)
+* [Create Charge](../../doc/controllers/charges.md#create-charge)
+* [Confirm Payment](../../doc/controllers/charges.md#confirm-payment)
 
 
 # Update Charge Metadata
@@ -112,18 +112,10 @@ request = UpdateChargePaymentMethodRequest.new(
     nil,
     '"first" or "subsequent"'
   ),
-  CreateDebitCardPaymentRequest.new(
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil
-  ),
+  CreateDebitCardPaymentRequest.new,
   CreateBoletoPaymentRequest.new(
-    10,
-    'instructions4',
+    226,
+    'instructions2',
     CreateAddressRequest.new(
       'street8',
       'number4',
@@ -134,18 +126,10 @@ request = UpdateChargePaymentMethodRequest.new(
       'country2',
       'complement6',
       'line_18',
-      'line_26',
-      nil
+      'line_26'
     ),
-    'document_number0',
-    'statement_descriptor6',
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil
+    'document_number6',
+    'statement_descriptor0'
   ),
   CreateVoucherPaymentRequest.new(
     nil,
@@ -155,12 +139,12 @@ request = UpdateChargePaymentMethodRequest.new(
     '"first" or "subsequent"'
   ),
   CreateCashPaymentRequest.new(
-    'description6',
+    'description0',
     false
   ),
   CreateBankTransferPaymentRequest.new(
-    'bank4',
-    204
+    'bank0',
+    236
   ),
   CreatePrivateLabelPaymentRequest.new(
     1,
@@ -180,150 +164,6 @@ result = charges_controller.update_charge_payment_method(
   charge_id,
   request
 )
-```
-
-
-# Update Charge Card
-
-Updates the card from a charge
-
-```ruby
-def update_charge_card(charge_id,
-                       request,
-                       idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `charge_id` | `String` | Template, Required | Charge id |
-| `request` | [`UpdateChargeCardRequest`](../../doc/models/update-charge-card-request.md) | Body, Required | Request for updating a charge's card |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ruby
-charge_id = 'charge_id8'
-
-request = UpdateChargeCardRequest.new(
-  false,
-  'card_id2',
-  CreateCardRequest.new(
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    'credit',
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil
-  ),
-  false
-)
-
-result = charges_controller.update_charge_card(
-  charge_id,
-  request
-)
-```
-
-
-# Get Charges Summary
-
-```ruby
-def get_charges_summary(status,
-                        created_since: nil,
-                        created_until: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `status` | `String` | Query, Required | - |
-| `created_since` | `DateTime` | Query, Optional | - |
-| `created_until` | `DateTime` | Query, Optional | - |
-
-## Response Type
-
-[`GetChargesSummaryResponse`](../../doc/models/get-charges-summary-response.md)
-
-## Example Usage
-
-```ruby
-status = 'status8'
-
-result = charges_controller.get_charges_summary(status)
-```
-
-
-# Create Charge
-
-Creates a new charge
-
-```ruby
-def create_charge(request,
-                  idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `request` | [`CreateChargeRequest`](../../doc/models/create-charge-request.md) | Body, Required | Request for creating a charge |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ruby
-request = CreateChargeRequest.new(
-  242,
-  CreatePaymentRequest.new(
-    'payment_method2',
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil,
-    nil
-  ),
-  'order_id0',
-  nil,
-  nil,
-  nil,
-  nil,
-  nil,
-  nil
-)
-
-result = charges_controller.create_charge(request)
 ```
 
 
@@ -356,22 +196,22 @@ result = charges_controller.get_charge_transactions(charge_id)
 ```
 
 
-# Capture Charge
+# Update Charge Due Date
 
-Captures a charge
+Updates the due date from a charge
 
 ```ruby
-def capture_charge(charge_id,
-                   request: nil,
-                   idempotency_key: nil)
+def update_charge_due_date(charge_id,
+                           request,
+                           idempotency_key: nil)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `charge_id` | `String` | Template, Required | Charge id |
-| `request` | [`CreateCaptureChargeRequest`](../../doc/models/create-capture-charge-request.md) | Body, Optional | Request for capturing a charge |
+| `charge_id` | `String` | Template, Required | Charge Id |
+| `request` | [`UpdateChargeDueDateRequest`](../../doc/models/update-charge-due-date-request.md) | Body, Required | Request for updating the due date |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
@@ -383,65 +223,12 @@ def capture_charge(charge_id,
 ```ruby
 charge_id = 'charge_id8'
 
-result = charges_controller.capture_charge(charge_id)
-```
+request = UpdateChargeDueDateRequest.new
 
-
-# Get Charge
-
-Get a charge from its id
-
-```ruby
-def get_charge(charge_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `charge_id` | `String` | Template, Required | Charge id |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ruby
-charge_id = 'charge_id8'
-
-result = charges_controller.get_charge(charge_id)
-```
-
-
-# Cancel Charge
-
-Cancel a charge
-
-```ruby
-def cancel_charge(charge_id,
-                  request: nil,
-                  idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `charge_id` | `String` | Template, Required | Charge id |
-| `request` | [`CreateCancelChargeRequest`](../../doc/models/create-cancel-charge-request.md) | Body, Optional | Request for cancelling a charge |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```ruby
-charge_id = 'charge_id8'
-
-result = charges_controller.cancel_charge(charge_id)
+result = charges_controller.update_charge_due_date(
+  charge_id,
+  request
+)
 ```
 
 
@@ -486,20 +273,22 @@ result = charges_controller.get_charges
 ```
 
 
-# Confirm Payment
+# Capture Charge
+
+Captures a charge
 
 ```ruby
-def confirm_payment(charge_id,
-                    request: nil,
-                    idempotency_key: nil)
+def capture_charge(charge_id,
+                   request: nil,
+                   idempotency_key: nil)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `charge_id` | `String` | Template, Required | - |
-| `request` | [`CreateConfirmPaymentRequest`](../../doc/models/create-confirm-payment-request.md) | Body, Optional | Request for confirm payment |
+| `charge_id` | `String` | Template, Required | Charge id |
+| `request` | [`CreateCaptureChargeRequest`](../../doc/models/create-capture-charge-request.md) | Body, Optional | Request for capturing a charge |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
@@ -511,26 +300,26 @@ def confirm_payment(charge_id,
 ```ruby
 charge_id = 'charge_id8'
 
-result = charges_controller.confirm_payment(charge_id)
+result = charges_controller.capture_charge(charge_id)
 ```
 
 
-# Update Charge Due Date
+# Update Charge Card
 
-Updates the due date from a charge
+Updates the card from a charge
 
 ```ruby
-def update_charge_due_date(charge_id,
-                           request,
-                           idempotency_key: nil)
+def update_charge_card(charge_id,
+                       request,
+                       idempotency_key: nil)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `charge_id` | `String` | Template, Required | Charge Id |
-| `request` | [`UpdateChargeDueDateRequest`](../../doc/models/update-charge-due-date-request.md) | Body, Required | Request for updating the due date |
+| `charge_id` | `String` | Template, Required | Charge id |
+| `request` | [`UpdateChargeCardRequest`](../../doc/models/update-charge-card-request.md) | Body, Required | Request for updating a charge's card |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
@@ -542,14 +331,84 @@ def update_charge_due_date(charge_id,
 ```ruby
 charge_id = 'charge_id8'
 
-request = UpdateChargeDueDateRequest.new(
-  nil
+request = UpdateChargeCardRequest.new(
+  false,
+  'card_id2',
+  CreateCardRequest.new(
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    'credit'
+  ),
+  false
 )
 
-result = charges_controller.update_charge_due_date(
+result = charges_controller.update_charge_card(
   charge_id,
   request
 )
+```
+
+
+# Get Charge
+
+Get a charge from its id
+
+```ruby
+def get_charge(charge_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `charge_id` | `String` | Template, Required | Charge id |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ruby
+charge_id = 'charge_id8'
+
+result = charges_controller.get_charge(charge_id)
+```
+
+
+# Get Charges Summary
+
+```ruby
+def get_charges_summary(status,
+                        created_since: nil,
+                        created_until: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `status` | `String` | Query, Required | - |
+| `created_since` | `DateTime` | Query, Optional | - |
+| `created_until` | `DateTime` | Query, Optional | - |
+
+## Response Type
+
+[`GetChargesSummaryResponse`](../../doc/models/get-charges-summary-response.md)
+
+## Example Usage
+
+```ruby
+status = 'status8'
+
+result = charges_controller.get_charges_summary(status)
 ```
 
 
@@ -579,5 +438,100 @@ def retry_charge(charge_id,
 charge_id = 'charge_id8'
 
 result = charges_controller.retry_charge(charge_id)
+```
+
+
+# Cancel Charge
+
+Cancel a charge
+
+```ruby
+def cancel_charge(charge_id,
+                  request: nil,
+                  idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `charge_id` | `String` | Template, Required | Charge id |
+| `request` | [`CreateCancelChargeRequest`](../../doc/models/create-cancel-charge-request.md) | Body, Optional | Request for cancelling a charge |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ruby
+charge_id = 'charge_id8'
+
+result = charges_controller.cancel_charge(charge_id)
+```
+
+
+# Create Charge
+
+Creates a new charge
+
+```ruby
+def create_charge(request,
+                  idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateChargeRequest`](../../doc/models/create-charge-request.md) | Body, Required | Request for creating a charge |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ruby
+request = CreateChargeRequest.new(
+  242,
+  CreatePaymentRequest.new(
+    'payment_method4'
+  ),
+  'order_id0'
+)
+
+result = charges_controller.create_charge(request)
+```
+
+
+# Confirm Payment
+
+```ruby
+def confirm_payment(charge_id,
+                    request: nil,
+                    idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `charge_id` | `String` | Template, Required | - |
+| `request` | [`CreateConfirmPaymentRequest`](../../doc/models/create-confirm-payment-request.md) | Body, Optional | Request for confirm payment |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```ruby
+charge_id = 'charge_id8'
+
+result = charges_controller.confirm_payment(charge_id)
 ```
 

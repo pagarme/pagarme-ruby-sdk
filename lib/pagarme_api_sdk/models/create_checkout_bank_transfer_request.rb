@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Bank
-    # @return [List of String]
+    # @return [Array[String]]
     attr_accessor :bank
 
     # Number of retries for processing

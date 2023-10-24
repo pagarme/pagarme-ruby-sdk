@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # The usage objects
-    # @return [List of GetUsageResponse]
+    # @return [Array[GetUsageResponse]]
     attr_accessor :data
 
     # Paging object

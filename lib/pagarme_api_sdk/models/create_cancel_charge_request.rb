@@ -14,11 +14,11 @@ module PagarmeApiSdk
     attr_accessor :amount
 
     # The split rules request
-    # @return [List of CreateCancelChargeSplitRulesRequest]
+    # @return [Array[CreateCancelChargeSplitRulesRequest]]
     attr_accessor :split_rules
 
     # Splits
-    # @return [List of CreateSplitRequest]
+    # @return [Array[CreateSplitRequest]]
     attr_accessor :split
 
     # Splits

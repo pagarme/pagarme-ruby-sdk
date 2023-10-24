@@ -45,6 +45,12 @@ Style/FrozenStringLiteralComment:
 Style/RedundantAssignment:
   Enabled: false
 
+Style/MultilineTernaryOperator:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+
 AllCops:
   Exclude:
     - './test/**/*'

@@ -19,7 +19,7 @@ module PagarmeApiSdk
     attr_accessor :amount
 
     # Splits
-    # @return [List of CreateSplitRequest]
+    # @return [Array[CreateSplitRequest]]
     attr_accessor :split
 
     # Splits

@@ -26,7 +26,7 @@ Response object for getting an invoice
 | `subscription` | [`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md) | Optional | - |
 | `cycle` | [`GetPeriodResponse`](../../doc/models/get-period-response.md) | Optional | - |
 | `shipping` | [`GetShippingResponse`](../../doc/models/get-shipping-response.md) | Optional | - |
-| `metadata` | `Hash of String` | Optional | - |
+| `metadata` | `Hash[String, String]` | Optional | - |
 | `due_at` | `DateTime` | Optional | - |
 | `canceled_at` | `DateTime` | Optional | - |
 | `billing_at` | `DateTime` | Optional | - |
@@ -42,7 +42,7 @@ Response object for getting an invoice
   "id": "id0",
   "code": "code8",
   "url": "url4",
-  "amount": 46,
+  "amount": 168,
   "status": "status8"
 }
 ```

@@ -21,12 +21,17 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :area_code
 
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :type
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['country_code'] = 'country_code'
       @_hash['number'] = 'number'
       @_hash['area_code'] = 'area_code'
+      @_hash['type'] = 'Type'
       @_hash
     end
 
@@ -36,20 +41,25 @@ module PagarmeApiSdk
         country_code
         number
         area_code
+        type
       ]
     end
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        type
+      ]
     end
 
     def initialize(country_code = SKIP,
                    number = SKIP,
-                   area_code = SKIP)
+                   area_code = SKIP,
+                   type = SKIP)
       @country_code = country_code unless country_code == SKIP
       @number = number unless number == SKIP
       @area_code = area_code unless area_code == SKIP
+      @type = type unless type == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -60,11 +70,13 @@ module PagarmeApiSdk
       country_code = hash.key?('country_code') ? hash['country_code'] : SKIP
       number = hash.key?('number') ? hash['number'] : SKIP
       area_code = hash.key?('area_code') ? hash['area_code'] : SKIP
+      type = hash.key?('Type') ? hash['Type'] : SKIP
 
       # Create object from extracted values.
       CreatePhoneRequest.new(country_code,
                              number,
-                             area_code)
+                             area_code,
+                             type)
     end
   end
 end

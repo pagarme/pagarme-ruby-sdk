@@ -42,7 +42,7 @@ module PagarmeApiSdk
     attr_accessor :billing_address_id
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Card type
@@ -58,7 +58,7 @@ module PagarmeApiSdk
     attr_accessor :holder_document
 
     # Indicates whether it is a private label card
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :private_label
 
     # Indicates whether it is a private label card

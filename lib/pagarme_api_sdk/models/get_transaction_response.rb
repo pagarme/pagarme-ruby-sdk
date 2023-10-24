@@ -23,7 +23,7 @@ module PagarmeApiSdk
     attr_accessor :status
 
     # Indicates if the transaction ocurred successfuly
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :success
 
     # Creation date
@@ -43,7 +43,7 @@ module PagarmeApiSdk
     attr_accessor :max_attempts
 
     # Splits
-    # @return [List of GetSplitResponse]
+    # @return [Array[GetSplitResponse]]
     attr_accessor :splits
 
     # Date and time of the next attempt
@@ -67,11 +67,11 @@ module PagarmeApiSdk
     attr_accessor :antifraud_response
 
     # The Gateway Response
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # The Gateway Response
-    # @return [List of GetSplitResponse]
+    # @return [Array[GetSplitResponse]]
     attr_accessor :split
 
     # The Gateway Response
@@ -90,15 +90,15 @@ module PagarmeApiSdk
     def self.discriminators
       if @_discriminators.nil?
         @_discriminators = {}
-        @_discriminators['voucher'] = GetVoucherTransactionResponse
         @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse
         @_discriminators['safetypay'] = GetSafetyPayTransactionResponse
-        @_discriminators['debit_card'] = GetDebitCardTransactionResponse
+        @_discriminators['voucher'] = GetVoucherTransactionResponse
         @_discriminators['boleto'] = GetBoletoTransactionResponse
-        @_discriminators['cash'] = GetCashTransactionResponse
+        @_discriminators['debit_card'] = GetDebitCardTransactionResponse
         @_discriminators['private_label'] = GetPrivateLabelTransactionResponse
-        @_discriminators['pix'] = GetPixTransactionResponse
+        @_discriminators['cash'] = GetCashTransactionResponse
         @_discriminators['credit_card'] = GetCreditCardTransactionResponse
+        @_discriminators['pix'] = GetPixTransactionResponse
       end
       @_discriminators
     end

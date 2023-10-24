@@ -26,7 +26,7 @@ module PagarmeApiSdk
     attr_accessor :card_token
 
     # Indicates a recurrence
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :recurrence
 
     # The payment authentication request

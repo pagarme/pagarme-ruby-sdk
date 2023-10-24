@@ -30,16 +30,16 @@ module PagarmeApiSdk
     attr_accessor :card_token
 
     # Indicates a recurrence
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :recurrence
 
     # Indicates if the operation should be only authorization or auth and
     # capture.
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :capture
 
     # Indicates whether the extended label (private label) is enabled
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :extended_limit_enabled
 
     # Extended Limit Code
@@ -59,7 +59,7 @@ module PagarmeApiSdk
     attr_accessor :contactless
 
     # Indicates whether a particular payment will enter the offline retry flow
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :auto_recovery
 
     # AuthOnly, AuthAndCapture, PreAuth

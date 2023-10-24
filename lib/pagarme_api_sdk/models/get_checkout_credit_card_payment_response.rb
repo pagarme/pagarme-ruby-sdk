@@ -14,7 +14,7 @@ module PagarmeApiSdk
     attr_accessor :statement_descriptor
 
     # Parcelas
-    # @return [List of GetCheckoutCardInstallmentOptionsResponse]
+    # @return [Array[GetCheckoutCardInstallmentOptionsResponse]]
     attr_accessor :installments
 
     # Payment Authentication response

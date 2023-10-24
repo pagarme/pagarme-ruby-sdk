@@ -44,13 +44,13 @@ public_key = 'public_key6'
 request = CreateTokenRequest.new(
   'card',
   CreateCardTokenRequest.new(
-    'number2',
-    'holder_name6',
-    80,
-    216,
-    'cvv8',
-    'brand4',
-    'label0'
+    'number6',
+    'holder_name2',
+    228,
+    68,
+    'cvv4',
+    'brand0',
+    'label6'
   )
 )
 

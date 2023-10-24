@@ -23,18 +23,18 @@
 | `updated_at` | `DateTime` | Optional | Last update date |
 | `deleted_at` | `DateTime` | Optional | Deletion date |
 | `recipient` | [`GetRecipientResponse`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `metadata` | `Hash of String` | Optional | Metadata |
+| `metadata` | `Hash[String, String]` | Optional | Metadata |
 | `pix_key` | `String` | Optional | Pix Key |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "holder_name": "holder_name4",
-  "holder_type": "holder_type2",
-  "bank": "bank8",
-  "branch_number": "branch_number6"
+  "id": "id6",
+  "holder_name": "holder_name2",
+  "holder_type": "holder_type8",
+  "bank": "bank4",
+  "branch_number": "branch_number2"
 }
 ```
 

@@ -8,12 +8,14 @@ module PagarmeApiSdk
   class BaseModel < CoreLibrary::BaseModel
     # Returns a Hash representation of the current object.
     def to_hash
+      # validating the model being serialized
+      self.class.validate(self) if self.class.respond_to?(:validate)
+
       hash = {}
       instance_variables.each do |name|
         value = instance_variable_get(name)
         name = name[1..]
         key = self.class.names.key?(name) ? self.class.names[name] : name
-
         optional_fields = self.class.optionals
         nullable_fields = self.class.nullables
         if value.nil?
@@ -34,6 +36,8 @@ module PagarmeApiSdk
             else
               hash[key] = send("to_#{name}")
             end
+          elsif respond_to?("to_union_type_#{name}")
+            hash[key] = send("to_union_type_#{name}")
           elsif value.instance_of? Array
             hash[key] = value.map { |v| v.is_a?(BaseModel) ? v.to_hash : v }
           elsif value.instance_of? Hash

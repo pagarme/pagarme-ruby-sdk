@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `liable` | `TrueClass\|FalseClass` | Optional | - |
-| `charge_processing_fee` | `TrueClass\|FalseClass` | Optional | - |
+| `liable` | `TrueClass \| FalseClass` | Optional | - |
+| `charge_processing_fee` | `TrueClass \| FalseClass` | Optional | - |
 | `charge_remainder_fee` | `String` | Optional | - |
 
 ## Example (as JSON)
@@ -19,7 +19,7 @@
 {
   "liable": false,
   "charge_processing_fee": false,
-  "charge_remainder_fee": "charge_remainder_fee8"
+  "charge_remainder_fee": "charge_remainder_fee6"
 }
 ```
 
