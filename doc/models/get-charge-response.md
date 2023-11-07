@@ -25,7 +25,7 @@ Response object for getting a charge
 | `invoice` | [`GetInvoiceResponse`](../../doc/models/get-invoice-response.md) | Optional | - |
 | `order` | [`GetOrderResponse`](../../doc/models/get-order-response.md) | Optional | - |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
-| `metadata` | `Hash of String` | Optional | - |
+| `metadata` | `Hash[String, String]` | Optional | - |
 | `paid_at` | `DateTime` | Optional | - |
 | `canceled_at` | `DateTime` | Optional | - |
 | `canceled_amount` | `Integer` | Optional | Canceled Amount |
@@ -41,8 +41,8 @@ Response object for getting a charge
   "id": "id0",
   "code": "code8",
   "gateway_id": "gateway_id0",
-  "amount": 46,
-  "status": "status8"
+  "amount": 164,
+  "status": "status2"
 }
 ```
 

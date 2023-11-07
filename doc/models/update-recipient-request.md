@@ -16,7 +16,7 @@ Request for updating a Recipient
 | `description` | `String` | Required | Description |
 | `type` | `String` | Required | Type |
 | `status` | `String` | Required | Status |
-| `metadata` | `Hash of String` | Required | Metadata |
+| `metadata` | `Hash[String, String]` | Required | Metadata |
 
 ## Example (as JSON)
 
@@ -29,8 +29,7 @@ Request for updating a Recipient
   "status": "status8",
   "metadata": {
     "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key1": "metadata4"
   }
 }
 ```

@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Transfers
-    # @return [List of GetTransferResponse]
+    # @return [Array[GetTransferResponse]]
     attr_accessor :data
 
     # Paging

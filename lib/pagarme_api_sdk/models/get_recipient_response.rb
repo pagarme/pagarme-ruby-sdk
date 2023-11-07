@@ -55,11 +55,11 @@ module PagarmeApiSdk
     attr_accessor :default_bank_account
 
     # Info about the recipient on the gateway
-    # @return [List of GetGatewayRecipientResponse]
+    # @return [Array[GetGatewayRecipientResponse]]
     attr_accessor :gateway_recipients
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Metadata

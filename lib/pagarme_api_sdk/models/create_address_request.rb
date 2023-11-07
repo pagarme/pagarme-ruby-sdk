@@ -43,7 +43,7 @@ module PagarmeApiSdk
     attr_accessor :complement
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Line 1 for address

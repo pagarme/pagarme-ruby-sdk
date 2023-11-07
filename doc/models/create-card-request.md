@@ -19,11 +19,11 @@ Card data
 | `billing_address` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Optional | Card's billing address |
 | `brand` | `String` | Optional | Card brand |
 | `billing_address_id` | `String` | Optional | The address id for the billing address |
-| `metadata` | `Hash of String` | Optional | Metadata |
+| `metadata` | `Hash[String, String]` | Optional | Metadata |
 | `type` | `String` | Optional | Card type<br>**Default**: `'credit'` |
 | `options` | [`CreateCardOptionsRequest`](../../doc/models/create-card-options-request.md) | Optional | Options for creating the card |
 | `holder_document` | `String` | Optional | Document number for the card's holder |
-| `private_label` | `TrueClass\|FalseClass` | Optional | Indicates whether it is a private label card |
+| `private_label` | `TrueClass \| FalseClass` | Optional | Indicates whether it is a private label card |
 | `label` | `String` | Optional | - |
 | `id` | `String` | Optional | Identifier |
 | `token` | `String` | Optional | token identifier |
@@ -33,11 +33,11 @@ Card data
 ```json
 {
   "type": "credit",
-  "number": "number2",
-  "holder_name": "holder_name4",
-  "exp_month": 42,
-  "exp_year": 254,
-  "cvv": "cvv2"
+  "number": "number0",
+  "holder_name": "holder_name8",
+  "exp_month": 92,
+  "exp_year": 204,
+  "cvv": "cvv0"
 }
 ```
 

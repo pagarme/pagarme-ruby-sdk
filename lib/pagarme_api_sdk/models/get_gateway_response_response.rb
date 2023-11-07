@@ -14,7 +14,7 @@ module PagarmeApiSdk
     attr_accessor :code
 
     # The gateway response errors list
-    # @return [List of GetGatewayErrorResponse]
+    # @return [Array[GetGatewayErrorResponse]]
     attr_accessor :errors
 
     # A mapping from model property names to API property names.

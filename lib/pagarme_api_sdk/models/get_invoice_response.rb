@@ -39,7 +39,7 @@ module PagarmeApiSdk
     attr_accessor :created_at
 
     # TODO: Write general description for this method
-    # @return [List of GetInvoiceItemResponse]
+    # @return [Array[GetInvoiceItemResponse]]
     attr_accessor :items
 
     # TODO: Write general description for this method
@@ -71,7 +71,7 @@ module PagarmeApiSdk
     attr_accessor :shipping
 
     # TODO: Write general description for this method
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # TODO: Write general description for this method

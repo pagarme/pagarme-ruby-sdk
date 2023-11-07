@@ -19,47 +19,59 @@ module PagarmeApiSdk
     attr_accessor :code
 
     # TODO: Write general description for this method
+    # @return [Integer]
+    attr_accessor :amount
+
+    # TODO: Write general description for this method
     # @return [String]
     attr_accessor :currency
 
-    # TODO: Write general description for this method
-    # @return [List of GetOrderItemResponse]
+    # Indicates whether the order is closed
+    # @return [TrueClass | FalseClass]
+    attr_accessor :closed
+
+    # Indicates whether the order is closed
+    # @return [Array[GetOrderItemResponse]]
     attr_accessor :items
 
-    # TODO: Write general description for this method
+    # Indicates whether the order is closed
     # @return [GetCustomerResponse]
     attr_accessor :customer
 
-    # TODO: Write general description for this method
+    # Indicates whether the order is closed
     # @return [String]
     attr_accessor :status
 
-    # TODO: Write general description for this method
+    # Indicates whether the order is closed
     # @return [DateTime]
     attr_accessor :created_at
 
-    # TODO: Write general description for this method
+    # Indicates whether the order is closed
     # @return [DateTime]
     attr_accessor :updated_at
 
-    # TODO: Write general description for this method
-    # @return [List of GetChargeResponse]
+    # Indicates whether the order is closed
+    # @return [DateTime]
+    attr_accessor :closed_at
+
+    # Indicates whether the order is closed
+    # @return [Array[GetChargeResponse]]
     attr_accessor :charges
 
-    # TODO: Write general description for this method
+    # Indicates whether the order is closed
     # @return [String]
     attr_accessor :invoice_url
 
-    # TODO: Write general description for this method
+    # Indicates whether the order is closed
     # @return [GetShippingResponse]
     attr_accessor :shipping
 
-    # TODO: Write general description for this method
-    # @return [Hash of String]
+    # Indicates whether the order is closed
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Checkout Payment Settings Response
-    # @return [List of GetCheckoutPaymentResponse]
+    # @return [Array[GetCheckoutPaymentResponse]]
     attr_accessor :checkouts
 
     # Ip address
@@ -78,21 +90,20 @@ module PagarmeApiSdk
     # @return [GetDeviceResponse]
     attr_accessor :device
 
-    # Indicates whether the order is closed
-    # @return [TrueClass|FalseClass]
-    attr_accessor :closed
-
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['id'] = 'id'
       @_hash['code'] = 'code'
+      @_hash['amount'] = 'amount'
       @_hash['currency'] = 'currency'
+      @_hash['closed'] = 'closed'
       @_hash['items'] = 'items'
       @_hash['customer'] = 'customer'
       @_hash['status'] = 'status'
       @_hash['created_at'] = 'created_at'
       @_hash['updated_at'] = 'updated_at'
+      @_hash['closed_at'] = 'closed_at'
       @_hash['charges'] = 'charges'
       @_hash['invoice_url'] = 'invoice_url'
       @_hash['shipping'] = 'shipping'
@@ -102,7 +113,6 @@ module PagarmeApiSdk
       @_hash['session_id'] = 'session_id'
       @_hash['location'] = 'location'
       @_hash['device'] = 'device'
-      @_hash['closed'] = 'closed'
       @_hash
     end
 
@@ -111,12 +121,15 @@ module PagarmeApiSdk
       %w[
         id
         code
+        amount
         currency
+        closed
         items
         customer
         status
         created_at
         updated_at
+        closed_at
         charges
         invoice_url
         shipping
@@ -126,7 +139,6 @@ module PagarmeApiSdk
         session_id
         location
         device
-        closed
       ]
     end
 
@@ -135,12 +147,15 @@ module PagarmeApiSdk
       %w[
         id
         code
+        amount
         currency
+        closed
         items
         customer
         status
         created_at
         updated_at
+        closed_at
         charges
         invoice_url
         shipping
@@ -150,18 +165,20 @@ module PagarmeApiSdk
         session_id
         location
         device
-        closed
       ]
     end
 
     def initialize(id = SKIP,
                    code = SKIP,
+                   amount = SKIP,
                    currency = SKIP,
+                   closed = SKIP,
                    items = SKIP,
                    customer = SKIP,
                    status = SKIP,
                    created_at = SKIP,
                    updated_at = SKIP,
+                   closed_at = SKIP,
                    charges = SKIP,
                    invoice_url = SKIP,
                    shipping = SKIP,
@@ -170,16 +187,18 @@ module PagarmeApiSdk
                    ip = SKIP,
                    session_id = SKIP,
                    location = SKIP,
-                   device = SKIP,
-                   closed = SKIP)
+                   device = SKIP)
       @id = id unless id == SKIP
       @code = code unless code == SKIP
+      @amount = amount unless amount == SKIP
       @currency = currency unless currency == SKIP
+      @closed = closed unless closed == SKIP
       @items = items unless items == SKIP
       @customer = customer unless customer == SKIP
       @status = status unless status == SKIP
       @created_at = created_at unless created_at == SKIP
       @updated_at = updated_at unless updated_at == SKIP
+      @closed_at = closed_at unless closed_at == SKIP
       @charges = charges unless charges == SKIP
       @invoice_url = invoice_url unless invoice_url == SKIP
       @shipping = shipping unless shipping == SKIP
@@ -189,7 +208,6 @@ module PagarmeApiSdk
       @session_id = session_id unless session_id == SKIP
       @location = location unless location == SKIP
       @device = device unless device == SKIP
-      @closed = closed unless closed == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -199,7 +217,9 @@ module PagarmeApiSdk
       # Extract variables from the hash.
       id = hash.key?('id') ? hash['id'] : SKIP
       code = hash.key?('code') ? hash['code'] : SKIP
+      amount = hash.key?('amount') ? hash['amount'] : SKIP
       currency = hash.key?('currency') ? hash['currency'] : SKIP
+      closed = hash.key?('closed') ? hash['closed'] : SKIP
       # Parameter is an array, so we need to iterate through it
       items = nil
       unless hash['items'].nil?
@@ -222,6 +242,11 @@ module PagarmeApiSdk
                    else
                      SKIP
                    end
+      closed_at = if hash.key?('closed_at')
+                    (DateTimeHelper.from_rfc3339(hash['closed_at']) if hash['closed_at'])
+                  else
+                    SKIP
+                  end
       # Parameter is an array, so we need to iterate through it
       charges = nil
       unless hash['charges'].nil?
@@ -249,17 +274,19 @@ module PagarmeApiSdk
       session_id = hash.key?('session_id') ? hash['session_id'] : SKIP
       location = GetLocationResponse.from_hash(hash['location']) if hash['location']
       device = GetDeviceResponse.from_hash(hash['device']) if hash['device']
-      closed = hash.key?('closed') ? hash['closed'] : SKIP
 
       # Create object from extracted values.
       GetOrderResponse.new(id,
                            code,
+                           amount,
                            currency,
+                           closed,
                            items,
                            customer,
                            status,
                            created_at,
                            updated_at,
+                           closed_at,
                            charges,
                            invoice_url,
                            shipping,
@@ -268,8 +295,7 @@ module PagarmeApiSdk
                            ip,
                            session_id,
                            location,
-                           device,
-                           closed)
+                           device)
     end
 
     def to_created_at
@@ -278,6 +304,10 @@ module PagarmeApiSdk
 
     def to_updated_at
       DateTimeHelper.to_rfc3339(updated_at)
+    end
+
+    def to_closed_at
+      DateTimeHelper.to_rfc3339(closed_at)
     end
   end
 end

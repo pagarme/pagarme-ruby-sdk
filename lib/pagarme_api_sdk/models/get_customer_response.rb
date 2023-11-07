@@ -23,7 +23,7 @@ module PagarmeApiSdk
     attr_accessor :email
 
     # TODO: Write general description for this method
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :delinquent
 
     # TODO: Write general description for this method
@@ -51,7 +51,7 @@ module PagarmeApiSdk
     attr_accessor :address
 
     # TODO: Write general description for this method
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # TODO: Write general description for this method

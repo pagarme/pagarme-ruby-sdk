@@ -55,7 +55,7 @@ module PagarmeApiSdk
     attr_accessor :customer
 
     # TODO: Write general description for this method
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Card type

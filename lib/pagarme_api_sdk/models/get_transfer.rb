@@ -35,7 +35,7 @@ module PagarmeApiSdk
     attr_accessor :updated_at
 
     # TODO: Write general description for this method
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # TODO: Write general description for this method

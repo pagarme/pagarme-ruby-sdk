@@ -12,17 +12,17 @@ Request for creating a transfer
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `amount` | `Integer` | Required | Transfer amount |
-| `metadata` | `Hash of String` | Required | Metadata |
+| `metadata` | `Hash[String, String]` | Required | Metadata |
 
 ## Example (as JSON)
 
 ```json
 {
-  "amount": 46,
+  "amount": 148,
   "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key0": "metadata7",
+    "key1": "metadata8",
+    "key2": "metadata9"
   }
 }
 ```

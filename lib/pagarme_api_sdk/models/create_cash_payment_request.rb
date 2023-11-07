@@ -14,7 +14,7 @@ module PagarmeApiSdk
     attr_accessor :description
 
     # Indicates whether cash collection will be confirmed in the act of creation
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :confirm
 
     # A mapping from model property names to API property names.

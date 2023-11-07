@@ -18,7 +18,7 @@ module PagarmeApiSdk
     attr_accessor :dukpt
 
     # Encrypted tags list
-    # @return [List of CreateEmvDataTlvDecryptRequest]
+    # @return [Array[CreateEmvDataTlvDecryptRequest]]
     attr_accessor :tags
 
     # A mapping from model property names to API property names.

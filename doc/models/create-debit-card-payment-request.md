@@ -15,7 +15,7 @@ The settings for creating a debit card payment
 | `card` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Debit card data |
 | `card_id` | `String` | Optional | The debit card id |
 | `card_token` | `String` | Optional | The debit card token |
-| `recurrence` | `TrueClass\|FalseClass` | Optional | Indicates a recurrence |
+| `recurrence` | `TrueClass \| FalseClass` | Optional | Indicates a recurrence |
 | `authentication` | [`CreatePaymentAuthenticationRequest`](../../doc/models/create-payment-authentication-request.md) | Optional | The payment authentication request |
 | `token` | [`CreateCardPaymentContactlessRequest`](../../doc/models/create-card-payment-contactless-request.md) | Optional | The Debit card payment token request |
 
@@ -23,7 +23,7 @@ The settings for creating a debit card payment
 
 ```json
 {
-  "statement_descriptor": "statement_descriptor0",
+  "statement_descriptor": "statement_descriptor8",
   "card": {
     "number": "number6",
     "holder_name": "holder_name2",
@@ -32,7 +32,7 @@ The settings for creating a debit card payment
     "cvv": "cvv4"
   },
   "card_id": "card_id4",
-  "card_token": "card_token0",
+  "card_token": "card_token2",
   "recurrence": false
 }
 ```

@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Recipients
-    # @return [List of GetRecipientResponse]
+    # @return [Array[GetRecipientResponse]]
     attr_accessor :data
 
     # Paging

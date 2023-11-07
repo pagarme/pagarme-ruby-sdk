@@ -46,7 +46,7 @@ module PagarmeApiSdk
     attr_accessor :type
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Pix key

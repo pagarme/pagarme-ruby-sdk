@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # The Increments response
-    # @return [List of GetTransfer]
+    # @return [Array[GetTransfer]]
     attr_accessor :data
 
     # Paging object

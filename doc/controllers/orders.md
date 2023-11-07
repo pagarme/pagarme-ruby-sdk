@@ -11,15 +11,15 @@ orders_controller = client.orders
 ## Methods
 
 * [Get Orders](../../doc/controllers/orders.md#get-orders)
-* [Get Order Item](../../doc/controllers/orders.md#get-order-item)
-* [Get Order](../../doc/controllers/orders.md#get-order)
-* [Close Order](../../doc/controllers/orders.md#close-order)
-* [Create Order](../../doc/controllers/orders.md#create-order)
 * [Update Order Item](../../doc/controllers/orders.md#update-order-item)
 * [Delete All Order Items](../../doc/controllers/orders.md#delete-all-order-items)
-* [Update Order Metadata](../../doc/controllers/orders.md#update-order-metadata)
 * [Delete Order Item](../../doc/controllers/orders.md#delete-order-item)
+* [Close Order](../../doc/controllers/orders.md#close-order)
+* [Create Order](../../doc/controllers/orders.md#create-order)
 * [Create Order Item](../../doc/controllers/orders.md#create-order-item)
+* [Get Order Item](../../doc/controllers/orders.md#get-order-item)
+* [Update Order Metadata](../../doc/controllers/orders.md#update-order-metadata)
+* [Get Order](../../doc/controllers/orders.md#get-order)
 
 
 # Get Orders
@@ -56,206 +56,6 @@ def get_orders(page: nil,
 
 ```ruby
 result = orders_controller.get_orders
-```
-
-
-# Get Order Item
-
-```ruby
-def get_order_item(order_id,
-                   item_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `order_id` | `String` | Template, Required | Order Id |
-| `item_id` | `String` | Template, Required | Item Id |
-
-## Response Type
-
-[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
-
-## Example Usage
-
-```ruby
-order_id = 'orderId2'
-
-item_id = 'itemId8'
-
-result = orders_controller.get_order_item(
-  order_id,
-  item_id
-)
-```
-
-
-# Get Order
-
-Gets an order
-
-```ruby
-def get_order(order_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `order_id` | `String` | Template, Required | Order id |
-
-## Response Type
-
-[`GetOrderResponse`](../../doc/models/get-order-response.md)
-
-## Example Usage
-
-```ruby
-order_id = 'order_id6'
-
-result = orders_controller.get_order(order_id)
-```
-
-
-# Close Order
-
-```ruby
-def close_order(id,
-                request,
-                idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | Order Id |
-| `request` | [`UpdateOrderStatusRequest`](../../doc/models/update-order-status-request.md) | Body, Required | Update Order Model |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetOrderResponse`](../../doc/models/get-order-response.md)
-
-## Example Usage
-
-```ruby
-id = 'id0'
-
-request = UpdateOrderStatusRequest.new(
-  'status8'
-)
-
-result = orders_controller.close_order(
-  id,
-  request
-)
-```
-
-
-# Create Order
-
-Creates a new Order
-
-```ruby
-def create_order(body,
-                 idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `body` | [`CreateOrderRequest`](../../doc/models/create-order-request.md) | Body, Required | Request for creating an order |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetOrderResponse`](../../doc/models/get-order-response.md)
-
-## Example Usage
-
-```ruby
-body = CreateOrderRequest.new(
-  [
-    CreateOrderItemRequest.new(
-      101,
-      'description3',
-      215,
-      'category1',
-      nil
-    )
-  ],
-  CreateCustomerRequest.new(
-    '{
-    "name": "Tony Stark"
-}',
-    'email2',
-    'document2',
-    'type6',
-    CreateAddressRequest.new(
-      'street0',
-      'number8',
-      'zip_code4',
-      'neighborhood6',
-      'city0',
-      'state6',
-      'country4',
-      'complement6',
-      'line_16',
-      'line_28',
-      nil
-    ),
-    {
-      'key0': 'metadata9',
-      'key1': 'metadata0'
-    },
-    CreatePhonesRequest.new(
-      nil,
-      nil
-    ),
-    'code2',
-    nil,
-    nil
-  ),
-  [
-    CreatePaymentRequest.new(
-      'payment_method0',
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil,
-      nil
-    )
-  ],
-  'code4',
-  true,
-  nil,
-  nil,
-  nil,
-  nil,
-  nil,
-  nil,
-  nil,
-  nil,
-  nil,
-  nil,
-  nil
-)
-
-result = orders_controller.create_order(body)
 ```
 
 
@@ -330,6 +130,215 @@ result = orders_controller.delete_all_order_items(order_id)
 ```
 
 
+# Delete Order Item
+
+```ruby
+def delete_order_item(order_id,
+                      item_id,
+                      idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `order_id` | `String` | Template, Required | Order Id |
+| `item_id` | `String` | Template, Required | Item Id |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```ruby
+order_id = 'orderId2'
+
+item_id = 'itemId8'
+
+result = orders_controller.delete_order_item(
+  order_id,
+  item_id
+)
+```
+
+
+# Close Order
+
+```ruby
+def close_order(id,
+                request,
+                idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `String` | Template, Required | Order Id |
+| `request` | [`UpdateOrderStatusRequest`](../../doc/models/update-order-status-request.md) | Body, Required | Update Order Model |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```ruby
+id = 'id0'
+
+request = UpdateOrderStatusRequest.new(
+  'status8'
+)
+
+result = orders_controller.close_order(
+  id,
+  request
+)
+```
+
+
+# Create Order
+
+Creates a new Order
+
+```ruby
+def create_order(body,
+                 idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreateOrderRequest`](../../doc/models/create-order-request.md) | Body, Required | Request for creating an order |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```ruby
+body = CreateOrderRequest.new(
+  [
+    CreateOrderItemRequest.new(
+      164,
+      'description2',
+      22,
+      'category6'
+    )
+  ],
+  CreateCustomerRequest.new(
+    '{\n    "name": "Tony Stark"\n}',
+    'email6',
+    'document6',
+    'type0',
+    CreateAddressRequest.new(
+      'street6',
+      'number4',
+      'zip_code0',
+      'neighborhood2',
+      'city6',
+      'state2',
+      'country0',
+      'complement2',
+      'line_10',
+      'line_24'
+    ),
+    {
+      'key0': 'metadata3'
+    },
+    CreatePhonesRequest.new,
+    'code8'
+  ),
+  [
+    CreatePaymentRequest.new(
+      'payment_method8'
+    )
+  ],
+  'code4',
+  true
+)
+
+result = orders_controller.create_order(body)
+```
+
+
+# Create Order Item
+
+```ruby
+def create_order_item(order_id,
+                      request,
+                      idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `order_id` | `String` | Template, Required | Order Id |
+| `request` | [`CreateOrderItemRequest`](../../doc/models/create-order-item-request.md) | Body, Required | Order Item Model |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```ruby
+order_id = 'orderId2'
+
+request = CreateOrderItemRequest.new(
+  242,
+  'description6',
+  100,
+  'category4'
+)
+
+result = orders_controller.create_order_item(
+  order_id,
+  request
+)
+```
+
+
+# Get Order Item
+
+```ruby
+def get_order_item(order_id,
+                   item_id)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `order_id` | `String` | Template, Required | Order Id |
+| `item_id` | `String` | Template, Required | Item Id |
+
+## Response Type
+
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```ruby
+order_id = 'orderId2'
+
+item_id = 'itemId8'
+
+result = orders_controller.get_order_item(
+  order_id,
+  item_id
+)
+```
+
+
 # Update Order Metadata
 
 Updates the metadata from an order
@@ -370,76 +379,29 @@ result = orders_controller.update_order_metadata(
 ```
 
 
-# Delete Order Item
+# Get Order
+
+Gets an order
 
 ```ruby
-def delete_order_item(order_id,
-                      item_id,
-                      idempotency_key: nil)
+def get_order(order_id)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `order_id` | `String` | Template, Required | Order Id |
-| `item_id` | `String` | Template, Required | Item Id |
-| `idempotency_key` | `String` | Header, Optional | - |
+| `order_id` | `String` | Template, Required | Order id |
 
 ## Response Type
 
-[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
 
 ## Example Usage
 
 ```ruby
-order_id = 'orderId2'
+order_id = 'order_id6'
 
-item_id = 'itemId8'
-
-result = orders_controller.delete_order_item(
-  order_id,
-  item_id
-)
-```
-
-
-# Create Order Item
-
-```ruby
-def create_order_item(order_id,
-                      request,
-                      idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `order_id` | `String` | Template, Required | Order Id |
-| `request` | [`CreateOrderItemRequest`](../../doc/models/create-order-item-request.md) | Body, Required | Order Item Model |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
-
-## Example Usage
-
-```ruby
-order_id = 'orderId2'
-
-request = CreateOrderItemRequest.new(
-  242,
-  'description6',
-  100,
-  'category4',
-  nil
-)
-
-result = orders_controller.create_order_item(
-  order_id,
-  request
-)
+result = orders_controller.get_order(order_id)
 ```
 

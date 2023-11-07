@@ -9,34 +9,37 @@ module PagarmeApiSdk
     SKIP = Object.new
     private_constant :SKIP
 
-    # The token version
+    # Informação sobre a versão do token. Único valor aceito é EC_v2
     # @return [String]
     attr_accessor :version
 
-    # The cryptography data
+    # Dados de pagamento criptografados. Corresponde ao encryptedMessage do
+    # token Google.
     # @return [String]
     attr_accessor :data
 
-    # The GooglePay header request
-    # @return [CreateGooglePayHeaderRequest]
-    attr_accessor :header
+    # The GooglePay intermediate signing key request
+    # @return [CreateGooglePayIntermediateSigningKeyRequest]
+    attr_accessor :intermediate_signing_key
 
-    # Detached PKCS #7 signature, Base64 encoded as string
+    # Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o
+    # Google. Corresponde ao signature do token Google.
     # @return [String]
     attr_accessor :signature
 
-    # GooglePay Merchant identifier
+    # Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o
+    # Google. Corresponde ao signature do token Google.
     # @return [String]
-    attr_accessor :merchant_identifier
+    attr_accessor :signed_message
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['version'] = 'version'
       @_hash['data'] = 'data'
-      @_hash['header'] = 'header'
+      @_hash['intermediate_signing_key'] = 'intermediate_signing_key'
       @_hash['signature'] = 'signature'
-      @_hash['merchant_identifier'] = 'merchant_identifier'
+      @_hash['signed_message'] = 'signed_message'
       @_hash
     end
 
@@ -52,14 +55,14 @@ module PagarmeApiSdk
 
     def initialize(version = nil,
                    data = nil,
-                   header = nil,
+                   intermediate_signing_key = nil,
                    signature = nil,
-                   merchant_identifier = nil)
+                   signed_message = nil)
       @version = version
       @data = data
-      @header = header
+      @intermediate_signing_key = intermediate_signing_key
       @signature = signature
-      @merchant_identifier = merchant_identifier
+      @signed_message = signed_message
     end
 
     # Creates an instance of the object from a hash.
@@ -69,17 +72,19 @@ module PagarmeApiSdk
       # Extract variables from the hash.
       version = hash.key?('version') ? hash['version'] : nil
       data = hash.key?('data') ? hash['data'] : nil
-      header = CreateGooglePayHeaderRequest.from_hash(hash['header']) if hash['header']
+      if hash['intermediate_signing_key']
+        intermediate_signing_key = CreateGooglePayIntermediateSigningKeyRequest.from_hash(hash['intermediate_signing_key'])
+      end
       signature = hash.key?('signature') ? hash['signature'] : nil
-      merchant_identifier =
-        hash.key?('merchant_identifier') ? hash['merchant_identifier'] : nil
+      signed_message =
+        hash.key?('signed_message') ? hash['signed_message'] : nil
 
       # Create object from extracted values.
       CreateGooglePayRequest.new(version,
                                  data,
-                                 header,
+                                 intermediate_signing_key,
                                  signature,
-                                 merchant_identifier)
+                                 signed_message)
     end
   end
 end

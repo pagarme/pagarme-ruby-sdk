@@ -8,6 +8,12 @@ module PagarmeApiSdk
   class Client
     attr_reader :config, :auth_managers
 
+    # Access to subscriptions controller.
+    # @return [SubscriptionsController] Returns the controller instance.
+    def subscriptions
+      @subscriptions ||= SubscriptionsController.new @global_configuration
+    end
+
     # Access to orders controller.
     # @return [OrdersController] Returns the controller instance.
     def orders
@@ -18,12 +24,6 @@ module PagarmeApiSdk
     # @return [PlansController] Returns the controller instance.
     def plans
       @plans ||= PlansController.new @global_configuration
-    end
-
-    # Access to subscriptions controller.
-    # @return [SubscriptionsController] Returns the controller instance.
-    def subscriptions
-      @subscriptions ||= SubscriptionsController.new @global_configuration
     end
 
     # Access to invoices controller.
@@ -38,16 +38,16 @@ module PagarmeApiSdk
       @customers ||= CustomersController.new @global_configuration
     end
 
-    # Access to recipients controller.
-    # @return [RecipientsController] Returns the controller instance.
-    def recipients
-      @recipients ||= RecipientsController.new @global_configuration
-    end
-
     # Access to charges controller.
     # @return [ChargesController] Returns the controller instance.
     def charges
       @charges ||= ChargesController.new @global_configuration
+    end
+
+    # Access to recipients controller.
+    # @return [RecipientsController] Returns the controller instance.
+    def recipients
+      @recipients ||= RecipientsController.new @global_configuration
     end
 
     # Access to tokens controller.
@@ -56,16 +56,16 @@ module PagarmeApiSdk
       @tokens ||= TokensController.new @global_configuration
     end
 
-    # Access to transfers controller.
-    # @return [TransfersController] Returns the controller instance.
-    def transfers
-      @transfers ||= TransfersController.new @global_configuration
-    end
-
     # Access to transactions controller.
     # @return [TransactionsController] Returns the controller instance.
     def transactions
       @transactions ||= TransactionsController.new @global_configuration
+    end
+
+    # Access to transfers controller.
+    # @return [TransfersController] Returns the controller instance.
+    def transfers
+      @transfers ||= TransfersController.new @global_configuration
     end
 
     # Access to payables controller.
@@ -109,7 +109,6 @@ module PagarmeApiSdk
                                                  .global_errors(BaseController::GLOBAL_ERRORS)
                                                  .user_agent(BaseController.user_agent)
                                                  .global_header('ServiceRefererName', @config.service_referer_name)
-                                                 .sdk_module(PagarmeApiSdk)
 
       initialize_auth_managers(@global_configuration)
       @global_configuration = @global_configuration.auth_managers(@auth_managers)

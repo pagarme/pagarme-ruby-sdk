@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Indicates if the subscriptions using this card must also be updated
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :update_subscription
 
     # Card id
@@ -22,7 +22,7 @@ module PagarmeApiSdk
     attr_accessor :card
 
     # Indicates a recurrence
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :recurrence
 
     # A mapping from model property names to API property names.

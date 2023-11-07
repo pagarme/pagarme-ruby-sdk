@@ -12,6 +12,7 @@
 | `country_code` | `String` | Optional | - |
 | `number` | `String` | Optional | - |
 | `area_code` | `String` | Optional | - |
+| `type` | `String` | Optional | - |
 
 ## Example (as JSON)
 
@@ -19,7 +20,8 @@
 {
   "country_code": "country_code0",
   "number": "number2",
-  "area_code": "area_code0"
+  "area_code": "area_code0",
+  "Type": "Type0"
 }
 ```
 

@@ -14,7 +14,7 @@ module PagarmeApiSdk
     attr_accessor :statement_descriptor
 
     # Payment installment options
-    # @return [List of CreateCheckoutCardInstallmentOptionRequest]
+    # @return [Array[CreateCheckoutCardInstallmentOptionRequest]]
     attr_accessor :installments
 
     # Creates payment authentication
@@ -22,7 +22,7 @@ module PagarmeApiSdk
     attr_accessor :authentication
 
     # Authorize and capture?
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :capture
 
     # A mapping from model property names to API property names.

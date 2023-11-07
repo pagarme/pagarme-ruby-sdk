@@ -11,7 +11,7 @@ Options for creating the card
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `verify_card` | `TrueClass\|FalseClass` | Required | Indicates if the card should be verified before creation. If true, executes an authorization before saving the card. |
+| `verify_card` | `TrueClass \| FalseClass` | Required | Indicates if the card should be verified before creation. If true, executes an authorization before saving the card. |
 
 ## Example (as JSON)
 

@@ -14,7 +14,7 @@ module PagarmeApiSdk
     attr_accessor :scheme_type
 
     # Price brackets
-    # @return [List of UpdatePriceBracketRequest]
+    # @return [Array[UpdatePriceBracketRequest]]
     attr_accessor :price_brackets
 
     # Price

@@ -14,7 +14,7 @@ module PagarmeApiSdk
     attr_accessor :amount
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # A mapping from model property names to API property names.

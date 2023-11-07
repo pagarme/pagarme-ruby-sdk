@@ -34,7 +34,7 @@ module PagarmeApiSdk
     attr_accessor :default_bank_account
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Receiver Transfer Information

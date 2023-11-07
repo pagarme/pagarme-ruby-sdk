@@ -10,15 +10,15 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Liable options
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :liable
 
     # Charge processing fee
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :charge_processing_fee
 
     # Charge processing fee
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :charge_remainder_fee
 
     # A mapping from model property names to API property names.

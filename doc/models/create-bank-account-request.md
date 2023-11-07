@@ -20,7 +20,7 @@ Request for creating a bank account
 | `account_number` | `String` | Required | Account number |
 | `account_check_digit` | `String` | Required | Account check digit |
 | `type` | `String` | Required | Bank account type |
-| `metadata` | `Hash of String` | Required | Metadata |
+| `metadata` | `Hash[String, String]` | Required | Metadata |
 | `pix_key` | `String` | Optional | Pix key |
 
 ## Example (as JSON)
@@ -28,20 +28,20 @@ Request for creating a bank account
 ```json
 {
   "holder_name": "holder_name4",
-  "holder_type": "holder_type2",
-  "holder_document": "holder_document6",
-  "bank": "bank8",
-  "branch_number": "branch_number6",
+  "holder_type": "holder_type0",
+  "holder_document": "holder_document8",
+  "bank": "bank6",
+  "branch_number": "branch_number4",
   "branch_check_digit": "branch_check_digit4",
-  "account_number": "account_number0",
-  "account_check_digit": "account_check_digit6",
-  "type": "type0",
+  "account_number": "account_number8",
+  "account_check_digit": "account_check_digit4",
+  "type": "type2",
   "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key0": "metadata5",
+    "key1": "metadata6",
+    "key2": "metadata7"
   },
-  "pix_key": "pix_key6"
+  "pix_key": "pix_key8"
 }
 ```
 

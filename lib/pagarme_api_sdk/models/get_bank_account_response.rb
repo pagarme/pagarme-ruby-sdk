@@ -67,7 +67,7 @@ module PagarmeApiSdk
     attr_accessor :recipient
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Pix Key
