@@ -11,8 +11,8 @@ The GooglePay Intermediate Signing Key Request
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `signed_key` | `String` | Required | Uma mensagem codificada em Base64 com a descrição de pagamento da chave. |
-| `signatures` | `Array<String>` | Required | Verifica se a origem da chave de assinatura intermediária é o Google. É codificada em Base64 e criada usando o ECDSA. |
+| `signed_key` | `String` | Optional | Uma mensagem codificada em Base64 com a descrição de pagamento da chave. |
+| `signatures` | `Array<String>` | Optional | Verifica se a origem da chave de assinatura intermediária é o Google. É codificada em Base64 e criada usando o ECDSA. |
 
 ## Example (as JSON)
 

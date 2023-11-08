@@ -28,18 +28,24 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        signed_key
+        signatures
+      ]
     end
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        signed_key
+        signatures
+      ]
     end
 
-    def initialize(signed_key = nil,
-                   signatures = nil)
-      @signed_key = signed_key
-      @signatures = signatures
+    def initialize(signed_key = SKIP,
+                   signatures = SKIP)
+      @signed_key = signed_key unless signed_key == SKIP
+      @signatures = signatures unless signatures == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -47,8 +53,8 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      signed_key = hash.key?('signed_key') ? hash['signed_key'] : nil
-      signatures = hash.key?('signatures') ? hash['signatures'] : nil
+      signed_key = hash.key?('signed_key') ? hash['signed_key'] : SKIP
+      signatures = hash.key?('signatures') ? hash['signatures'] : SKIP
 
       # Create object from extracted values.
       CreateGooglePayIntermediateSigningKeyRequest.new(signed_key,
