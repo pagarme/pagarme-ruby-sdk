@@ -43,11 +43,11 @@ module PagarmeApiSdk
     attr_accessor :billing_type
 
     # TODO: Write general description for this method
-    # @return [List of String]
+    # @return [Array[String]]
     attr_accessor :payment_methods
 
     # TODO: Write general description for this method
-    # @return [List of Integer]
+    # @return [Array[Integer]]
     attr_accessor :installments
 
     # TODO: Write general description for this method
@@ -67,19 +67,19 @@ module PagarmeApiSdk
     attr_accessor :updated_at
 
     # TODO: Write general description for this method
-    # @return [List of GetPlanItemResponse]
+    # @return [Array[GetPlanItemResponse]]
     attr_accessor :items
 
     # TODO: Write general description for this method
-    # @return [List of Integer]
+    # @return [Array[Integer]]
     attr_accessor :billing_days
 
     # TODO: Write general description for this method
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :shippable
 
     # TODO: Write general description for this method
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # TODO: Write general description for this method

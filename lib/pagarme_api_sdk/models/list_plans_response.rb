@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # The plan objects
-    # @return [List of GetPlanResponse]
+    # @return [Array[GetPlanResponse]]
     attr_accessor :data
 
     # Paging object

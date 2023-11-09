@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # TODO: Write general description for this method
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :enabled
 
     # TODO: Write general description for this method
@@ -26,7 +26,7 @@ module PagarmeApiSdk
     attr_accessor :delay
 
     # TODO: Write general description for this method
-    # @return [List of Integer]
+    # @return [Array[Integer]]
     attr_accessor :days
 
     # A mapping from model property names to API property names.

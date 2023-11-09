@@ -31,7 +31,7 @@ module PagarmeApiSdk
     attr_accessor :payment
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # The charge due date

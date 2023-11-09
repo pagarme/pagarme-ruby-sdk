@@ -71,7 +71,7 @@ module PagarmeApiSdk
     attr_accessor :card
 
     # TODO: Write general description for this method
-    # @return [List of GetSubscriptionItemResponse]
+    # @return [Array[GetSubscriptionItemResponse]]
     attr_accessor :items
 
     # TODO: Write general description for this method
@@ -79,7 +79,7 @@ module PagarmeApiSdk
     attr_accessor :statement_descriptor
 
     # TODO: Write general description for this method
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # TODO: Write general description for this method
@@ -107,11 +107,11 @@ module PagarmeApiSdk
     attr_accessor :canceled_at
 
     # Subscription discounts
-    # @return [List of GetDiscountResponse]
+    # @return [Array[GetDiscountResponse]]
     attr_accessor :discounts
 
     # Subscription increments
-    # @return [List of GetIncrementResponse]
+    # @return [Array[GetIncrementResponse]]
     attr_accessor :increments
 
     # Days until boleto expires
@@ -127,7 +127,7 @@ module PagarmeApiSdk
     attr_accessor :boleto
 
     # Subscription's split response
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :manual_billing
 
     # A mapping from model property names to API property names.

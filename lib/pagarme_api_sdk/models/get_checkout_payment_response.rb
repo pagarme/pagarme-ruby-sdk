@@ -35,7 +35,7 @@ module PagarmeApiSdk
     attr_accessor :gateway_affiliation_id
 
     # Meios de pagamento aceitos no checkout
-    # @return [List of String]
+    # @return [Array[String]]
     attr_accessor :accepted_payment_methods
 
     # Status do checkout
@@ -43,7 +43,7 @@ module PagarmeApiSdk
     attr_accessor :status
 
     # Pular tela de sucesso pós-pagamento?
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :skip_checkout_success_page
 
     # Data de criação
@@ -59,7 +59,7 @@ module PagarmeApiSdk
     attr_accessor :canceled_at
 
     # Torna o objeto customer editável
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :customer_editable
 
     # Dados do comprador
@@ -79,7 +79,7 @@ module PagarmeApiSdk
     attr_accessor :boleto
 
     # Indica se o billing address poderá ser editado
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :billing_address_editable
 
     # Configurações  de entrega
@@ -87,7 +87,7 @@ module PagarmeApiSdk
     attr_accessor :shipping
 
     # Indica se possui entrega
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :shippable
 
     # Data de fechamento
@@ -111,7 +111,7 @@ module PagarmeApiSdk
     attr_accessor :bank_transfer
 
     # Accepted Brands
-    # @return [List of String]
+    # @return [Array[String]]
     attr_accessor :accepted_brands
 
     # Pix payment response

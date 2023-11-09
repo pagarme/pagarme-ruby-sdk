@@ -10,11 +10,11 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Defines if the split is enabled
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :enabled
 
     # Split
-    # @return [List of CreateSplitRequest]
+    # @return [Array[CreateSplitRequest]]
     attr_accessor :rules
 
     # A mapping from model property names to API property names.

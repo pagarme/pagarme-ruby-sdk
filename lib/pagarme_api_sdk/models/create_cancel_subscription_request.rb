@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Indicates if the pending invoices must also be canceled.
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :cancel_pending_invoices
 
     # A mapping from model property names to API property names.

@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # The customer object
-    # @return [List of GetCustomerResponse]
+    # @return [Array[GetCustomerResponse]]
     attr_accessor :data
 
     # Paging object

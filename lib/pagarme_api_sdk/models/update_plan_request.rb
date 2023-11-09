@@ -18,7 +18,7 @@ module PagarmeApiSdk
     attr_accessor :description
 
     # Number os installments
-    # @return [List of Integer]
+    # @return [Array[Integer]]
     attr_accessor :installments
 
     # Text that will be shown on the credit card's statement
@@ -38,7 +38,7 @@ module PagarmeApiSdk
     attr_accessor :interval_count
 
     # Payment methods accepted by the plan
-    # @return [List of String]
+    # @return [Array[String]]
     attr_accessor :payment_methods
 
     # Billing type
@@ -50,15 +50,15 @@ module PagarmeApiSdk
     attr_accessor :status
 
     # Indicates if the plan is shippable
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :shippable
 
     # Billing days accepted by the plan
-    # @return [List of Integer]
+    # @return [Array[Integer]]
     attr_accessor :billing_days
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Minimum price

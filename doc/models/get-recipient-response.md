@@ -23,7 +23,7 @@ Recipient response
 | `deleted_at` | `DateTime` | Optional | Deletion date |
 | `default_bank_account` | [`GetBankAccountResponse`](../../doc/models/get-bank-account-response.md) | Optional | Default bank account |
 | `gateway_recipients` | [`Array<GetGatewayRecipientResponse>`](../../doc/models/get-gateway-recipient-response.md) | Optional | Info about the recipient on the gateway |
-| `metadata` | `Hash of String` | Optional | Metadata |
+| `metadata` | `Hash[String, String]` | Optional | Metadata |
 | `automatic_anticipation_settings` | [`GetAutomaticAnticipationResponse`](../../doc/models/get-automatic-anticipation-response.md) | Optional | - |
 | `transfer_settings` | [`GetTransferSettingsResponse`](../../doc/models/get-transfer-settings-response.md) | Optional | - |
 | `code` | `String` | Optional | Recipient code |
@@ -34,11 +34,11 @@ Recipient response
 ```json
 {
   "payment_mode": "bank_transfer",
-  "id": "id0",
-  "name": "name0",
-  "email": "email6",
-  "document": "document6",
-  "description": "description0"
+  "id": "id4",
+  "name": "name4",
+  "email": "email2",
+  "document": "document2",
+  "description": "description6"
 }
 ```
 

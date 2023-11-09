@@ -15,7 +15,7 @@
 | `status` | `String` | Required | - |
 | `created_at` | `DateTime` | Required | - |
 | `updated_at` | `DateTime` | Required | - |
-| `metadata` | `Hash of String` | Optional | - |
+| `metadata` | `Hash[String, String]` | Optional | - |
 | `fee` | `Integer` | Optional | - |
 | `funding_date` | `DateTime` | Optional | - |
 | `funding_estimated_date` | `DateTime` | Optional | - |
@@ -27,21 +27,19 @@
 
 ```json
 {
-  "id": "id0",
-  "gateway_id": "gateway_id0",
-  "amount": 46,
-  "status": "status8",
+  "id": "id8",
+  "gateway_id": "gateway_id8",
+  "amount": 122,
+  "status": "status0",
   "created_at": "2016-03-13T12:52:32.123Z",
   "updated_at": "2016-03-13T12:52:32.123Z",
   "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key0": "metadata5"
   },
-  "fee": 168,
+  "fee": 80,
   "funding_date": "2016-03-13T12:52:32.123Z",
   "funding_estimated_date": "2016-03-13T12:52:32.123Z",
-  "type": "type0",
+  "type": "type8",
   "source": {
     "source_id": "source_id8",
     "type": "type6"

@@ -10,11 +10,11 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # TODO: Write general description for this method
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :liable
 
     # TODO: Write general description for this method
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :charge_processing_fee
 
     # TODO: Write general description for this method

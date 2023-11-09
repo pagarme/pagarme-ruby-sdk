@@ -11,7 +11,7 @@ Informações de transferência do recebedor
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `transfer_enabled` | `TrueClass\|FalseClass` | Required | - |
+| `transfer_enabled` | `TrueClass \| FalseClass` | Required | - |
 | `transfer_interval` | `String` | Required | - |
 | `transfer_day` | `Integer` | Required | - |
 
@@ -20,8 +20,8 @@ Informações de transferência do recebedor
 ```json
 {
   "transfer_enabled": false,
-  "transfer_interval": "transfer_interval0",
-  "transfer_day": 18
+  "transfer_interval": "transfer_interval4",
+  "transfer_day": 82
 }
 ```
 

@@ -55,7 +55,7 @@ module PagarmeApiSdk
     attr_accessor :pricing_scheme
 
     # Subscription items
-    # @return [List of CreateSubscriptionItemRequest]
+    # @return [Array[CreateSubscriptionItemRequest]]
     attr_accessor :items
 
     # Shipping
@@ -63,11 +63,11 @@ module PagarmeApiSdk
     attr_accessor :shipping
 
     # Discounts
-    # @return [List of CreateDiscountRequest]
+    # @return [Array[CreateDiscountRequest]]
     attr_accessor :discounts
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Setup data
@@ -123,7 +123,7 @@ module PagarmeApiSdk
     attr_accessor :boleto_due_days
 
     # Increments
-    # @return [List of CreateIncrementRequest]
+    # @return [Array[CreateIncrementRequest]]
     attr_accessor :increments
 
     # Increments

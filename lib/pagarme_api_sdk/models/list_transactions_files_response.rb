@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # TODO: Write general description for this method
-    # @return [List of GetTransactionReportFileResponse]
+    # @return [Array[GetTransactionReportFileResponse]]
     attr_accessor :data
 
     # Paging object

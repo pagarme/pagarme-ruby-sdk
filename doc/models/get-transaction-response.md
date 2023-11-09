@@ -14,7 +14,7 @@ Generic response object for getting a transaction.
 | `gateway_id` | `String` | Optional | Gateway transaction id |
 | `amount` | `Integer` | Optional | Amount in cents |
 | `status` | `String` | Optional | Transaction status |
-| `success` | `TrueClass\|FalseClass` | Optional | Indicates if the transaction ocurred successfuly |
+| `success` | `TrueClass \| FalseClass` | Optional | Indicates if the transaction ocurred successfuly |
 | `created_at` | `DateTime` | Optional | Creation date |
 | `updated_at` | `DateTime` | Optional | Last update date |
 | `attempt_count` | `Integer` | Optional | Number of attempts tried |
@@ -25,7 +25,7 @@ Generic response object for getting a transaction.
 | `id` | `String` | Optional | Código da transação |
 | `gateway_response` | [`GetGatewayResponseResponse`](../../doc/models/get-gateway-response-response.md) | Optional | The Gateway Response |
 | `antifraud_response` | [`GetAntifraudResponse`](../../doc/models/get-antifraud-response.md) | Optional | - |
-| `metadata` | `Hash of String` | Optional | - |
+| `metadata` | `Hash[String, String]` | Optional | - |
 | `split` | [`Array<GetSplitResponse>`](../../doc/models/get-split-response.md) | Optional | - |
 | `interest` | [`GetInterestResponse`](../../doc/models/get-interest-response.md) | Optional | - |
 | `fine` | [`GetFineResponse`](../../doc/models/get-fine-response.md) | Optional | - |
@@ -35,12 +35,25 @@ Generic response object for getting a transaction.
 
 ```json
 {
-  "gateway_id": "gateway_id0",
-  "amount": 46,
-  "status": "status8",
+  "gateway_id": "gateway_id8",
+  "amount": 40,
+  "status": "status6",
   "success": false,
   "created_at": "2016-03-13T12:52:32.123Z",
-  "transaction_type": "transaction"
+  "qr_code": "qr_code0",
+  "qr_code_url": "qr_code_url6",
+  "expires_at": "2016-03-13T12:52:32.123Z",
+  "additional_information": [
+    {
+      "Name": "Name0",
+      "Value": "Value2"
+    },
+    {
+      "Name": "Name0",
+      "Value": "Value2"
+    }
+  ],
+  "end_to_end_id": "end_to_end_id6"
 }
 ```
 

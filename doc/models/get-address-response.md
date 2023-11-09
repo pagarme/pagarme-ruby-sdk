@@ -24,7 +24,7 @@ Response object for getting an Address
 | `created_at` | `DateTime` | Optional | - |
 | `updated_at` | `DateTime` | Optional | - |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
-| `metadata` | `Hash of String` | Optional | - |
+| `metadata` | `Hash[String, String]` | Optional | - |
 | `line_1` | `String` | Optional | Line 1 for address |
 | `line_2` | `String` | Optional | Line 2 for address |
 | `deleted_at` | `DateTime` | Optional | - |
@@ -33,11 +33,11 @@ Response object for getting an Address
 
 ```json
 {
-  "id": "id0",
-  "street": "street0",
-  "number": "number2",
-  "complement": "complement4",
-  "zip_code": "zip_code4"
+  "id": "id2",
+  "street": "street2",
+  "number": "number0",
+  "complement": "complement8",
+  "zip_code": "zip_code6"
 }
 ```
 

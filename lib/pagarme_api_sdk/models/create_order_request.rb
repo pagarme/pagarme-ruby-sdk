@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Items
-    # @return [List of CreateOrderItemRequest]
+    # @return [Array[CreateOrderItemRequest]]
     attr_accessor :items
 
     # Customer
@@ -18,7 +18,7 @@ module PagarmeApiSdk
     attr_accessor :customer
 
     # Payment data
-    # @return [List of CreatePaymentRequest]
+    # @return [Array[CreatePaymentRequest]]
     attr_accessor :payments
 
     # The order code
@@ -34,11 +34,11 @@ module PagarmeApiSdk
     attr_accessor :shipping
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Defines whether the order will go through anti-fraud
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :antifraud_enabled
 
     # Ip address
@@ -58,7 +58,7 @@ module PagarmeApiSdk
     attr_accessor :device
 
     # Device's informations
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :closed
 
     # Currency

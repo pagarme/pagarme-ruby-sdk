@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # The access token objects
-    # @return [List of GetAccessTokenResponse]
+    # @return [Array[GetAccessTokenResponse]]
     attr_accessor :data
 
     # Paging object

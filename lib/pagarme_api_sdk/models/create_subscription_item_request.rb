@@ -26,7 +26,7 @@ module PagarmeApiSdk
     attr_accessor :plan_item_id
 
     # Discounts for the item
-    # @return [List of CreateDiscountRequest]
+    # @return [Array[CreateDiscountRequest]]
     attr_accessor :discounts
 
     # Item name

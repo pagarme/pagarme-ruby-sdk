@@ -22,19 +22,19 @@ module PagarmeApiSdk
     attr_accessor :statement_descriptor
 
     # Plan items
-    # @return [List of CreatePlanItemRequest]
+    # @return [Array[CreatePlanItemRequest]]
     attr_accessor :items
 
     # Indicates if the plan is shippable
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :shippable
 
     # Allowed payment methods for the plan
-    # @return [List of String]
+    # @return [Array[String]]
     attr_accessor :payment_methods
 
     # Number of installments
-    # @return [List of Integer]
+    # @return [Array[Integer]]
     attr_accessor :installments
 
     # Currency
@@ -53,7 +53,7 @@ module PagarmeApiSdk
 
     # Allowed billings days for the subscription, in case the plan type is
     # 'exact_day'
-    # @return [List of Integer]
+    # @return [Array[Integer]]
     attr_accessor :billing_days
 
     # Billing type
@@ -65,7 +65,7 @@ module PagarmeApiSdk
     attr_accessor :pricing_scheme
 
     # Metadata
-    # @return [Hash of String]
+    # @return [Hash[String, String]]
     attr_accessor :metadata
 
     # Minimum price that will be charged

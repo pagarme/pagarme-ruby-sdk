@@ -27,8 +27,8 @@ Response object for getting a plan
 | `updated_at` | `DateTime` | Optional | - |
 | `items` | [`Array<GetPlanItemResponse>`](../../doc/models/get-plan-item-response.md) | Optional | - |
 | `billing_days` | `Array<Integer>` | Optional | - |
-| `shippable` | `TrueClass\|FalseClass` | Optional | - |
-| `metadata` | `Hash of String` | Optional | - |
+| `shippable` | `TrueClass \| FalseClass` | Optional | - |
+| `metadata` | `Hash[String, String]` | Optional | - |
 | `trial_period_days` | `Integer` | Optional | - |
 | `minimum_price` | `Integer` | Optional | - |
 | `deleted_at` | `DateTime` | Optional | - |

@@ -18,7 +18,7 @@ module PagarmeApiSdk
     attr_accessor :payment_url
 
     # Accepted Payment Methods
-    # @return [List of String]
+    # @return [Array[String]]
     attr_accessor :accepted_payment_methods
 
     # Status

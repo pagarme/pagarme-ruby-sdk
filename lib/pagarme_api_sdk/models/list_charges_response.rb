@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # The charge objects
-    # @return [List of GetChargeResponse]
+    # @return [Array[GetChargeResponse]]
     attr_accessor :data
 
     # Paging object

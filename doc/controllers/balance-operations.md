@@ -19,7 +19,8 @@ balance_operations_controller = client.balance_operations
 ```ruby
 def get_balance_operations(status: nil,
                            created_since: nil,
-                           created_until: nil)
+                           created_until: nil,
+                           recipient_id: nil)
 ```
 
 ## Parameters
@@ -29,6 +30,7 @@ def get_balance_operations(status: nil,
 | `status` | `String` | Query, Optional | - |
 | `created_since` | `DateTime` | Query, Optional | - |
 | `created_until` | `DateTime` | Query, Optional | - |
+| `recipient_id` | `String` | Query, Optional | - |
 
 ## Response Type
 

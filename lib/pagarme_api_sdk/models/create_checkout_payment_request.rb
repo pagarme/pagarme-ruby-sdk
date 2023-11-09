@@ -10,11 +10,11 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Accepted Payment Methods
-    # @return [List of String]
+    # @return [Array[String]]
     attr_accessor :accepted_payment_methods
 
     # Accepted Multi Payment Methods
-    # @return [List of Object]
+    # @return [Array[Object]]
     attr_accessor :accepted_multi_payment_methods
 
     # Success url
@@ -42,7 +42,7 @@ module PagarmeApiSdk
     attr_accessor :boleto
 
     # Customer is editable?
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :customer_editable
 
     # Time in minutes for expiration
@@ -50,11 +50,11 @@ module PagarmeApiSdk
     attr_accessor :expires_in
 
     # Skip postpay success screen?
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :skip_checkout_success_page
 
     # Billing Address is editable?
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :billing_address_editable
 
     # Billing Address
@@ -66,7 +66,7 @@ module PagarmeApiSdk
     attr_accessor :bank_transfer
 
     # Accepted Brands
-    # @return [List of String]
+    # @return [Array[String]]
     attr_accessor :accepted_brands
 
     # Pix payment request

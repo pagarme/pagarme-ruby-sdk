@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Indicates if the payment method from the subscription must also be updated
-    # @return [TrueClass|FalseClass]
+    # @return [TrueClass | FalseClass]
     attr_accessor :update_subscription
 
     # The new payment method

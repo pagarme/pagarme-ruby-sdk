@@ -18,7 +18,7 @@ module PagarmeApiSdk
     attr_accessor :scheme_type
 
     # TODO: Write general description for this method
-    # @return [List of GetPriceBracketResponse]
+    # @return [Array[GetPriceBracketResponse]]
     attr_accessor :price_brackets
 
     # TODO: Write general description for this method

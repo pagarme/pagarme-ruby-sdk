@@ -22,7 +22,7 @@ module PagarmeApiSdk
     attr_accessor :target_id
 
     # TODO: Write general description for this method
-    # @return [List of String]
+    # @return [Array[String]]
     attr_accessor :metadata
 
     # A mapping from model property names to API property names.

@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # The Discounts response
-    # @return [List of GetDiscountResponse]
+    # @return [Array[GetDiscountResponse]]
     attr_accessor :data
 
     # Paging object
