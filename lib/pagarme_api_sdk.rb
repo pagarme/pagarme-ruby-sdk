@@ -267,6 +267,8 @@ require_relative 'pagarme_api_sdk/models/list_balance_operation_response'
 require_relative 'pagarme_api_sdk/models/create_google_pay_intermediate' \
                  '_signing_key_request'
 require_relative 'pagarme_api_sdk/models/create_card_payload_request'
+require_relative 'pagarme_api_sdk/models/get_retry_transaction_information' \
+                 '_response'
 
 # Exceptions
 require_relative 'pagarme_api_sdk/exceptions/api_exception'

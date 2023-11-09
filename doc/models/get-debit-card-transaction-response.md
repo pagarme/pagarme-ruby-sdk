@@ -30,6 +30,7 @@ Response object for getting a debit card transaction
 | `authentication_type` | `String` | Optional | Authentication type |
 | `threed_authentication_url` | `String` | Optional | 3D-S Authentication Url |
 | `funding_source` | `String` | Optional | Identify when a card is prepaid, credit or debit. |
+| `retry_info` | [`GetRetryTransactionInformationResponse`](../../doc/models/get-retry-transaction-information-response.md) | Optional | Retry transaction information |
 
 ## Example (as JSON)
 

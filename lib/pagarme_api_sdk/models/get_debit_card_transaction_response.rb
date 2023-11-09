@@ -69,6 +69,10 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :funding_source
 
+    # Retry transaction information
+    # @return [GetRetryTransactionInformationResponse]
+    attr_accessor :retry_info
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -87,6 +91,7 @@ module PagarmeApiSdk
       @_hash['authentication_type'] = 'authentication_type'
       @_hash['threed_authentication_url'] = 'threed_authentication_url'
       @_hash['funding_source'] = 'funding_source'
+      @_hash['retry_info'] = 'retry_info'
       @_hash = super().merge(@_hash)
       @_hash
     end
@@ -109,6 +114,7 @@ module PagarmeApiSdk
         authentication_type
         threed_authentication_url
         funding_source
+        retry_info
       ]
       (_arr << super()).flatten!
     end
@@ -131,6 +137,7 @@ module PagarmeApiSdk
         authentication_type
         threed_authentication_url
         funding_source
+        retry_info
       ]
       (_arr << super()).flatten!
     end
@@ -150,6 +157,7 @@ module PagarmeApiSdk
                    authentication_type = SKIP,
                    threed_authentication_url = SKIP,
                    funding_source = SKIP,
+                   retry_info = SKIP,
                    gateway_id = SKIP,
                    amount = SKIP,
                    status = SKIP,
@@ -190,6 +198,7 @@ module PagarmeApiSdk
           threed_authentication_url
       end
       @funding_source = funding_source unless funding_source == SKIP
+      @retry_info = retry_info unless retry_info == SKIP
 
       # Call the constructor of the base class
       super(gateway_id,
@@ -242,6 +251,8 @@ module PagarmeApiSdk
         hash.key?('threed_authentication_url') ? hash['threed_authentication_url'] : SKIP
       funding_source =
         hash.key?('funding_source') ? hash['funding_source'] : SKIP
+      retry_info = GetRetryTransactionInformationResponse.from_hash(hash['retry_info']) if
+        hash['retry_info']
       gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
       amount = hash.key?('amount') ? hash['amount'] : SKIP
       status = hash.key?('status') ? hash['status'] : SKIP
@@ -311,6 +322,7 @@ module PagarmeApiSdk
                                           authentication_type,
                                           threed_authentication_url,
                                           funding_source,
+                                          retry_info,
                                           gateway_id,
                                           amount,
                                           status,
