@@ -52,7 +52,7 @@ module PagarmeApiSdk
       CreatePeriodRequest.new(end_at)
     end
 
-    def to_end_at
+    def to_custom_end_at
       DateTimeHelper.to_rfc3339(end_at)
     end
   end

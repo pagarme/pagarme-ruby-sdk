@@ -48,7 +48,7 @@ module PagarmeApiSdk
       UpdateSubscriptionStartAtRequest.new(start_at)
     end
 
-    def to_start_at
+    def to_custom_start_at
       DateTimeHelper.to_rfc3339(start_at)
     end
   end

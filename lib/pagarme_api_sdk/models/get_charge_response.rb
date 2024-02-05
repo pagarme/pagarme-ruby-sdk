@@ -295,23 +295,23 @@ module PagarmeApiSdk
                             recurrency_cycle)
     end
 
-    def to_due_at
+    def to_custom_due_at
       DateTimeHelper.to_rfc3339(due_at)
     end
 
-    def to_created_at
+    def to_custom_created_at
       DateTimeHelper.to_rfc3339(created_at)
     end
 
-    def to_updated_at
+    def to_custom_updated_at
       DateTimeHelper.to_rfc3339(updated_at)
     end
 
-    def to_paid_at
+    def to_custom_paid_at
       DateTimeHelper.to_rfc3339(paid_at)
     end
 
-    def to_canceled_at
+    def to_custom_canceled_at
       DateTimeHelper.to_rfc3339(canceled_at)
     end
   end

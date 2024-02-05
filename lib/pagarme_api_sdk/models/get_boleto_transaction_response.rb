@@ -354,15 +354,15 @@ module PagarmeApiSdk
                                        max_days_to_pay_past_due)
     end
 
-    def to_due_at
+    def to_custom_due_at
       DateTimeHelper.to_rfc3339(due_at)
     end
 
-    def to_paid_at
+    def to_custom_paid_at
       DateTimeHelper.to_rfc3339(paid_at)
     end
 
-    def to_credit_at
+    def to_custom_credit_at
       DateTimeHelper.to_rfc3339(credit_at)
     end
   end

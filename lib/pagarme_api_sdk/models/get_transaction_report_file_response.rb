@@ -65,7 +65,7 @@ module PagarmeApiSdk
                                            date)
     end
 
-    def to_date
+    def to_custom_date
       DateTimeHelper.to_rfc3339(date)
     end
   end

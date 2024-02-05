@@ -136,7 +136,7 @@ module PagarmeApiSdk
                               antifraud)
     end
 
-    def to_due_at
+    def to_custom_due_at
       DateTimeHelper.to_rfc3339(due_at)
     end
   end

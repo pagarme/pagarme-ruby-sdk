@@ -72,7 +72,7 @@ module PagarmeApiSdk
                                                  transaction_date_limit)
     end
 
-    def to_transaction_date_limit
+    def to_custom_transaction_date_limit
       DateTimeHelper.to_rfc3339(transaction_date_limit)
     end
   end

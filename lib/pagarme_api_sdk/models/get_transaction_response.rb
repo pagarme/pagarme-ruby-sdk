@@ -90,15 +90,15 @@ module PagarmeApiSdk
     def self.discriminators
       if @_discriminators.nil?
         @_discriminators = {}
+        @_discriminators['voucher'] = GetVoucherTransactionResponse
         @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse
         @_discriminators['safetypay'] = GetSafetyPayTransactionResponse
-        @_discriminators['voucher'] = GetVoucherTransactionResponse
-        @_discriminators['boleto'] = GetBoletoTransactionResponse
         @_discriminators['debit_card'] = GetDebitCardTransactionResponse
-        @_discriminators['private_label'] = GetPrivateLabelTransactionResponse
+        @_discriminators['boleto'] = GetBoletoTransactionResponse
         @_discriminators['cash'] = GetCashTransactionResponse
-        @_discriminators['credit_card'] = GetCreditCardTransactionResponse
+        @_discriminators['private_label'] = GetPrivateLabelTransactionResponse
         @_discriminators['pix'] = GetPixTransactionResponse
+        @_discriminators['credit_card'] = GetCreditCardTransactionResponse
       end
       @_discriminators
     end
@@ -302,15 +302,15 @@ module PagarmeApiSdk
                                  max_days_to_pay_past_due)
     end
 
-    def to_created_at
+    def to_custom_created_at
       DateTimeHelper.to_rfc3339(created_at)
     end
 
-    def to_updated_at
+    def to_custom_updated_at
       DateTimeHelper.to_rfc3339(updated_at)
     end
 
-    def to_next_attempt
+    def to_custom_next_attempt
       DateTimeHelper.to_rfc3339(next_attempt)
     end
   end

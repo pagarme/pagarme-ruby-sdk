@@ -48,7 +48,7 @@ module PagarmeApiSdk
       UpdateSubscriptionBillingDateRequest.new(next_billing_at)
     end
 
-    def to_next_billing_at
+    def to_custom_next_billing_at
       DateTimeHelper.to_rfc3339(next_billing_at)
     end
   end

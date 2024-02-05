@@ -98,7 +98,7 @@ module PagarmeApiSdk
                                  customer)
     end
 
-    def to_created_at
+    def to_custom_created_at
       DateTimeHelper.to_rfc3339(created_at)
     end
   end

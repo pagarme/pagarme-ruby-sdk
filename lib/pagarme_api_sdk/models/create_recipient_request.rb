@@ -9,11 +9,13 @@ module PagarmeApiSdk
     SKIP = Object.new
     private_constant :SKIP
 
-    # Recipient name
+    # Recipient name. Required if the register_information field isn't
+    # populated.
     # @return [String]
     attr_accessor :name
 
-    # Recipient email
+    # Recipient email. Required if the register_information field isn't
+    # populated.
     # @return [String]
     attr_accessor :email
 
@@ -21,11 +23,13 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :description
 
-    # Recipient document number
+    # Recipient document number. Required if the register_information field
+    # isn't populated.
     # @return [String]
     attr_accessor :document
 
-    # Recipient type
+    # Recipient type. Required if the register_information field isn't
+    # populated.
     # @return [String]
     attr_accessor :type
 
@@ -49,6 +53,10 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :payment_mode
 
+    # Register Information
+    # @return [CreateRegisterInformationBaseRequest]
+    attr_accessor :register_information
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -62,41 +70,57 @@ module PagarmeApiSdk
       @_hash['transfer_settings'] = 'transfer_settings'
       @_hash['code'] = 'code'
       @_hash['payment_mode'] = 'payment_mode'
+      @_hash['register_information'] = 'register_information'
       @_hash
     end
 
     # An array for optional fields
     def self.optionals
       %w[
+        name
+        email
+        description
+        document
+        type
         transfer_settings
+        register_information
       ]
     end
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        name
+        email
+        description
+        document
+        type
+        register_information
+      ]
     end
 
-    def initialize(name = nil,
-                   email = nil,
-                   description = nil,
-                   document = nil,
-                   type = nil,
-                   default_bank_account = nil,
+    def initialize(default_bank_account = nil,
                    metadata = nil,
                    code = nil,
                    payment_mode = 'bank_transfer',
-                   transfer_settings = SKIP)
-      @name = name
-      @email = email
-      @description = description
-      @document = document
-      @type = type
+                   name = SKIP,
+                   email = SKIP,
+                   description = SKIP,
+                   document = SKIP,
+                   type = SKIP,
+                   transfer_settings = SKIP,
+                   register_information = SKIP)
+      @name = name unless name == SKIP
+      @email = email unless email == SKIP
+      @description = description unless description == SKIP
+      @document = document unless document == SKIP
+      @type = type unless type == SKIP
       @default_bank_account = default_bank_account
       @metadata = metadata
       @transfer_settings = transfer_settings unless transfer_settings == SKIP
       @code = code
       @payment_mode = payment_mode
+      @register_information = register_information unless register_information == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -104,30 +128,34 @@ module PagarmeApiSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      name = hash.key?('name') ? hash['name'] : nil
-      email = hash.key?('email') ? hash['email'] : nil
-      description = hash.key?('description') ? hash['description'] : nil
-      document = hash.key?('document') ? hash['document'] : nil
-      type = hash.key?('type') ? hash['type'] : nil
       default_bank_account = CreateBankAccountRequest.from_hash(hash['default_bank_account']) if
         hash['default_bank_account']
       metadata = hash.key?('metadata') ? hash['metadata'] : nil
       code = hash.key?('code') ? hash['code'] : nil
       payment_mode = hash['payment_mode'] ||= 'bank_transfer'
+      name = hash.key?('name') ? hash['name'] : SKIP
+      email = hash.key?('email') ? hash['email'] : SKIP
+      description = hash.key?('description') ? hash['description'] : SKIP
+      document = hash.key?('document') ? hash['document'] : SKIP
+      type = hash.key?('type') ? hash['type'] : SKIP
       transfer_settings = CreateTransferSettingsRequest.from_hash(hash['transfer_settings']) if
         hash['transfer_settings']
+      if hash['register_information']
+        register_information = CreateRegisterInformationBaseRequest.from_hash(hash['register_information'])
+      end
 
       # Create object from extracted values.
-      CreateRecipientRequest.new(name,
+      CreateRecipientRequest.new(default_bank_account,
+                                 metadata,
+                                 code,
+                                 payment_mode,
+                                 name,
                                  email,
                                  description,
                                  document,
                                  type,
-                                 default_bank_account,
-                                 metadata,
-                                 code,
-                                 payment_mode,
-                                 transfer_settings)
+                                 transfer_settings,
+                                 register_information)
     end
   end
 end

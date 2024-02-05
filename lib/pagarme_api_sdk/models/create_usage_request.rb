@@ -97,7 +97,7 @@ module PagarmeApiSdk
                              amount)
     end
 
-    def to_used_at
+    def to_custom_used_at
       DateTimeHelper.to_rfc3339(used_at)
     end
   end

@@ -422,23 +422,23 @@ module PagarmeApiSdk
                                   manual_billing)
     end
 
-    def to_start_at
+    def to_custom_start_at
       DateTimeHelper.to_rfc3339(start_at)
     end
 
-    def to_created_at
+    def to_custom_created_at
       DateTimeHelper.to_rfc3339(created_at)
     end
 
-    def to_updated_at
+    def to_custom_updated_at
       DateTimeHelper.to_rfc3339(updated_at)
     end
 
-    def to_next_billing_at
+    def to_custom_next_billing_at
       DateTimeHelper.to_rfc3339(next_billing_at)
     end
 
-    def to_canceled_at
+    def to_custom_canceled_at
       DateTimeHelper.to_rfc3339(canceled_at)
     end
   end

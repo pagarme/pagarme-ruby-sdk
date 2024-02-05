@@ -78,6 +78,10 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :payment_mode
 
+    # Payment mode
+    # @return [GetRegisterInformationResponse]
+    attr_accessor :register_information
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -99,6 +103,7 @@ module PagarmeApiSdk
       @_hash['transfer_settings'] = 'transfer_settings'
       @_hash['code'] = 'code'
       @_hash['payment_mode'] = 'payment_mode'
+      @_hash['register_information'] = 'register_information'
       @_hash
     end
 
@@ -122,6 +127,7 @@ module PagarmeApiSdk
         transfer_settings
         code
         payment_mode
+        register_information
       ]
     end
 
@@ -145,6 +151,7 @@ module PagarmeApiSdk
         transfer_settings
         code
         payment_mode
+        register_information
       ]
     end
 
@@ -164,7 +171,8 @@ module PagarmeApiSdk
                    automatic_anticipation_settings = SKIP,
                    transfer_settings = SKIP,
                    code = SKIP,
-                   payment_mode = 'bank_transfer')
+                   payment_mode = 'bank_transfer',
+                   register_information = SKIP)
       @id = id unless id == SKIP
       @name = name unless name == SKIP
       @email = email unless email == SKIP
@@ -185,6 +193,7 @@ module PagarmeApiSdk
       @transfer_settings = transfer_settings unless transfer_settings == SKIP
       @code = code unless code == SKIP
       @payment_mode = payment_mode unless payment_mode == SKIP
+      @register_information = register_information unless register_information == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -234,6 +243,9 @@ module PagarmeApiSdk
         hash['transfer_settings']
       code = hash.key?('code') ? hash['code'] : SKIP
       payment_mode = hash['payment_mode'] ||= 'bank_transfer'
+      if hash['register_information']
+        register_information = GetRegisterInformationResponse.from_hash(hash['register_information'])
+      end
 
       # Create object from extracted values.
       GetRecipientResponse.new(id,
@@ -252,18 +264,19 @@ module PagarmeApiSdk
                                automatic_anticipation_settings,
                                transfer_settings,
                                code,
-                               payment_mode)
+                               payment_mode,
+                               register_information)
     end
 
-    def to_created_at
+    def to_custom_created_at
       DateTimeHelper.to_rfc3339(created_at)
     end
 
-    def to_updated_at
+    def to_custom_updated_at
       DateTimeHelper.to_rfc3339(updated_at)
     end
 
-    def to_deleted_at
+    def to_custom_deleted_at
       DateTimeHelper.to_rfc3339(deleted_at)
     end
   end

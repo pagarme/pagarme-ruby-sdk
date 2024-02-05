@@ -173,15 +173,15 @@ module PagarmeApiSdk
                            amount)
     end
 
-    def to_used_at
+    def to_custom_used_at
       DateTimeHelper.to_rfc3339(used_at)
     end
 
-    def to_created_at
+    def to_custom_created_at
       DateTimeHelper.to_rfc3339(created_at)
     end
 
-    def to_deleted_at
+    def to_custom_deleted_at
       DateTimeHelper.to_rfc3339(deleted_at)
     end
   end
