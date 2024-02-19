@@ -720,11 +720,6 @@ def create_recipient(request,
 
 ```ruby
 request = CreateRecipientRequest.new(
-  'name6',
-  'email0',
-  'description6',
-  'document0',
-  'type4',
   CreateBankAccountRequest.new(
     'holder_name4',
     'holder_type0',

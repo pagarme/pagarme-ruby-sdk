@@ -16,8 +16,6 @@ tokens_controller = client.tokens
 
 # Create Token
 
-:information_source: **Note** This endpoint does not require authentication.
-
 ```ruby
 def create_token(public_key,
                  request,
@@ -64,8 +62,6 @@ result = tokens_controller.create_token(
 # Get Token
 
 Gets a token from its id
-
-:information_source: **Note** This endpoint does not require authentication.
 
 ```ruby
 def get_token(id,

@@ -162,15 +162,15 @@ module PagarmeApiSdk
                             cycle)
     end
 
-    def to_start_at
+    def to_custom_start_at
       DateTimeHelper.to_rfc3339(start_at)
     end
 
-    def to_end_at
+    def to_custom_end_at
       DateTimeHelper.to_rfc3339(end_at)
     end
 
-    def to_billing_at
+    def to_custom_billing_at
       DateTimeHelper.to_rfc3339(billing_at)
     end
   end

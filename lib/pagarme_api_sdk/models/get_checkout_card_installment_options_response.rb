@@ -10,7 +10,7 @@ module PagarmeApiSdk
     private_constant :SKIP
 
     # Número de parcelas
-    # @return [String]
+    # @return [Integer]
     attr_accessor :number
 
     # Valor total da compra

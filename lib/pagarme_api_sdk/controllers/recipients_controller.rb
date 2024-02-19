@@ -25,8 +25,7 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
@@ -52,8 +51,7 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetAnticipationResponse.method(:from_hash)))
@@ -77,8 +75,7 @@ module PagarmeApiSdk
                                     .should_encode(true))
                    .query_param(new_parameter(timeframe, key: 'timeframe'))
                    .query_param(new_parameter(payment_date, key: 'payment_date'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetAnticipationLimitResponse.method(:from_hash)))
@@ -97,8 +94,7 @@ module PagarmeApiSdk
                                      Server::DEFAULT)
                    .query_param(new_parameter(page, key: 'page'))
                    .query_param(new_parameter(size, key: 'size'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(ListRecipientResponse.method(:from_hash)))
@@ -119,8 +115,7 @@ module PagarmeApiSdk
                                     .should_encode(true))
                    .template_param(new_parameter(withdrawal_id, key: 'withdrawal_id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetWithdrawResponse.method(:from_hash)))
@@ -146,8 +141,7 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
@@ -172,8 +166,7 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
@@ -207,8 +200,7 @@ module PagarmeApiSdk
                    .query_param(new_parameter(status, key: 'status'))
                    .query_param(new_parameter(created_since, key: 'created_since'))
                    .query_param(new_parameter(created_until, key: 'created_until'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(ListTransferResponse.method(:from_hash)))
@@ -229,8 +221,7 @@ module PagarmeApiSdk
                                     .should_encode(true))
                    .template_param(new_parameter(transfer_id, key: 'transfer_id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetTransferResponse.method(:from_hash)))
@@ -252,8 +243,7 @@ module PagarmeApiSdk
                    .body_param(new_parameter(request))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetWithdrawResponse.method(:from_hash)))
@@ -279,8 +269,7 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
@@ -301,8 +290,7 @@ module PagarmeApiSdk
                                     .should_encode(true))
                    .template_param(new_parameter(anticipation_id, key: 'anticipation_id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetAnticipationResponse.method(:from_hash)))
@@ -328,8 +316,7 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
@@ -376,8 +363,7 @@ module PagarmeApiSdk
                    .query_param(new_parameter(payment_date_until, key: 'payment_date_until'))
                    .query_param(new_parameter(created_since, key: 'created_since'))
                    .query_param(new_parameter(created_until, key: 'created_until'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(ListAnticipationResponse.method(:from_hash)))
@@ -394,8 +380,7 @@ module PagarmeApiSdk
                                      Server::DEFAULT)
                    .template_param(new_parameter(recipient_id, key: 'recipient_id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
@@ -412,8 +397,7 @@ module PagarmeApiSdk
                                      Server::DEFAULT)
                    .template_param(new_parameter(recipient_id, key: 'recipient_id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetBalanceResponse.method(:from_hash)))
@@ -445,8 +429,7 @@ module PagarmeApiSdk
                    .query_param(new_parameter(status, key: 'status'))
                    .query_param(new_parameter(created_since, key: 'created_since'))
                    .query_param(new_parameter(created_until, key: 'created_until'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(ListWithdrawals.method(:from_hash)))
@@ -471,8 +454,7 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetTransferResponse.method(:from_hash)))
@@ -494,8 +476,7 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
@@ -512,8 +493,7 @@ module PagarmeApiSdk
                                      Server::DEFAULT)
                    .template_param(new_parameter(code, key: 'code')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
@@ -527,8 +507,7 @@ module PagarmeApiSdk
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/recipients/default',
                                      Server::DEFAULT)
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))

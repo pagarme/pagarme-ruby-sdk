@@ -8,9 +8,6 @@ require 'json'
 require 'apimatic_core_interfaces'
 require 'apimatic_core'
 require 'apimatic_faraday_client_adapter'
-# rubocop:disable Style/MixinUsage
-include CoreLibrary
-# rubocop:enable Style/MixinUsage
 
 require_relative 'pagarme_api_sdk/api_helper'
 require_relative 'pagarme_api_sdk/client'
@@ -24,15 +21,14 @@ require_relative 'pagarme_api_sdk/http/http_call_back'
 require_relative 'pagarme_api_sdk/http/http_method_enum'
 require_relative 'pagarme_api_sdk/http/http_request'
 require_relative 'pagarme_api_sdk/http/http_response'
-require_relative 'pagarme_api_sdk/http/auth/basic_auth'
 
 # Models
 require_relative 'pagarme_api_sdk/models/base_model'
 require_relative 'pagarme_api_sdk/models/list_invoices_response'
 require_relative 'pagarme_api_sdk/models/get_checkout_boleto_payment_response'
 require_relative 'pagarme_api_sdk/models/create_card_options_request'
-require_relative 'pagarme_api_sdk/models/update_subscription_billing_date' \
-                 '_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'update_subscription_billing_date_request'
 require_relative 'pagarme_api_sdk/models/list_charges_response'
 require_relative 'pagarme_api_sdk/models/list_subscriptions_response'
 require_relative 'pagarme_api_sdk/models/paging_response'
@@ -56,15 +52,15 @@ require_relative 'pagarme_api_sdk/models/get_antifraud_response'
 require_relative 'pagarme_api_sdk/models/create_setup_request'
 require_relative 'pagarme_api_sdk/models/update_charge_card_request'
 require_relative 'pagarme_api_sdk/models/create_phone_request'
-require_relative 'pagarme_api_sdk/models/create_checkout_debit_card_payment' \
-                 '_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_checkout_debit_card_payment_request'
 require_relative 'pagarme_api_sdk/models/create_plan_item_request'
 require_relative 'pagarme_api_sdk/models/create_capture_charge_request'
 require_relative 'pagarme_api_sdk/models/get_safety_pay_transaction_response'
 require_relative 'pagarme_api_sdk/models/create_token_request'
 require_relative 'pagarme_api_sdk/models/update_metadata_request'
-require_relative 'pagarme_api_sdk/models/create_checkout_card_installment' \
-                 '_option_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_checkout_card_installment_option_request'
 require_relative 'pagarme_api_sdk/models/update_pricing_scheme_request'
 require_relative 'pagarme_api_sdk/models/list_access_tokens_response'
 require_relative 'pagarme_api_sdk/models/list_usages_response'
@@ -74,8 +70,8 @@ require_relative 'pagarme_api_sdk/models/get_plan_response'
 require_relative 'pagarme_api_sdk/models/update_plan_request'
 require_relative 'pagarme_api_sdk/models/create_price_bracket_request'
 require_relative 'pagarme_api_sdk/models/get_card_token_response'
-require_relative 'pagarme_api_sdk/models/get_checkout_card_installment_options' \
-                 '_response'
+require_relative 'pagarme_api_sdk/models/' \
+                 'get_checkout_card_installment_options_response'
 require_relative 'pagarme_api_sdk/models/create_pricing_scheme_request'
 require_relative 'pagarme_api_sdk/models/create_cancel_subscription_request'
 require_relative 'pagarme_api_sdk/models/update_card_request'
@@ -99,8 +95,8 @@ require_relative 'pagarme_api_sdk/models/create_subscription_item_request'
 require_relative 'pagarme_api_sdk/models/create_order_request'
 require_relative 'pagarme_api_sdk/models/get_gateway_response_response'
 require_relative 'pagarme_api_sdk/models/create_device_request'
-require_relative 'pagarme_api_sdk/models/update_subscription_affiliation_id' \
-                 '_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'update_subscription_affiliation_id_request'
 require_relative 'pagarme_api_sdk/models/get_increment_response'
 require_relative 'pagarme_api_sdk/models/create_three_d_secure_request'
 require_relative 'pagarme_api_sdk/models/update_charge_payment_method_request'
@@ -161,23 +157,23 @@ require_relative 'pagarme_api_sdk/models/create_emv_data_dukpt_decrypt_request'
 require_relative 'pagarme_api_sdk/models/get_withdraw_target_response'
 require_relative 'pagarme_api_sdk/models/get_charges_summary_response'
 require_relative 'pagarme_api_sdk/models/create_private_label_payment_request'
-require_relative 'pagarme_api_sdk/models/update_automatic_anticipation' \
-                 '_settings_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'update_automatic_anticipation_settings_request'
 require_relative 'pagarme_api_sdk/models/create_cash_payment_request'
 require_relative 'pagarme_api_sdk/models/create_confirm_payment_request'
 require_relative 'pagarme_api_sdk/models/create_shipping_request'
-require_relative 'pagarme_api_sdk/models/get_checkout_credit_card_payment' \
-                 '_response'
+require_relative 'pagarme_api_sdk/models/' \
+                 'get_checkout_credit_card_payment_response'
 require_relative 'pagarme_api_sdk/models/create_charge_request'
 require_relative 'pagarme_api_sdk/models/create_transfer'
-require_relative 'pagarme_api_sdk/models/get_checkout_debit_card_payment' \
-                 '_response'
+require_relative 'pagarme_api_sdk/models/' \
+                 'get_checkout_debit_card_payment_response'
 require_relative 'pagarme_api_sdk/models/get_anticipation_response'
 require_relative 'pagarme_api_sdk/models/get_private_label_transaction_response'
-require_relative 'pagarme_api_sdk/models/create_automatic_anticipation' \
-                 '_settings_request'
-require_relative 'pagarme_api_sdk/models/create_cancel_charge_split_rules' \
-                 '_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_automatic_anticipation_settings_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_cancel_charge_split_rules_request'
 require_relative 'pagarme_api_sdk/models/get_split_response'
 require_relative 'pagarme_api_sdk/models/create_pix_payment_request'
 require_relative 'pagarme_api_sdk/models/list_transactions_files_response'
@@ -186,14 +182,14 @@ require_relative 'pagarme_api_sdk/models/create_emv_decrypt_request'
 require_relative 'pagarme_api_sdk/models/get_withdraw_source_response'
 require_relative 'pagarme_api_sdk/models/get_cash_transaction_response'
 require_relative 'pagarme_api_sdk/models/create_google_pay_request'
-require_relative 'pagarme_api_sdk/models/update_subscription_payment_method' \
-                 '_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'update_subscription_payment_method_request'
 require_relative 'pagarme_api_sdk/models/create_antifraud_request'
-require_relative 'pagarme_api_sdk/models/get_checkout_bank_transfer_payment' \
-                 '_response'
+require_relative 'pagarme_api_sdk/models/' \
+                 'get_checkout_bank_transfer_payment_response'
 require_relative 'pagarme_api_sdk/models/get_bank_account_response'
-require_relative 'pagarme_api_sdk/models/update_subscription_minimum_price' \
-                 '_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'update_subscription_minimum_price_request'
 require_relative 'pagarme_api_sdk/models/create_order_item_request'
 require_relative 'pagarme_api_sdk/models/create_split_options_request'
 require_relative 'pagarme_api_sdk/models/get_transaction_report_file_response'
@@ -203,14 +199,14 @@ require_relative 'pagarme_api_sdk/models/list_transfers'
 require_relative 'pagarme_api_sdk/models/pix_additional_information'
 require_relative 'pagarme_api_sdk/models/get_shipping_response'
 require_relative 'pagarme_api_sdk/models/create_checkout_bank_transfer_request'
-require_relative 'pagarme_api_sdk/models/create_card_payment_contactless' \
-                 '_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_card_payment_contactless_request'
 require_relative 'pagarme_api_sdk/models/create_customer_request'
 require_relative 'pagarme_api_sdk/models/get_transfer_target_response'
 require_relative 'pagarme_api_sdk/models/list_withdrawals'
 require_relative 'pagarme_api_sdk/models/update_current_cycle_end_date_request'
-require_relative 'pagarme_api_sdk/models/create_checkout_credit_card_payment' \
-                 '_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_checkout_credit_card_payment_request'
 require_relative 'pagarme_api_sdk/models/get_checkout_payment_response'
 require_relative 'pagarme_api_sdk/models/create_emv_data_decrypt_request'
 require_relative 'pagarme_api_sdk/models/get_withdraw_response'
@@ -226,8 +222,8 @@ require_relative 'pagarme_api_sdk/models/get_three_d_secure_response'
 require_relative 'pagarme_api_sdk/models/create_google_pay_header_request'
 require_relative 'pagarme_api_sdk/models/get_order_item_response'
 require_relative 'pagarme_api_sdk/models/get_address_response'
-require_relative 'pagarme_api_sdk/models/create_card_payment_contactless_poi' \
-                 '_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_card_payment_contactless_poi_request'
 require_relative 'pagarme_api_sdk/models/create_withdraw_request'
 require_relative 'pagarme_api_sdk/models/get_split_options_response'
 require_relative 'pagarme_api_sdk/models/get_payment_authentication_response'
@@ -259,14 +255,32 @@ require_relative 'pagarme_api_sdk/models/list_payables_response'
 require_relative 'pagarme_api_sdk/models/get_balance_operation_response'
 require_relative 'pagarme_api_sdk/models/get_movement_object_base_response'
 require_relative 'pagarme_api_sdk/models/get_movement_object_refund_response'
-require_relative 'pagarme_api_sdk/models/get_movement_object_fee_collection' \
-                 '_response'
+require_relative 'pagarme_api_sdk/models/' \
+                 'get_movement_object_fee_collection_response'
 require_relative 'pagarme_api_sdk/models/get_movement_object_payable_response'
 require_relative 'pagarme_api_sdk/models/get_movement_object_transfer_response'
 require_relative 'pagarme_api_sdk/models/list_balance_operation_response'
-require_relative 'pagarme_api_sdk/models/create_google_pay_intermediate' \
-                 '_signing_key_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_google_pay_intermediate_signing_key_request'
 require_relative 'pagarme_api_sdk/models/create_card_payload_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'get_retry_transaction_information_response'
+require_relative 'pagarme_api_sdk/models/' \
+                 'get_register_information_address_response'
+require_relative 'pagarme_api_sdk/models/get_phone_number_response'
+require_relative 'pagarme_api_sdk/models/get_managing_partner_response'
+require_relative 'pagarme_api_sdk/models/get_register_information_response'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_register_information_phone_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_register_information_address_request'
+require_relative 'pagarme_api_sdk/models/create_managing_partner_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_register_information_base_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_register_information_individual_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'create_register_information_corporation_request'
 
 # Exceptions
 require_relative 'pagarme_api_sdk/exceptions/api_exception'

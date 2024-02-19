@@ -137,11 +137,11 @@ module PagarmeApiSdk
                               type)
     end
 
-    def to_max_delivery_date
+    def to_custom_max_delivery_date
       DateTimeHelper.to_rfc3339(max_delivery_date)
     end
 
-    def to_estimated_delivery_date
+    def to_custom_estimated_delivery_date
       DateTimeHelper.to_rfc3339(estimated_delivery_date)
     end
   end

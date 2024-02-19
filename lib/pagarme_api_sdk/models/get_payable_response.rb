@@ -308,19 +308,19 @@ module PagarmeApiSdk
                              liquidation_arrangement_id)
     end
 
-    def to_payment_date
+    def to_custom_payment_date
       DateTimeHelper.to_rfc3339(payment_date)
     end
 
-    def to_original_payment_date
+    def to_custom_original_payment_date
       DateTimeHelper.to_rfc3339(original_payment_date)
     end
 
-    def to_accrual_at
+    def to_custom_accrual_at
       DateTimeHelper.to_rfc3339(accrual_at)
     end
 
-    def to_created_at
+    def to_custom_created_at
       DateTimeHelper.to_rfc3339(created_at)
     end
   end

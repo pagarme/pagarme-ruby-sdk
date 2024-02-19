@@ -24,8 +24,7 @@ module PagarmeApiSdk
                    .query_param(new_parameter(created_since, key: 'created_since'))
                    .query_param(new_parameter(created_until, key: 'created_until'))
                    .query_param(new_parameter(recipient_id, key: 'recipient_id'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(ListBalanceOperationResponse.method(:from_hash)))
@@ -42,8 +41,7 @@ module PagarmeApiSdk
                                      Server::DEFAULT)
                    .template_param(new_parameter(id, key: 'id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetBalanceOperationResponse.method(:from_hash)))

@@ -30,7 +30,7 @@ module PagarmeApiSdk
     attr_accessor :type
 
     # TODO: Write general description for this method
-    # @return [String]
+    # @return [Integer]
     attr_accessor :amount
 
     # TODO: Write general description for this method

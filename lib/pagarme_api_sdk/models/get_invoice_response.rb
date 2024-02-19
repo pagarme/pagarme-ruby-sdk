@@ -327,23 +327,23 @@ module PagarmeApiSdk
                              subscription_id)
     end
 
-    def to_created_at
+    def to_custom_created_at
       DateTimeHelper.to_rfc3339(created_at)
     end
 
-    def to_due_at
+    def to_custom_due_at
       DateTimeHelper.to_rfc3339(due_at)
     end
 
-    def to_canceled_at
+    def to_custom_canceled_at
       DateTimeHelper.to_rfc3339(canceled_at)
     end
 
-    def to_billing_at
+    def to_custom_billing_at
       DateTimeHelper.to_rfc3339(billing_at)
     end
 
-    def to_seen_at
+    def to_custom_seen_at
       DateTimeHelper.to_rfc3339(seen_at)
     end
   end

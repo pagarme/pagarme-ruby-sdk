@@ -74,7 +74,7 @@ module PagarmeApiSdk
                                         additional_information)
     end
 
-    def to_expires_at
+    def to_custom_expires_at
       DateTimeHelper.to_rfc3339(expires_at)
     end
   end

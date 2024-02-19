@@ -16,8 +16,7 @@ module PagarmeApiSdk
                                      Server::DEFAULT)
                    .template_param(new_parameter(transfer_id, key: 'transfer_id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetTransfer.method(:from_hash)))
@@ -35,8 +34,7 @@ module PagarmeApiSdk
                    .body_param(new_parameter(request))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetTransfer.method(:from_hash)))
@@ -50,8 +48,7 @@ module PagarmeApiSdk
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/transfers',
                                      Server::DEFAULT)
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(ListTransfers.method(:from_hash)))
