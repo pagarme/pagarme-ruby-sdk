@@ -90,15 +90,15 @@ module PagarmeApiSdk
     def self.discriminators
       if @_discriminators.nil?
         @_discriminators = {}
-        @_discriminators['voucher'] = GetVoucherTransactionResponse
         @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse
         @_discriminators['safetypay'] = GetSafetyPayTransactionResponse
-        @_discriminators['debit_card'] = GetDebitCardTransactionResponse
+        @_discriminators['voucher'] = GetVoucherTransactionResponse
         @_discriminators['boleto'] = GetBoletoTransactionResponse
-        @_discriminators['cash'] = GetCashTransactionResponse
+        @_discriminators['debit_card'] = GetDebitCardTransactionResponse
         @_discriminators['private_label'] = GetPrivateLabelTransactionResponse
-        @_discriminators['pix'] = GetPixTransactionResponse
+        @_discriminators['cash'] = GetCashTransactionResponse
         @_discriminators['credit_card'] = GetCreditCardTransactionResponse
+        @_discriminators['pix'] = GetPixTransactionResponse
       end
       @_discriminators
     end

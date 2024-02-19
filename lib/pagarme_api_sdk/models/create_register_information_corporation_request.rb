@@ -17,7 +17,7 @@ module PagarmeApiSdk
     attr_accessor :trading_name
 
     # TODO: Write general description for this method
-    # @return [String]
+    # @return [Integer]
     attr_accessor :annual_revenue
 
     # TODO: Write general description for this method

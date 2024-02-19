@@ -6,6 +6,69 @@
 module PagarmeApiSdk
   # InvoicesController
   class InvoicesController < BaseController
+    # Updates the metadata from an invoice
+    # @param [String] invoice_id Required parameter: The invoice id
+    # @param [UpdateMetadataRequest] request Required parameter: Request for
+    # updating the invoice metadata
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetInvoiceResponse] response from the API call
+    def update_invoice_metadata(invoice_id,
+                                request,
+                                idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/invoices/{invoice_id}/metadata',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(invoice_id, key: 'invoice_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: Subscription Id
+    # @return [GetInvoiceResponse] response from the API call
+    def get_partial_invoice(subscription_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/subscriptions/{subscription_id}/partial-invoice',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Cancels an invoice
+    # @param [String] invoice_id Required parameter: Invoice id
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetInvoiceResponse] response from the API call
+    def cancel_invoice(invoice_id,
+                       idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::DELETE,
+                                     '/invoices/{invoice_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(invoice_id, key: 'invoice_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json', key: 'accept')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
+        .execute
+    end
+
     # Create an Invoice
     # @param [String] subscription_id Required parameter: Subscription Id
     # @param [String] cycle_id Required parameter: Cycle Id
@@ -28,8 +91,7 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetInvoiceResponse.method(:from_hash)))
@@ -81,74 +143,24 @@ module PagarmeApiSdk
                    .query_param(new_parameter(due_since, key: 'due_since'))
                    .query_param(new_parameter(due_until, key: 'due_until'))
                    .query_param(new_parameter(customer_document, key: 'customer_document'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(ListInvoicesResponse.method(:from_hash)))
         .execute
     end
 
-    # Cancels an invoice
-    # @param [String] invoice_id Required parameter: Invoice id
-    # @param [String] idempotency_key Optional parameter: Example:
+    # Gets an invoice
+    # @param [String] invoice_id Required parameter: Invoice Id
     # @return [GetInvoiceResponse] response from the API call
-    def cancel_invoice(invoice_id,
-                       idempotency_key: nil)
+    def get_invoice(invoice_id)
       new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::DELETE,
+        .request(new_request_builder(HttpMethodEnum::GET,
                                      '/invoices/{invoice_id}',
                                      Server::DEFAULT)
                    .template_param(new_parameter(invoice_id, key: 'invoice_id')
                                     .should_encode(true))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
-        .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Updates the metadata from an invoice
-    # @param [String] invoice_id Required parameter: The invoice id
-    # @param [UpdateMetadataRequest] request Required parameter: Request for
-    # updating the invoice metadata
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetInvoiceResponse] response from the API call
-    def update_invoice_metadata(invoice_id,
-                                request,
-                                idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/invoices/{invoice_id}/metadata',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(invoice_id, key: 'invoice_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
-        .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: Subscription Id
-    # @return [GetInvoiceResponse] response from the API call
-    def get_partial_invoice(subscription_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/subscriptions/{subscription_id}/partial-invoice',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .header_param(new_parameter('application/json', key: 'accept')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetInvoiceResponse.method(:from_hash)))
@@ -174,26 +186,7 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('global')))
-        .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetInvoiceResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Gets an invoice
-    # @param [String] invoice_id Required parameter: Invoice Id
-    # @return [GetInvoiceResponse] response from the API call
-    def get_invoice(invoice_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/invoices/{invoice_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(invoice_id, key: 'invoice_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('global')))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetInvoiceResponse.method(:from_hash)))

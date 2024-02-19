@@ -6,10 +6,11 @@
 module PagarmeApiSdk
   # BaseController.
   class BaseController
+    include CoreLibrary
     attr_accessor :config, :http_call_back
 
     def self.user_agent
-      'PagarmeApiSDK - Ruby 6.8.4'
+      'PagarmeApiSDK - Ruby 6.8.5'
     end
 
 

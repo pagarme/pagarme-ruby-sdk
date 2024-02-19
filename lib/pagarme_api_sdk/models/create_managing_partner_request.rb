@@ -30,7 +30,7 @@ module PagarmeApiSdk
     attr_accessor :birthdate
 
     # TODO: Write general description for this method
-    # @return [String]
+    # @return [Integer]
     attr_accessor :monthly_income
 
     # TODO: Write general description for this method

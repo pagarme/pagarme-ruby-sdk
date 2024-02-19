@@ -6,7 +6,8 @@
 module PagarmeApiSdk
   #  pagarme_api_sdk client class.
   class Client
-    attr_reader :config, :auth_managers
+    include CoreLibrary
+    attr_reader :config
 
     # Access to subscriptions controller.
     # @return [SubscriptionsController] Returns the controller instance.
@@ -80,14 +81,14 @@ module PagarmeApiSdk
       @balance_operations ||= BalanceOperationsController.new @global_configuration
     end
 
-    def initialize(connection: nil, adapter: :net_http_persistent, timeout: 60,
-                   max_retries: 0, retry_interval: 1, backoff_factor: 2,
-                   retry_statuses: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524],
-                   retry_methods: %i[get put], http_callback: nil,
-                   environment: Environment::PRODUCTION,
-                   basic_auth_user_name: 'TODO: Replace',
-                   basic_auth_password: 'TODO: Replace',
-                   service_referer_name: 'TODO: Replace', config: nil)
+    def initialize(
+      connection: nil, adapter: :net_http_persistent, timeout: 60,
+      max_retries: 0, retry_interval: 1, backoff_factor: 2,
+      retry_statuses: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524],
+      retry_methods: %i[get put], http_callback: nil,
+      environment: Environment::PRODUCTION,
+      service_referer_name: 'TODO: Replace', config: nil
+    )
       @config = if config.nil?
                   Configuration.new(connection: connection, adapter: adapter,
                                     timeout: timeout, max_retries: max_retries,
@@ -97,8 +98,6 @@ module PagarmeApiSdk
                                     retry_methods: retry_methods,
                                     http_callback: http_callback,
                                     environment: environment,
-                                    basic_auth_user_name: basic_auth_user_name,
-                                    basic_auth_password: basic_auth_password,
                                     service_referer_name: service_referer_name)
                 else
                   config
@@ -109,19 +108,6 @@ module PagarmeApiSdk
                                                  .global_errors(BaseController::GLOBAL_ERRORS)
                                                  .user_agent(BaseController.user_agent)
                                                  .global_header('ServiceRefererName', @config.service_referer_name)
-
-      initialize_auth_managers(@global_configuration)
-      @global_configuration = @global_configuration.auth_managers(@auth_managers)
-    end
-
-    # Initializes the auth managers hash used for authenticating API calls.
-    # @param [GlobalConfiguration] global_config The global configuration of the SDK)
-    def initialize_auth_managers(global_config)
-      @auth_managers = {}
-      http_client_config = global_config.client_configuration
-      ['global'].each { |auth| @auth_managers[auth] = nil }
-      @auth_managers['global'] = BasicAuth.new(http_client_config.basic_auth_user_name,
-                                               http_client_config.basic_auth_password)
     end
   end
 end
