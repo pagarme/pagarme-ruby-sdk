@@ -36,7 +36,8 @@ module PagarmeApiSdk
                    .query_param(new_parameter(created_since, key: 'created_since'))
                    .query_param(new_parameter(created_until, key: 'created_until'))
                    .query_param(new_parameter(customer_id, key: 'customer_id'))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(ListOrderResponse.method(:from_hash)))
@@ -65,7 +66,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetOrderItemResponse.method(:from_hash)))
@@ -85,7 +87,8 @@ module PagarmeApiSdk
                    .template_param(new_parameter(order_id, key: 'orderId')
                                     .should_encode(true))
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetOrderResponse.method(:from_hash)))
@@ -109,7 +112,8 @@ module PagarmeApiSdk
                    .template_param(new_parameter(item_id, key: 'itemId')
                                     .should_encode(true))
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetOrderItemResponse.method(:from_hash)))
@@ -135,7 +139,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetOrderResponse.method(:from_hash)))
@@ -157,7 +162,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetOrderResponse.method(:from_hash)))
@@ -183,7 +189,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetOrderItemResponse.method(:from_hash)))
@@ -204,7 +211,8 @@ module PagarmeApiSdk
                                     .should_encode(true))
                    .template_param(new_parameter(item_id, key: 'itemId')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetOrderItemResponse.method(:from_hash)))
@@ -230,7 +238,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetOrderResponse.method(:from_hash)))
@@ -247,7 +256,8 @@ module PagarmeApiSdk
                                      Server::DEFAULT)
                    .template_param(new_parameter(order_id, key: 'order_id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetOrderResponse.method(:from_hash)))

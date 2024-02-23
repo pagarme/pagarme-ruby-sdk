@@ -66,7 +66,8 @@ module PagarmeApiSdk
                    .query_param(new_parameter(page, key: 'page'))
                    .query_param(new_parameter(size, key: 'size'))
                    .query_param(new_parameter(gateway_id, key: 'gateway_id'))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(ListPayablesResponse.method(:from_hash)))
@@ -83,7 +84,8 @@ module PagarmeApiSdk
                                      Server::DEFAULT)
                    .template_param(new_parameter(id, key: 'id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetPayableResponse.method(:from_hash)))
