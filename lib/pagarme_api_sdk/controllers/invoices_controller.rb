@@ -25,7 +25,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetInvoiceResponse.method(:from_hash)))
@@ -42,7 +43,8 @@ module PagarmeApiSdk
                                      Server::DEFAULT)
                    .template_param(new_parameter(subscription_id, key: 'subscription_id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetInvoiceResponse.method(:from_hash)))
@@ -62,7 +64,8 @@ module PagarmeApiSdk
                    .template_param(new_parameter(invoice_id, key: 'invoice_id')
                                     .should_encode(true))
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetInvoiceResponse.method(:from_hash)))
@@ -91,7 +94,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetInvoiceResponse.method(:from_hash)))
@@ -143,7 +147,8 @@ module PagarmeApiSdk
                    .query_param(new_parameter(due_since, key: 'due_since'))
                    .query_param(new_parameter(due_until, key: 'due_until'))
                    .query_param(new_parameter(customer_document, key: 'customer_document'))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(ListInvoicesResponse.method(:from_hash)))
@@ -160,7 +165,8 @@ module PagarmeApiSdk
                                      Server::DEFAULT)
                    .template_param(new_parameter(invoice_id, key: 'invoice_id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetInvoiceResponse.method(:from_hash)))
@@ -186,7 +192,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetInvoiceResponse.method(:from_hash)))

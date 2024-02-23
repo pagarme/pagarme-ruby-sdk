@@ -16,7 +16,8 @@ module PagarmeApiSdk
                                      Server::DEFAULT)
                    .template_param(new_parameter(transaction_id, key: 'transaction_id')
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept')))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetTransactionResponse.method(:from_hash)))

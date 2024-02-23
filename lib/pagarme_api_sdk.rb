@@ -21,6 +21,7 @@ require_relative 'pagarme_api_sdk/http/http_call_back'
 require_relative 'pagarme_api_sdk/http/http_method_enum'
 require_relative 'pagarme_api_sdk/http/http_request'
 require_relative 'pagarme_api_sdk/http/http_response'
+require_relative 'pagarme_api_sdk/http/auth/basic_auth'
 
 # Models
 require_relative 'pagarme_api_sdk/models/base_model'

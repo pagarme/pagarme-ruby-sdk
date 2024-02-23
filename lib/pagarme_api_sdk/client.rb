@@ -7,7 +7,7 @@ module PagarmeApiSdk
   #  pagarme_api_sdk client class.
   class Client
     include CoreLibrary
-    attr_reader :config
+    attr_reader :config, :auth_managers
 
     # Access to subscriptions controller.
     # @return [SubscriptionsController] Returns the controller instance.
@@ -86,19 +86,23 @@ module PagarmeApiSdk
       max_retries: 0, retry_interval: 1, backoff_factor: 2,
       retry_statuses: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524],
       retry_methods: %i[get put], http_callback: nil,
-      environment: Environment::PRODUCTION,
+      environment: Environment::PRODUCTION, basic_auth_user_name: nil,
+      basic_auth_password: nil, basic_auth_credentials: nil,
       service_referer_name: 'TODO: Replace', config: nil
     )
       @config = if config.nil?
-                  Configuration.new(connection: connection, adapter: adapter,
-                                    timeout: timeout, max_retries: max_retries,
-                                    retry_interval: retry_interval,
-                                    backoff_factor: backoff_factor,
-                                    retry_statuses: retry_statuses,
-                                    retry_methods: retry_methods,
-                                    http_callback: http_callback,
-                                    environment: environment,
-                                    service_referer_name: service_referer_name)
+                  Configuration.new(
+                    connection: connection, adapter: adapter, timeout: timeout,
+                    max_retries: max_retries, retry_interval: retry_interval,
+                    backoff_factor: backoff_factor,
+                    retry_statuses: retry_statuses,
+                    retry_methods: retry_methods, http_callback: http_callback,
+                    environment: environment,
+                    basic_auth_user_name: basic_auth_user_name,
+                    basic_auth_password: basic_auth_password,
+                    basic_auth_credentials: basic_auth_credentials,
+                    service_referer_name: service_referer_name
+                  )
                 else
                   config
                 end
@@ -108,6 +112,18 @@ module PagarmeApiSdk
                                                  .global_errors(BaseController::GLOBAL_ERRORS)
                                                  .user_agent(BaseController.user_agent)
                                                  .global_header('ServiceRefererName', @config.service_referer_name)
+
+      initialize_auth_managers(@global_configuration)
+      @global_configuration = @global_configuration.auth_managers(@auth_managers)
+    end
+
+    # Initializes the auth managers hash used for authenticating API calls.
+    # @param [GlobalConfiguration] global_config The global configuration of the SDK)
+    def initialize_auth_managers(global_config)
+      @auth_managers = {}
+      http_client_config = global_config.client_configuration
+      %w[httpBasic].each { |auth| @auth_managers[auth] = nil }
+      @auth_managers['httpBasic'] = BasicAuth.new(http_client_config.basic_auth_credentials)
     end
   end
 end
