@@ -10,7 +10,7 @@ module PagarmeApiSdk
     attr_accessor :config, :http_call_back
 
     def self.user_agent
-      'PagarmeApiSDK - Ruby 6.8.6'
+      'PagarmeApiSDK - Ruby 6.8.7'
     end
 
 
