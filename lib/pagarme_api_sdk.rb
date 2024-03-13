@@ -282,6 +282,8 @@ require_relative 'pagarme_api_sdk/models/' \
                  'create_register_information_individual_request'
 require_relative 'pagarme_api_sdk/models/' \
                  'create_register_information_corporation_request'
+require_relative 'pagarme_api_sdk/models/' \
+                 'get_movement_object_settlement_response'
 
 # Exceptions
 require_relative 'pagarme_api_sdk/exceptions/api_exception'

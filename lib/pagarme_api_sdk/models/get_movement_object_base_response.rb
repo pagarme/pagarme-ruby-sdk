@@ -49,6 +49,7 @@ module PagarmeApiSdk
         @_discriminators['feeCollection'] = GetMovementObjectFeeCollectionResponse
         @_discriminators['payable'] = GetMovementObjectPayableResponse
         @_discriminators['transfer'] = GetMovementObjectTransferResponse
+        @_discriminators['settlement'] = GetMovementObjectSettlementResponse
       end
       @_discriminators
     end
