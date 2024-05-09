@@ -233,7 +233,7 @@ body = CreateOrderRequest.new(
     )
   ],
   CreateCustomerRequest.new(
-    '{\n    "name": "Tony Stark"\n}',
+    'Tony Stark',
     'email6',
     'document6',
     'type0',

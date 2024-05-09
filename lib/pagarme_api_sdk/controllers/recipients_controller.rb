@@ -534,5 +534,23 @@ module PagarmeApiSdk
                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
+
+    # Create a KYC link
+    # @param [String] recipient_id Required parameter: Example:
+    # @return [CreateKYCLinkResponse] response from the API call
+    def create_kyc_link(recipient_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/recipients/{recipient_id}/kyc_link',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(CreateKYCLinkResponse.method(:from_hash)))
+        .execute
+    end
   end
 end
