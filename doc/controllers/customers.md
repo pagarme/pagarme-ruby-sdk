@@ -202,7 +202,7 @@ def create_customer(request,
 
 ```ruby
 request = CreateCustomerRequest.new(
-  '{\n    "name": "Tony Stark"\n}',
+  'Tony Stark',
   'email0',
   'document0',
   'type4',
