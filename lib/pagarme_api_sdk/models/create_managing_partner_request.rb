@@ -68,28 +68,32 @@ module PagarmeApiSdk
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        mother_name
+      ]
     end
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        mother_name
+      ]
     end
 
     def initialize(name = nil,
                    email = nil,
                    document = nil,
-                   mother_name = nil,
                    birthdate = nil,
                    monthly_income = nil,
                    professional_occupation = nil,
                    self_declared_legal_representative = nil,
                    address = nil,
-                   phone_numbers = nil)
+                   phone_numbers = nil,
+                   mother_name = SKIP)
       @name = name
       @email = email
       @document = document
-      @mother_name = mother_name
+      @mother_name = mother_name unless mother_name == SKIP
       @birthdate = birthdate
       @monthly_income = monthly_income
       @professional_occupation = professional_occupation
@@ -106,7 +110,6 @@ module PagarmeApiSdk
       name = hash.key?('name') ? hash['name'] : nil
       email = hash.key?('email') ? hash['email'] : nil
       document = hash.key?('document') ? hash['document'] : nil
-      mother_name = hash.key?('mother_name') ? hash['mother_name'] : nil
       birthdate = hash.key?('birthdate') ? hash['birthdate'] : nil
       monthly_income =
         hash.key?('monthly_income') ? hash['monthly_income'] : nil
@@ -126,18 +129,19 @@ module PagarmeApiSdk
       end
 
       phone_numbers = nil unless hash.key?('phone_numbers')
+      mother_name = hash.key?('mother_name') ? hash['mother_name'] : SKIP
 
       # Create object from extracted values.
       CreateManagingPartnerRequest.new(name,
                                        email,
                                        document,
-                                       mother_name,
                                        birthdate,
                                        monthly_income,
                                        professional_occupation,
                                        self_declared_legal_representative,
                                        address,
-                                       phone_numbers)
+                                       phone_numbers,
+                                       mother_name)
     end
   end
 end
