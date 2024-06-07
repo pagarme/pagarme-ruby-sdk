@@ -5,6 +5,7 @@
 
 require 'date'
 require 'json'
+
 require 'apimatic_core_interfaces'
 require 'apimatic_core'
 require 'apimatic_faraday_client_adapter'
@@ -21,6 +22,8 @@ require_relative 'pagarme_api_sdk/http/http_call_back'
 require_relative 'pagarme_api_sdk/http/http_method_enum'
 require_relative 'pagarme_api_sdk/http/http_request'
 require_relative 'pagarme_api_sdk/http/http_response'
+
+# Logger
 require_relative 'pagarme_api_sdk/http/auth/basic_auth'
 
 # Models

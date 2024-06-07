@@ -14,7 +14,7 @@ Managing Partner Request
 | `name` | `String` | Required | - |
 | `email` | `String` | Required | - |
 | `document` | `String` | Required | - |
-| `mother_name` | `String` | Required | - |
+| `mother_name` | `String` | Optional | - |
 | `birthdate` | `String` | Required | - |
 | `monthly_income` | `Integer` | Required | - |
 | `professional_occupation` | `String` | Required | - |
@@ -29,7 +29,6 @@ Managing Partner Request
   "name": "name4",
   "email": "email2",
   "document": "document2",
-  "mother_name": "mother_name0",
   "birthdate": "birthdate8",
   "monthly_income": 70,
   "professional_occupation": "professional_occupation8",
@@ -50,7 +49,8 @@ Managing Partner Request
       "number": "number2",
       "type": "type0"
     }
-  ]
+  ],
+  "mother_name": "mother_name0"
 }
 ```
 
