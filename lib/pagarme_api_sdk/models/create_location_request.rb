@@ -35,8 +35,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(latitude = nil,
-                   longitude = nil)
+    def initialize(latitude = nil, longitude = nil)
       @latitude = latitude
       @longitude = longitude
     end

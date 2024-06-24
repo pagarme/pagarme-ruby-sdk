@@ -47,9 +47,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(icc_data = nil,
-                   card_sequence_number = nil,
-                   data = nil,
+    def initialize(icc_data = nil, card_sequence_number = nil, data = nil,
                    poi = SKIP)
       @icc_data = icc_data
       @card_sequence_number = card_sequence_number

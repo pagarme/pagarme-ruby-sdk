@@ -48,9 +48,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(base64 = SKIP,
-                   url = SKIP,
-                   expiration_date = SKIP)
+    def initialize(base64 = SKIP, url = SKIP, expiration_date = SKIP)
       @base64 = base64 unless base64 == SKIP
       @url = url unless url == SKIP
       @expiration_date = expiration_date unless expiration_date == SKIP

@@ -77,13 +77,8 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   amount = SKIP,
-                   status = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   bank_account = SKIP,
-                   metadata = SKIP)
+    def initialize(id = SKIP, amount = SKIP, status = SKIP, created_at = SKIP,
+                   updated_at = SKIP, bank_account = SKIP, metadata = SKIP)
       @id = id unless id == SKIP
       @amount = amount unless amount == SKIP
       @status = status unless status == SKIP

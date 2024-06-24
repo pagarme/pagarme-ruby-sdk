@@ -98,16 +98,9 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(start_at = SKIP,
-                   end_at = SKIP,
-                   id = SKIP,
-                   billing_at = SKIP,
-                   subscription = SKIP,
-                   status = SKIP,
-                   duration = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   cycle = SKIP)
+    def initialize(start_at = SKIP, end_at = SKIP, id = SKIP, billing_at = SKIP,
+                   subscription = SKIP, status = SKIP, duration = SKIP,
+                   created_at = SKIP, updated_at = SKIP, cycle = SKIP)
       @start_at = start_at unless start_at == SKIP
       @end_at = end_at unless end_at == SKIP
       @id = id unless id == SKIP

@@ -189,29 +189,14 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   code = SKIP,
-                   url = SKIP,
-                   amount = SKIP,
-                   status = SKIP,
-                   payment_method = SKIP,
-                   created_at = SKIP,
-                   items = SKIP,
-                   customer = SKIP,
-                   charge = SKIP,
-                   installments = SKIP,
-                   billing_address = SKIP,
-                   subscription = SKIP,
-                   cycle = SKIP,
-                   shipping = SKIP,
-                   metadata = SKIP,
-                   due_at = SKIP,
-                   canceled_at = SKIP,
-                   billing_at = SKIP,
-                   seen_at = SKIP,
-                   total_discount = SKIP,
-                   total_increment = SKIP,
-                   subscription_id = SKIP)
+    def initialize(id = SKIP, code = SKIP, url = SKIP, amount = SKIP,
+                   status = SKIP, payment_method = SKIP, created_at = SKIP,
+                   items = SKIP, customer = SKIP, charge = SKIP,
+                   installments = SKIP, billing_address = SKIP,
+                   subscription = SKIP, cycle = SKIP, shipping = SKIP,
+                   metadata = SKIP, due_at = SKIP, canceled_at = SKIP,
+                   billing_at = SKIP, seen_at = SKIP, total_discount = SKIP,
+                   total_increment = SKIP, subscription_id = SKIP)
       @id = id unless id == SKIP
       @code = code unless code == SKIP
       @url = url unless url == SKIP

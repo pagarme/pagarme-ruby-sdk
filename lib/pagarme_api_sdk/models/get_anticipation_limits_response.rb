@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(max = SKIP,
-                   min = SKIP)
+    def initialize(max = SKIP, min = SKIP)
       @max = max unless max == SKIP
       @min = min unless min == SKIP
     end

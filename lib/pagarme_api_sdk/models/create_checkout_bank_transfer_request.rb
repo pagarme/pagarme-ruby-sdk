@@ -35,8 +35,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(bank = nil,
-                   retries = nil)
+    def initialize(bank = nil, retries = nil)
       @bank = bank
       @retries = retries
     end

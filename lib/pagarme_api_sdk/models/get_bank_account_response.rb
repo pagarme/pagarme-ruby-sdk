@@ -140,22 +140,12 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   holder_name = SKIP,
-                   holder_type = SKIP,
-                   bank = SKIP,
-                   branch_number = SKIP,
-                   branch_check_digit = SKIP,
-                   account_number = SKIP,
-                   account_check_digit = SKIP,
-                   type = SKIP,
-                   status = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   deleted_at = SKIP,
-                   recipient = SKIP,
-                   metadata = SKIP,
-                   pix_key = SKIP)
+    def initialize(id = SKIP, holder_name = SKIP, holder_type = SKIP,
+                   bank = SKIP, branch_number = SKIP, branch_check_digit = SKIP,
+                   account_number = SKIP, account_check_digit = SKIP,
+                   type = SKIP, status = SKIP, created_at = SKIP,
+                   updated_at = SKIP, deleted_at = SKIP, recipient = SKIP,
+                   metadata = SKIP, pix_key = SKIP)
       @id = id unless id == SKIP
       @holder_name = holder_name unless holder_name == SKIP
       @holder_type = holder_type unless holder_type == SKIP

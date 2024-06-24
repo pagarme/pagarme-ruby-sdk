@@ -50,10 +50,8 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(statement_descriptor = SKIP,
-                   installments = SKIP,
-                   authentication = SKIP,
-                   capture = SKIP)
+    def initialize(statement_descriptor = SKIP, installments = SKIP,
+                   authentication = SKIP, capture = SKIP)
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @installments = installments unless installments == SKIP
       @authentication = authentication unless authentication == SKIP

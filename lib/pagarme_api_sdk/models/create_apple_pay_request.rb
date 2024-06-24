@@ -50,10 +50,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(version = nil,
-                   data = nil,
-                   header = nil,
-                   signature = nil,
+    def initialize(version = nil, data = nil, header = nil, signature = nil,
                    merchant_identifier = nil)
       @version = version
       @data = data

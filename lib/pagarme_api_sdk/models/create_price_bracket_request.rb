@@ -48,9 +48,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(start_quantity = nil,
-                   price = nil,
-                   end_quantity = SKIP,
+    def initialize(start_quantity = nil, price = nil, end_quantity = SKIP,
                    overage_price = SKIP)
       @start_quantity = start_quantity
       @price = price

@@ -83,14 +83,9 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(last_four_digits = SKIP,
-                   holder_name = SKIP,
-                   holder_document = SKIP,
-                   exp_month = SKIP,
-                   exp_year = SKIP,
-                   brand = SKIP,
-                   type = SKIP,
-                   label = SKIP)
+    def initialize(last_four_digits = SKIP, holder_name = SKIP,
+                   holder_document = SKIP, exp_month = SKIP, exp_year = SKIP,
+                   brand = SKIP, type = SKIP, label = SKIP)
       @last_four_digits = last_four_digits unless last_four_digits == SKIP
       @holder_name = holder_name unless holder_name == SKIP
       @holder_document = holder_document unless holder_document == SKIP

@@ -35,8 +35,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(description = nil,
-                   confirm = nil)
+    def initialize(description = nil, confirm = nil)
       @description = description
       @confirm = confirm
     end

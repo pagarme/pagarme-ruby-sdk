@@ -50,11 +50,8 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(system_name = nil,
-                   model = nil,
-                   provider = nil,
-                   serial_number = nil,
-                   version_number = nil)
+    def initialize(system_name = nil, model = nil, provider = nil,
+                   serial_number = nil, version_number = nil)
       @system_name = system_name
       @model = model
       @provider = provider

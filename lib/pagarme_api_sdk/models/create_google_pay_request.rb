@@ -73,11 +73,8 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(version = SKIP,
-                   data = SKIP,
-                   intermediate_signing_key = SKIP,
-                   signature = SKIP,
-                   signed_message = SKIP,
+    def initialize(version = SKIP, data = SKIP, intermediate_signing_key = SKIP,
+                   signature = SKIP, signed_message = SKIP,
                    merchant_identifier = SKIP)
       @version = version unless version == SKIP
       @data = data unless data == SKIP

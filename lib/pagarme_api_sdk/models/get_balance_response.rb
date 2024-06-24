@@ -62,11 +62,8 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(currency = SKIP,
-                   available_amount = SKIP,
-                   recipient = SKIP,
-                   transferred_amount = SKIP,
-                   waiting_funds_amount = SKIP)
+    def initialize(currency = SKIP, available_amount = SKIP, recipient = SKIP,
+                   transferred_amount = SKIP, waiting_funds_amount = SKIP)
       @currency = currency unless currency == SKIP
       @available_amount = available_amount unless available_amount == SKIP
       @recipient = recipient unless recipient == SKIP

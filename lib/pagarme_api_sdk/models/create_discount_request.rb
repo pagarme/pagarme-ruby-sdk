@@ -53,11 +53,8 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(value = nil,
-                   discount_type = nil,
-                   item_id = nil,
-                   cycles = SKIP,
-                   description = SKIP)
+    def initialize(value = nil, discount_type = nil, item_id = nil,
+                   cycles = SKIP, description = SKIP)
       @value = value
       @discount_type = discount_type
       @item_id = item_id

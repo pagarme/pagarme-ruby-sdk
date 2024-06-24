@@ -127,23 +127,12 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(payment_method = nil,
-                   credit_card = SKIP,
-                   debit_card = SKIP,
-                   boleto = SKIP,
-                   currency = SKIP,
-                   voucher = SKIP,
-                   split = SKIP,
-                   bank_transfer = SKIP,
-                   gateway_affiliation_id = SKIP,
-                   amount = SKIP,
-                   checkout = SKIP,
-                   customer_id = SKIP,
-                   customer = SKIP,
-                   metadata = SKIP,
-                   cash = SKIP,
-                   private_label = SKIP,
-                   pix = SKIP)
+    def initialize(payment_method = nil, credit_card = SKIP, debit_card = SKIP,
+                   boleto = SKIP, currency = SKIP, voucher = SKIP, split = SKIP,
+                   bank_transfer = SKIP, gateway_affiliation_id = SKIP,
+                   amount = SKIP, checkout = SKIP, customer_id = SKIP,
+                   customer = SKIP, metadata = SKIP, cash = SKIP,
+                   private_label = SKIP, pix = SKIP)
       @payment_method = payment_method
       @credit_card = credit_card unless credit_card == SKIP
       @debit_card = debit_card unless debit_card == SKIP

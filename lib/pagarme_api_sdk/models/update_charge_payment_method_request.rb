@@ -70,14 +70,9 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(update_subscription = nil,
-                   payment_method = nil,
-                   credit_card = nil,
-                   debit_card = nil,
-                   boleto = nil,
-                   voucher = nil,
-                   cash = nil,
-                   bank_transfer = nil,
+    def initialize(update_subscription = nil, payment_method = nil,
+                   credit_card = nil, debit_card = nil, boleto = nil,
+                   voucher = nil, cash = nil, bank_transfer = nil,
                    private_label = nil)
       @update_subscription = update_subscription
       @payment_method = payment_method

@@ -103,17 +103,10 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(retries = nil,
-                   instructions = nil,
-                   billing_address = nil,
-                   document_number = nil,
-                   statement_descriptor = nil,
-                   bank = SKIP,
-                   due_at = SKIP,
-                   billing_address_id = SKIP,
-                   nosso_numero = SKIP,
-                   interest = SKIP,
-                   fine = SKIP,
+    def initialize(retries = nil, instructions = nil, billing_address = nil,
+                   document_number = nil, statement_descriptor = nil,
+                   bank = SKIP, due_at = SKIP, billing_address_id = SKIP,
+                   nosso_numero = SKIP, interest = SKIP, fine = SKIP,
                    max_days_to_pay_past_due = SKIP)
       @retries = retries
       @bank = bank unless bank == SKIP

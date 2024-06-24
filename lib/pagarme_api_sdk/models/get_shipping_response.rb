@@ -84,13 +84,9 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(amount = SKIP,
-                   description = SKIP,
-                   recipient_name = SKIP,
-                   recipient_phone = SKIP,
-                   address = SKIP,
-                   max_delivery_date = SKIP,
-                   estimated_delivery_date = SKIP,
+    def initialize(amount = SKIP, description = SKIP, recipient_name = SKIP,
+                   recipient_phone = SKIP, address = SKIP,
+                   max_delivery_date = SKIP, estimated_delivery_date = SKIP,
                    type = SKIP)
       @amount = amount unless amount == SKIP
       @description = description unless description == SKIP

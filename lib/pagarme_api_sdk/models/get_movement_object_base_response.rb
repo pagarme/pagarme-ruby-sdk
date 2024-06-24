@@ -45,9 +45,9 @@ module PagarmeApiSdk
     def self.discriminators
       if @_discriminators.nil?
         @_discriminators = {}
-        @_discriminators['refund'] = GetMovementObjectRefundResponse
         @_discriminators['feeCollection'] = GetMovementObjectFeeCollectionResponse
         @_discriminators['payable'] = GetMovementObjectPayableResponse
+        @_discriminators['refund'] = GetMovementObjectRefundResponse
         @_discriminators['transfer'] = GetMovementObjectTransferResponse
         @_discriminators['settlement'] = GetMovementObjectSettlementResponse
       end
@@ -95,14 +95,9 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(object = 'MovementObject',
-                   id = SKIP,
-                   status = SKIP,
-                   amount = SKIP,
-                   created_at = SKIP,
-                   type = SKIP,
-                   charge_id = SKIP,
-                   gateway_id = SKIP)
+    def initialize(object = 'MovementObject', id = SKIP, status = SKIP,
+                   amount = SKIP, created_at = SKIP, type = SKIP,
+                   charge_id = SKIP, gateway_id = SKIP)
       @object = object unless object == SKIP
       @id = id unless id == SKIP
       @status = status unless status == SKIP

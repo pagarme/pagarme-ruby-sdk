@@ -119,18 +119,10 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   gateway_id = SKIP,
-                   amount = SKIP,
-                   status = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   metadata = SKIP,
-                   fee = SKIP,
-                   funding_date = SKIP,
-                   funding_estimated_date = SKIP,
-                   type = SKIP,
-                   source = SKIP,
+    def initialize(id = SKIP, gateway_id = SKIP, amount = SKIP, status = SKIP,
+                   created_at = SKIP, updated_at = SKIP, metadata = SKIP,
+                   fee = SKIP, funding_date = SKIP,
+                   funding_estimated_date = SKIP, type = SKIP, source = SKIP,
                    target = SKIP)
       @id = id unless id == SKIP
       @gateway_id = gateway_id unless gateway_id == SKIP

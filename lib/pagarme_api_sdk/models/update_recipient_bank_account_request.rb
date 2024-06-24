@@ -35,8 +35,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(bank_account = nil,
-                   payment_mode = 'bank_transfer')
+    def initialize(bank_account = nil, payment_mode = 'bank_transfer')
       @bank_account = bank_account
       @payment_mode = payment_mode
     end

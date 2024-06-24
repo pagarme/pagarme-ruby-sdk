@@ -38,8 +38,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(number = nil,
-                   total = nil)
+    def initialize(number = nil, total = nil)
       @number = number
       @total = total
     end

@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(enabled = SKIP,
-                   rules = SKIP)
+    def initialize(enabled = SKIP, rules = SKIP)
       @enabled = enabled unless enabled == SKIP
       @rules = rules unless rules == SKIP
     end

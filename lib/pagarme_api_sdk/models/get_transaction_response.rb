@@ -90,13 +90,13 @@ module PagarmeApiSdk
     def self.discriminators
       if @_discriminators.nil?
         @_discriminators = {}
-        @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse
         @_discriminators['safetypay'] = GetSafetyPayTransactionResponse
         @_discriminators['voucher'] = GetVoucherTransactionResponse
+        @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse
         @_discriminators['boleto'] = GetBoletoTransactionResponse
         @_discriminators['debit_card'] = GetDebitCardTransactionResponse
-        @_discriminators['private_label'] = GetPrivateLabelTransactionResponse
         @_discriminators['cash'] = GetCashTransactionResponse
+        @_discriminators['private_label'] = GetPrivateLabelTransactionResponse
         @_discriminators['credit_card'] = GetCreditCardTransactionResponse
         @_discriminators['pix'] = GetPixTransactionResponse
       end
@@ -177,24 +177,13 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(gateway_id = SKIP,
-                   amount = SKIP,
-                   status = SKIP,
-                   success = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   attempt_count = SKIP,
-                   max_attempts = SKIP,
-                   splits = SKIP,
-                   next_attempt = SKIP,
-                   transaction_type = 'transaction',
-                   id = SKIP,
-                   gateway_response = SKIP,
-                   antifraud_response = SKIP,
-                   metadata = SKIP,
-                   split = SKIP,
-                   interest = SKIP,
-                   fine = SKIP,
+    def initialize(gateway_id = SKIP, amount = SKIP, status = SKIP,
+                   success = SKIP, created_at = SKIP, updated_at = SKIP,
+                   attempt_count = SKIP, max_attempts = SKIP, splits = SKIP,
+                   next_attempt = SKIP, transaction_type = 'transaction',
+                   id = SKIP, gateway_response = SKIP,
+                   antifraud_response = SKIP, metadata = SKIP, split = SKIP,
+                   interest = SKIP, fine = SKIP,
                    max_days_to_pay_past_due = SKIP)
       @gateway_id = gateway_id unless gateway_id == SKIP
       @amount = amount unless amount == SKIP

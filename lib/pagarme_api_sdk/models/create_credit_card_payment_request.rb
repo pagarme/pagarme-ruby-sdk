@@ -123,22 +123,13 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(installments = 1,
-                   statement_descriptor = SKIP,
-                   card = SKIP,
-                   card_id = SKIP,
-                   card_token = SKIP,
-                   recurrence = SKIP,
-                   capture = true,
-                   extended_limit_enabled = SKIP,
-                   extended_limit_code = SKIP,
-                   merchant_category_code = SKIP,
-                   authentication = SKIP,
-                   contactless = SKIP,
-                   auto_recovery = SKIP,
-                   operation_type = SKIP,
-                   recurrency_cycle = SKIP,
-                   payload = SKIP)
+    def initialize(installments = 1, statement_descriptor = SKIP, card = SKIP,
+                   card_id = SKIP, card_token = SKIP, recurrence = SKIP,
+                   capture = true, extended_limit_enabled = SKIP,
+                   extended_limit_code = SKIP, merchant_category_code = SKIP,
+                   authentication = SKIP, contactless = SKIP,
+                   auto_recovery = SKIP, operation_type = SKIP,
+                   recurrency_cycle = SKIP, payload = SKIP)
       @installments = installments unless installments == SKIP
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @card = card unless card == SKIP

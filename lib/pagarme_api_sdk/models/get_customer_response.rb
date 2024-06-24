@@ -133,20 +133,10 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   name = SKIP,
-                   email = SKIP,
-                   delinquent = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   document = SKIP,
-                   type = SKIP,
-                   fb_access_token = SKIP,
-                   address = SKIP,
-                   metadata = SKIP,
-                   phones = SKIP,
-                   fb_id = SKIP,
-                   code = SKIP,
+    def initialize(id = SKIP, name = SKIP, email = SKIP, delinquent = SKIP,
+                   created_at = SKIP, updated_at = SKIP, document = SKIP,
+                   type = SKIP, fb_access_token = SKIP, address = SKIP,
+                   metadata = SKIP, phones = SKIP, fb_id = SKIP, code = SKIP,
                    document_type = SKIP)
       @id = id unless id == SKIP
       @name = name unless name == SKIP

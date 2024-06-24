@@ -49,10 +49,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(type = nil,
-                   apple_pay = SKIP,
-                   google_pay = SKIP,
-                   emv = SKIP)
+    def initialize(type = nil, apple_pay = SKIP, google_pay = SKIP, emv = SKIP)
       @type = type
       @apple_pay = apple_pay unless apple_pay == SKIP
       @google_pay = google_pay unless google_pay == SKIP

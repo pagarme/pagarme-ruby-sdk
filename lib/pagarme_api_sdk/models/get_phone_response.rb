@@ -48,9 +48,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(country_code = SKIP,
-                   number = SKIP,
-                   area_code = SKIP)
+    def initialize(country_code = SKIP, number = SKIP, area_code = SKIP)
       @country_code = country_code unless country_code == SKIP
       @number = number unless number == SKIP
       @area_code = area_code unless area_code == SKIP

@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(type = SKIP,
-                   google_pay = SKIP)
+    def initialize(type = SKIP, google_pay = SKIP)
       @type = type unless type == SKIP
       @google_pay = google_pay unless google_pay == SKIP
     end

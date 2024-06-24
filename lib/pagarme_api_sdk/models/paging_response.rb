@@ -48,9 +48,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(total = SKIP,
-                   previous = SKIP,
-                   mnext = SKIP)
+    def initialize(total = SKIP, previous = SKIP, mnext = SKIP)
       @total = total unless total == SKIP
       @previous = previous unless previous == SKIP
       @mnext = mnext unless mnext == SKIP

@@ -41,9 +41,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(bank = nil,
-                   instructions = nil,
-                   due_at = nil)
+    def initialize(bank = nil, instructions = nil, due_at = nil)
       @bank = bank
       @instructions = instructions
       @due_at = due_at

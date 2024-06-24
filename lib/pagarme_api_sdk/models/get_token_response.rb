@@ -63,10 +63,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   type = SKIP,
-                   created_at = SKIP,
-                   expires_at = SKIP,
+    def initialize(id = SKIP, type = SKIP, created_at = SKIP, expires_at = SKIP,
                    card = SKIP)
       @id = id unless id == SKIP
       @type = type unless type == SKIP

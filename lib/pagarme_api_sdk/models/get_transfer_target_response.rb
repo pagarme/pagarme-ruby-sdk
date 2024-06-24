@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(target_id = SKIP,
-                   type = SKIP)
+    def initialize(target_id = SKIP, type = SKIP)
       @target_id = target_id unless target_id == SKIP
       @type = type unless type == SKIP
     end

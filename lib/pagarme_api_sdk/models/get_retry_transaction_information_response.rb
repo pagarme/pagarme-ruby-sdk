@@ -45,8 +45,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(brand_failure_return_code = nil,
-                   transaction_limit = nil,
+    def initialize(brand_failure_return_code = nil, transaction_limit = nil,
                    transaction_date_limit = nil)
       @brand_failure_return_code = brand_failure_return_code
       @transaction_limit = transaction_limit

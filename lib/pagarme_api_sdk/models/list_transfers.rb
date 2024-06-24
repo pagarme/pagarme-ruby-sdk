@@ -35,8 +35,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(data = nil,
-                   paging = nil)
+    def initialize(data = nil, paging = nil)
       @data = data
       @paging = paging
     end

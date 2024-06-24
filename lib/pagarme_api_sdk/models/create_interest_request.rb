@@ -40,9 +40,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(days = nil,
-                   type = nil,
-                   amount = nil)
+    def initialize(days = nil, type = nil, amount = nil)
       @days = days
       @type = type
       @amount = amount

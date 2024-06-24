@@ -155,24 +155,13 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   name = SKIP,
-                   email = SKIP,
-                   document = SKIP,
-                   description = SKIP,
-                   type = SKIP,
-                   status = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   deleted_at = SKIP,
-                   default_bank_account = SKIP,
-                   gateway_recipients = SKIP,
-                   metadata = SKIP,
-                   automatic_anticipation_settings = SKIP,
-                   transfer_settings = SKIP,
-                   code = SKIP,
-                   payment_mode = 'bank_transfer',
-                   register_information = SKIP)
+    def initialize(id = SKIP, name = SKIP, email = SKIP, document = SKIP,
+                   description = SKIP, type = SKIP, status = SKIP,
+                   created_at = SKIP, updated_at = SKIP, deleted_at = SKIP,
+                   default_bank_account = SKIP, gateway_recipients = SKIP,
+                   metadata = SKIP, automatic_anticipation_settings = SKIP,
+                   transfer_settings = SKIP, code = SKIP,
+                   payment_mode = 'bank_transfer', register_information = SKIP)
       @id = id unless id == SKIP
       @name = name unless name == SKIP
       @email = email unless email == SKIP

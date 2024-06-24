@@ -35,8 +35,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(type = nil,
-                   threed_secure = nil)
+    def initialize(type = nil, threed_secure = nil)
       @type = type
       @threed_secure = threed_secure
     end

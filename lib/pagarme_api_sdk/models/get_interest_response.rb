@@ -48,9 +48,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(days = SKIP,
-                   type = SKIP,
-                   amount = SKIP)
+    def initialize(days = SKIP, type = SKIP, amount = SKIP)
       @days = days unless days == SKIP
       @type = type unless type == SKIP
       @amount = amount unless amount == SKIP

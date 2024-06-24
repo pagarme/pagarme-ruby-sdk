@@ -53,11 +53,8 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(payment_method = nil,
-                   card_id = nil,
-                   card = nil,
-                   card_token = SKIP,
-                   boleto = SKIP)
+    def initialize(payment_method = nil, card_id = nil, card = nil,
+                   card_token = SKIP, boleto = SKIP)
       @payment_method = payment_method
       @card_id = card_id
       @card = card

@@ -42,8 +42,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(name = SKIP,
-                   date = SKIP)
+    def initialize(name = SKIP, date = SKIP)
       @name = name unless name == SKIP
       @date = date unless date == SKIP
     end

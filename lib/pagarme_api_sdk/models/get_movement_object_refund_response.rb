@@ -64,19 +64,11 @@ module PagarmeApiSdk
       (_arr << super()).flatten!
     end
 
-    def initialize(fraud_coverage_fee = SKIP,
-                   charge_fee_recipient_id = SKIP,
-                   bank_account_id = SKIP,
-                   local_transaction_id = SKIP,
-                   updated_at = SKIP,
-                   object = 'refund',
-                   id = SKIP,
-                   status = SKIP,
-                   amount = SKIP,
-                   created_at = SKIP,
-                   type = SKIP,
-                   charge_id = SKIP,
-                   gateway_id = SKIP)
+    def initialize(fraud_coverage_fee = SKIP, charge_fee_recipient_id = SKIP,
+                   bank_account_id = SKIP, local_transaction_id = SKIP,
+                   updated_at = SKIP, object = 'refund', id = SKIP,
+                   status = SKIP, amount = SKIP, created_at = SKIP, type = SKIP,
+                   charge_id = SKIP, gateway_id = SKIP)
       @fraud_coverage_fee = fraud_coverage_fee unless fraud_coverage_fee == SKIP
       @charge_fee_recipient_id = charge_fee_recipient_id unless charge_fee_recipient_id == SKIP
       @bank_account_id = bank_account_id unless bank_account_id == SKIP

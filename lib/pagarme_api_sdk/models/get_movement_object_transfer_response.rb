@@ -85,21 +85,11 @@ module PagarmeApiSdk
       (_arr << super()).flatten!
     end
 
-    def initialize(source_type = SKIP,
-                   source_id = SKIP,
-                   target_type = SKIP,
-                   target_id = SKIP,
-                   fee = SKIP,
-                   funding_date = SKIP,
-                   funding_estimated_date = SKIP,
-                   bank_account = SKIP,
-                   object = 'transfer',
-                   id = SKIP,
-                   status = SKIP,
-                   amount = SKIP,
-                   created_at = SKIP,
-                   type = SKIP,
-                   charge_id = SKIP,
+    def initialize(source_type = SKIP, source_id = SKIP, target_type = SKIP,
+                   target_id = SKIP, fee = SKIP, funding_date = SKIP,
+                   funding_estimated_date = SKIP, bank_account = SKIP,
+                   object = 'transfer', id = SKIP, status = SKIP, amount = SKIP,
+                   created_at = SKIP, type = SKIP, charge_id = SKIP,
                    gateway_id = SKIP)
       @source_type = source_type unless source_type == SKIP
       @source_id = source_id unless source_id == SKIP

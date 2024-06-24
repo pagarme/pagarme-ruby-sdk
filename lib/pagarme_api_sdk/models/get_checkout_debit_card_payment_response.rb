@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(statement_descriptor = SKIP,
-                   authentication = SKIP)
+    def initialize(statement_descriptor = SKIP, authentication = SKIP)
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @authentication = authentication unless authentication == SKIP
     end

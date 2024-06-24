@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(source_id = SKIP,
-                   type = SKIP)
+    def initialize(source_id = SKIP, type = SKIP)
       @source_id = source_id unless source_id == SKIP
       @type = type unless type == SKIP
     end

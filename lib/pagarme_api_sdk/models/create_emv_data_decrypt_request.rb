@@ -42,9 +42,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(cipher = nil,
-                   tags = nil,
-                   dukpt = SKIP)
+    def initialize(cipher = nil, tags = nil, dukpt = SKIP)
       @cipher = cipher
       @dukpt = dukpt unless dukpt == SKIP
       @tags = tags

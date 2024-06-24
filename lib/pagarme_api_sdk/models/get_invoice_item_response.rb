@@ -76,12 +76,8 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(amount = SKIP,
-                   description = SKIP,
-                   pricing_scheme = SKIP,
-                   price_bracket = SKIP,
-                   quantity = SKIP,
-                   name = SKIP,
+    def initialize(amount = SKIP, description = SKIP, pricing_scheme = SKIP,
+                   price_bracket = SKIP, quantity = SKIP, name = SKIP,
                    subscription_item_id = SKIP)
       @amount = amount unless amount == SKIP
       @description = description unless description == SKIP

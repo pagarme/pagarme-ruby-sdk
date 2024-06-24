@@ -217,33 +217,18 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   amount = SKIP,
-                   default_payment_method = SKIP,
-                   success_url = SKIP,
-                   payment_url = SKIP,
+    def initialize(id = SKIP, amount = SKIP, default_payment_method = SKIP,
+                   success_url = SKIP, payment_url = SKIP,
                    gateway_affiliation_id = SKIP,
-                   accepted_payment_methods = SKIP,
-                   status = SKIP,
-                   skip_checkout_success_page = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   canceled_at = SKIP,
-                   customer_editable = SKIP,
-                   customer = SKIP,
-                   billingaddress = SKIP,
-                   credit_card = SKIP,
-                   boleto = SKIP,
-                   billing_address_editable = SKIP,
-                   shipping = SKIP,
-                   shippable = SKIP,
-                   closed_at = SKIP,
-                   expires_at = SKIP,
-                   currency = SKIP,
-                   debit_card = SKIP,
-                   bank_transfer = SKIP,
-                   accepted_brands = SKIP,
-                   pix = SKIP)
+                   accepted_payment_methods = SKIP, status = SKIP,
+                   skip_checkout_success_page = SKIP, created_at = SKIP,
+                   updated_at = SKIP, canceled_at = SKIP,
+                   customer_editable = SKIP, customer = SKIP,
+                   billingaddress = SKIP, credit_card = SKIP, boleto = SKIP,
+                   billing_address_editable = SKIP, shipping = SKIP,
+                   shippable = SKIP, closed_at = SKIP, expires_at = SKIP,
+                   currency = SKIP, debit_card = SKIP, bank_transfer = SKIP,
+                   accepted_brands = SKIP, pix = SKIP)
       @id = id unless id == SKIP
       @amount = amount unless amount == SKIP
       @default_payment_method = default_payment_method unless default_payment_method == SKIP

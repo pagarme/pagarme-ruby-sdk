@@ -85,16 +85,9 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(street = nil,
-                   number = nil,
-                   zip_code = nil,
-                   neighborhood = nil,
-                   city = nil,
-                   state = nil,
-                   country = nil,
-                   complement = nil,
-                   line_1 = nil,
-                   line_2 = nil,
+    def initialize(street = nil, number = nil, zip_code = nil,
+                   neighborhood = nil, city = nil, state = nil, country = nil,
+                   complement = nil, line_1 = nil, line_2 = nil,
                    metadata = SKIP)
       @street = street
       @number = number

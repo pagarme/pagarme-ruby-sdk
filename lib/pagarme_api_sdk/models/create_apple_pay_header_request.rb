@@ -43,8 +43,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(ephemeral_public_key = nil,
-                   public_key_hash = SKIP,
+    def initialize(ephemeral_public_key = nil, public_key_hash = SKIP,
                    transaction_id = SKIP)
       @public_key_hash = public_key_hash unless public_key_hash == SKIP
       @ephemeral_public_key = ephemeral_public_key

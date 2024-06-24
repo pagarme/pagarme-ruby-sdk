@@ -78,16 +78,9 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(name = nil,
-                   email = nil,
-                   document = nil,
-                   type = nil,
-                   address = nil,
-                   metadata = nil,
-                   phones = nil,
-                   code = nil,
-                   gender = SKIP,
-                   document_type = SKIP)
+    def initialize(name = nil, email = nil, document = nil, type = nil,
+                   address = nil, metadata = nil, phones = nil, code = nil,
+                   gender = SKIP, document_type = SKIP)
       @name = name
       @email = email
       @document = document

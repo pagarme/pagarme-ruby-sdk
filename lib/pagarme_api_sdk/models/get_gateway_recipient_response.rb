@@ -62,11 +62,8 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(gateway = SKIP,
-                   status = SKIP,
-                   pgid = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP)
+    def initialize(gateway = SKIP, status = SKIP, pgid = SKIP,
+                   created_at = SKIP, updated_at = SKIP)
       @gateway = gateway unless gateway == SKIP
       @status = status unless status == SKIP
       @pgid = pgid unless pgid == SKIP

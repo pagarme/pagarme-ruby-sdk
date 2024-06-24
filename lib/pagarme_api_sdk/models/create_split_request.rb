@@ -53,10 +53,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(type = nil,
-                   amount = nil,
-                   recipient_id = nil,
-                   options = SKIP,
+    def initialize(type = nil, amount = nil, recipient_id = nil, options = SKIP,
                    split_rule_id = SKIP)
       @type = type
       @amount = amount

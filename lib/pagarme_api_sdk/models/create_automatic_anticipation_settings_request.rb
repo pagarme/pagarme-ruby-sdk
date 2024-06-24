@@ -50,11 +50,8 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(enabled = nil,
-                   type = nil,
-                   volume_percentage = nil,
-                   delay = nil,
-                   days = nil)
+    def initialize(enabled = nil, type = nil, volume_percentage = nil,
+                   delay = nil, days = nil)
       @enabled = enabled
       @type = type
       @volume_percentage = volume_percentage

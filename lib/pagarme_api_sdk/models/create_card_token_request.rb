@@ -60,13 +60,8 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(number = nil,
-                   holder_name = nil,
-                   exp_month = nil,
-                   exp_year = nil,
-                   cvv = nil,
-                   brand = nil,
-                   label = nil)
+    def initialize(number = nil, holder_name = nil, exp_month = nil,
+                   exp_year = nil, cvv = nil, brand = nil, label = nil)
       @number = number
       @holder_name = holder_name
       @exp_month = exp_month

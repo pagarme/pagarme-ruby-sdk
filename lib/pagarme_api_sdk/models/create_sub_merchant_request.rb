@@ -65,14 +65,9 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(payment_facilitator_code = nil,
-                   code = nil,
-                   name = nil,
-                   merchant_category_code = nil,
-                   document = nil,
-                   type = nil,
-                   phone = nil,
-                   address = nil)
+    def initialize(payment_facilitator_code = nil, code = nil, name = nil,
+                   merchant_category_code = nil, document = nil, type = nil,
+                   phone = nil, address = nil)
       @payment_facilitator_code = payment_facilitator_code
       @code = code
       @name = name

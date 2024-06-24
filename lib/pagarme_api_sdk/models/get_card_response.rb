@@ -147,23 +147,12 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   last_four_digits = SKIP,
-                   brand = SKIP,
-                   holder_name = SKIP,
-                   exp_month = SKIP,
-                   exp_year = SKIP,
-                   status = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   billing_address = SKIP,
-                   customer = SKIP,
-                   metadata = SKIP,
-                   type = SKIP,
-                   holder_document = SKIP,
-                   deleted_at = SKIP,
-                   first_six_digits = SKIP,
-                   label = SKIP)
+    def initialize(id = SKIP, last_four_digits = SKIP, brand = SKIP,
+                   holder_name = SKIP, exp_month = SKIP, exp_year = SKIP,
+                   status = SKIP, created_at = SKIP, updated_at = SKIP,
+                   billing_address = SKIP, customer = SKIP, metadata = SKIP,
+                   type = SKIP, holder_document = SKIP, deleted_at = SKIP,
+                   first_six_digits = SKIP, label = SKIP)
       @id = id unless id == SKIP
       @last_four_digits = last_four_digits unless last_four_digits == SKIP
       @brand = brand unless brand == SKIP

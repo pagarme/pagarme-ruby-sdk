@@ -238,36 +238,17 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   code = SKIP,
-                   start_at = SKIP,
-                   interval = SKIP,
-                   interval_count = SKIP,
-                   billing_type = SKIP,
-                   current_cycle = SKIP,
-                   payment_method = SKIP,
-                   currency = SKIP,
-                   installments = SKIP,
-                   status = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   customer = SKIP,
-                   card = SKIP,
-                   items = SKIP,
-                   statement_descriptor = SKIP,
-                   metadata = SKIP,
-                   setup = SKIP,
-                   gateway_affiliation_id = SKIP,
-                   next_billing_at = SKIP,
-                   billing_day = SKIP,
-                   minimum_price = SKIP,
-                   canceled_at = SKIP,
-                   discounts = SKIP,
-                   increments = SKIP,
-                   boleto_due_days = SKIP,
-                   split = SKIP,
-                   boleto = SKIP,
-                   manual_billing = SKIP)
+    def initialize(id = SKIP, code = SKIP, start_at = SKIP, interval = SKIP,
+                   interval_count = SKIP, billing_type = SKIP,
+                   current_cycle = SKIP, payment_method = SKIP, currency = SKIP,
+                   installments = SKIP, status = SKIP, created_at = SKIP,
+                   updated_at = SKIP, customer = SKIP, card = SKIP,
+                   items = SKIP, statement_descriptor = SKIP, metadata = SKIP,
+                   setup = SKIP, gateway_affiliation_id = SKIP,
+                   next_billing_at = SKIP, billing_day = SKIP,
+                   minimum_price = SKIP, canceled_at = SKIP, discounts = SKIP,
+                   increments = SKIP, boleto_due_days = SKIP, split = SKIP,
+                   boleto = SKIP, manual_billing = SKIP)
       @id = id unless id == SKIP
       @code = code unless code == SKIP
       @start_at = start_at unless start_at == SKIP

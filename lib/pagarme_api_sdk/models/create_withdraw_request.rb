@@ -37,8 +37,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(amount = nil,
-                   metadata = SKIP)
+    def initialize(amount = nil, metadata = SKIP)
       @amount = amount
       @metadata = metadata unless metadata == SKIP
     end

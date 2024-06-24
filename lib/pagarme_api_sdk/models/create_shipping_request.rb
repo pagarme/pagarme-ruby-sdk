@@ -74,14 +74,9 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(amount = nil,
-                   description = nil,
-                   recipient_name = nil,
-                   recipient_phone = nil,
-                   address_id = nil,
-                   address = nil,
-                   type = nil,
-                   max_delivery_date = SKIP,
+    def initialize(amount = nil, description = nil, recipient_name = nil,
+                   recipient_phone = nil, address_id = nil, address = nil,
+                   type = nil, max_delivery_date = SKIP,
                    estimated_delivery_date = SKIP)
       @amount = amount
       @description = description

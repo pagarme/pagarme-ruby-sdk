@@ -44,8 +44,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(liable = SKIP,
-                   charge_processing_fee = SKIP,
+    def initialize(liable = SKIP, charge_processing_fee = SKIP,
                    charge_remainder_fee = SKIP)
       @liable = liable unless liable == SKIP
       @charge_processing_fee = charge_processing_fee unless charge_processing_fee == SKIP
