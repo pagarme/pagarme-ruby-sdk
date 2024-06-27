@@ -122,22 +122,11 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(number = SKIP,
-                   holder_name = SKIP,
-                   exp_month = SKIP,
-                   exp_year = SKIP,
-                   cvv = SKIP,
-                   billing_address = SKIP,
-                   brand = SKIP,
-                   billing_address_id = SKIP,
-                   metadata = SKIP,
-                   type = 'credit',
-                   options = SKIP,
-                   holder_document = SKIP,
-                   private_label = SKIP,
-                   label = SKIP,
-                   id = SKIP,
-                   token = SKIP)
+    def initialize(number = SKIP, holder_name = SKIP, exp_month = SKIP,
+                   exp_year = SKIP, cvv = SKIP, billing_address = SKIP,
+                   brand = SKIP, billing_address_id = SKIP, metadata = SKIP,
+                   type = 'credit', options = SKIP, holder_document = SKIP,
+                   private_label = SKIP, label = SKIP, id = SKIP, token = SKIP)
       @number = number unless number == SKIP
       @holder_name = holder_name unless holder_name == SKIP
       @exp_month = exp_month unless exp_month == SKIP

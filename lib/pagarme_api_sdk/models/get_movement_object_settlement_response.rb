@@ -92,23 +92,13 @@ module PagarmeApiSdk
       (_arr << super()).flatten!
     end
 
-    def initialize(product = SKIP,
-                   brand = SKIP,
-                   payment_date = SKIP,
-                   recipient_id = SKIP,
-                   document_type = SKIP,
-                   document = SKIP,
+    def initialize(product = SKIP, brand = SKIP, payment_date = SKIP,
+                   recipient_id = SKIP, document_type = SKIP, document = SKIP,
                    contract_obligation_id = SKIP,
                    liquidation_arrangement_id = SKIP,
-                   external_engine_payment_id = SKIP,
-                   object = 'settlement',
-                   id = SKIP,
-                   status = SKIP,
-                   amount = SKIP,
-                   created_at = SKIP,
-                   type = SKIP,
-                   charge_id = SKIP,
-                   gateway_id = SKIP)
+                   external_engine_payment_id = SKIP, object = 'settlement',
+                   id = SKIP, status = SKIP, amount = SKIP, created_at = SKIP,
+                   type = SKIP, charge_id = SKIP, gateway_id = SKIP)
       @product = product unless product == SKIP
       @brand = brand unless brand == SKIP
       @payment_date = payment_date unless payment_date == SKIP

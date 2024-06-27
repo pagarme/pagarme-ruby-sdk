@@ -75,18 +75,10 @@ module PagarmeApiSdk
       (_arr << super()).flatten!
     end
 
-    def initialize(company_name = nil,
-                   trading_name = nil,
-                   annual_revenue = nil,
-                   managing_partners = nil,
-                   main_address = nil,
-                   email = nil,
-                   document = nil,
-                   type = nil,
-                   phone_numbers = nil,
-                   corporation_type = SKIP,
-                   founding_date = SKIP,
-                   cnae = SKIP,
+    def initialize(company_name = nil, trading_name = nil, annual_revenue = nil,
+                   managing_partners = nil, main_address = nil, email = nil,
+                   document = nil, type = nil, phone_numbers = nil,
+                   corporation_type = SKIP, founding_date = SKIP, cnae = SKIP,
                    site_url = SKIP)
       @company_name = company_name
       @trading_name = trading_name

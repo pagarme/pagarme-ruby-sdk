@@ -60,12 +60,8 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(quantity = nil,
-                   description = nil,
-                   used_at = nil,
-                   code = SKIP,
-                   group = SKIP,
-                   amount = SKIP)
+    def initialize(quantity = nil, description = nil, used_at = nil,
+                   code = SKIP, group = SKIP, amount = SKIP)
       @quantity = quantity
       @description = description
       @used_at = used_at

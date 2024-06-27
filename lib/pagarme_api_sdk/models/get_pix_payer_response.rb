@@ -55,9 +55,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(name = SKIP,
-                   document = SKIP,
-                   document_type = SKIP,
+    def initialize(name = SKIP, document = SKIP, document_type = SKIP,
                    bank_account = SKIP)
       @name = name unless name == SKIP
       @document = document unless document == SKIP

@@ -85,15 +85,9 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(amount = nil,
-                   payment = nil,
-                   order_id = nil,
-                   code = SKIP,
-                   customer_id = SKIP,
-                   customer = SKIP,
-                   metadata = SKIP,
-                   due_at = SKIP,
-                   antifraud = SKIP)
+    def initialize(amount = nil, payment = nil, order_id = nil, code = SKIP,
+                   customer_id = SKIP, customer = SKIP, metadata = SKIP,
+                   due_at = SKIP, antifraud = SKIP)
       @code = code unless code == SKIP
       @amount = amount
       @customer_id = customer_id unless customer_id == SKIP

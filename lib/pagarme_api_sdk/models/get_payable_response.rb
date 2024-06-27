@@ -182,28 +182,15 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   status = SKIP,
-                   amount = SKIP,
-                   fee = SKIP,
-                   anticipation_fee = SKIP,
-                   fraud_coverage_fee = SKIP,
-                   installment = SKIP,
-                   gateway_id = SKIP,
-                   charge_id = SKIP,
-                   split_id = SKIP,
-                   bulk_anticipation_id = SKIP,
-                   anticipation_id = SKIP,
-                   recipient_id = SKIP,
-                   originator_model = SKIP,
-                   originator_model_id = SKIP,
-                   payment_date = SKIP,
-                   original_payment_date = SKIP,
-                   type = SKIP,
-                   payment_method = SKIP,
-                   accrual_at = SKIP,
-                   created_at = SKIP,
-                   liquidation_arrangement_id = SKIP)
+    def initialize(id = SKIP, status = SKIP, amount = SKIP, fee = SKIP,
+                   anticipation_fee = SKIP, fraud_coverage_fee = SKIP,
+                   installment = SKIP, gateway_id = SKIP, charge_id = SKIP,
+                   split_id = SKIP, bulk_anticipation_id = SKIP,
+                   anticipation_id = SKIP, recipient_id = SKIP,
+                   originator_model = SKIP, originator_model_id = SKIP,
+                   payment_date = SKIP, original_payment_date = SKIP,
+                   type = SKIP, payment_method = SKIP, accrual_at = SKIP,
+                   created_at = SKIP, liquidation_arrangement_id = SKIP)
       @id = id unless id == SKIP
       @status = status unless status == SKIP
       @amount = amount unless amount == SKIP

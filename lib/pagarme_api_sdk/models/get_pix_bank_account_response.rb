@@ -55,9 +55,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(bank_name = SKIP,
-                   ispb = SKIP,
-                   branch_code = SKIP,
+    def initialize(bank_name = SKIP, ispb = SKIP, branch_code = SKIP,
                    account_number = SKIP)
       @bank_name = bank_name unless bank_name == SKIP
       @ispb = ispb unless ispb == SKIP

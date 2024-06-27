@@ -45,9 +45,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(update_subscription = nil,
-                   card_id = nil,
-                   card = nil,
+    def initialize(update_subscription = nil, card_id = nil, card = nil,
                    recurrence = nil)
       @update_subscription = update_subscription
       @card_id = card_id

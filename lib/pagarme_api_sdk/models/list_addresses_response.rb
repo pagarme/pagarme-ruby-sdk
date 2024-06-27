@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(data = SKIP,
-                   paging = SKIP)
+    def initialize(data = SKIP, paging = SKIP)
       @data = data unless data == SKIP
       @paging = paging unless paging == SKIP
     end

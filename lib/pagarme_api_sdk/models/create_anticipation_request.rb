@@ -41,9 +41,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(amount = nil,
-                   timeframe = nil,
-                   payment_date = nil)
+    def initialize(amount = nil, timeframe = nil, payment_date = nil)
       @amount = amount
       @timeframe = timeframe
       @payment_date = payment_date

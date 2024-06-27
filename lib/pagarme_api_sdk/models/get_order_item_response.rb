@@ -98,16 +98,9 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   type = SKIP,
-                   description = SKIP,
-                   amount = SKIP,
-                   quantity = SKIP,
-                   category = SKIP,
-                   code = SKIP,
-                   status = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP)
+    def initialize(id = SKIP, type = SKIP, description = SKIP, amount = SKIP,
+                   quantity = SKIP, category = SKIP, code = SKIP, status = SKIP,
+                   created_at = SKIP, updated_at = SKIP)
       @id = id unless id == SKIP
       @type = type unless type == SKIP
       @description = description unless description == SKIP

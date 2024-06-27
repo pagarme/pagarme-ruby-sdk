@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(type = SKIP,
-                   threed_secure = SKIP)
+    def initialize(type = SKIP, threed_secure = SKIP)
       @type = type unless type == SKIP
       @threed_secure = threed_secure unless threed_secure == SKIP
     end

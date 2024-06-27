@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(home_phone = SKIP,
-                   mobile_phone = SKIP)
+    def initialize(home_phone = SKIP, mobile_phone = SKIP)
       @home_phone = home_phone unless home_phone == SKIP
       @mobile_phone = mobile_phone unless mobile_phone == SKIP
     end

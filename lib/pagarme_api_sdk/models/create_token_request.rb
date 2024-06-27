@@ -35,8 +35,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(type = 'card',
-                   card = nil)
+    def initialize(type = 'card', card = nil)
       @type = type
       @card = card
     end

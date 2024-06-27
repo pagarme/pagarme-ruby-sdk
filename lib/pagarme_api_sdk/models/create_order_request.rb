@@ -120,22 +120,11 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(items = nil,
-                   customer = nil,
-                   payments = nil,
-                   code = nil,
-                   closed = true,
-                   customer_id = SKIP,
-                   shipping = SKIP,
-                   metadata = SKIP,
-                   antifraud_enabled = SKIP,
-                   ip = SKIP,
-                   session_id = SKIP,
-                   location = SKIP,
-                   device = SKIP,
-                   currency = SKIP,
-                   antifraud = SKIP,
-                   submerchant = SKIP)
+    def initialize(items = nil, customer = nil, payments = nil, code = nil,
+                   closed = true, customer_id = SKIP, shipping = SKIP,
+                   metadata = SKIP, antifraud_enabled = SKIP, ip = SKIP,
+                   session_id = SKIP, location = SKIP, device = SKIP,
+                   currency = SKIP, antifraud = SKIP, submerchant = SKIP)
       @items = items
       @customer = customer
       @payments = payments

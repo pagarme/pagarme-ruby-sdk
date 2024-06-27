@@ -83,14 +83,10 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(success_url = SKIP,
-                   payment_url = SKIP,
-                   accepted_payment_methods = SKIP,
-                   status = SKIP,
-                   customer = SKIP,
-                   amount = SKIP,
-                   default_payment_method = SKIP,
-                   gateway_affiliation_id = SKIP)
+    def initialize(success_url = SKIP, payment_url = SKIP,
+                   accepted_payment_methods = SKIP, status = SKIP,
+                   customer = SKIP, amount = SKIP,
+                   default_payment_method = SKIP, gateway_affiliation_id = SKIP)
       @success_url = success_url unless success_url == SKIP
       @payment_url = payment_url unless payment_url == SKIP
       @accepted_payment_methods = accepted_payment_methods unless accepted_payment_methods == SKIP

@@ -64,12 +64,8 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(holder_name = nil,
-                   exp_month = nil,
-                   exp_year = nil,
-                   billing_address = nil,
-                   metadata = nil,
-                   label = nil,
+    def initialize(holder_name = nil, exp_month = nil, exp_year = nil,
+                   billing_address = nil, metadata = nil, label = nil,
                    billing_address_id = SKIP)
       @holder_name = holder_name
       @exp_month = exp_month

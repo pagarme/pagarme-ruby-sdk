@@ -117,21 +117,13 @@ module PagarmeApiSdk
     end
 
     def initialize(accepted_payment_methods = nil,
-                   accepted_multi_payment_methods = nil,
-                   success_url = nil,
+                   accepted_multi_payment_methods = nil, success_url = nil,
                    skip_checkout_success_page = nil,
-                   billing_address_editable = nil,
-                   billing_address = nil,
-                   accepted_brands = nil,
-                   default_payment_method = SKIP,
-                   gateway_affiliation_id = SKIP,
-                   credit_card = SKIP,
-                   debit_card = SKIP,
-                   boleto = SKIP,
-                   customer_editable = SKIP,
-                   expires_in = SKIP,
-                   bank_transfer = SKIP,
-                   pix = SKIP)
+                   billing_address_editable = nil, billing_address = nil,
+                   accepted_brands = nil, default_payment_method = SKIP,
+                   gateway_affiliation_id = SKIP, credit_card = SKIP,
+                   debit_card = SKIP, boleto = SKIP, customer_editable = SKIP,
+                   expires_in = SKIP, bank_transfer = SKIP, pix = SKIP)
       @accepted_payment_methods = accepted_payment_methods
       @accepted_multi_payment_methods = accepted_multi_payment_methods
       @success_url = success_url

@@ -89,15 +89,9 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   status = SKIP,
-                   balance_amount = SKIP,
-                   balance_old_amount = SKIP,
-                   type = SKIP,
-                   amount = SKIP,
-                   fee = SKIP,
-                   created_at = SKIP,
-                   movement_object = SKIP)
+    def initialize(id = SKIP, status = SKIP, balance_amount = SKIP,
+                   balance_old_amount = SKIP, type = SKIP, amount = SKIP,
+                   fee = SKIP, created_at = SKIP, movement_object = SKIP)
       @id = id unless id == SKIP
       @status = status unless status == SKIP
       @balance_amount = balance_amount unless balance_amount == SKIP

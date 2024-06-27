@@ -61,17 +61,10 @@ module PagarmeApiSdk
       (_arr << super()).flatten!
     end
 
-    def initialize(name = nil,
-                   birthdate = nil,
-                   monthly_income = nil,
-                   professional_occupation = nil,
-                   address = nil,
-                   email = nil,
-                   document = nil,
-                   type = nil,
-                   phone_numbers = nil,
-                   mother_name = SKIP,
-                   site_url = SKIP)
+    def initialize(name = nil, birthdate = nil, monthly_income = nil,
+                   professional_occupation = nil, address = nil, email = nil,
+                   document = nil, type = nil, phone_numbers = nil,
+                   mother_name = SKIP, site_url = SKIP)
       @name = name
       @mother_name = mother_name unless mother_name == SKIP
       @birthdate = birthdate

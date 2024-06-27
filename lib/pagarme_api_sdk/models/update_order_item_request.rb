@@ -45,9 +45,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(amount = nil,
-                   description = nil,
-                   quantity = nil,
+    def initialize(amount = nil, description = nil, quantity = nil,
                    category = nil)
       @amount = amount
       @description = description

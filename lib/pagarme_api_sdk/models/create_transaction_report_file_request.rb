@@ -44,9 +44,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(name = nil,
-                   start_at = SKIP,
-                   end_at = SKIP)
+    def initialize(name = nil, start_at = SKIP, end_at = SKIP)
       @name = name
       @start_at = start_at unless start_at == SKIP
       @end_at = end_at unless end_at == SKIP

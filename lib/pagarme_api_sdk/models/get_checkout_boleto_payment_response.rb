@@ -42,8 +42,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(due_at = SKIP,
-                   instructions = SKIP)
+    def initialize(due_at = SKIP, instructions = SKIP)
       @due_at = due_at unless due_at == SKIP
       @instructions = instructions unless instructions == SKIP
     end

@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(latitude = SKIP,
-                   longitude = SKIP)
+    def initialize(latitude = SKIP, longitude = SKIP)
       @latitude = latitude unless latitude == SKIP
       @longitude = longitude unless longitude == SKIP
     end

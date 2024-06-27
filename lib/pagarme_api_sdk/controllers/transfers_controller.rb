@@ -24,6 +24,21 @@ module PagarmeApiSdk
         .execute
     end
 
+    # Gets all transfers
+    # @return [ListTransfers] response from the API call
+    def get_transfers
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/transfers',
+                                     Server::DEFAULT)
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                   .deserializer(APIHelper.method(:custom_type_deserializer))
+                   .deserialize_into(ListTransfers.method(:from_hash)))
+        .execute
+    end
+
     # TODO: type endpoint description here
     # @param [CreateTransfer] request Required parameter: Example:
     # @return [GetTransfer] response from the API call
@@ -40,21 +55,6 @@ module PagarmeApiSdk
         .response(new_response_handler
                    .deserializer(APIHelper.method(:custom_type_deserializer))
                    .deserialize_into(GetTransfer.method(:from_hash)))
-        .execute
-    end
-
-    # Gets all transfers
-    # @return [ListTransfers] response from the API call
-    def get_transfers
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/transfers',
-                                     Server::DEFAULT)
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListTransfers.method(:from_hash)))
         .execute
     end
   end

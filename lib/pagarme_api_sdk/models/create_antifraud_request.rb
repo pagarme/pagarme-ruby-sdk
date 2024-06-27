@@ -35,8 +35,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(type = nil,
-                   clearsale = nil)
+    def initialize(type = nil, clearsale = nil)
       @type = type
       @clearsale = clearsale
     end

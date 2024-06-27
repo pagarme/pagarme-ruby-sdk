@@ -48,8 +48,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(transfer_enabled = SKIP,
-                   transfer_interval = SKIP,
+    def initialize(transfer_enabled = SKIP, transfer_interval = SKIP,
                    transfer_day = SKIP)
       @transfer_enabled = transfer_enabled unless transfer_enabled == SKIP
       @transfer_interval = transfer_interval unless transfer_interval == SKIP

@@ -45,8 +45,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(expires_at = SKIP,
-                   expires_in = SKIP,
+    def initialize(expires_at = SKIP, expires_in = SKIP,
                    additional_information = SKIP)
       @expires_at = expires_at unless expires_at == SKIP
       @expires_in = expires_in unless expires_in == SKIP

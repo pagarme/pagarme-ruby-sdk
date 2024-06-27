@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(amount = SKIP,
-                   anticipation_fee = SKIP)
+    def initialize(amount = SKIP, anticipation_fee = SKIP)
       @amount = amount unless amount == SKIP
       @anticipation_fee = anticipation_fee unless anticipation_fee == SKIP
     end

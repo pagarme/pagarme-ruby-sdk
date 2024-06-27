@@ -97,15 +97,9 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(street = SKIP,
-                   number = SKIP,
-                   zip_code = SKIP,
-                   neighborhood = SKIP,
-                   city = SKIP,
-                   state = SKIP,
-                   country = SKIP,
-                   complement = SKIP,
-                   line_1 = SKIP,
+    def initialize(street = SKIP, number = SKIP, zip_code = SKIP,
+                   neighborhood = SKIP, city = SKIP, state = SKIP,
+                   country = SKIP, complement = SKIP, line_1 = SKIP,
                    line_2 = SKIP)
       @street = street unless street == SKIP
       @number = number unless number == SKIP

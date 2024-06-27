@@ -106,29 +106,16 @@ module PagarmeApiSdk
       (_arr << super()).flatten!
     end
 
-    def initialize(anticipation_fee = nil,
-                   fraud_coverage_fee = nil,
-                   installment = nil,
-                   split_id = nil,
-                   bulk_anticipation_id = nil,
-                   anticipation_id = nil,
-                   recipient_id = nil,
-                   originator_model = nil,
-                   originator_model_id = nil,
-                   payment_date = nil,
-                   original_payment_date = nil,
-                   payment_method = nil,
-                   accrual_at = nil,
-                   liquidation_arrangement_id = nil,
-                   fee = SKIP,
-                   object = 'payable',
-                   id = SKIP,
-                   status = SKIP,
-                   amount = SKIP,
-                   created_at = SKIP,
-                   type = SKIP,
-                   charge_id = SKIP,
-                   gateway_id = SKIP)
+    def initialize(anticipation_fee = nil, fraud_coverage_fee = nil,
+                   installment = nil, split_id = nil,
+                   bulk_anticipation_id = nil, anticipation_id = nil,
+                   recipient_id = nil, originator_model = nil,
+                   originator_model_id = nil, payment_date = nil,
+                   original_payment_date = nil, payment_method = nil,
+                   accrual_at = nil, liquidation_arrangement_id = nil,
+                   fee = SKIP, object = 'payable', id = SKIP, status = SKIP,
+                   amount = SKIP, created_at = SKIP, type = SKIP,
+                   charge_id = SKIP, gateway_id = SKIP)
       @fee = fee unless fee == SKIP
       @anticipation_fee = anticipation_fee
       @fraud_coverage_fee = fraud_coverage_fee

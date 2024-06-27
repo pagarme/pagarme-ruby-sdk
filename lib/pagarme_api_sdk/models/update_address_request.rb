@@ -45,10 +45,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(number = nil,
-                   complement = nil,
-                   metadata = nil,
-                   line_2 = nil)
+    def initialize(number = nil, complement = nil, metadata = nil, line_2 = nil)
       @number = number
       @complement = complement
       @metadata = metadata

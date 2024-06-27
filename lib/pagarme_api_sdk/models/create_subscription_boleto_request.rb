@@ -46,8 +46,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(interest = SKIP,
-                   fine = SKIP,
+    def initialize(interest = SKIP, fine = SKIP,
                    max_days_to_pay_past_due = SKIP)
       @interest = interest unless interest == SKIP
       @fine = fine unless fine == SKIP

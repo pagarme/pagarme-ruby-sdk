@@ -50,17 +50,10 @@ module PagarmeApiSdk
       (_arr << super()).flatten!
     end
 
-    def initialize(description = SKIP,
-                   payment_date = SKIP,
-                   recipient_id = SKIP,
-                   object = 'feeCollection',
-                   id = SKIP,
-                   status = SKIP,
-                   amount = SKIP,
-                   created_at = SKIP,
-                   type = SKIP,
-                   charge_id = SKIP,
-                   gateway_id = SKIP)
+    def initialize(description = SKIP, payment_date = SKIP, recipient_id = SKIP,
+                   object = 'feeCollection', id = SKIP, status = SKIP,
+                   amount = SKIP, created_at = SKIP, type = SKIP,
+                   charge_id = SKIP, gateway_id = SKIP)
       @description = description unless description == SKIP
       @payment_date = payment_date unless payment_date == SKIP
       @recipient_id = recipient_id unless recipient_id == SKIP

@@ -48,9 +48,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(ddd = SKIP,
-                   number = SKIP,
-                   type = SKIP)
+    def initialize(ddd = SKIP, number = SKIP, type = SKIP)
       @ddd = ddd unless ddd == SKIP
       @number = number unless number == SKIP
       @type = type unless type == SKIP

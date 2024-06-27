@@ -70,15 +70,9 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(holder_name = nil,
-                   holder_type = nil,
-                   holder_document = nil,
-                   bank = nil,
-                   branch_number = nil,
-                   branch_check_digit = nil,
-                   account_number = nil,
-                   account_check_digit = nil,
-                   type = nil)
+    def initialize(holder_name = nil, holder_type = nil, holder_document = nil,
+                   bank = nil, branch_number = nil, branch_check_digit = nil,
+                   account_number = nil, account_check_digit = nil, type = nil)
       @holder_name = holder_name
       @holder_type = holder_type
       @holder_document = holder_document

@@ -62,10 +62,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(mpi = SKIP,
-                   eci = SKIP,
-                   cavv = SKIP,
-                   transaction_id = SKIP,
+    def initialize(mpi = SKIP, eci = SKIP, cavv = SKIP, transaction_id = SKIP,
                    success_url = SKIP)
       @mpi = mpi unless mpi == SKIP
       @eci = eci unless eci == SKIP

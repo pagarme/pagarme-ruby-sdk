@@ -40,8 +40,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(transfer_enabled = nil,
-                   transfer_interval = nil,
+    def initialize(transfer_enabled = nil, transfer_interval = nil,
                    transfer_day = nil)
       @transfer_enabled = transfer_enabled
       @transfer_interval = transfer_interval

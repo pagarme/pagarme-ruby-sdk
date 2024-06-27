@@ -68,12 +68,8 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(statement_descriptor = SKIP,
-                   card = SKIP,
-                   card_id = SKIP,
-                   card_token = SKIP,
-                   recurrence = SKIP,
-                   authentication = SKIP,
+    def initialize(statement_descriptor = SKIP, card = SKIP, card_id = SKIP,
+                   card_token = SKIP, recurrence = SKIP, authentication = SKIP,
                    token = SKIP)
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @card = card unless card == SKIP

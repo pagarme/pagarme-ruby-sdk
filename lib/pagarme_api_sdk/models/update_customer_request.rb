@@ -86,16 +86,9 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(name = SKIP,
-                   email = SKIP,
-                   document = SKIP,
-                   type = SKIP,
-                   address = SKIP,
-                   metadata = SKIP,
-                   phones = SKIP,
-                   code = SKIP,
-                   gender = SKIP,
-                   document_type = SKIP)
+    def initialize(name = SKIP, email = SKIP, document = SKIP, type = SKIP,
+                   address = SKIP, metadata = SKIP, phones = SKIP, code = SKIP,
+                   gender = SKIP, document_type = SKIP)
       @name = name unless name == SKIP
       @email = email unless email == SKIP
       @document = document unless document == SKIP

@@ -99,17 +99,10 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(default_bank_account = nil,
-                   metadata = nil,
-                   code = nil,
-                   payment_mode = 'bank_transfer',
-                   name = SKIP,
-                   email = SKIP,
-                   description = SKIP,
-                   document = SKIP,
-                   type = SKIP,
-                   transfer_settings = SKIP,
-                   register_information = SKIP)
+    def initialize(default_bank_account = nil, metadata = nil, code = nil,
+                   payment_mode = 'bank_transfer', name = SKIP, email = SKIP,
+                   description = SKIP, document = SKIP, type = SKIP,
+                   transfer_settings = SKIP, register_information = SKIP)
       @name = name unless name == SKIP
       @email = email unless email == SKIP
       @description = description unless description == SKIP

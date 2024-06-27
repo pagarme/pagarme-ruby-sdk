@@ -40,9 +40,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(tag = nil,
-                   lenght = nil,
-                   value = nil)
+    def initialize(tag = nil, lenght = nil, value = nil)
       @tag = tag
       @lenght = lenght
       @value = value

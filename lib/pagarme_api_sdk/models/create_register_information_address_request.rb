@@ -65,13 +65,8 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(street = nil,
-                   complementary = nil,
-                   street_number = nil,
-                   neighborhood = nil,
-                   city = nil,
-                   state = nil,
-                   zip_code = nil,
+    def initialize(street = nil, complementary = nil, street_number = nil,
+                   neighborhood = nil, city = nil, state = nil, zip_code = nil,
                    reference_point = nil)
       @street = street
       @complementary = complementary

@@ -37,25 +37,13 @@ module PagarmeApiSdk
       (_arr << super()).flatten!
     end
 
-    def initialize(description = SKIP,
-                   gateway_id = SKIP,
-                   amount = SKIP,
-                   status = SKIP,
-                   success = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   attempt_count = SKIP,
-                   max_attempts = SKIP,
-                   splits = SKIP,
-                   next_attempt = SKIP,
-                   transaction_type = 'cash',
-                   id = SKIP,
-                   gateway_response = SKIP,
-                   antifraud_response = SKIP,
-                   metadata = SKIP,
-                   split = SKIP,
-                   interest = SKIP,
-                   fine = SKIP,
+    def initialize(description = SKIP, gateway_id = SKIP, amount = SKIP,
+                   status = SKIP, success = SKIP, created_at = SKIP,
+                   updated_at = SKIP, attempt_count = SKIP, max_attempts = SKIP,
+                   splits = SKIP, next_attempt = SKIP,
+                   transaction_type = 'cash', id = SKIP,
+                   gateway_response = SKIP, antifraud_response = SKIP,
+                   metadata = SKIP, split = SKIP, interest = SKIP, fine = SKIP,
                    max_days_to_pay_past_due = SKIP)
       @description = description unless description == SKIP
 

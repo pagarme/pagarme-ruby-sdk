@@ -48,8 +48,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(url = SKIP,
-                   usage_report_url = SKIP,
+    def initialize(url = SKIP, usage_report_url = SKIP,
                    grouped_report_url = SKIP)
       @url = url unless url == SKIP
       @usage_report_url = usage_report_url unless usage_report_url == SKIP

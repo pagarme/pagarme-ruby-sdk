@@ -62,11 +62,8 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(status = SKIP,
-                   return_code = SKIP,
-                   return_message = SKIP,
-                   provider_name = SKIP,
-                   score = SKIP)
+    def initialize(status = SKIP, return_code = SKIP, return_message = SKIP,
+                   provider_name = SKIP, score = SKIP)
       @status = status unless status == SKIP
       @return_code = return_code unless return_code == SKIP
       @return_message = return_message unless return_message == SKIP

@@ -147,22 +147,11 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(id = SKIP,
-                   street = SKIP,
-                   number = SKIP,
-                   complement = SKIP,
-                   zip_code = SKIP,
-                   neighborhood = SKIP,
-                   city = SKIP,
-                   state = SKIP,
-                   country = SKIP,
-                   status = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   customer = SKIP,
-                   metadata = SKIP,
-                   line_1 = SKIP,
-                   line_2 = SKIP,
+    def initialize(id = SKIP, street = SKIP, number = SKIP, complement = SKIP,
+                   zip_code = SKIP, neighborhood = SKIP, city = SKIP,
+                   state = SKIP, country = SKIP, status = SKIP,
+                   created_at = SKIP, updated_at = SKIP, customer = SKIP,
+                   metadata = SKIP, line_1 = SKIP, line_2 = SKIP,
                    deleted_at = SKIP)
       @id = id unless id == SKIP
       @street = street unless street == SKIP

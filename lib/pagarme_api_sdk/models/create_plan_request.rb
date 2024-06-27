@@ -123,24 +123,12 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(name = nil,
-                   description = nil,
-                   statement_descriptor = nil,
-                   items = nil,
-                   shippable = nil,
-                   payment_methods = nil,
-                   installments = nil,
-                   currency = nil,
-                   interval = nil,
-                   interval_count = nil,
-                   billing_days = nil,
-                   billing_type = nil,
-                   pricing_scheme = nil,
-                   metadata = nil,
-                   minimum_price = SKIP,
-                   cycles = SKIP,
-                   quantity = SKIP,
-                   trial_period_days = SKIP)
+    def initialize(name = nil, description = nil, statement_descriptor = nil,
+                   items = nil, shippable = nil, payment_methods = nil,
+                   installments = nil, currency = nil, interval = nil,
+                   interval_count = nil, billing_days = nil, billing_type = nil,
+                   pricing_scheme = nil, metadata = nil, minimum_price = SKIP,
+                   cycles = SKIP, quantity = SKIP, trial_period_days = SKIP)
       @name = name
       @description = description
       @statement_descriptor = statement_descriptor

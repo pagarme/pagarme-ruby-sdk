@@ -96,19 +96,10 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(id = nil,
-                   gateway_id = nil,
-                   amount = nil,
-                   status = nil,
-                   created_at = nil,
-                   updated_at = nil,
-                   type = nil,
-                   source = nil,
-                   target = nil,
-                   metadata = SKIP,
-                   fee = SKIP,
-                   funding_date = SKIP,
-                   funding_estimated_date = SKIP)
+    def initialize(id = nil, gateway_id = nil, amount = nil, status = nil,
+                   created_at = nil, updated_at = nil, type = nil, source = nil,
+                   target = nil, metadata = SKIP, fee = SKIP,
+                   funding_date = SKIP, funding_estimated_date = SKIP)
       @id = id
       @gateway_id = gateway_id
       @amount = amount

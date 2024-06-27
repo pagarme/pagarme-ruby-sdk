@@ -35,8 +35,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(enabled = nil,
-                   rules = nil)
+    def initialize(enabled = nil, rules = nil)
       @enabled = enabled
       @rules = rules
     end

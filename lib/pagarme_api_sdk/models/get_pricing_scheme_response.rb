@@ -62,11 +62,8 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(price = SKIP,
-                   scheme_type = SKIP,
-                   price_brackets = SKIP,
-                   minimum_price = SKIP,
-                   percentage = SKIP)
+    def initialize(price = SKIP, scheme_type = SKIP, price_brackets = SKIP,
+                   minimum_price = SKIP, percentage = SKIP)
       @price = price unless price == SKIP
       @scheme_type = scheme_type unless scheme_type == SKIP
       @price_brackets = price_brackets unless price_brackets == SKIP

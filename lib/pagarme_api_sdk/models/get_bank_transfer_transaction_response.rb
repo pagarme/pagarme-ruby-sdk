@@ -59,29 +59,14 @@ module PagarmeApiSdk
       (_arr << super()).flatten!
     end
 
-    def initialize(url = SKIP,
-                   bank_tid = SKIP,
-                   bank = SKIP,
-                   paid_at = SKIP,
-                   paid_amount = SKIP,
-                   gateway_id = SKIP,
-                   amount = SKIP,
-                   status = SKIP,
-                   success = SKIP,
-                   created_at = SKIP,
-                   updated_at = SKIP,
-                   attempt_count = SKIP,
-                   max_attempts = SKIP,
-                   splits = SKIP,
-                   next_attempt = SKIP,
-                   transaction_type = 'bank_transfer',
-                   id = SKIP,
-                   gateway_response = SKIP,
-                   antifraud_response = SKIP,
-                   metadata = SKIP,
-                   split = SKIP,
-                   interest = SKIP,
-                   fine = SKIP,
+    def initialize(url = SKIP, bank_tid = SKIP, bank = SKIP, paid_at = SKIP,
+                   paid_amount = SKIP, gateway_id = SKIP, amount = SKIP,
+                   status = SKIP, success = SKIP, created_at = SKIP,
+                   updated_at = SKIP, attempt_count = SKIP, max_attempts = SKIP,
+                   splits = SKIP, next_attempt = SKIP,
+                   transaction_type = 'bank_transfer', id = SKIP,
+                   gateway_response = SKIP, antifraud_response = SKIP,
+                   metadata = SKIP, split = SKIP, interest = SKIP, fine = SKIP,
                    max_days_to_pay_past_due = SKIP)
       @url = url unless url == SKIP
       @bank_tid = bank_tid unless bank_tid == SKIP

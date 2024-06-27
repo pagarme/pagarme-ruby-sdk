@@ -74,15 +74,9 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(description = nil,
-                   pricing_scheme = nil,
-                   id = nil,
-                   plan_item_id = nil,
-                   discounts = nil,
-                   name = nil,
-                   cycles = SKIP,
-                   quantity = SKIP,
-                   minimum_price = SKIP)
+    def initialize(description = nil, pricing_scheme = nil, id = nil,
+                   plan_item_id = nil, discounts = nil, name = nil,
+                   cycles = SKIP, quantity = SKIP, minimum_price = SKIP)
       @description = description
       @pricing_scheme = pricing_scheme
       @id = id

@@ -41,8 +41,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(code = SKIP,
-                   errors = SKIP)
+    def initialize(code = SKIP, errors = SKIP)
       @code = code unless code == SKIP
       @errors = errors unless errors == SKIP
     end

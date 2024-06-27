@@ -42,8 +42,7 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(signed_key = SKIP,
-                   signatures = SKIP)
+    def initialize(signed_key = SKIP, signatures = SKIP)
       @signed_key = signed_key unless signed_key == SKIP
       @signatures = signatures unless signatures == SKIP
     end

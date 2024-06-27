@@ -55,11 +55,8 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(operation_reference = nil,
-                   amount = SKIP,
-                   split_rules = SKIP,
-                   split = SKIP,
-                   bank_account = SKIP)
+    def initialize(operation_reference = nil, amount = SKIP, split_rules = SKIP,
+                   split = SKIP, bank_account = SKIP)
       @amount = amount unless amount == SKIP
       @split_rules = split_rules unless split_rules == SKIP
       @split = split unless split == SKIP

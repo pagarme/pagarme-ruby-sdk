@@ -47,9 +47,7 @@ module PagarmeApiSdk
       []
     end
 
-    def initialize(amount = nil,
-                   source_id = nil,
-                   target_id = nil,
+    def initialize(amount = nil, source_id = nil, target_id = nil,
                    metadata = SKIP)
       @amount = amount
       @source_id = source_id

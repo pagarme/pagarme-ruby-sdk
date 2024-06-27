@@ -69,12 +69,8 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(type = SKIP,
-                   amount = SKIP,
-                   recipient = SKIP,
-                   gateway_id = SKIP,
-                   options = SKIP,
-                   id = SKIP)
+    def initialize(type = SKIP, amount = SKIP, recipient = SKIP,
+                   gateway_id = SKIP, options = SKIP, id = SKIP)
       @type = type unless type == SKIP
       @amount = amount unless amount == SKIP
       @recipient = recipient unless recipient == SKIP

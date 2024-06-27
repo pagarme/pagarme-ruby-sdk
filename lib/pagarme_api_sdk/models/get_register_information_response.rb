@@ -160,24 +160,13 @@ module PagarmeApiSdk
       ]
     end
 
-    def initialize(email = SKIP,
-                   document = SKIP,
-                   type = SKIP,
-                   site_url = SKIP,
-                   phone_numbers = SKIP,
-                   name = SKIP,
-                   mother_name = SKIP,
-                   birthdate = SKIP,
-                   monthly_income = SKIP,
-                   professional_occupation = SKIP,
-                   address = SKIP,
-                   company_name = SKIP,
-                   trading_name = SKIP,
-                   annual_revenue = SKIP,
-                   corporation_type = SKIP,
-                   founding_date = SKIP,
-                   cnae = SKIP,
-                   main_address = SKIP,
+    def initialize(email = SKIP, document = SKIP, type = SKIP, site_url = SKIP,
+                   phone_numbers = SKIP, name = SKIP, mother_name = SKIP,
+                   birthdate = SKIP, monthly_income = SKIP,
+                   professional_occupation = SKIP, address = SKIP,
+                   company_name = SKIP, trading_name = SKIP,
+                   annual_revenue = SKIP, corporation_type = SKIP,
+                   founding_date = SKIP, cnae = SKIP, main_address = SKIP,
                    managing_partners = SKIP)
       @email = email unless email == SKIP
       @document = document unless document == SKIP
