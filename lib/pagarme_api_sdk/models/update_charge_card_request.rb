@@ -25,6 +25,14 @@ module PagarmeApiSdk
     # @return [TrueClass | FalseClass]
     attr_accessor :recurrence
 
+    # Indicates a recurrence
+    # @return [String]
+    attr_accessor :initiated_type
+
+    # Indicates a recurrence
+    # @return [String]
+    attr_accessor :recurrence_model
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -32,12 +40,17 @@ module PagarmeApiSdk
       @_hash['card_id'] = 'card_id'
       @_hash['card'] = 'card'
       @_hash['recurrence'] = 'recurrence'
+      @_hash['initiated_type'] = 'initiated_type'
+      @_hash['recurrence_model'] = 'recurrence_model'
       @_hash
     end
 
     # An array for optional fields
     def self.optionals
-      []
+      %w[
+        initiated_type
+        recurrence_model
+      ]
     end
 
     # An array for nullable fields
@@ -46,11 +59,14 @@ module PagarmeApiSdk
     end
 
     def initialize(update_subscription = nil, card_id = nil, card = nil,
-                   recurrence = nil)
+                   recurrence = nil, initiated_type = SKIP,
+                   recurrence_model = SKIP)
       @update_subscription = update_subscription
       @card_id = card_id
       @card = card
       @recurrence = recurrence
+      @initiated_type = initiated_type unless initiated_type == SKIP
+      @recurrence_model = recurrence_model unless recurrence_model == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -63,12 +79,18 @@ module PagarmeApiSdk
       card_id = hash.key?('card_id') ? hash['card_id'] : nil
       card = CreateCardRequest.from_hash(hash['card']) if hash['card']
       recurrence = hash.key?('recurrence') ? hash['recurrence'] : nil
+      initiated_type =
+        hash.key?('initiated_type') ? hash['initiated_type'] : SKIP
+      recurrence_model =
+        hash.key?('recurrence_model') ? hash['recurrence_model'] : SKIP
 
       # Create object from extracted values.
       UpdateChargeCardRequest.new(update_subscription,
                                   card_id,
                                   card,
-                                  recurrence)
+                                  recurrence,
+                                  initiated_type,
+                                  recurrence_model)
     end
   end
 end

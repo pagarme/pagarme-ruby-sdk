@@ -28,8 +28,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
 
@@ -50,8 +50,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetWithdrawResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetWithdrawResponse.method(:from_hash)))
         .execute
     end
 
@@ -68,8 +68,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
 
@@ -86,8 +86,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetBalanceResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetBalanceResponse.method(:from_hash)))
         .execute
     end
 
@@ -106,8 +106,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListRecipientResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListRecipientResponse.method(:from_hash)))
         .execute
     end
 
@@ -133,8 +133,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
 
@@ -168,8 +168,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListTransferResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListTransferResponse.method(:from_hash)))
         .execute
     end
 
@@ -190,8 +190,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetTransferResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetTransferResponse.method(:from_hash)))
         .execute
     end
 
@@ -213,8 +213,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetWithdrawResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetWithdrawResponse.method(:from_hash)))
         .execute
     end
 
@@ -235,8 +235,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetAnticipationResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAnticipationResponse.method(:from_hash)))
         .execute
     end
 
@@ -262,8 +262,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
 
@@ -280,8 +280,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
 
@@ -307,8 +307,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
 
@@ -333,8 +333,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetTransferResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetTransferResponse.method(:from_hash)))
         .execute
     end
 
@@ -356,8 +356,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
 
@@ -371,8 +371,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
 
@@ -398,8 +398,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetAnticipationResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAnticipationResponse.method(:from_hash)))
         .execute
     end
 
@@ -423,8 +423,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetAnticipationLimitResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAnticipationLimitResponse.method(:from_hash)))
         .execute
     end
 
@@ -449,8 +449,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetRecipientResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
 
@@ -497,8 +497,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListAnticipationResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListAnticipationResponse.method(:from_hash)))
         .execute
     end
 
@@ -530,8 +530,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListWithdrawals.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListWithdrawals.method(:from_hash)))
         .execute
     end
 
@@ -548,8 +548,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(CreateKYCLinkResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CreateKYCLinkResponse.method(:from_hash)))
         .execute
     end
   end

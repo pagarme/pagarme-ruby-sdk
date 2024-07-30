@@ -37,6 +37,14 @@ module PagarmeApiSdk
     # @return [CreateCardPaymentContactlessRequest]
     attr_accessor :token
 
+    # The Debit card payment token request
+    # @return [String]
+    attr_accessor :initiated_type
+
+    # The Debit card payment token request
+    # @return [String]
+    attr_accessor :recurrence_model
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -47,6 +55,8 @@ module PagarmeApiSdk
       @_hash['recurrence'] = 'recurrence'
       @_hash['authentication'] = 'authentication'
       @_hash['token'] = 'token'
+      @_hash['initiated_type'] = 'initiated_type'
+      @_hash['recurrence_model'] = 'recurrence_model'
       @_hash
     end
 
@@ -60,6 +70,8 @@ module PagarmeApiSdk
         recurrence
         authentication
         token
+        initiated_type
+        recurrence_model
       ]
     end
 
@@ -70,7 +82,7 @@ module PagarmeApiSdk
 
     def initialize(statement_descriptor = SKIP, card = SKIP, card_id = SKIP,
                    card_token = SKIP, recurrence = SKIP, authentication = SKIP,
-                   token = SKIP)
+                   token = SKIP, initiated_type = SKIP, recurrence_model = SKIP)
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @card = card unless card == SKIP
       @card_id = card_id unless card_id == SKIP
@@ -78,6 +90,8 @@ module PagarmeApiSdk
       @recurrence = recurrence unless recurrence == SKIP
       @authentication = authentication unless authentication == SKIP
       @token = token unless token == SKIP
+      @initiated_type = initiated_type unless initiated_type == SKIP
+      @recurrence_model = recurrence_model unless recurrence_model == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -94,6 +108,10 @@ module PagarmeApiSdk
       authentication = CreatePaymentAuthenticationRequest.from_hash(hash['authentication']) if
         hash['authentication']
       token = CreateCardPaymentContactlessRequest.from_hash(hash['token']) if hash['token']
+      initiated_type =
+        hash.key?('initiated_type') ? hash['initiated_type'] : SKIP
+      recurrence_model =
+        hash.key?('recurrence_model') ? hash['recurrence_model'] : SKIP
 
       # Create object from extracted values.
       CreateDebitCardPaymentRequest.new(statement_descriptor,
@@ -102,7 +120,9 @@ module PagarmeApiSdk
                                         card_token,
                                         recurrence,
                                         authentication,
-                                        token)
+                                        token,
+                                        initiated_type,
+                                        recurrence_model)
     end
   end
 end

@@ -69,8 +69,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListPayablesResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListPayablesResponse.method(:from_hash)))
         .execute
     end
 
@@ -87,8 +87,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetPayableResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetPayableResponse.method(:from_hash)))
         .execute
     end
   end

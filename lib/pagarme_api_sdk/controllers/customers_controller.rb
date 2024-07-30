@@ -28,8 +28,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetAddressResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAddressResponse.method(:from_hash)))
         .execute
     end
 
@@ -59,8 +59,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetCardResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetCardResponse.method(:from_hash)))
         .execute
     end
 
@@ -84,8 +84,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetAccessTokenResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAccessTokenResponse.method(:from_hash)))
         .execute
     end
 
@@ -107,8 +107,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetCustomerResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetCustomerResponse.method(:from_hash)))
         .execute
     end
 
@@ -125,8 +125,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListAccessTokensResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListAccessTokensResponse.method(:from_hash)))
         .execute
     end
 
@@ -156,8 +156,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetAddressResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAddressResponse.method(:from_hash)))
         .execute
     end
 
@@ -178,8 +178,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetAddressResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAddressResponse.method(:from_hash)))
         .execute
     end
 
@@ -203,8 +203,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetAddressResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAddressResponse.method(:from_hash)))
         .execute
     end
 
@@ -235,8 +235,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListCustomersResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListCustomersResponse.method(:from_hash)))
         .execute
     end
 
@@ -259,8 +259,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListAccessTokensResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListAccessTokensResponse.method(:from_hash)))
         .execute
     end
 
@@ -284,8 +284,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetCardResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetCardResponse.method(:from_hash)))
         .execute
     end
 
@@ -306,8 +306,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetCardResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetCardResponse.method(:from_hash)))
         .execute
     end
 
@@ -333,8 +333,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetCardResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetCardResponse.method(:from_hash)))
         .execute
     end
 
@@ -355,8 +355,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetAccessTokenResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAccessTokenResponse.method(:from_hash)))
         .execute
     end
 
@@ -379,8 +379,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListAddressesResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListAddressesResponse.method(:from_hash)))
         .execute
     end
 
@@ -406,8 +406,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetCustomerResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetCustomerResponse.method(:from_hash)))
         .execute
     end
 
@@ -433,8 +433,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetAccessTokenResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAccessTokenResponse.method(:from_hash)))
         .execute
     end
 
@@ -457,8 +457,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(ListCardsResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListCardsResponse.method(:from_hash)))
         .execute
     end
 
@@ -482,8 +482,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetCardResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetCardResponse.method(:from_hash)))
         .execute
     end
 
@@ -509,8 +509,8 @@ module PagarmeApiSdk
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetCustomerResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetCustomerResponse.method(:from_hash)))
         .execute
     end
 
@@ -527,8 +527,8 @@ module PagarmeApiSdk
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
-                   .deserializer(APIHelper.method(:custom_type_deserializer))
-                   .deserialize_into(GetCustomerResponse.method(:from_hash)))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetCustomerResponse.method(:from_hash)))
         .execute
     end
   end
