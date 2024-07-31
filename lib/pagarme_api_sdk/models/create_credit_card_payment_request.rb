@@ -74,6 +74,14 @@ module PagarmeApiSdk
     # @return [CreateCardPayloadRequest]
     attr_accessor :payload
 
+    # Defines whether the card has been used one or more times.
+    # @return [String]
+    attr_accessor :initiated_type
+
+    # Defines whether the card has been used one or more times.
+    # @return [String]
+    attr_accessor :recurrence_model
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -93,6 +101,8 @@ module PagarmeApiSdk
       @_hash['operation_type'] = 'operation_type'
       @_hash['recurrency_cycle'] = 'recurrency_cycle'
       @_hash['payload'] = 'payload'
+      @_hash['initiated_type'] = 'initiated_type'
+      @_hash['recurrence_model'] = 'recurrence_model'
       @_hash
     end
 
@@ -115,6 +125,8 @@ module PagarmeApiSdk
         operation_type
         recurrency_cycle
         payload
+        initiated_type
+        recurrence_model
       ]
     end
 
@@ -129,7 +141,8 @@ module PagarmeApiSdk
                    extended_limit_code = SKIP, merchant_category_code = SKIP,
                    authentication = SKIP, contactless = SKIP,
                    auto_recovery = SKIP, operation_type = SKIP,
-                   recurrency_cycle = SKIP, payload = SKIP)
+                   recurrency_cycle = SKIP, payload = SKIP,
+                   initiated_type = SKIP, recurrence_model = SKIP)
       @installments = installments unless installments == SKIP
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @card = card unless card == SKIP
@@ -146,6 +159,8 @@ module PagarmeApiSdk
       @operation_type = operation_type unless operation_type == SKIP
       @recurrency_cycle = recurrency_cycle unless recurrency_cycle == SKIP
       @payload = payload unless payload == SKIP
+      @initiated_type = initiated_type unless initiated_type == SKIP
+      @recurrence_model = recurrence_model unless recurrence_model == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -177,6 +192,10 @@ module PagarmeApiSdk
       recurrency_cycle =
         hash.key?('recurrency_cycle') ? hash['recurrency_cycle'] : SKIP
       payload = CreateCardPayloadRequest.from_hash(hash['payload']) if hash['payload']
+      initiated_type =
+        hash.key?('initiated_type') ? hash['initiated_type'] : SKIP
+      recurrence_model =
+        hash.key?('recurrence_model') ? hash['recurrence_model'] : SKIP
 
       # Create object from extracted values.
       CreateCreditCardPaymentRequest.new(installments,
@@ -194,7 +213,9 @@ module PagarmeApiSdk
                                          auto_recovery,
                                          operation_type,
                                          recurrency_cycle,
-                                         payload)
+                                         payload,
+                                         initiated_type,
+                                         recurrence_model)
     end
   end
 end

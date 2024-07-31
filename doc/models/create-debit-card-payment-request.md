@@ -18,6 +18,8 @@ The settings for creating a debit card payment
 | `recurrence` | `TrueClass \| FalseClass` | Optional | Indicates a recurrence |
 | `authentication` | [`CreatePaymentAuthenticationRequest`](../../doc/models/create-payment-authentication-request.md) | Optional | The payment authentication request |
 | `token` | [`CreateCardPaymentContactlessRequest`](../../doc/models/create-card-payment-contactless-request.md) | Optional | The Debit card payment token request |
+| `initiated_type` | `String` | Optional | - |
+| `recurrence_model` | `String` | Optional | - |
 
 ## Example (as JSON)
 
