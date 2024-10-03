@@ -94,6 +94,10 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :recurrency_cycle
 
+    # Defines whether the card has been used one or more times.
+    # @return [GetPaymentOriginResponse]
+    attr_accessor :payment_origin
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -118,6 +122,7 @@ module PagarmeApiSdk
       @_hash['paid_amount'] = 'paid_amount'
       @_hash['interest_and_fine_paid'] = 'interest_and_fine_paid'
       @_hash['recurrency_cycle'] = 'recurrency_cycle'
+      @_hash['payment_origin'] = 'payment_origin'
       @_hash
     end
 
@@ -145,6 +150,7 @@ module PagarmeApiSdk
         paid_amount
         interest_and_fine_paid
         recurrency_cycle
+        payment_origin
       ]
     end
 
@@ -172,6 +178,7 @@ module PagarmeApiSdk
         paid_amount
         interest_and_fine_paid
         recurrency_cycle
+        payment_origin
       ]
     end
 
@@ -182,7 +189,7 @@ module PagarmeApiSdk
                    customer = SKIP, metadata = SKIP, paid_at = SKIP,
                    canceled_at = SKIP, canceled_amount = SKIP,
                    paid_amount = SKIP, interest_and_fine_paid = SKIP,
-                   recurrency_cycle = SKIP)
+                   recurrency_cycle = SKIP, payment_origin = SKIP)
       @id = id unless id == SKIP
       @code = code unless code == SKIP
       @gateway_id = gateway_id unless gateway_id == SKIP
@@ -204,6 +211,7 @@ module PagarmeApiSdk
       @paid_amount = paid_amount unless paid_amount == SKIP
       @interest_and_fine_paid = interest_and_fine_paid unless interest_and_fine_paid == SKIP
       @recurrency_cycle = recurrency_cycle unless recurrency_cycle == SKIP
+      @payment_origin = payment_origin unless payment_origin == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -257,6 +265,8 @@ module PagarmeApiSdk
         hash.key?('interest_and_fine_paid') ? hash['interest_and_fine_paid'] : SKIP
       recurrency_cycle =
         hash.key?('recurrency_cycle') ? hash['recurrency_cycle'] : SKIP
+      payment_origin = GetPaymentOriginResponse.from_hash(hash['payment_origin']) if
+        hash['payment_origin']
 
       # Create object from extracted values.
       GetChargeResponse.new(id,
@@ -279,7 +289,8 @@ module PagarmeApiSdk
                             canceled_amount,
                             paid_amount,
                             interest_and_fine_paid,
-                            recurrency_cycle)
+                            recurrency_cycle,
+                            payment_origin)
     end
 
     def to_custom_due_at

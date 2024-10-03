@@ -8,7 +8,7 @@ module PagarmeApiSdk
   class TransactionsController < BaseController
     # TODO: type endpoint description here
     # @param [String] transaction_id Required parameter: Example:
-    # @return [GetTransactionResponse] response from the API call
+    # @return [GetTransactionResponse] response from the API call.
     def get_transaction(transaction_id)
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::GET,

@@ -45,6 +45,10 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :recurrence_model
 
+    # The Debit card payment token request
+    # @return [CreatePaymentOriginRequest]
+    attr_accessor :payment_origin
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -57,6 +61,7 @@ module PagarmeApiSdk
       @_hash['token'] = 'token'
       @_hash['initiated_type'] = 'initiated_type'
       @_hash['recurrence_model'] = 'recurrence_model'
+      @_hash['payment_origin'] = 'payment_origin'
       @_hash
     end
 
@@ -72,6 +77,7 @@ module PagarmeApiSdk
         token
         initiated_type
         recurrence_model
+        payment_origin
       ]
     end
 
@@ -82,7 +88,8 @@ module PagarmeApiSdk
 
     def initialize(statement_descriptor = SKIP, card = SKIP, card_id = SKIP,
                    card_token = SKIP, recurrence = SKIP, authentication = SKIP,
-                   token = SKIP, initiated_type = SKIP, recurrence_model = SKIP)
+                   token = SKIP, initiated_type = SKIP, recurrence_model = SKIP,
+                   payment_origin = SKIP)
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @card = card unless card == SKIP
       @card_id = card_id unless card_id == SKIP
@@ -92,6 +99,7 @@ module PagarmeApiSdk
       @token = token unless token == SKIP
       @initiated_type = initiated_type unless initiated_type == SKIP
       @recurrence_model = recurrence_model unless recurrence_model == SKIP
+      @payment_origin = payment_origin unless payment_origin == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -112,6 +120,8 @@ module PagarmeApiSdk
         hash.key?('initiated_type') ? hash['initiated_type'] : SKIP
       recurrence_model =
         hash.key?('recurrence_model') ? hash['recurrence_model'] : SKIP
+      payment_origin = CreatePaymentOriginRequest.from_hash(hash['payment_origin']) if
+        hash['payment_origin']
 
       # Create object from extracted values.
       CreateDebitCardPaymentRequest.new(statement_descriptor,
@@ -122,7 +132,8 @@ module PagarmeApiSdk
                                         authentication,
                                         token,
                                         initiated_type,
-                                        recurrence_model)
+                                        recurrence_model,
+                                        payment_origin)
     end
   end
 end

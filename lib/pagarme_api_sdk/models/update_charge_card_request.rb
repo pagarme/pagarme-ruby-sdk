@@ -33,6 +33,10 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :recurrence_model
 
+    # Indicates a recurrence
+    # @return [CreatePaymentOriginRequest]
+    attr_accessor :payment_origin
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -42,6 +46,7 @@ module PagarmeApiSdk
       @_hash['recurrence'] = 'recurrence'
       @_hash['initiated_type'] = 'initiated_type'
       @_hash['recurrence_model'] = 'recurrence_model'
+      @_hash['payment_origin'] = 'payment_origin'
       @_hash
     end
 
@@ -50,6 +55,7 @@ module PagarmeApiSdk
       %w[
         initiated_type
         recurrence_model
+        payment_origin
       ]
     end
 
@@ -60,13 +66,14 @@ module PagarmeApiSdk
 
     def initialize(update_subscription = nil, card_id = nil, card = nil,
                    recurrence = nil, initiated_type = SKIP,
-                   recurrence_model = SKIP)
+                   recurrence_model = SKIP, payment_origin = SKIP)
       @update_subscription = update_subscription
       @card_id = card_id
       @card = card
       @recurrence = recurrence
       @initiated_type = initiated_type unless initiated_type == SKIP
       @recurrence_model = recurrence_model unless recurrence_model == SKIP
+      @payment_origin = payment_origin unless payment_origin == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -83,6 +90,8 @@ module PagarmeApiSdk
         hash.key?('initiated_type') ? hash['initiated_type'] : SKIP
       recurrence_model =
         hash.key?('recurrence_model') ? hash['recurrence_model'] : SKIP
+      payment_origin = CreatePaymentOriginRequest.from_hash(hash['payment_origin']) if
+        hash['payment_origin']
 
       # Create object from extracted values.
       UpdateChargeCardRequest.new(update_subscription,
@@ -90,7 +99,8 @@ module PagarmeApiSdk
                                   card,
                                   recurrence,
                                   initiated_type,
-                                  recurrence_model)
+                                  recurrence_model,
+                                  payment_origin)
     end
   end
 end
