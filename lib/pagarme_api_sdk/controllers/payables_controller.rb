@@ -25,7 +25,7 @@ module PagarmeApiSdk
     # @param [Integer] page Optional parameter: Example:
     # @param [Integer] size Optional parameter: Example:
     # @param [Integer] gateway_id Optional parameter: Example:
-    # @return [ListPayablesResponse] response from the API call
+    # @return [ListPayablesResponse] response from the API call.
     def get_payables(type: nil,
                      split_id: nil,
                      bulk_anticipation_id: nil,
@@ -76,7 +76,7 @@ module PagarmeApiSdk
 
     # TODO: type endpoint description here
     # @param [Integer] id Required parameter: Example:
-    # @return [GetPayableResponse] response from the API call
+    # @return [GetPayableResponse] response from the API call.
     def get_payable_by_id(id)
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::GET,

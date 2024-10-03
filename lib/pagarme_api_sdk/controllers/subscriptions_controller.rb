@@ -6,12 +6,33 @@
 module PagarmeApiSdk
   # SubscriptionsController
   class SubscriptionsController < BaseController
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: Example:
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetPeriodResponse] response from the API call.
+    def renew_subscription(subscription_id,
+                           idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/subscriptions/{subscription_id}/cycles',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetPeriodResponse.method(:from_hash)))
+        .execute
+    end
+
     # Updates the credit card from a subscription
     # @param [String] subscription_id Required parameter: Subscription id
     # @param [UpdateSubscriptionCardRequest] request Required parameter: Request
     # for updating a card
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionResponse] response from the API call
+    # @return [GetSubscriptionResponse] response from the API call.
     def update_subscription_card(subscription_id,
                                  request,
                                  idempotency_key: nil)
@@ -33,401 +54,12 @@ module PagarmeApiSdk
         .execute
     end
 
-    # Creates a discount
-    # @param [String] subscription_id Required parameter: Subscription id
-    # @param [CreateDiscountRequest] request Required parameter: Request for
-    # creating a discount
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetDiscountResponse] response from the API call
-    def create_discount(subscription_id,
-                        request,
-                        idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/subscriptions/{subscription_id}/discounts',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetDiscountResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Updates the billing date from a subscription
-    # @param [String] subscription_id Required parameter: The subscription id
-    # @param [UpdateSubscriptionBillingDateRequest] request Required parameter:
-    # Request for updating the subscription billing date
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionResponse] response from the API call
-    def update_subscription_billing_date(subscription_id,
-                                         request,
-                                         idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/subscriptions/{subscription_id}/billing-date',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Updates the start at date from a subscription
-    # @param [String] subscription_id Required parameter: The subscription id
-    # @param [UpdateSubscriptionStartAtRequest] request Required parameter:
-    # Request for updating the subscription start date
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionResponse] response from the API call
-    def update_subscription_start_at(subscription_id,
-                                     request,
-                                     idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/subscriptions/{subscription_id}/start-at',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Gets a subscription
-    # @param [String] subscription_id Required parameter: Subscription id
-    # @return [GetSubscriptionResponse] response from the API call
-    def get_subscription(subscription_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/subscriptions/{subscription_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Lists all usages from a subscription item
-    # @param [String] subscription_id Required parameter: The subscription id
-    # @param [String] item_id Required parameter: The subscription item id
-    # @param [Integer] page Optional parameter: Page number
-    # @param [Integer] size Optional parameter: Page size
-    # @param [String] code Optional parameter: Identification code in the client
-    # system
-    # @param [String] group Optional parameter: Identification group in the
-    # client system
-    # @param [DateTime] used_since Optional parameter: Example:
-    # @param [DateTime] used_until Optional parameter: Example:
-    # @return [ListUsagesResponse] response from the API call
-    def get_usages(subscription_id,
-                   item_id,
-                   page: nil,
-                   size: nil,
-                   code: nil,
-                   group: nil,
-                   used_since: nil,
-                   used_until: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/subscriptions/{subscription_id}/items/{item_id}/usages',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .template_param(new_parameter(item_id, key: 'item_id')
-                                    .should_encode(true))
-                   .query_param(new_parameter(page, key: 'page'))
-                   .query_param(new_parameter(size, key: 'size'))
-                   .query_param(new_parameter(code, key: 'code'))
-                   .query_param(new_parameter(group, key: 'group'))
-                   .query_param(new_parameter(used_since, key: 'used_since'))
-                   .query_param(new_parameter(used_until, key: 'used_until'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(ListUsagesResponse.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: Example:
-    # @param [UpdateCurrentCycleEndDateRequest] request Required parameter:
-    # Request for updating the end date of the current signature cycle
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionResponse] response from the API call
-    def update_latest_period_end_at(subscription_id,
-                                    request,
-                                    idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/subscriptions/{subscription_id}/periods/latest/end-at',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Deletes a discount
-    # @param [String] subscription_id Required parameter: Subscription id
-    # @param [String] discount_id Required parameter: Discount Id
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetDiscountResponse] response from the API call
-    def delete_discount(subscription_id,
-                        discount_id,
-                        idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::DELETE,
-                                     '/subscriptions/{subscription_id}/discounts/{discount_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .template_param(new_parameter(discount_id, key: 'discount_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetDiscountResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Updates the payment method from a subscription
-    # @param [String] subscription_id Required parameter: Subscription id
-    # @param [UpdateSubscriptionPaymentMethodRequest] request Required
-    # parameter: Request for updating the paymentmethod from a subscription
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionResponse] response from the API call
-    def update_subscription_payment_method(subscription_id,
-                                           request,
-                                           idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/subscriptions/{subscription_id}/payment-method',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Cancels a subscription
-    # @param [String] subscription_id Required parameter: Subscription id
-    # @param [CreateCancelSubscriptionRequest] request Optional parameter:
-    # Request for cancelling a subscription
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionResponse] response from the API call
-    def cancel_subscription(subscription_id,
-                            request: nil,
-                            idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::DELETE,
-                                     '/subscriptions/{subscription_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Creates a new subscription
-    # @param [CreateSubscriptionRequest] body Required parameter: Request for
-    # creating a subscription
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionResponse] response from the API call
-    def create_subscription(body,
-                            idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/subscriptions',
-                                     Server::DEFAULT)
-                   .body_param(new_parameter(body))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: Example:
-    # @param [UpdateSubscriptionAffiliationIdRequest] request Required
-    # parameter: Request for updating a subscription affiliation id
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionResponse] response from the API call
-    def update_subscription_affiliation_id(subscription_id,
-                                           request,
-                                           idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/subscriptions/{subscription_id}/gateway-affiliation-id',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Atualização do valor mínimo da assinatura
-    # @param [String] subscription_id Required parameter: Subscription Id
-    # @param [UpdateSubscriptionMinimumPriceRequest] request Required parameter:
-    # Request da requisição com o valor mínimo que será configurado
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionResponse] response from the API call
-    def update_subscription_minium_price(subscription_id,
-                                         request,
-                                         idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/subscriptions/{subscription_id}/minimum_price',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: The subscription id
-    # @param [String] cycle_id Required parameter: Example:
-    # @return [GetPeriodResponse] response from the API call
-    def get_subscription_cycle_by_id(subscription_id,
-                                     cycle_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/subscriptions/{subscription_id}/cycles/{cycleId}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .template_param(new_parameter(cycle_id, key: 'cycleId')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetPeriodResponse.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: The subscription Id
-    # @param [String] period_id Required parameter: The period Id
-    # @return [GetUsageReportResponse] response from the API call
-    def get_usage_report(subscription_id,
-                         period_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/subscriptions/{subscription_id}/periods/{period_id}/usages/report',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .template_param(new_parameter(period_id, key: 'period_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetUsageReportResponse.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: Example:
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetPeriodResponse] response from the API call
-    def renew_subscription(subscription_id,
-                           idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/subscriptions/{subscription_id}/cycles',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetPeriodResponse.method(:from_hash)))
-        .execute
-    end
-
     # Deletes a usage
     # @param [String] subscription_id Required parameter: The subscription id
     # @param [String] item_id Required parameter: The subscription item id
     # @param [String] usage_id Required parameter: The usage id
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetUsageResponse] response from the API call
+    # @return [GetUsageResponse] response from the API call.
     def delete_usage(subscription_id,
                      item_id,
                      usage_id,
@@ -451,11 +83,38 @@ module PagarmeApiSdk
         .execute
     end
 
+    # Creates a discount
+    # @param [String] subscription_id Required parameter: Subscription id
+    # @param [CreateDiscountRequest] request Required parameter: Request for
+    # creating a discount
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetDiscountResponse] response from the API call.
+    def create_discount(subscription_id,
+                        request,
+                        idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/subscriptions/{subscription_id}/discounts',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetDiscountResponse.method(:from_hash)))
+        .execute
+    end
+
     # Create Usage
     # @param [String] subscription_id Required parameter: Subscription id
     # @param [String] item_id Required parameter: Item id
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetUsageResponse] response from the API call
+    # @return [GetUsageResponse] response from the API call.
     def create_an_usage(subscription_id,
                         item_id,
                         idempotency_key: nil)
@@ -481,7 +140,7 @@ module PagarmeApiSdk
     # @param [UpdateCurrentCycleStatusRequest] request Required parameter:
     # Request for updating the end date of the subscription current status
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return [void] response from the API call
+    # @return [void] response from the API call.
     def update_current_cycle_status(subscription_id,
                                     request,
                                     idempotency_key: nil)
@@ -501,174 +160,28 @@ module PagarmeApiSdk
         .execute
     end
 
-    # Get Subscription Item
-    # @param [String] subscription_id Required parameter: Subscription Id
-    # @param [String] item_id Required parameter: Item id
-    # @return [GetSubscriptionItemResponse] response from the API call
-    def get_subscription_item(subscription_id,
-                              item_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/subscriptions/{subscription_id}/items/{item_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .template_param(new_parameter(item_id, key: 'item_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionItemResponse.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: The subscription Id
-    # @param [String] increment_id Required parameter: The increment Id
-    # @return [GetIncrementResponse] response from the API call
-    def get_increment_by_id(subscription_id,
-                            increment_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/subscriptions/{subscription_id}/increments/{increment_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .template_param(new_parameter(increment_id, key: 'increment_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetIncrementResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Deletes a increment
+    # Deletes a discount
     # @param [String] subscription_id Required parameter: Subscription id
-    # @param [String] increment_id Required parameter: Increment id
+    # @param [String] discount_id Required parameter: Discount Id
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetIncrementResponse] response from the API call
-    def delete_increment(subscription_id,
-                         increment_id,
-                         idempotency_key: nil)
+    # @return [GetDiscountResponse] response from the API call.
+    def delete_discount(subscription_id,
+                        discount_id,
+                        idempotency_key: nil)
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::DELETE,
-                                     '/subscriptions/{subscription_id}/increments/{increment_id}',
+                                     '/subscriptions/{subscription_id}/discounts/{discount_id}',
                                      Server::DEFAULT)
                    .template_param(new_parameter(subscription_id, key: 'subscription_id')
                                     .should_encode(true))
-                   .template_param(new_parameter(increment_id, key: 'increment_id')
+                   .template_param(new_parameter(discount_id, key: 'discount_id')
                                     .should_encode(true))
                    .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetIncrementResponse.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: The subscription id
-    # @param [Integer] page Required parameter: Page number
-    # @param [Integer] size Required parameter: Page size
-    # @return [ListDiscountsResponse] response from the API call
-    def get_discounts(subscription_id,
-                      page,
-                      size)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/subscriptions/{subscription_id}/discounts/',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .query_param(new_parameter(page, key: 'page'))
-                   .query_param(new_parameter(size, key: 'size'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(ListDiscountsResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Updates the boleto due days from a subscription
-    # @param [String] subscription_id Required parameter: Subscription Id
-    # @param [UpdateSubscriptionDueDaysRequest] request Required parameter:
-    # Example:
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionResponse] response from the API call
-    def update_subscription_due_days(subscription_id,
-                                     request,
-                                     idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/subscriptions/{subscription_id}/boleto-due-days',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Creates a new Subscription item
-    # @param [String] subscription_id Required parameter: Subscription id
-    # @param [CreateSubscriptionItemRequest] request Required parameter: Request
-    # for creating a subscription item
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionItemResponse] response from the API call
-    def create_subscription_item(subscription_id,
-                                 request,
-                                 idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/subscriptions/{subscription_id}/items',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionItemResponse.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] id Required parameter: Subscription's id
-    # @param [UpdateSubscriptionSplitRequest] request Required parameter:
-    # Example:
-    # @return [GetSubscriptionResponse] response from the API call
-    def update_split_subscription(id,
-                                  request)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/subscriptions/{id}/split',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(id, key: 'id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
+                    .deserialize_into(GetDiscountResponse.method(:from_hash)))
         .execute
     end
 
@@ -685,7 +198,7 @@ module PagarmeApiSdk
     # creation date start range
     # @param [String] created_until Optional parameter: Filter for item's
     # creation date end range
-    # @return [ListSubscriptionItemsResponse] response from the API call
+    # @return [ListSubscriptionItemsResponse] response from the API call.
     def get_subscription_items(subscription_id,
                                page: nil,
                                size: nil,
@@ -717,6 +230,55 @@ module PagarmeApiSdk
         .execute
     end
 
+    # Updates the payment method from a subscription
+    # @param [String] subscription_id Required parameter: Subscription id
+    # @param [UpdateSubscriptionPaymentMethodRequest] request Required
+    # parameter: Request for updating the paymentmethod from a subscription
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetSubscriptionResponse] response from the API call.
+    def update_subscription_payment_method(subscription_id,
+                                           request,
+                                           idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/subscriptions/{subscription_id}/payment-method',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Get Subscription Item
+    # @param [String] subscription_id Required parameter: Subscription Id
+    # @param [String] item_id Required parameter: Item id
+    # @return [GetSubscriptionItemResponse] response from the API call.
+    def get_subscription_item(subscription_id,
+                              item_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/subscriptions/{subscription_id}/items/{item_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(item_id, key: 'item_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionItemResponse.method(:from_hash)))
+        .execute
+    end
+
     # Gets all subscriptions
     # @param [Integer] page Optional parameter: Page number
     # @param [Integer] size Optional parameter: Page size
@@ -739,7 +301,7 @@ module PagarmeApiSdk
     # subscription's creation date start range
     # @param [DateTime] created_until Optional parameter: Filter for
     # subscriptions creation date end range
-    # @return [ListSubscriptionsResponse] response from the API call
+    # @return [ListSubscriptionsResponse] response from the API call.
     def get_subscriptions(page: nil,
                           size: nil,
                           code: nil,
@@ -776,12 +338,39 @@ module PagarmeApiSdk
         .execute
     end
 
+    # Cancels a subscription
+    # @param [String] subscription_id Required parameter: Subscription id
+    # @param [CreateCancelSubscriptionRequest] request Optional parameter:
+    # Request for cancelling a subscription
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetSubscriptionResponse] response from the API call.
+    def cancel_subscription(subscription_id,
+                            request: nil,
+                            idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::DELETE,
+                                     '/subscriptions/{subscription_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
+        .execute
+    end
+
     # Creates a increment
     # @param [String] subscription_id Required parameter: Subscription id
     # @param [CreateIncrementRequest] request Required parameter: Request for
     # creating a increment
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetIncrementResponse] response from the API call
+    # @return [GetIncrementResponse] response from the API call.
     def create_increment(subscription_id,
                          request,
                          idempotency_key: nil)
@@ -809,7 +398,7 @@ module PagarmeApiSdk
     # @param [CreateUsageRequest] body Required parameter: Request for creating
     # a usage
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetUsageResponse] response from the API call
+    # @return [GetUsageResponse] response from the API call.
     def create_usage(subscription_id,
                      item_id,
                      body,
@@ -837,7 +426,7 @@ module PagarmeApiSdk
     # TODO: type endpoint description here
     # @param [String] subscription_id Required parameter: The subscription id
     # @param [String] discount_id Required parameter: Example:
-    # @return [GetDiscountResponse] response from the API call
+    # @return [GetDiscountResponse] response from the API call.
     def get_discount_by_id(subscription_id,
                            discount_id)
       new_api_call_builder
@@ -856,12 +445,84 @@ module PagarmeApiSdk
         .execute
     end
 
+    # Creates a new subscription
+    # @param [CreateSubscriptionRequest] body Required parameter: Request for
+    # creating a subscription
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetSubscriptionResponse] response from the API call.
+    def create_subscription(body,
+                            idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/subscriptions',
+                                     Server::DEFAULT)
+                   .body_param(new_parameter(body))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: The subscription Id
+    # @param [String] increment_id Required parameter: The increment Id
+    # @return [GetIncrementResponse] response from the API call.
+    def get_increment_by_id(subscription_id,
+                            increment_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/subscriptions/{subscription_id}/increments/{increment_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(increment_id, key: 'increment_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetIncrementResponse.method(:from_hash)))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: Example:
+    # @param [UpdateSubscriptionAffiliationIdRequest] request Required
+    # parameter: Request for updating a subscription affiliation id
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetSubscriptionResponse] response from the API call.
+    def update_subscription_affiliation_id(subscription_id,
+                                           request,
+                                           idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/subscriptions/{subscription_id}/gateway-affiliation-id',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
+        .execute
+    end
+
     # Updates the metadata from a subscription
     # @param [String] subscription_id Required parameter: The subscription id
     # @param [UpdateMetadataRequest] request Required parameter: Request for
     # updating the subscrption metadata
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionResponse] response from the API call
+    # @return [GetSubscriptionResponse] response from the API call.
     def update_subscription_metadata(subscription_id,
                                      request,
                                      idempotency_key: nil)
@@ -883,11 +544,36 @@ module PagarmeApiSdk
         .execute
     end
 
+    # Deletes a increment
+    # @param [String] subscription_id Required parameter: Subscription id
+    # @param [String] increment_id Required parameter: Increment id
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetIncrementResponse] response from the API call.
+    def delete_increment(subscription_id,
+                         increment_id,
+                         idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::DELETE,
+                                     '/subscriptions/{subscription_id}/increments/{increment_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(increment_id, key: 'increment_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetIncrementResponse.method(:from_hash)))
+        .execute
+    end
+
     # TODO: type endpoint description here
     # @param [String] subscription_id Required parameter: Subscription Id
     # @param [String] page Required parameter: Page number
     # @param [String] size Required parameter: Page size
-    # @return [ListCyclesResponse] response from the API call
+    # @return [ListCyclesResponse] response from the API call.
     def get_subscription_cycles(subscription_id,
                                 page,
                                 size)
@@ -907,12 +593,63 @@ module PagarmeApiSdk
         .execute
     end
 
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: The subscription id
+    # @param [Integer] page Required parameter: Page number
+    # @param [Integer] size Required parameter: Page size
+    # @return [ListDiscountsResponse] response from the API call.
+    def get_discounts(subscription_id,
+                      page,
+                      size)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/subscriptions/{subscription_id}/discounts/',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .query_param(new_parameter(page, key: 'page'))
+                   .query_param(new_parameter(size, key: 'size'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListDiscountsResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Updates the billing date from a subscription
+    # @param [String] subscription_id Required parameter: The subscription id
+    # @param [UpdateSubscriptionBillingDateRequest] request Required parameter:
+    # Request for updating the subscription billing date
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetSubscriptionResponse] response from the API call.
+    def update_subscription_billing_date(subscription_id,
+                                         request,
+                                         idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/subscriptions/{subscription_id}/billing-date',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
+        .execute
+    end
+
     # Deletes a subscription item
     # @param [String] subscription_id Required parameter: Subscription id
     # @param [String] subscription_item_id Required parameter: Subscription item
     # id
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionItemResponse] response from the API call
+    # @return [GetSubscriptionItemResponse] response from the API call.
     def delete_subscription_item(subscription_id,
                                  subscription_item_id,
                                  idempotency_key: nil)
@@ -937,7 +674,7 @@ module PagarmeApiSdk
     # @param [String] subscription_id Required parameter: The subscription id
     # @param [Integer] page Optional parameter: Page number
     # @param [Integer] size Optional parameter: Page size
-    # @return [ListIncrementsResponse] response from the API call
+    # @return [ListIncrementsResponse] response from the API call.
     def get_increments(subscription_id,
                        page: nil,
                        size: nil)
@@ -957,13 +694,67 @@ module PagarmeApiSdk
         .execute
     end
 
+    # Updates the boleto due days from a subscription
+    # @param [String] subscription_id Required parameter: Subscription Id
+    # @param [UpdateSubscriptionDueDaysRequest] request Required parameter:
+    # Example:
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetSubscriptionResponse] response from the API call.
+    def update_subscription_due_days(subscription_id,
+                                     request,
+                                     idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/subscriptions/{subscription_id}/boleto-due-days',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Updates the start at date from a subscription
+    # @param [String] subscription_id Required parameter: The subscription id
+    # @param [UpdateSubscriptionStartAtRequest] request Required parameter:
+    # Request for updating the subscription start date
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetSubscriptionResponse] response from the API call.
+    def update_subscription_start_at(subscription_id,
+                                     request,
+                                     idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/subscriptions/{subscription_id}/start-at',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
+        .execute
+    end
+
     # Updates a subscription item
     # @param [String] subscription_id Required parameter: Subscription Id
     # @param [String] item_id Required parameter: Item id
     # @param [UpdateSubscriptionItemRequest] body Required parameter: Request
     # for updating a subscription item
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetSubscriptionItemResponse] response from the API call
+    # @return [GetSubscriptionItemResponse] response from the API call.
     def update_subscription_item(subscription_id,
                                  item_id,
                                  body,
@@ -985,6 +776,215 @@ module PagarmeApiSdk
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(GetSubscriptionItemResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Creates a new Subscription item
+    # @param [String] subscription_id Required parameter: Subscription id
+    # @param [CreateSubscriptionItemRequest] request Required parameter: Request
+    # for creating a subscription item
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetSubscriptionItemResponse] response from the API call.
+    def create_subscription_item(subscription_id,
+                                 request,
+                                 idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/subscriptions/{subscription_id}/items',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionItemResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Gets a subscription
+    # @param [String] subscription_id Required parameter: Subscription id
+    # @return [GetSubscriptionResponse] response from the API call.
+    def get_subscription(subscription_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/subscriptions/{subscription_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Lists all usages from a subscription item
+    # @param [String] subscription_id Required parameter: The subscription id
+    # @param [String] item_id Required parameter: The subscription item id
+    # @param [Integer] page Optional parameter: Page number
+    # @param [Integer] size Optional parameter: Page size
+    # @param [String] code Optional parameter: Identification code in the client
+    # system
+    # @param [String] group Optional parameter: Identification group in the
+    # client system
+    # @param [DateTime] used_since Optional parameter: Example:
+    # @param [DateTime] used_until Optional parameter: Example:
+    # @return [ListUsagesResponse] response from the API call.
+    def get_usages(subscription_id,
+                   item_id,
+                   page: nil,
+                   size: nil,
+                   code: nil,
+                   group: nil,
+                   used_since: nil,
+                   used_until: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/subscriptions/{subscription_id}/items/{item_id}/usages',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(item_id, key: 'item_id')
+                                    .should_encode(true))
+                   .query_param(new_parameter(page, key: 'page'))
+                   .query_param(new_parameter(size, key: 'size'))
+                   .query_param(new_parameter(code, key: 'code'))
+                   .query_param(new_parameter(group, key: 'group'))
+                   .query_param(new_parameter(used_since, key: 'used_since'))
+                   .query_param(new_parameter(used_until, key: 'used_until'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(ListUsagesResponse.method(:from_hash)))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: Example:
+    # @param [UpdateCurrentCycleEndDateRequest] request Required parameter:
+    # Request for updating the end date of the current signature cycle
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetSubscriptionResponse] response from the API call.
+    def update_latest_period_end_at(subscription_id,
+                                    request,
+                                    idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/subscriptions/{subscription_id}/periods/latest/end-at',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Atualização do valor mínimo da assinatura
+    # @param [String] subscription_id Required parameter: Subscription Id
+    # @param [UpdateSubscriptionMinimumPriceRequest] request Required parameter:
+    # Request da requisição com o valor mínimo que será configurado
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetSubscriptionResponse] response from the API call.
+    def update_subscription_minium_price(subscription_id,
+                                         request,
+                                         idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/subscriptions/{subscription_id}/minimum_price',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: The subscription id
+    # @param [String] cycle_id Required parameter: Example:
+    # @return [GetPeriodResponse] response from the API call.
+    def get_subscription_cycle_by_id(subscription_id,
+                                     cycle_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/subscriptions/{subscription_id}/cycles/{cycleId}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(cycle_id, key: 'cycleId')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetPeriodResponse.method(:from_hash)))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: The subscription Id
+    # @param [String] period_id Required parameter: The period Id
+    # @return [GetUsageReportResponse] response from the API call.
+    def get_usage_report(subscription_id,
+                         period_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/subscriptions/{subscription_id}/periods/{period_id}/usages/report',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(subscription_id, key: 'subscription_id')
+                                    .should_encode(true))
+                   .template_param(new_parameter(period_id, key: 'period_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetUsageReportResponse.method(:from_hash)))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] id Required parameter: Subscription's id
+    # @param [UpdateSubscriptionSplitRequest] request Required parameter:
+    # Example:
+    # @return [GetSubscriptionResponse] response from the API call.
+    def update_split_subscription(id,
+                                  request)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/subscriptions/{id}/split',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(id, key: 'id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetSubscriptionResponse.method(:from_hash)))
         .execute
     end
   end

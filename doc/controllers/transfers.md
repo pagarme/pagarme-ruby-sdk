@@ -11,8 +11,8 @@ transfers_controller = client.transfers
 ## Methods
 
 * [Get Transfer by Id](../../doc/controllers/transfers.md#get-transfer-by-id)
-* [Get Transfers](../../doc/controllers/transfers.md#get-transfers)
 * [Create Transfer](../../doc/controllers/transfers.md#create-transfer)
+* [Get Transfers](../../doc/controllers/transfers.md#get-transfers)
 
 
 # Get Transfer by Id
@@ -37,25 +37,6 @@ def get_transfer_by_id(transfer_id)
 transfer_id = 'transfer_id6'
 
 result = transfers_controller.get_transfer_by_id(transfer_id)
-```
-
-
-# Get Transfers
-
-Gets all transfers
-
-```ruby
-def get_transfers
-```
-
-## Response Type
-
-[`ListTransfers`](../../doc/models/list-transfers.md)
-
-## Example Usage
-
-```ruby
-result = transfers_controller.get_transfers
 ```
 
 
@@ -85,5 +66,24 @@ request = CreateTransfer.new(
 )
 
 result = transfers_controller.create_transfer(request)
+```
+
+
+# Get Transfers
+
+Gets all transfers
+
+```ruby
+def get_transfers
+```
+
+## Response Type
+
+[`ListTransfers`](../../doc/models/list-transfers.md)
+
+## Example Usage
+
+```ruby
+result = transfers_controller.get_transfers
 ```
 

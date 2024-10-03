@@ -82,6 +82,10 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :recurrence_model
 
+    # Defines whether the card has been used one or more times.
+    # @return [CreatePaymentOriginRequest]
+    attr_accessor :payment_origin
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -103,6 +107,7 @@ module PagarmeApiSdk
       @_hash['payload'] = 'payload'
       @_hash['initiated_type'] = 'initiated_type'
       @_hash['recurrence_model'] = 'recurrence_model'
+      @_hash['payment_origin'] = 'payment_origin'
       @_hash
     end
 
@@ -127,6 +132,7 @@ module PagarmeApiSdk
         payload
         initiated_type
         recurrence_model
+        payment_origin
       ]
     end
 
@@ -142,7 +148,8 @@ module PagarmeApiSdk
                    authentication = SKIP, contactless = SKIP,
                    auto_recovery = SKIP, operation_type = SKIP,
                    recurrency_cycle = SKIP, payload = SKIP,
-                   initiated_type = SKIP, recurrence_model = SKIP)
+                   initiated_type = SKIP, recurrence_model = SKIP,
+                   payment_origin = SKIP)
       @installments = installments unless installments == SKIP
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @card = card unless card == SKIP
@@ -161,6 +168,7 @@ module PagarmeApiSdk
       @payload = payload unless payload == SKIP
       @initiated_type = initiated_type unless initiated_type == SKIP
       @recurrence_model = recurrence_model unless recurrence_model == SKIP
+      @payment_origin = payment_origin unless payment_origin == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -196,6 +204,8 @@ module PagarmeApiSdk
         hash.key?('initiated_type') ? hash['initiated_type'] : SKIP
       recurrence_model =
         hash.key?('recurrence_model') ? hash['recurrence_model'] : SKIP
+      payment_origin = CreatePaymentOriginRequest.from_hash(hash['payment_origin']) if
+        hash['payment_origin']
 
       # Create object from extracted values.
       CreateCreditCardPaymentRequest.new(installments,
@@ -215,7 +225,8 @@ module PagarmeApiSdk
                                          recurrency_cycle,
                                          payload,
                                          initiated_type,
-                                         recurrence_model)
+                                         recurrence_model,
+                                         payment_origin)
     end
   end
 end

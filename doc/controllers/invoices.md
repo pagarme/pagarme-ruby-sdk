@@ -10,125 +10,13 @@ invoices_controller = client.invoices
 
 ## Methods
 
-* [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
-* [Cancel Invoice](../../doc/controllers/invoices.md#cancel-invoice)
-* [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
 * [Update Invoice Metadata](../../doc/controllers/invoices.md#update-invoice-metadata)
 * [Get Partial Invoice](../../doc/controllers/invoices.md#get-partial-invoice)
+* [Cancel Invoice](../../doc/controllers/invoices.md#cancel-invoice)
 * [Create Invoice](../../doc/controllers/invoices.md#create-invoice)
+* [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
 * [Get Invoice](../../doc/controllers/invoices.md#get-invoice)
-
-
-# Get Invoices
-
-Gets all invoices
-
-```ruby
-def get_invoices(page: nil,
-                 size: nil,
-                 code: nil,
-                 customer_id: nil,
-                 subscription_id: nil,
-                 created_since: nil,
-                 created_until: nil,
-                 status: nil,
-                 due_since: nil,
-                 due_until: nil,
-                 customer_document: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `Integer` | Query, Optional | Page number |
-| `size` | `Integer` | Query, Optional | Page size |
-| `code` | `String` | Query, Optional | Filter for Invoice's code |
-| `customer_id` | `String` | Query, Optional | Filter for Invoice's customer id |
-| `subscription_id` | `String` | Query, Optional | Filter for Invoice's subscription id |
-| `created_since` | `DateTime` | Query, Optional | Filter for Invoice's creation date start range |
-| `created_until` | `DateTime` | Query, Optional | Filter for Invoices creation date end range |
-| `status` | `String` | Query, Optional | Filter for Invoice's status |
-| `due_since` | `DateTime` | Query, Optional | Filter for Invoice's due date start range |
-| `due_until` | `DateTime` | Query, Optional | Filter for Invoice's due date end range |
-| `customer_document` | `String` | Query, Optional | - |
-
-## Response Type
-
-[`ListInvoicesResponse`](../../doc/models/list-invoices-response.md)
-
-## Example Usage
-
-```ruby
-result = invoices_controller.get_invoices
-```
-
-
-# Cancel Invoice
-
-Cancels an invoice
-
-```ruby
-def cancel_invoice(invoice_id,
-                   idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `invoice_id` | `String` | Template, Required | Invoice id |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```ruby
-invoice_id = 'invoice_id0'
-
-result = invoices_controller.cancel_invoice(invoice_id)
-```
-
-
-# Update Invoice Status
-
-Updates the status from an invoice
-
-```ruby
-def update_invoice_status(invoice_id,
-                          request,
-                          idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `invoice_id` | `String` | Template, Required | Invoice Id |
-| `request` | [`UpdateInvoiceStatusRequest`](../../doc/models/update-invoice-status-request.md) | Body, Required | Request for updating an invoice's status |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```ruby
-invoice_id = 'invoice_id0'
-
-request = UpdateInvoiceStatusRequest.new(
-  'status8'
-)
-
-result = invoices_controller.update_invoice_status(
-  invoice_id,
-  request
-)
-```
+* [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
 
 
 # Update Invoice Metadata
@@ -196,6 +84,35 @@ result = invoices_controller.get_partial_invoice(subscription_id)
 ```
 
 
+# Cancel Invoice
+
+Cancels an invoice
+
+```ruby
+def cancel_invoice(invoice_id,
+                   idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoice_id` | `String` | Template, Required | Invoice id |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```ruby
+invoice_id = 'invoice_id0'
+
+result = invoices_controller.cancel_invoice(invoice_id)
+```
+
+
 # Create Invoice
 
 Create an Invoice
@@ -234,6 +151,51 @@ result = invoices_controller.create_invoice(
 ```
 
 
+# Get Invoices
+
+Gets all invoices
+
+```ruby
+def get_invoices(page: nil,
+                 size: nil,
+                 code: nil,
+                 customer_id: nil,
+                 subscription_id: nil,
+                 created_since: nil,
+                 created_until: nil,
+                 status: nil,
+                 due_since: nil,
+                 due_until: nil,
+                 customer_document: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `Integer` | Query, Optional | Page number |
+| `size` | `Integer` | Query, Optional | Page size |
+| `code` | `String` | Query, Optional | Filter for Invoice's code |
+| `customer_id` | `String` | Query, Optional | Filter for Invoice's customer id |
+| `subscription_id` | `String` | Query, Optional | Filter for Invoice's subscription id |
+| `created_since` | `DateTime` | Query, Optional | Filter for Invoice's creation date start range |
+| `created_until` | `DateTime` | Query, Optional | Filter for Invoices creation date end range |
+| `status` | `String` | Query, Optional | Filter for Invoice's status |
+| `due_since` | `DateTime` | Query, Optional | Filter for Invoice's due date start range |
+| `due_until` | `DateTime` | Query, Optional | Filter for Invoice's due date end range |
+| `customer_document` | `String` | Query, Optional | - |
+
+## Response Type
+
+[`ListInvoicesResponse`](../../doc/models/list-invoices-response.md)
+
+## Example Usage
+
+```ruby
+result = invoices_controller.get_invoices
+```
+
+
 # Get Invoice
 
 Gets an invoice
@@ -258,5 +220,43 @@ def get_invoice(invoice_id)
 invoice_id = 'invoice_id0'
 
 result = invoices_controller.get_invoice(invoice_id)
+```
+
+
+# Update Invoice Status
+
+Updates the status from an invoice
+
+```ruby
+def update_invoice_status(invoice_id,
+                          request,
+                          idempotency_key: nil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoice_id` | `String` | Template, Required | Invoice Id |
+| `request` | [`UpdateInvoiceStatusRequest`](../../doc/models/update-invoice-status-request.md) | Body, Required | Request for updating an invoice's status |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```ruby
+invoice_id = 'invoice_id0'
+
+request = UpdateInvoiceStatusRequest.new(
+  'status8'
+)
+
+result = invoices_controller.update_invoice_status(
+  invoice_id,
+  request
+)
 ```
 
