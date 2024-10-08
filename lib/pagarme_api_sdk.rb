@@ -290,6 +290,7 @@ require_relative 'pagarme_api_sdk/models/' \
 require_relative 'pagarme_api_sdk/models/create_kyc_link_response'
 require_relative 'pagarme_api_sdk/models/create_payment_origin_request'
 require_relative 'pagarme_api_sdk/models/get_payment_origin_response'
+require_relative 'pagarme_api_sdk/models/get_integration_response'
 
 # Exceptions
 require_relative 'pagarme_api_sdk/exceptions/api_exception'

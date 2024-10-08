@@ -90,6 +90,10 @@ module PagarmeApiSdk
     # @return [GetDeviceResponse]
     attr_accessor :device
 
+    # Device's informations
+    # @return [GetIntegrationResponse]
+    attr_accessor :integration
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -113,6 +117,7 @@ module PagarmeApiSdk
       @_hash['session_id'] = 'session_id'
       @_hash['location'] = 'location'
       @_hash['device'] = 'device'
+      @_hash['integration'] = 'integration'
       @_hash
     end
 
@@ -139,6 +144,7 @@ module PagarmeApiSdk
         session_id
         location
         device
+        integration
       ]
     end
 
@@ -165,6 +171,7 @@ module PagarmeApiSdk
         session_id
         location
         device
+        integration
       ]
     end
 
@@ -173,7 +180,8 @@ module PagarmeApiSdk
                    created_at = SKIP, updated_at = SKIP, closed_at = SKIP,
                    charges = SKIP, invoice_url = SKIP, shipping = SKIP,
                    metadata = SKIP, checkouts = SKIP, ip = SKIP,
-                   session_id = SKIP, location = SKIP, device = SKIP)
+                   session_id = SKIP, location = SKIP, device = SKIP,
+                   integration = SKIP)
       @id = id unless id == SKIP
       @code = code unless code == SKIP
       @amount = amount unless amount == SKIP
@@ -194,6 +202,7 @@ module PagarmeApiSdk
       @session_id = session_id unless session_id == SKIP
       @location = location unless location == SKIP
       @device = device unless device == SKIP
+      @integration = integration unless integration == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -260,6 +269,7 @@ module PagarmeApiSdk
       session_id = hash.key?('session_id') ? hash['session_id'] : SKIP
       location = GetLocationResponse.from_hash(hash['location']) if hash['location']
       device = GetDeviceResponse.from_hash(hash['device']) if hash['device']
+      integration = GetIntegrationResponse.from_hash(hash['integration']) if hash['integration']
 
       # Create object from extracted values.
       GetOrderResponse.new(id,
@@ -281,7 +291,8 @@ module PagarmeApiSdk
                            ip,
                            session_id,
                            location,
-                           device)
+                           device,
+                           integration)
     end
 
     def to_custom_created_at
