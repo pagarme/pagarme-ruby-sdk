@@ -37,6 +37,10 @@ module PagarmeApiSdk
     # @return [CreatePaymentOriginRequest]
     attr_accessor :payment_origin
 
+    # Business model identifier
+    # @return [String]
+    attr_accessor :indirect_acceptor
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -47,6 +51,7 @@ module PagarmeApiSdk
       @_hash['initiated_type'] = 'initiated_type'
       @_hash['recurrence_model'] = 'recurrence_model'
       @_hash['payment_origin'] = 'payment_origin'
+      @_hash['indirect_acceptor'] = 'indirect_acceptor'
       @_hash
     end
 
@@ -56,6 +61,7 @@ module PagarmeApiSdk
         initiated_type
         recurrence_model
         payment_origin
+        indirect_acceptor
       ]
     end
 
@@ -66,7 +72,8 @@ module PagarmeApiSdk
 
     def initialize(update_subscription = nil, card_id = nil, card = nil,
                    recurrence = nil, initiated_type = SKIP,
-                   recurrence_model = SKIP, payment_origin = SKIP)
+                   recurrence_model = SKIP, payment_origin = SKIP,
+                   indirect_acceptor = SKIP)
       @update_subscription = update_subscription
       @card_id = card_id
       @card = card
@@ -74,6 +81,7 @@ module PagarmeApiSdk
       @initiated_type = initiated_type unless initiated_type == SKIP
       @recurrence_model = recurrence_model unless recurrence_model == SKIP
       @payment_origin = payment_origin unless payment_origin == SKIP
+      @indirect_acceptor = indirect_acceptor unless indirect_acceptor == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -92,6 +100,8 @@ module PagarmeApiSdk
         hash.key?('recurrence_model') ? hash['recurrence_model'] : SKIP
       payment_origin = CreatePaymentOriginRequest.from_hash(hash['payment_origin']) if
         hash['payment_origin']
+      indirect_acceptor =
+        hash.key?('indirect_acceptor') ? hash['indirect_acceptor'] : SKIP
 
       # Create object from extracted values.
       UpdateChargeCardRequest.new(update_subscription,
@@ -100,7 +110,8 @@ module PagarmeApiSdk
                                   recurrence,
                                   initiated_type,
                                   recurrence_model,
-                                  payment_origin)
+                                  payment_origin,
+                                  indirect_acceptor)
     end
   end
 end
