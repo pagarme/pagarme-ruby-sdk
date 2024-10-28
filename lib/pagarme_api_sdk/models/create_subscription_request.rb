@@ -142,6 +142,10 @@ module PagarmeApiSdk
     # @return [CreateSubscriptionBoletoRequest]
     attr_accessor :boleto
 
+    # Business model identifier
+    # @return [String]
+    attr_accessor :indirect_acceptor
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -178,6 +182,7 @@ module PagarmeApiSdk
       @_hash['submerchant'] = 'submerchant'
       @_hash['split'] = 'split'
       @_hash['boleto'] = 'boleto'
+      @_hash['indirect_acceptor'] = 'indirect_acceptor'
       @_hash
     end
 
@@ -201,6 +206,7 @@ module PagarmeApiSdk
         submerchant
         split
         boleto
+        indirect_acceptor
       ]
     end
 
@@ -220,7 +226,7 @@ module PagarmeApiSdk
                    cycles = SKIP, card_token = SKIP,
                    gateway_affiliation_id = SKIP, quantity = SKIP,
                    boleto_due_days = SKIP, period = SKIP, submerchant = SKIP,
-                   split = SKIP, boleto = SKIP)
+                   split = SKIP, boleto = SKIP, indirect_acceptor = SKIP)
       @customer = customer
       @card = card
       @code = code
@@ -254,6 +260,7 @@ module PagarmeApiSdk
       @submerchant = submerchant unless submerchant == SKIP
       @split = split unless split == SKIP
       @boleto = boleto unless boleto == SKIP
+      @indirect_acceptor = indirect_acceptor unless indirect_acceptor == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -331,6 +338,8 @@ module PagarmeApiSdk
       submerchant = CreateSubMerchantRequest.from_hash(hash['submerchant']) if hash['submerchant']
       split = CreateSubscriptionSplitRequest.from_hash(hash['split']) if hash['split']
       boleto = CreateSubscriptionBoletoRequest.from_hash(hash['boleto']) if hash['boleto']
+      indirect_acceptor =
+        hash.key?('indirect_acceptor') ? hash['indirect_acceptor'] : SKIP
 
       # Create object from extracted values.
       CreateSubscriptionRequest.new(customer,
@@ -365,7 +374,8 @@ module PagarmeApiSdk
                                     period,
                                     submerchant,
                                     split,
-                                    boleto)
+                                    boleto,
+                                    indirect_acceptor)
     end
 
     def to_custom_start_at

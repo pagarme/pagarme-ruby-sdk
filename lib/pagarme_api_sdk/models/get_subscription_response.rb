@@ -130,6 +130,10 @@ module PagarmeApiSdk
     # @return [TrueClass | FalseClass]
     attr_accessor :manual_billing
 
+    # Business model identifier
+    # @return [String]
+    attr_accessor :indirect_acceptor
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -163,6 +167,7 @@ module PagarmeApiSdk
       @_hash['split'] = 'split'
       @_hash['boleto'] = 'boleto'
       @_hash['manual_billing'] = 'manual_billing'
+      @_hash['indirect_acceptor'] = 'indirect_acceptor'
       @_hash
     end
 
@@ -199,6 +204,7 @@ module PagarmeApiSdk
         split
         boleto
         manual_billing
+        indirect_acceptor
       ]
     end
 
@@ -235,6 +241,7 @@ module PagarmeApiSdk
         split
         boleto
         manual_billing
+        indirect_acceptor
       ]
     end
 
@@ -248,7 +255,8 @@ module PagarmeApiSdk
                    next_billing_at = SKIP, billing_day = SKIP,
                    minimum_price = SKIP, canceled_at = SKIP, discounts = SKIP,
                    increments = SKIP, boleto_due_days = SKIP, split = SKIP,
-                   boleto = SKIP, manual_billing = SKIP)
+                   boleto = SKIP, manual_billing = SKIP,
+                   indirect_acceptor = SKIP)
       @id = id unless id == SKIP
       @code = code unless code == SKIP
       @start_at = start_at unless start_at == SKIP
@@ -279,6 +287,7 @@ module PagarmeApiSdk
       @split = split unless split == SKIP
       @boleto = boleto unless boleto == SKIP
       @manual_billing = manual_billing unless manual_billing == SKIP
+      @indirect_acceptor = indirect_acceptor unless indirect_acceptor == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -369,6 +378,8 @@ module PagarmeApiSdk
       boleto = GetSubscriptionBoletoResponse.from_hash(hash['boleto']) if hash['boleto']
       manual_billing =
         hash.key?('manual_billing') ? hash['manual_billing'] : SKIP
+      indirect_acceptor =
+        hash.key?('indirect_acceptor') ? hash['indirect_acceptor'] : SKIP
 
       # Create object from extracted values.
       GetSubscriptionResponse.new(id,
@@ -400,7 +411,8 @@ module PagarmeApiSdk
                                   boleto_due_days,
                                   split,
                                   boleto,
-                                  manual_billing)
+                                  manual_billing,
+                                  indirect_acceptor)
     end
 
     def to_custom_start_at

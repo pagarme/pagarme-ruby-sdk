@@ -69,6 +69,10 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :brand_id
 
+    # Business model identifier
+    # @return [String]
+    attr_accessor :indirect_acceptor
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -87,6 +91,7 @@ module PagarmeApiSdk
       @_hash['funding_source'] = 'funding_source'
       @_hash['retry_info'] = 'retry_info'
       @_hash['brand_id'] = 'brand_id'
+      @_hash['indirect_acceptor'] = 'indirect_acceptor'
       @_hash = super().merge(@_hash)
       @_hash
     end
@@ -109,6 +114,7 @@ module PagarmeApiSdk
         funding_source
         retry_info
         brand_id
+        indirect_acceptor
       ]
       (_arr << super()).flatten!
     end
@@ -128,6 +134,7 @@ module PagarmeApiSdk
         funding_source
         retry_info
         brand_id
+        indirect_acceptor
       ]
       (_arr << super()).flatten!
     end
@@ -138,13 +145,14 @@ module PagarmeApiSdk
                    operation_type = SKIP, card = SKIP, acquirer_message = SKIP,
                    acquirer_return_code = SKIP, installments = SKIP,
                    threed_authentication_url = SKIP, funding_source = SKIP,
-                   retry_info = SKIP, brand_id = SKIP, gateway_id = SKIP,
-                   amount = SKIP, status = SKIP, success = SKIP,
-                   created_at = SKIP, updated_at = SKIP, attempt_count = SKIP,
-                   max_attempts = SKIP, splits = SKIP, next_attempt = SKIP,
-                   transaction_type = 'credit_card', id = SKIP,
-                   gateway_response = SKIP, antifraud_response = SKIP,
-                   metadata = SKIP, split = SKIP, interest = SKIP, fine = SKIP,
+                   retry_info = SKIP, brand_id = SKIP, indirect_acceptor = SKIP,
+                   gateway_id = SKIP, amount = SKIP, status = SKIP,
+                   success = SKIP, created_at = SKIP, updated_at = SKIP,
+                   attempt_count = SKIP, max_attempts = SKIP, splits = SKIP,
+                   next_attempt = SKIP, transaction_type = 'credit_card',
+                   id = SKIP, gateway_response = SKIP,
+                   antifraud_response = SKIP, metadata = SKIP, split = SKIP,
+                   interest = SKIP, fine = SKIP,
                    max_days_to_pay_past_due = SKIP)
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @acquirer_name = acquirer_name unless acquirer_name == SKIP
@@ -167,6 +175,7 @@ module PagarmeApiSdk
       @funding_source = funding_source unless funding_source == SKIP
       @retry_info = retry_info unless retry_info == SKIP
       @brand_id = brand_id unless brand_id == SKIP
+      @indirect_acceptor = indirect_acceptor unless indirect_acceptor == SKIP
 
       # Call the constructor of the base class
       super(gateway_id,
@@ -219,6 +228,8 @@ module PagarmeApiSdk
       retry_info = GetRetryTransactionInformationResponse.from_hash(hash['retry_info']) if
         hash['retry_info']
       brand_id = hash.key?('brand_id') ? hash['brand_id'] : SKIP
+      indirect_acceptor =
+        hash.key?('indirect_acceptor') ? hash['indirect_acceptor'] : SKIP
       gateway_id = hash.key?('gateway_id') ? hash['gateway_id'] : SKIP
       amount = hash.key?('amount') ? hash['amount'] : SKIP
       status = hash.key?('status') ? hash['status'] : SKIP
@@ -288,6 +299,7 @@ module PagarmeApiSdk
                                            funding_source,
                                            retry_info,
                                            brand_id,
+                                           indirect_acceptor,
                                            gateway_id,
                                            amount,
                                            status,

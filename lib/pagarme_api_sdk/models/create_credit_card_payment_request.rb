@@ -86,6 +86,10 @@ module PagarmeApiSdk
     # @return [CreatePaymentOriginRequest]
     attr_accessor :payment_origin
 
+    # Business model identifier
+    # @return [String]
+    attr_accessor :indirect_acceptor
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -108,6 +112,7 @@ module PagarmeApiSdk
       @_hash['initiated_type'] = 'initiated_type'
       @_hash['recurrence_model'] = 'recurrence_model'
       @_hash['payment_origin'] = 'payment_origin'
+      @_hash['indirect_acceptor'] = 'indirect_acceptor'
       @_hash
     end
 
@@ -133,6 +138,7 @@ module PagarmeApiSdk
         initiated_type
         recurrence_model
         payment_origin
+        indirect_acceptor
       ]
     end
 
@@ -149,7 +155,7 @@ module PagarmeApiSdk
                    auto_recovery = SKIP, operation_type = SKIP,
                    recurrency_cycle = SKIP, payload = SKIP,
                    initiated_type = SKIP, recurrence_model = SKIP,
-                   payment_origin = SKIP)
+                   payment_origin = SKIP, indirect_acceptor = SKIP)
       @installments = installments unless installments == SKIP
       @statement_descriptor = statement_descriptor unless statement_descriptor == SKIP
       @card = card unless card == SKIP
@@ -169,6 +175,7 @@ module PagarmeApiSdk
       @initiated_type = initiated_type unless initiated_type == SKIP
       @recurrence_model = recurrence_model unless recurrence_model == SKIP
       @payment_origin = payment_origin unless payment_origin == SKIP
+      @indirect_acceptor = indirect_acceptor unless indirect_acceptor == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -206,6 +213,8 @@ module PagarmeApiSdk
         hash.key?('recurrence_model') ? hash['recurrence_model'] : SKIP
       payment_origin = CreatePaymentOriginRequest.from_hash(hash['payment_origin']) if
         hash['payment_origin']
+      indirect_acceptor =
+        hash.key?('indirect_acceptor') ? hash['indirect_acceptor'] : SKIP
 
       # Create object from extracted values.
       CreateCreditCardPaymentRequest.new(installments,
@@ -226,7 +235,8 @@ module PagarmeApiSdk
                                          payload,
                                          initiated_type,
                                          recurrence_model,
-                                         payment_origin)
+                                         payment_origin,
+                                         indirect_acceptor)
     end
   end
 end
