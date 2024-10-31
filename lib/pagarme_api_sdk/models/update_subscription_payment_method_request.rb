@@ -29,6 +29,10 @@ module PagarmeApiSdk
     # @return [CreateSubscriptionBoletoRequest]
     attr_accessor :boleto
 
+    # Business model identifier
+    # @return [String]
+    attr_accessor :indirect_acceptor
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -37,6 +41,7 @@ module PagarmeApiSdk
       @_hash['card'] = 'card'
       @_hash['card_token'] = 'card_token'
       @_hash['boleto'] = 'boleto'
+      @_hash['indirect_acceptor'] = 'indirect_acceptor'
       @_hash
     end
 
@@ -45,21 +50,25 @@ module PagarmeApiSdk
       %w[
         card_token
         boleto
+        indirect_acceptor
       ]
     end
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        indirect_acceptor
+      ]
     end
 
     def initialize(payment_method = nil, card_id = nil, card = nil,
-                   card_token = SKIP, boleto = SKIP)
+                   card_token = SKIP, boleto = SKIP, indirect_acceptor = SKIP)
       @payment_method = payment_method
       @card_id = card_id
       @card = card
       @card_token = card_token unless card_token == SKIP
       @boleto = boleto unless boleto == SKIP
+      @indirect_acceptor = indirect_acceptor unless indirect_acceptor == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -73,13 +82,16 @@ module PagarmeApiSdk
       card = CreateCardRequest.from_hash(hash['card']) if hash['card']
       card_token = hash.key?('card_token') ? hash['card_token'] : SKIP
       boleto = CreateSubscriptionBoletoRequest.from_hash(hash['boleto']) if hash['boleto']
+      indirect_acceptor =
+        hash.key?('indirect_acceptor') ? hash['indirect_acceptor'] : SKIP
 
       # Create object from extracted values.
       UpdateSubscriptionPaymentMethodRequest.new(payment_method,
                                                  card_id,
                                                  card,
                                                  card_token,
-                                                 boleto)
+                                                 boleto,
+                                                 indirect_acceptor)
     end
   end
 end
