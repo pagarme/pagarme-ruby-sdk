@@ -80,5 +80,19 @@ module PagarmeApiSdk
                               document_type,
                               bank_account)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, document: #{@document}, document_type: #{@document_type},"\
+      " bank_account: #{@bank_account}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, document: #{@document.inspect}, document_type:"\
+      " #{@document_type.inspect}, bank_account: #{@bank_account.inspect}>"
+    end
   end
 end

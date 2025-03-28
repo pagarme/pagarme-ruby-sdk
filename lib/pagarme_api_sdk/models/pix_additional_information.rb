@@ -58,5 +58,17 @@ module PagarmeApiSdk
       PixAdditionalInformation.new(name,
                                    value)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, value: #{@value}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, value: #{@value.inspect}>"
+    end
   end
 end

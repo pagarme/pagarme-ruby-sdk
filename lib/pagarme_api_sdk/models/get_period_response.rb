@@ -166,5 +166,23 @@ module PagarmeApiSdk
     def to_custom_billing_at
       DateTimeHelper.to_rfc3339(billing_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} start_at: #{@start_at}, end_at: #{@end_at}, id: #{@id}, billing_at:"\
+      " #{@billing_at}, subscription: #{@subscription}, status: #{@status}, duration:"\
+      " #{@duration}, created_at: #{@created_at}, updated_at: #{@updated_at}, cycle: #{@cycle}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} start_at: #{@start_at.inspect}, end_at: #{@end_at.inspect}, id:"\
+      " #{@id.inspect}, billing_at: #{@billing_at.inspect}, subscription:"\
+      " #{@subscription.inspect}, status: #{@status.inspect}, duration: #{@duration.inspect},"\
+      " created_at: #{@created_at.inspect}, updated_at: #{@updated_at.inspect}, cycle:"\
+      " #{@cycle.inspect}>"
+    end
   end
 end

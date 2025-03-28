@@ -52,5 +52,17 @@ module PagarmeApiSdk
       CreateLocationRequest.new(latitude,
                                 longitude)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} latitude: #{@latitude}, longitude: #{@longitude}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} latitude: #{@latitude.inspect}, longitude: #{@longitude.inspect}>"
+    end
   end
 end

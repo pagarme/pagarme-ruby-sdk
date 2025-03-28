@@ -133,5 +133,22 @@ module PagarmeApiSdk
     def to_custom_due_at
       DateTimeHelper.to_rfc3339(due_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} code: #{@code}, amount: #{@amount}, customer_id: #{@customer_id}, customer:"\
+      " #{@customer}, payment: #{@payment}, metadata: #{@metadata}, due_at: #{@due_at}, antifraud:"\
+      " #{@antifraud}, order_id: #{@order_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} code: #{@code.inspect}, amount: #{@amount.inspect}, customer_id:"\
+      " #{@customer_id.inspect}, customer: #{@customer.inspect}, payment: #{@payment.inspect},"\
+      " metadata: #{@metadata.inspect}, due_at: #{@due_at.inspect}, antifraud:"\
+      " #{@antifraud.inspect}, order_id: #{@order_id.inspect}>"
+    end
   end
 end

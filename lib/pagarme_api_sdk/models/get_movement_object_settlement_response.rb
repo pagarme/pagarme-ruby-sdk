@@ -171,5 +171,28 @@ module PagarmeApiSdk
                                               charge_id,
                                               gateway_id)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      super_string = super().sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, product: #{@product}, brand: #{@brand}, payment_date:"\
+      " #{@payment_date}, recipient_id: #{@recipient_id}, document_type: #{@document_type},"\
+      " document: #{@document}, contract_obligation_id: #{@contract_obligation_id},"\
+      " liquidation_arrangement_id: #{@liquidation_arrangement_id}, external_engine_payment_id:"\
+      " #{@external_engine_payment_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      super_string = super().inspect.sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, product: #{@product.inspect}, brand: #{@brand.inspect},"\
+      " payment_date: #{@payment_date.inspect}, recipient_id: #{@recipient_id.inspect},"\
+      " document_type: #{@document_type.inspect}, document: #{@document.inspect},"\
+      " contract_obligation_id: #{@contract_obligation_id.inspect}, liquidation_arrangement_id:"\
+      " #{@liquidation_arrangement_id.inspect}, external_engine_payment_id:"\
+      " #{@external_engine_payment_id.inspect}>"
+    end
   end
 end

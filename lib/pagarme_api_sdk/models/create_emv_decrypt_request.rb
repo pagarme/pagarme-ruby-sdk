@@ -72,5 +72,19 @@ module PagarmeApiSdk
                                   data,
                                   poi)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} icc_data: #{@icc_data}, card_sequence_number: #{@card_sequence_number},"\
+      " data: #{@data}, poi: #{@poi}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} icc_data: #{@icc_data.inspect}, card_sequence_number:"\
+      " #{@card_sequence_number.inspect}, data: #{@data.inspect}, poi: #{@poi.inspect}>"
+    end
   end
 end

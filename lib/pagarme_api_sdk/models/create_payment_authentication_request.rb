@@ -53,5 +53,17 @@ module PagarmeApiSdk
       CreatePaymentAuthenticationRequest.new(type,
                                              threed_secure)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} type: #{@type}, threed_secure: #{@threed_secure}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} type: #{@type.inspect}, threed_secure: #{@threed_secure.inspect}>"
+    end
   end
 end

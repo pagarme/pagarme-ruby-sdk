@@ -242,5 +242,29 @@ module PagarmeApiSdk
     def to_custom_deleted_at
       DateTimeHelper.to_rfc3339(deleted_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, last_four_digits: #{@last_four_digits}, brand: #{@brand},"\
+      " holder_name: #{@holder_name}, exp_month: #{@exp_month}, exp_year: #{@exp_year}, status:"\
+      " #{@status}, created_at: #{@created_at}, updated_at: #{@updated_at}, billing_address:"\
+      " #{@billing_address}, customer: #{@customer}, metadata: #{@metadata}, type: #{@type},"\
+      " holder_document: #{@holder_document}, deleted_at: #{@deleted_at}, first_six_digits:"\
+      " #{@first_six_digits}, label: #{@label}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, last_four_digits: #{@last_four_digits.inspect}, brand:"\
+      " #{@brand.inspect}, holder_name: #{@holder_name.inspect}, exp_month: #{@exp_month.inspect},"\
+      " exp_year: #{@exp_year.inspect}, status: #{@status.inspect}, created_at:"\
+      " #{@created_at.inspect}, updated_at: #{@updated_at.inspect}, billing_address:"\
+      " #{@billing_address.inspect}, customer: #{@customer.inspect}, metadata:"\
+      " #{@metadata.inspect}, type: #{@type.inspect}, holder_document:"\
+      " #{@holder_document.inspect}, deleted_at: #{@deleted_at.inspect}, first_six_digits:"\
+      " #{@first_six_digits.inspect}, label: #{@label.inspect}>"
+    end
   end
 end

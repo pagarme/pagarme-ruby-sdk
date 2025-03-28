@@ -333,5 +333,36 @@ module PagarmeApiSdk
                                           fine,
                                           max_days_to_pay_past_due)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      super_string = super().sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, statement_descriptor: #{@statement_descriptor},"\
+      " acquirer_name: #{@acquirer_name}, acquirer_affiliation_code:"\
+      " #{@acquirer_affiliation_code}, acquirer_tid: #{@acquirer_tid}, acquirer_nsu:"\
+      " #{@acquirer_nsu}, acquirer_auth_code: #{@acquirer_auth_code}, operation_type:"\
+      " #{@operation_type}, card: #{@card}, acquirer_message: #{@acquirer_message},"\
+      " acquirer_return_code: #{@acquirer_return_code}, mpi: #{@mpi}, eci: #{@eci},"\
+      " authentication_type: #{@authentication_type}, threed_authentication_url:"\
+      " #{@threed_authentication_url}, funding_source: #{@funding_source}, retry_info:"\
+      " #{@retry_info}, brand_id: #{@brand_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      super_string = super().inspect.sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, statement_descriptor: #{@statement_descriptor.inspect},"\
+      " acquirer_name: #{@acquirer_name.inspect}, acquirer_affiliation_code:"\
+      " #{@acquirer_affiliation_code.inspect}, acquirer_tid: #{@acquirer_tid.inspect},"\
+      " acquirer_nsu: #{@acquirer_nsu.inspect}, acquirer_auth_code:"\
+      " #{@acquirer_auth_code.inspect}, operation_type: #{@operation_type.inspect}, card:"\
+      " #{@card.inspect}, acquirer_message: #{@acquirer_message.inspect}, acquirer_return_code:"\
+      " #{@acquirer_return_code.inspect}, mpi: #{@mpi.inspect}, eci: #{@eci.inspect},"\
+      " authentication_type: #{@authentication_type.inspect}, threed_authentication_url:"\
+      " #{@threed_authentication_url.inspect}, funding_source: #{@funding_source.inspect},"\
+      " retry_info: #{@retry_info.inspect}, brand_id: #{@brand_id.inspect}>"
+    end
   end
 end

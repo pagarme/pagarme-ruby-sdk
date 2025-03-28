@@ -38,5 +38,18 @@ module PagarmeApiSdk
       @errors = hash.key?('errors') ? hash['errors'] : nil
       @request = hash.key?('request') ? hash['request'] : nil
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} message: #{@message}, errors: #{@errors}, request: #{@request}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} message: #{@message.inspect}, errors: #{@errors.inspect}, request:"\
+      " #{@request.inspect}>"
+    end
   end
 end

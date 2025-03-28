@@ -310,5 +310,36 @@ module PagarmeApiSdk
     def to_custom_created_at
       DateTimeHelper.to_rfc3339(created_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, status: #{@status}, amount: #{@amount}, fee: #{@fee},"\
+      " anticipation_fee: #{@anticipation_fee}, fraud_coverage_fee: #{@fraud_coverage_fee},"\
+      " installment: #{@installment}, gateway_id: #{@gateway_id}, charge_id: #{@charge_id},"\
+      " split_id: #{@split_id}, bulk_anticipation_id: #{@bulk_anticipation_id}, anticipation_id:"\
+      " #{@anticipation_id}, recipient_id: #{@recipient_id}, originator_model:"\
+      " #{@originator_model}, originator_model_id: #{@originator_model_id}, payment_date:"\
+      " #{@payment_date}, original_payment_date: #{@original_payment_date}, type: #{@type},"\
+      " payment_method: #{@payment_method}, accrual_at: #{@accrual_at}, created_at:"\
+      " #{@created_at}, liquidation_arrangement_id: #{@liquidation_arrangement_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, status: #{@status.inspect}, amount: #{@amount.inspect},"\
+      " fee: #{@fee.inspect}, anticipation_fee: #{@anticipation_fee.inspect}, fraud_coverage_fee:"\
+      " #{@fraud_coverage_fee.inspect}, installment: #{@installment.inspect}, gateway_id:"\
+      " #{@gateway_id.inspect}, charge_id: #{@charge_id.inspect}, split_id: #{@split_id.inspect},"\
+      " bulk_anticipation_id: #{@bulk_anticipation_id.inspect}, anticipation_id:"\
+      " #{@anticipation_id.inspect}, recipient_id: #{@recipient_id.inspect}, originator_model:"\
+      " #{@originator_model.inspect}, originator_model_id: #{@originator_model_id.inspect},"\
+      " payment_date: #{@payment_date.inspect}, original_payment_date:"\
+      " #{@original_payment_date.inspect}, type: #{@type.inspect}, payment_method:"\
+      " #{@payment_method.inspect}, accrual_at: #{@accrual_at.inspect}, created_at:"\
+      " #{@created_at.inspect}, liquidation_arrangement_id:"\
+      " #{@liquidation_arrangement_id.inspect}>"
+    end
   end
 end

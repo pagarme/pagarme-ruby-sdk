@@ -89,5 +89,19 @@ module PagarmeApiSdk
                                       created_at,
                                       updated_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} gateway: #{@gateway}, status: #{@status}, pgid: #{@pgid}, created_at:"\
+      " #{@created_at}, updated_at: #{@updated_at}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} gateway: #{@gateway.inspect}, status: #{@status.inspect}, pgid:"\
+      " #{@pgid.inspect}, created_at: #{@created_at.inspect}, updated_at: #{@updated_at.inspect}>"
+    end
   end
 end

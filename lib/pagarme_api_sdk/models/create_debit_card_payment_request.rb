@@ -135,5 +135,24 @@ module PagarmeApiSdk
                                         recurrence_model,
                                         payment_origin)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} statement_descriptor: #{@statement_descriptor}, card: #{@card}, card_id:"\
+      " #{@card_id}, card_token: #{@card_token}, recurrence: #{@recurrence}, authentication:"\
+      " #{@authentication}, token: #{@token}, initiated_type: #{@initiated_type},"\
+      " recurrence_model: #{@recurrence_model}, payment_origin: #{@payment_origin}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} statement_descriptor: #{@statement_descriptor.inspect}, card:"\
+      " #{@card.inspect}, card_id: #{@card_id.inspect}, card_token: #{@card_token.inspect},"\
+      " recurrence: #{@recurrence.inspect}, authentication: #{@authentication.inspect}, token:"\
+      " #{@token.inspect}, initiated_type: #{@initiated_type.inspect}, recurrence_model:"\
+      " #{@recurrence_model.inspect}, payment_origin: #{@payment_origin.inspect}>"
+    end
   end
 end

@@ -381,5 +381,43 @@ module PagarmeApiSdk
     def to_custom_start_at
       DateTimeHelper.to_rfc3339(start_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} customer: #{@customer}, card: #{@card}, code: #{@code}, payment_method:"\
+      " #{@payment_method}, billing_type: #{@billing_type}, statement_descriptor:"\
+      " #{@statement_descriptor}, description: #{@description}, currency: #{@currency}, interval:"\
+      " #{@interval}, interval_count: #{@interval_count}, pricing_scheme: #{@pricing_scheme},"\
+      " items: #{@items}, shipping: #{@shipping}, discounts: #{@discounts}, metadata:"\
+      " #{@metadata}, setup: #{@setup}, plan_id: #{@plan_id}, customer_id: #{@customer_id},"\
+      " card_id: #{@card_id}, billing_day: #{@billing_day}, installments: #{@installments},"\
+      " start_at: #{@start_at}, minimum_price: #{@minimum_price}, cycles: #{@cycles}, card_token:"\
+      " #{@card_token}, gateway_affiliation_id: #{@gateway_affiliation_id}, quantity:"\
+      " #{@quantity}, boleto_due_days: #{@boleto_due_days}, increments: #{@increments}, period:"\
+      " #{@period}, submerchant: #{@submerchant}, split: #{@split}, boleto: #{@boleto},"\
+      " indirect_acceptor: #{@indirect_acceptor}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} customer: #{@customer.inspect}, card: #{@card.inspect}, code:"\
+      " #{@code.inspect}, payment_method: #{@payment_method.inspect}, billing_type:"\
+      " #{@billing_type.inspect}, statement_descriptor: #{@statement_descriptor.inspect},"\
+      " description: #{@description.inspect}, currency: #{@currency.inspect}, interval:"\
+      " #{@interval.inspect}, interval_count: #{@interval_count.inspect}, pricing_scheme:"\
+      " #{@pricing_scheme.inspect}, items: #{@items.inspect}, shipping: #{@shipping.inspect},"\
+      " discounts: #{@discounts.inspect}, metadata: #{@metadata.inspect}, setup:"\
+      " #{@setup.inspect}, plan_id: #{@plan_id.inspect}, customer_id: #{@customer_id.inspect},"\
+      " card_id: #{@card_id.inspect}, billing_day: #{@billing_day.inspect}, installments:"\
+      " #{@installments.inspect}, start_at: #{@start_at.inspect}, minimum_price:"\
+      " #{@minimum_price.inspect}, cycles: #{@cycles.inspect}, card_token: #{@card_token.inspect},"\
+      " gateway_affiliation_id: #{@gateway_affiliation_id.inspect}, quantity:"\
+      " #{@quantity.inspect}, boleto_due_days: #{@boleto_due_days.inspect}, increments:"\
+      " #{@increments.inspect}, period: #{@period.inspect}, submerchant: #{@submerchant.inspect},"\
+      " split: #{@split.inspect}, boleto: #{@boleto.inspect}, indirect_acceptor:"\
+      " #{@indirect_acceptor.inspect}>"
+    end
   end
 end

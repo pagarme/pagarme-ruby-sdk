@@ -59,5 +59,18 @@ module PagarmeApiSdk
       GetAnticipationLimitResponse.new(amount,
                                        anticipation_fee)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} amount: #{@amount}, anticipation_fee: #{@anticipation_fee}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} amount: #{@amount.inspect}, anticipation_fee:"\
+      " #{@anticipation_fee.inspect}>"
+    end
   end
 end

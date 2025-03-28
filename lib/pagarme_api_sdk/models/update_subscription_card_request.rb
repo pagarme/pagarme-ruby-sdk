@@ -63,5 +63,19 @@ module PagarmeApiSdk
                                         card_id,
                                         indirect_acceptor)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card}, card_id: #{@card_id}, indirect_acceptor:"\
+      " #{@indirect_acceptor}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card.inspect}, card_id: #{@card_id.inspect}, indirect_acceptor:"\
+      " #{@indirect_acceptor.inspect}>"
+    end
   end
 end

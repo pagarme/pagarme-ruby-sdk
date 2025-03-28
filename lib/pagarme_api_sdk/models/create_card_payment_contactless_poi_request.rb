@@ -78,5 +78,20 @@ module PagarmeApiSdk
                                                  serial_number,
                                                  version_number)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} system_name: #{@system_name}, model: #{@model}, provider: #{@provider},"\
+      " serial_number: #{@serial_number}, version_number: #{@version_number}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} system_name: #{@system_name.inspect}, model: #{@model.inspect}, provider:"\
+      " #{@provider.inspect}, serial_number: #{@serial_number.inspect}, version_number:"\
+      " #{@version_number.inspect}>"
+    end
   end
 end

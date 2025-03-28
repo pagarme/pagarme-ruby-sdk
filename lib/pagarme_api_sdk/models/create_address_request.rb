@@ -132,5 +132,24 @@ module PagarmeApiSdk
                                line_2,
                                metadata)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} street: #{@street}, number: #{@number}, zip_code: #{@zip_code},"\
+      " neighborhood: #{@neighborhood}, city: #{@city}, state: #{@state}, country: #{@country},"\
+      " complement: #{@complement}, metadata: #{@metadata}, line_1: #{@line_1}, line_2:"\
+      " #{@line_2}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} street: #{@street.inspect}, number: #{@number.inspect}, zip_code:"\
+      " #{@zip_code.inspect}, neighborhood: #{@neighborhood.inspect}, city: #{@city.inspect},"\
+      " state: #{@state.inspect}, country: #{@country.inspect}, complement:"\
+      " #{@complement.inspect}, metadata: #{@metadata.inspect}, line_1: #{@line_1.inspect},"\
+      " line_2: #{@line_2.inspect}>"
+    end
   end
 end

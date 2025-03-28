@@ -72,5 +72,19 @@ module PagarmeApiSdk
                                               google_pay,
                                               emv)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} type: #{@type}, apple_pay: #{@apple_pay}, google_pay: #{@google_pay}, emv:"\
+      " #{@emv}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} type: #{@type.inspect}, apple_pay: #{@apple_pay.inspect}, google_pay:"\
+      " #{@google_pay.inspect}, emv: #{@emv.inspect}>"
+    end
   end
 end

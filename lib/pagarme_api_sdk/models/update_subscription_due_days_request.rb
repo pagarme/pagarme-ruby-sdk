@@ -45,5 +45,17 @@ module PagarmeApiSdk
       # Create object from extracted values.
       UpdateSubscriptionDueDaysRequest.new(boleto_due_days)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} boleto_due_days: #{@boleto_due_days}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} boleto_due_days: #{@boleto_due_days.inspect}>"
+    end
   end
 end

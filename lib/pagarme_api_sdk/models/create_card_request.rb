@@ -188,5 +188,27 @@ module PagarmeApiSdk
                             id,
                             token)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} number: #{@number}, holder_name: #{@holder_name}, exp_month: #{@exp_month},"\
+      " exp_year: #{@exp_year}, cvv: #{@cvv}, billing_address: #{@billing_address}, brand:"\
+      " #{@brand}, billing_address_id: #{@billing_address_id}, metadata: #{@metadata}, type:"\
+      " #{@type}, options: #{@options}, holder_document: #{@holder_document}, private_label:"\
+      " #{@private_label}, label: #{@label}, id: #{@id}, token: #{@token}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} number: #{@number.inspect}, holder_name: #{@holder_name.inspect},"\
+      " exp_month: #{@exp_month.inspect}, exp_year: #{@exp_year.inspect}, cvv: #{@cvv.inspect},"\
+      " billing_address: #{@billing_address.inspect}, brand: #{@brand.inspect},"\
+      " billing_address_id: #{@billing_address_id.inspect}, metadata: #{@metadata.inspect}, type:"\
+      " #{@type.inspect}, options: #{@options.inspect}, holder_document:"\
+      " #{@holder_document.inspect}, private_label: #{@private_label.inspect}, label:"\
+      " #{@label.inspect}, id: #{@id.inspect}, token: #{@token.inspect}>"
+    end
   end
 end

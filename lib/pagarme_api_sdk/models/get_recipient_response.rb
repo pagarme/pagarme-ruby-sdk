@@ -268,5 +268,31 @@ module PagarmeApiSdk
     def to_custom_deleted_at
       DateTimeHelper.to_rfc3339(deleted_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, name: #{@name}, email: #{@email}, document: #{@document},"\
+      " description: #{@description}, type: #{@type}, status: #{@status}, created_at:"\
+      " #{@created_at}, updated_at: #{@updated_at}, deleted_at: #{@deleted_at},"\
+      " default_bank_account: #{@default_bank_account}, gateway_recipients:"\
+      " #{@gateway_recipients}, metadata: #{@metadata}, automatic_anticipation_settings:"\
+      " #{@automatic_anticipation_settings}, transfer_settings: #{@transfer_settings}, code:"\
+      " #{@code}, payment_mode: #{@payment_mode}, register_information: #{@register_information}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, name: #{@name.inspect}, email: #{@email.inspect},"\
+      " document: #{@document.inspect}, description: #{@description.inspect}, type:"\
+      " #{@type.inspect}, status: #{@status.inspect}, created_at: #{@created_at.inspect},"\
+      " updated_at: #{@updated_at.inspect}, deleted_at: #{@deleted_at.inspect},"\
+      " default_bank_account: #{@default_bank_account.inspect}, gateway_recipients:"\
+      " #{@gateway_recipients.inspect}, metadata: #{@metadata.inspect},"\
+      " automatic_anticipation_settings: #{@automatic_anticipation_settings.inspect},"\
+      " transfer_settings: #{@transfer_settings.inspect}, code: #{@code.inspect}, payment_mode:"\
+      " #{@payment_mode.inspect}, register_information: #{@register_information.inspect}>"
+    end
   end
 end

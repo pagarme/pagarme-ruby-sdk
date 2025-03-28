@@ -193,5 +193,22 @@ module PagarmeApiSdk
     def to_custom_paid_at
       DateTimeHelper.to_rfc3339(paid_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      super_string = super().sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, url: #{@url}, bank_tid: #{@bank_tid}, bank: #{@bank},"\
+      " paid_at: #{@paid_at}, paid_amount: #{@paid_amount}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      super_string = super().inspect.sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, url: #{@url.inspect}, bank_tid: #{@bank_tid.inspect},"\
+      " bank: #{@bank.inspect}, paid_at: #{@paid_at.inspect}, paid_amount:"\
+      " #{@paid_amount.inspect}>"
+    end
   end
 end

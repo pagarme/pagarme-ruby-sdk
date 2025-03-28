@@ -74,5 +74,21 @@ module PagarmeApiSdk
     def to_custom_transaction_date_limit
       DateTimeHelper.to_rfc3339(transaction_date_limit)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_failure_return_code: #{@brand_failure_return_code},"\
+      " transaction_limit: #{@transaction_limit}, transaction_date_limit:"\
+      " #{@transaction_date_limit}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_failure_return_code: #{@brand_failure_return_code.inspect},"\
+      " transaction_limit: #{@transaction_limit.inspect}, transaction_date_limit:"\
+      " #{@transaction_date_limit.inspect}>"
+    end
   end
 end

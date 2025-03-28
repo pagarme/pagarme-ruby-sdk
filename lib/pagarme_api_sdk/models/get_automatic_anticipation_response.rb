@@ -90,5 +90,19 @@ module PagarmeApiSdk
                                            delay,
                                            days)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} enabled: #{@enabled}, type: #{@type}, volume_percentage:"\
+      " #{@volume_percentage}, delay: #{@delay}, days: #{@days}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} enabled: #{@enabled.inspect}, type: #{@type.inspect}, volume_percentage:"\
+      " #{@volume_percentage.inspect}, delay: #{@delay.inspect}, days: #{@days.inspect}>"
+    end
   end
 end

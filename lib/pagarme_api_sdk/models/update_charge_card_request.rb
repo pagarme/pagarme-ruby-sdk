@@ -113,5 +113,24 @@ module PagarmeApiSdk
                                   payment_origin,
                                   indirect_acceptor)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} update_subscription: #{@update_subscription}, card_id: #{@card_id}, card:"\
+      " #{@card}, recurrence: #{@recurrence}, initiated_type: #{@initiated_type},"\
+      " recurrence_model: #{@recurrence_model}, payment_origin: #{@payment_origin},"\
+      " indirect_acceptor: #{@indirect_acceptor}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} update_subscription: #{@update_subscription.inspect}, card_id:"\
+      " #{@card_id.inspect}, card: #{@card.inspect}, recurrence: #{@recurrence.inspect},"\
+      " initiated_type: #{@initiated_type.inspect}, recurrence_model:"\
+      " #{@recurrence_model.inspect}, payment_origin: #{@payment_origin.inspect},"\
+      " indirect_acceptor: #{@indirect_acceptor.inspect}>"
+    end
   end
 end

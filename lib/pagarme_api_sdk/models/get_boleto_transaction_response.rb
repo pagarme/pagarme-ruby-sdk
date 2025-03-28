@@ -342,5 +342,31 @@ module PagarmeApiSdk
     def to_custom_credit_at
       DateTimeHelper.to_rfc3339(credit_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      super_string = super().sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, url: #{@url}, barcode: #{@barcode}, nosso_numero:"\
+      " #{@nosso_numero}, bank: #{@bank}, document_number: #{@document_number}, instructions:"\
+      " #{@instructions}, billing_address: #{@billing_address}, due_at: #{@due_at}, qr_code:"\
+      " #{@qr_code}, line: #{@line}, pdf_password: #{@pdf_password}, pdf: #{@pdf}, paid_at:"\
+      " #{@paid_at}, paid_amount: #{@paid_amount}, type: #{@type}, credit_at: #{@credit_at},"\
+      " statement_descriptor: #{@statement_descriptor}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      super_string = super().inspect.sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, url: #{@url.inspect}, barcode: #{@barcode.inspect},"\
+      " nosso_numero: #{@nosso_numero.inspect}, bank: #{@bank.inspect}, document_number:"\
+      " #{@document_number.inspect}, instructions: #{@instructions.inspect}, billing_address:"\
+      " #{@billing_address.inspect}, due_at: #{@due_at.inspect}, qr_code: #{@qr_code.inspect},"\
+      " line: #{@line.inspect}, pdf_password: #{@pdf_password.inspect}, pdf: #{@pdf.inspect},"\
+      " paid_at: #{@paid_at.inspect}, paid_amount: #{@paid_amount.inspect}, type:"\
+      " #{@type.inspect}, credit_at: #{@credit_at.inspect}, statement_descriptor:"\
+      " #{@statement_descriptor.inspect}>"
+    end
   end
 end

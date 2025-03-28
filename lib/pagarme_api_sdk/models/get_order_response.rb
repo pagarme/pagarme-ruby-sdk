@@ -306,5 +306,29 @@ module PagarmeApiSdk
     def to_custom_closed_at
       DateTimeHelper.to_rfc3339(closed_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, code: #{@code}, amount: #{@amount}, currency: #{@currency},"\
+      " closed: #{@closed}, items: #{@items}, customer: #{@customer}, status: #{@status},"\
+      " created_at: #{@created_at}, updated_at: #{@updated_at}, closed_at: #{@closed_at}, charges:"\
+      " #{@charges}, invoice_url: #{@invoice_url}, shipping: #{@shipping}, metadata: #{@metadata},"\
+      " checkouts: #{@checkouts}, ip: #{@ip}, session_id: #{@session_id}, location: #{@location},"\
+      " device: #{@device}, integration: #{@integration}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, code: #{@code.inspect}, amount: #{@amount.inspect},"\
+      " currency: #{@currency.inspect}, closed: #{@closed.inspect}, items: #{@items.inspect},"\
+      " customer: #{@customer.inspect}, status: #{@status.inspect}, created_at:"\
+      " #{@created_at.inspect}, updated_at: #{@updated_at.inspect}, closed_at:"\
+      " #{@closed_at.inspect}, charges: #{@charges.inspect}, invoice_url: #{@invoice_url.inspect},"\
+      " shipping: #{@shipping.inspect}, metadata: #{@metadata.inspect}, checkouts:"\
+      " #{@checkouts.inspect}, ip: #{@ip.inspect}, session_id: #{@session_id.inspect}, location:"\
+      " #{@location.inspect}, device: #{@device.inspect}, integration: #{@integration.inspect}>"
+    end
   end
 end

@@ -434,5 +434,41 @@ module PagarmeApiSdk
     def to_custom_canceled_at
       DateTimeHelper.to_rfc3339(canceled_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, code: #{@code}, start_at: #{@start_at}, interval: #{@interval},"\
+      " interval_count: #{@interval_count}, billing_type: #{@billing_type}, current_cycle:"\
+      " #{@current_cycle}, payment_method: #{@payment_method}, currency: #{@currency},"\
+      " installments: #{@installments}, status: #{@status}, created_at: #{@created_at},"\
+      " updated_at: #{@updated_at}, customer: #{@customer}, card: #{@card}, items: #{@items},"\
+      " statement_descriptor: #{@statement_descriptor}, metadata: #{@metadata}, setup: #{@setup},"\
+      " gateway_affiliation_id: #{@gateway_affiliation_id}, next_billing_at: #{@next_billing_at},"\
+      " billing_day: #{@billing_day}, minimum_price: #{@minimum_price}, canceled_at:"\
+      " #{@canceled_at}, discounts: #{@discounts}, increments: #{@increments}, boleto_due_days:"\
+      " #{@boleto_due_days}, split: #{@split}, boleto: #{@boleto}, manual_billing:"\
+      " #{@manual_billing}, indirect_acceptor: #{@indirect_acceptor}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, code: #{@code.inspect}, start_at: #{@start_at.inspect},"\
+      " interval: #{@interval.inspect}, interval_count: #{@interval_count.inspect}, billing_type:"\
+      " #{@billing_type.inspect}, current_cycle: #{@current_cycle.inspect}, payment_method:"\
+      " #{@payment_method.inspect}, currency: #{@currency.inspect}, installments:"\
+      " #{@installments.inspect}, status: #{@status.inspect}, created_at: #{@created_at.inspect},"\
+      " updated_at: #{@updated_at.inspect}, customer: #{@customer.inspect}, card:"\
+      " #{@card.inspect}, items: #{@items.inspect}, statement_descriptor:"\
+      " #{@statement_descriptor.inspect}, metadata: #{@metadata.inspect}, setup:"\
+      " #{@setup.inspect}, gateway_affiliation_id: #{@gateway_affiliation_id.inspect},"\
+      " next_billing_at: #{@next_billing_at.inspect}, billing_day: #{@billing_day.inspect},"\
+      " minimum_price: #{@minimum_price.inspect}, canceled_at: #{@canceled_at.inspect}, discounts:"\
+      " #{@discounts.inspect}, increments: #{@increments.inspect}, boleto_due_days:"\
+      " #{@boleto_due_days.inspect}, split: #{@split.inspect}, boleto: #{@boleto.inspect},"\
+      " manual_billing: #{@manual_billing.inspect}, indirect_acceptor:"\
+      " #{@indirect_acceptor.inspect}>"
+    end
   end
 end

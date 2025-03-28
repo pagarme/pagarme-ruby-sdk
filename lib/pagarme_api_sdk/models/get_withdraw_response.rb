@@ -205,5 +205,25 @@ module PagarmeApiSdk
     def to_custom_funding_estimated_date
       DateTimeHelper.to_rfc3339(funding_estimated_date)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, gateway_id: #{@gateway_id}, amount: #{@amount}, status:"\
+      " #{@status}, created_at: #{@created_at}, updated_at: #{@updated_at}, metadata:"\
+      " #{@metadata}, fee: #{@fee}, funding_date: #{@funding_date}, funding_estimated_date:"\
+      " #{@funding_estimated_date}, type: #{@type}, source: #{@source}, target: #{@target}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, gateway_id: #{@gateway_id.inspect}, amount:"\
+      " #{@amount.inspect}, status: #{@status.inspect}, created_at: #{@created_at.inspect},"\
+      " updated_at: #{@updated_at.inspect}, metadata: #{@metadata.inspect}, fee: #{@fee.inspect},"\
+      " funding_date: #{@funding_date.inspect}, funding_estimated_date:"\
+      " #{@funding_estimated_date.inspect}, type: #{@type.inspect}, source: #{@source.inspect},"\
+      " target: #{@target.inspect}>"
+    end
   end
 end

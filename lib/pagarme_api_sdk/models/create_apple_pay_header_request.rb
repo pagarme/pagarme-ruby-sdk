@@ -67,5 +67,19 @@ module PagarmeApiSdk
                                       public_key_hash,
                                       transaction_id)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} public_key_hash: #{@public_key_hash}, ephemeral_public_key:"\
+      " #{@ephemeral_public_key}, transaction_id: #{@transaction_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} public_key_hash: #{@public_key_hash.inspect}, ephemeral_public_key:"\
+      " #{@ephemeral_public_key.inspect}, transaction_id: #{@transaction_id.inspect}>"
+    end
   end
 end

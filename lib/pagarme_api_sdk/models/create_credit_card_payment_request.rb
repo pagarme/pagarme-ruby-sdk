@@ -238,5 +238,36 @@ module PagarmeApiSdk
                                          payment_origin,
                                          indirect_acceptor)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} installments: #{@installments}, statement_descriptor:"\
+      " #{@statement_descriptor}, card: #{@card}, card_id: #{@card_id}, card_token:"\
+      " #{@card_token}, recurrence: #{@recurrence}, capture: #{@capture}, extended_limit_enabled:"\
+      " #{@extended_limit_enabled}, extended_limit_code: #{@extended_limit_code},"\
+      " merchant_category_code: #{@merchant_category_code}, authentication: #{@authentication},"\
+      " contactless: #{@contactless}, auto_recovery: #{@auto_recovery}, operation_type:"\
+      " #{@operation_type}, recurrency_cycle: #{@recurrency_cycle}, payload: #{@payload},"\
+      " initiated_type: #{@initiated_type}, recurrence_model: #{@recurrence_model},"\
+      " payment_origin: #{@payment_origin}, indirect_acceptor: #{@indirect_acceptor}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} installments: #{@installments.inspect}, statement_descriptor:"\
+      " #{@statement_descriptor.inspect}, card: #{@card.inspect}, card_id: #{@card_id.inspect},"\
+      " card_token: #{@card_token.inspect}, recurrence: #{@recurrence.inspect}, capture:"\
+      " #{@capture.inspect}, extended_limit_enabled: #{@extended_limit_enabled.inspect},"\
+      " extended_limit_code: #{@extended_limit_code.inspect}, merchant_category_code:"\
+      " #{@merchant_category_code.inspect}, authentication: #{@authentication.inspect},"\
+      " contactless: #{@contactless.inspect}, auto_recovery: #{@auto_recovery.inspect},"\
+      " operation_type: #{@operation_type.inspect}, recurrency_cycle:"\
+      " #{@recurrency_cycle.inspect}, payload: #{@payload.inspect}, initiated_type:"\
+      " #{@initiated_type.inspect}, recurrence_model: #{@recurrence_model.inspect},"\
+      " payment_origin: #{@payment_origin.inspect}, indirect_acceptor:"\
+      " #{@indirect_acceptor.inspect}>"
+    end
   end
 end

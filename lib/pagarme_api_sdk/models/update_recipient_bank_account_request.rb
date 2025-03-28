@@ -53,5 +53,18 @@ module PagarmeApiSdk
       UpdateRecipientBankAccountRequest.new(bank_account,
                                             payment_mode)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} bank_account: #{@bank_account}, payment_mode: #{@payment_mode}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} bank_account: #{@bank_account.inspect}, payment_mode:"\
+      " #{@payment_mode.inspect}>"
+    end
   end
 end

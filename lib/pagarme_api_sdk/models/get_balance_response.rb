@@ -92,5 +92,21 @@ module PagarmeApiSdk
                              transferred_amount,
                              waiting_funds_amount)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} currency: #{@currency}, available_amount: #{@available_amount}, recipient:"\
+      " #{@recipient}, transferred_amount: #{@transferred_amount}, waiting_funds_amount:"\
+      " #{@waiting_funds_amount}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} currency: #{@currency.inspect}, available_amount:"\
+      " #{@available_amount.inspect}, recipient: #{@recipient.inspect}, transferred_amount:"\
+      " #{@transferred_amount.inspect}, waiting_funds_amount: #{@waiting_funds_amount.inspect}>"
+    end
   end
 end

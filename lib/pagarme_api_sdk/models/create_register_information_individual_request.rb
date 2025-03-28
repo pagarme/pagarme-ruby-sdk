@@ -122,5 +122,24 @@ module PagarmeApiSdk
                                                      mother_name,
                                                      site_url)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      super_string = super().sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, name: #{@name}, mother_name: #{@mother_name}, birthdate:"\
+      " #{@birthdate}, monthly_income: #{@monthly_income}, professional_occupation:"\
+      " #{@professional_occupation}, address: #{@address}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      super_string = super().inspect.sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, name: #{@name.inspect}, mother_name:"\
+      " #{@mother_name.inspect}, birthdate: #{@birthdate.inspect}, monthly_income:"\
+      " #{@monthly_income.inspect}, professional_occupation: #{@professional_occupation.inspect},"\
+      " address: #{@address.inspect}>"
+    end
   end
 end

@@ -167,5 +167,26 @@ module PagarmeApiSdk
     def to_custom_due_at
       DateTimeHelper.to_rfc3339(due_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} retries: #{@retries}, bank: #{@bank}, instructions: #{@instructions},"\
+      " due_at: #{@due_at}, billing_address: #{@billing_address}, billing_address_id:"\
+      " #{@billing_address_id}, nosso_numero: #{@nosso_numero}, document_number:"\
+      " #{@document_number}, statement_descriptor: #{@statement_descriptor}, interest:"\
+      " #{@interest}, fine: #{@fine}, max_days_to_pay_past_due: #{@max_days_to_pay_past_due}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} retries: #{@retries.inspect}, bank: #{@bank.inspect}, instructions:"\
+      " #{@instructions.inspect}, due_at: #{@due_at.inspect}, billing_address:"\
+      " #{@billing_address.inspect}, billing_address_id: #{@billing_address_id.inspect},"\
+      " nosso_numero: #{@nosso_numero.inspect}, document_number: #{@document_number.inspect},"\
+      " statement_descriptor: #{@statement_descriptor.inspect}, interest: #{@interest.inspect},"\
+      " fine: #{@fine.inspect}, max_days_to_pay_past_due: #{@max_days_to_pay_past_due.inspect}>"
+    end
   end
 end
