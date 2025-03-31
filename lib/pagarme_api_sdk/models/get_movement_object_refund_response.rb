@@ -124,5 +124,25 @@ module PagarmeApiSdk
                                           charge_id,
                                           gateway_id)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      super_string = super().sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, fraud_coverage_fee: #{@fraud_coverage_fee},"\
+      " charge_fee_recipient_id: #{@charge_fee_recipient_id}, bank_account_id:"\
+      " #{@bank_account_id}, local_transaction_id: #{@local_transaction_id}, updated_at:"\
+      " #{@updated_at}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      super_string = super().inspect.sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, fraud_coverage_fee: #{@fraud_coverage_fee.inspect},"\
+      " charge_fee_recipient_id: #{@charge_fee_recipient_id.inspect}, bank_account_id:"\
+      " #{@bank_account_id.inspect}, local_transaction_id: #{@local_transaction_id.inspect},"\
+      " updated_at: #{@updated_at.inspect}>"
+    end
   end
 end

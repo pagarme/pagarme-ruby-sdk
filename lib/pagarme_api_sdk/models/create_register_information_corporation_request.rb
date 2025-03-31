@@ -152,5 +152,26 @@ module PagarmeApiSdk
                                                       cnae,
                                                       site_url)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      super_string = super().sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, company_name: #{@company_name}, trading_name:"\
+      " #{@trading_name}, annual_revenue: #{@annual_revenue}, corporation_type:"\
+      " #{@corporation_type}, founding_date: #{@founding_date}, cnae: #{@cnae}, managing_partners:"\
+      " #{@managing_partners}, main_address: #{@main_address}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      super_string = super().inspect.sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, company_name: #{@company_name.inspect}, trading_name:"\
+      " #{@trading_name.inspect}, annual_revenue: #{@annual_revenue.inspect}, corporation_type:"\
+      " #{@corporation_type.inspect}, founding_date: #{@founding_date.inspect}, cnae:"\
+      " #{@cnae.inspect}, managing_partners: #{@managing_partners.inspect}, main_address:"\
+      " #{@main_address.inspect}>"
+    end
   end
 end

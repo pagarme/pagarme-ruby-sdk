@@ -68,5 +68,19 @@ module PagarmeApiSdk
                            number,
                            area_code)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} country_code: #{@country_code}, number: #{@number}, area_code:"\
+      " #{@area_code}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} country_code: #{@country_code.inspect}, number: #{@number.inspect},"\
+      " area_code: #{@area_code.inspect}>"
+    end
   end
 end

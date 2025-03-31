@@ -209,5 +209,29 @@ module PagarmeApiSdk
                                private_label,
                                pix)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_method: #{@payment_method}, credit_card: #{@credit_card},"\
+      " debit_card: #{@debit_card}, boleto: #{@boleto}, currency: #{@currency}, voucher:"\
+      " #{@voucher}, split: #{@split}, bank_transfer: #{@bank_transfer}, gateway_affiliation_id:"\
+      " #{@gateway_affiliation_id}, amount: #{@amount}, checkout: #{@checkout}, customer_id:"\
+      " #{@customer_id}, customer: #{@customer}, metadata: #{@metadata}, cash: #{@cash},"\
+      " private_label: #{@private_label}, pix: #{@pix}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_method: #{@payment_method.inspect}, credit_card:"\
+      " #{@credit_card.inspect}, debit_card: #{@debit_card.inspect}, boleto: #{@boleto.inspect},"\
+      " currency: #{@currency.inspect}, voucher: #{@voucher.inspect}, split: #{@split.inspect},"\
+      " bank_transfer: #{@bank_transfer.inspect}, gateway_affiliation_id:"\
+      " #{@gateway_affiliation_id.inspect}, amount: #{@amount.inspect}, checkout:"\
+      " #{@checkout.inspect}, customer_id: #{@customer_id.inspect}, customer:"\
+      " #{@customer.inspect}, metadata: #{@metadata.inspect}, cash: #{@cash.inspect},"\
+      " private_label: #{@private_label.inspect}, pix: #{@pix.inspect}>"
+    end
   end
 end

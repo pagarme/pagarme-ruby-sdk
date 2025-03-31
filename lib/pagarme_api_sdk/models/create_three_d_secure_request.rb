@@ -102,5 +102,21 @@ module PagarmeApiSdk
                                     ds_transaction_id,
                                     version)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} mpi: #{@mpi}, cavv: #{@cavv}, eci: #{@eci}, transaction_id:"\
+      " #{@transaction_id}, success_url: #{@success_url}, ds_transaction_id:"\
+      " #{@ds_transaction_id}, version: #{@version}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} mpi: #{@mpi.inspect}, cavv: #{@cavv.inspect}, eci: #{@eci.inspect},"\
+      " transaction_id: #{@transaction_id.inspect}, success_url: #{@success_url.inspect},"\
+      " ds_transaction_id: #{@ds_transaction_id.inspect}, version: #{@version.inspect}>"
+    end
   end
 end

@@ -231,5 +231,28 @@ module PagarmeApiSdk
     def to_custom_deleted_at
       DateTimeHelper.to_rfc3339(deleted_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, holder_name: #{@holder_name}, holder_type: #{@holder_type},"\
+      " bank: #{@bank}, branch_number: #{@branch_number}, branch_check_digit:"\
+      " #{@branch_check_digit}, account_number: #{@account_number}, account_check_digit:"\
+      " #{@account_check_digit}, type: #{@type}, status: #{@status}, created_at: #{@created_at},"\
+      " updated_at: #{@updated_at}, deleted_at: #{@deleted_at}, recipient: #{@recipient},"\
+      " metadata: #{@metadata}, pix_key: #{@pix_key}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, holder_name: #{@holder_name.inspect}, holder_type:"\
+      " #{@holder_type.inspect}, bank: #{@bank.inspect}, branch_number: #{@branch_number.inspect},"\
+      " branch_check_digit: #{@branch_check_digit.inspect}, account_number:"\
+      " #{@account_number.inspect}, account_check_digit: #{@account_check_digit.inspect}, type:"\
+      " #{@type.inspect}, status: #{@status.inspect}, created_at: #{@created_at.inspect},"\
+      " updated_at: #{@updated_at.inspect}, deleted_at: #{@deleted_at.inspect}, recipient:"\
+      " #{@recipient.inspect}, metadata: #{@metadata.inspect}, pix_key: #{@pix_key.inspect}>"
+    end
   end
 end

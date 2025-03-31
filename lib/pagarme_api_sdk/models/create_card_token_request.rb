@@ -93,5 +93,20 @@ module PagarmeApiSdk
                                  brand,
                                  label)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} number: #{@number}, holder_name: #{@holder_name}, exp_month: #{@exp_month},"\
+      " exp_year: #{@exp_year}, cvv: #{@cvv}, brand: #{@brand}, label: #{@label}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} number: #{@number.inspect}, holder_name: #{@holder_name.inspect},"\
+      " exp_month: #{@exp_month.inspect}, exp_year: #{@exp_year.inspect}, cvv: #{@cvv.inspect},"\
+      " brand: #{@brand.inspect}, label: #{@label.inspect}>"
+    end
   end
 end

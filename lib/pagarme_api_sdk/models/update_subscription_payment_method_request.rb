@@ -93,5 +93,20 @@ module PagarmeApiSdk
                                                  boleto,
                                                  indirect_acceptor)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_method: #{@payment_method}, card_id: #{@card_id}, card: #{@card},"\
+      " card_token: #{@card_token}, boleto: #{@boleto}, indirect_acceptor: #{@indirect_acceptor}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_method: #{@payment_method.inspect}, card_id: #{@card_id.inspect},"\
+      " card: #{@card.inspect}, card_token: #{@card_token.inspect}, boleto: #{@boleto.inspect},"\
+      " indirect_acceptor: #{@indirect_acceptor.inspect}>"
+    end
   end
 end

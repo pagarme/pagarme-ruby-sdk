@@ -60,5 +60,19 @@ module PagarmeApiSdk
       GetCheckoutDebitCardPaymentResponse.new(statement_descriptor,
                                               authentication)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} statement_descriptor: #{@statement_descriptor}, authentication:"\
+      " #{@authentication}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} statement_descriptor: #{@statement_descriptor.inspect}, authentication:"\
+      " #{@authentication.inspect}>"
+    end
   end
 end

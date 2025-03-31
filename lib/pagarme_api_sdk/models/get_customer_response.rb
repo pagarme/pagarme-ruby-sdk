@@ -210,5 +210,26 @@ module PagarmeApiSdk
     def to_custom_updated_at
       DateTimeHelper.to_rfc3339(updated_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, name: #{@name}, email: #{@email}, delinquent: #{@delinquent},"\
+      " created_at: #{@created_at}, updated_at: #{@updated_at}, document: #{@document}, type:"\
+      " #{@type}, fb_access_token: #{@fb_access_token}, address: #{@address}, metadata:"\
+      " #{@metadata}, phones: #{@phones}, fb_id: #{@fb_id}, code: #{@code}, document_type:"\
+      " #{@document_type}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, name: #{@name.inspect}, email: #{@email.inspect},"\
+      " delinquent: #{@delinquent.inspect}, created_at: #{@created_at.inspect}, updated_at:"\
+      " #{@updated_at.inspect}, document: #{@document.inspect}, type: #{@type.inspect},"\
+      " fb_access_token: #{@fb_access_token.inspect}, address: #{@address.inspect}, metadata:"\
+      " #{@metadata.inspect}, phones: #{@phones.inspect}, fb_id: #{@fb_id.inspect}, code:"\
+      " #{@code.inspect}, document_type: #{@document_type.inspect}>"
+    end
   end
 end

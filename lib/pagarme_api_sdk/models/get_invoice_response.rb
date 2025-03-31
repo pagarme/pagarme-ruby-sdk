@@ -331,5 +331,33 @@ module PagarmeApiSdk
     def to_custom_seen_at
       DateTimeHelper.to_rfc3339(seen_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, code: #{@code}, url: #{@url}, amount: #{@amount}, status:"\
+      " #{@status}, payment_method: #{@payment_method}, created_at: #{@created_at}, items:"\
+      " #{@items}, customer: #{@customer}, charge: #{@charge}, installments: #{@installments},"\
+      " billing_address: #{@billing_address}, subscription: #{@subscription}, cycle: #{@cycle},"\
+      " shipping: #{@shipping}, metadata: #{@metadata}, due_at: #{@due_at}, canceled_at:"\
+      " #{@canceled_at}, billing_at: #{@billing_at}, seen_at: #{@seen_at}, total_discount:"\
+      " #{@total_discount}, total_increment: #{@total_increment}, subscription_id:"\
+      " #{@subscription_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, code: #{@code.inspect}, url: #{@url.inspect}, amount:"\
+      " #{@amount.inspect}, status: #{@status.inspect}, payment_method:"\
+      " #{@payment_method.inspect}, created_at: #{@created_at.inspect}, items: #{@items.inspect},"\
+      " customer: #{@customer.inspect}, charge: #{@charge.inspect}, installments:"\
+      " #{@installments.inspect}, billing_address: #{@billing_address.inspect}, subscription:"\
+      " #{@subscription.inspect}, cycle: #{@cycle.inspect}, shipping: #{@shipping.inspect},"\
+      " metadata: #{@metadata.inspect}, due_at: #{@due_at.inspect}, canceled_at:"\
+      " #{@canceled_at.inspect}, billing_at: #{@billing_at.inspect}, seen_at: #{@seen_at.inspect},"\
+      " total_discount: #{@total_discount.inspect}, total_increment: #{@total_increment.inspect},"\
+      " subscription_id: #{@subscription_id.inspect}>"
+    end
   end
 end

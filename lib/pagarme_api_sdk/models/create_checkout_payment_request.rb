@@ -194,5 +194,34 @@ module PagarmeApiSdk
                                        bank_transfer,
                                        pix)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} accepted_payment_methods: #{@accepted_payment_methods},"\
+      " accepted_multi_payment_methods: #{@accepted_multi_payment_methods}, success_url:"\
+      " #{@success_url}, default_payment_method: #{@default_payment_method},"\
+      " gateway_affiliation_id: #{@gateway_affiliation_id}, credit_card: #{@credit_card},"\
+      " debit_card: #{@debit_card}, boleto: #{@boleto}, customer_editable: #{@customer_editable},"\
+      " expires_in: #{@expires_in}, skip_checkout_success_page: #{@skip_checkout_success_page},"\
+      " billing_address_editable: #{@billing_address_editable}, billing_address:"\
+      " #{@billing_address}, bank_transfer: #{@bank_transfer}, accepted_brands:"\
+      " #{@accepted_brands}, pix: #{@pix}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} accepted_payment_methods: #{@accepted_payment_methods.inspect},"\
+      " accepted_multi_payment_methods: #{@accepted_multi_payment_methods.inspect}, success_url:"\
+      " #{@success_url.inspect}, default_payment_method: #{@default_payment_method.inspect},"\
+      " gateway_affiliation_id: #{@gateway_affiliation_id.inspect}, credit_card:"\
+      " #{@credit_card.inspect}, debit_card: #{@debit_card.inspect}, boleto: #{@boleto.inspect},"\
+      " customer_editable: #{@customer_editable.inspect}, expires_in: #{@expires_in.inspect},"\
+      " skip_checkout_success_page: #{@skip_checkout_success_page.inspect},"\
+      " billing_address_editable: #{@billing_address_editable.inspect}, billing_address:"\
+      " #{@billing_address.inspect}, bank_transfer: #{@bank_transfer.inspect}, accepted_brands:"\
+      " #{@accepted_brands.inspect}, pix: #{@pix.inspect}>"
+    end
   end
 end

@@ -124,5 +124,24 @@ module PagarmeApiSdk
                                              default_payment_method,
                                              gateway_affiliation_id)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} success_url: #{@success_url}, payment_url: #{@payment_url},"\
+      " accepted_payment_methods: #{@accepted_payment_methods}, status: #{@status}, customer:"\
+      " #{@customer}, amount: #{@amount}, default_payment_method: #{@default_payment_method},"\
+      " gateway_affiliation_id: #{@gateway_affiliation_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} success_url: #{@success_url.inspect}, payment_url: #{@payment_url.inspect},"\
+      " accepted_payment_methods: #{@accepted_payment_methods.inspect}, status:"\
+      " #{@status.inspect}, customer: #{@customer.inspect}, amount: #{@amount.inspect},"\
+      " default_payment_method: #{@default_payment_method.inspect}, gateway_affiliation_id:"\
+      " #{@gateway_affiliation_id.inspect}>"
+    end
   end
 end

@@ -124,5 +124,22 @@ module PagarmeApiSdk
                                         quantity,
                                         minimum_price)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} description: #{@description}, pricing_scheme: #{@pricing_scheme}, id:"\
+      " #{@id}, plan_item_id: #{@plan_item_id}, discounts: #{@discounts}, name: #{@name}, cycles:"\
+      " #{@cycles}, quantity: #{@quantity}, minimum_price: #{@minimum_price}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} description: #{@description.inspect}, pricing_scheme:"\
+      " #{@pricing_scheme.inspect}, id: #{@id.inspect}, plan_item_id: #{@plan_item_id.inspect},"\
+      " discounts: #{@discounts.inspect}, name: #{@name.inspect}, cycles: #{@cycles.inspect},"\
+      " quantity: #{@quantity.inspect}, minimum_price: #{@minimum_price.inspect}>"
+    end
   end
 end

@@ -85,5 +85,20 @@ module PagarmeApiSdk
                                       card,
                                       recurrency_cycle)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} statement_descriptor: #{@statement_descriptor}, card_id: #{@card_id},"\
+      " card_token: #{@card_token}, card: #{@card}, recurrency_cycle: #{@recurrency_cycle}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} statement_descriptor: #{@statement_descriptor.inspect}, card_id:"\
+      " #{@card_id.inspect}, card_token: #{@card_token.inspect}, card: #{@card.inspect},"\
+      " recurrency_cycle: #{@recurrency_cycle.inspect}>"
+    end
   end
 end

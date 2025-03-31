@@ -90,13 +90,13 @@ module PagarmeApiSdk
     def self.discriminators
       if @_discriminators.nil?
         @_discriminators = {}
+        @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse
         @_discriminators['safetypay'] = GetSafetyPayTransactionResponse
         @_discriminators['voucher'] = GetVoucherTransactionResponse
-        @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse
         @_discriminators['boleto'] = GetBoletoTransactionResponse
         @_discriminators['debit_card'] = GetDebitCardTransactionResponse
-        @_discriminators['cash'] = GetCashTransactionResponse
         @_discriminators['private_label'] = GetPrivateLabelTransactionResponse
+        @_discriminators['cash'] = GetCashTransactionResponse
         @_discriminators['credit_card'] = GetCreditCardTransactionResponse
         @_discriminators['pix'] = GetPixTransactionResponse
       end
@@ -301,6 +301,32 @@ module PagarmeApiSdk
 
     def to_custom_next_attempt
       DateTimeHelper.to_rfc3339(next_attempt)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} gateway_id: #{@gateway_id}, amount: #{@amount}, status: #{@status},"\
+      " success: #{@success}, created_at: #{@created_at}, updated_at: #{@updated_at},"\
+      " attempt_count: #{@attempt_count}, max_attempts: #{@max_attempts}, splits: #{@splits},"\
+      " next_attempt: #{@next_attempt}, transaction_type: #{@transaction_type}, id: #{@id},"\
+      " gateway_response: #{@gateway_response}, antifraud_response: #{@antifraud_response},"\
+      " metadata: #{@metadata}, split: #{@split}, interest: #{@interest}, fine: #{@fine},"\
+      " max_days_to_pay_past_due: #{@max_days_to_pay_past_due}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} gateway_id: #{@gateway_id.inspect}, amount: #{@amount.inspect}, status:"\
+      " #{@status.inspect}, success: #{@success.inspect}, created_at: #{@created_at.inspect},"\
+      " updated_at: #{@updated_at.inspect}, attempt_count: #{@attempt_count.inspect},"\
+      " max_attempts: #{@max_attempts.inspect}, splits: #{@splits.inspect}, next_attempt:"\
+      " #{@next_attempt.inspect}, transaction_type: #{@transaction_type.inspect}, id:"\
+      " #{@id.inspect}, gateway_response: #{@gateway_response.inspect}, antifraud_response:"\
+      " #{@antifraud_response.inspect}, metadata: #{@metadata.inspect}, split: #{@split.inspect},"\
+      " interest: #{@interest.inspect}, fine: #{@fine.inspect}, max_days_to_pay_past_due:"\
+      " #{@max_days_to_pay_past_due.inspect}>"
     end
   end
 end

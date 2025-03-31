@@ -41,6 +41,10 @@ module PagarmeApiSdk
     # @return [CreateAddressRequest]
     attr_accessor :address
 
+    # Legal name
+    # @return [String]
+    attr_accessor :legal_name
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -52,6 +56,7 @@ module PagarmeApiSdk
       @_hash['type'] = 'type'
       @_hash['phone'] = 'phone'
       @_hash['address'] = 'address'
+      @_hash['legal_name'] = 'legal_name'
       @_hash
     end
 
@@ -67,7 +72,7 @@ module PagarmeApiSdk
 
     def initialize(payment_facilitator_code = nil, code = nil, name = nil,
                    merchant_category_code = nil, document = nil, type = nil,
-                   phone = nil, address = nil)
+                   phone = nil, address = nil, legal_name = nil)
       @payment_facilitator_code = payment_facilitator_code
       @code = code
       @name = name
@@ -76,6 +81,7 @@ module PagarmeApiSdk
       @type = type
       @phone = phone
       @address = address
+      @legal_name = legal_name
     end
 
     # Creates an instance of the object from a hash.
@@ -93,6 +99,7 @@ module PagarmeApiSdk
       type = hash.key?('type') ? hash['type'] : nil
       phone = CreatePhoneRequest.from_hash(hash['phone']) if hash['phone']
       address = CreateAddressRequest.from_hash(hash['address']) if hash['address']
+      legal_name = hash.key?('legal_name') ? hash['legal_name'] : nil
 
       # Create object from extracted values.
       CreateSubMerchantRequest.new(payment_facilitator_code,
@@ -102,7 +109,27 @@ module PagarmeApiSdk
                                    document,
                                    type,
                                    phone,
-                                   address)
+                                   address,
+                                   legal_name)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_facilitator_code: #{@payment_facilitator_code}, code: #{@code},"\
+      " name: #{@name}, merchant_category_code: #{@merchant_category_code}, document:"\
+      " #{@document}, type: #{@type}, phone: #{@phone}, address: #{@address}, legal_name:"\
+      " #{@legal_name}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_facilitator_code: #{@payment_facilitator_code.inspect}, code:"\
+      " #{@code.inspect}, name: #{@name.inspect}, merchant_category_code:"\
+      " #{@merchant_category_code.inspect}, document: #{@document.inspect}, type:"\
+      " #{@type.inspect}, phone: #{@phone.inspect}, address: #{@address.inspect}, legal_name:"\
+      " #{@legal_name.inspect}>"
     end
   end
 end

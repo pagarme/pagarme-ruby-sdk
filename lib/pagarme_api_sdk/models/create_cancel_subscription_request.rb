@@ -44,5 +44,17 @@ module PagarmeApiSdk
       # Create object from extracted values.
       CreateCancelSubscriptionRequest.new(cancel_pending_invoices)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} cancel_pending_invoices: #{@cancel_pending_invoices}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} cancel_pending_invoices: #{@cancel_pending_invoices.inspect}>"
+    end
   end
 end

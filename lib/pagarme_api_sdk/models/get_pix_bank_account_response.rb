@@ -80,5 +80,19 @@ module PagarmeApiSdk
                                     branch_code,
                                     account_number)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} bank_name: #{@bank_name}, ispb: #{@ispb}, branch_code: #{@branch_code},"\
+      " account_number: #{@account_number}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} bank_name: #{@bank_name.inspect}, ispb: #{@ispb.inspect}, branch_code:"\
+      " #{@branch_code.inspect}, account_number: #{@account_number.inspect}>"
+    end
   end
 end

@@ -71,5 +71,19 @@ module PagarmeApiSdk
                          target_id,
                          metadata)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} amount: #{@amount}, source_id: #{@source_id}, target_id: #{@target_id},"\
+      " metadata: #{@metadata}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} amount: #{@amount.inspect}, source_id: #{@source_id.inspect}, target_id:"\
+      " #{@target_id.inspect}, metadata: #{@metadata.inspect}>"
+    end
   end
 end

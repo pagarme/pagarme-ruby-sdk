@@ -238,5 +238,27 @@ module PagarmeApiSdk
     def to_custom_deleted_at
       DateTimeHelper.to_rfc3339(deleted_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, street: #{@street}, number: #{@number}, complement:"\
+      " #{@complement}, zip_code: #{@zip_code}, neighborhood: #{@neighborhood}, city: #{@city},"\
+      " state: #{@state}, country: #{@country}, status: #{@status}, created_at: #{@created_at},"\
+      " updated_at: #{@updated_at}, customer: #{@customer}, metadata: #{@metadata}, line_1:"\
+      " #{@line_1}, line_2: #{@line_2}, deleted_at: #{@deleted_at}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, street: #{@street.inspect}, number: #{@number.inspect},"\
+      " complement: #{@complement.inspect}, zip_code: #{@zip_code.inspect}, neighborhood:"\
+      " #{@neighborhood.inspect}, city: #{@city.inspect}, state: #{@state.inspect}, country:"\
+      " #{@country.inspect}, status: #{@status.inspect}, created_at: #{@created_at.inspect},"\
+      " updated_at: #{@updated_at.inspect}, customer: #{@customer.inspect}, metadata:"\
+      " #{@metadata.inspect}, line_1: #{@line_1.inspect}, line_2: #{@line_2.inspect}, deleted_at:"\
+      " #{@deleted_at.inspect}>"
+    end
   end
 end

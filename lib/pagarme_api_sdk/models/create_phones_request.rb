@@ -55,5 +55,18 @@ module PagarmeApiSdk
       CreatePhonesRequest.new(home_phone,
                               mobile_phone)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} home_phone: #{@home_phone}, mobile_phone: #{@mobile_phone}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} home_phone: #{@home_phone.inspect}, mobile_phone:"\
+      " #{@mobile_phone.inspect}>"
+    end
   end
 end

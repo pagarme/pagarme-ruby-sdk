@@ -150,5 +150,24 @@ module PagarmeApiSdk
                                  transfer_settings,
                                  register_information)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, email: #{@email}, description: #{@description}, document:"\
+      " #{@document}, type: #{@type}, default_bank_account: #{@default_bank_account}, metadata:"\
+      " #{@metadata}, transfer_settings: #{@transfer_settings}, code: #{@code}, payment_mode:"\
+      " #{@payment_mode}, register_information: #{@register_information}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, email: #{@email.inspect}, description:"\
+      " #{@description.inspect}, document: #{@document.inspect}, type: #{@type.inspect},"\
+      " default_bank_account: #{@default_bank_account.inspect}, metadata: #{@metadata.inspect},"\
+      " transfer_settings: #{@transfer_settings.inspect}, code: #{@code.inspect}, payment_mode:"\
+      " #{@payment_mode.inspect}, register_information: #{@register_information.inspect}>"
+    end
   end
 end

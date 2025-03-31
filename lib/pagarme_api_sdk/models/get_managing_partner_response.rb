@@ -167,5 +167,26 @@ module PagarmeApiSdk
                                      address,
                                      phone_numbers)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, email: #{@email}, document: #{@document}, type: #{@type},"\
+      " mother_name: #{@mother_name}, birthdate: #{@birthdate}, monthly_income:"\
+      " #{@monthly_income}, professional_occupation: #{@professional_occupation},"\
+      " self_declared_representative: #{@self_declared_representative}, address: #{@address},"\
+      " phone_numbers: #{@phone_numbers}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, email: #{@email.inspect}, document:"\
+      " #{@document.inspect}, type: #{@type.inspect}, mother_name: #{@mother_name.inspect},"\
+      " birthdate: #{@birthdate.inspect}, monthly_income: #{@monthly_income.inspect},"\
+      " professional_occupation: #{@professional_occupation.inspect},"\
+      " self_declared_representative: #{@self_declared_representative.inspect}, address:"\
+      " #{@address.inspect}, phone_numbers: #{@phone_numbers.inspect}>"
+    end
   end
 end

@@ -121,5 +121,22 @@ module PagarmeApiSdk
                                                 zip_code,
                                                 reference_point)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} street: #{@street}, complementary: #{@complementary}, street_number:"\
+      " #{@street_number}, neighborhood: #{@neighborhood}, city: #{@city}, state: #{@state},"\
+      " zip_code: #{@zip_code}, reference_point: #{@reference_point}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} street: #{@street.inspect}, complementary: #{@complementary.inspect},"\
+      " street_number: #{@street_number.inspect}, neighborhood: #{@neighborhood.inspect}, city:"\
+      " #{@city.inspect}, state: #{@state.inspect}, zip_code: #{@zip_code.inspect},"\
+      " reference_point: #{@reference_point.inspect}>"
+    end
   end
 end

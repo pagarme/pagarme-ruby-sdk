@@ -68,5 +68,18 @@ module PagarmeApiSdk
                          previous,
                          mnext)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} total: #{@total}, previous: #{@previous}, mnext: #{@mnext}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} total: #{@total.inspect}, previous: #{@previous.inspect}, mnext:"\
+      " #{@mnext.inspect}>"
+    end
   end
 end

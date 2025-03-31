@@ -206,5 +206,35 @@ module PagarmeApiSdk
                                            charge_id,
                                            gateway_id)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      super_string = super().sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, fee: #{@fee}, anticipation_fee: #{@anticipation_fee},"\
+      " fraud_coverage_fee: #{@fraud_coverage_fee}, installment: #{@installment}, split_id:"\
+      " #{@split_id}, bulk_anticipation_id: #{@bulk_anticipation_id}, anticipation_id:"\
+      " #{@anticipation_id}, recipient_id: #{@recipient_id}, originator_model:"\
+      " #{@originator_model}, originator_model_id: #{@originator_model_id}, payment_date:"\
+      " #{@payment_date}, original_payment_date: #{@original_payment_date}, payment_method:"\
+      " #{@payment_method}, accrual_at: #{@accrual_at}, liquidation_arrangement_id:"\
+      " #{@liquidation_arrangement_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      super_string = super().inspect.sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, fee: #{@fee.inspect}, anticipation_fee:"\
+      " #{@anticipation_fee.inspect}, fraud_coverage_fee: #{@fraud_coverage_fee.inspect},"\
+      " installment: #{@installment.inspect}, split_id: #{@split_id.inspect},"\
+      " bulk_anticipation_id: #{@bulk_anticipation_id.inspect}, anticipation_id:"\
+      " #{@anticipation_id.inspect}, recipient_id: #{@recipient_id.inspect}, originator_model:"\
+      " #{@originator_model.inspect}, originator_model_id: #{@originator_model_id.inspect},"\
+      " payment_date: #{@payment_date.inspect}, original_payment_date:"\
+      " #{@original_payment_date.inspect}, payment_method: #{@payment_method.inspect}, accrual_at:"\
+      " #{@accrual_at.inspect}, liquidation_arrangement_id:"\
+      " #{@liquidation_arrangement_id.inspect}>"
+    end
   end
 end

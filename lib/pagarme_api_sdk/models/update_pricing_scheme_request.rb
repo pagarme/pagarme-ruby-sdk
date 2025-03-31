@@ -90,5 +90,20 @@ module PagarmeApiSdk
                                      minimum_price,
                                      percentage)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} scheme_type: #{@scheme_type}, price_brackets: #{@price_brackets}, price:"\
+      " #{@price}, minimum_price: #{@minimum_price}, percentage: #{@percentage}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} scheme_type: #{@scheme_type.inspect}, price_brackets:"\
+      " #{@price_brackets.inspect}, price: #{@price.inspect}, minimum_price:"\
+      " #{@minimum_price.inspect}, percentage: #{@percentage.inspect}>"
+    end
   end
 end

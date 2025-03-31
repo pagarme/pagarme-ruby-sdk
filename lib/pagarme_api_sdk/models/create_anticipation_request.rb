@@ -67,5 +67,19 @@ module PagarmeApiSdk
     def to_custom_payment_date
       DateTimeHelper.to_rfc3339(payment_date)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} amount: #{@amount}, timeframe: #{@timeframe}, payment_date:"\
+      " #{@payment_date}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} amount: #{@amount.inspect}, timeframe: #{@timeframe.inspect}, payment_date:"\
+      " #{@payment_date.inspect}>"
+    end
   end
 end

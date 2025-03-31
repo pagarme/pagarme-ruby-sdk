@@ -293,5 +293,32 @@ module PagarmeApiSdk
     def to_custom_deleted_at
       DateTimeHelper.to_rfc3339(deleted_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, name: #{@name}, description: #{@description}, url: #{@url},"\
+      " statement_descriptor: #{@statement_descriptor}, interval: #{@interval}, interval_count:"\
+      " #{@interval_count}, billing_type: #{@billing_type}, payment_methods: #{@payment_methods},"\
+      " installments: #{@installments}, status: #{@status}, currency: #{@currency}, created_at:"\
+      " #{@created_at}, updated_at: #{@updated_at}, items: #{@items}, billing_days:"\
+      " #{@billing_days}, shippable: #{@shippable}, metadata: #{@metadata}, trial_period_days:"\
+      " #{@trial_period_days}, minimum_price: #{@minimum_price}, deleted_at: #{@deleted_at}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, name: #{@name.inspect}, description:"\
+      " #{@description.inspect}, url: #{@url.inspect}, statement_descriptor:"\
+      " #{@statement_descriptor.inspect}, interval: #{@interval.inspect}, interval_count:"\
+      " #{@interval_count.inspect}, billing_type: #{@billing_type.inspect}, payment_methods:"\
+      " #{@payment_methods.inspect}, installments: #{@installments.inspect}, status:"\
+      " #{@status.inspect}, currency: #{@currency.inspect}, created_at: #{@created_at.inspect},"\
+      " updated_at: #{@updated_at.inspect}, items: #{@items.inspect}, billing_days:"\
+      " #{@billing_days.inspect}, shippable: #{@shippable.inspect}, metadata:"\
+      " #{@metadata.inspect}, trial_period_days: #{@trial_period_days.inspect}, minimum_price:"\
+      " #{@minimum_price.inspect}, deleted_at: #{@deleted_at.inspect}>"
+    end
   end
 end

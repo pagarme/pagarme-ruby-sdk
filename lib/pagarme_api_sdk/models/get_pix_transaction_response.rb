@@ -230,5 +230,25 @@ module PagarmeApiSdk
     def to_custom_expires_at
       DateTimeHelper.to_rfc3339(expires_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      super_string = super().sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, qr_code: #{@qr_code}, qr_code_url: #{@qr_code_url},"\
+      " expires_at: #{@expires_at}, additional_information: #{@additional_information},"\
+      " end_to_end_id: #{@end_to_end_id}, payer: #{@payer}, pix_provider_tid:"\
+      " #{@pix_provider_tid}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      super_string = super().inspect.sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, qr_code: #{@qr_code.inspect}, qr_code_url:"\
+      " #{@qr_code_url.inspect}, expires_at: #{@expires_at.inspect}, additional_information:"\
+      " #{@additional_information.inspect}, end_to_end_id: #{@end_to_end_id.inspect}, payer:"\
+      " #{@payer.inspect}, pix_provider_tid: #{@pix_provider_tid.inspect}>"
+    end
   end
 end

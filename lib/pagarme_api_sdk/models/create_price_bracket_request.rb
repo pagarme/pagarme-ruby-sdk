@@ -73,5 +73,19 @@ module PagarmeApiSdk
                                     end_quantity,
                                     overage_price)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} start_quantity: #{@start_quantity}, price: #{@price}, end_quantity:"\
+      " #{@end_quantity}, overage_price: #{@overage_price}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} start_quantity: #{@start_quantity.inspect}, price: #{@price.inspect},"\
+      " end_quantity: #{@end_quantity.inspect}, overage_price: #{@overage_price.inspect}>"
+    end
   end
 end

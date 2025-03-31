@@ -108,5 +108,22 @@ module PagarmeApiSdk
                                  signed_message,
                                  merchant_identifier)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} version: #{@version}, data: #{@data}, intermediate_signing_key:"\
+      " #{@intermediate_signing_key}, signature: #{@signature}, signed_message:"\
+      " #{@signed_message}, merchant_identifier: #{@merchant_identifier}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} version: #{@version.inspect}, data: #{@data.inspect},"\
+      " intermediate_signing_key: #{@intermediate_signing_key.inspect}, signature:"\
+      " #{@signature.inspect}, signed_message: #{@signed_message.inspect}, merchant_identifier:"\
+      " #{@merchant_identifier.inspect}>"
+    end
   end
 end

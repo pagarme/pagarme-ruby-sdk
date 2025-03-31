@@ -114,5 +114,24 @@ module PagarmeApiSdk
                                         account_check_digit,
                                         type)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} holder_name: #{@holder_name}, holder_type: #{@holder_type},"\
+      " holder_document: #{@holder_document}, bank: #{@bank}, branch_number: #{@branch_number},"\
+      " branch_check_digit: #{@branch_check_digit}, account_number: #{@account_number},"\
+      " account_check_digit: #{@account_check_digit}, type: #{@type}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} holder_name: #{@holder_name.inspect}, holder_type: #{@holder_type.inspect},"\
+      " holder_document: #{@holder_document.inspect}, bank: #{@bank.inspect}, branch_number:"\
+      " #{@branch_number.inspect}, branch_check_digit: #{@branch_check_digit.inspect},"\
+      " account_number: #{@account_number.inspect}, account_check_digit:"\
+      " #{@account_check_digit.inspect}, type: #{@type.inspect}>"
+    end
   end
 end

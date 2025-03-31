@@ -90,5 +90,20 @@ module PagarmeApiSdk
                                provider_name,
                                score)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} status: #{@status}, return_code: #{@return_code}, return_message:"\
+      " #{@return_message}, provider_name: #{@provider_name}, score: #{@score}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} status: #{@status.inspect}, return_code: #{@return_code.inspect},"\
+      " return_message: #{@return_message.inspect}, provider_name: #{@provider_name.inspect},"\
+      " score: #{@score.inspect}>"
+    end
   end
 end

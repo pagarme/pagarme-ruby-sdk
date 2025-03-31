@@ -98,5 +98,19 @@ module PagarmeApiSdk
     def to_custom_created_at
       DateTimeHelper.to_rfc3339(created_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, code: #{@code}, status: #{@status}, created_at: #{@created_at},"\
+      " customer: #{@customer}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, code: #{@code.inspect}, status: #{@status.inspect},"\
+      " created_at: #{@created_at.inspect}, customer: #{@customer.inspect}>"
+    end
   end
 end

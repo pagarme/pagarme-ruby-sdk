@@ -117,5 +117,24 @@ module PagarmeApiSdk
                                            bank_transfer,
                                            private_label)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} update_subscription: #{@update_subscription}, payment_method:"\
+      " #{@payment_method}, credit_card: #{@credit_card}, debit_card: #{@debit_card}, boleto:"\
+      " #{@boleto}, voucher: #{@voucher}, cash: #{@cash}, bank_transfer: #{@bank_transfer},"\
+      " private_label: #{@private_label}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} update_subscription: #{@update_subscription.inspect}, payment_method:"\
+      " #{@payment_method.inspect}, credit_card: #{@credit_card.inspect}, debit_card:"\
+      " #{@debit_card.inspect}, boleto: #{@boleto.inspect}, voucher: #{@voucher.inspect}, cash:"\
+      " #{@cash.inspect}, bank_transfer: #{@bank_transfer.inspect}, private_label:"\
+      " #{@private_label.inspect}>"
+    end
   end
 end

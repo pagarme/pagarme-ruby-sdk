@@ -152,5 +152,26 @@ module PagarmeApiSdk
                                             charge_id,
                                             gateway_id)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      super_string = super().sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, source_type: #{@source_type}, source_id: #{@source_id},"\
+      " target_type: #{@target_type}, target_id: #{@target_id}, fee: #{@fee}, funding_date:"\
+      " #{@funding_date}, funding_estimated_date: #{@funding_estimated_date}, bank_account:"\
+      " #{@bank_account}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      super_string = super().inspect.sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, source_type: #{@source_type.inspect}, source_id:"\
+      " #{@source_id.inspect}, target_type: #{@target_type.inspect}, target_id:"\
+      " #{@target_id.inspect}, fee: #{@fee.inspect}, funding_date: #{@funding_date.inspect},"\
+      " funding_estimated_date: #{@funding_estimated_date.inspect}, bank_account:"\
+      " #{@bank_account.inspect}>"
+    end
   end
 end

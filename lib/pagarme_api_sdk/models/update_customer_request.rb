@@ -129,5 +129,22 @@ module PagarmeApiSdk
                                 gender,
                                 document_type)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, email: #{@email}, document: #{@document}, type: #{@type},"\
+      " address: #{@address}, metadata: #{@metadata}, phones: #{@phones}, code: #{@code}, gender:"\
+      " #{@gender}, document_type: #{@document_type}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, email: #{@email.inspect}, document:"\
+      " #{@document.inspect}, type: #{@type.inspect}, address: #{@address.inspect}, metadata:"\
+      " #{@metadata.inspect}, phones: #{@phones.inspect}, code: #{@code.inspect}, gender:"\
+      " #{@gender.inspect}, document_type: #{@document_type.inspect}>"
+    end
   end
 end

@@ -45,9 +45,9 @@ module PagarmeApiSdk
     def self.discriminators
       if @_discriminators.nil?
         @_discriminators = {}
+        @_discriminators['refund'] = GetMovementObjectRefundResponse
         @_discriminators['feeCollection'] = GetMovementObjectFeeCollectionResponse
         @_discriminators['payable'] = GetMovementObjectPayableResponse
-        @_discriminators['refund'] = GetMovementObjectRefundResponse
         @_discriminators['transfer'] = GetMovementObjectTransferResponse
         @_discriminators['settlement'] = GetMovementObjectSettlementResponse
       end
@@ -136,6 +136,22 @@ module PagarmeApiSdk
                                         type,
                                         charge_id,
                                         gateway_id)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} object: #{@object}, id: #{@id}, status: #{@status}, amount: #{@amount},"\
+      " created_at: #{@created_at}, type: #{@type}, charge_id: #{@charge_id}, gateway_id:"\
+      " #{@gateway_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} object: #{@object.inspect}, id: #{@id.inspect}, status: #{@status.inspect},"\
+      " amount: #{@amount.inspect}, created_at: #{@created_at.inspect}, type: #{@type.inspect},"\
+      " charge_id: #{@charge_id.inspect}, gateway_id: #{@gateway_id.inspect}>"
     end
   end
 end

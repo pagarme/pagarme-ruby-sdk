@@ -253,5 +253,30 @@ module PagarmeApiSdk
                                         fine,
                                         max_days_to_pay_past_due)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      super_string = super().sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, statement_descriptor: #{@statement_descriptor},"\
+      " acquirer_name: #{@acquirer_name}, acquirer_affiliation_code:"\
+      " #{@acquirer_affiliation_code}, acquirer_tid: #{@acquirer_tid}, acquirer_nsu:"\
+      " #{@acquirer_nsu}, acquirer_auth_code: #{@acquirer_auth_code}, acquirer_message:"\
+      " #{@acquirer_message}, acquirer_return_code: #{@acquirer_return_code}, operation_type:"\
+      " #{@operation_type}, card: #{@card}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      super_string = super().inspect.sub(/^<[^ ]+ /, '').sub(/>$/, '')
+      "<#{class_name} #{super_string}, statement_descriptor: #{@statement_descriptor.inspect},"\
+      " acquirer_name: #{@acquirer_name.inspect}, acquirer_affiliation_code:"\
+      " #{@acquirer_affiliation_code.inspect}, acquirer_tid: #{@acquirer_tid.inspect},"\
+      " acquirer_nsu: #{@acquirer_nsu.inspect}, acquirer_auth_code:"\
+      " #{@acquirer_auth_code.inspect}, acquirer_message: #{@acquirer_message.inspect},"\
+      " acquirer_return_code: #{@acquirer_return_code.inspect}, operation_type:"\
+      " #{@operation_type.inspect}, card: #{@card.inspect}>"
+    end
   end
 end

@@ -83,5 +83,19 @@ module PagarmeApiSdk
                                      amount,
                                      split)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} code: #{@code}, amount: #{@amount}, split: #{@split}, operation_reference:"\
+      " #{@operation_reference}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} code: #{@code.inspect}, amount: #{@amount.inspect}, split:"\
+      " #{@split.inspect}, operation_reference: #{@operation_reference.inspect}>"
+    end
   end
 end

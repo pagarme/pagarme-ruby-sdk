@@ -70,5 +70,19 @@ module PagarmeApiSdk
                                         fine,
                                         max_days_to_pay_past_due)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} interest: #{@interest}, fine: #{@fine}, max_days_to_pay_past_due:"\
+      " #{@max_days_to_pay_past_due}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} interest: #{@interest.inspect}, fine: #{@fine.inspect},"\
+      " max_days_to_pay_past_due: #{@max_days_to_pay_past_due.inspect}>"
+    end
   end
 end

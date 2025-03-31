@@ -59,5 +59,17 @@ module PagarmeApiSdk
       CreateGooglePayIntermediateSigningKeyRequest.new(signed_key,
                                                        signatures)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} signed_key: #{@signed_key}, signatures: #{@signatures}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} signed_key: #{@signed_key.inspect}, signatures: #{@signatures.inspect}>"
+    end
   end
 end

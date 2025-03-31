@@ -312,5 +312,33 @@ module PagarmeApiSdk
     def to_custom_canceled_at
       DateTimeHelper.to_rfc3339(canceled_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, code: #{@code}, gateway_id: #{@gateway_id}, amount: #{@amount},"\
+      " status: #{@status}, currency: #{@currency}, payment_method: #{@payment_method}, due_at:"\
+      " #{@due_at}, created_at: #{@created_at}, updated_at: #{@updated_at}, last_transaction:"\
+      " #{@last_transaction}, invoice: #{@invoice}, order: #{@order}, customer: #{@customer},"\
+      " metadata: #{@metadata}, paid_at: #{@paid_at}, canceled_at: #{@canceled_at},"\
+      " canceled_amount: #{@canceled_amount}, paid_amount: #{@paid_amount},"\
+      " interest_and_fine_paid: #{@interest_and_fine_paid}, recurrency_cycle:"\
+      " #{@recurrency_cycle}, payment_origin: #{@payment_origin}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, code: #{@code.inspect}, gateway_id:"\
+      " #{@gateway_id.inspect}, amount: #{@amount.inspect}, status: #{@status.inspect}, currency:"\
+      " #{@currency.inspect}, payment_method: #{@payment_method.inspect}, due_at:"\
+      " #{@due_at.inspect}, created_at: #{@created_at.inspect}, updated_at:"\
+      " #{@updated_at.inspect}, last_transaction: #{@last_transaction.inspect}, invoice:"\
+      " #{@invoice.inspect}, order: #{@order.inspect}, customer: #{@customer.inspect}, metadata:"\
+      " #{@metadata.inspect}, paid_at: #{@paid_at.inspect}, canceled_at: #{@canceled_at.inspect},"\
+      " canceled_amount: #{@canceled_amount.inspect}, paid_amount: #{@paid_amount.inspect},"\
+      " interest_and_fine_paid: #{@interest_and_fine_paid.inspect}, recurrency_cycle:"\
+      " #{@recurrency_cycle.inspect}, payment_origin: #{@payment_origin.inspect}>"
+    end
   end
 end

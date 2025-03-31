@@ -99,5 +99,20 @@ module PagarmeApiSdk
                            options,
                            id)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} type: #{@type}, amount: #{@amount}, recipient: #{@recipient}, gateway_id:"\
+      " #{@gateway_id}, options: #{@options}, id: #{@id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} type: #{@type.inspect}, amount: #{@amount.inspect}, recipient:"\
+      " #{@recipient.inspect}, gateway_id: #{@gateway_id.inspect}, options: #{@options.inspect},"\
+      " id: #{@id.inspect}>"
+    end
   end
 end

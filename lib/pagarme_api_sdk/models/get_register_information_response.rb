@@ -259,5 +259,32 @@ module PagarmeApiSdk
                                          main_address,
                                          managing_partners)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} email: #{@email}, document: #{@document}, type: #{@type}, site_url:"\
+      " #{@site_url}, phone_numbers: #{@phone_numbers}, name: #{@name}, mother_name:"\
+      " #{@mother_name}, birthdate: #{@birthdate}, monthly_income: #{@monthly_income},"\
+      " professional_occupation: #{@professional_occupation}, address: #{@address}, company_name:"\
+      " #{@company_name}, trading_name: #{@trading_name}, annual_revenue: #{@annual_revenue},"\
+      " corporation_type: #{@corporation_type}, founding_date: #{@founding_date}, cnae: #{@cnae},"\
+      " main_address: #{@main_address}, managing_partners: #{@managing_partners}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} email: #{@email.inspect}, document: #{@document.inspect}, type:"\
+      " #{@type.inspect}, site_url: #{@site_url.inspect}, phone_numbers:"\
+      " #{@phone_numbers.inspect}, name: #{@name.inspect}, mother_name: #{@mother_name.inspect},"\
+      " birthdate: #{@birthdate.inspect}, monthly_income: #{@monthly_income.inspect},"\
+      " professional_occupation: #{@professional_occupation.inspect}, address:"\
+      " #{@address.inspect}, company_name: #{@company_name.inspect}, trading_name:"\
+      " #{@trading_name.inspect}, annual_revenue: #{@annual_revenue.inspect}, corporation_type:"\
+      " #{@corporation_type.inspect}, founding_date: #{@founding_date.inspect}, cnae:"\
+      " #{@cnae.inspect}, main_address: #{@main_address.inspect}, managing_partners:"\
+      " #{@managing_partners.inspect}>"
+    end
   end
 end

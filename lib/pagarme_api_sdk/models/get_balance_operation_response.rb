@@ -132,5 +132,22 @@ module PagarmeApiSdk
                                       created_at,
                                       movement_object)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, status: #{@status}, balance_amount: #{@balance_amount},"\
+      " balance_old_amount: #{@balance_old_amount}, type: #{@type}, amount: #{@amount}, fee:"\
+      " #{@fee}, created_at: #{@created_at}, movement_object: #{@movement_object}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, status: #{@status.inspect}, balance_amount:"\
+      " #{@balance_amount.inspect}, balance_old_amount: #{@balance_old_amount.inspect}, type:"\
+      " #{@type.inspect}, amount: #{@amount.inspect}, fee: #{@fee.inspect}, created_at:"\
+      " #{@created_at.inspect}, movement_object: #{@movement_object.inspect}>"
+    end
   end
 end

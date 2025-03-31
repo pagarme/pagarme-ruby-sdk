@@ -133,5 +133,24 @@ module PagarmeApiSdk
     def to_custom_estimated_delivery_date
       DateTimeHelper.to_rfc3339(estimated_delivery_date)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} amount: #{@amount}, description: #{@description}, recipient_name:"\
+      " #{@recipient_name}, recipient_phone: #{@recipient_phone}, address_id: #{@address_id},"\
+      " address: #{@address}, max_delivery_date: #{@max_delivery_date}, estimated_delivery_date:"\
+      " #{@estimated_delivery_date}, type: #{@type}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} amount: #{@amount.inspect}, description: #{@description.inspect},"\
+      " recipient_name: #{@recipient_name.inspect}, recipient_phone: #{@recipient_phone.inspect},"\
+      " address_id: #{@address_id.inspect}, address: #{@address.inspect}, max_delivery_date:"\
+      " #{@max_delivery_date.inspect}, estimated_delivery_date:"\
+      " #{@estimated_delivery_date.inspect}, type: #{@type.inspect}>"
+    end
   end
 end

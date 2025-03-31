@@ -217,5 +217,25 @@ module PagarmeApiSdk
     def to_custom_deleted_at
       DateTimeHelper.to_rfc3339(deleted_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, description: #{@description}, status: #{@status}, created_at:"\
+      " #{@created_at}, updated_at: #{@updated_at}, pricing_scheme: #{@pricing_scheme}, discounts:"\
+      " #{@discounts}, increments: #{@increments}, subscription: #{@subscription}, name: #{@name},"\
+      " quantity: #{@quantity}, cycles: #{@cycles}, deleted_at: #{@deleted_at}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, description: #{@description.inspect}, status:"\
+      " #{@status.inspect}, created_at: #{@created_at.inspect}, updated_at:"\
+      " #{@updated_at.inspect}, pricing_scheme: #{@pricing_scheme.inspect}, discounts:"\
+      " #{@discounts.inspect}, increments: #{@increments.inspect}, subscription:"\
+      " #{@subscription.inspect}, name: #{@name.inspect}, quantity: #{@quantity.inspect}, cycles:"\
+      " #{@cycles.inspect}, deleted_at: #{@deleted_at.inspect}>"
+    end
   end
 end

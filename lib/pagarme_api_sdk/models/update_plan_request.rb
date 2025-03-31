@@ -168,5 +168,28 @@ module PagarmeApiSdk
                             minimum_price,
                             trial_period_days)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, description: #{@description}, installments:"\
+      " #{@installments}, statement_descriptor: #{@statement_descriptor}, currency: #{@currency},"\
+      " interval: #{@interval}, interval_count: #{@interval_count}, payment_methods:"\
+      " #{@payment_methods}, billing_type: #{@billing_type}, status: #{@status}, shippable:"\
+      " #{@shippable}, billing_days: #{@billing_days}, metadata: #{@metadata}, minimum_price:"\
+      " #{@minimum_price}, trial_period_days: #{@trial_period_days}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, description: #{@description.inspect}, installments:"\
+      " #{@installments.inspect}, statement_descriptor: #{@statement_descriptor.inspect},"\
+      " currency: #{@currency.inspect}, interval: #{@interval.inspect}, interval_count:"\
+      " #{@interval_count.inspect}, payment_methods: #{@payment_methods.inspect}, billing_type:"\
+      " #{@billing_type.inspect}, status: #{@status.inspect}, shippable: #{@shippable.inspect},"\
+      " billing_days: #{@billing_days.inspect}, metadata: #{@metadata.inspect}, minimum_price:"\
+      " #{@minimum_price.inspect}, trial_period_days: #{@trial_period_days.inspect}>"
+    end
   end
 end

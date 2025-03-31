@@ -202,5 +202,27 @@ module PagarmeApiSdk
                              antifraud,
                              submerchant)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} items: #{@items}, customer: #{@customer}, payments: #{@payments}, code:"\
+      " #{@code}, customer_id: #{@customer_id}, shipping: #{@shipping}, metadata: #{@metadata},"\
+      " antifraud_enabled: #{@antifraud_enabled}, ip: #{@ip}, session_id: #{@session_id},"\
+      " location: #{@location}, device: #{@device}, closed: #{@closed}, currency: #{@currency},"\
+      " antifraud: #{@antifraud}, submerchant: #{@submerchant}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} items: #{@items.inspect}, customer: #{@customer.inspect}, payments:"\
+      " #{@payments.inspect}, code: #{@code.inspect}, customer_id: #{@customer_id.inspect},"\
+      " shipping: #{@shipping.inspect}, metadata: #{@metadata.inspect}, antifraud_enabled:"\
+      " #{@antifraud_enabled.inspect}, ip: #{@ip.inspect}, session_id: #{@session_id.inspect},"\
+      " location: #{@location.inspect}, device: #{@device.inspect}, closed: #{@closed.inspect},"\
+      " currency: #{@currency.inspect}, antifraud: #{@antifraud.inspect}, submerchant:"\
+      " #{@submerchant.inspect}>"
+    end
   end
 end

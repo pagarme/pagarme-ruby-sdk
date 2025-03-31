@@ -374,5 +374,40 @@ module PagarmeApiSdk
     def to_custom_expires_at
       DateTimeHelper.to_rfc3339(expires_at)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, amount: #{@amount}, default_payment_method:"\
+      " #{@default_payment_method}, success_url: #{@success_url}, payment_url: #{@payment_url},"\
+      " gateway_affiliation_id: #{@gateway_affiliation_id}, accepted_payment_methods:"\
+      " #{@accepted_payment_methods}, status: #{@status}, skip_checkout_success_page:"\
+      " #{@skip_checkout_success_page}, created_at: #{@created_at}, updated_at: #{@updated_at},"\
+      " canceled_at: #{@canceled_at}, customer_editable: #{@customer_editable}, customer:"\
+      " #{@customer}, billingaddress: #{@billingaddress}, credit_card: #{@credit_card}, boleto:"\
+      " #{@boleto}, billing_address_editable: #{@billing_address_editable}, shipping:"\
+      " #{@shipping}, shippable: #{@shippable}, closed_at: #{@closed_at}, expires_at:"\
+      " #{@expires_at}, currency: #{@currency}, debit_card: #{@debit_card}, bank_transfer:"\
+      " #{@bank_transfer}, accepted_brands: #{@accepted_brands}, pix: #{@pix}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, amount: #{@amount.inspect}, default_payment_method:"\
+      " #{@default_payment_method.inspect}, success_url: #{@success_url.inspect}, payment_url:"\
+      " #{@payment_url.inspect}, gateway_affiliation_id: #{@gateway_affiliation_id.inspect},"\
+      " accepted_payment_methods: #{@accepted_payment_methods.inspect}, status:"\
+      " #{@status.inspect}, skip_checkout_success_page: #{@skip_checkout_success_page.inspect},"\
+      " created_at: #{@created_at.inspect}, updated_at: #{@updated_at.inspect}, canceled_at:"\
+      " #{@canceled_at.inspect}, customer_editable: #{@customer_editable.inspect}, customer:"\
+      " #{@customer.inspect}, billingaddress: #{@billingaddress.inspect}, credit_card:"\
+      " #{@credit_card.inspect}, boleto: #{@boleto.inspect}, billing_address_editable:"\
+      " #{@billing_address_editable.inspect}, shipping: #{@shipping.inspect}, shippable:"\
+      " #{@shippable.inspect}, closed_at: #{@closed_at.inspect}, expires_at:"\
+      " #{@expires_at.inspect}, currency: #{@currency.inspect}, debit_card:"\
+      " #{@debit_card.inspect}, bank_transfer: #{@bank_transfer.inspect}, accepted_brands:"\
+      " #{@accepted_brands.inspect}, pix: #{@pix.inspect}>"
+    end
   end
 end
