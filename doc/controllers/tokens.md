@@ -10,8 +10,44 @@ tokens_controller = client.tokens
 
 ## Methods
 
-* [Create Token](../../doc/controllers/tokens.md#create-token)
 * [Get Token](../../doc/controllers/tokens.md#get-token)
+* [Create Token](../../doc/controllers/tokens.md#create-token)
+
+
+# Get Token
+
+Gets a token from its id
+
+:information_source: **Note** This endpoint does not require authentication.
+
+```ruby
+def get_token(id,
+              public_key)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `String` | Template, Required | Token id |
+| `public_key` | `String` | Template, Required | Public key |
+
+## Response Type
+
+[`GetTokenResponse`](../../doc/models/get-token-response.md)
+
+## Example Usage
+
+```ruby
+id = 'id0'
+
+public_key = 'public_key6'
+
+result = tokens_controller.get_token(
+  id,
+  public_key
+)
+```
 
 
 # Create Token
@@ -57,42 +93,6 @@ request = CreateTokenRequest.new(
 result = tokens_controller.create_token(
   public_key,
   request
-)
-```
-
-
-# Get Token
-
-Gets a token from its id
-
-:information_source: **Note** This endpoint does not require authentication.
-
-```ruby
-def get_token(id,
-              public_key)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | Token id |
-| `public_key` | `String` | Template, Required | Public key |
-
-## Response Type
-
-[`GetTokenResponse`](../../doc/models/get-token-response.md)
-
-## Example Usage
-
-```ruby
-id = 'id0'
-
-public_key = 'public_key6'
-
-result = tokens_controller.get_token(
-  id,
-  public_key
 )
 ```
 

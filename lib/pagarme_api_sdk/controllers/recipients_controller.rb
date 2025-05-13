@@ -33,55 +33,61 @@ module PagarmeApiSdk
         .execute
     end
 
-    # Creates an anticipation
-    # @param [String] recipient_id Required parameter: Recipient id
-    # @param [CreateAnticipationRequest] request Required parameter:
-    # Anticipation data
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetAnticipationResponse] response from the API call.
-    def create_anticipation(recipient_id,
-                            request,
-                            idempotency_key: nil)
+    # TODO: type endpoint description here
+    # @param [String] recipient_id Required parameter: Example:
+    # @param [String] withdrawal_id Required parameter: Example:
+    # @return [GetWithdrawResponse] response from the API call.
+    def get_withdraw_by_id(recipient_id,
+                           withdrawal_id)
       new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/recipients/{recipient_id}/anticipations',
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/recipients/{recipient_id}/withdrawals/{withdrawal_id}',
                                      Server::DEFAULT)
                    .template_param(new_parameter(recipient_id, key: 'recipient_id')
                                     .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .template_param(new_parameter(withdrawal_id, key: 'withdrawal_id')
+                                    .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetAnticipationResponse.method(:from_hash)))
+                    .deserialize_into(GetWithdrawResponse.method(:from_hash)))
         .execute
     end
 
-    # Gets the anticipation limits for a recipient
-    # @param [String] recipient_id Required parameter: Recipient id
-    # @param [String] timeframe Required parameter: Timeframe
-    # @param [DateTime] payment_date Required parameter: Anticipation payment
-    # date
-    # @return [GetAnticipationLimitResponse] response from the API call.
-    def get_anticipation_limits(recipient_id,
-                                timeframe,
-                                payment_date)
+    # Retrieves recipient information
+    # @param [String] recipient_id Required parameter: Recipiend id
+    # @return [GetRecipientResponse] response from the API call.
+    def get_recipient(recipient_id)
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/recipients/{recipient_id}/anticipation_limits',
+                                     '/recipients/{recipient_id}',
                                      Server::DEFAULT)
                    .template_param(new_parameter(recipient_id, key: 'recipient_id')
                                     .should_encode(true))
-                   .query_param(new_parameter(timeframe, key: 'timeframe'))
-                   .query_param(new_parameter(payment_date, key: 'payment_date'))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('httpBasic')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetAnticipationLimitResponse.method(:from_hash)))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Get balance information for a recipient
+    # @param [String] recipient_id Required parameter: Recipient id
+    # @return [GetBalanceResponse] response from the API call.
+    def get_balance(recipient_id)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/recipients/{recipient_id}/balance',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetBalanceResponse.method(:from_hash)))
         .execute
     end
 
@@ -105,28 +111,6 @@ module PagarmeApiSdk
         .execute
     end
 
-    # TODO: type endpoint description here
-    # @param [String] recipient_id Required parameter: Example:
-    # @param [String] withdrawal_id Required parameter: Example:
-    # @return [GetWithdrawResponse] response from the API call.
-    def get_withdraw_by_id(recipient_id,
-                           withdrawal_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/recipients/{recipient_id}/withdrawals/{withdrawal_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .template_param(new_parameter(withdrawal_id, key: 'withdrawal_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetWithdrawResponse.method(:from_hash)))
-        .execute
-    end
-
     # Updates the default bank account from a recipient
     # @param [String] recipient_id Required parameter: Recipient id
     # @param [UpdateRecipientBankAccountRequest] request Required parameter:
@@ -139,32 +123,6 @@ module PagarmeApiSdk
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/recipients/{recipient_id}/default-bank-account',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Updates recipient metadata
-    # @param [String] recipient_id Required parameter: Recipient id
-    # @param [UpdateMetadataRequest] request Required parameter: Metadata
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetRecipientResponse] response from the API call.
-    def update_recipient_metadata(recipient_id,
-                                  request,
-                                  idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/recipients/{recipient_id}/metadata',
                                      Server::DEFAULT)
                    .template_param(new_parameter(recipient_id, key: 'recipient_id')
                                     .should_encode(true))
@@ -260,33 +218,6 @@ module PagarmeApiSdk
         .execute
     end
 
-    # Updates recipient metadata
-    # @param [String] recipient_id Required parameter: Recipient id
-    # @param [UpdateAutomaticAnticipationSettingsRequest] request Required
-    # parameter: Metadata
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetRecipientResponse] response from the API call.
-    def update_automatic_anticipation_settings(recipient_id,
-                                               request,
-                                               idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::PATCH,
-                                     '/recipients/{recipient_id}/automatic-anticipation-settings',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
-        .execute
-    end
-
     # Gets an anticipation
     # @param [String] recipient_id Required parameter: Recipient id
     # @param [String] anticipation_id Required parameter: Anticipation id
@@ -321,6 +252,193 @@ module PagarmeApiSdk
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/recipients/{recipient_id}/transfer-settings',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Retrieves recipient information
+    # @param [String] code Required parameter: Recipient code
+    # @return [GetRecipientResponse] response from the API call.
+    def get_recipient_by_code(code)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/recipients/{code}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(code, key: 'code')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Updates recipient metadata
+    # @param [String] recipient_id Required parameter: Recipient id
+    # @param [UpdateAutomaticAnticipationSettingsRequest] request Required
+    # parameter: Metadata
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetRecipientResponse] response from the API call.
+    def update_automatic_anticipation_settings(recipient_id,
+                                               request,
+                                               idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/recipients/{recipient_id}/automatic-anticipation-settings',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Creates a transfer for a recipient
+    # @param [String] recipient_id Required parameter: Recipient Id
+    # @param [CreateTransferRequest] request Required parameter: Transfer data
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetTransferResponse] response from the API call.
+    def create_transfer(recipient_id,
+                        request,
+                        idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/recipients/{recipient_id}/transfers',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetTransferResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Creates a new recipient
+    # @param [CreateRecipientRequest] request Required parameter: Recipient
+    # data
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetRecipientResponse] response from the API call.
+    def create_recipient(request,
+                         idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/recipients',
+                                     Server::DEFAULT)
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @return [GetRecipientResponse] response from the API call.
+    def get_default_recipient
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/recipients/default',
+                                     Server::DEFAULT)
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Creates an anticipation
+    # @param [String] recipient_id Required parameter: Recipient id
+    # @param [CreateAnticipationRequest] request Required parameter:
+    # Anticipation data
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetAnticipationResponse] response from the API call.
+    def create_anticipation(recipient_id,
+                            request,
+                            idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/recipients/{recipient_id}/anticipations',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .body_param(new_parameter(request))
+                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
+                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAnticipationResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Gets the anticipation limits for a recipient
+    # @param [String] recipient_id Required parameter: Recipient id
+    # @param [String] timeframe Required parameter: Timeframe
+    # @param [DateTime] payment_date Required parameter: Anticipation payment
+    # date
+    # @return [GetAnticipationLimitResponse] response from the API call.
+    def get_anticipation_limits(recipient_id,
+                                timeframe,
+                                payment_date)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/recipients/{recipient_id}/anticipation_limits',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
+                                    .should_encode(true))
+                   .query_param(new_parameter(timeframe, key: 'timeframe'))
+                   .query_param(new_parameter(payment_date, key: 'payment_date'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('httpBasic')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(GetAnticipationLimitResponse.method(:from_hash)))
+        .execute
+    end
+
+    # Updates recipient metadata
+    # @param [String] recipient_id Required parameter: Recipient id
+    # @param [UpdateMetadataRequest] request Required parameter: Metadata
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return [GetRecipientResponse] response from the API call.
+    def update_recipient_metadata(recipient_id,
+                                  request,
+                                  idempotency_key: nil)
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::PATCH,
+                                     '/recipients/{recipient_id}/metadata',
                                      Server::DEFAULT)
                    .template_param(new_parameter(recipient_id, key: 'recipient_id')
                                     .should_encode(true))
@@ -384,42 +502,6 @@ module PagarmeApiSdk
         .execute
     end
 
-    # Retrieves recipient information
-    # @param [String] recipient_id Required parameter: Recipiend id
-    # @return [GetRecipientResponse] response from the API call.
-    def get_recipient(recipient_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/recipients/{recipient_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Get balance information for a recipient
-    # @param [String] recipient_id Required parameter: Recipient id
-    # @return [GetBalanceResponse] response from the API call.
-    def get_balance(recipient_id)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/recipients/{recipient_id}/balance',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetBalanceResponse.method(:from_hash)))
-        .execute
-    end
-
     # Gets a paginated list of transfers for the recipient
     # @param [String] recipient_id Required parameter: Example:
     # @param [Integer] page Optional parameter: Example:
@@ -450,88 +532,6 @@ module PagarmeApiSdk
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(ListWithdrawals.method(:from_hash)))
-        .execute
-    end
-
-    # Creates a transfer for a recipient
-    # @param [String] recipient_id Required parameter: Recipient Id
-    # @param [CreateTransferRequest] request Required parameter: Transfer data
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetTransferResponse] response from the API call.
-    def create_transfer(recipient_id,
-                        request,
-                        idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/recipients/{recipient_id}/transfers',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(recipient_id, key: 'recipient_id')
-                                    .should_encode(true))
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetTransferResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Creates a new recipient
-    # @param [CreateRecipientRequest] request Required parameter: Recipient
-    # data
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return [GetRecipientResponse] response from the API call.
-    def create_recipient(request,
-                         idempotency_key: nil)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/recipients',
-                                     Server::DEFAULT)
-                   .body_param(new_parameter(request))
-                   .header_param(new_parameter(idempotency_key, key: 'idempotency-key'))
-                   .header_param(new_parameter('application/json; charset=utf-8', key: 'content-type'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
-        .execute
-    end
-
-    # Retrieves recipient information
-    # @param [String] code Required parameter: Recipient code
-    # @return [GetRecipientResponse] response from the API call.
-    def get_recipient_by_code(code)
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/recipients/{code}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(code, key: 'code')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @return [GetRecipientResponse] response from the API call.
-    def get_default_recipient
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/recipients/default',
-                                     Server::DEFAULT)
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('httpBasic')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(GetRecipientResponse.method(:from_hash)))
         .execute
     end
 
