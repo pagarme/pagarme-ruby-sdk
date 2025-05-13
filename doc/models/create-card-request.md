@@ -20,7 +20,7 @@ Card data
 | `brand` | `String` | Optional | Card brand |
 | `billing_address_id` | `String` | Optional | The address id for the billing address |
 | `metadata` | `Hash[String, String]` | Optional | Metadata |
-| `type` | `String` | Optional | Card type<br>**Default**: `'credit'` |
+| `type` | `String` | Optional | Card type<br><br>**Default**: `'credit'` |
 | `options` | [`CreateCardOptionsRequest`](../../doc/models/create-card-options-request.md) | Optional | Options for creating the card |
 | `holder_document` | `String` | Optional | Document number for the card's holder |
 | `private_label` | `TrueClass \| FalseClass` | Optional | Indicates whether it is a private label card |

@@ -11,7 +11,7 @@ Token data
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `type` | `String` | Required | Token type<br>**Default**: `'card'` |
+| `type` | `String` | Required | Token type<br><br>**Default**: `'card'` |
 | `card` | [`CreateCardTokenRequest`](../../doc/models/create-card-token-request.md) | Required | Card data |
 
 ## Example (as JSON)

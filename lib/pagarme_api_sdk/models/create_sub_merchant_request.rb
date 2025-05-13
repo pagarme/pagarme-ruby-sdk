@@ -45,6 +45,10 @@ module PagarmeApiSdk
     # @return [String]
     attr_accessor :legal_name
 
+    # Site Url
+    # @return [String]
+    attr_accessor :site_url
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -57,6 +61,7 @@ module PagarmeApiSdk
       @_hash['phone'] = 'phone'
       @_hash['address'] = 'address'
       @_hash['legal_name'] = 'legal_name'
+      @_hash['site_url'] = 'site_url'
       @_hash
     end
 
@@ -72,7 +77,7 @@ module PagarmeApiSdk
 
     def initialize(payment_facilitator_code = nil, code = nil, name = nil,
                    merchant_category_code = nil, document = nil, type = nil,
-                   phone = nil, address = nil, legal_name = nil)
+                   phone = nil, address = nil, legal_name = nil, site_url = nil)
       @payment_facilitator_code = payment_facilitator_code
       @code = code
       @name = name
@@ -82,6 +87,7 @@ module PagarmeApiSdk
       @phone = phone
       @address = address
       @legal_name = legal_name
+      @site_url = site_url
     end
 
     # Creates an instance of the object from a hash.
@@ -100,6 +106,7 @@ module PagarmeApiSdk
       phone = CreatePhoneRequest.from_hash(hash['phone']) if hash['phone']
       address = CreateAddressRequest.from_hash(hash['address']) if hash['address']
       legal_name = hash.key?('legal_name') ? hash['legal_name'] : nil
+      site_url = hash.key?('site_url') ? hash['site_url'] : nil
 
       # Create object from extracted values.
       CreateSubMerchantRequest.new(payment_facilitator_code,
@@ -110,7 +117,8 @@ module PagarmeApiSdk
                                    type,
                                    phone,
                                    address,
-                                   legal_name)
+                                   legal_name,
+                                   site_url)
     end
 
     # Provides a human-readable string representation of the object.
@@ -119,7 +127,7 @@ module PagarmeApiSdk
       "<#{class_name} payment_facilitator_code: #{@payment_facilitator_code}, code: #{@code},"\
       " name: #{@name}, merchant_category_code: #{@merchant_category_code}, document:"\
       " #{@document}, type: #{@type}, phone: #{@phone}, address: #{@address}, legal_name:"\
-      " #{@legal_name}>"
+      " #{@legal_name}, site_url: #{@site_url}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
@@ -129,7 +137,7 @@ module PagarmeApiSdk
       " #{@code.inspect}, name: #{@name.inspect}, merchant_category_code:"\
       " #{@merchant_category_code.inspect}, document: #{@document.inspect}, type:"\
       " #{@type.inspect}, phone: #{@phone.inspect}, address: #{@address.inspect}, legal_name:"\
-      " #{@legal_name.inspect}>"
+      " #{@legal_name.inspect}, site_url: #{@site_url.inspect}>"
     end
   end
 end

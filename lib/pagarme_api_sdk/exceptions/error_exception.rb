@@ -22,8 +22,8 @@ module PagarmeApiSdk
     attr_accessor :request
 
     # The constructor.
-    # @param [String] The reason for raising an exception.
-    # @param [HttpResponse] The HttpReponse of the API call.
+    # @param [String] reason The reason for raising an exception.
+    # @param [HttpResponse] response The HttpReponse of the API call.
     def initialize(reason, response)
       super(reason, response)
       hash = APIHelper.json_deserialize(@response.raw_body)
@@ -31,9 +31,11 @@ module PagarmeApiSdk
     end
 
     # Populates this object by extracting properties from a hash.
-    # @param [Hash] The deserialized response sent by the server in the
+    # @param [Hash] hash The deserialized response sent by the server in the
     # response body.
     def unbox(hash)
+      return nil unless hash
+
       @message = hash.key?('message') ? hash['message'] : nil
       @errors = hash.key?('errors') ? hash['errors'] : nil
       @request = hash.key?('request') ? hash['request'] : nil
