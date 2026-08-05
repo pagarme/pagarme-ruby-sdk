@@ -18,19 +18,19 @@ Request for updating a Recipient
 | `status` | `String` | Required | Status |
 | `metadata` | `Hash[String, String]` | Required | Metadata |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "email": "email6",
-  "description": "description0",
-  "type": "type0",
-  "status": "status8",
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4"
+```ruby
+update_recipient_request = UpdateRecipientRequest.new(
+  'name8',
+  'email8',
+  'description8',
+  'type2',
+  'status0',
+  {
+    'key0': 'metadata5',
+    'key1': 'metadata4'
   }
-}
+)
 ```
 

@@ -14,12 +14,12 @@ Request for creating a location
 | `latitude` | `String` | Required | Latitude |
 | `longitude` | `String` | Required | Longitude |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "latitude": "latitude0",
-  "longitude": "longitude0"
-}
+```ruby
+create_location_request = CreateLocationRequest.new(
+  'latitude2',
+  'longitude2'
+)
 ```
 

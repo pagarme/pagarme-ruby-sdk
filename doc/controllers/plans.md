@@ -10,33 +10,148 @@ plans_controller = client.plans
 
 ## Methods
 
-* [Get Plan](../../doc/controllers/plans.md#get-plan)
-* [Delete Plan Item](../../doc/controllers/plans.md#delete-plan-item)
-* [Update Plan Metadata](../../doc/controllers/plans.md#update-plan-metadata)
 * [Create Plan](../../doc/controllers/plans.md#create-plan)
-* [Update Plan](../../doc/controllers/plans.md#update-plan)
-* [Delete Plan](../../doc/controllers/plans.md#delete-plan)
-* [Get Plans](../../doc/controllers/plans.md#get-plans)
-* [Update Plan Item](../../doc/controllers/plans.md#update-plan-item)
 * [Create Plan Item](../../doc/controllers/plans.md#create-plan-item)
+* [Delete Plan](../../doc/controllers/plans.md#delete-plan)
+* [Delete Plan Item](../../doc/controllers/plans.md#delete-plan-item)
+* [Get Plan](../../doc/controllers/plans.md#get-plan)
 * [Get Plan Item](../../doc/controllers/plans.md#get-plan-item)
+* [Get Plans](../../doc/controllers/plans.md#get-plans)
+* [Update Plan](../../doc/controllers/plans.md#update-plan)
+* [Update Plan Item](../../doc/controllers/plans.md#update-plan-item)
+* [Update Plan Metadata](../../doc/controllers/plans.md#update-plan-metadata)
 
 
-# Get Plan
+# Create Plan
 
-Gets a plan
+Creates a new plan
 
 ```ruby
-def get_plan(plan_id)
+def create_plan(body,
+                idempotency_key: nil)
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreatePlanRequest`](../../doc/models/create-plan-request.md) | Body, Required | Request for creating a plan |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetPlanResponse`](../../doc/models/get-plan-response.md)
+
+## Example Usage
+
+```ruby
+body = CreatePlanRequest.new(
+  nil,
+  nil,
+  nil,
+  [
+    nil
+  ],
+  nil,
+  [],
+  [],
+  nil,
+  nil,
+  nil,
+  [],
+  nil,
+  CreatePricingSchemeRequest.new(
+    nil,
+    []
+  ),
+  {}
+)
+
+result = plans_controller.create_plan(body)
+puts result
+```
+
+
+# Create Plan Item
+
+Adds a new item to a plan
+
+```ruby
+def create_plan_item(plan_id,
+                     request,
+                     idempotency_key: nil)
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `plan_id` | `String` | Template, Required | Plan id |
+| `request` | [`CreatePlanItemRequest`](../../doc/models/create-plan-item-request.md) | Body, Required | Request for creating a plan item |
+| `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
+
+**200**
+
+[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
+
+## Example Usage
+
+```ruby
+plan_id = 'plan_id8'
+
+request = CreatePlanItemRequest.new(
+  'name6',
+  CreatePricingSchemeRequest.new(
+    nil,
+    []
+  ),
+  'id6',
+  'description6'
+)
+
+result = plans_controller.create_plan_item(
+  plan_id,
+  request
+)
+puts result
+```
+
+
+# Delete Plan
+
+Deletes a plan
+
+```ruby
+def delete_plan(plan_id,
+                idempotency_key: nil)
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `plan_id` | `String` | Template, Required | Plan id |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+**200**
 
 [`GetPlanResponse`](../../doc/models/get-plan-response.md)
 
@@ -45,7 +160,8 @@ def get_plan(plan_id)
 ```ruby
 plan_id = 'plan_id8'
 
-result = plans_controller.get_plan(plan_id)
+result = plans_controller.delete_plan(plan_id)
+puts result
 ```
 
 
@@ -59,6 +175,10 @@ def delete_plan_item(plan_id,
                      idempotency_key: nil)
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -68,6 +188,8 @@ def delete_plan_item(plan_id,
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
 
@@ -82,28 +204,31 @@ result = plans_controller.delete_plan_item(
   plan_id,
   plan_item_id
 )
+puts result
 ```
 
 
-# Update Plan Metadata
+# Get Plan
 
-Updates the metadata from a plan
+Gets a plan
 
 ```ruby
-def update_plan_metadata(plan_id,
-                         request,
-                         idempotency_key: nil)
+def get_plan(plan_id)
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `plan_id` | `String` | Template, Required | The plan id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the plan metadata |
-| `idempotency_key` | `String` | Header, Optional | - |
+| `plan_id` | `String` | Template, Required | Plan id |
 
 ## Response Type
+
+**200**
 
 [`GetPlanResponse`](../../doc/models/get-plan-response.md)
 
@@ -112,81 +237,93 @@ def update_plan_metadata(plan_id,
 ```ruby
 plan_id = 'plan_id8'
 
-request = UpdateMetadataRequest.new(
-  {
-    'key0': 'metadata3'
-  }
-)
-
-result = plans_controller.update_plan_metadata(
-  plan_id,
-  request
-)
+result = plans_controller.get_plan(plan_id)
+puts result
 ```
 
 
-# Create Plan
+# Get Plan Item
 
-Creates a new plan
+Gets a plan item
 
 ```ruby
-def create_plan(body,
-                idempotency_key: nil)
+def get_plan_item(plan_id,
+                  plan_item_id)
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreatePlanRequest`](../../doc/models/create-plan-request.md) | Body, Required | Request for creating a plan |
-| `idempotency_key` | `String` | Header, Optional | - |
+| `plan_id` | `String` | Template, Required | Plan id |
+| `plan_item_id` | `String` | Template, Required | Plan item id |
 
 ## Response Type
 
-[`GetPlanResponse`](../../doc/models/get-plan-response.md)
+**200**
+
+[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
 
 ## Example Usage
 
 ```ruby
-body = CreatePlanRequest.new(
-  'name6',
-  'description4',
-  'statement_descriptor6',
-  [
-    CreatePlanItemRequest.new(
-      'name8',
-      CreatePricingSchemeRequest.new(
-        'scheme_type8'
-      ),
-      'id8',
-      'description2'
-    )
-  ],
-  false,
-  [
-    'payment_methods9'
-  ],
-  [
-    207
-  ],
-  'currency6',
-  'interval6',
-  170,
-  [
-    201,
-    200
-  ],
-  'billing_type0',
-  CreatePricingSchemeRequest.new(
-    'scheme_type8'
-  ),
-  {
-    'key0': 'metadata7',
-    'key1': 'metadata8'
-  }
-)
+plan_id = 'plan_id8'
 
-result = plans_controller.create_plan(body)
+plan_item_id = 'plan_item_id0'
+
+result = plans_controller.get_plan_item(
+  plan_id,
+  plan_item_id
+)
+puts result
+```
+
+
+# Get Plans
+
+Gets all plans
+
+```ruby
+def get_plans(page: nil,
+              size: nil,
+              name: nil,
+              status: nil,
+              billing_type: nil,
+              created_since: nil,
+              created_until: nil)
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `Integer` | Query, Optional | Page number |
+| `size` | `Integer` | Query, Optional | Page size |
+| `name` | `String` | Query, Optional | Filter for Plan's name |
+| `status` | `String` | Query, Optional | Filter for Plan's status |
+| `billing_type` | `String` | Query, Optional | Filter for plan's billing type |
+| `created_since` | `DateTime` | Query, Optional | Filter for plan's creation date start range |
+| `created_until` | `DateTime` | Query, Optional | Filter for plan's creation date end range |
+
+## Response Type
+
+**200**
+
+[`ListPlansResponse`](../../doc/models/list-plans-response.md)
+
+## Example Usage
+
+```ruby
+result = plans_controller.get_plans
+puts result
 ```
 
 
@@ -200,6 +337,10 @@ def update_plan(plan_id,
                 idempotency_key: nil)
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -209,6 +350,8 @@ def update_plan(plan_id,
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetPlanResponse`](../../doc/models/get-plan-response.md)
 
@@ -248,72 +391,7 @@ result = plans_controller.update_plan(
   plan_id,
   request
 )
-```
-
-
-# Delete Plan
-
-Deletes a plan
-
-```ruby
-def delete_plan(plan_id,
-                idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `plan_id` | `String` | Template, Required | Plan id |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetPlanResponse`](../../doc/models/get-plan-response.md)
-
-## Example Usage
-
-```ruby
-plan_id = 'plan_id8'
-
-result = plans_controller.delete_plan(plan_id)
-```
-
-
-# Get Plans
-
-Gets all plans
-
-```ruby
-def get_plans(page: nil,
-              size: nil,
-              name: nil,
-              status: nil,
-              billing_type: nil,
-              created_since: nil,
-              created_until: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `Integer` | Query, Optional | Page number |
-| `size` | `Integer` | Query, Optional | Page size |
-| `name` | `String` | Query, Optional | Filter for Plan's name |
-| `status` | `String` | Query, Optional | Filter for Plan's status |
-| `billing_type` | `String` | Query, Optional | Filter for plan's billing type |
-| `created_since` | `DateTime` | Query, Optional | Filter for plan's creation date start range |
-| `created_until` | `DateTime` | Query, Optional | Filter for plan's creation date end range |
-
-## Response Type
-
-[`ListPlansResponse`](../../doc/models/list-plans-response.md)
-
-## Example Usage
-
-```ruby
-result = plans_controller.get_plans
+puts result
 ```
 
 
@@ -328,6 +406,10 @@ def update_plan_item(plan_id,
                      idempotency_key: nil)
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -339,6 +421,8 @@ def update_plan_item(plan_id,
 
 ## Response Type
 
+**200**
+
 [`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
 
 ## Example Usage
@@ -349,16 +433,13 @@ plan_id = 'plan_id8'
 plan_item_id = 'plan_item_id0'
 
 body = UpdatePlanItemRequest.new(
-  'name6',
-  'description4',
-  'status2',
+  nil,
+  nil,
+  nil,
   UpdatePricingSchemeRequest.new(
-    'scheme_type8',
+    nil,
     [
-      UpdatePriceBracketRequest.new(
-        144,
-        174
-      )
+      nil
     ]
   )
 )
@@ -368,82 +449,53 @@ result = plans_controller.update_plan_item(
   plan_item_id,
   body
 )
+puts result
 ```
 
 
-# Create Plan Item
+# Update Plan Metadata
 
-Adds a new item to a plan
+Updates the metadata from a plan
 
 ```ruby
-def create_plan_item(plan_id,
-                     request,
-                     idempotency_key: nil)
+def update_plan_metadata(plan_id,
+                         request,
+                         idempotency_key: nil)
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `plan_id` | `String` | Template, Required | Plan id |
-| `request` | [`CreatePlanItemRequest`](../../doc/models/create-plan-item-request.md) | Body, Required | Request for creating a plan item |
+| `plan_id` | `String` | Template, Required | The plan id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the plan metadata |
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
+**200**
+
+[`GetPlanResponse`](../../doc/models/get-plan-response.md)
 
 ## Example Usage
 
 ```ruby
 plan_id = 'plan_id8'
 
-request = CreatePlanItemRequest.new(
-  'name6',
-  CreatePricingSchemeRequest.new(
-    'scheme_type8'
-  ),
-  'id6',
-  'description6'
+request = UpdateMetadataRequest.new(
+  {
+    'key0': 'metadata3'
+  }
 )
 
-result = plans_controller.create_plan_item(
+result = plans_controller.update_plan_metadata(
   plan_id,
   request
 )
-```
-
-
-# Get Plan Item
-
-Gets a plan item
-
-```ruby
-def get_plan_item(plan_id,
-                  plan_item_id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `plan_id` | `String` | Template, Required | Plan id |
-| `plan_item_id` | `String` | Template, Required | Plan item id |
-
-## Response Type
-
-[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
-
-## Example Usage
-
-```ruby
-plan_id = 'plan_id8'
-
-plan_item_id = 'plan_item_id0'
-
-result = plans_controller.get_plan_item(
-  plan_id,
-  plan_item_id
-)
+puts result
 ```
 

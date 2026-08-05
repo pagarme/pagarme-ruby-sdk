@@ -22,31 +22,16 @@ Request for updating a customer
 | `gender` | `String` | Optional | Gênero do cliente |
 | `document_type` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name8",
-  "email": "email8",
-  "document": "document2",
-  "type": "type2",
-  "address": {
-    "street": "street6",
-    "number": "number4",
-    "zip_code": "zip_code0",
-    "neighborhood": "neighborhood2",
-    "city": "city6",
-    "state": "state2",
-    "country": "country0",
-    "complement": "complement2",
-    "metadata": {
-      "key0": "metadata3",
-      "key1": "metadata2",
-      "key2": "metadata1"
-    },
-    "line_1": "line_10",
-    "line_2": "line_24"
-  }
-}
+```ruby
+update_customer_request = UpdateCustomerRequest.new(
+  'name8',
+  'email8',
+  'document2',
+  'type8',
+  nil,
+  {}
+)
 ```
 

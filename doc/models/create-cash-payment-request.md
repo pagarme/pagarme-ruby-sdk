@@ -12,12 +12,12 @@
 | `description` | `String` | Required | Description |
 | `confirm` | `TrueClass \| FalseClass` | Required | Indicates whether cash collection will be confirmed in the act of creation |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "description": "description8",
-  "confirm": false
-}
+```ruby
+create_cash_payment_request = CreateCashPaymentRequest.new(
+  'description8',
+  false
+)
 ```
 

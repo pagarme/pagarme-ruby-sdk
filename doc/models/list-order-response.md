@@ -11,41 +11,16 @@ Response object for listing order objects
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`Array<GetOrderResponse>`](../../doc/models/get-order-response.md) | Optional | The order object |
+| `data` | [`Array[GetOrderResponse]`](../../doc/models/get-order-response.md) | Optional | The order object |
 | `paging` | [`PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging object |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "code": "code8",
-      "amount": 236,
-      "currency": "currency0",
-      "closed": false
-    },
-    {
-      "id": "id0",
-      "code": "code8",
-      "amount": 236,
-      "currency": "currency0",
-      "closed": false
-    },
-    {
-      "id": "id0",
-      "code": "code8",
-      "amount": 236,
-      "currency": "currency0",
-      "closed": false
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```ruby
+list_order_response = ListOrderResponse.new(
+  [
+    nil
+  ]
+)
 ```
 

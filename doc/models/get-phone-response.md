@@ -13,13 +13,13 @@
 | `number` | `String` | Optional | - |
 | `area_code` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "country_code": "country_code6",
-  "number": "number4",
-  "area_code": "area_code6"
-}
+```ruby
+get_phone_response = GetPhoneResponse.new(
+  'country_code0',
+  'number8',
+  'area_code0'
+)
 ```
 

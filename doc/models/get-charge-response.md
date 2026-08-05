@@ -34,16 +34,31 @@ Response object for getting a charge
 | `recurrency_cycle` | `String` | Optional | Defines whether the card has been used one or more times. |
 | `payment_origin` | [`GetPaymentOriginResponse`](../../doc/models/get-payment-origin-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "recurrency_cycle": "\"first\" or \"subsequent\"",
-  "id": "id0",
-  "code": "code8",
-  "gateway_id": "gateway_id0",
-  "amount": 164,
-  "status": "status2"
-}
+```ruby
+get_charge_response = GetChargeResponse.new(
+  'id4',
+  'code2',
+  'gateway_id6',
+  116,
+  'status4',
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  '"first" or "subsequent"'
+)
 ```
 

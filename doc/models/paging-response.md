@@ -15,13 +15,13 @@ Object used for returning lists of objects with pagination
 | `previous` | `String` | Optional | Previous page |
 | `mnext` | `String` | Optional | Next page |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "total": 80,
-  "previous": "previous2",
-  "next": "next2"
-}
+```ruby
+paging_response = PagingResponse.new(
+  196,
+  'previous8',
+  'next8'
+)
 ```
 

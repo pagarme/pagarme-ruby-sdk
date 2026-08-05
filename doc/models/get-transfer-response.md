@@ -19,15 +19,15 @@ Transfer response
 | `bank_account` | [`GetBankAccountResponse`](../../doc/models/get-bank-account-response.md) | Optional | Bank account |
 | `metadata` | `Hash[String, String]` | Optional | Metadata |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "amount": 146,
-  "status": "status4",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z"
-}
+```ruby
+get_transfer_response = GetTransferResponse.new(
+  'id2',
+  92,
+  'status6',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

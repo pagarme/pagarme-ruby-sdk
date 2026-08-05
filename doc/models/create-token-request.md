@@ -14,20 +14,12 @@ Token data
 | `type` | `String` | Required | Token type<br><br>**Default**: `'card'` |
 | `card` | [`CreateCardTokenRequest`](../../doc/models/create-card-token-request.md) | Required | Card data |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "card",
-  "card": {
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4",
-    "brand": "brand0",
-    "label": "label6"
-  }
-}
+```ruby
+create_token_request = CreateTokenRequest.new(
+  'card',
+  CreateCardTokenRequest.new
+)
 ```
 

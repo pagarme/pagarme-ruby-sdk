@@ -17,21 +17,15 @@ The settings for creating a voucher payment
 | `card` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Card info |
 | `recurrency_cycle` | `String` | Optional | Defines whether the card has been used one or more times. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "recurrency_cycle": "\"first\" or \"subsequent\"",
-  "statement_descriptor": "statement_descriptor0",
-  "card_id": "card_id6",
-  "card_token": "card_token0",
-  "Card": {
-    "number": "number8",
-    "holder_name": "holder_name6",
-    "exp_month": 240,
-    "exp_year": 56,
-    "cvv": "cvv8"
-  }
-}
+```ruby
+create_voucher_payment_request = CreateVoucherPaymentRequest.new(
+  'statement_descriptor4',
+  'card_id0',
+  'card_token6',
+  nil,
+  '"first" or "subsequent"'
+)
 ```
 

@@ -13,11 +13,11 @@ Request for creating a new Access Token
 |  --- | --- | --- | --- |
 | `expires_in` | `Integer` | Optional | Minutes to expire the token |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "expires_in": 86
-}
+```ruby
+create_access_token_request = CreateAccessTokenRequest.new(
+  188
+)
 ```
 

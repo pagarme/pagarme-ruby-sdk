@@ -13,13 +13,13 @@
 | `start_at` | `DateTime` | Optional | - |
 | `end_at` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "start_at": "2016-03-13T12:52:32.123Z",
-  "end_at": "end_at6"
-}
+```ruby
+create_transaction_report_file_request = CreateTransactionReportFileRequest.new(
+  'name8',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  'end_at2'
+)
 ```
 

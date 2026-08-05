@@ -11,16 +11,17 @@ Bank transfer checkout response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bank` | `Array<String>` | Optional | bank list response |
+| `bank` | `Array[String]` | Optional | bank list response |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank": [
-    "bank3",
-    "bank4"
+```ruby
+get_checkout_bank_transfer_payment_response = GetCheckoutBankTransferPaymentResponse.new(
+  [
+    'bank9',
+    'bank0',
+    'bank1'
   ]
-}
+)
 ```
 

@@ -15,13 +15,13 @@ Fine Response
 | `type` | `String` | Optional | Type |
 | `amount` | `Integer` | Optional | Amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "\"percentage\" or \"flat\"",
-  "days": 112,
-  "amount": 186
-}
+```ruby
+get_fine_response = GetFineResponse.new(
+  192,
+  '"percentage" or "flat"',
+  10
+)
 ```
 

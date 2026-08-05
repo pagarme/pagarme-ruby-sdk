@@ -15,19 +15,13 @@ Api Error Exception
 | `errors` | `Object` | Required | - |
 | `request` | `Object` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "message": "message4",
-  "errors": {
-    "key1": "val1",
-    "key2": "val2"
-  },
-  "request": {
-    "key1": "val1",
-    "key2": "val2"
-  }
-}
+```ruby
+begin
+  # make the API call
+rescue ErrorException => e
+  puts "Caught ErrorException: #{e.message}"
+end
 ```
 

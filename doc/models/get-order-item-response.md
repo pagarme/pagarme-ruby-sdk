@@ -22,15 +22,15 @@ Response object for getting an order item
 | `created_at` | `DateTime` | Optional | - |
 | `updated_at` | `DateTime` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id8",
-  "type": "type8",
-  "description": "description8",
-  "amount": 224,
-  "quantity": 82
-}
+```ruby
+get_order_item_response = GetOrderItemResponse.new(
+  'id4',
+  'type6',
+  'description4',
+  140,
+  254
+)
 ```
 

@@ -12,27 +12,18 @@ Checkout pix payment response
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `expires_at` | `DateTime` | Optional | Expires at |
-| `additional_information` | [`Array<PixAdditionalInformation>`](../../doc/models/pix-additional-information.md) | Optional | Additional information |
+| `additional_information` | [`Array[PixAdditionalInformation]`](../../doc/models/pix-additional-information.md) | Optional | Additional information |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "expires_at": "2016-03-13T12:52:32.123Z",
-  "additional_information": [
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    },
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    },
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    }
+```ruby
+get_checkout_pix_payment_response = GetCheckoutPixPaymentResponse.new(
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  [
+    nil,
+    PixAdditionalInformation.new,
+    PixAdditionalInformation.new
   ]
-}
+)
 ```
 

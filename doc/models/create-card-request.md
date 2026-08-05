@@ -28,16 +28,20 @@ Card data
 | `id` | `String` | Optional | Identifier |
 | `token` | `String` | Optional | token identifier |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "credit",
-  "number": "number0",
-  "holder_name": "holder_name8",
-  "exp_month": 92,
-  "exp_year": 204,
-  "cvv": "cvv0"
-}
+```ruby
+create_card_request = CreateCardRequest.new(
+  'number0',
+  'holder_name8',
+  222,
+  74,
+  'cvv0',
+  nil,
+  nil,
+  nil,
+  {},
+  'credit'
+)
 ```
 

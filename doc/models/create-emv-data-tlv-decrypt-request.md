@@ -13,13 +13,13 @@
 | `lenght` | `String` | Required | Emv lenght |
 | `value` | `String` | Required | Emv value |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "tag": "tag6",
-  "lenght": "lenght6",
-  "value": "value4"
-}
+```ruby
+create_emv_data_tlv_decrypt_request = CreateEmvDataTlvDecryptRequest.new(
+  'tag6',
+  'lenght6',
+  'value4'
+)
 ```
 

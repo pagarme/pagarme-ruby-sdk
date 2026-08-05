@@ -24,7 +24,7 @@
 | `updated_at` | `DateTime` | Optional | - |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
 | `card` | [`GetCardResponse`](../../doc/models/get-card-response.md) | Optional | - |
-| `items` | [`Array<GetSubscriptionItemResponse>`](../../doc/models/get-subscription-item-response.md) | Optional | - |
+| `items` | [`Array[GetSubscriptionItemResponse]`](../../doc/models/get-subscription-item-response.md) | Optional | - |
 | `statement_descriptor` | `String` | Optional | - |
 | `metadata` | `Hash[String, String]` | Optional | - |
 | `setup` | [`GetSetupResponse`](../../doc/models/get-setup-response.md) | Optional | - |
@@ -33,36 +33,59 @@
 | `billing_day` | `Integer` | Optional | - |
 | `minimum_price` | `Integer` | Optional | - |
 | `canceled_at` | `DateTime` | Optional | - |
-| `discounts` | [`Array<GetDiscountResponse>`](../../doc/models/get-discount-response.md) | Optional | Subscription discounts |
-| `increments` | [`Array<GetIncrementResponse>`](../../doc/models/get-increment-response.md) | Optional | Subscription increments |
+| `discounts` | [`Array[GetDiscountResponse]`](../../doc/models/get-discount-response.md) | Optional | Subscription discounts |
+| `increments` | [`Array[GetIncrementResponse]`](../../doc/models/get-increment-response.md) | Optional | Subscription increments |
 | `boleto_due_days` | `Integer` | Optional | Days until boleto expires |
 | `split` | [`GetSubscriptionSplitResponse`](../../doc/models/get-subscription-split-response.md) | Optional | Subscription's split response |
 | `boleto` | [`GetSubscriptionBoletoResponse`](../../doc/models/get-subscription-boleto-response.md) | Optional | - |
 | `manual_billing` | `TrueClass \| FalseClass` | Optional | - |
 | `indirect_acceptor` | `String` | Optional | Business model identifier |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "boleto": {
-    "interest": {
-      "days": 2,
-      "type": "percentage",
-      "amount": 20
-    },
-    "fine": {
-      "days": 2,
-      "type": "flat",
-      "amount": 10
-    },
-    "max_days_to_pay_past_due": 2
-  },
-  "id": "id4",
-  "code": "code2",
-  "start_at": "2016-03-13T12:52:32.123Z",
-  "interval": "interval2",
-  "interval_count": 224
-}
+```ruby
+get_subscription_response = GetSubscriptionResponse.new(
+  'id0',
+  'code8',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  'interval8',
+  54,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  GetSubscriptionBoletoResponse.new(
+    GetInterestResponse.new(
+      2,
+      'percentage',
+      20
+    ),
+    GetFineResponse.new(
+      2,
+      'flat',
+      10
+    ),
+    2
+  )
+)
 ```
 

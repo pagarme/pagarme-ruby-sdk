@@ -15,15 +15,15 @@
 | `delay` | `Integer` | Optional | - |
 | `days` | `Integer` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "enabled": false,
-  "type": "type8",
-  "volume_percentage": 132,
-  "delay": 158,
-  "days": 66
-}
+```ruby
+update_automatic_anticipation_settings_request = UpdateAutomaticAnticipationSettingsRequest.new(
+  false,
+  'type2',
+  146,
+  144,
+  52
+)
 ```
 

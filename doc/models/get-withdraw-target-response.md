@@ -12,12 +12,12 @@
 | `target_id` | `String` | Optional | - |
 | `type` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "target_id": "target_id4",
-  "type": "type6"
-}
+```ruby
+get_withdraw_target_response = GetWithdrawTargetResponse.new(
+  'target_id8',
+  'type8'
+)
 ```
 

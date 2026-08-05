@@ -29,15 +29,15 @@ Response object for getting an Address
 | `line_2` | `String` | Optional | Line 2 for address |
 | `deleted_at` | `DateTime` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "street": "street2",
-  "number": "number0",
-  "complement": "complement8",
-  "zip_code": "zip_code6"
-}
+```ruby
+get_address_response = GetAddressResponse.new(
+  'id4',
+  'street4',
+  'number2',
+  'complement0',
+  'zip_code8'
+)
 ```
 

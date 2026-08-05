@@ -11,11 +11,11 @@
 |  --- | --- | --- | --- |
 | `custom_sla` | `Integer` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "custom_sla": 150
-}
+```ruby
+create_clear_sale_request = CreateClearSaleRequest.new(
+  10
+)
 ```
 

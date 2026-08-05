@@ -10,13 +10,128 @@ invoices_controller = client.invoices
 
 ## Methods
 
-* [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
 * [Cancel Invoice](../../doc/controllers/invoices.md#cancel-invoice)
-* [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
-* [Update Invoice Metadata](../../doc/controllers/invoices.md#update-invoice-metadata)
-* [Get Partial Invoice](../../doc/controllers/invoices.md#get-partial-invoice)
 * [Create Invoice](../../doc/controllers/invoices.md#create-invoice)
 * [Get Invoice](../../doc/controllers/invoices.md#get-invoice)
+* [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
+* [Get Partial Invoice](../../doc/controllers/invoices.md#get-partial-invoice)
+* [Update Invoice Metadata](../../doc/controllers/invoices.md#update-invoice-metadata)
+* [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
+
+
+# Cancel Invoice
+
+Cancels an invoice
+
+```ruby
+def cancel_invoice(invoice_id,
+                   idempotency_key: nil)
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoice_id` | `String` | Template, Required | Invoice id |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```ruby
+invoice_id = 'invoice_id0'
+
+result = invoices_controller.cancel_invoice(invoice_id)
+puts result
+```
+
+
+# Create Invoice
+
+Create an Invoice
+
+```ruby
+def create_invoice(subscription_id,
+                   cycle_id,
+                   request: nil,
+                   idempotency_key: nil)
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscription_id` | `String` | Template, Required | Subscription Id |
+| `cycle_id` | `String` | Template, Required | Cycle Id |
+| `request` | [`CreateInvoiceRequest`](../../doc/models/create-invoice-request.md) | Body, Optional | - |
+| `idempotency_key` | `String` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```ruby
+subscription_id = 'subscription_id0'
+
+cycle_id = 'cycle_id6'
+
+result = invoices_controller.create_invoice(
+  subscription_id,
+  cycle_id
+)
+puts result
+```
+
+
+# Get Invoice
+
+Gets an invoice
+
+```ruby
+def get_invoice(invoice_id)
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoice_id` | `String` | Template, Required | Invoice Id |
+
+## Response Type
+
+**200**
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```ruby
+invoice_id = 'invoice_id0'
+
+result = invoices_controller.get_invoice(invoice_id)
+puts result
+```
 
 
 # Get Invoices
@@ -37,6 +152,10 @@ def get_invoices(page: nil,
                  customer_document: nil)
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -55,79 +174,47 @@ def get_invoices(page: nil,
 
 ## Response Type
 
+**200**
+
 [`ListInvoicesResponse`](../../doc/models/list-invoices-response.md)
 
 ## Example Usage
 
 ```ruby
 result = invoices_controller.get_invoices
+puts result
 ```
 
 
-# Cancel Invoice
-
-Cancels an invoice
+# Get Partial Invoice
 
 ```ruby
-def cancel_invoice(invoice_id,
-                   idempotency_key: nil)
+def get_partial_invoice(subscription_id)
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `invoice_id` | `String` | Template, Required | Invoice id |
-| `idempotency_key` | `String` | Header, Optional | - |
+| `subscription_id` | `String` | Template, Required | Subscription Id |
 
 ## Response Type
+
+**200**
 
 [`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
 
 ## Example Usage
 
 ```ruby
-invoice_id = 'invoice_id0'
+subscription_id = 'subscription_id0'
 
-result = invoices_controller.cancel_invoice(invoice_id)
-```
-
-
-# Update Invoice Status
-
-Updates the status from an invoice
-
-```ruby
-def update_invoice_status(invoice_id,
-                          request,
-                          idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `invoice_id` | `String` | Template, Required | Invoice Id |
-| `request` | [`UpdateInvoiceStatusRequest`](../../doc/models/update-invoice-status-request.md) | Body, Required | Request for updating an invoice's status |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```ruby
-invoice_id = 'invoice_id0'
-
-request = UpdateInvoiceStatusRequest.new(
-  'status8'
-)
-
-result = invoices_controller.update_invoice_status(
-  invoice_id,
-  request
-)
+result = invoices_controller.get_partial_invoice(subscription_id)
+puts result
 ```
 
 
@@ -141,6 +228,10 @@ def update_invoice_metadata(invoice_id,
                             idempotency_key: nil)
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -150,6 +241,8 @@ def update_invoice_metadata(invoice_id,
 | `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
 
@@ -168,87 +261,35 @@ result = invoices_controller.update_invoice_metadata(
   invoice_id,
   request
 )
+puts result
 ```
 
 
-# Get Partial Invoice
+# Update Invoice Status
+
+Updates the status from an invoice
 
 ```ruby
-def get_partial_invoice(subscription_id)
+def update_invoice_status(invoice_id,
+                          request,
+                          idempotency_key: nil)
 ```
 
-## Parameters
+## Authentication
 
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription Id |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-
-result = invoices_controller.get_partial_invoice(subscription_id)
-```
-
-
-# Create Invoice
-
-Create an Invoice
-
-```ruby
-def create_invoice(subscription_id,
-                   cycle_id,
-                   request: nil,
-                   idempotency_key: nil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscription_id` | `String` | Template, Required | Subscription Id |
-| `cycle_id` | `String` | Template, Required | Cycle Id |
-| `request` | [`CreateInvoiceRequest`](../../doc/models/create-invoice-request.md) | Body, Optional | - |
-| `idempotency_key` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```ruby
-subscription_id = 'subscription_id0'
-
-cycle_id = 'cycle_id6'
-
-result = invoices_controller.create_invoice(
-  subscription_id,
-  cycle_id
-)
-```
-
-
-# Get Invoice
-
-Gets an invoice
-
-```ruby
-def get_invoice(invoice_id)
-```
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `invoice_id` | `String` | Template, Required | Invoice Id |
+| `request` | [`UpdateInvoiceStatusRequest`](../../doc/models/update-invoice-status-request.md) | Body, Required | Request for updating an invoice's status |
+| `idempotency_key` | `String` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
 
@@ -257,6 +298,14 @@ def get_invoice(invoice_id)
 ```ruby
 invoice_id = 'invoice_id0'
 
-result = invoices_controller.get_invoice(invoice_id)
+request = UpdateInvoiceStatusRequest.new(
+  'status8'
+)
+
+result = invoices_controller.update_invoice_status(
+  invoice_id,
+  request
+)
+puts result
 ```
 

@@ -15,7 +15,7 @@ Response object for getting an RegisterInformationResponse
 | `document` | `String` | Optional | - |
 | `type` | `String` | Optional | - |
 | `site_url` | `String` | Optional | - |
-| `phone_numbers` | [`Array<GetPhoneNumberResponse>`](../../doc/models/get-phone-number-response.md) | Optional | - |
+| `phone_numbers` | [`Array[GetPhoneNumberResponse]`](../../doc/models/get-phone-number-response.md) | Optional | - |
 | `name` | `String` | Optional | - |
 | `mother_name` | `String` | Optional | - |
 | `birthdate` | `String` | Optional | - |
@@ -29,28 +29,20 @@ Response object for getting an RegisterInformationResponse
 | `founding_date` | `String` | Optional | - |
 | `cnae` | `String` | Optional | - |
 | `main_address` | [`GetRegisterInformationAddressResponse`](../../doc/models/get-register-information-address-response.md) | Optional | - |
-| `managing_partners` | [`Array<GetManagingPartnerResponse>`](../../doc/models/get-managing-partner-response.md) | Optional | - |
+| `managing_partners` | [`Array[GetManagingPartnerResponse]`](../../doc/models/get-managing-partner-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email": "email2",
-  "document": "document2",
-  "type": "type6",
-  "site_url": "site_url6",
-  "phone_numbers": [
-    {
-      "ddd": "ddd4",
-      "number": "number2",
-      "type": "type0"
-    },
-    {
-      "ddd": "ddd4",
-      "number": "number2",
-      "type": "type0"
-    }
+```ruby
+get_register_information_response = GetRegisterInformationResponse.new(
+  'email4',
+  'document6',
+  'type2',
+  'site_url4',
+  [
+    nil,
+    GetPhoneNumberResponse.new
   ]
-}
+)
 ```
 

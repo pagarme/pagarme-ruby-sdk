@@ -29,15 +29,15 @@ Response object for getting a credit card
 | `first_six_digits` | `String` | Optional | First six digits |
 | `label` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id4",
-  "last_four_digits": "last_four_digits0",
-  "brand": "brand8",
-  "holder_name": "holder_name0",
-  "exp_month": 52
-}
+```ruby
+get_card_response = GetCardResponse.new(
+  'id0',
+  'last_four_digits6',
+  'brand4',
+  'holder_name6',
+  224
+)
 ```
 

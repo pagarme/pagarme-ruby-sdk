@@ -17,19 +17,15 @@ The ApplePay Token Payment Request
 | `signature` | `String` | Required | Detached PKCS #7 signature, Base64 encoded as string |
 | `merchant_identifier` | `String` | Required | ApplePay Merchant identifier |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "version": "version6",
-  "data": "data0",
-  "header": {
-    "public_key_hash": "public_key_hash4",
-    "ephemeral_public_key": "ephemeral_public_key6",
-    "transaction_id": "transaction_id4"
-  },
-  "signature": "signature8",
-  "merchant_identifier": "merchant_identifier4"
-}
+```ruby
+create_apple_pay_request = CreateApplePayRequest.new(
+  'version0',
+  'data4',
+  CreateApplePayHeaderRequest.new,
+  'signature2',
+  'merchant_identifier8'
+)
 ```
 

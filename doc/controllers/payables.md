@@ -8,11 +8,6 @@ payables_controller = client.payables
 
 `PayablesController`
 
-## Methods
-
-* [Get Payables](../../doc/controllers/payables.md#get-payables)
-* [Get Payable by Id](../../doc/controllers/payables.md#get-payable-by-id)
-
 
 # Get Payables
 
@@ -36,6 +31,10 @@ def get_payables(type: nil,
                  size: nil,
                  gateway_id: nil)
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
@@ -62,36 +61,14 @@ def get_payables(type: nil,
 
 ## Response Type
 
+**200**
+
 [`ListPayablesResponse`](../../doc/models/list-payables-response.md)
 
 ## Example Usage
 
 ```ruby
 result = payables_controller.get_payables
-```
-
-
-# Get Payable by Id
-
-```ruby
-def get_payable_by_id(id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `Integer` | Template, Required | - |
-
-## Response Type
-
-[`GetPayableResponse`](../../doc/models/get-payable-response.md)
-
-## Example Usage
-
-```ruby
-id = 112
-
-result = payables_controller.get_payable_by_id(id)
+puts result
 ```
 

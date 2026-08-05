@@ -20,15 +20,15 @@ Card token data
 | `type` | `String` | Optional | - |
 | `label` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "last_four_digits": "last_four_digits8",
-  "holder_name": "holder_name8",
-  "holder_document": "holder_document6",
-  "exp_month": 168,
-  "exp_year": 128
-}
+```ruby
+get_card_token_response = GetCardTokenResponse.new(
+  'last_four_digits8',
+  'holder_name8',
+  'holder_document4',
+  32,
+  8
+)
 ```
 

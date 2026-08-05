@@ -15,13 +15,13 @@ Response object for getting an RetryTransactionInformation
 | `transaction_limit` | `Integer` | Required | - |
 | `transaction_date_limit` | `DateTime` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "brand_failure_return_code": "brand_failure_return_code2",
-  "transaction_limit": 44,
-  "transaction_date_limit": "2016-03-13T12:52:32.123Z"
-}
+```ruby
+get_retry_transaction_information_response = GetRetryTransactionInformationResponse.new(
+  'brand_failure_return_code8',
+  212,
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

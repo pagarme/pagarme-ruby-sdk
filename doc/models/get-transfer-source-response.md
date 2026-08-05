@@ -12,12 +12,12 @@
 | `source_id` | `String` | Optional | - |
 | `type` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "source_id": "source_id0",
-  "type": "type4"
-}
+```ruby
+get_transfer_source_response = GetTransferSourceResponse.new(
+  'source_id4',
+  'type0'
+)
 ```
 

@@ -15,58 +15,30 @@ Request for creating a new subscription item
 | `pricing_scheme` | [`CreatePricingSchemeRequest`](../../doc/models/create-pricing-scheme-request.md) | Required | Pricing scheme |
 | `id` | `String` | Required | Item id |
 | `plan_item_id` | `String` | Required | Plan item id |
-| `discounts` | [`Array<CreateDiscountRequest>`](../../doc/models/create-discount-request.md) | Required | Discounts for the item |
+| `discounts` | [`Array[CreateDiscountRequest]`](../../doc/models/create-discount-request.md) | Required | Discounts for the item |
 | `name` | `String` | Required | Item name |
 | `cycles` | `Integer` | Optional | Number of cycles which the item will be charged |
 | `quantity` | `Integer` | Optional | Quantity of items |
 | `minimum_price` | `Integer` | Optional | Minimum price |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "description": "description0",
-  "pricing_scheme": {
-    "scheme_type": "scheme_type8",
-    "price_brackets": [
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      },
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      },
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      }
-    ],
-    "price": 166,
-    "minimum_price": 6,
-    "percentage": 251.76
-  },
-  "id": "id0",
-  "plan_item_id": "plan_item_id0",
-  "discounts": [
-    {
-      "value": 90.66,
-      "discount_type": "discount_type2",
-      "item_id": "item_id4",
-      "cycles": 126,
-      "description": "description4"
-    }
+```ruby
+create_subscription_item_request = CreateSubscriptionItemRequest.new(
+  nil,
+  CreatePricingSchemeRequest.new(
+    nil,
+    []
+  ),
+  nil,
+  nil,
+  [
+    nil
   ],
-  "name": "name0",
-  "cycles": 106,
-  "quantity": 130,
-  "minimum_price": 114
-}
+  nil,
+  44,
+  24,
+  36
+)
 ```
 

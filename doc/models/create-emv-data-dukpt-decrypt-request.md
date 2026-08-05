@@ -11,11 +11,11 @@
 |  --- | --- | --- | --- |
 | `ksn` | `String` | Required | Key serial number |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "ksn": "ksn8"
-}
+```ruby
+create_emv_data_dukpt_decrypt_request = CreateEmvDataDukptDecryptRequest.new(
+  'ksn4'
+)
 ```
 

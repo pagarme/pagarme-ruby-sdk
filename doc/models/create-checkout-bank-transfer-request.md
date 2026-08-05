@@ -11,19 +11,19 @@ Checkout bank transfer payment request
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bank` | `Array<String>` | Required | Bank |
+| `bank` | `Array[String]` | Required | Bank |
 | `retries` | `Integer` | Required | Number of retries for processing |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank": [
-    "bank7",
-    "bank8",
-    "bank9"
+```ruby
+create_checkout_bank_transfer_request = CreateCheckoutBankTransferRequest.new(
+  [
+    'bank7',
+    'bank8',
+    'bank9'
   ],
-  "retries": 56
-}
+  100
+)
 ```
 

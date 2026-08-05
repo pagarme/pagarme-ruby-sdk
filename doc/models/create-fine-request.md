@@ -15,13 +15,12 @@ Fine Request
 | `type` | `String` | Required | Type |
 | `amount` | `Integer` | Required | Amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "days": 218,
-  "type": "\"percentage\" or \"flat\"",
-  "amount": 220
-}
+```ruby
+create_fine_request = CreateFineRequest.new(
+  nil,
+  '"percentage" or "flat"'
+)
 ```
 

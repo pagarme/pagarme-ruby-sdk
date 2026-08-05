@@ -23,15 +23,15 @@ Response object for getting a plan item
 | `cycles` | `Integer` | Optional | - |
 | `deleted_at` | `DateTime` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id8",
-  "name": "name8",
-  "status": "status0",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z"
-}
+```ruby
+get_plan_item_response = GetPlanItemResponse.new(
+  'id0',
+  'name0',
+  'status2',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

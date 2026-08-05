@@ -21,20 +21,20 @@ Response object for getting a bank transfer transaction
 | `paid_at` | `DateTime` | Optional | Payment date |
 | `paid_amount` | `Integer` | Optional | Paid amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "url": "url2",
-  "bank_tid": "bank_tid2",
-  "bank": "bank6",
-  "paid_at": "2016-03-13T12:52:32.123Z",
-  "paid_amount": 176
-}
+```ruby
+get_bank_transfer_transaction_response = GetBankTransferTransactionResponse.new(
+  'url8',
+  'bank_tid8',
+  'bank2',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  234,
+  'gateway_id8',
+  40,
+  'status6',
+  false,
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

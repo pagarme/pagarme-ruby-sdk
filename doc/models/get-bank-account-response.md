@@ -26,15 +26,15 @@
 | `metadata` | `Hash[String, String]` | Optional | Metadata |
 | `pix_key` | `String` | Optional | Pix Key |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "holder_name": "holder_name2",
-  "holder_type": "holder_type8",
-  "bank": "bank4",
-  "branch_number": "branch_number2"
-}
+```ruby
+get_bank_account_response = GetBankAccountResponse.new(
+  'id6',
+  'holder_name2',
+  'holder_type8',
+  'bank4',
+  'branch_number2'
+)
 ```
 

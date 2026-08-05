@@ -15,13 +15,13 @@ Creates a refund with split rules
 | `amount` | `Integer` | Required | The split rule amount |
 | `type` | `String` | Required | The amount type (flat ou percentage) |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "Amount": 222,
-  "type": "type6"
-}
+```ruby
+create_cancel_charge_split_rules_request = CreateCancelChargeSplitRulesRequest.new(
+  'id6',
+  158,
+  'type4'
+)
 ```
 

@@ -12,21 +12,17 @@ The Transaction Gateway Response
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `code` | `String` | Optional | The error code |
-| `errors` | [`Array<GetGatewayErrorResponse>`](../../doc/models/get-gateway-error-response.md) | Optional | The gateway response errors list |
+| `errors` | [`Array[GetGatewayErrorResponse]`](../../doc/models/get-gateway-error-response.md) | Optional | The gateway response errors list |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "code6",
-  "errors": [
-    {
-      "message": "message0"
-    },
-    {
-      "message": "message0"
-    }
+```ruby
+get_gateway_response_response = GetGatewayResponseResponse.new(
+  'code0',
+  [
+    nil,
+    GetGatewayErrorResponse.new
   ]
-}
+)
 ```
 

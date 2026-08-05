@@ -11,11 +11,11 @@
 |  --- | --- | --- | --- |
 | `code` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "code2"
-}
+```ruby
+get_integration_response = GetIntegrationResponse.new(
+  'code2'
+)
 ```
 

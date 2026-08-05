@@ -15,20 +15,24 @@ Request for updating the card from a subscription
 | `card_id` | `String` | Required | Credit card id |
 | `indirect_acceptor` | `String` | Optional | Business model identifier |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "type": "credit",
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
-  },
-  "card_id": "card_id0",
-  "indirect_acceptor": "indirect_acceptor0"
-}
+```ruby
+update_subscription_card_request = UpdateSubscriptionCardRequest.new(
+  CreateCardRequest.new(
+    'number6',
+    'holder_name2',
+    228,
+    68,
+    'cvv4',
+    nil,
+    nil,
+    nil,
+    {},
+    'credit'
+  ),
+  nil,
+  'indirect_acceptor4'
+)
 ```
 

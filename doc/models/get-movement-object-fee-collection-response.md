@@ -19,17 +19,18 @@ Generic response object for getting a MovementObjectFeeCollection.
 | `payment_date` | `String` | Optional | - |
 | `recipient_id` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "status": "status4",
-  "amount": "amount4",
-  "created_at": "created_at0",
-  "description": "description4",
-  "payment_date": "payment_date4",
-  "recipient_id": "recipient_id6"
-}
+```ruby
+get_movement_object_fee_collection_response = GetMovementObjectFeeCollectionResponse.new(
+  'description4',
+  'payment_date4',
+  'recipient_id6',
+  nil,
+  'id2',
+  'status4',
+  'amount4',
+  'created_at0'
+)
 ```
 

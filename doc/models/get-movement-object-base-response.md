@@ -20,19 +20,24 @@ Generic response object for getting a MovementObjectBase.
 | `charge_id` | `String` | Optional | - |
 | `gateway_id` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "status": "status4",
-  "amount": "amount4",
-  "created_at": "created_at0",
-  "product": "product2",
-  "brand": "brand6",
-  "payment_date": "payment_date4",
-  "recipient_id": "recipient_id2",
-  "document_type": "document_type0"
-}
+```ruby
+get_movement_object_base_response = GetMovementObjectSettlementResponse.new(
+  'product2',
+  'brand6',
+  'payment_date4',
+  'recipient_id2',
+  'document_type0',
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  'id2',
+  'status4',
+  'amount4',
+  'created_at0'
+)
 ```
 

@@ -14,12 +14,12 @@ Options for card installment
 | `number` | `Integer` | Required | Installment quantity |
 | `total` | `Integer` | Required | Total amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "number": 154,
-  "total": 46
-}
+```ruby
+create_checkout_card_installment_option_request = CreateCheckoutCardInstallmentOptionRequest.new(
+  170,
+  22
+)
 ```
 

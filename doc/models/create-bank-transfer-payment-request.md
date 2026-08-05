@@ -14,12 +14,12 @@ Request for creating a bank transfer payment
 | `bank` | `String` | Required | Bank |
 | `retries` | `Integer` | Required | Number of retries |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank": "bank4",
-  "retries": 188
-}
+```ruby
+create_bank_transfer_payment_request = CreateBankTransferPaymentRequest.new(
+  'bank6',
+  114
+)
 ```
 

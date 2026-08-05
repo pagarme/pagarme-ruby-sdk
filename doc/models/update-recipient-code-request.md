@@ -13,11 +13,11 @@ Update code for a recipient
 |  --- | --- | --- | --- |
 | `code` | `String` | Required | Code |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "code6"
-}
+```ruby
+update_recipient_code_request = UpdateRecipientCodeRequest.new(
+  'code4'
+)
 ```
 

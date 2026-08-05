@@ -12,19 +12,18 @@
 | `amount` | `Integer` | Required | - |
 | `source_id` | `String` | Required | - |
 | `target_id` | `String` | Required | - |
-| `metadata` | `Array<String>` | Optional | - |
+| `metadata` | `Array[String]` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 252,
-  "source_id": "source_id6",
-  "target_id": "target_id8",
-  "metadata": [
-    "metadata1",
-    "metadata2"
+```ruby
+create_transfer = CreateTransfer.new(
+  202,
+  'source_id2',
+  'target_id8',
+  [
+    'metadata5'
   ]
-}
+)
 ```
 

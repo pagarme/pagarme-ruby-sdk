@@ -18,16 +18,16 @@ Request for creating a usage
 | `group` | `String` | Optional | identification group in the client system |
 | `amount` | `Integer` | Optional | Field used in item scheme type 'Percent' |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "quantity": 224,
-  "description": "description8",
-  "used_at": "2016-03-13T12:52:32.123Z",
-  "code": "code0",
-  "group": "group0",
-  "amount": 110
-}
+```ruby
+create_usage_request = CreateUsageRequest.new(
+  222,
+  'description2',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  'code0',
+  'group0',
+  108
+)
 ```
 

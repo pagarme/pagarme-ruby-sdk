@@ -15,15 +15,15 @@
 | `provider_name` | `String` | Optional | - |
 | `score` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "status0",
-  "return_code": "return_code8",
-  "return_message": "return_message6",
-  "provider_name": "provider_name6",
-  "score": "score8"
-}
+```ruby
+get_antifraud_response = GetAntifraudResponse.new(
+  'status6',
+  'return_code2',
+  'return_message0',
+  'provider_name0',
+  'score2'
+)
 ```
 

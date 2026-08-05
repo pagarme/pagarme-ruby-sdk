@@ -27,15 +27,15 @@ Response object for getting a customer
 | `code` | `String` | Optional | Código de referência do cliente no sistema da loja. Max: 52 caracteres |
 | `document_type` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id4",
-  "name": "name4",
-  "email": "email2",
-  "delinquent": false,
-  "created_at": "2016-03-13T12:52:32.123Z"
-}
+```ruby
+get_customer_response = GetCustomerResponse.new(
+  'id2',
+  'name2',
+  'email4',
+  false,
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

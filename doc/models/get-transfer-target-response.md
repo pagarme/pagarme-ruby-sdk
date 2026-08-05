@@ -12,12 +12,12 @@
 | `target_id` | `String` | Optional | - |
 | `type` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "target_id": "target_id0",
-  "type": "type0"
-}
+```ruby
+get_transfer_target_response = GetTransferTargetResponse.new(
+  'target_id2',
+  'type8'
+)
 ```
 

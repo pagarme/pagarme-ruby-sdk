@@ -15,21 +15,13 @@ Information about fines and interest on the "boleto" used from payment
 | `fine` | [`CreateFineRequest`](../../doc/models/create-fine-request.md) | Optional | - |
 | `max_days_to_pay_past_due` | `Integer` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "interest": {
-    "days": 156,
-    "type": "type0",
-    "amount": 230
-  },
-  "fine": {
-    "days": 138,
-    "type": "type2",
-    "amount": 212
-  },
-  "max_days_to_pay_past_due": 22
-}
+```ruby
+create_subscription_boleto_request = CreateSubscriptionBoletoRequest.new(
+  nil,
+  nil,
+  228
+)
 ```
 

@@ -11,27 +11,18 @@ Response model for listing the usages from a subscription item
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`Array<GetUsageResponse>`](../../doc/models/get-usage-response.md) | Optional | The usage objects |
+| `data` | [`Array[GetUsageResponse]`](../../doc/models/get-usage-response.md) | Optional | The usage objects |
 | `paging` | [`PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging object |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "quantity": 94,
-      "description": "description0",
-      "used_at": "2016-03-13T12:52:32.123Z",
-      "created_at": "2016-03-13T12:52:32.123Z"
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```ruby
+list_usages_response = ListUsagesResponse.new(
+  [
+    nil,
+    GetUsageResponse.new,
+    GetUsageResponse.new
+  ]
+)
 ```
 

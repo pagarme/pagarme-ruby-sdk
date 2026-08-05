@@ -16,14 +16,14 @@ Update Order item Request
 | `quantity` | `Integer` | Required | - |
 | `category` | `String` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 130,
-  "description": "description4",
-  "quantity": 244,
-  "category": "category2"
-}
+```ruby
+update_order_item_request = UpdateOrderItemRequest.new(
+  234,
+  'description4',
+  92,
+  'category2'
+)
 ```
 

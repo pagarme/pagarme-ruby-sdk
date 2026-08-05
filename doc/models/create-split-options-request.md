@@ -15,13 +15,13 @@ The Split Options Request
 | `charge_processing_fee` | `TrueClass \| FalseClass` | Optional | Charge processing fee |
 | `charge_remainder_fee` | `TrueClass \| FalseClass` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "liable": false,
-  "charge_processing_fee": false,
-  "charge_remainder_fee": false
-}
+```ruby
+create_split_options_request = CreateSplitOptionsRequest.new(
+  false,
+  false,
+  false
+)
 ```
 

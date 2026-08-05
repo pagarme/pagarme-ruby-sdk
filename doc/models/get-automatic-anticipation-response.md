@@ -13,19 +13,21 @@
 | `type` | `String` | Optional | - |
 | `volume_percentage` | `Integer` | Optional | - |
 | `delay` | `Integer` | Optional | - |
-| `days` | `Array<Integer>` | Optional | - |
+| `days` | `Array[Integer]` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "enabled": false,
-  "type": "type8",
-  "volume_percentage": 178,
-  "delay": 112,
-  "days": [
-    88
+```ruby
+get_automatic_anticipation_response = GetAutomaticAnticipationResponse.new(
+  false,
+  'type0',
+  114,
+  176,
+  [
+    152,
+    153,
+    154
   ]
-}
+)
 ```
 

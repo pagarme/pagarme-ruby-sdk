@@ -26,20 +26,25 @@ Response for voucher transactions
 | `operation_type` | `String` | Optional | Operation type |
 | `card` | [`GetCardResponse`](../../doc/models/get-card-response.md) | Optional | Card data |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "statement_descriptor": "statement_descriptor6",
-  "acquirer_name": "acquirer_name0",
-  "acquirer_affiliation_code": "acquirer_affiliation_code2",
-  "acquirer_tid": "acquirer_tid4",
-  "acquirer_nsu": "acquirer_nsu4"
-}
+```ruby
+get_voucher_transaction_response = GetVoucherTransactionResponse.new(
+  'statement_descriptor8',
+  'acquirer_name2',
+  'acquirer_affiliation_code0',
+  'acquirer_tid2',
+  'acquirer_nsu2',
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  'gateway_id8',
+  40,
+  'status6',
+  false,
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

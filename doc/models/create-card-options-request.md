@@ -13,11 +13,11 @@ Options for creating the card
 |  --- | --- | --- | --- |
 | `verify_card` | `TrueClass \| FalseClass` | Required | Indicates if the card should be verified before creation. If true, executes an authorization before saving the card. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "verify_card": false
-}
+```ruby
+create_card_options_request = CreateCardOptionsRequest.new(
+  false
+)
 ```
 

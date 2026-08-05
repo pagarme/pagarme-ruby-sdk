@@ -21,35 +21,19 @@ Shipping data
 | `estimated_delivery_date` | `DateTime` | Optional | Prazo estimado de entrega |
 | `type` | `String` | Required | Shipping type |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 136,
-  "description": "description4",
-  "recipient_name": "recipient_name4",
-  "recipient_phone": "recipient_phone8",
-  "address_id": "address_id4",
-  "address": {
-    "street": "street6",
-    "number": "number4",
-    "zip_code": "zip_code0",
-    "neighborhood": "neighborhood2",
-    "city": "city6",
-    "state": "state2",
-    "country": "country0",
-    "complement": "complement2",
-    "metadata": {
-      "key0": "metadata3",
-      "key1": "metadata2",
-      "key2": "metadata1"
-    },
-    "line_1": "line_10",
-    "line_2": "line_24"
-  },
-  "max_delivery_date": "2016-03-13T12:52:32.123Z",
-  "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
-  "type": "type4"
-}
+```ruby
+create_shipping_request = CreateShippingRequest.new(
+  132,
+  'description8',
+  'recipient_name6',
+  'recipient_phone0',
+  'address_id2',
+  CreateAddressRequest.new,
+  'type2',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

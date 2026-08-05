@@ -19,17 +19,17 @@ Card token data
 | `brand` | `String` | Required | Card brand |
 | `label` | `String` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "number": "number8",
-  "holder_name": "holder_name6",
-  "exp_month": 168,
-  "exp_year": 208,
-  "cvv": "cvv8",
-  "brand": "brand4",
-  "label": "label0"
-}
+```ruby
+create_card_token_request = CreateCardTokenRequest.new(
+  'number2',
+  'holder_name6',
+  186,
+  110,
+  'cvv8',
+  'brand4',
+  'label0'
+)
 ```
 

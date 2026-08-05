@@ -11,41 +11,18 @@ Response object for listing cards
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`Array<GetCardResponse>`](../../doc/models/get-card-response.md) | Optional | The card objects |
+| `data` | [`Array[GetCardResponse]`](../../doc/models/get-card-response.md) | Optional | The card objects |
 | `paging` | [`PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging object |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "last_four_digits": "last_four_digits6",
-      "brand": "brand4",
-      "holder_name": "holder_name6",
-      "exp_month": 240
-    },
-    {
-      "id": "id0",
-      "last_four_digits": "last_four_digits6",
-      "brand": "brand4",
-      "holder_name": "holder_name6",
-      "exp_month": 240
-    },
-    {
-      "id": "id0",
-      "last_four_digits": "last_four_digits6",
-      "brand": "brand4",
-      "holder_name": "holder_name6",
-      "exp_month": 240
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```ruby
+list_cards_response = ListCardsResponse.new(
+  [
+    nil,
+    GetCardResponse.new,
+    GetCardResponse.new
+  ]
+)
 ```
 

@@ -13,11 +13,11 @@ Atualização do valor mínimo da assinatura
 |  --- | --- | --- | --- |
 | `minimum_price` | `Integer` | Optional | Valor mínimo da assinatura |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "minimum_price": 212
-}
+```ruby
+update_subscription_minimum_price_request = UpdateSubscriptionMinimumPriceRequest.new(
+  52
+)
 ```
 
