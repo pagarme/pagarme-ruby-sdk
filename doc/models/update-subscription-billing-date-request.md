@@ -13,11 +13,11 @@ Request for updating the due date from a subscription
 |  --- | --- | --- | --- |
 | `next_billing_at` | `DateTime` | Required | The date when the next subscription billing must occur |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "next_billing_at": "2016-03-13T12:52:32.123Z"
-}
+```ruby
+update_subscription_billing_date_request = UpdateSubscriptionBillingDateRequest.new(
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

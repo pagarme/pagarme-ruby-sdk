@@ -18,29 +18,24 @@ Request for updating a plan item
 | `quantity` | `Integer` | Optional | Quantity |
 | `cycles` | `Integer` | Optional | Number of cycles that the item will be charged |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "description": "description6",
-  "status": "status8",
-  "pricing_scheme": {
-    "scheme_type": "scheme_type8",
-    "price_brackets": [
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      }
+```ruby
+update_plan_item_request = UpdatePlanItemRequest.new(
+  nil,
+  nil,
+  nil,
+  UpdatePricingSchemeRequest.new(
+    nil,
+    [
+      nil
     ],
-    "price": 166,
-    "minimum_price": 6,
-    "percentage": 251.76
-  },
-  "quantity": 200,
-  "cycles": 36
-}
+    166,
+    6,
+    251.76
+  ),
+  100,
+  136
+)
 ```
 

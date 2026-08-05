@@ -20,21 +20,14 @@ Response object for getting the shipping data
 | `estimated_delivery_date` | `DateTime` | Optional | Prazo estimado de entrega |
 | `type` | `String` | Optional | Shipping Type |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 214,
-  "description": "description8",
-  "recipient_name": "recipient_name6",
-  "recipient_phone": "recipient_phone0",
-  "address": {
-    "id": "id6",
-    "street": "street6",
-    "number": "number4",
-    "complement": "complement2",
-    "zip_code": "zip_code0"
-  }
-}
+```ruby
+get_shipping_response = GetShippingResponse.new(
+  14,
+  'description6',
+  'recipient_name4',
+  'recipient_phone8'
+)
 ```
 

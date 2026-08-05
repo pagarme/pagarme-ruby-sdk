@@ -15,13 +15,12 @@ Interest Request
 | `type` | `String` | Required | Type |
 | `amount` | `Integer` | Required | Amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "days": 4,
-  "type": "\"percentage\" or \"flat\"",
-  "amount": 78
-}
+```ruby
+create_interest_request = CreateInterestRequest.new(
+  nil,
+  '"percentage" or "flat"'
+)
 ```
 

@@ -13,11 +13,11 @@ Gateway Response
 |  --- | --- | --- | --- |
 | `message` | `String` | Optional | The message error |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "message": "message4"
-}
+```ruby
+get_gateway_error_response = GetGatewayErrorResponse.new(
+  'message2'
+)
 ```
 

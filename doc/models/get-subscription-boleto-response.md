@@ -15,21 +15,21 @@ Response object for getting a boleto
 | `fine` | [`GetFineResponse`](../../doc/models/get-fine-response.md) | Optional | Fine |
 | `max_days_to_pay_past_due` | `Integer` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "interest": {
-    "days": 2,
-    "type": "percentage",
-    "amount": 20
-  },
-  "fine": {
-    "days": 2,
-    "type": "flat",
-    "amount": 10
-  },
-  "max_days_to_pay_past_due": 2
-}
+```ruby
+get_subscription_boleto_response = GetSubscriptionBoletoResponse.new(
+  GetInterestResponse.new(
+    2,
+    'percentage',
+    20
+  ),
+  GetFineResponse.new(
+    2,
+    'flat',
+    10
+  ),
+  2
+)
 ```
 

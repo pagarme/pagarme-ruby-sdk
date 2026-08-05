@@ -13,11 +13,11 @@ Response object for geetting an order device
 |  --- | --- | --- | --- |
 | `platform` | `String` | Optional | Device's platform name |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "platform": "platform8"
-}
+```ruby
+get_device_response = GetDeviceResponse.new(
+  'platform0'
+)
 ```
 

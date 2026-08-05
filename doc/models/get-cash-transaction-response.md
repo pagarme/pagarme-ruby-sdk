@@ -17,16 +17,16 @@ Response object for getting a cash transaction
 |  --- | --- | --- | --- |
 | `description` | `String` | Optional | Description |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "description": "description0"
-}
+```ruby
+get_cash_transaction_response = GetCashTransactionResponse.new(
+  'description2',
+  'gateway_id8',
+  40,
+  'status6',
+  false,
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

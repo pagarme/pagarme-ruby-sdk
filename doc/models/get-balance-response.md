@@ -11,27 +11,32 @@ Balance
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `currency` | `String` | Optional | Currency |
-| `available_amount` | `Integer` | Optional | Amount available for transferring |
+| `currency` | `String` | Optional | Currency (official ISO 4217 currency names) |
+| `available_amount` | `Integer` | Optional | Amount available for transferring in cents |
 | `recipient` | [`GetRecipientResponse`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `transferred_amount` | `Integer` | Optional | - |
-| `waiting_funds_amount` | `Integer` | Optional | - |
+| `transferred_amount` | `Integer` | Optional | Amount transfered in cents |
+| `waiting_funds_amount` | `Integer` | Optional | Amount waiting in cents |
+| `payment_profile_id` | `String` | Required | Operational id of merchant in payments operations (new) |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "currency": "currency2",
-  "available_amount": 96,
-  "recipient": {
-    "id": "id8",
-    "name": "name8",
-    "email": "email8",
-    "document": "document8",
-    "description": "description2"
-  },
-  "transferred_amount": 142,
-  "waiting_funds_amount": 174
-}
+```ruby
+get_balance_response = GetBalanceResponse.new(
+  'pp_abcdefghoj20klmn09k',
+  'BRL',
+  4996,
+  GetRecipientResponse.new(
+    're_abcdefghoj20klmn09k',
+    'Lojista Recebedor LTDA',
+    'email@stone.com.br',
+    '01032644222100',
+    nil,
+    nil,
+    'active',
+    DateTimeHelper.from_rfc3339('2026-06-22T19:13:52Z')
+  ),
+  nil,
+  0
+)
 ```
 

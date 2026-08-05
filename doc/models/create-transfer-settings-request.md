@@ -15,13 +15,13 @@ Informações de transferência do recebedor
 | `transfer_interval` | `String` | Required | - |
 | `transfer_day` | `Integer` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "transfer_enabled": false,
-  "transfer_interval": "transfer_interval4",
-  "transfer_day": 82
-}
+```ruby
+create_transfer_settings_request = CreateTransferSettingsRequest.new(
+  false,
+  'transfer_interval2',
+  114
+)
 ```
 

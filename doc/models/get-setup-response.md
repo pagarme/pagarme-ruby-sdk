@@ -16,14 +16,14 @@ Response object for getting the setup from a subscription
 | `amount` | `Integer` | Optional | - |
 | `status` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "description": "description4",
-  "amount": 152,
-  "status": "status2"
-}
+```ruby
+get_setup_response = GetSetupResponse.new(
+  'id2',
+  'description2',
+  108,
+  'status4'
+)
 ```
 

@@ -14,12 +14,12 @@ Response object for geetting an order location request
 | `latitude` | `String` | Optional | Latitude |
 | `longitude` | `String` | Optional | Longitude |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "latitude": "latitude6",
-  "longitude": "longitude4"
-}
+```ruby
+get_location_response = GetLocationResponse.new(
+  'latitude6',
+  'longitude4'
+)
 ```
 

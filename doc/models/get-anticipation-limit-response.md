@@ -14,12 +14,12 @@ Anticipation limit
 | `amount` | `Integer` | Optional | Amount |
 | `anticipation_fee` | `Integer` | Optional | Anticipation fee |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 6,
-  "anticipation_fee": 88
-}
+```ruby
+get_anticipation_limit_response = GetAnticipationLimitResponse.new(
+  8,
+  170
+)
 ```
 

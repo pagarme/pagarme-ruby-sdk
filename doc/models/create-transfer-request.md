@@ -14,16 +14,14 @@ Request for creating a transfer
 | `amount` | `Integer` | Required | Transfer amount |
 | `metadata` | `Hash[String, String]` | Required | Metadata |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 148,
-  "metadata": {
-    "key0": "metadata7",
-    "key1": "metadata8",
-    "key2": "metadata9"
+```ruby
+create_transfer_request = CreateTransferRequest.new(
+  224,
+  {
+    'key0': 'metadata3'
   }
-}
+)
 ```
 

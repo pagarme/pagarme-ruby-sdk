@@ -15,15 +15,15 @@
 | `serial_number` | `String` | Required | serial number |
 | `version_number` | `String` | Required | version number |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "system_name": "system_name0",
-  "model": "model8",
-  "provider": "provider2",
-  "serial_number": "serial_number4",
-  "version_number": "version_number0"
-}
+```ruby
+create_card_payment_contactless_poi_request = CreateCardPaymentContactlessPOIRequest.new(
+  'system_name8',
+  'model6',
+  'provider0',
+  'serial_number2',
+  'version_number2'
+)
 ```
 

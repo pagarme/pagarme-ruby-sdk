@@ -20,18 +20,18 @@ Register Information Address
 | `zip_code` | `String` | Required | - |
 | `reference_point` | `String` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "street": "street8",
-  "complementary": "complementary0",
-  "street_number": "street_number8",
-  "neighborhood": "neighborhood4",
-  "city": "city8",
-  "state": "state4",
-  "zip_code": "zip_code2",
-  "reference_point": "reference_point2"
-}
+```ruby
+create_register_information_address_request = CreateRegisterInformationAddressRequest.new(
+  'street6',
+  'complementary8',
+  'street_number6',
+  'neighborhood2',
+  'city6',
+  'state2',
+  'zip_code0',
+  'reference_point0'
+)
 ```
 

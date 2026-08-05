@@ -21,6 +21,10 @@ Metrics/PerceivedComplexity:
 
 Layout/EndOfLine:
   Enabled: false
+
+Layout/EmptyLines:
+  Enabled: false
+
 Lint/UnderscorePrefixedVariableName:
   Enabled: false
 
@@ -49,6 +53,9 @@ Style/MultilineTernaryOperator:
   Enabled: false
 
 Layout/MultilineMethodCallIndentation:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
   Enabled: false
 
 AllCops:

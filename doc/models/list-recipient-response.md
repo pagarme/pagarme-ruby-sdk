@@ -11,41 +11,16 @@ Response for the listing recipient method
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`Array<GetRecipientResponse>`](../../doc/models/get-recipient-response.md) | Optional | Recipients |
+| `data` | [`Array[GetRecipientResponse]`](../../doc/models/get-recipient-response.md) | Optional | Recipients |
 | `paging` | [`PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "name": "name0",
-      "email": "email6",
-      "document": "document4",
-      "description": "description0"
-    },
-    {
-      "id": "id0",
-      "name": "name0",
-      "email": "email6",
-      "document": "document4",
-      "description": "description0"
-    },
-    {
-      "id": "id0",
-      "name": "name0",
-      "email": "email6",
-      "document": "document4",
-      "description": "description0"
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```ruby
+list_recipient_response = ListRecipientResponse.new(
+  [
+    nil
+  ]
+)
 ```
 

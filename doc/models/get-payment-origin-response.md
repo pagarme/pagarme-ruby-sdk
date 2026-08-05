@@ -12,12 +12,12 @@
 | `charge_id` | `String` | Optional | - |
 | `brand_id` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "charge_id": "charge_id8",
-  "brand_id": "brand_id4"
-}
+```ruby
+get_payment_origin_response = GetPaymentOriginResponse.new(
+  'charge_id6',
+  'brand_id2'
+)
 ```
 

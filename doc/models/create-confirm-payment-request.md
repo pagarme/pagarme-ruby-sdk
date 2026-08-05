@@ -13,13 +13,13 @@
 | `amount` | `Integer` | Optional | Amount |
 | `code` | `String` | Required | Code reference |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "description": "description0",
-  "Amount": 178,
-  "Code": "Code0"
-}
+```ruby
+create_confirm_payment_request = CreateConfirmPaymentRequest.new(
+  'description4',
+  'Code6',
+  88
+)
 ```
 

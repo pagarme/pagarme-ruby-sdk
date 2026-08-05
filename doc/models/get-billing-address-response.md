@@ -22,15 +22,15 @@ Response object for getting a billing address
 | `line_1` | `String` | Optional | Line 1 for address |
 | `line_2` | `String` | Optional | Line 2 for address |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "street": "street4",
-  "number": "number2",
-  "zip_code": "zip_code8",
-  "neighborhood": "neighborhood0",
-  "city": "city4"
-}
+```ruby
+get_billing_address_response = GetBillingAddressResponse.new(
+  'street8',
+  'number4',
+  'zip_code2',
+  'neighborhood4',
+  'city8'
+)
 ```
 

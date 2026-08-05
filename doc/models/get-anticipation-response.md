@@ -22,21 +22,15 @@ Anticipation
 | `status` | `String` | Optional | Status |
 | `timeframe` | `String` | Optional | Timeframe |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id8",
-  "requested_amount": 130,
-  "approved_amount": 184,
-  "recipient": {
-    "id": "id8",
-    "name": "name8",
-    "email": "email8",
-    "document": "document8",
-    "description": "description2"
-  },
-  "pgid": "pgid4"
-}
+```ruby
+get_anticipation_response = GetAnticipationResponse.new(
+  'id8',
+  158,
+  212,
+  nil,
+  'pgid4'
+)
 ```
 

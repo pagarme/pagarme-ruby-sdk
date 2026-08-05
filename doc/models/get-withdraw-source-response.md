@@ -12,12 +12,12 @@
 | `source_id` | `String` | Optional | - |
 | `type` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "source_id": "source_id2",
-  "type": "type8"
-}
+```ruby
+get_withdraw_source_response = GetWithdrawSourceResponse.new(
+  'source_id6',
+  'type8'
+)
 ```
 

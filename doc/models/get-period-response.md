@@ -22,21 +22,14 @@ Response object for getting a period
 | `updated_at` | `String` | Optional | - |
 | `cycle` | `Integer` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_at": "2016-03-13T12:52:32.123Z",
-  "end_at": "2016-03-13T12:52:32.123Z",
-  "id": "id0",
-  "billing_at": "2016-03-13T12:52:32.123Z",
-  "subscription": {
-    "id": "id4",
-    "code": "code2",
-    "start_at": "2016-03-13T12:52:32.123Z",
-    "interval": "interval2",
-    "interval_count": 234
-  }
-}
+```ruby
+get_period_response = GetPeriodResponse.new(
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  'id8',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

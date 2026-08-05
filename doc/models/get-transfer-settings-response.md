@@ -13,13 +13,13 @@
 | `transfer_interval` | `String` | Optional | - |
 | `transfer_day` | `Integer` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "transfer_enabled": false,
-  "transfer_interval": "transfer_interval0",
-  "transfer_day": 52
-}
+```ruby
+get_transfer_settings_response = GetTransferSettingsResponse.new(
+  false,
+  'transfer_interval6',
+  130
+)
 ```
 

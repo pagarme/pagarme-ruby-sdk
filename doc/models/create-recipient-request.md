@@ -23,37 +23,29 @@ Request for creating a recipient
 | `payment_mode` | `String` | Required | Payment mode<br><br>**Default**: `'bank_transfer'` |
 | `register_information` | [`CreateRegisterInformationBaseRequest`](../../doc/models/create-register-information-base-request.md) | Optional | Register Information |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "default_bank_account": {
-    "holder_name": "holder_name4",
-    "holder_type": "holder_type0",
-    "holder_document": "holder_document2",
-    "bank": "bank6",
-    "branch_number": "branch_number4",
-    "branch_check_digit": "branch_check_digit4",
-    "account_number": "account_number8",
-    "account_check_digit": "account_check_digit4",
-    "type": "type2",
-    "metadata": {
-      "key0": "metadata5",
-      "key1": "metadata4",
-      "key2": "metadata3"
-    },
-    "pix_key": "pix_key8"
-  },
-  "metadata": {
-    "key0": "metadata3"
-  },
-  "code": "code4",
-  "payment_mode": "bank_transfer",
-  "name": "name6",
-  "email": "email0",
-  "description": "description6",
-  "document": "document0",
-  "type": "type4"
-}
+```ruby
+create_recipient_request = CreateRecipientRequest.new(
+  CreateBankAccountRequest.new(
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    nil,
+    {}
+  ),
+  {},
+  nil,
+  'bank_transfer',
+  'name6',
+  'email0',
+  'description6',
+  'document0',
+  'type4'
+)
 ```
 

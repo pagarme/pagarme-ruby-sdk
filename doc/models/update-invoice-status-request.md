@@ -13,11 +13,11 @@ Invoice Update Status Request
 |  --- | --- | --- | --- |
 | `status` | `String` | Required | Status |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "status8"
-}
+```ruby
+update_invoice_status_request = UpdateInvoiceStatusRequest.new(
+  'status0'
+)
 ```
 

@@ -16,14 +16,14 @@ Request for creating a price bracket
 | `end_quantity` | `Integer` | Optional | End quantity |
 | `overage_price` | `Integer` | Optional | Overage price |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_quantity": 154,
-  "price": 164,
-  "end_quantity": 162,
-  "overage_price": 176
-}
+```ruby
+create_price_bracket_request = CreatePriceBracketRequest.new(
+  216,
+  102,
+  224,
+  238
+)
 ```
 

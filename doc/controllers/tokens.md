@@ -10,44 +10,8 @@ tokens_controller = client.tokens
 
 ## Methods
 
-* [Get Token](../../doc/controllers/tokens.md#get-token)
 * [Create Token](../../doc/controllers/tokens.md#create-token)
-
-
-# Get Token
-
-Gets a token from its id
-
-:information_source: **Note** This endpoint does not require authentication.
-
-```ruby
-def get_token(id,
-              public_key)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | Token id |
-| `public_key` | `String` | Template, Required | Public key |
-
-## Response Type
-
-[`GetTokenResponse`](../../doc/models/get-token-response.md)
-
-## Example Usage
-
-```ruby
-id = 'id0'
-
-public_key = 'public_key6'
-
-result = tokens_controller.get_token(
-  id,
-  public_key
-)
-```
+* [Get Token](../../doc/controllers/tokens.md#get-token)
 
 
 # Create Token
@@ -70,6 +34,8 @@ def create_token(public_key,
 
 ## Response Type
 
+**200**
+
 [`GetTokenResponse`](../../doc/models/get-token-response.md)
 
 ## Example Usage
@@ -79,20 +45,52 @@ public_key = 'public_key6'
 
 request = CreateTokenRequest.new(
   'card',
-  CreateCardTokenRequest.new(
-    'number6',
-    'holder_name2',
-    228,
-    68,
-    'cvv4',
-    'brand0',
-    'label6'
-  )
+  CreateCardTokenRequest.new
 )
 
 result = tokens_controller.create_token(
   public_key,
   request
 )
+puts result
+```
+
+
+# Get Token
+
+Gets a token from its id
+
+:information_source: **Note** This endpoint does not require authentication.
+
+```ruby
+def get_token(id,
+              public_key)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `String` | Template, Required | Token id |
+| `public_key` | `String` | Template, Required | Public key |
+
+## Response Type
+
+**200**
+
+[`GetTokenResponse`](../../doc/models/get-token-response.md)
+
+## Example Usage
+
+```ruby
+id = 'id0'
+
+public_key = 'public_key6'
+
+result = tokens_controller.get_token(
+  id,
+  public_key
+)
+puts result
 ```
 

@@ -22,21 +22,15 @@ The settings for creating a debit card payment
 | `recurrence_model` | `String` | Optional | - |
 | `payment_origin` | [`CreatePaymentOriginRequest`](../../doc/models/create-payment-origin-request.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "statement_descriptor": "statement_descriptor8",
-  "card": {
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
-  },
-  "card_id": "card_id4",
-  "card_token": "card_token2",
-  "recurrence": false
-}
+```ruby
+create_debit_card_payment_request = CreateDebitCardPaymentRequest.new(
+  'statement_descriptor2',
+  nil,
+  'card_id8',
+  'card_token8',
+  false
+)
 ```
 

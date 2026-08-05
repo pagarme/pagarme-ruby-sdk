@@ -15,13 +15,13 @@ Register Information Phone
 | `number` | `String` | Required | - |
 | `type` | `String` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "ddd": "ddd4",
-  "number": "number6",
-  "type": "type8"
-}
+```ruby
+create_register_information_phone_request = CreateRegisterInformationPhoneRequest.new(
+  'ddd4',
+  'number2',
+  'type0'
+)
 ```
 

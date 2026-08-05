@@ -20,28 +20,29 @@ Request for updating card data
 | `payment_origin` | [`CreatePaymentOriginRequest`](../../doc/models/create-payment-origin-request.md) | Optional | - |
 | `indirect_acceptor` | `String` | Optional | Business model identifier |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "update_subscription": false,
-  "card_id": "card_id2",
-  "card": {
-    "type": "credit",
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
-  },
-  "recurrence": false,
-  "initiated_type": "initiated_type8",
-  "recurrence_model": "recurrence_model6",
-  "payment_origin": {
-    "brand_id": "brand_id8",
-    "charge_id": "charge_id2"
-  },
-  "indirect_acceptor": "indirect_acceptor2"
-}
+```ruby
+update_charge_card_request = UpdateChargeCardRequest.new(
+  nil,
+  nil,
+  CreateCardRequest.new(
+    'number6',
+    'holder_name2',
+    228,
+    68,
+    'cvv4',
+    nil,
+    nil,
+    nil,
+    {},
+    'credit'
+  ),
+  nil,
+  'initiated_type0',
+  'recurrence_model8',
+  nil,
+  'indirect_acceptor4'
+)
 ```
 

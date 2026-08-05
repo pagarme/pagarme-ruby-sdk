@@ -13,11 +13,11 @@ Request for canceling a subscription
 |  --- | --- | --- | --- |
 | `cancel_pending_invoices` | `TrueClass \| FalseClass` | Required | Indicates if the pending invoices must also be canceled.<br><br>**Default**: `true` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "cancel_pending_invoices": true
-}
+```ruby
+create_cancel_subscription_request = CreateCancelSubscriptionRequest.new(
+  true
+)
 ```
 

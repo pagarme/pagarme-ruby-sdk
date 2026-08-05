@@ -18,35 +18,27 @@ Request for updating a subscription's payment method
 | `boleto` | [`CreateSubscriptionBoletoRequest`](../../doc/models/create-subscription-boleto-request.md) | Optional | Information about fines and interest on the "boleto" used from payment |
 | `indirect_acceptor` | `String` | Optional | Business model identifier |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "payment_method": "payment_method4",
-  "card_id": "card_id2",
-  "card": {
-    "type": "credit",
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
-  },
-  "card_token": "card_token4",
-  "boleto": {
-    "interest": {
-      "days": 156,
-      "type": "type0",
-      "amount": 230
-    },
-    "fine": {
-      "days": 138,
-      "type": "type2",
-      "amount": 212
-    },
-    "max_days_to_pay_past_due": 118
-  },
-  "indirect_acceptor": "indirect_acceptor2"
-}
+```ruby
+update_subscription_payment_method_request = UpdateSubscriptionPaymentMethodRequest.new(
+  nil,
+  nil,
+  CreateCardRequest.new(
+    'number6',
+    'holder_name2',
+    228,
+    68,
+    'cvv4',
+    nil,
+    nil,
+    nil,
+    {},
+    'credit'
+  ),
+  'card_token8',
+  nil,
+  'indirect_acceptor8'
+)
 ```
 

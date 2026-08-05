@@ -13,13 +13,13 @@ Request for creating a new Invoice
 |  --- | --- | --- | --- |
 | `metadata` | `Hash[String, String]` | Required | Metadata |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "metadata": {
-    "key0": "metadata9"
+```ruby
+create_invoice_request = CreateInvoiceRequest.new(
+  {
+    'key0': 'metadata9'
   }
-}
+)
 ```
 

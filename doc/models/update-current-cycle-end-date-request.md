@@ -13,11 +13,11 @@ Request to update the end date of the current subscription cycle
 |  --- | --- | --- | --- |
 | `end_at` | `DateTime` | Optional | Current cycle end date |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "end_at": "2016-03-13T12:52:32.123Z"
-}
+```ruby
+update_current_cycle_end_date_request = UpdateCurrentCycleEndDateRequest.new(
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

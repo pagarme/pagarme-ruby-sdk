@@ -19,41 +19,37 @@ Generic response object for getting a transaction.
 | `updated_at` | `DateTime` | Optional | Last update date |
 | `attempt_count` | `Integer` | Optional | Number of attempts tried |
 | `max_attempts` | `Integer` | Optional | Max attempts |
-| `splits` | [`Array<GetSplitResponse>`](../../doc/models/get-split-response.md) | Optional | Splits |
+| `splits` | [`Array[GetSplitResponse]`](../../doc/models/get-split-response.md) | Optional | Splits |
 | `next_attempt` | `DateTime` | Optional | Date and time of the next attempt |
 | `transaction_type` | `String` | Optional | - |
 | `id` | `String` | Optional | Código da transação |
 | `gateway_response` | [`GetGatewayResponseResponse`](../../doc/models/get-gateway-response-response.md) | Optional | The Gateway Response |
 | `antifraud_response` | [`GetAntifraudResponse`](../../doc/models/get-antifraud-response.md) | Optional | - |
 | `metadata` | `Hash[String, String]` | Optional | - |
-| `split` | [`Array<GetSplitResponse>`](../../doc/models/get-split-response.md) | Optional | - |
+| `split` | [`Array[GetSplitResponse]`](../../doc/models/get-split-response.md) | Optional | - |
 | `interest` | [`GetInterestResponse`](../../doc/models/get-interest-response.md) | Optional | - |
 | `fine` | [`GetFineResponse`](../../doc/models/get-fine-response.md) | Optional | - |
 | `max_days_to_pay_past_due` | `Integer` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "qr_code": "qr_code0",
-  "qr_code_url": "qr_code_url6",
-  "expires_at": "2016-03-13T12:52:32.123Z",
-  "additional_information": [
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    },
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    }
+```ruby
+get_transaction_response = GetPixTransactionResponse.new(
+  'qr_code0',
+  'qr_code_url6',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  [
+    nil,
+    PixAdditionalInformation.new
   ],
-  "end_to_end_id": "end_to_end_id6"
-}
+  'end_to_end_id6',
+  nil,
+  nil,
+  'gateway_id8',
+  40,
+  'status6',
+  false,
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

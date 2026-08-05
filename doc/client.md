@@ -15,12 +15,18 @@ The following parameters are configurable for the API Client:
 | retry_statuses | `Array` | A list of HTTP statuses to retry. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array` | A list of HTTP methods to retry. <br> **Default: %i[get put]** |
 | http_callback | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
+| proxy_settings | [`ProxySettings`](../doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
 | basic_auth_credentials | [`BasicAuthCredentials`](auth/basic-authentication.md) | The credential object for Basic Authentication |
 
 The API client can be initialized as follows:
 
+## Code-Based Client Initialization
+
 ```ruby
-client = PagarmeApiSdk::Client.new(
+require 'pagarme_api_sdk'
+include PagarmeApiSdk
+
+client = Client.new(
   service_referer_name: 'ServiceRefererName',
   basic_auth_credentials: BasicAuthCredentials.new(
     username: 'BasicAuthUserName',
@@ -28,6 +34,18 @@ client = PagarmeApiSdk::Client.new(
   )
 )
 ```
+
+## Environment-Based Client Initialization
+
+```ruby
+require 'pagarme_api_sdk'
+include PagarmeApiSdk
+
+# Create client from environment
+client = Client.from_env
+```
+
+See the [`Environment-Based Client Initialization`](../doc/environment-based-client-initialization.md) section for details.
 
 ## PagarmeApiSDK Client
 
@@ -48,5 +66,4 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 | transactions | Gets TransactionsController |
 | transfers | Gets TransfersController |
 | payables | Gets PayablesController |
-| balance_operations | Gets BalanceOperationsController |
 

@@ -11,11 +11,11 @@
 |  --- | --- | --- | --- |
 | `status` | `String` | Required | Order status |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "status6"
-}
+```ruby
+update_order_status_request = UpdateOrderStatusRequest.new(
+  'status4'
+)
 ```
 

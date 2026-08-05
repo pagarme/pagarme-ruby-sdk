@@ -13,13 +13,13 @@
 | `usage_report_url` | `String` | Optional | - |
 | `grouped_report_url` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "url": "url2",
-  "usage_report_url": "usage_report_url0",
-  "grouped_report_url": "grouped_report_url0"
-}
+```ruby
+get_usage_report_response = GetUsageReportResponse.new(
+  'url0',
+  'usage_report_url8',
+  'grouped_report_url8'
+)
 ```
 

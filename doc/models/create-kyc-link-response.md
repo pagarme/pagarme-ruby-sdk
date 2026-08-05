@@ -15,13 +15,13 @@ KYC Link
 | `url` | `String` | Optional | URL |
 | `expiration_date` | `String` | Optional | Expiration Date |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "base64": "base644",
-  "url": "url0",
-  "expiration_date": "expiration_date0"
-}
+```ruby
+create_kyc_link_response = CreateKYCLinkResponse.new(
+  'base642',
+  'url4',
+  'expiration_date6'
+)
 ```
 

@@ -12,15 +12,14 @@
 | `amount` | `Integer` | Required | - |
 | `metadata` | `Hash[String, String]` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 204,
-  "metadata": {
-    "key0": "metadata7",
-    "key1": "metadata6"
+```ruby
+create_withdraw_request = CreateWithdrawRequest.new(
+  204,
+  {
+    'key0': 'metadata9'
   }
-}
+)
 ```
 

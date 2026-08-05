@@ -15,13 +15,13 @@ Request for creating an anticipation
 | `timeframe` | `String` | Required | Timeframe |
 | `payment_date` | `DateTime` | Required | Payment date |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 68,
-  "timeframe": "timeframe2",
-  "payment_date": "2016-03-13T12:52:32.123Z"
-}
+```ruby
+create_anticipation_request = CreateAnticipationRequest.new(
+  40,
+  'timeframe2',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

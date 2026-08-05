@@ -12,12 +12,12 @@
 | `due_at` | `DateTime` | Optional | Data de vencimento do boleto |
 | `instructions` | `String` | Optional | Instruções do boleto |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "due_at": "2016-03-13T12:52:32.123Z",
-  "instructions": "instructions8"
-}
+```ruby
+get_checkout_boleto_payment_response = GetCheckoutBoletoPaymentResponse.new(
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  'instructions2'
+)
 ```
 

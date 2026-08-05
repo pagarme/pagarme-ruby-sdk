@@ -15,13 +15,13 @@ Response object for getting an PhoneNumberResponse
 | `number` | `String` | Optional | - |
 | `type` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "ddd": "ddd2",
-  "number": "number0",
-  "type": "type8"
-}
+```ruby
+get_phone_number_response = GetPhoneNumberResponse.new(
+  'ddd8',
+  'number4',
+  'type4'
+)
 ```
 
