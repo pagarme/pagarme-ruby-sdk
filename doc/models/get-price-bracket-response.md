@@ -16,14 +16,14 @@ Response object for getting a price bracket
 | `end_quantity` | `Integer` | Optional | - |
 | `overage_price` | `Integer` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_quantity": 186,
-  "price": 124,
-  "end_quantity": 194,
-  "overage_price": 208
-}
+```ruby
+get_price_bracket_response = GetPriceBracketResponse.new(
+  206,
+  112,
+  214,
+  228
+)
 ```
 

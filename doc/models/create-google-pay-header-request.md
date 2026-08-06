@@ -13,11 +13,11 @@ The GooglePay header request
 |  --- | --- | --- | --- |
 | `ephemeral_public_key` | `String` | Required | X.509 encoded key bytes, Base64 encoded as a string |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "ephemeral_public_key": "ephemeral_public_key2"
-}
+```ruby
+create_google_pay_header_request = CreateGooglePayHeaderRequest.new(
+  'ephemeral_public_key0'
+)
 ```
 

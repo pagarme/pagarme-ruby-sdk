@@ -22,15 +22,15 @@ Response object for getting a increment
 | `subscription` | [`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md) | Optional | - |
 | `subscription_item` | [`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md) | Optional | The Subscription Item |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "value": 167.72,
-  "increment_type": "increment_type2",
-  "status": "status2",
-  "created_at": "2016-03-13T12:52:32.123Z"
-}
+```ruby
+get_increment_response = GetIncrementResponse.new(
+  'id2',
+  68.64,
+  'increment_type4',
+  'status6',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

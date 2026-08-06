@@ -11,11 +11,11 @@
 |  --- | --- | --- | --- |
 | `boleto_due_days` | `Integer` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "boleto_due_days": 56
-}
+```ruby
+update_subscription_due_days_request = UpdateSubscriptionDueDaysRequest.new(
+  166
+)
 ```
 

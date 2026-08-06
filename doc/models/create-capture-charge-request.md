@@ -13,40 +13,19 @@ Request for capturing a charge
 |  --- | --- | --- | --- |
 | `code` | `String` | Required | Code for the charge. Sending this field will update the code send on the charge and order creation. |
 | `amount` | `Integer` | Optional | The amount that will be captured |
-| `split` | [`Array<CreateSplitRequest>`](../../doc/models/create-split-request.md) | Optional | Splits |
+| `split` | [`Array[CreateSplitRequest]`](../../doc/models/create-split-request.md) | Optional | Splits |
 | `operation_reference` | `String` | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "code8",
-  "amount": 96,
-  "split": [
-    {
-      "type": "type2",
-      "amount": 10,
-      "recipient_id": "recipient_id2",
-      "options": {
-        "liable": false,
-        "charge_processing_fee": false,
-        "charge_remainder_fee": false
-      },
-      "split_rule_id": "split_rule_id0"
-    },
-    {
-      "type": "type2",
-      "amount": 10,
-      "recipient_id": "recipient_id2",
-      "options": {
-        "liable": false,
-        "charge_processing_fee": false,
-        "charge_remainder_fee": false
-      },
-      "split_rule_id": "split_rule_id0"
-    }
-  ],
-  "operation_reference": "operation_reference0"
-}
+```ruby
+create_capture_charge_request = CreateCaptureChargeRequest.new(
+  'code8',
+  'operation_reference0',
+  34,
+  [
+    nil
+  ]
+)
 ```
 

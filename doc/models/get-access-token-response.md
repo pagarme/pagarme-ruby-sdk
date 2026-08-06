@@ -17,21 +17,14 @@ Response object for getting a access token
 | `created_at` | `DateTime` | Optional | - |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "code": "code8",
-  "status": "status2",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "customer": {
-    "id": "id0",
-    "name": "name0",
-    "email": "email6",
-    "delinquent": false,
-    "created_at": "2016-03-13T12:52:32.123Z"
-  }
-}
+```ruby
+get_access_token_response = GetAccessTokenResponse.new(
+  'id8',
+  'code6',
+  'status0',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

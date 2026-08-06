@@ -22,23 +22,20 @@ The settings for creating a private label payment
 | `extended_limit_code` | `String` | Optional | Extended Limit Code |
 | `recurrency_cycle` | `String` | Optional | Defines whether the card has been used one or more times. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "installments": 1,
-  "capture": true,
-  "recurrency_cycle": "\"first\" or \"subsequent\"",
-  "statement_descriptor": "statement_descriptor8",
-  "card": {
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
-  },
-  "card_id": "card_id4",
-  "card_token": "card_token2"
-}
+```ruby
+create_private_label_payment_request = CreatePrivateLabelPaymentRequest.new(
+  1,
+  'statement_descriptor2',
+  nil,
+  'card_id8',
+  'card_token2',
+  nil,
+  true,
+  nil,
+  nil,
+  '"first" or "subsequent"'
+)
 ```
 

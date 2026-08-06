@@ -21,17 +21,17 @@ Response object for getting an ManagingPartnerResponse
 | `professional_occupation` | `String` | Optional | - |
 | `self_declared_representative` | `TrueClass \| FalseClass` | Optional | - |
 | `address` | [`GetRegisterInformationAddressResponse`](../../doc/models/get-register-information-address-response.md) | Optional | - |
-| `phone_numbers` | [`Array<GetPhoneNumberResponse>`](../../doc/models/get-phone-number-response.md) | Optional | - |
+| `phone_numbers` | [`Array[GetPhoneNumberResponse]`](../../doc/models/get-phone-number-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "email": "email6",
-  "document": "document6",
-  "type": "type0",
-  "mother_name": "mother_name6"
-}
+```ruby
+get_managing_partner_response = GetManagingPartnerResponse.new(
+  'name0',
+  'email6',
+  'document4',
+  'type0',
+  'mother_name6'
+)
 ```
 

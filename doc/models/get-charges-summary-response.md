@@ -11,11 +11,11 @@
 |  --- | --- | --- | --- |
 | `total` | `Integer` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "total": 150
-}
+```ruby
+get_charges_summary_response = GetChargesSummaryResponse.new(
+  42
+)
 ```
 

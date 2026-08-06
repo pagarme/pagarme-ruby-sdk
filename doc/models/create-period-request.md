@@ -11,11 +11,11 @@
 |  --- | --- | --- | --- |
 | `end_at` | `DateTime` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "end_at": "2016-03-13T12:52:32.123Z"
-}
+```ruby
+create_period_request = CreatePeriodRequest.new(
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

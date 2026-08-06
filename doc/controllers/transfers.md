@@ -10,9 +10,46 @@ transfers_controller = client.transfers
 
 ## Methods
 
+* [Create Transfer](../../doc/controllers/transfers.md#create-transfer)
 * [Get Transfer by Id](../../doc/controllers/transfers.md#get-transfer-by-id)
 * [Get Transfers](../../doc/controllers/transfers.md#get-transfers)
-* [Create Transfer](../../doc/controllers/transfers.md#create-transfer)
+
+
+# Create Transfer
+
+```ruby
+def create_transfer(request)
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateTransfer`](../../doc/models/create-transfer.md) | Body, Required | - |
+
+## Response Type
+
+**200**
+
+[`GetTransfer`](../../doc/models/get-transfer.md)
+
+## Example Usage
+
+```ruby
+request = CreateTransfer.new(
+  242,
+  'source_id0',
+  'target_id6',
+  []
+)
+
+result = transfers_controller.create_transfer(request)
+puts result
+```
 
 
 # Get Transfer by Id
@@ -20,6 +57,10 @@ transfers_controller = client.transfers
 ```ruby
 def get_transfer_by_id(transfer_id)
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
@@ -29,6 +70,8 @@ def get_transfer_by_id(transfer_id)
 
 ## Response Type
 
+**200**
+
 [`GetTransfer`](../../doc/models/get-transfer.md)
 
 ## Example Usage
@@ -37,6 +80,7 @@ def get_transfer_by_id(transfer_id)
 transfer_id = 'transfer_id6'
 
 result = transfers_controller.get_transfer_by_id(transfer_id)
+puts result
 ```
 
 
@@ -48,7 +92,13 @@ Gets all transfers
 def get_transfers
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Response Type
+
+**200**
 
 [`ListTransfers`](../../doc/models/list-transfers.md)
 
@@ -56,34 +106,6 @@ def get_transfers
 
 ```ruby
 result = transfers_controller.get_transfers
-```
-
-
-# Create Transfer
-
-```ruby
-def create_transfer(request)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `request` | [`CreateTransfer`](../../doc/models/create-transfer.md) | Body, Required | - |
-
-## Response Type
-
-[`GetTransfer`](../../doc/models/get-transfer.md)
-
-## Example Usage
-
-```ruby
-request = CreateTransfer.new(
-  242,
-  'source_id0',
-  'target_id6'
-)
-
-result = transfers_controller.create_transfer(request)
+puts result
 ```
 

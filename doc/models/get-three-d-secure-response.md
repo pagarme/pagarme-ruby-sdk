@@ -17,15 +17,15 @@
 | `transaction_id` | `String` | Optional | Identificador da transação (XID) |
 | `success_url` | `String` | Optional | Url de redirecionamento de sucessso |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "mpi": "mpi2",
-  "eci": "eci4",
-  "cavv": "cavv0",
-  "transaction_Id": "transaction_Id0",
-  "success_url": "success_url6"
-}
+```ruby
+get_three_d_secure_response = GetThreeDSecureResponse.new(
+  'mpi2',
+  'eci0',
+  'cavv6',
+  'transaction_Id4',
+  'success_url2'
+)
 ```
 

@@ -12,12 +12,12 @@
 | `number` | `Integer` | Required | Número de parcelas |
 | `total` | `Integer` | Required | Valor total da compra |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "number": 40,
-  "total": 188
-}
+```ruby
+get_checkout_card_installment_options_response = GetCheckoutCardInstallmentOptionsResponse.new(
+  76,
+  184
+)
 ```
 

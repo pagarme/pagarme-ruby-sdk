@@ -19,29 +19,29 @@ Response object for getting a plan
 | `interval` | `String` | Optional | - |
 | `interval_count` | `Integer` | Optional | - |
 | `billing_type` | `String` | Optional | - |
-| `payment_methods` | `Array<String>` | Optional | - |
-| `installments` | `Array<Integer>` | Optional | - |
+| `payment_methods` | `Array[String]` | Optional | - |
+| `installments` | `Array[Integer]` | Optional | - |
 | `status` | `String` | Optional | - |
 | `currency` | `String` | Optional | - |
 | `created_at` | `DateTime` | Optional | - |
 | `updated_at` | `DateTime` | Optional | - |
-| `items` | [`Array<GetPlanItemResponse>`](../../doc/models/get-plan-item-response.md) | Optional | - |
-| `billing_days` | `Array<Integer>` | Optional | - |
+| `items` | [`Array[GetPlanItemResponse]`](../../doc/models/get-plan-item-response.md) | Optional | - |
+| `billing_days` | `Array[Integer]` | Optional | - |
 | `shippable` | `TrueClass \| FalseClass` | Optional | - |
 | `metadata` | `Hash[String, String]` | Optional | - |
 | `trial_period_days` | `Integer` | Optional | - |
 | `minimum_price` | `Integer` | Optional | - |
 | `deleted_at` | `DateTime` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "name": "name0",
-  "description": "description0",
-  "url": "url4",
-  "statement_descriptor": "statement_descriptor0"
-}
+```ruby
+get_plan_response = GetPlanResponse.new(
+  'id4',
+  'name4',
+  'description4',
+  'url8',
+  'statement_descriptor4'
+)
 ```
 

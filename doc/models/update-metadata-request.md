@@ -13,14 +13,13 @@ Request for updating an metadata
 |  --- | --- | --- | --- |
 | `metadata` | `Hash[String, String]` | Required | Metadata |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "metadata": {
-    "key0": "metadata7",
-    "key1": "metadata6"
+```ruby
+update_metadata_request = UpdateMetadataRequest.new(
+  {
+    'key0': 'metadata1'
   }
-}
+)
 ```
 

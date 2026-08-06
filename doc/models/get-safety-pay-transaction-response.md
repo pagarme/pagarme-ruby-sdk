@@ -20,19 +20,19 @@ Response object for getting a safety pay transaction
 | `paid_at` | `DateTime` | Optional | Payment date |
 | `paid_amount` | `Integer` | Optional | Paid amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "url": "url8",
-  "bank_tid": "bank_tid8",
-  "paid_at": "2016-03-13T12:52:32.123Z",
-  "paid_amount": 154
-}
+```ruby
+get_safety_pay_transaction_response = GetSafetyPayTransactionResponse.new(
+  'url8',
+  'bank_tid8',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  68,
+  'gateway_id8',
+  40,
+  'status6',
+  false,
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

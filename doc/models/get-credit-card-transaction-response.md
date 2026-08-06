@@ -32,20 +32,31 @@ Response object for getting a credit card transaction
 | `brand_id` | `String` | Optional | - |
 | `indirect_acceptor` | `String` | Optional | Business model identifier |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "statement_descriptor": "statement_descriptor2",
-  "acquirer_name": "acquirer_name6",
-  "acquirer_affiliation_code": "acquirer_affiliation_code6",
-  "acquirer_tid": "acquirer_tid8",
-  "acquirer_nsu": "acquirer_nsu8"
-}
+```ruby
+get_credit_card_transaction_response = GetCreditCardTransactionResponse.new(
+  'statement_descriptor2',
+  'acquirer_name6',
+  'acquirer_affiliation_code6',
+  'acquirer_tid8',
+  'acquirer_nsu8',
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  'gateway_id8',
+  40,
+  'status6',
+  false,
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

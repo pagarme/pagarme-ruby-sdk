@@ -16,14 +16,14 @@ Payer's bank details.
 | `branch_code` | `String` | Optional | - |
 | `account_number` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank_name": "bank_name0",
-  "ispb": "ispb8",
-  "branch_code": "branch_code2",
-  "account_number": "account_number4"
-}
+```ruby
+get_pix_bank_account_response = GetPixBankAccountResponse.new(
+  'bank_name0',
+  'ispb8',
+  'branch_code2',
+  'account_number4'
+)
 ```
 

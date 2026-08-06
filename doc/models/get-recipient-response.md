@@ -22,7 +22,7 @@ Recipient response
 | `updated_at` | `DateTime` | Optional | Last update date |
 | `deleted_at` | `DateTime` | Optional | Deletion date |
 | `default_bank_account` | [`GetBankAccountResponse`](../../doc/models/get-bank-account-response.md) | Optional | Default bank account |
-| `gateway_recipients` | [`Array<GetGatewayRecipientResponse>`](../../doc/models/get-gateway-recipient-response.md) | Optional | Info about the recipient on the gateway |
+| `gateway_recipients` | [`Array[GetGatewayRecipientResponse]`](../../doc/models/get-gateway-recipient-response.md) | Optional | Info about the recipient on the gateway |
 | `metadata` | `Hash[String, String]` | Optional | Metadata |
 | `automatic_anticipation_settings` | [`GetAutomaticAnticipationResponse`](../../doc/models/get-automatic-anticipation-response.md) | Optional | - |
 | `transfer_settings` | [`GetTransferSettingsResponse`](../../doc/models/get-transfer-settings-response.md) | Optional | - |
@@ -30,16 +30,27 @@ Recipient response
 | `payment_mode` | `String` | Optional | Payment mode<br><br>**Default**: `'bank_transfer'` |
 | `register_information` | [`GetRegisterInformationResponse`](../../doc/models/get-register-information-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "payment_mode": "bank_transfer",
-  "id": "id4",
-  "name": "name4",
-  "email": "email2",
-  "document": "document2",
-  "description": "description6"
-}
+```ruby
+get_recipient_response = GetRecipientResponse.new(
+  'id8',
+  'name8',
+  'email8',
+  'document8',
+  'description8',
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  'bank_transfer'
+)
 ```
 

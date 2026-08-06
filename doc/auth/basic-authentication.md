@@ -23,7 +23,10 @@ Documentation for accessing and setting credentials for httpBasic.
 You must provide credentials in the client as shown in the following code snippet.
 
 ```ruby
-client = PagarmeApiSdk::Client.new(
+require 'pagarme_api_sdk'
+include PagarmeApiSdk
+
+client = Client.new(
   basic_auth_credentials: BasicAuthCredentials.new(
     username: 'BasicAuthUserName',
     password: 'BasicAuthPassword'

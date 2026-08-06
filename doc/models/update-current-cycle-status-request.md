@@ -11,11 +11,11 @@
 |  --- | --- | --- | --- |
 | `status` | `String` | Required | Status |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "status8"
-}
+```ruby
+update_current_cycle_status_request = UpdateCurrentCycleStatusRequest.new(
+  'status4'
+)
 ```
 

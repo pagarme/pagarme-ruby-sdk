@@ -18,7 +18,7 @@ Response object for getting an invoice
 | `status` | `String` | Optional | - |
 | `payment_method` | `String` | Optional | - |
 | `created_at` | `DateTime` | Optional | - |
-| `items` | [`Array<GetInvoiceItemResponse>`](../../doc/models/get-invoice-item-response.md) | Optional | - |
+| `items` | [`Array[GetInvoiceItemResponse]`](../../doc/models/get-invoice-item-response.md) | Optional | - |
 | `customer` | [`GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - |
 | `charge` | [`GetChargeResponse`](../../doc/models/get-charge-response.md) | Optional | - |
 | `installments` | `Integer` | Optional | - |
@@ -35,15 +35,15 @@ Response object for getting an invoice
 | `total_increment` | `Integer` | Optional | Total discounted value |
 | `subscription_id` | `String` | Optional | Subscription Id |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "code": "code8",
-  "url": "url4",
-  "amount": 168,
-  "status": "status8"
-}
+```ruby
+get_invoice_response = GetInvoiceResponse.new(
+  'id0',
+  'code8',
+  'url4',
+  82,
+  'status2'
+)
 ```
 

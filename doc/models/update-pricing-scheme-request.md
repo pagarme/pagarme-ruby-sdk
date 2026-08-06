@@ -12,27 +12,22 @@ Request for updating a pricing scheme
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `scheme_type` | `String` | Required | Scheme type |
-| `price_brackets` | [`Array<UpdatePriceBracketRequest>`](../../doc/models/update-price-bracket-request.md) | Required | Price brackets |
+| `price_brackets` | [`Array[UpdatePriceBracketRequest]`](../../doc/models/update-price-bracket-request.md) | Required | Price brackets |
 | `price` | `Integer` | Optional | Price |
 | `minimum_price` | `Integer` | Optional | Minimum price |
 | `percentage` | `Float` | Optional | percentual value used in pricing_scheme Percent |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "scheme_type": "scheme_type0",
-  "price_brackets": [
-    {
-      "start_quantity": 144,
-      "price": 174,
-      "end_quantity": 152,
-      "overage_price": 166
-    }
+```ruby
+update_pricing_scheme_request = UpdatePricingSchemeRequest.new(
+  nil,
+  [
+    nil
   ],
-  "price": 162,
-  "minimum_price": 2,
-  "percentage": 62.28
-}
+  250,
+  154,
+  88.88
+)
 ```
 

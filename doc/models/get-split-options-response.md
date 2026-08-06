@@ -13,13 +13,13 @@
 | `charge_processing_fee` | `TrueClass \| FalseClass` | Optional | - |
 | `charge_remainder_fee` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "liable": false,
-  "charge_processing_fee": false,
-  "charge_remainder_fee": "charge_remainder_fee6"
-}
+```ruby
+get_split_options_response = GetSplitOptionsResponse.new(
+  false,
+  false,
+  'charge_remainder_fee4'
+)
 ```
 

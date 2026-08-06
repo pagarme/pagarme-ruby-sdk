@@ -20,15 +20,15 @@ Response object for getting an RegisterInformationAddress
 | `zip_code` | `String` | Optional | - |
 | `reference_point` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "street": "street2",
-  "complementary": "complementary4",
-  "street_number": "street_number2",
-  "neighborhood": "neighborhood8",
-  "city": "city2"
-}
+```ruby
+get_register_information_address_response = GetRegisterInformationAddressResponse.new(
+  'street2',
+  'complementary4',
+  'street_number2',
+  'neighborhood8',
+  'city8'
+)
 ```
 

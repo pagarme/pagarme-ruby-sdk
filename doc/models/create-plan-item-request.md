@@ -18,41 +18,19 @@ Request for creating a plan item
 | `cycles` | `Integer` | Optional | Number of cycles where the item will be charged |
 | `quantity` | `Integer` | Optional | Quantity |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "pricing_scheme": {
-    "scheme_type": "scheme_type8",
-    "price_brackets": [
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      },
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      },
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      }
-    ],
-    "price": 166,
-    "minimum_price": 6,
-    "percentage": 251.76
-  },
-  "id": "id0",
-  "description": "description0",
-  "cycles": 52,
-  "quantity": 184
-}
+```ruby
+create_plan_item_request = CreatePlanItemRequest.new(
+  'name6',
+  CreatePricingSchemeRequest.new(
+    nil,
+    []
+  ),
+  'id6',
+  'description6',
+  6,
+  230
+)
 ```
 

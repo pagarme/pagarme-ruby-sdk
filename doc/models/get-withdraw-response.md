@@ -15,7 +15,7 @@
 | `status` | `String` | Optional | - |
 | `created_at` | `DateTime` | Optional | - |
 | `updated_at` | `DateTime` | Optional | - |
-| `metadata` | `Array<String>` | Optional | - |
+| `metadata` | `Array[String]` | Optional | - |
 | `fee` | `Integer` | Optional | - |
 | `funding_date` | `DateTime` | Optional | - |
 | `funding_estimated_date` | `DateTime` | Optional | - |
@@ -23,15 +23,15 @@
 | `source` | [`GetWithdrawSourceResponse`](../../doc/models/get-withdraw-source-response.md) | Optional | - |
 | `target` | [`GetWithdrawTargetResponse`](../../doc/models/get-withdraw-target-response.md) | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "gateway_id": "gateway_id4",
-  "amount": 78,
-  "status": "status8",
-  "created_at": "2016-03-13T12:52:32.123Z"
-}
+```ruby
+get_withdraw_response = GetWithdrawResponse.new(
+  'id8',
+  'gateway_id2',
+  4,
+  'status0',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

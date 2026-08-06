@@ -15,23 +15,19 @@ Request object for RegisterInformation.
 | `document` | `String` | Required | - |
 | `type` | `String` | Required | "individual" ou "corporation" |
 | `site_url` | `String` | Optional | - |
-| `phone_numbers` | [`Array<CreateRegisterInformationPhoneRequest>`](../../doc/models/create-register-information-phone-request.md) | Required | - |
+| `phone_numbers` | [`Array[CreateRegisterInformationPhoneRequest]`](../../doc/models/create-register-information-phone-request.md) | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email": "email4",
-  "document": "document6",
-  "type": "type8",
-  "phone_numbers": [
-    {
-      "ddd": "ddd4",
-      "number": "number2",
-      "type": "type0"
-    }
+```ruby
+create_register_information_base_request = CreateRegisterInformationBaseRequest.new(
+  nil,
+  nil,
+  nil,
+  [
+    nil
   ],
-  "site_url": "site_url4"
-}
+  'site_url2'
+)
 ```
 

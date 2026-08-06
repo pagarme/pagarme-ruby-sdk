@@ -13,11 +13,11 @@ Request for updating the start date from a subscription
 |  --- | --- | --- | --- |
 | `start_at` | `DateTime` | Required | The date when the subscription periods will start |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_at": "2016-03-13T12:52:32.123Z"
-}
+```ruby
+update_subscription_start_at_request = UpdateSubscriptionStartAtRequest.new(
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

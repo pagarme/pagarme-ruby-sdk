@@ -18,22 +18,15 @@ The GooglePay Token Payment Request
 | `signed_message` | `String` | Optional | - |
 | `merchant_identifier` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "version": "version6",
-  "data": "data0",
-  "intermediate_signing_key": {
-    "signed_key": "signed_key0",
-    "signatures": [
-      "signatures2",
-      "signatures3",
-      "signatures4"
-    ]
-  },
-  "signature": "signature8",
-  "signed_message": "signed_message6"
-}
+```ruby
+create_google_pay_request = CreateGooglePayRequest.new(
+  'version0',
+  'data4',
+  nil,
+  'signature2',
+  'signed_message0'
+)
 ```
 

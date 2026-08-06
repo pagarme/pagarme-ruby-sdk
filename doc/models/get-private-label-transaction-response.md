@@ -27,20 +27,26 @@ Response object for getting a private label transaction
 | `acquirer_return_code` | `String` | Optional | Acquirer Return Code |
 | `installments` | `Integer` | Optional | Number of installments |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "statement_descriptor": "statement_descriptor4",
-  "acquirer_name": "acquirer_name8",
-  "acquirer_affiliation_code": "acquirer_affiliation_code6",
-  "acquirer_tid": "acquirer_tid6",
-  "acquirer_nsu": "acquirer_nsu6"
-}
+```ruby
+get_private_label_transaction_response = GetPrivateLabelTransactionResponse.new(
+  'statement_descriptor0',
+  'acquirer_name4',
+  'acquirer_affiliation_code2',
+  'acquirer_tid0',
+  'acquirer_nsu0',
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  nil,
+  'gateway_id8',
+  40,
+  'status6',
+  false,
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z')
+)
 ```
 

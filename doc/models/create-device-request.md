@@ -13,11 +13,11 @@ Request for creating a device
 |  --- | --- | --- | --- |
 | `platform` | `String` | Optional | Device's platform |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "platform": "platform8"
-}
+```ruby
+create_device_request = CreateDeviceRequest.new(
+  'platform0'
+)
 ```
 

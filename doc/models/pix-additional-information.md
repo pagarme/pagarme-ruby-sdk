@@ -14,12 +14,12 @@ Pix Additional Information
 | `name` | `String` | Optional | - |
 | `value` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "Name": "Name6",
-  "Value": "Value6"
-}
+```ruby
+pix_additional_information = PixAdditionalInformation.new(
+  'Name8',
+  'Value4'
+)
 ```
 

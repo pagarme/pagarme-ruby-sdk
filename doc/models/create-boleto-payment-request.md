@@ -24,39 +24,19 @@ Contains the settings for creating a boleto payment
 | `fine` | [`CreateFineRequest`](../../doc/models/create-fine-request.md) | Optional | - |
 | `max_days_to_pay_past_due` | `Integer` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "retries": 14,
-  "bank": "bank8",
-  "instructions": "instructions8",
-  "due_at": "2016-03-13T12:52:32.123Z",
-  "billing_address": {
-    "street": "street8",
-    "number": "number4",
-    "zip_code": "zip_code2",
-    "neighborhood": "neighborhood4",
-    "city": "city2",
-    "state": "state6",
-    "country": "country2",
-    "complement": "complement6",
-    "metadata": {
-      "key0": "metadata5",
-      "key1": "metadata6"
-    },
-    "line_1": "line_18",
-    "line_2": "line_26"
-  },
-  "billing_address_id": "billing_address_id6",
-  "nosso_numero": "nosso_numero0",
-  "document_number": "document_number4",
-  "statement_descriptor": "statement_descriptor0",
-  "interest": {
-    "days": 156,
-    "type": "type0",
-    "amount": 230
-  }
-}
+```ruby
+create_boleto_payment_request = CreateBoletoPaymentRequest.new(
+  42,
+  'instructions8',
+  CreateAddressRequest.new,
+  'document_number2',
+  'statement_descriptor4',
+  'bank2',
+  DateTimeHelper.from_rfc3339('2016-03-13T12:52:32.123Z'),
+  'billing_address_id0',
+  'nosso_numero4'
+)
 ```
 

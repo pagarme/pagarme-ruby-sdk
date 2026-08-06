@@ -17,15 +17,15 @@ Request for creating a new increment
 | `cycles` | `Integer` | Optional | Number of cycles that the increment will be applied |
 | `description` | `String` | Optional | Description |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "value": 72.04,
-  "increment_type": "increment_type4",
-  "item_id": "item_id8",
-  "cycles": 196,
-  "description": "description8"
-}
+```ruby
+create_increment_request = CreateIncrementRequest.new(
+  77.56,
+  'increment_type6',
+  'item_id6',
+  156,
+  'description6'
+)
 ```
 

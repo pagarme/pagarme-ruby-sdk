@@ -14,14 +14,14 @@
 | `area_code` | `String` | Optional | - |
 | `type` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "country_code": "country_code0",
-  "number": "number2",
-  "area_code": "area_code0",
-  "Type": "Type0"
-}
+```ruby
+create_phone_request = CreatePhoneRequest.new(
+  'country_code4',
+  'number2',
+  'area_code4',
+  'Type4'
+)
 ```
 

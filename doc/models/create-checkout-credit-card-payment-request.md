@@ -12,33 +12,20 @@ Checkout card payment request
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `statement_descriptor` | `String` | Optional | Card invoice text descriptor |
-| `installments` | [`Array<CreateCheckoutCardInstallmentOptionRequest>`](../../doc/models/create-checkout-card-installment-option-request.md) | Optional | Payment installment options |
+| `installments` | [`Array[CreateCheckoutCardInstallmentOptionRequest]`](../../doc/models/create-checkout-card-installment-option-request.md) | Optional | Payment installment options |
 | `authentication` | [`CreatePaymentAuthenticationRequest`](../../doc/models/create-payment-authentication-request.md) | Optional | Creates payment authentication |
 | `capture` | `TrueClass \| FalseClass` | Optional | Authorize and capture? |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "statement_descriptor": "statement_descriptor0",
-  "installments": [
-    {
-      "number": 164,
-      "total": 16
-    }
+```ruby
+create_checkout_credit_card_payment_request = CreateCheckoutCreditCardPaymentRequest.new(
+  'statement_descriptor6',
+  [
+    nil
   ],
-  "authentication": {
-    "type": "type2",
-    "threed_secure": {
-      "mpi": "mpi0",
-      "cavv": "cavv8",
-      "eci": "eci2",
-      "transaction_id": "transaction_id0",
-      "success_url": "success_url4",
-      "ds_transaction_id": "ds_transaction_id0"
-    }
-  },
-  "capture": false
-}
+  nil,
+  false
+)
 ```
 

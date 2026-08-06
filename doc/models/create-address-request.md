@@ -23,23 +23,24 @@ Request for creating a new Address
 | `line_1` | `String` | Required | Line 1 for address |
 | `line_2` | `String` | Required | Line 2 for address |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "street": "street6",
-  "number": "number6",
-  "zip_code": "zip_code0",
-  "neighborhood": "neighborhood2",
-  "city": "city6",
-  "state": "state8",
-  "country": "country0",
-  "complement": "complement8",
-  "metadata": {
-    "key0": "metadata7"
-  },
-  "line_1": "line_10",
-  "line_2": "line_24"
-}
+```ruby
+create_address_request = CreateAddressRequest.new(
+  'street8',
+  'number6',
+  'zip_code2',
+  'neighborhood4',
+  'city8',
+  'state4',
+  'country2',
+  'complement4',
+  'line_12',
+  'line_26',
+  {
+    'key0': 'metadata5',
+    'key1': 'metadata4'
+  }
+)
 ```
 

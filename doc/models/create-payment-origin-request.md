@@ -14,12 +14,12 @@ Request object for PaymentOrigin
 | `brand_id` | `String` | Optional | - |
 | `charge_id` | `String` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "brand_id": "brand_id0",
-  "charge_id": "charge_id4"
-}
+```ruby
+create_payment_origin_request = CreatePaymentOriginRequest.new(
+  'brand_id8',
+  'charge_id2'
+)
 ```
 

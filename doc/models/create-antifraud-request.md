@@ -12,14 +12,12 @@
 | `type` | `String` | Required | - |
 | `clearsale` | [`CreateClearSaleRequest`](../../doc/models/create-clear-sale-request.md) | Required | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "type0",
-  "clearsale": {
-    "custom_sla": 178
-  }
-}
+```ruby
+create_antifraud_request = CreateAntifraudRequest.new(
+  'type8',
+  CreateClearSaleRequest.new
+)
 ```
 

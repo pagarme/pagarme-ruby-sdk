@@ -17,19 +17,15 @@ Split
 | `options` | [`CreateSplitOptionsRequest`](../../doc/models/create-split-options-request.md) | Optional | The split options request |
 | `split_rule_id` | `String` | Optional | Rule code used in cancellation. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "type6",
-  "amount": 100,
-  "recipient_id": "recipient_id6",
-  "options": {
-    "liable": false,
-    "charge_processing_fee": false,
-    "charge_remainder_fee": false
-  },
-  "split_rule_id": "split_rule_id8"
-}
+```ruby
+create_split_request = CreateSplitRequest.new(
+  'type8',
+  206,
+  'recipient_id8',
+  nil,
+  'split_rule_id4'
+)
 ```
 

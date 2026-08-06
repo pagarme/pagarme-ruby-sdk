@@ -15,13 +15,13 @@ Interest Response
 | `type` | `String` | Optional | Type |
 | `amount` | `Integer` | Optional | Amount |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "\"percentage\" or \"flat\"",
-  "days": 114,
-  "amount": 188
-}
+```ruby
+get_interest_response = GetInterestResponse.new(
+  102,
+  '"percentage" or "flat"',
+  176
+)
 ```
 
