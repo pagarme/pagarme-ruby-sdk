@@ -16,6 +16,7 @@ Request for canceling a charge.
 | `split` | [`Array[CreateSplitRequest]`](../../doc/models/create-split-request.md) | Optional | Splits |
 | `operation_reference` | `String` | Required | - |
 | `bank_account` | [`CreateBankAccountRefundingDTO`](../../doc/models/create-bank-account-refunding-dto.md) | Optional | - |
+| `reason` | `String` | Optional | Cancellation reason |
 
 ## Example
 
@@ -28,7 +29,9 @@ create_cancel_charge_request = CreateCancelChargeRequest.new(
   ],
   [
     nil
-  ]
+  ],
+  nil,
+  'reason6'
 )
 ```
 
