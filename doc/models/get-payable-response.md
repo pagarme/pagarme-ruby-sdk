@@ -59,7 +59,7 @@ get_payable_response = GetPayableResponse.new(
   0,
   0,
   44,
-  'anticipation_id0',
+  nil,
   DateTimeHelper.from_rfc3339('2025-08-18T03:00:00Z'),
   'credit',
   DateTimeHelper.from_rfc3339('2023-08-21T12:51:28Z')

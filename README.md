@@ -18,9 +18,9 @@ Alternatively, you can build and install the gem manually:
 
 1. From terminal/cmd navigate to the root directory of the SDK.
 2. Run the build command: `gem build pagarme_api_sdk.gemspec`
-3. Run the install command: `gem install pagarme_api_sdk-7.0.1.gem`
+3. Run the install command: `gem install pagarme_api_sdk-7.0.2.gem`
 
-![Installing Gem](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=7.0.1&gemName=pagarme_api_sdk&step=buildSDK)
+![Installing Gem](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=7.0.2&gemName=pagarme_api_sdk&step=buildSDK)
 
 ## Installation
 
@@ -42,15 +42,15 @@ In the next dialog make sure that the correct Ruby SDK is being used (>= 2.6 and
 
 ### 2. Add reference of the gem
 
-In order to use the `pagarme_api_sdk` gem in the new project we must add a gem reference. Locate the `Gemfile` in the Project Explorer window under the `TestApp` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: `gem 'pagarme_api_sdk', '7.0.1'`
+In order to use the `pagarme_api_sdk` gem in the new project we must add a gem reference. Locate the `Gemfile` in the Project Explorer window under the `TestApp` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: `gem 'pagarme_api_sdk', '7.0.2'`
 
-![Add new reference to the Gemfile](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=7.0.1&gemName=pagarme_api_sdk&step=addReference)
+![Add new reference to the Gemfile](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=7.0.2&gemName=pagarme_api_sdk&step=addReference)
 
 ### 3. Adding a new Rails Controller
 
 Once the `TestApp` project is created, a folder named `controllers` will be visible in the *Project Explorer* under the following path: `TestApp > app > controllers`. Right click on this folder and select `New -> Run Rails Generator...`.
 
-![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=7.0.1&gemName=pagarme_api_sdk&step=addCode0)
+![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=7.0.2&gemName=pagarme_api_sdk&step=addCode0)
 
 Selecting the said option will popup a small window where the generator names are displayed. Here, select the `controller` template.
 
@@ -58,7 +58,7 @@ Selecting the said option will popup a small window where the generator names ar
 
 Next, a popup window will ask you for a Controller name and included Actions. For controller name provide `Hello` and include an action named `Index` and click `OK`.
 
-![Add a new Controller](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=7.0.1&gemName=pagarme_api_sdk&step=addCode2)
+![Add a new Controller](https://apidocs.io/illustration/ruby?workspaceFolder=PagarmeApiSdk&gemVer=7.0.2&gemName=pagarme_api_sdk&step=addCode2)
 
 A new controller class named `HelloController` will be created in a file named `hello_controller.rb` containing a method named `Index`.
 
@@ -105,7 +105,7 @@ ruby bin/console
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -121,8 +121,8 @@ The following parameters are configurable for the API Client:
 | retry_statuses | `Array` | A list of HTTP statuses to retry. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array` | A list of HTTP methods to retry. <br> **Default: %i[get put]** |
 | http_callback | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
-| proxy_settings | [`ProxySettings`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
-| basic_auth_credentials | [`BasicAuthCredentials`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/auth/basic-authentication.md) | The credential object for Basic Authentication |
+| proxy_settings | [`ProxySettings`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
+| basic_auth_credentials | [`BasicAuthCredentials`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/auth/basic-authentication.md) | The credential object for Basic Authentication |
 
 The API client can be initialized as follows:
 
@@ -151,13 +151,13 @@ include PagarmeApiSdk
 client = Client.from_env
 ```
 
-See the [`Environment-Based Client Initialization`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/environment-based-client-initialization.md) section for details.
+See the [`Environment-Based Client Initialization`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/environment-based-client-initialization.md) section for details.
 
 ## Authorization
 
 This API uses the following authentication schemes.
 
-* [`httpBasic (Basic Authentication)`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/auth/basic-authentication.md)
+* [`httpBasic (Basic Authentication)`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/auth/basic-authentication.md)
 
 ## API Errors
 
@@ -165,41 +165,41 @@ Here is the list of errors that the API might throw.
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | Invalid request | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/models/error-exception.md) |
-| 401 | Invalid API key | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/models/error-exception.md) |
-| 404 | An informed resource was not found | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/models/error-exception.md) |
-| 412 | Business validation error | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/models/error-exception.md) |
-| 422 | Contract validation error | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/models/error-exception.md) |
-| 500 | Internal server error | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/models/error-exception.md) |
+| 400 | Invalid request | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/models/error-exception.md) |
+| 401 | Invalid API key | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/models/error-exception.md) |
+| 404 | An informed resource was not found | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/models/error-exception.md) |
+| 412 | Business validation error | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/models/error-exception.md) |
+| 422 | Contract validation error | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/models/error-exception.md) |
+| 500 | Internal server error | [`ErrorException`](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/models/error-exception.md) |
 
 ## List of APIs
 
-* [Charges](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/controllers/charges.md)
-* [Customers](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/controllers/customers.md)
-* [Invoices](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/controllers/invoices.md)
-* [Orders](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/controllers/orders.md)
-* [Payables](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/controllers/payables.md)
-* [Plans](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/controllers/plans.md)
-* [Recipients](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/controllers/recipients.md)
-* [Subscriptions](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/controllers/subscriptions.md)
-* [Tokens](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/controllers/tokens.md)
-* [Transactions](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/controllers/transactions.md)
-* [Transfers](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/controllers/transfers.md)
+* [Charges](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/controllers/charges.md)
+* [Customers](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/controllers/customers.md)
+* [Invoices](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/controllers/invoices.md)
+* [Orders](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/controllers/orders.md)
+* [Payables](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/controllers/payables.md)
+* [Plans](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/controllers/plans.md)
+* [Recipients](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/controllers/recipients.md)
+* [Subscriptions](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/controllers/subscriptions.md)
+* [Tokens](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/controllers/tokens.md)
+* [Transactions](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/controllers/transactions.md)
+* [Transfers](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/controllers/transfers.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [ProxySettings](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/proxy-settings.md)
-* [Environment-Based Client Initialization](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/environment-based-client-initialization.md)
+* [ProxySettings](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/proxy-settings.md)
+* [Environment-Based Client Initialization](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/environment-based-client-initialization.md)
 
 ### HTTP
 
-* [HttpResponse](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/http-response.md)
-* [HttpRequest](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/http-request.md)
+* [HttpResponse](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/http-response.md)
+* [HttpRequest](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/http-request.md)
 
 ### Utilities
 
-* [ApiHelper](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/api-helper.md)
-* [DateTimeHelper](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.1/doc/date-time-helper.md)
+* [ApiHelper](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/api-helper.md)
+* [DateTimeHelper](https://www.github.com/pagarme/pagarme-ruby-sdk/tree/7.0.2/doc/date-time-helper.md)
 

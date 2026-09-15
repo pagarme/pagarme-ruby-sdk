@@ -144,7 +144,9 @@ module PagarmeApiSdk
 
     # An array for nullable fields
     def self.nullables
-      []
+      %w[
+        merchant_category_code
+      ]
     end
 
     def initialize(installments = 1, statement_descriptor = SKIP, card = SKIP,

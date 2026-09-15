@@ -29,6 +29,10 @@ module PagarmeApiSdk
     # @return [CreateBankAccountRefundingDTO]
     attr_accessor :bank_account
 
+    # Cancellation reason
+    # @return [String]
+    attr_accessor :reason
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -37,6 +41,7 @@ module PagarmeApiSdk
       @_hash['split'] = 'split'
       @_hash['operation_reference'] = 'operation_reference'
       @_hash['bank_account'] = 'bank_account'
+      @_hash['reason'] = 'reason'
       @_hash
     end
 
@@ -47,6 +52,7 @@ module PagarmeApiSdk
         split_rules
         split
         bank_account
+        reason
       ]
     end
 
@@ -56,12 +62,13 @@ module PagarmeApiSdk
     end
 
     def initialize(operation_reference = nil, amount = SKIP, split_rules = SKIP,
-                   split = SKIP, bank_account = SKIP)
+                   split = SKIP, bank_account = SKIP, reason = SKIP)
       @amount = amount unless amount == SKIP
       @split_rules = split_rules unless split_rules == SKIP
       @split = split unless split == SKIP
       @operation_reference = operation_reference
       @bank_account = bank_account unless bank_account == SKIP
+      @reason = reason unless reason == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -94,20 +101,23 @@ module PagarmeApiSdk
       split = SKIP unless hash.key?('split')
       bank_account = CreateBankAccountRefundingDTO.from_hash(hash['bank_account']) if
         hash['bank_account']
+      reason = hash.key?('reason') ? hash['reason'] : SKIP
 
       # Create object from extracted values.
       CreateCancelChargeRequest.new(operation_reference,
                                     amount,
                                     split_rules,
                                     split,
-                                    bank_account)
+                                    bank_account,
+                                    reason)
     end
 
     # Provides a human-readable string representation of the object.
     def to_s
       class_name = self.class.name.split('::').last
       "<#{class_name} amount: #{@amount}, split_rules: #{@split_rules}, split: #{@split},"\
-      " operation_reference: #{@operation_reference}, bank_account: #{@bank_account}>"
+      " operation_reference: #{@operation_reference}, bank_account: #{@bank_account}, reason:"\
+      " #{@reason}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
@@ -115,7 +125,7 @@ module PagarmeApiSdk
       class_name = self.class.name.split('::').last
       "<#{class_name} amount: #{@amount.inspect}, split_rules: #{@split_rules.inspect}, split:"\
       " #{@split.inspect}, operation_reference: #{@operation_reference.inspect}, bank_account:"\
-      " #{@bank_account.inspect}>"
+      " #{@bank_account.inspect}, reason: #{@reason.inspect}>"
     end
   end
 end
